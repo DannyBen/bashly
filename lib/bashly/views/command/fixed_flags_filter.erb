@@ -1,0 +1,14 @@
+# :command.fixed_flag_filter
+case "$1" in
+--version | -v ) 
+  version_command
+  exit 1
+  ;;
+
+--help | -h ) 
+  long_usage=yes
+  <%= full_name.to_underscore %>_usage
+  exit 1
+  ;;
+
+esac

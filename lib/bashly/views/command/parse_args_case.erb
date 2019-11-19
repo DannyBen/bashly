@@ -1,0 +1,17 @@
+# :command.parse_args_case
+<%- if args.any? -%>
+<%- condition = "if" -%>
+<%- args.each do |arg| -%>
+<%= condition %> [[ ! ${args[<%= arg.name %>]} ]]; then
+  args[<%= arg.name %>]=$1
+  shift
+<%- condition = "elif" -%>
+<%- end -%>
+else
+  echo invalid argument: $key
+  exit 1
+fi
+<%- else -%>
+echo invalid argument: $key
+exit 1
+<%- end -%>

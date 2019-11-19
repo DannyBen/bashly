@@ -1,0 +1,19 @@
+Initialize a new workspace
+
+This command will create the source folder, and place a template configuration
+file in it.
+
+Usage:
+  bashly init [--minimal]
+  bashly init (-h|--help)
+
+Options:
+  -m --minimal
+    Use a minimal configuration file (without subcommands)
+
+  -h --help
+    Show this help
+
+Environment Variables:
+  BASHLY_SOURCE_DIR
+    The path to use for creating the configuration file [default: src]

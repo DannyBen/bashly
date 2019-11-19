@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+<%= render :root_command if commands.empty? %>
+<%= render :version_command %>
+<%= render :usage %>
+<%= render :inspect_args %>
+<%= render :command_functions %>
+<%= render :parse_args %>
+<%= render :initialize %>
+<%= render :run %>
+
+initialize
+run "$@"

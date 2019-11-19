@@ -1,0 +1,16 @@
+# :flag.case
+<%= aliases.join " | " %> )
+  <%- if arg -%>
+  if [[ $2 && $2 != -* ]]; then
+    args[<%= long %>]="$2"
+    shift
+    shift
+  else
+    echo <%= long %> requires an argument: <%= usage_string %>
+    exit 1
+  fi
+  <%- else -%>
+  args[<%= long %>]=1
+  shift
+  <%- end -%>
+  ;;

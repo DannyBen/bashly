@@ -1,0 +1,12 @@
+# :command.required_args_filter
+<%- required_args.each do |arg| -%>
+if [[ $1 && $1 != -* ]]; then
+  args[<%= arg.name %>]=$1
+  shift
+else
+  echo missing required argument: <%= arg.name.upcase %>
+  echo Usage: <%= usage_string %>
+  exit 1
+fi
+
+<%- end %>

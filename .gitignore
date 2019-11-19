@@ -1,0 +1,11 @@
+/tmp
+/spec/tmp
+/coverage
+/dev
+/doc
+/gems
+/Gemfile.lock
+/.yardoc
+/toc.txt
+*.gem
+debug.rb

@@ -1,0 +1,7 @@
+# :command.usage_commands
+echo "Commands:"
+<%- maxlen = command_names.map(&:size).max -%>
+<%- commands.each do |command| -%>
+echo "  <%= command.name.ljust maxlen %>   <%= command.summary  %>"
+<%- end -%>
+echo

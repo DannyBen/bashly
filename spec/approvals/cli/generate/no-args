@@ -1,0 +1,5 @@
+creating user files in [0;32mspec/tmp/src
+[0mcreated [0;32mspec/tmp/src/cli_download_command.sh
+[0mcreated [0;32mspec/tmp/src/cli_upload_command.sh
+[0mcreated [0;32mspec/tmp/cli
+[0mrun [0;35mspec/tmp/cli --help[0m to test your bash script

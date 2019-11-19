@@ -1,0 +1,7 @@
+# :command.required_flags_filter
+<%- required_flags.each do |flag| -%>
+if [[ <%= flag.aliases.map { |a| "$* != *#{a}*" }.join " && " %> ]]; then
+  echo "missing required flag: <%= flag.usage_string %>"
+  exit 1
+fi
+<%- end %>

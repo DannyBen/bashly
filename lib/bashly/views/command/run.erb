@@ -1,0 +1,25 @@
+# :command.run
+run() {
+  declare -A args
+  parse_args "$@"
+
+  <%- condition = "if" -%>
+  <%- commands.each do |command| -%>
+  <%= condition %> [[ $action == "<%= command.name %>" ]]; then
+    if [[ ${args[--help]} ]]; then
+      long_usage=yes
+      <%= command.full_name.to_underscore %>_usage
+    else
+      <%= command.full_name.to_underscore %>_command
+    fi
+  <% condition = "elif" %>
+  <%- end -%>
+  <%= condition %> [[ ${args[--version]} ]]; then
+    version_command
+  elif [[ ${args[--help]} ]]; then
+    long_usage=yes
+    <%= name %>_usage
+  elif [[ $action == "root" ]]; then
+    root_command
+  fi
+}

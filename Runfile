@@ -1,0 +1,17 @@
+require "runfile-tasks"
+require "byebug"
+require_relative 'lib/bashly'
+
+title   "Bashly Developer Toolbelt"
+summary "Runfile tasks for building the Bashly gem"
+version Bashly::VERSION
+
+RunfileTasks::RubyGems.all 'bashly'
+RunfileTasks::Testing.rspec
+
+help   "Run interactive console"
+action :console, :c do
+  run "bundle exec bin/console"
+end
+
+require './debug.rb' if File.exist? 'debug.rb'
