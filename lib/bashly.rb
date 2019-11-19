@@ -5,6 +5,7 @@ if ENV['BYEBUG']
   require 'lp'
 end
 
+requires 'bashly/polyfills'
 requires 'bashly/settings'
 requires 'bashly/exceptions'
 requires 'bashly/concerns'
