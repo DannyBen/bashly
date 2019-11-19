@@ -3,6 +3,12 @@ Bashly - Bash CLI Generator
 
 Create beautiful bash scripts from simple YAML configuration.
 
+[![Gem Version](https://badge.fury.io/rb/bashly.svg)](https://badge.fury.io/rb/bashly)
+[![Build Status](https://travis-ci.com/DannyBen/bashly.svg?branch=master)](https://travis-ci.com/DannyBen/bashly)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8cf89047e50ca601e431/maintainability)](https://codeclimate.com/github/DannyBen/bashly/maintainability)
+
+---
+
 ![demo](demo/cast.svg)
 
 ---
