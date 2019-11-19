@@ -21,7 +21,7 @@ commands:
 
 - name: upload
   short: u
-  help: Uploads a file
+  help: Upload a file
   args:
   - name: source
     required: true
