@@ -1,4 +1,4 @@
-Bashly - Bbash CLI Generator
+Bashly - Bash CLI Generator
 ==================================================
 
 Create beautiful bash scripts from simple YAML configuration.
