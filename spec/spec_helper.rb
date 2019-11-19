@@ -17,7 +17,7 @@ Settings.target_dir = 'spec/tmp'
 reset_tmp_dir
 
 # Consistent Colsole output (for rspec_fixtures)
-ENV['TTY'] = 'on'
+ENV['TTY'] = 'off'
 
 RSpec.configure do |c|
   c.include SpecMixin
