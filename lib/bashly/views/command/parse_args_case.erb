@@ -8,10 +8,10 @@
 <%- condition = "elif" -%>
 <%- end -%>
 else
-  echo invalid argument: $key
+  echo "invalid argument: $key"
   exit 1
 fi
 <%- else -%>
-echo invalid argument: $key
+echo "invalid argument: $key"
 exit 1
 <%- end -%>
