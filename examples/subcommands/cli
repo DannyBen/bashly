@@ -16,13 +16,13 @@ cli_usage() {
   echo "  cli [command] [options]"
   echo
   # :command.usage_commands
-  echo "Commands:"
+  echo "Commands::"
   echo "  download   Download a file"
   echo "  upload     Upload a file"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo "Options:"
+    echo "Options::"
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo "    Show this help"
@@ -46,7 +46,7 @@ cli_download_usage() {
 
 
   if [[ -n $long_usage ]]; then
-    echo "Options:"
+    echo "Options::"
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo "    Show this help"
@@ -60,7 +60,7 @@ cli_download_usage() {
     echo "    Overwrite existing files"
     echo
     # :command.usage_args
-    echo "Arguments:"
+    echo "Arguments::"
     
     # :argument.usage
     echo "  SOURCE"
@@ -86,7 +86,7 @@ cli_upload_usage() {
 
 
   if [[ -n $long_usage ]]; then
-    echo "Options:"
+    echo "Options::"
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo "    Show this help"
@@ -105,7 +105,7 @@ cli_upload_usage() {
     echo "    Password to use for logging in"
     echo
     # :command.usage_args
-    echo "Arguments:"
+    echo "Arguments::"
     
     # :argument.usage
     echo "  SOURCE"
@@ -228,8 +228,7 @@ download_parse_args() {
     args[source]=$1
     shift
   else
-    echo "missing required argument: SOURCE"
-    echo "Usage: cli download SOURCE [TARGET] [options]"
+    echo -e "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options]"
     exit 1
   fi
   # :command.required_flags_filter
@@ -289,8 +288,7 @@ upload_parse_args() {
     args[source]=$1
     shift
   else
-    echo "missing required argument: SOURCE"
-    echo "Usage: cli upload SOURCE [options]"
+    echo -e "missing required argument: SOURCE\nusage: cli upload SOURCE [options]"
     exit 1
   fi
   # :command.required_flags_filter

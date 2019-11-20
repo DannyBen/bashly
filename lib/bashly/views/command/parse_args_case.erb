@@ -8,10 +8,10 @@
 <%- condition = "elif" -%>
 <%- end -%>
 else
-  echo "invalid argument: $key"
+  echo "<%= Settings.strings["invalid_argument"] % { arg: "$key" } %>"
   exit 1
 fi
 <%- else -%>
-echo "invalid argument: $key"
+echo "<%= Settings.strings["invalid_argument"] % { arg: "$key" } %>"
 exit 1
 <%- end -%>

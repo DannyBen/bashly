@@ -2,13 +2,13 @@
 <%= full_name.to_underscore %>_usage() {
   echo "<%= caption_string %>"
   echo 
-  echo "Usage:"
+  echo "<%= Settings.strings["usage"] %>"
   echo "  <%= usage_string %>"
   echo
 <%= render(:usage_commands).indent 2 if commands.any? %>
 
   if [[ -n $long_usage ]]; then
-    echo "Options:"
+    echo "<%= Settings.strings["options"] %>:"
 <%= render(:usage_fixed_flags).indent 4 %>
 <%= render(:usage_flags).indent 4 if flags.any? %>
 <%= render(:usage_args).indent 4 if args.any? %>

@@ -8,7 +8,7 @@ while [[ $# -gt 0 ]]; do
   <%- end -%>
 
   -* )
-    echo "invalid option: $key"
+    echo "<%= Settings.strings["invalid_flag"] % { flag: "$key" } %>"
     exit 1
     ;;
 
