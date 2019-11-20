@@ -1,4 +1,5 @@
 require 'mister_bin'
+require 'fileutils'
 
 module Bashly
   module Commands
@@ -47,6 +48,7 @@ module Bashly
       def create_master_script
         master_script = command.render 'master_script'
         File.write master_script_path, master_script
+        FileUtils.chmod "+x", master_script_path
         say "created !txtgrn!#{master_script_path}"
       end
 
