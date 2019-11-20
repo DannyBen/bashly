@@ -1,9 +1,13 @@
++ rm -f ./src/root_command.sh
++ bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/root_command.sh
 [0mcreated [0;32m./download
 [0mrun [0;35m./download --help[0m to test your bash script
++ ./download
 missing required argument: SOURCE
 Usage: download SOURCE [TARGET] [options]
++ ./download -h
 download - Sample minimal application without subcommands
 
 Usage:
@@ -26,7 +30,9 @@ Arguments:
   TARGET
     Target filename (default: same as source)
 
++ ./download --version
 0.1.0
++ ./download somesource -f
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

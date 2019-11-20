@@ -15,7 +15,9 @@ describe 'generated bash scripts' do
         Dir.chdir example do
           output = `bash test.sh 2>&1`
         end
-        expect(output).to match_fixture(example)
+        # test with .diff, to allow some variations betwen different machines
+        # (i.e. CI)
+        expect(output).to match_fixture(example).diff(40)
       end
     end
   end
