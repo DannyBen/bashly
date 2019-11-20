@@ -4,7 +4,7 @@ argstring="$*"
 <%- end -%>
 <%- required_flags.each do |flag| -%>
 if [[ <%= flag.aliases.map { |a| %Q["$argstring" != *#{a}*] }.join " && " %> ]]; then
-  echo "<%= Settings.strings["missing_required_flag"] % { usage: flag.usage_string } %>"
+  echo -e "<%= Settings.strings["missing_required_flag"] % { usage: flag.usage_string } %>"
   exit 1
 fi
 <%- end %>

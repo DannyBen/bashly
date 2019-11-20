@@ -1,6 +1,7 @@
 module Bashly
   class Settings
     class << self
+      include AssetHelper
       attr_writer :source_dir, :target_dir
 
       def source_dir
@@ -18,7 +19,7 @@ module Bashly
     private
 
       def strings!
-        defaults = YAML.load_file strings_config_path
+        defaults = YAML.load_file asset("templates/strings.yml")
         defaults.merge project_strings
       end
 
@@ -35,11 +36,7 @@ module Bashly
       end
 
       def project_strings_path
-        @project_strings_path ||= "#{source_dir}/bashly-settings.yml"
-      end
-
-      def strings_config_path
-        File.expand_path "templates/strings.yml", __dir__
+        @project_strings_path ||= "#{source_dir}/bashly-strings.yml"
       end
     end
   end

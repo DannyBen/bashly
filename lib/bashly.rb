@@ -6,8 +6,10 @@ if ENV['BYEBUG']
 end
 
 requires 'bashly/polyfills'
+requires 'bashly/concerns'
+
 requires 'bashly/settings'
 requires 'bashly/exceptions'
-requires 'bashly/concerns'
 requires 'bashly/models/base'
+requires 'bashly/commands/base'
 requires 'bashly'

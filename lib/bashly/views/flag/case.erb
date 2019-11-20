@@ -6,7 +6,7 @@
     shift
     shift
   else
-    echo "<%= Settings.strings["flag_requires_an_argument"] % { long: long, usage: usage_string } %>"
+    echo -e "<%= Settings.strings["flag_requires_an_argument"] % { long: long, usage: usage_string } %>"
     exit 1
   fi
   <%- else -%>

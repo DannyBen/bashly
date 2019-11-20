@@ -11,6 +11,7 @@ module Bashly
       runner.route 'init',      to: Commands::Init
       runner.route 'preview',   to: Commands::Preview
       runner.route 'generate',  to: Commands::Generate
+      runner.route 'add',       to: Commands::Add
 
       runner
     end

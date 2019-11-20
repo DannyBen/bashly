@@ -17,38 +17,36 @@ version_command() {
 
 # :command.usage
 download_usage() {
-  echo -e "download - Sample minimal application without subcommands"
+  echo -e "download - Sample minimal application with custom strings"
   echo 
-  echo -e "Usage:"
-  echo -e "  download SOURCE [TARGET] [options]"
+  echo -e "== Usage ==
+"
+  echo -e "  download SOURCE [options]"
   echo
 
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    echo -e "== Options ==
+"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    echo -e "    Show this helpful help"
     echo
     echo "  --version"
     echo -e "    Show version number"
     echo
     # :command.usage_flags
     # :flag.usage
-    echo "  --force, -f"
-    echo "    Overwrite existing files"
+    echo "  --out, -o DIR (required)"
+    echo "    Target directory"
     echo
     # :command.usage_args
-    echo -e "Arguments:"
+    echo -e "== Arguments ==
+    "
     
     # :argument.usage
     echo "  SOURCE"
     echo "    URL to download from"
-    echo
-    
-    # :argument.usage
-    echo "  TARGET"
-    echo "    Target filename (default: same as source)"
     echo
 
   fi
@@ -86,18 +84,29 @@ parse_args() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: download SOURCE [TARGET] [options]"
+    echo -e "Boom! a required argument is missing: SOURCE\nusage: download SOURCE [options]"
     exit 1
   fi
   # :command.required_flags_filter
+  argstring="$*"
+  if [[ "$argstring" != *--out* && "$argstring" != *-o* ]]; then
+    echo -e "Yo! you forgot a flag: --out, -o DIR"
+    exit 1
+  fi
   # :command.parse_args_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
     # :flag.case
-    --force | -f )
-      args[--force]=1
-      shift
+    --out | -o )
+      if [[ $2 && $2 != -* ]]; then
+        args[--out]="$2"
+        shift
+        shift
+      else
+        echo -e "Hey! the flag --out requires an argument: --out, -o DIR"
+        exit 1
+      fi
       ;;
   
   
@@ -110,9 +119,6 @@ parse_args() {
       # :command.parse_args_case
       if [[ ! ${args[source]} ]]; then
         args[source]=$1
-        shift
-      elif [[ ! ${args[target]} ]]; then
-        args[target]=$1
         shift
       else
         echo -e "invalid argument: $key"

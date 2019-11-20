@@ -1,5 +1,5 @@
 # :command.usage_args
-echo "<%= Settings.strings["arguments"] %>:"
+echo -e "<%= Settings.strings["arguments"] %>"
 
 <%- args.each do |arg| -%>
 <%= arg.render(:usage) %>

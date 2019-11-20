@@ -1,8 +1,6 @@
-require 'mister_bin'
-
 module Bashly
   module Commands
-    class Preview < MisterBin::Command
+    class Preview < Base
       help "Generate the bash script to STDOUT"
 
       usage "bashly preview"
