@@ -1,0 +1,21 @@
+Add extra features and customization to your script
+
+Usage:
+  bashly add strings [--force]
+  bashly add (-h|--help)
+
+Commands:
+  strings
+    Copy an additional configuration file to your project, allowing you to
+    customize all the tips and error strings.
+
+Options:
+  -f --force
+    Overwrite existing files
+
+  -h --help
+    Show this help
+
+Environment Variables:
+  BASHLY_SOURCE_DIR
+    The path to use for creating the configuration file [default: src]
