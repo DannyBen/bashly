@@ -1,5 +1,5 @@
 # :command.inspect_args
 inspect_args() {
   echo args:
-  for k in "${!args[@]}"; do echo "- \${args[$k]}" = ${args[$k]}; done
+  for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 }
