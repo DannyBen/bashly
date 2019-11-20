@@ -1,11 +1,8 @@
-+ rm -f ./src/cli_download_command.sh ./src/cli_upload_command.sh
-+ bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/cli_download_command.sh
 [0mcreated [0;32msrc/cli_upload_command.sh
 [0mcreated [0;32m./cli
 [0mrun [0;35m./cli --help[0m to test your bash script
-+ ./cli
 cli - Sample application
 
 Usage:
@@ -15,7 +12,6 @@ Commands:
   download   Download a file
   upload     Upload a file
 
-+ ./cli -h
 cli - Sample application
 
 Usage:
@@ -32,9 +28,7 @@ Options:
   --version
     Show version number
 
-+ ./cli --version
 0.1.0
-+ ./cli download -h
 cli download - Download a file
 
 Usage:
@@ -57,10 +51,8 @@ Arguments:
   TARGET
     Target filename (default: same as source)
 
-+ ./cli download
 missing required argument: SOURCE
 Usage: cli download SOURCE [TARGET] [options]
-+ ./cli download sourcefile targetfile -f
 # this file is located in 'src/cli_download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -68,7 +60,6 @@ args:
 - ${args[target]} = targetfile
 - ${args[source]} = sourcefile
 - ${args[--force]} = 1
-+ ./cli upload --help
 cli upload - Upload a file
 
 Usage:
@@ -91,9 +82,7 @@ Arguments:
   SOURCE
     File to upload
 
-+ ./cli upload sourcefile
 missing required flag: --user, -u USER
-+ ./cli upload sourcefile -u username
 # this file is located in 'src/cli_upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
