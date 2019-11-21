@@ -1,4 +1,6 @@
 Usage:
   bashly add strings [--force]
   bashly add lib [--force]
+  bashly add config [--force]
+  bashly add colors [--force]
   bashly add (-h|--help)

@@ -1,0 +1,7 @@
+name: colorly
+help: Sample application that uses the color functions
+version: 0.1.0
+
+args:
+- name: message
+  help: "Message to show [default: hello colors]"

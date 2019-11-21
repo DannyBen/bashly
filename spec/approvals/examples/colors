@@ -1,0 +1,12 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/root_command.sh[0m (exists)
+created [0;32m./colorly
+[0mrun [0;35m./colorly --help[0m to test your bash script
++ ./colorly
+[4mMessage Recevied:[0m
+
+  => [1;32mhello colors[0m
+  ==> [1;31mhello colors[0m
+  ===> [1;34mhello colors[0m
+

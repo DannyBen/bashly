@@ -3,6 +3,8 @@ Add extra features and customization to your script
 Usage:
   bashly add strings [--force]
   bashly add lib [--force]
+  bashly add config [--force]
+  bashly add colors [--force]
   bashly add (-h|--help)
 
 Commands:
@@ -13,6 +15,13 @@ Commands:
   lib
     Create the additional lib directory for additional user scripts. All *.sh
     scripts in this folder will be included in the final bash script.
+
+  config
+    Add standard functions for handling INI files to the lib directory.
+
+  colors
+    Add standard functions for printing colorful and formatted text to the lib
+    directory.
 
 Options:
   -f --force

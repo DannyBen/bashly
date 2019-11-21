@@ -1,0 +1,35 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/configly_set_command.sh[0m (exists)
+skipped [0;32msrc/configly_get_command.sh[0m (exists)
+skipped [0;32msrc/configly_list_command.sh[0m (exists)
+created [0;32m./configly
+[0mrun [0;35m./configly --help[0m to test your bash script
++ ./configly -h
+configly - Sample application that uses the config functions
+
+Usage:
+  configly [command] [options]
+
+Commands:
+  set    Save a value in the config file
+  get    Read a value from the config file
+  list   Show the entire config file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
++ ./configly set hello world
+saved: hello = world
++ ./configly set bashly works
+saved: bashly = works
++ ./configly get hello
+world
++ ./configly list
+hello = world
+bashly = works
+
