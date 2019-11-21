@@ -91,3 +91,26 @@ config_show() {
   config_init
   cat "$CONFIG_FILE"
 }
+
+# Return an array of the keys in the config file
+# Usage:
+#
+#   for k in $(config_keys); do
+#     echo "- $k = $(config_get "$k")";
+#   done
+#
+config_keys() {
+  key=$1
+  regex="^(.*)\s*="
+
+  config_init
+
+  keys=()
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ $line =~ $regex ]]; then
+      key="${BASH_REMATCH[1]}"
+      keys+=("$key")
+    fi
+  done < "$CONFIG_FILE"
+  echo ${keys[@]}
+}
