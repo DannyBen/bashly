@@ -1,5 +1,5 @@
 <div align='center'>
-<img src='bashly-logo.svg' width=300>
+<img src='logo.svg' width=280>
 
 Bashly - Bash CLI Framework and Generator
 ==================================================
