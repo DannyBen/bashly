@@ -79,6 +79,10 @@ flags:
 - long: --force
   short: -f
   help: Overwrite existing files
+
+examples:
+- download example.com
+- download example.com ./output -f
 ```
 
 
@@ -90,6 +94,9 @@ You can get this script by running `bashly generate`.
 name: cli
 help: Sample application
 version: 0.1.0
+
+environment_variables:
+  API_KEY: Set your API key
 
 commands:
 - name: download
@@ -107,6 +114,13 @@ commands:
   - long: --force
     short: -f
     help: Overwrite existing files
+
+  examples:
+  - cli download example.com
+  - cli download example.com ./output -f
+
+  environment_variables:
+    DEFAULT_TARGET_LOCATION: Set the default location to download to
 
 - name: upload
   short: u
@@ -134,7 +148,7 @@ Configuration Reference
 
 ### Command options
 
-With the exception of `version` and `commands` (shich define subcommands),
+With the exception of `version` and `commands` (which define subcommands),
 everything else in this section is suitable both for the main script, and for
 any subcommand you define using `commands`.
 
@@ -149,6 +163,16 @@ help: a sample script generated with bashly
 
 # The string to display when using --version
 version: 0.1.0
+
+# Specify an array of examples to show when using --help
+examples:
+- myscript download
+- myscript download --force
+
+# Specify an array of environment variables needed by your script
+# This is used purely for displaying in the help text (when using --help)
+environment_variable:
+  VARIABLE_NAME: Variable help text
 
 # Specify the array of subcommands to generate.
 # Each subcommand will have its own args and flags.
