@@ -3,4 +3,6 @@ initialize() {
   version="<%= version %>"
   long_usage=''
   set -e  
+
+<%= load_user_file("initialize.sh", placeholder: false).indent 2 %>
 }

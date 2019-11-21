@@ -373,6 +373,8 @@ initialize() {
   version="0.1.0"
   long_usage=''
   set -e  
+
+  # :src/initialize.sh
 }
 
 # :command.run

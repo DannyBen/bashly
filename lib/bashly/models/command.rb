@@ -50,13 +50,16 @@ module Bashly
       # Reads a file from the userspace (Settings.source_dir) and returns
       # its contents. 
       # If the file is not found, returns a string with a hint.
-      def load_user_file(file)
+      def load_user_file(file, placeholder: true)
         path = "#{Settings.source_dir}/#{file}"
+        default_content = placeholder ? "# error: cannot load file" : ''
+
         content = if File.exist? path
           File.read path
-        else
-          "# error: cannot load file"
+        else 
+          default_content
         end
+
         "# :#{path}\n#{content}"
       end
 
