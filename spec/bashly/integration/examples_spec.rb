@@ -17,6 +17,8 @@ describe 'generated bash scripts' do
   leeway = ENV['CI'] ? 40 : 0
 
   test_cases.each do |example|
+    approval_name = example.gsub "spec/fixtures/workspaces", "examples"
+
     describe example do
       it "works" do
         output = "not executed"
@@ -28,7 +30,7 @@ describe 'generated bash scripts' do
         # This was observed in at least these two cases:
         # - The "+ ..." shell messages driven by `set -x` have no space
         # - The order of our `inspect_args` sometimes differs
-        expect(output).to match_fixture(example).diff(leeway)
+        expect(output).to match_fixture(approval_name).diff(leeway)
       end
     end
   end
