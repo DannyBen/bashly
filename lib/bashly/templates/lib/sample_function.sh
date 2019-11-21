@@ -8,6 +8,6 @@
 # Subdirectories will also be scanned for *.sh, so you have no reason not
 # to organize your code nearly.
 #
-sample_lib_function() {
+sample_function() {
   echo "it works"
 }

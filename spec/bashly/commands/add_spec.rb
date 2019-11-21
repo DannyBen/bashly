@@ -48,7 +48,7 @@ describe Commands::Add do
   end
 
   context "with lib command" do
-    let(:lib_file) { "#{source_dir}/lib/sample_lib_function.sh" }
+    let(:lib_file) { "#{source_dir}/lib/sample_function.sh" }
 
     before do
       reset_tmp_dir create_src: true
@@ -59,5 +59,19 @@ describe Commands::Add do
       expect(File).to exist(lib_file)
     end
   end
+
+  context "with config command" do
+    let(:lib_file) { "#{source_dir}/lib/config.sh" }
+
+    before do
+      reset_tmp_dir create_src: true
+    end
+
+    it "copies the config.sh lib file to the user space" do
+      expect { subject.run %w[add config] }.to output_fixture('cli/add/config')
+      expect(File).to exist(lib_file)
+    end
+  end
+
 
 end

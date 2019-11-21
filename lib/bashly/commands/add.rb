@@ -5,12 +5,14 @@ module Bashly
 
       usage "bashly add strings [--force]"
       usage "bashly add lib [--force]"
+      usage "bashly add config [--force]"
       usage "bashly add (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
 
       command "strings", "Copy an additional configuration file to your project, allowing you to customize all the tips and error strings."
       command "lib", "Create the additional lib directory for additional user scripts. All *.sh scripts in this folder will be included in the final bash script."
+      command "config", "Add standard functions for handling INI files to the lib directory."
 
       environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
 
@@ -19,10 +21,17 @@ module Bashly
       end
 
       def lib_command
-        safe_copy asset("templates/sample_lib_function.sh"), "#{Settings.source_dir}/lib/sample_lib_function.sh"
+        safe_copy_lib "sample_function.sh"
+      end
+
+      def config_command
+        safe_copy_lib "config.sh"
       end
 
     private
+      def safe_copy_lib(libfile)
+        safe_copy asset("templates/lib/#{libfile}"), "#{Settings.source_dir}/lib/#{libfile}"
+      end
 
       def safe_copy(source, target)
         if !Dir.exist? Settings.source_dir
