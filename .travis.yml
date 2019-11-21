@@ -11,5 +11,4 @@ before_install:
 
 script:
 - bundle exec rspec
-- shellcheck examples/minimal/download
-- shellcheck examples/subcommands/cli
+- bundle exec run shellcheck

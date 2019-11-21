@@ -1,7 +1,7 @@
 + bashly generate
 creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mskipped [0;32msrc/root_command.sh[0m (exists)
+[0mskipped [0;32msrc/initialize.sh[0m (exists)
+skipped [0;32msrc/root_command.sh[0m (exists)
 created [0;32m./download
 [0mrun [0;35m./download --help[0m to test your bash script
 + ./download
