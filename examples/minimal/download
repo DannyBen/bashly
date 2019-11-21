@@ -51,6 +51,12 @@ download_usage() {
     echo "    Target filename (default: same as source)"
     echo
 
+    # :command.usage_examples
+    echo -e "Examples:"
+    echo "  download example.com"
+    echo "  download example.com ./output -f"
+    echo
+
   fi
 }
 

@@ -8,6 +8,8 @@ module Bashly
       OPTION_KEYS = %i[
         arg
         description
+        environment_variables
+        examples
         flags
         help
         long

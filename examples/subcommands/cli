@@ -32,6 +32,12 @@ cli_usage() {
     echo
 
 
+    # :command.usage_environment_variables
+    echo -e "Environment Variables:"
+    echo "  API_KEY"
+    echo "    Set your API key"
+    echo
+
 
   fi
 }
@@ -70,6 +76,16 @@ cli_download_usage() {
     # :argument.usage
     echo "  TARGET"
     echo "    Target filename (default: same as source)"
+    echo
+    # :command.usage_environment_variables
+    echo -e "Environment Variables:"
+    echo "  DEFAULT_TARGET_LOCATION"
+    echo "    Set the default location to download to"
+    echo
+    # :command.usage_examples
+    echo -e "Examples:"
+    echo "  cli download example.com"
+    echo "  cli download example.com ./output -f"
     echo
 
   fi
@@ -111,6 +127,8 @@ cli_upload_usage() {
     echo "  SOURCE"
     echo "    File to upload"
     echo
+
+
 
   fi
 }

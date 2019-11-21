@@ -12,6 +12,8 @@
 <%= render(:usage_fixed_flags).indent 4 %>
 <%= render(:usage_flags).indent 4 if flags.any? %>
 <%= render(:usage_args).indent 4 if args.any? %>
+<%= render(:usage_environment_variables).indent 4 if environment_variables %>
+<%= render(:usage_examples).indent 4 if examples %>
 
   fi
 }
