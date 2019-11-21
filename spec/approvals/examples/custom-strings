@@ -1,0 +1,36 @@
++ rm -f ./src/root_command.sh
++ bashly generate
+creating user files in [0;32msrc
+[0mcreated [0;32msrc/root_command.sh
+[0mcreated [0;32m./download
+[0mrun [0;35m./download --help[0m to test your bash script
++ ./download
+Boom! a required argument is missing: SOURCE
+usage: download SOURCE [options]
++ ./download -h
+download - Sample minimal application with custom strings
+
+== Usage ==
+
+  download SOURCE [options]
+
+== Options ==
+
+  --help, -h
+    Show this helpful help
+
+  --version
+    Show version number
+
+  --out, -o DIR (required)
+    Target directory
+
+== Arguments ==
+    
+  SOURCE
+    URL to download from
+
++ ./download somesource
+Yo! you forgot a flag: --out, -o DIR
++ ./download somesource -o
+Hey! the flag --out requires an argument: --out, -o DIR

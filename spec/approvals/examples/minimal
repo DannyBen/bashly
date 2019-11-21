@@ -6,7 +6,7 @@ creating user files in [0;32msrc
 [0mrun [0;35m./download --help[0m to test your bash script
 + ./download
 missing required argument: SOURCE
-Usage: download SOURCE [TARGET] [options]
+usage: download SOURCE [TARGET] [options]
 + ./download -h
 download - Sample minimal application without subcommands
 

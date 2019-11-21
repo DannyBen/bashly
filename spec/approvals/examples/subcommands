@@ -59,7 +59,7 @@ Arguments:
 
 + ./cli download
 missing required argument: SOURCE
-Usage: cli download SOURCE [TARGET] [options]
+usage: cli download SOURCE [TARGET] [options]
 + ./cli download sourcefile targetfile -f
 # this file is located in 'src/cli_download_command.sh'
 # code for 'cli download' goes here

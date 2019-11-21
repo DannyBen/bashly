@@ -5,6 +5,10 @@ module Bashly
       ERB.new(template, nil, '%-').result(binding)
     end
 
+    def strings
+      @strings ||= MessageStrings.new
+    end
+
   private
 
     def view_path(view)

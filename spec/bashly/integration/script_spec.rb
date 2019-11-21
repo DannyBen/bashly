@@ -8,6 +8,8 @@ require 'spec_helper'
 describe 'generated bash scripts' do
   examples = Dir["examples/*"].select { |f| File.directory? f }
 
+  leeway = ENV['CI'] ? 40 : 0
+
   examples.each do |example|
     describe example do
       it "works" do
@@ -15,9 +17,12 @@ describe 'generated bash scripts' do
         Dir.chdir example do
           output = `bash test.sh 2>&1`
         end
-        # test with .diff, to allow some variations betwen different machines
-        # (i.e. CI)
-        expect(output).to match_fixture(example).diff(40)
+        
+        # Use .diff to give CI some leeway, since its shell differs soemtimes
+        # This was observed in at least these two cases:
+        # - The "+ ..." shell messages driven by `set -x` have no space
+        # - The order of our `inspect_args` sometimes differs
+        expect(output).to match_fixture(example).diff(leeway)
       end
     end
   end

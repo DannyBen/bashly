@@ -1,8 +1,6 @@
-require 'mister_bin'
-
 module Bashly
   module Commands
-    class Init < MisterBin::Command
+    class Init < Base
       summary "Initialize a new workspace"
       help "This command will create the source folder, and place a template configuration file in it."
 
@@ -31,18 +29,10 @@ module Bashly
 
       def yaml_content!
         if args['--minimal']
-          File.read minimal_template_file
+          File.read asset('templates/minimal.yml')
         else
-          File.read template_file
+          File.read asset('templates/bashly.yml')
         end
-      end
-
-      def template_file
-        File.expand_path '../templates/bashly.yml', __dir__
-      end
-
-      def minimal_template_file
-        File.expand_path '../templates/minimal.yml', __dir__
       end
 
       def target_dir

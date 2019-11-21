@@ -1,9 +1,6 @@
-require 'mister_bin'
-require 'fileutils'
-
 module Bashly
   module Commands
-    class Generate < MisterBin::Command
+    class Generate < Base
       help "Generate the bash script and required files"
 
       usage "bashly generate [--force]"
