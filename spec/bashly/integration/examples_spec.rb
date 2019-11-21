@@ -6,11 +6,17 @@ require 'spec_helper'
 # folder
 
 describe 'generated bash scripts' do
+  # Test public examples from the examples folder...
   examples = Dir["examples/*"].select { |f| File.directory? f }
+
+  # ...as well as internal examples, not suitable for public view
+  fixtures = Dir["spec/fixtures/workspaces/*"].select { |f| File.directory? f }
+
+  test_cases = fixtures + examples
 
   leeway = ENV['CI'] ? 40 : 0
 
-  examples.each do |example|
+  test_cases.each do |example|
     describe example do
       it "works" do
         output = "not executed"

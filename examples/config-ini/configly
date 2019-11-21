@@ -299,18 +299,21 @@ parse_args() {
     ;;
   
   set | s )
+    action=set
     shift
     set_parse_args "$@"
     shift $#
     ;;    
   
   get | g )
+    action=get
     shift
     get_parse_args "$@"
     shift $#
     ;;    
   
   list | l )
+    action=list
     shift
     list_parse_args "$@"
     shift $#

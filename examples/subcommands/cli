@@ -186,12 +186,14 @@ parse_args() {
     ;;
   
   download | d )
+    action=download
     shift
     download_parse_args "$@"
     shift $#
     ;;    
   
   upload | u )
+    action=upload
     shift
     upload_parse_args "$@"
     shift $#

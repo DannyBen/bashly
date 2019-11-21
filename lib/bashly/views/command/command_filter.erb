@@ -8,6 +8,7 @@ case $action in
 
 <%- commands.each do |command| -%>
 <%= command.aliases.join " | " %> )
+  action=<%= command.name %>
   shift
   <%= command.name %>_parse_args "$@"
   shift $#
