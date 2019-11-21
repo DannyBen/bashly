@@ -88,14 +88,18 @@ module Bashly
       end
 
       def verify
-        if commands.any?
-          if args.any? or flags.any?
-            raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
-          end
+        verify_commands if commands.any?
+      end
 
-          if parent_name
-            raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
-          end
+    private
+
+      def verify_commands
+        if args.any? or flags.any?
+          raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
+        end
+
+        if parent_name
+          raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
         end
       end
 
