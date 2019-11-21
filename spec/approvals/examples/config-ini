@@ -1,7 +1,7 @@
 + bashly generate
 creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mskipped [0;32msrc/configly_set_command.sh[0m (exists)
+[0mskipped [0;32msrc/initialize.sh[0m (exists)
+skipped [0;32msrc/configly_set_command.sh[0m (exists)
 skipped [0;32msrc/configly_get_command.sh[0m (exists)
 skipped [0;32msrc/configly_list_command.sh[0m (exists)
 created [0;32m./configly
