@@ -2,12 +2,17 @@ Add extra features and customization to your script
 
 Usage:
   bashly add strings [--force]
+  bashly add lib [--force]
   bashly add (-h|--help)
 
 Commands:
   strings
     Copy an additional configuration file to your project, allowing you to
     customize all the tips and error strings.
+
+  lib
+    Create the additional lib directory for additional user scripts. All *.sh
+    scripts in this folder will be included in the final bash script.
 
 Options:
   -f --force

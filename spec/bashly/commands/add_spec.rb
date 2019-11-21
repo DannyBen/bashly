@@ -47,4 +47,17 @@ describe Commands::Add do
     end
   end
 
+  context "with lib command", :focus do
+    let(:lib_file) { "#{source_dir}/lib/sample_lib_function.sh" }
+
+    before do
+      reset_tmp_dir create_src: true
+    end
+
+    it "copies a sample function to the user space under lib directory" do
+      expect { subject.run %w[add lib] }.to output_fixture('cli/add/lib')
+      expect(File).to exist(lib_file)
+    end
+  end
+
 end
