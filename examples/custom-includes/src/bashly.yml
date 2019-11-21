@@ -1,0 +1,7 @@
+name: download
+help: Sample minimal application with custom strings
+version: 0.1.0
+
+args:
+- name: source
+  help: URL to download from

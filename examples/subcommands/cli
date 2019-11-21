@@ -141,6 +141,7 @@ inspect_args() {
   for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 }
 
+
 # :command.command_functions
 # :command.function
 cli_download_command() {

@@ -6,6 +6,7 @@
 <%= render :version_command %>
 <%= render :usage %>
 <%= render :inspect_args %>
+<%= render :user_lib if user_lib.any? %>
 <%= render :command_functions %>
 <%= render :parse_args %>
 <%= render :initialize %>

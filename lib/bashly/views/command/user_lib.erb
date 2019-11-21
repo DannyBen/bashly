@@ -1,0 +1,6 @@
+# :command.user_lib
+<%- user_lib.each do |file| -%>
+# <%= ":#{file}" %>
+<%= File.read file %>
+
+<%- end -%>
