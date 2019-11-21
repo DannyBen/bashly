@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -x
-
 rm -f ./src/*.sh
+
+set -x
 
 bashly generate
 

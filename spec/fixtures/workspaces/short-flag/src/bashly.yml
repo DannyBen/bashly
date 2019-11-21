@@ -1,0 +1,17 @@
+name: rush
+help: Personal package manager
+version: 0.1.0
+
+commands:
+- name: config
+  short: c
+  help: Show the configuration file
+
+- name: get
+  short: g
+  help: Install a package
+
+  args:
+  - name: repo
+    required: true
+    help: Repository name

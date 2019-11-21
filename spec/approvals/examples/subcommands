@@ -1,4 +1,3 @@
-+ rm -f ./src/cli_download_command.sh ./src/cli_upload_command.sh
 + bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/cli_download_command.sh

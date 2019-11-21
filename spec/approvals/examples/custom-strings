@@ -1,4 +1,3 @@
-+ rm -f ./src/root_command.sh
 + bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/root_command.sh
