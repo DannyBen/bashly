@@ -6,6 +6,7 @@ module Bashly
       usage "bashly add strings [--force]"
       usage "bashly add lib [--force]"
       usage "bashly add config [--force]"
+      usage "bashly add colors [--force]"
       usage "bashly add (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
@@ -13,6 +14,7 @@ module Bashly
       command "strings", "Copy an additional configuration file to your project, allowing you to customize all the tips and error strings."
       command "lib", "Create the additional lib directory for additional user scripts. All *.sh scripts in this folder will be included in the final bash script."
       command "config", "Add standard functions for handling INI files to the lib directory."
+      command "colors", "Add standard functions for printing colorful and formatted text to the lib directory."
 
       environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
 
@@ -26,6 +28,10 @@ module Bashly
 
       def config_command
         safe_copy_lib "config.sh"
+      end
+
+      def colors_command
+        safe_copy_lib "colors.sh"
       end
 
     private

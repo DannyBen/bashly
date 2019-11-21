@@ -1,10 +1,11 @@
 # ---
-# Config handling functions
-# This file is a part of bashly's standard library functions.
+# Config functions
+# This file is a part of Bashly standard library
 #
 # Usage:
 # - In your script, set the CONFIG_FILE variable. For rxample:
-#   CONFIG_FILE=config.ini
+#   CONFIG_FILE=settings.ini.
+#   If it is unset, it will default to 'config.ini'.
 # - Use any of the functions below to access the config file.
 # ---
 
