@@ -198,7 +198,7 @@ The below configuration generates this flag:
      Specify the output directory
 ```
 
-The flags's value will be available to you as `${args[--output]}` in your 
+The flag's value will be available to you as `${args[--output]}` in your 
 bash function (regardless of whether the user provided ut with the long or 
 short form).
 
