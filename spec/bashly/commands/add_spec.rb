@@ -47,7 +47,7 @@ describe Commands::Add do
     end
   end
 
-  context "with lib command", :focus do
+  context "with lib command" do
     let(:lib_file) { "#{source_dir}/lib/sample_lib_function.sh" }
 
     before do
