@@ -21,7 +21,9 @@ Create beautiful bash scripts from simple YAML configuration
 Installation
 --------------------------------------------------
 
-    $ gem install bashly
+```shell
+$ gem install bashly
+```
 
 
 What is Bashly
@@ -56,9 +58,11 @@ Usage
 
 In an empty directory, create a sample configuration file by running
 
-    $ bashly init
-    # or, to generate a simpler configuration:
-    $ bashly init --minimal
+```shell
+$ bashly init
+# or, to generate a simpler configuration:
+$ bashly init --minimal
+```
 
 This will create a sample `src/bashly.yml` file.
 You can edit this file to specify which arguments, flags and subcommands you
@@ -67,7 +71,9 @@ need in your bash script.
 Then, generate an initial bash script and function placeholder scripts by
 running
 
-    $ bashly generate
+```shell
+$ bashly generate
+```
 
 This will:
 
