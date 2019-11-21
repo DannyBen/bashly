@@ -4,7 +4,7 @@ if [[ $1 && $1 != -* ]]; then
   args[<%= arg.name %>]=$1
   shift
 else
-  echo -e "<%= Settings.strings["missing_required_argument"] % { arg: arg.name.upcase, usage: usage_string } %>"
+  echo -e "<%= strings["missing_required_argument"] % { arg: arg.name.upcase, usage: usage_string } %>"
   exit 1
 fi
 
