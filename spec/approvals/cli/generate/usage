@@ -1,3 +1,4 @@
 Usage:
   bashly add strings [--force]
+  bashly add lib [--force]
   bashly add (-h|--help)

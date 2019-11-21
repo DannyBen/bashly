@@ -1,0 +1,14 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/root_command.sh[0m (exists)
+created [0;32m./download
+[0mrun [0;35m./download --help[0m to test your bash script
++ ./download
+Before custom code
+---
+This is a place to write custom code that is needed by more than
+one part of the application.
+Under most circumstances, you will not need it, but it is provided
+for extra flexibility.
+---
+After custom code

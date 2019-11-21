@@ -67,6 +67,7 @@ inspect_args() {
   for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 }
 
+
 # :command.command_functions
 
 # :command.parse_args

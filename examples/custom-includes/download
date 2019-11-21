@@ -5,9 +5,10 @@
 # :command.root_command
 root_command() {
   # :src/root_command.sh
-  echo "# this file is located in 'src/root_command.sh'"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  # Call our custom library function
+  echo "Before custom code"
+  my_extra_function
+  echo "After custom code"
 }
 
 # :command.version_command
@@ -19,30 +20,23 @@ version_command() {
 download_usage() {
   echo -e "download - Sample minimal application with custom strings"
   echo 
-  echo -e "== Usage ==
-"
-  echo -e "  download SOURCE [options]"
+  echo -e "Usage:"
+  echo -e "  download [SOURCE] [options]"
   echo
 
 
   if [[ -n $long_usage ]]; then
-    echo -e "== Options ==
-"
+    echo -e "Options:"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this helpful help"
+    echo -e "    Show this help"
     echo
     echo "  --version"
     echo -e "    Show version number"
     echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --out, -o DIR (required)"
-    echo "    Target directory"
-    echo
+
     # :command.usage_args
-    echo -e "== Arguments ==
-    "
+    echo -e "Arguments:"
     
     # :argument.usage
     echo "  SOURCE"
@@ -59,6 +53,17 @@ download_usage() {
 inspect_args() {
   echo args:
   for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+}
+
+# :command.user_lib
+# :src/lib/my_extra_function.sh
+my_extra_function() {
+  echo "---"
+  echo "This is a place to write custom code that is needed by more than"
+  echo "one part of the application."
+  echo "Under most circumstances, you will not need it, but it is provided"
+  echo "for extra flexibility."
+  echo "---"
 }
 
 
@@ -83,35 +88,11 @@ parse_args() {
   # :command.command_filter
   action=root
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    echo -e "Boom! a required argument is missing: SOURCE\nusage: download SOURCE [options]"
-    exit 1
-  fi
   # :command.required_flags_filter
-  argstring="$*"
-  if [[ "$argstring" != *--out* && "$argstring" != *-o* ]]; then
-    echo -e "Yo! you forgot a flag: --out, -o DIR"
-    exit 1
-  fi
   # :command.parse_args_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-    # :flag.case
-    --out | -o )
-      if [[ $2 && $2 != -* ]]; then
-        args[--out]="$2"
-        shift
-        shift
-      else
-        echo -e "Hey! the flag --out requires an argument: --out, -o DIR"
-        exit 1
-      fi
-      ;;
-  
   
     -* )
       echo -e "invalid option: $key"
