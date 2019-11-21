@@ -14,3 +14,6 @@ flags:
   short: -f
   help: Overwrite existing files
 
+examples:
+- download example.com
+- download example.com ./output -f

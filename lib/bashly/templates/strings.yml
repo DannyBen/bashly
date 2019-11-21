@@ -3,6 +3,8 @@ usage: "Usage:"
 options: "Options:"
 arguments: "Arguments:"
 commands: "Commands:"
+examples: "Examples:"
+environment_variables: "Environment Variables:"
 
 # Fixed flags help text
 show_this_help: Show this help

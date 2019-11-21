@@ -1,0 +1,6 @@
+# :command.usage_examples
+echo -e "<%= strings[:examples] %>"
+<%- examples.each do |example| -%>
+echo "  <%= example %>"
+<%- end -%>
+echo

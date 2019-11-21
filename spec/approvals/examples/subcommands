@@ -32,6 +32,10 @@ Options:
   --version
     Show version number
 
+Environment Variables:
+  API_KEY
+    Set your API key
+
 + ./cli --version
 0.1.0
 + ./cli download -h
@@ -56,6 +60,14 @@ Arguments:
 
   TARGET
     Target filename (default: same as source)
+
+Environment Variables:
+  DEFAULT_TARGET_LOCATION
+    Set the default location to download to
+
+Examples:
+  cli download example.com
+  cli download example.com ./output -f
 
 + ./cli download
 missing required argument: SOURCE
