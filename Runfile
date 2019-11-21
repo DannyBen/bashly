@@ -14,4 +14,26 @@ action :console, :c do
   run "bundle exec bin/console"
 end
 
+help   "Run shellcheck on all examples"
+action :shellcheck do
+  examples.each do |example|
+    success = system "shellcheck #{example}"
+    color = success ? 'txtgrn' : 'txtred'
+    say "- shellcheck !#{color}!#{example}"
+    exit 1 unless success
+  end
+end
+
+def examples
+  [
+    "examples/colors/colorly",
+    "examples/config-ini/configly",
+    "examples/custom-includes/download",
+    "examples/custom-strings/download",
+    "examples/minimal/download",
+    "examples/subcommands/cli",
+    "spec/fixtures/workspaces/short-flag/rush",
+  ]
+end
+
 require './debug.rb' if File.exist? 'debug.rb'
