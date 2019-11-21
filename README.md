@@ -1,4 +1,5 @@
 <div align='center'>
+<img src='bashly-logo.svg' width=300>
 
 Bashly - Bash CLI Framework and Generator
 ==================================================
@@ -96,12 +97,15 @@ contains a `commands` definition, it will generate a script with subcommands.
 - [See the initial sample bashly.yml file](examples/minimal/src/bashly.yml)
 - [See the generated bash script](examples/minimal/download)
 
-
 ### Sample configuraiton for a script with subcommands
 
 - Generate this script by running `bashly generate`
 - [See the initial sample bashly.yml file](examples/subcommands/src/bashly.yml)
 - [See the generated bash script](examples/subcommands/cli)
+
+
+See the [examples](examples) folder for more examples.
+
 
 
 Configuration Reference
