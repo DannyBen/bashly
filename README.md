@@ -1,7 +1,9 @@
-Bashly - Bash CLI Generator
+<div align='center'>
+
+Bashly - Bash CLI Framework and Generator
 ==================================================
 
-Create beautiful bash scripts from simple YAML configuration.
+Create beautiful bash scripts from simple YAML configuration
 
 [![Gem Version](https://badge.fury.io/rb/bashly.svg)](https://badge.fury.io/rb/bashly)
 [![Build Status](https://travis-ci.com/DannyBen/bashly.svg?branch=master)](https://travis-ci.com/DannyBen/bashly)
@@ -11,6 +13,8 @@ Create beautiful bash scripts from simple YAML configuration.
 
 ![demo](demo/cast.svg)
 
+</div>
+
 ---
 
 Installation
@@ -18,6 +22,33 @@ Installation
 
     $ gem install bashly
 
+
+What is Bashly
+--------------------------------------------------
+
+Bashly is a command line application (written in Ruby) that lets you generate
+feature-rich bash command line tools.
+
+The design intention is to let you focus on your specific code, without 
+worrying about command line argument parsing, usage texts, error messages
+and other functions that are usually handled by a framework in any other
+programming language.
+
+Bahsly is responsible for:
+
+- Generating **usage texts** and help screens, showing your tool's arguments, 
+  flags and subcommands (works for subcommands also).
+- Parsing the user's command line and extracting:
+  - Optional or required **positional arguments**.
+  - Optional or required **option flags** (with or without flag arguments).
+  - **Subcommands**.
+  - Standard flags (like **--help** and **--version**).
+- Providing you with a place to input your code for each of the functions 
+  your tool performs, and merging it back to the final script.
+- Providing you with additional (optional) framework-style, standard
+  library functions:
+  - **Color output**.
+  - **Config file management** (INI format).
 
 Usage
 --------------------------------------------------
@@ -61,86 +92,16 @@ contains a `commands` definition, it will generate a script with subcommands.
 
 ### Sample configuraiton for a script without subcommands
 
-You can get this script by running `bashly generate --minimal`.
-
-```yaml
-name: download
-help: Sample minimal application without subcommands
-version: 0.1.0
-
-args:
-- name: source
-  required: true
-  help: URL to download from
-- name: target
-  help: "Target filename (default: same as source)"
-
-flags:
-- long: --force
-  short: -f
-  help: Overwrite existing files
-
-examples:
-- download example.com
-- download example.com ./output -f
-```
+- Generate this script by running `bashly generate --minimal`
+- [See the initial sample bashly.yml file](examples/minimal/src/bashly.yml)
+- [See the generated bash script](examples/minimal/download)
 
 
 ### Sample configuraiton for a script with subcommands
 
-You can get this script by running `bashly generate`.
-
-```yaml
-name: cli
-help: Sample application
-version: 0.1.0
-
-environment_variables:
-  API_KEY: Set your API key
-
-commands:
-- name: download
-  short: d
-  help: Download a file
-
-  args:
-  - name: source
-    required: true
-    help: URL to download from
-  - name: target
-    help: "Target filename (default: same as source)"
-
-  flags:
-  - long: --force
-    short: -f
-    help: Overwrite existing files
-
-  examples:
-  - cli download example.com
-  - cli download example.com ./output -f
-
-  environment_variables:
-    DEFAULT_TARGET_LOCATION: Set the default location to download to
-
-- name: upload
-  short: u
-  help: Upload a file
-  args:
-  - name: source
-    required: true
-    help: File to upload
-
-  flags:
-  - long: --user
-    short: -u
-    arg: user
-    help: Username to use for logging in
-    required: true
-  - long: --password
-    short: -p
-    arg: password
-    help: Password to use for logging in
-```
+- Generate this script by running `bashly generate`
+- [See the initial sample bashly.yml file](examples/subcommands/src/bashly.yml)
+- [See the generated bash script](examples/subcommands/cli)
 
 
 Configuration Reference

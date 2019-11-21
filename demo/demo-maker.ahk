@@ -42,15 +42,15 @@ F12::
   Type("./cli download somefile")
   Type("./cli download somefile --force")
 
-  Type("{#} Replace the download function with your code", 500)
-  Type("cat src/cli_download_command.sh")
-  Type("echo 'echo downloading ${{}args[source]{}}' > src/cli_download_command.sh")
+  ; Type("{#} Replace the download function with your code", 500)
+  ; Type("cat src/cli_download_command.sh")
+  ; Type("echo 'echo downloading ${{}args[source]{}}' > src/cli_download_command.sh")
 
-  Type("{#} Regenerate to merge the updated function", 500)
-  Type("bashly generate")
+  ; Type("{#} Regenerate to merge the updated function", 500)
+  ; Type("bashly generate")
 
-  Type("{#} Run the bash script again", 500)
-  Type("./cli download the-internet")
+  ; Type("{#} Run the bash script again", 500)
+  ; Type("./cli download the-internet")
 
   Type("exit")
   Type("cat cast.json | svg-term --out cast.svg --window")
