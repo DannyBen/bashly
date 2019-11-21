@@ -1,5 +1,6 @@
 + bashly generate
 creating user files in [0;32msrc
+[0mcreated [0;32msrc/initialize.sh
 [0mcreated [0;32msrc/rush_config_command.sh
 [0mcreated [0;32msrc/rush_get_command.sh
 [0mcreated [0;32m./rush

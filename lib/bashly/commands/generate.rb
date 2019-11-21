@@ -22,10 +22,20 @@ module Bashly
       def create_user_files
         say "creating user files in !txtgrn!#{Settings.source_dir}"
 
+        create_file "#{Settings.source_dir}/initialize.sh", command.render(:default_initialize_script)
+
         if command.commands.empty?
-          create_file "#{Settings.source_dir}/root_command.sh", command.render(:default_root_script)
+          create_root_command_file
+        else
+          create_all_command_files
         end
-        
+      end
+
+      def create_root_command_file
+        create_file "#{Settings.source_dir}/root_command.sh", command.render(:default_root_script)
+      end
+
+      def create_all_command_files
         command.commands.each do |subcommand|
           file = "#{Settings.source_dir}/#{subcommand.full_name.to_underscore}_command.sh"
           content = subcommand.render :default_script
