@@ -1,8 +1,8 @@
 + bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/multi_multiline_command.sh
-[0mcreated [0;32msrc/multi_regular_command.sh
+[0mcreated [0;32msrc/multiline_command.sh
+[0mcreated [0;32msrc/regular_command.sh
 [0mcreated [0;32m./multi
 [0mrun [0;35m./multi --help[0m to test your bash script
 + ./multi
@@ -50,7 +50,7 @@ Examples:
     multi multiline --flag
 
 + ./multi multiline
-# this file is located in 'src/multi_multiline_command.sh'
+# this file is located in 'src/multiline_command.sh'
 # code for 'multi multiline' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

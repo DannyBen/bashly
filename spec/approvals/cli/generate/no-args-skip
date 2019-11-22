@@ -1,6 +1,6 @@
 creating user files in [0;32mspec/tmp/src
 [0mskipped [0;32mspec/tmp/src/initialize.sh[0m (exists)
-skipped [0;32mspec/tmp/src/cli_download_command.sh[0m (exists)
-skipped [0;32mspec/tmp/src/cli_upload_command.sh[0m (exists)
+skipped [0;32mspec/tmp/src/download_command.sh[0m (exists)
+skipped [0;32mspec/tmp/src/upload_command.sh[0m (exists)
 created [0;32mspec/tmp/cli
 [0mrun [0;35mspec/tmp/cli --help[0m to test your bash script

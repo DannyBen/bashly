@@ -1,8 +1,8 @@
 + bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/cli_download_command.sh
-[0mcreated [0;32msrc/cli_upload_command.sh
+[0mcreated [0;32msrc/download_command.sh
+[0mcreated [0;32msrc/upload_command.sh
 [0mcreated [0;32m./cli
 [0mrun [0;35m./cli --help[0m to test your bash script
 + ./cli
@@ -73,7 +73,7 @@ Examples:
 missing required argument: SOURCE
 usage: cli download SOURCE [TARGET] [options]
 + ./cli download sourcefile targetfile -f
-# this file is located in 'src/cli_download_command.sh'
+# this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -106,7 +106,7 @@ Arguments:
 + ./cli upload sourcefile
 missing required flag: --user, -u USER
 + ./cli upload sourcefile -u username
-# this file is located in 'src/cli_upload_command.sh'
+# this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

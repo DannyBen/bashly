@@ -37,7 +37,7 @@ module Bashly
 
       def create_all_command_files
         command.commands.each do |subcommand|
-          file = "#{Settings.source_dir}/#{subcommand.full_name.to_underscore}_command.sh"
+          file = "#{Settings.source_dir}/#{subcommand.name.to_underscore}_command.sh"
           content = subcommand.render :default_script
           create_file file, content
         end
