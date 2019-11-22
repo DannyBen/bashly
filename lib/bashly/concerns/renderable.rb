@@ -1,3 +1,5 @@
+require 'erb'
+
 module Bashly
   module Renderable
     def render(view)

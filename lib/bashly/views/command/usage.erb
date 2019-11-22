@@ -1,7 +1,19 @@
 # :command.usage
 <%= full_name.to_underscore %>_usage() {
-  echo -e "<%= caption_string %>"
-  echo 
+  if [[ -n $long_usage ]]; then
+    <%- if summary == help -%>
+    echo -e "<%= caption_string %>"
+    echo 
+    <%- else -%>
+    echo -e "<%= full_name %>"
+    echo 
+    echo -e "<%= help.wrap(78).indent(2).escape_newline %>"
+    echo 
+    <%- end -%>
+  else
+    echo -e "<%= caption_string %>"
+    echo 
+  fi
   echo -e "<%= strings[:usage] %>"
   echo -e "  <%= usage_string %>"
   echo

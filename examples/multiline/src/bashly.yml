@@ -1,0 +1,42 @@
+name: multi
+help: |-
+  Multiline test
+  
+  This is a multiline test example. Long lines are going to be properly wrapped at the 80 character mark.
+
+version: 0.1.0
+
+commands:
+- name: multiline
+  help: |-
+    Do some multiline work.
+
+    This is a long process and takes time, therefore it takes a lot of lines to describe and this line is particularly long.
+
+    But - not all hope is lost. Bashly should respect newlines and word-wrap long lines properly at the 80 character mark.
+
+  args:
+  - name: my_arg
+    help: |-
+      Argument with multiline.
+
+      Once again we gather here to prepare some long lines that will most likely seem silly to anyone who reads them.
+
+      But, it is just needed for testing - otherwise, it will not only be silly, but it will also be buggy!
+
+  flags:
+  - long: --long
+    help: |-
+      Long flag with long text.
+
+      Finally, this will be the last multiline string we type (hopefully), but once we are done with this, we will be done with all.
+
+- name: regular
+  help: Standard help line
+
+  args:
+  - name: repo
+    required: true
+    help: Repository name
+
+
