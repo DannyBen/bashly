@@ -27,6 +27,8 @@ download_usage() {
   echo -e "== Usage ==
 "
   echo -e "  download SOURCE [options]"
+  echo -e "  download --help | -h"
+  echo -e "  download --version"
   echo
 
 

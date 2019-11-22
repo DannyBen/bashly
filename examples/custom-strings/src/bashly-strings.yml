@@ -5,8 +5,8 @@ arguments: "== Arguments ==\n"
 commands: "== Commands ==\n"
 
 # Fixed flags help text
-show_this_help: Show this helpful help
-show_version_number: Show version number
+help_flag_text: Show this helpful help
+version_flag_text: Show version number
 
 # Error messages
 flag_requires_an_argument: "Hey! the flag %{long} requires an argument: %{usage}"

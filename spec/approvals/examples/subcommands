@@ -10,6 +10,8 @@ cli - Sample application
 
 Usage:
   cli [command] [options]
+  cli [command] --help | -h
+  cli --version
 
 Commands:
   download   Download a file
@@ -20,6 +22,8 @@ cli - Sample application
 
 Usage:
   cli [command] [options]
+  cli [command] --help | -h
+  cli --version
 
 Commands:
   download   Download a file
@@ -43,13 +47,11 @@ cli download - Download a file
 
 Usage:
   cli download SOURCE [TARGET] [options]
+  cli download --help | -h
 
 Options:
   --help, -h
     Show this help
-
-  --version
-    Show version number
 
   --force, -f
     Overwrite existing files
@@ -85,13 +87,11 @@ cli upload - Upload a file
 
 Usage:
   cli upload SOURCE [options]
+  cli upload --help | -h
 
 Options:
   --help, -h
     Show this help
-
-  --version
-    Show version number
 
   --user, -u USER (required)
     Username to use for logging in

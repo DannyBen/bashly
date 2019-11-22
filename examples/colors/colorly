@@ -31,6 +31,8 @@ colorly_usage() {
   fi
   echo -e "Usage:"
   echo -e "  colorly [MESSAGE] [options]"
+  echo -e "  colorly --help | -h"
+  echo -e "  colorly --version"
   echo
 
 

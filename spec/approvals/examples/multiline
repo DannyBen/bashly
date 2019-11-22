@@ -10,6 +10,8 @@ multi - Multiline test
 
 Usage:
   multi [command] [options]
+  multi [command] --help | -h
+  multi --version
 
 Commands:
   multiline   Do some multiline work.
@@ -25,6 +27,8 @@ multi
 
 Usage:
   multi [command] [options]
+  multi [command] --help | -h
+  multi --version
 
 Commands:
   multiline   Do some multiline work.
@@ -67,13 +71,11 @@ multi multiline
 
 Usage:
   multi multiline [MY_ARG] [options]
+  multi multiline --help | -h
 
 Options:
   --help, -h
     Show this help
-
-  --version
-    Show version number
 
   --long
     Long flag with long text.

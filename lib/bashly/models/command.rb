@@ -47,6 +47,11 @@ module Bashly
         parent_name ? "#{parent_name} #{name}" : name
       end
 
+      # Returns true if this is a subcommand with a parent
+      def has_parent?
+        !!parent_name
+      end
+
       # Reads a file from the userspace (Settings.source_dir) and returns
       # its contents. 
       # If the file is not found, returns a string with a hint.
@@ -71,6 +76,11 @@ module Bashly
       # Returns an array of all the required Flags
       def required_flags
         flags.select &:required
+      end
+
+      # Returns trus if this is the root command (no parents)
+      def root_command?
+        !has_parent?
       end
 
       # Returns the first line of the help message
@@ -110,7 +120,7 @@ module Bashly
           raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
         end
 
-        if parent_name
+        if has_parent?
           raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
         end
       end

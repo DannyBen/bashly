@@ -21,6 +21,8 @@ multi_usage() {
   fi
   echo -e "Usage:"
   echo -e "  multi [command] [options]"
+  echo -e "  multi [command] --help | -h"
+  echo -e "  multi --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
@@ -66,6 +68,7 @@ multi_multiline_usage() {
   fi
   echo -e "Usage:"
   echo -e "  multi multiline [MY_ARG] [options]"
+  echo -e "  multi multiline --help | -h"
   echo
 
 
@@ -74,9 +77,6 @@ multi_multiline_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
     # :command.usage_flags
     # :flag.usage
@@ -108,6 +108,7 @@ multi_regular_usage() {
   fi
   echo -e "Usage:"
   echo -e "  multi regular [REPO] [options]"
+  echo -e "  multi regular --help | -h"
   echo
 
 
@@ -116,9 +117,6 @@ multi_regular_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
 
     # :command.usage_args
