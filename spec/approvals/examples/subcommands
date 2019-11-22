@@ -1,8 +1,8 @@
 + bashly generate
 creating user files in [0;32msrc
 [0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/cli_download_command.sh
-[0mcreated [0;32msrc/cli_upload_command.sh
+[0mcreated [0;32msrc/download_command.sh
+[0mcreated [0;32msrc/upload_command.sh
 [0mcreated [0;32m./cli
 [0mrun [0;35m./cli --help[0m to test your bash script
 + ./cli

@@ -100,7 +100,6 @@ config_show() {
 #   done
 #
 config_keys() {
-  key=$1
   regex="^(.*)\s*="
 
   config_init
@@ -112,5 +111,5 @@ config_keys() {
       keys+=("$key")
     fi
   done < "$CONFIG_FILE"
-  echo ${keys[@]}
+  echo "${keys[@]}"
 }
