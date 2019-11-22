@@ -19,6 +19,8 @@ cli_usage() {
   fi
   echo -e "Usage:"
   echo -e "  cli [command] [options]"
+  echo -e "  cli [command] --help | -h"
+  echo -e "  cli --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
@@ -58,6 +60,7 @@ cli_download_usage() {
   fi
   echo -e "Usage:"
   echo -e "  cli download SOURCE [TARGET] [options]"
+  echo -e "  cli download --help | -h"
   echo
 
 
@@ -66,9 +69,6 @@ cli_download_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
     # :command.usage_flags
     # :flag.usage
@@ -114,6 +114,7 @@ cli_upload_usage() {
   fi
   echo -e "Usage:"
   echo -e "  cli upload SOURCE [options]"
+  echo -e "  cli upload --help | -h"
   echo
 
 
@@ -122,9 +123,6 @@ cli_upload_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
     # :command.usage_flags
     # :flag.usage

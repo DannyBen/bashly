@@ -16,6 +16,14 @@
   fi
   echo -e "<%= strings[:usage] %>"
   echo -e "  <%= usage_string %>"
+  <%- if commands.any? -%>
+  echo -e "  <%= full_name %> [command] --help | -h"
+  <%- else -%>
+  echo -e "  <%= full_name %> --help | -h"
+  <%- end -%>
+  <%- if root_command? -%>
+  echo -e "  <%= full_name %> --version"
+  <%- end -%>
   echo
 <%= render(:usage_commands).indent 2 if commands.any? %>
 

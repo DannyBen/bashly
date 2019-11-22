@@ -19,6 +19,8 @@ configly_usage() {
   fi
   echo -e "Usage:"
   echo -e "  configly [command] [options]"
+  echo -e "  configly [command] --help | -h"
+  echo -e "  configly --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
@@ -55,6 +57,7 @@ configly_set_usage() {
   fi
   echo -e "Usage:"
   echo -e "  configly set KEY VALUE [options]"
+  echo -e "  configly set --help | -h"
   echo
 
 
@@ -63,9 +66,6 @@ configly_set_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
 
     # :command.usage_args
@@ -102,6 +102,7 @@ configly_get_usage() {
   fi
   echo -e "Usage:"
   echo -e "  configly get KEY [options]"
+  echo -e "  configly get --help | -h"
   echo
 
 
@@ -110,9 +111,6 @@ configly_get_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
 
     # :command.usage_args
@@ -144,6 +142,7 @@ configly_list_usage() {
   fi
   echo -e "Usage:"
   echo -e "  configly list [options]"
+  echo -e "  configly list --help | -h"
   echo
 
 
@@ -152,9 +151,6 @@ configly_list_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     echo -e "    Show this help"
-    echo
-    echo "  --version"
-    echo -e "    Show version number"
     echo
 
 

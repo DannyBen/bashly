@@ -13,6 +13,8 @@ download - Sample minimal application with custom strings
 == Usage ==
 
   download SOURCE [options]
+  download --help | -h
+  download --version
 
 == Options ==
 

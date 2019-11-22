@@ -12,6 +12,8 @@ download - Sample minimal application without subcommands
 
 Usage:
   download SOURCE [TARGET] [options]
+  download --help | -h
+  download --version
 
 Options:
   --help, -h

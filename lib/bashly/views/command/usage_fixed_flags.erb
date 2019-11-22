@@ -1,7 +1,9 @@
 # :command.usage_fixed_flags
 echo "  --help, -h"
-echo -e "    <%= strings[:show_this_help] %>"
+echo -e "    <%= strings[:help_flag_text] %>"
 echo
+<%- if root_command? -%>
 echo "  --version"
-echo -e "    <%= strings[:show_version_number] %>"
+echo -e "    <%= strings[:version_flag_text] %>"
 echo
+<%- end -%>

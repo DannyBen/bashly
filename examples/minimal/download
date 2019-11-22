@@ -26,6 +26,8 @@ download_usage() {
   fi
   echo -e "Usage:"
   echo -e "  download SOURCE [TARGET] [options]"
+  echo -e "  download --help | -h"
+  echo -e "  download --version"
   echo
 
 

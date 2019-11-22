@@ -11,6 +11,8 @@ configly - Sample application that uses the config functions
 
 Usage:
   configly [command] [options]
+  configly [command] --help | -h
+  configly --version
 
 Commands:
   set    Save a value in the config file
