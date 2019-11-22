@@ -17,8 +17,13 @@ version_command() {
 
 # :command.usage
 download_usage() {
-  echo -e "download - Sample minimal application with custom strings"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "download - Sample minimal application with custom strings"
+    echo 
+  else
+    echo -e "download - Sample minimal application with custom strings"
+    echo 
+  fi
   echo -e "== Usage ==
 "
   echo -e "  download SOURCE [options]"
@@ -38,7 +43,7 @@ download_usage() {
     # :command.usage_flags
     # :flag.usage
     echo "  --out, -o DIR (required)"
-    echo "    Target directory"
+    echo -e "    Target directory"
     echo
     # :command.usage_args
     echo -e "== Arguments ==
@@ -46,7 +51,7 @@ download_usage() {
     
     # :argument.usage
     echo "  SOURCE"
-    echo "    URL to download from"
+    echo -e "    URL to download from"
     echo
 
 

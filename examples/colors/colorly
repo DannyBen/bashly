@@ -22,8 +22,13 @@ version_command() {
 
 # :command.usage
 colorly_usage() {
-  echo -e "colorly - Sample application that uses the color functions"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "colorly - Sample application that uses the color functions"
+    echo 
+  else
+    echo -e "colorly - Sample application that uses the color functions"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  colorly [MESSAGE] [options]"
   echo
@@ -44,7 +49,7 @@ colorly_usage() {
     
     # :argument.usage
     echo "  MESSAGE"
-    echo "    Message to show [default: hello colors]"
+    echo -e "    Message to show [default: hello colors]"
     echo
 
 
