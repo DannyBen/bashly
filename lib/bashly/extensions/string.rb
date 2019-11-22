@@ -20,7 +20,7 @@ class String
     gsub(/(.)([A-Z])/,'\1_\2').gsub(' ', '_').downcase
   end
 
-  def escape_newline
+  def escape_newlines
     gsub "\n", "\\n"
   end
 

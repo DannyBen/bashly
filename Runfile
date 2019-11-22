@@ -32,6 +32,7 @@ def examples
     "examples/custom-strings/download",
     "examples/minimal/download",
     "examples/subcommands/cli",
+    "examples/multiline/multi",
     "spec/fixtures/workspaces/short-flag/rush",
   ]
 end

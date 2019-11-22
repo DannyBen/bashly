@@ -10,8 +10,13 @@ version_command() {
 
 # :command.usage
 cli_usage() {
-  echo -e "cli - Sample application"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "cli - Sample application"
+    echo 
+  else
+    echo -e "cli - Sample application"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  cli [command] [options]"
   echo
@@ -35,7 +40,7 @@ cli_usage() {
     # :command.usage_environment_variables
     echo -e "Environment Variables:"
     echo "  API_KEY"
-    echo "    Set your API key"
+    echo -e "    Set your API key"
     echo
 
 
@@ -44,8 +49,13 @@ cli_usage() {
 
 # :command.usage
 cli_download_usage() {
-  echo -e "cli download - Download a file"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "cli download - Download a file"
+    echo 
+  else
+    echo -e "cli download - Download a file"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  cli download SOURCE [TARGET] [options]"
   echo
@@ -63,29 +73,30 @@ cli_download_usage() {
     # :command.usage_flags
     # :flag.usage
     echo "  --force, -f"
-    echo "    Overwrite existing files"
+    echo -e "    Overwrite existing files"
     echo
     # :command.usage_args
     echo -e "Arguments:"
     
     # :argument.usage
     echo "  SOURCE"
-    echo "    URL to download from"
+    echo -e "    URL to download from"
     echo
     
     # :argument.usage
     echo "  TARGET"
-    echo "    Target filename (default: same as source)"
+    echo -e "    Target filename (default: same as source)"
     echo
     # :command.usage_environment_variables
     echo -e "Environment Variables:"
     echo "  DEFAULT_TARGET_LOCATION"
-    echo "    Set the default location to download to"
+    echo -e "    Set the default location to download to"
     echo
     # :command.usage_examples
     echo -e "Examples:"
-    echo "  cli download example.com"
-    echo "  cli download example.com ./output -f"
+    
+    echo -e "  cli download example.com"
+    echo -e "  cli download example.com ./output -f"
     echo
 
   fi
@@ -94,8 +105,13 @@ cli_download_usage() {
 
 # :command.usage
 cli_upload_usage() {
-  echo -e "cli upload - Upload a file"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "cli upload - Upload a file"
+    echo 
+  else
+    echo -e "cli upload - Upload a file"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  cli upload SOURCE [options]"
   echo
@@ -113,19 +129,19 @@ cli_upload_usage() {
     # :command.usage_flags
     # :flag.usage
     echo "  --user, -u USER (required)"
-    echo "    Username to use for logging in"
+    echo -e "    Username to use for logging in"
     echo
     
     # :flag.usage
     echo "  --password, -p PASSWORD"
-    echo "    Password to use for logging in"
+    echo -e "    Password to use for logging in"
     echo
     # :command.usage_args
     echo -e "Arguments:"
     
     # :argument.usage
     echo "  SOURCE"
-    echo "    File to upload"
+    echo -e "    File to upload"
     echo
 
 

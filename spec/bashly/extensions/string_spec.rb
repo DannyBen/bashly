@@ -8,26 +8,6 @@ describe Array do
     end
   end
 
-  describe '#to_underscore!' do
-    context "with CamelCased argument" do
-      subject { "NotCamelCase" }
-
-      it "mutates it to snake_case" do
-        subject.to_underscore!
-        expect(subject).to eq "not_camel_case"
-      end
-    end
-
-    context "with any string with spaces" do
-      subject { "in any case" }
-
-      it "mutates it to snake_case" do
-        subject.to_underscore!
-        expect(subject).to eq "in_any_case"
-      end
-    end
-  end
-
   describe '#to_underscore' do
     subject { "Some String" }
 

@@ -36,7 +36,14 @@ commands:
 
   args:
   - name: repo
-    required: true
     help: Repository name
 
+examples:
+  - |-
+    Examples can also use multiple lines. This can be useful if we need to explain the example, for instance like we are doing here:
 
+      multi multiline --flag
+
+environment_variables:
+  MULTI_VITAMIN: |-
+    Environment variables can also use multiple lines. This can be useful if we need to explain - in excruciating detail - what the environemnt variable is used for.

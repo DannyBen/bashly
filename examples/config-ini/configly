@@ -10,8 +10,13 @@ version_command() {
 
 # :command.usage
 configly_usage() {
-  echo -e "configly - Sample application that uses the config functions"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "configly - Sample application that uses the config functions"
+    echo 
+  else
+    echo -e "configly - Sample application that uses the config functions"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  configly [command] [options]"
   echo
@@ -41,8 +46,13 @@ configly_usage() {
 
 # :command.usage
 configly_set_usage() {
-  echo -e "configly set - Save a value in the config file"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "configly set - Save a value in the config file"
+    echo 
+  else
+    echo -e "configly set - Save a value in the config file"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  configly set KEY VALUE [options]"
   echo
@@ -63,17 +73,18 @@ configly_set_usage() {
     
     # :argument.usage
     echo "  KEY"
-    echo "    Config key"
+    echo -e "    Config key"
     echo
     
     # :argument.usage
     echo "  VALUE"
-    echo "    Config value"
+    echo -e "    Config value"
     echo
 
     # :command.usage_examples
     echo -e "Examples:"
-    echo "  configly set hello world"
+    
+    echo -e "  configly set hello world"
     echo
 
   fi
@@ -82,8 +93,13 @@ configly_set_usage() {
 
 # :command.usage
 configly_get_usage() {
-  echo -e "configly get - Read a value from the config file"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "configly get - Read a value from the config file"
+    echo 
+  else
+    echo -e "configly get - Read a value from the config file"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  configly get KEY [options]"
   echo
@@ -104,12 +120,13 @@ configly_get_usage() {
     
     # :argument.usage
     echo "  KEY"
-    echo "    Config key"
+    echo -e "    Config key"
     echo
 
     # :command.usage_examples
     echo -e "Examples:"
-    echo "  configly set hello"
+    
+    echo -e "  configly set hello"
     echo
 
   fi
@@ -118,8 +135,13 @@ configly_get_usage() {
 
 # :command.usage
 configly_list_usage() {
-  echo -e "configly list - Show the entire config file"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "configly list - Show the entire config file"
+    echo 
+  else
+    echo -e "configly list - Show the entire config file"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  configly list [options]"
   echo

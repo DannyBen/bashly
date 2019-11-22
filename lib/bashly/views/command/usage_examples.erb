@@ -1,6 +1,7 @@
 # :command.usage_examples
 echo -e "<%= strings[:examples] %>"
+
 <%- examples.each do |example| -%>
-echo "  <%= example %>"
+echo -e "<%= example.wrap(78).indent(2).escape_newlines %>"
 <%- end -%>
 echo

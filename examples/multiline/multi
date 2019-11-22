@@ -39,8 +39,16 @@ multi_usage() {
     echo
 
 
-
-
+    # :command.usage_environment_variables
+    echo -e "Environment Variables:"
+    echo "  MULTI_VITAMIN"
+    echo -e "    Environment variables can also use multiple lines. This can be useful if we\n    need to explain - in excruciating detail - what the environemnt variable is\n    used for."
+    echo
+    # :command.usage_examples
+    echo -e "Examples:"
+    
+    echo -e "  Examples can also use multiple lines. This can be useful if we need to explain\n  the example, for instance like we are doing here:\n  \n    multi multiline --flag"
+    echo
 
   fi
 }
@@ -99,7 +107,7 @@ multi_regular_usage() {
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  multi regular REPO [options]"
+  echo -e "  multi regular [REPO] [options]"
   echo
 
 
@@ -288,13 +296,6 @@ regular_parse_args() {
   
   esac
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[repo]=$1
-    shift
-  else
-    echo -e "missing required argument: REPO\nusage: multi regular REPO [options]"
-    exit 1
-  fi
   # :command.required_flags_filter
   # :command.parse_args_while
   while [[ $# -gt 0 ]]; do

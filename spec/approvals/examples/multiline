@@ -1,0 +1,93 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mcreated [0;32msrc/initialize.sh
+[0mcreated [0;32msrc/multi_multiline_command.sh
+[0mcreated [0;32msrc/multi_regular_command.sh
+[0mcreated [0;32m./multi
+[0mrun [0;35m./multi --help[0m to test your bash script
++ ./multi
+multi - Multiline test
+
+Usage:
+  multi [command] [options]
+
+Commands:
+  multiline   Do some multiline work.
+  regular     Standard help line
+
++ ./multi -h
+multi
+
+  Multiline test
+  
+  This is a multiline test example. Long lines are going to be properly wrapped
+  at the 80 character mark.
+
+Usage:
+  multi [command] [options]
+
+Commands:
+  multiline   Do some multiline work.
+  regular     Standard help line
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
+Environment Variables:
+  MULTI_VITAMIN
+    Environment variables can also use multiple lines. This can be useful if we
+    need to explain - in excruciating detail - what the environemnt variable is
+    used for.
+
+Examples:
+  Examples can also use multiple lines. This can be useful if we need to explain
+  the example, for instance like we are doing here:
+  
+    multi multiline --flag
+
++ ./multi multiline
+# this file is located in 'src/multi_multiline_command.sh'
+# code for 'multi multiline' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
++ ./multi multiline -h
+multi multiline
+
+  Do some multiline work.
+  
+  This is a long process and takes time, therefore it takes a lot of lines to
+  describe and this line is particularly long.
+  
+  But - not all hope is lost. Bashly should respect newlines and word-wrap long
+  lines properly at the 80 character mark.
+
+Usage:
+  multi multiline [MY_ARG] [options]
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
+  --long
+    Long flag with long text.
+    
+    Finally, this will be the last multiline string we type (hopefully), but
+    once we are done with this, we will be done with all.
+
+Arguments:
+  MY_ARG
+    Argument with multiline.
+    
+    Once again we gather here to prepare some long lines that will most likely
+    seem silly to anyone who reads them.
+    
+    But, it is just needed for testing - otherwise, it will not only be silly,
+    but it will also be buggy!
+

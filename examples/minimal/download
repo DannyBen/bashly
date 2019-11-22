@@ -17,8 +17,13 @@ version_command() {
 
 # :command.usage
 download_usage() {
-  echo -e "download - Sample minimal application without subcommands"
-  echo 
+  if [[ -n $long_usage ]]; then
+    echo -e "download - Sample minimal application without subcommands"
+    echo 
+  else
+    echo -e "download - Sample minimal application without subcommands"
+    echo 
+  fi
   echo -e "Usage:"
   echo -e "  download SOURCE [TARGET] [options]"
   echo
@@ -36,25 +41,26 @@ download_usage() {
     # :command.usage_flags
     # :flag.usage
     echo "  --force, -f"
-    echo "    Overwrite existing files"
+    echo -e "    Overwrite existing files"
     echo
     # :command.usage_args
     echo -e "Arguments:"
     
     # :argument.usage
     echo "  SOURCE"
-    echo "    URL to download from"
+    echo -e "    URL to download from"
     echo
     
     # :argument.usage
     echo "  TARGET"
-    echo "    Target filename (default: same as source)"
+    echo -e "    Target filename (default: same as source)"
     echo
 
     # :command.usage_examples
     echo -e "Examples:"
-    echo "  download example.com"
-    echo "  download example.com ./output -f"
+    
+    echo -e "  download example.com"
+    echo -e "  download example.com ./output -f"
     echo
 
   fi
