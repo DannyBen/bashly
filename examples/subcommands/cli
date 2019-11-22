@@ -162,7 +162,7 @@ inspect_args() {
 # :command.function
 cli_download_command() {
   # :src/download_command.sh
-  echo "# this file is located in 'src/cli_download_command.sh'"
+  echo "# this file is located in 'src/download_command.sh'"
   echo "# code for 'cli download' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
@@ -171,7 +171,7 @@ cli_download_command() {
 # :command.function
 cli_upload_command() {
   # :src/upload_command.sh
-  echo "# this file is located in 'src/cli_upload_command.sh'"
+  echo "# this file is located in 'src/upload_command.sh'"
   echo "# code for 'cli upload' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args

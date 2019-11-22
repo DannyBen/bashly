@@ -6,7 +6,7 @@ creating user files in [0;32msrc
 [0mcreated [0;32m./rush
 [0mrun [0;35m./rush --help[0m to test your bash script
 + ./rush c
-# this file is located in 'src/rush_config_command.sh'
+# this file is located in 'src/config_command.sh'
 # code for 'rush config' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
