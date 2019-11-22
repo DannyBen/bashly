@@ -1,7 +1,15 @@
 class String
+  def escape_newlines
+    gsub "\n", "\\n"
+  end
+
   def indent(offset)
     return self unless offset > 0
     split("\n").indent(offset).join("\n")
+  end
+
+  def to_underscore
+    gsub(/(.)([A-Z])/,'\1_\2').gsub(' ', '_').downcase
   end
 
   def wrap(length = 80)
@@ -14,14 +22,6 @@ class String
         line
       end
     end * "\n"
-  end
-
-  def to_underscore
-    gsub(/(.)([A-Z])/,'\1_\2').gsub(' ', '_').downcase
-  end
-
-  def escape_newlines
-    gsub "\n", "\\n"
   end
 
 end

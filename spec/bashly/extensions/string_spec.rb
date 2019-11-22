@@ -1,12 +1,27 @@
 require 'spec_helper'
 
 describe Array do
+  describe '#escape_newlines' do
+    subject { "hello\nworld" }
+    it "escapes newlines" do
+      expect(subject.escape_newlines).to eq "hello\\nworld"
+    end
+  end
+
   describe '#indent' do
     subject { "hello" }
     it "prepends the string with spaces" do
       expect(subject.indent 3).to eq "   hello"
     end
   end
+
+  describe '#wrap' do
+    subject { "a long line of text that is going to be wrapped, fingers crossed!" }
+    it "wraps the string to the specified length" do
+      expect(subject.wrap 30).to eq "a long line of text that is\ngoing to be wrapped, fingers\ncrossed!"
+    end
+  end
+
 
   describe '#to_underscore' do
     subject { "Some String" }
