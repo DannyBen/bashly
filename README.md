@@ -136,12 +136,14 @@ help: a sample script generated with bashly
 version: 0.1.0
 
 # Specify an array of examples to show when using --help
+# Each example can have multiple lines.
 examples:
 - myscript download
 - myscript download --force
 
 # Specify an array of environment variables needed by your script
 # This is used purely for displaying in the help text (when using --help)
+# The help for each variable can have multiple lines.
 environment_variable:
   VARIABLE_NAME: Variable help text
 
@@ -185,8 +187,7 @@ bash function.
 name: user
 
 # The message to display when using --help.
-# This can have multiple lines, but it is recommended to keep lines shorter
-# than ~70 characters, to avoid text wrapping in narrower terminals.
+# This can have multiple lines.
 help: Username to use for logging in
 
 # Specify if this argument is required.
@@ -216,8 +217,7 @@ long: --output
 short: -o
 
 # The text to display when using --help
-# This can have multiple lines, but it is recommended to keep lines shorter
-# than ~70 characters, to avoid text wrapping in narrower terminals.
+# This can have multiple lines.
 help: Specify the output directory
 
 # If the flag requires an argument, specify its name here.
