@@ -165,7 +165,7 @@ multi_regular_command() {
 parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -231,7 +231,7 @@ parse_args() {
 multiline_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -281,7 +281,7 @@ multiline_parse_args() {
 regular_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;

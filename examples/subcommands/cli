@@ -180,7 +180,7 @@ cli_upload_command() {
 parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -246,7 +246,7 @@ parse_args() {
 download_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -306,7 +306,7 @@ download_parse_args() {
 upload_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;

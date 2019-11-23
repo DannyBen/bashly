@@ -109,7 +109,7 @@ cyan_underlined() { echo -e "\e[4;36m$*\e[0m" ; }
 parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;

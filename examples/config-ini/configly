@@ -297,7 +297,7 @@ configly_list_command() {
 parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -370,7 +370,7 @@ parse_args() {
 set_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -432,7 +432,7 @@ set_parse_args() {
 get_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
@@ -483,7 +483,7 @@ get_parse_args() {
 list_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version | -v ) 
+  --version )
     version_command
     exit 1
     ;;
