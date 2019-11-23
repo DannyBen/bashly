@@ -119,13 +119,17 @@ Configuration Reference
 
 ### Command options
 
-With the exception of `version` and `commands` (which define subcommands),
-everything else in this section is suitable both for the main script, and for
-any subcommand you define using `commands`.
+Unless otherwise specified, these definitiona can be used for both the root
+command and subcommands (under the `commands` definition).
 
 ```yaml
 # The name of the script or subcommand
 name: myscript
+
+# An additional, optional name - usually used to denote a one letter 
+# variation of the command name
+# Applicable only in subcommands
+short: m
 
 # The header text to display when using --help
 # This can have multiple lines. In this case, the first line will be used as
@@ -133,6 +137,7 @@ name: myscript
 help: a sample script generated with bashly
 
 # The string to display when using --version
+# Applicable only in the main command
 version: 0.1.0
 
 # Specify an array of examples to show when using --help
@@ -151,6 +156,7 @@ environment_variable:
 # Each subcommand will have its own args and flags.
 # If this is provided, then you cannot provide flags or args for the main
 # script.
+# Applicable only in the main command
 commands: 
 - ...
 
