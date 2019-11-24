@@ -4,13 +4,13 @@ run() {
   parse_args "$@"
 
   <%- condition = "if" -%>
-  <%- commands.each do |command| -%>
-  <%= condition %> [[ $action == "<%= command.name %>" ]]; then
+  <%- deep_commands.each do |command| -%>
+  <%= condition %> [[ $action == "<%= command.action_name %>" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      <%= command.full_name.to_underscore %>_usage
+      <%= command.function_name %>_usage
     else
-      <%= command.full_name.to_underscore %>_command
+      <%= command.function_name %>_command
     fi
   <% condition = "elif" %>
   <%- end -%>

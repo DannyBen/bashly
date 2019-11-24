@@ -33,12 +33,32 @@ module Bashly
         end
       end
 
+      def deep_commands
+        result = []
+        commands.each do |command|
+          result << command
+          if command.commands.any?
+            result += command.deep_commands
+          end
+        end
+        result
+      end
+
       # Returns an array of Flags
       def flags
         return [] unless options["flags"]
         options["flags"].map do |options|
           Flag.new options
         end
+      end
+
+      # Returns a unique name, suitable to be used in a bash function
+      def function_name
+        full_name.to_underscore
+      end
+
+      def action_name
+        has_parent? ? full_name.split(' ')[1..].join(' ') : "root"
       end
 
       # Returns the name of the command, including its parent name (in case
@@ -57,7 +77,7 @@ module Bashly
       # If the file is not found, returns a string with a hint.
       def load_user_file(file, placeholder: true)
         path = "#{Settings.source_dir}/#{file}"
-        default_content = placeholder ? "# error: cannot load file" : ''
+        default_content = placeholder ? "echo \"error: cannot load file\"" : ''
 
         content = if File.exist? path
           File.read path
@@ -120,9 +140,9 @@ module Bashly
           raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
         end
 
-        if has_parent?
-          raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
-        end
+        # if has_parent?
+        #   raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
+        # end
       end
 
     end

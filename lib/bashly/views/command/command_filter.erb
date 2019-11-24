@@ -10,17 +10,17 @@ case $action in
 <%= command.aliases.join " | " %> )
   action="<%= command.name %>"
   shift
-  <%= command.name %>_parse_args "$@"
+  <%= command.full_name.to_underscore %>_parse_args "$@"
   shift $#
   ;;    
 
 <%- end -%>
 * )
-  <%= name %>_usage
+  <%= full_name.to_underscore %>_usage
   exit 1
   ;;
 
 esac
 <%- else -%>
-action=root
+action="<%= action_name %>"
 <%- end -%>
