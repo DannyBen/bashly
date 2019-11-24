@@ -7,7 +7,7 @@ module Bashly
       #   by space. For example, for a command like "docker container run"
       #   the action name is "container run".
       def action_name
-        parents.any? ? (parents[1..] + [name]).join(' ') : "root"
+        parents.any? ? (parents[1..-1] + [name]).join(' ') : "root"
       end
 
       # Returns all the possible aliases for this command
