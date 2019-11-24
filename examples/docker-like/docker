@@ -243,14 +243,14 @@ parse_args() {
   -* )
     ;;
   
-  container | c )
+  container | c* )
     action="container"
     shift
     docker_container_parse_args "$@"
     shift $#
     ;;    
   
-  image | i )
+  image | i* )
     action="image"
     shift
     docker_image_parse_args "$@"
@@ -477,7 +477,7 @@ docker_image_parse_args() {
   -* )
     ;;
   
-  ls )
+  ls | l )
     action="ls"
     shift
     docker_image_ls_parse_args "$@"

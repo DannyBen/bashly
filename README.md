@@ -126,10 +126,11 @@ command and subcommands (under the `commands` definition).
 # The name of the script or subcommand
 name: myscript
 
-# An additional, optional name - usually used to denote a one letter 
-# variation of the command name
+# An additional, optional pattern - usually used to denote a one letter 
+# variation of the command name.
+# You can add '*' as suffix, to denote a "starts with" pattern.
 # Applicable only in subcommands
-short: m
+short: m*
 
 # The header text to display when using --help
 # This can have multiple lines. In this case, the first line will be used as
