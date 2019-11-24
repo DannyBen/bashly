@@ -187,14 +187,14 @@ parse_args() {
   multiline )
     action="multiline"
     shift
-    multiline_parse_args "$@"
+    multi_multiline_parse_args "$@"
     shift $#
     ;;    
   
   regular )
     action="regular"
     shift
-    regular_parse_args "$@"
+    multi_regular_parse_args "$@"
     shift $#
     ;;    
   
@@ -228,7 +228,7 @@ parse_args() {
 
 
 # :command.parse_args_secondary
-multiline_parse_args() {
+multi_multiline_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -243,6 +243,8 @@ multiline_parse_args() {
     ;;
   
   esac
+  # :command.command_filter
+  action="multiline"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_args_while
@@ -277,8 +279,9 @@ multiline_parse_args() {
 }
 
 
+
 # :command.parse_args_secondary
-regular_parse_args() {
+multi_regular_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -293,6 +296,8 @@ regular_parse_args() {
     ;;
   
   esac
+  # :command.command_filter
+  action="regular"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_args_while
@@ -319,6 +324,7 @@ regular_parse_args() {
     esac
   done
 }
+
 
 
 # :command.initialize

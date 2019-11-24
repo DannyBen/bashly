@@ -30,9 +30,11 @@ def examples
     "examples/config-ini/configly",
     "examples/custom-includes/download",
     "examples/custom-strings/download",
+    "examples/docker-like/docker",
+    "examples/git-like/git",
     "examples/minimal/download",
-    "examples/subcommands/cli",
     "examples/multiline/multi",
+    "examples/subcommands/cli",
     "spec/fixtures/workspaces/short-flag/rush",
   ]
 end

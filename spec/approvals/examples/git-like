@@ -1,0 +1,73 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mcreated [0;32msrc/initialize.sh
+[0mcreated [0;32msrc/status_command.sh
+[0mcreated [0;32msrc/commit_command.sh
+[0mcreated [0;32m./git
+[0mrun [0;35m./git --help[0m to test your bash script
++ ./git
+git - Git example
+
+Usage:
+  git [command] [options]
+  git [command] --help | -h
+  git --version
+
+Commands:
+  status   Show repository status
+  commit   Commit changes
+
++ ./git -h
+git - Git example
+
+Usage:
+  git [command] [options]
+  git [command] --help | -h
+  git --version
+
+Commands:
+  status   Show repository status
+  commit   Commit changes
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
++ ./git status -h
+git status - Show repository status
+
+Usage:
+  git status [options]
+  git status --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
++ ./git commit -h
+git commit - Commit changes
+
+Usage:
+  git commit [options]
+  git commit --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --message, -m MESSAGE
+    Commit message
+
+  --all, -a
+    Automatically stage files
+
++ ./git commit -a -m 'initial commit'
+# this file is located in 'src/commit_command.sh'
+# code for 'git commit' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--message]} = initial commit
+- ${args[--all]} = 1

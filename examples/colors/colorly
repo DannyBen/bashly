@@ -122,7 +122,7 @@ parse_args() {
   
   esac
   # :command.command_filter
-  action=root
+  action="root"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_args_while

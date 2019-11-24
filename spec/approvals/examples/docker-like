@@ -1,0 +1,89 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mcreated [0;32msrc/initialize.sh
+[0mcreated [0;32msrc/container_run_command.sh
+[0mcreated [0;32msrc/container_stop_command.sh
+[0mcreated [0;32msrc/image_ls_command.sh
+[0mcreated [0;32m./docker
+[0mrun [0;35m./docker --help[0m to test your bash script
++ ./docker
+docker - Docker example
+
+Usage:
+  docker [command] [options]
+  docker [command] --help | -h
+  docker --version
+
+Commands:
+  container   Container commands
+  image       Image commands
+
++ ./docker -h
+docker - Docker example
+
+Usage:
+  docker [command] [options]
+  docker [command] --help | -h
+  docker --version
+
+Commands:
+  container   Container commands
+  image       Image commands
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
++ ./docker container
+docker container - Container commands
+
+Usage:
+  docker container [command] [options]
+  docker container [command] --help | -h
+
+Commands:
+  run    Run a container
+  stop   Stop a container
+
++ ./docker container run -h
+docker container run - Run a container
+
+Usage:
+  docker container run IMAGE [options]
+  docker container run --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  IMAGE
+    Image name
+
++ ./docker container run
+missing required argument: IMAGE
+usage: docker container run IMAGE [options]
++ ./docker container run alpine
+# this file is located in 'src/container_run_command.sh'
+# code for 'docker container run' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[image]} = alpine
++ ./docker image
+docker image - Image commands
+
+Usage:
+  docker image [command] [options]
+  docker image [command] --help | -h
+
+Commands:
+  ls   Show all images
+
++ ./docker image ls
+# this file is located in 'src/image_ls_command.sh'
+# code for 'docker image ls' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:

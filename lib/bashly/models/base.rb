@@ -26,13 +26,24 @@ module Bashly
         verify if respond_to? :verify
       end
 
+      def optional
+        !required
+      end
+
+      def summary
+        help.empty? ? "" : help.split("\n").first
+      end
+
+      def help
+        options['help'] ||= ''
+      end
+
       def method_missing(method_name, *arguments, &block)
         key = method_name.to_s
         respond_to?(method_name) ? options[key] : super
       end
 
       def respond_to?(method_name, include_private = false)
-        # options.has_key?(method_name.to_s) || super
         OPTION_KEYS.include?(method_name) || super
       end
     end

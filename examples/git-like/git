@@ -9,23 +9,23 @@ version_command() {
 }
 
 # :command.usage
-cli_usage() {
+git_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli - Sample application"
+    echo -e "git - Git example"
     echo 
   else
-    echo -e "cli - Sample application"
+    echo -e "git - Git example"
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  cli [command] [options]"
-  echo -e "  cli [command] --help | -h"
-  echo -e "  cli --version"
+  echo -e "  git [command] [options]"
+  echo -e "  git [command] --help | -h"
+  echo -e "  git --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
-  echo "  download   Download a file"
-  echo "  upload     Upload a file"
+  echo "  status   Show repository status"
+  echo "  commit   Commit changes"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -39,28 +39,54 @@ cli_usage() {
     echo
 
 
-    # :command.usage_environment_variables
-    echo -e "Environment Variables:"
-    echo "  API_KEY"
-    echo -e "    Set your API key"
-    echo
+
 
 
   fi
 }
 
 # :command.usage
-cli_download_usage() {
+git_status_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli download - Download a file"
+    echo -e "git status - Show repository status"
     echo 
   else
-    echo -e "cli download - Download a file"
+    echo -e "git status - Show repository status"
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  cli download SOURCE [TARGET] [options]"
-  echo -e "  cli download --help | -h"
+  echo -e "  git status [options]"
+  echo -e "  git status --help | -h"
+  echo
+
+
+  if [[ -n $long_usage ]]; then
+    echo -e "Options:"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    echo -e "    Show this help"
+    echo
+
+
+
+
+
+  fi
+}
+
+
+# :command.usage
+git_commit_usage() {
+  if [[ -n $long_usage ]]; then
+    echo -e "git commit - Commit changes"
+    echo 
+  else
+    echo -e "git commit - Commit changes"
+    echo 
+  fi
+  echo -e "Usage:"
+  echo -e "  git commit [options]"
+  echo -e "  git commit --help | -h"
   echo
 
 
@@ -72,75 +98,15 @@ cli_download_usage() {
     echo
     # :command.usage_flags
     # :flag.usage
-    echo "  --force, -f"
-    echo -e "    Overwrite existing files"
-    echo
-    # :command.usage_args
-    echo -e "Arguments:"
-    
-    # :argument.usage
-    echo "  SOURCE"
-    echo -e "    URL to download from"
-    echo
-    
-    # :argument.usage
-    echo "  TARGET"
-    echo -e "    Target filename (default: same as source)"
-    echo
-    # :command.usage_environment_variables
-    echo -e "Environment Variables:"
-    echo "  DEFAULT_TARGET_LOCATION"
-    echo -e "    Set the default location to download to"
-    echo
-    # :command.usage_examples
-    echo -e "Examples:"
-    
-    echo -e "  cli download example.com"
-    echo -e "  cli download example.com ./output -f"
-    echo
-
-  fi
-}
-
-
-# :command.usage
-cli_upload_usage() {
-  if [[ -n $long_usage ]]; then
-    echo -e "cli upload - Upload a file"
-    echo 
-  else
-    echo -e "cli upload - Upload a file"
-    echo 
-  fi
-  echo -e "Usage:"
-  echo -e "  cli upload SOURCE [options]"
-  echo -e "  cli upload --help | -h"
-  echo
-
-
-  if [[ -n $long_usage ]]; then
-    echo -e "Options:"
-    # :command.usage_fixed_flags
-    echo "  --help, -h"
-    echo -e "    Show this help"
-    echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --user, -u USER (required)"
-    echo -e "    Username to use for logging in"
+    echo "  --message, -m MESSAGE"
+    echo -e "    Commit message"
     echo
     
     # :flag.usage
-    echo "  --password, -p PASSWORD"
-    echo -e "    Password to use for logging in"
+    echo "  --all, -a"
+    echo -e "    Automatically stage files"
     echo
-    # :command.usage_args
-    echo -e "Arguments:"
-    
-    # :argument.usage
-    echo "  SOURCE"
-    echo -e "    File to upload"
-    echo
+
 
 
 
@@ -158,19 +124,19 @@ inspect_args() {
 
 # :command.command_functions
 # :command.function
-cli_download_command() {
-  # :src/download_command.sh
-  echo "# this file is located in 'src/download_command.sh'"
-  echo "# code for 'cli download' goes here"
+git_status_command() {
+  # :src/status_command.sh
+  echo "# this file is located in 'src/status_command.sh'"
+  echo "# code for 'git status' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
 }
 
 # :command.function
-cli_upload_command() {
-  # :src/upload_command.sh
-  echo "# this file is located in 'src/upload_command.sh'"
-  echo "# code for 'cli upload' goes here"
+git_commit_command() {
+  # :src/commit_command.sh
+  echo "# this file is located in 'src/commit_command.sh'"
+  echo "# code for 'git commit' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
 }
@@ -187,7 +153,7 @@ parse_args() {
   
   --help | -h ) 
     long_usage=yes
-    cli_usage
+    git_usage
     exit 1
     ;;
   
@@ -199,22 +165,22 @@ parse_args() {
   -* )
     ;;
   
-  download | d )
-    action="download"
+  status | s )
+    action="status"
     shift
-    cli_download_parse_args "$@"
+    git_status_parse_args "$@"
     shift $#
     ;;    
   
-  upload | u )
-    action="upload"
+  commit | c )
+    action="commit"
     shift
-    cli_upload_parse_args "$@"
+    git_commit_parse_args "$@"
     shift $#
     ;;    
   
   * )
-    cli_usage
+    git_usage
     exit 1
     ;;
   
@@ -243,7 +209,7 @@ parse_args() {
 
 
 # :command.parse_args_secondary
-cli_download_parse_args() {
+git_status_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -253,29 +219,76 @@ cli_download_parse_args() {
   
   --help | -h ) 
     long_usage=yes
-    cli_download_usage
+    git_status_usage
     exit 1
     ;;
   
   esac
   # :command.command_filter
-  action="download"
+  action="status"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    echo -e "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options]"
+  # :command.required_flags_filter
+  # :command.parse_args_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+  
+    -* )
+      echo -e "invalid option: $key"
+      exit 1
+      ;;
+  
+    * )
+      # :command.parse_args_case
+      echo -e "invalid argument: $key"
+      exit 1
+      ;;
+  
+    esac
+  done
+}
+
+
+
+# :command.parse_args_secondary
+git_commit_parse_args() {
+  # :command.fixed_flag_filter
+  case "$1" in
+  --version )
+    version_command
     exit 1
-  fi
+    ;;
+  
+  --help | -h ) 
+    long_usage=yes
+    git_commit_usage
+    exit 1
+    ;;
+  
+  esac
+  # :command.command_filter
+  action="commit"
+  # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_args_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
     # :flag.case
-    --force | -f )
-      args[--force]=1
+    --message | -m )
+      if [[ $2 && $2 != -* ]]; then
+        args[--message]="$2"
+        shift
+        shift
+      else
+        echo -e "--message requires an argument: --message, -m MESSAGE"
+        exit 1
+      fi
+      ;;
+  
+    # :flag.case
+    --all | -a )
+      args[--all]=1
       shift
       ;;
   
@@ -287,99 +300,8 @@ cli_download_parse_args() {
   
     * )
       # :command.parse_args_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
-        shift
-      elif [[ ! ${args[target]} ]]; then
-        args[target]=$1
-        shift
-      else
-        echo -e "invalid argument: $key"
-        exit 1
-      fi
-      ;;
-  
-    esac
-  done
-}
-
-
-
-# :command.parse_args_secondary
-cli_upload_parse_args() {
-  # :command.fixed_flag_filter
-  case "$1" in
-  --version )
-    version_command
-    exit 1
-    ;;
-  
-  --help | -h ) 
-    long_usage=yes
-    cli_upload_usage
-    exit 1
-    ;;
-  
-  esac
-  # :command.command_filter
-  action="upload"
-  # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    echo -e "missing required argument: SOURCE\nusage: cli upload SOURCE [options]"
-    exit 1
-  fi
-  # :command.required_flags_filter
-  argstring="$*"
-  if [[ "$argstring" != *--user* && "$argstring" != *-u* ]]; then
-    echo -e "missing required flag: --user, -u USER"
-    exit 1
-  fi
-  # :command.parse_args_while
-  while [[ $# -gt 0 ]]; do
-    key="$1"
-    case "$key" in
-    # :flag.case
-    --user | -u )
-      if [[ $2 && $2 != -* ]]; then
-        args[--user]="$2"
-        shift
-        shift
-      else
-        echo -e "--user requires an argument: --user, -u USER"
-        exit 1
-      fi
-      ;;
-  
-    # :flag.case
-    --password | -p )
-      if [[ $2 && $2 != -* ]]; then
-        args[--password]="$2"
-        shift
-        shift
-      else
-        echo -e "--password requires an argument: --password, -p PASSWORD"
-        exit 1
-      fi
-      ;;
-  
-  
-    -* )
-      echo -e "invalid option: $key"
+      echo -e "invalid argument: $key"
       exit 1
-      ;;
-  
-    * )
-      # :command.parse_args_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
-        shift
-      else
-        echo -e "invalid argument: $key"
-        exit 1
-      fi
       ;;
   
     esac
@@ -408,27 +330,27 @@ run() {
   declare -A args
   parse_args "$@"
 
-  if [[ $action == "download" ]]; then
+  if [[ $action == "status" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      cli_download_usage
+      git_status_usage
     else
-      cli_download_command
+      git_status_command
     fi
   
-  elif [[ $action == "upload" ]]; then
+  elif [[ $action == "commit" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      cli_upload_usage
+      git_commit_usage
     else
-      cli_upload_command
+      git_commit_command
     fi
   
   elif [[ ${args[--version]} ]]; then
     version_command
   elif [[ ${args[--help]} ]]; then
     long_usage=yes
-    cli_usage
+    git_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

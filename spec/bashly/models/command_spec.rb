@@ -1,18 +1,36 @@
 require 'spec_helper'
 
 describe Models::Command do
-  let(:args) { [] }
-  let(:flags) { [] }
-  let(:commands) { [] }
-  let(:options) {{
-    "name" => "get",
-    "short" => "g",
-    "help" => "get something from somewhere",
-    "args" => args,
-    "flags" => flags,
-    "commands" => commands,
-  }}
-  subject { described_class.new options }
+  let(:fixture) { :basic_command }
+
+  subject do
+    options = load_fixture('models/commands')[fixture]
+    described_class.new options
+  end
+
+  describe '#action_name' do
+    context "when it is the root command" do
+      it "returns root" do
+        expect(subject.action_name).to eq "root"
+      end
+    end
+
+    context "when it is a sub-command" do
+      let(:fixture) { :git_status }
+
+      it "returns its name" do
+        expect(subject.action_name).to eq "status"
+      end
+    end
+
+    context "when it is a sub-sub-command" do
+      let(:fixture) { :docker_container_run }
+
+      it "returns its full name excluding the root" do
+        expect(subject.action_name).to eq "container run"
+      end
+    end
+  end
 
   describe '#aliases' do
     context "with long and short options" do
@@ -22,7 +40,8 @@ describe Models::Command do
     end
 
     context "with long option only" do
-      let(:options) { {"name" => "get"} }
+      let(:fixture) { :long_only_command }
+
       it "returns an array with the long value" do
         expect(subject.aliases).to eq ["get"]
       end
@@ -30,11 +49,6 @@ describe Models::Command do
   end
 
   describe '#args' do
-    let(:args) {[
-      {"name" => "works"},
-      {"name" => "splendidly"},
-    ]}
-
     it "returns an array of Argument objects" do
       expect(subject.args).to be_an Array
       expect(subject.args.first).to be_a Models::Argument
@@ -48,37 +62,70 @@ describe Models::Command do
   end
 
   describe '#command_names' do
-    let(:commands) {[{"name" => "add"}, {"name" => "remove"}]}
+    let(:fixture) { :docker }
+
     it "returns an array of command names" do
-      expect(subject.command_names).to eq ["add", "remove"]
+      expect(subject.command_names).to eq ["container", "image"]
     end
   end
 
   describe '#commands' do
-    let(:commands) {[
-      {"name" => "download"},
-      {"name" => "upload"},
-    ]}
+    let(:fixture) { :docker }
 
     it "returns an array of Command objects" do
       expect(subject.commands).to be_an Array
       expect(subject.commands.first).to be_a Models::Command
     end
 
-    it "sets the parent_name property of its subcommands" do
-      expect(subject.commands.first.parent_name).to eq "get"
+    it "sets the parents property of its subcommands" do
+      expect(subject.commands.first.parents).to eq ["docker"]
+    end
+  end
+
+  describe '#deep_commands' do
+    let(:fixture) { :docker }
+
+    it "returns an array of all commands in the tree" do
+      expect(subject.deep_commands.map &:full_name).to eq ["docker container", "docker container run", "docker container stop", "docker image"]
+    end
+  end
+
+  describe '#filename' do
+    context "when it is the root command" do
+      it "returns root_command.sh" do
+        expect(subject.filename).to eq "root_command.sh"
+      end
+    end
+
+    context "when it is a sub command" do
+      let(:fixture) { :git_status }
+
+      it "returns the action name as file" do
+        expect(subject.filename).to eq "status_command.sh"
+      end
+    end
+
+    context "when it is a sub sub command" do
+      let(:fixture) { :docker_container_run }
+
+      it "returns the action name as file" do
+        expect(subject.filename).to eq "container_run_command.sh"
+      end
     end
   end
 
   describe '#flags' do
-    let(:flags) {[
-      {"long" => "--works"},
-      {"long" => "--splendidly"},
-    ]}
-
     it "returns an array of Flag objects" do
       expect(subject.flags).to be_an Array
       expect(subject.flags.first).to be_a Models::Flag
+    end
+  end
+
+  describe '#function_name' do
+    let(:fixture) { :docker_container_run }
+
+    it "returns the full name underscored" do
+      expect(subject.function_name).to eq "docker_container_run"
     end
   end
 
@@ -90,9 +137,10 @@ describe Models::Command do
     end
 
     context "when it has a parent" do
-      before { options['parent_name'] = 'super' }
-      it "returns the name" do
-        expect(subject.full_name).to eq "super get"
+      let(:fixture) { :git_status }
+
+      it "returns the a string with all parents joined" do
+        expect(subject.full_name).to eq "git status"
       end
     end
   end
@@ -109,17 +157,12 @@ describe Models::Command do
 
     context "when the file is not found" do
       it "returns a string containing a friendly error message" do
-        expect(subject.load_user_file 'notfound.sh').to eq "# :spec/tmp/src/notfound.sh\n# error: cannot load file"
+        expect(subject.load_user_file 'notfound.sh').to eq "# :spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
       end
     end
   end
 
   describe '#required_args' do
-    let(:args) {[
-      {"name" => "source", "required" => true},
-      {"name" => "target"},
-    ]}
-
     it "returns an array of only the required Argument objects" do
       expect(subject.required_args.size).to eq 1
       expect(subject.required_args.first.name).to eq "source"
@@ -127,75 +170,65 @@ describe Models::Command do
   end
 
   describe '#required_flags' do
-    let(:flags) {[
-      {"long" => "--source", "required" => true},
-      {"long" => "--target"},
-    ]}
-
     it "returns an array of only the required Flag objects" do
       expect(subject.required_flags.size).to eq 1
-      expect(subject.required_flags.first.long).to eq "--source"
+      expect(subject.required_flags.first.long).to eq "--force"
     end
   end
 
-  describe '#summary' do
-    let(:options) { {"name" => "get", "help" => "summary\nadditional help"} }
-    it "returns the first line of the help string" do
-      expect(subject.summary).to eq "summary"
+  describe '#root_command?' do
+    context "when the command has no parents" do
+      it "returns true" do
+        expect(subject.root_command?).to be true
+      end
     end
 
-    context "when help is empty" do
-      let(:options) { {"name" => "get"} }
-      it "returns an empty string" do
-        expect(subject.summary).to eq ""
+    context "when the command has parents" do
+      let(:fixture) { :git_status }
+
+      it "returns false" do
+        expect(subject.root_command?).to be false
       end
     end
   end
 
   describe '#usage_string' do
-    it "returns a string suitable to be used as a usage pattern" do
-      expect(subject.usage_string).to eq "get [options]"
+    context "when no args and no commands are defined" do
+      let(:fixture) { :git_status }
+      it "returns a string suitable to be used as a usage pattern" do
+        expect(subject.usage_string).to eq "git status [options]"
+      end
     end
 
     context "when args are defined" do
-      let(:args) {[
-        {"name" => "source", "required" => true},
-        {"name" => "target"},
-      ]}
       it "includes them in the usage string" do
         expect(subject.usage_string).to eq "get SOURCE [TARGET] [options]"
       end      
     end
 
     context "when commands are defined" do
-      let(:commands) {[{"name" => "local"}]}
+      let(:fixture) { :docker }
+
       it "includes [command] in the usage string" do
-        expect(subject.usage_string).to eq "get [command] [options]"
+        expect(subject.usage_string).to eq "docker [command] [options]"
       end      
     end
   end
 
   describe '#verify' do
-    let(:commands) { [{"name" => "subcommand"}] }
-
     context "when commands and flags are present" do
-      let(:flags) { [{"long" => "--long"}] }
+      let(:fixture) { :invalid_with_flags }
+
       it "raises an error" do
         expect { subject.verify }.to raise_error(ConfigurationError, /cannot be at the same level/)
       end
     end
 
     context "when commands and args are present" do
-      let(:args) { [{"name" => "file"}] }
+      let(:fixture) { :invalid_with_args }
+
       it "raises an error" do
         expect { subject.verify }.to raise_error(ConfigurationError, /cannot be at the same level/)
-      end
-    end
-
-    context "when commands are present and it is a subcommand itself" do
-      before { options['parent_name'] = 'parent_command' }
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /Nested commands are not supported/)
       end
     end
   end

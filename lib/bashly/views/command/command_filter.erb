@@ -10,13 +10,13 @@ case $action in
 <%= command.aliases.join " | " %> )
   action="<%= command.name %>"
   shift
-  <%= command.full_name.to_underscore %>_parse_args "$@"
+  <%= command.function_name %>_parse_args "$@"
   shift $#
   ;;    
 
 <%- end -%>
 * )
-  <%= full_name.to_underscore %>_usage
+  <%= function_name %>_usage
   exit 1
   ;;
 
