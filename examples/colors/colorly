@@ -35,7 +35,6 @@ colorly_usage() {
   echo -e "  colorly --version"
   echo
 
-
   if [[ -n $long_usage ]]; then
     echo -e "Options:"
     # :command.usage_fixed_flags
@@ -54,11 +53,8 @@ colorly_usage() {
     echo -e "    Message to show [default: hello colors]"
     echo
 
-
-
   fi
 }
-
 
 # :command.inspect_args
 inspect_args() {
@@ -100,8 +96,6 @@ yellow_underlined() { echo -e "\e[4;33m$*\e[0m" ; }
 blue_underlined() { echo -e "\e[4;34m$*\e[0m" ; }
 magenta_underlined() { echo -e "\e[4;35m$*\e[0m" ; }
 cyan_underlined() { echo -e "\e[4;36m$*\e[0m" ; }
-
-
 
 # :command.command_functions
 
@@ -149,7 +143,6 @@ parse_args() {
     esac
   done
 }
-
 
 # :command.initialize
 initialize() {

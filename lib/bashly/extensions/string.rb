@@ -24,4 +24,8 @@ class String
     end * "\n"
   end
 
+  def lint
+    gsub(/\n{2,}/, "\n\n")
+  end
+
 end

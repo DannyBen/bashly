@@ -31,7 +31,6 @@ download_usage() {
   echo -e "  download --version"
   echo
 
-
   if [[ -n $long_usage ]]; then
     echo -e "Options:"
     # :command.usage_fixed_flags
@@ -50,11 +49,8 @@ download_usage() {
     echo -e "    URL to download from"
     echo
 
-
-
   fi
 }
-
 
 # :command.inspect_args
 inspect_args() {
@@ -72,7 +68,6 @@ my_extra_function() {
   echo "for extra flexibility."
   echo "---"
 }
-
 
 # :command.command_functions
 
@@ -120,7 +115,6 @@ parse_args() {
     esac
   done
 }
-
 
 # :command.initialize
 initialize() {

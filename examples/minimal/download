@@ -30,7 +30,6 @@ download_usage() {
   echo -e "  download --version"
   echo
 
-
   if [[ -n $long_usage ]]; then
     echo -e "Options:"
     # :command.usage_fixed_flags
@@ -68,13 +67,11 @@ download_usage() {
   fi
 }
 
-
 # :command.inspect_args
 inspect_args() {
   echo args:
   for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 }
-
 
 # :command.command_functions
 
@@ -138,7 +135,6 @@ parse_args() {
     esac
   done
 }
-
 
 # :command.initialize
 initialize() {

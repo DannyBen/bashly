@@ -47,4 +47,12 @@ describe Array do
       end
     end
   end
+
+  describe '#lint' do
+    subject { "one\ntwo\n\nthree\n\n\nfour\n\n\n\n" }
+
+    it "replaces two or more newlines with two newlines" do
+      expect(subject.lint).to eq "one\ntwo\n\nthree\n\nfour\n\n"
+    end
+  end
 end

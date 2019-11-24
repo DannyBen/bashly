@@ -54,7 +54,7 @@ module Bashly
       end
 
       def create_master_script
-        master_script = command.render 'master_script'
+        master_script = command.render('master_script').lint
         File.write master_script_path, master_script
         FileUtils.chmod "+x", master_script_path
         say "created !txtgrn!#{master_script_path}"
