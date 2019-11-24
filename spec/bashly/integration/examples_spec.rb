@@ -14,7 +14,7 @@ describe 'generated bash scripts' do
 
   test_cases = fixtures + examples
 
-  leeway = ENV['CI'] ? 40 : 0
+  leeway = ENV['CI'] ? 50 : 0
 
   test_cases.each do |example|
     approval_name = example.gsub "spec/fixtures/workspaces", "examples"

@@ -319,7 +319,7 @@ parse_args() {
 }
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 docker_container_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -385,7 +385,7 @@ docker_container_parse_args() {
 }
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 docker_container_run_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -439,7 +439,7 @@ docker_container_run_parse_args() {
 
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 docker_container_stop_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -494,7 +494,7 @@ docker_container_stop_parse_args() {
 
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 docker_image_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -553,7 +553,7 @@ docker_image_parse_args() {
 }
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 docker_image_ls_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in

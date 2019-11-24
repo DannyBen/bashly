@@ -208,7 +208,7 @@ parse_args() {
 }
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 git_status_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -250,7 +250,7 @@ git_status_parse_args() {
 
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 git_commit_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in

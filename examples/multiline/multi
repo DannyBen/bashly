@@ -227,7 +227,7 @@ parse_args() {
 }
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 multi_multiline_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
@@ -280,7 +280,7 @@ multi_multiline_parse_args() {
 
 
 
-# :command.parse_args_secondary
+# :command.parse_args
 multi_regular_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
