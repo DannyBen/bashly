@@ -154,9 +154,7 @@ environment_variable:
 
 # Specify the array of subcommands to generate.
 # Each subcommand will have its own args and flags.
-# If this is provided, then you cannot provide flags or args for the main
-# script.
-# Applicable only in the main command
+# If this is provided, you cannot provide flags or args for the main script.
 commands: 
 - ...
 
