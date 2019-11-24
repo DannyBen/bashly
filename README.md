@@ -44,7 +44,7 @@ Bahsly is responsible for:
 - Parsing the user's command line and extracting:
   - Optional or required **positional arguments**.
   - Optional or required **option flags** (with or without flag arguments).
-  - **Subcommands**.
+  - **Subcommands** (and sub-subcommands).
   - Standard flags (like **--help** and **--version**).
 - Providing you with a place to input your code for each of the functions 
   your tool performs, and merging it back to the final script.
@@ -154,17 +154,17 @@ environment_variable:
 
 # Specify the array of subcommands to generate.
 # Each subcommand will have its own args and flags.
-# If this is provided, you cannot provide flags or args for the main script.
+# If this is provided, you cannot specify flags or args.
 commands: 
 - ...
 
 # Specify the array of positional arguments this script needs.
-# If this is provided, then you cannot provide commands for the main script.
+# If this is provided, then you cannot specify commands.
 args:
 - ...
 
 # Specify the array of option flags this script needs.
-# If this is provided, then you cannot provide commands for the main script.
+# If this is provided, then you cannot specify commands.
 flags:
 - ...
 ```
