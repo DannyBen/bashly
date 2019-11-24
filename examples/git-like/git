@@ -146,14 +146,14 @@ parse_args() {
   -* )
     ;;
   
-  status | s )
+  status | s* )
     action="status"
     shift
     git_status_parse_args "$@"
     shift $#
     ;;    
   
-  commit | c )
+  commit | c* )
     action="commit"
     shift
     git_commit_parse_args "$@"
