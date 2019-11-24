@@ -1,6 +1,15 @@
 module Bashly
   module Models
     class Command < Base
+      # Returns the name to be used as an action.
+      # - If it is the root command, the action is "root"
+      # - Else, it is all the parents, except the first tone (root) joined
+      #   by space. For example, for a command like "docker container run"
+      #   the action name is "container run".
+      def action_name
+        parents.any? ? (parents[1..-1] + [name]).join(' ') : "root"
+      end
+
       # Returns all the possible aliases for this command
       def aliases
         short ? [name, short] : [name]
@@ -28,9 +37,28 @@ module Bashly
       def commands
         return [] unless options["commands"]
         options["commands"].map do |options|
-          options['parent_name'] = full_name
+          options['parents'] = parents + [name]
           command = Command.new options
         end
+      end
+
+      # Returns a flat array containing all the commands in this tree.
+      # This includes self + children + grandchildres + ...
+      def deep_commands
+        result = []
+        commands.each do |command|
+          result << command
+          if command.commands.any?
+            result += command.deep_commands
+          end
+        end
+        result
+      end
+
+      # Returns the bash filename that is expected to hold the user code
+      # for this command
+      def filename
+        "#{action_name.to_underscore}_command.sh"
       end
 
       # Returns an array of Flags
@@ -41,15 +69,15 @@ module Bashly
         end
       end
 
+      # Returns a unique name, suitable to be used in a bash function
+      def function_name
+        full_name.to_underscore
+      end
+
       # Returns the name of the command, including its parent name (in case
       # this is a subcommand)
       def full_name
-        parent_name ? "#{parent_name} #{name}" : name
-      end
-
-      # Returns true if this is a subcommand with a parent
-      def has_parent?
-        !!parent_name
+        parents.any? ? (parents + [name]).join(' ') : name
       end
 
       # Reads a file from the userspace (Settings.source_dir) and returns
@@ -57,7 +85,7 @@ module Bashly
       # If the file is not found, returns a string with a hint.
       def load_user_file(file, placeholder: true)
         path = "#{Settings.source_dir}/#{file}"
-        default_content = placeholder ? "# error: cannot load file" : ''
+        default_content = placeholder ? "echo \"error: cannot load file\"" : ''
 
         content = if File.exist? path
           File.read path
@@ -66,6 +94,12 @@ module Bashly
         end
 
         "# :#{path}\n#{content}"
+      end
+
+      # Returns an array of all parents. For example, the command 
+      # "docker container run" will have [docker, container] as its parents
+      def parents
+        options['parents'] || []
       end
 
       # Returns an array of all the required Arguments
@@ -80,13 +114,7 @@ module Bashly
 
       # Returns trus if this is the root command (no parents)
       def root_command?
-        !has_parent?
-      end
-
-      # Returns the first line of the help message
-      def summary
-        return "" unless help
-        help.split("\n").first
+        parents.empty?
       end
 
       # Returns a constructed string suitable for Usage pattern
@@ -118,10 +146,6 @@ module Bashly
       def verify_commands
         if args.any? or flags.any?
           raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
-        end
-
-        if has_parent?
-          raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nNested commands are not supported."
         end
       end
 

@@ -95,7 +95,7 @@ parse_args() {
   
   esac
   # :command.command_filter
-  action=root
+  action="root"
   # :command.required_args_filter
   if [[ $1 && $1 != -* ]]; then
     args[source]=$1

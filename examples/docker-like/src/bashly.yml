@@ -1,0 +1,31 @@
+name: docker
+help: Docker example
+version: 0.1.0
+
+commands:
+- name: container
+  short: c
+  help: Container commands
+
+  commands:
+  - name: run
+    help: Run a container
+    args:
+    - name: image
+      help: Image name
+      required: true
+
+  - name: stop
+    help: Stop a container
+    args:
+    - name: container
+      help: Container name
+      required: true
+
+- name: image
+  short: i
+  help: Image commands
+
+  commands:
+  - name: ls
+    help: Show all images

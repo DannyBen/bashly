@@ -319,21 +319,21 @@ parse_args() {
   set | s )
     action="set"
     shift
-    set_parse_args "$@"
+    configly_set_parse_args "$@"
     shift $#
     ;;    
   
   get | g )
     action="get"
     shift
-    get_parse_args "$@"
+    configly_get_parse_args "$@"
     shift $#
     ;;    
   
   list | l )
     action="list"
     shift
-    list_parse_args "$@"
+    configly_list_parse_args "$@"
     shift $#
     ;;    
   
@@ -366,8 +366,8 @@ parse_args() {
 }
 
 
-# :command.parse_args_secondary
-set_parse_args() {
+# :command.parse_args
+configly_set_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -382,6 +382,8 @@ set_parse_args() {
     ;;
   
   esac
+  # :command.command_filter
+  action="set"
   # :command.required_args_filter
   if [[ $1 && $1 != -* ]]; then
     args[key]=$1
@@ -428,8 +430,9 @@ set_parse_args() {
 }
 
 
-# :command.parse_args_secondary
-get_parse_args() {
+
+# :command.parse_args
+configly_get_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -444,6 +447,8 @@ get_parse_args() {
     ;;
   
   esac
+  # :command.command_filter
+  action="get"
   # :command.required_args_filter
   if [[ $1 && $1 != -* ]]; then
     args[key]=$1
@@ -479,8 +484,9 @@ get_parse_args() {
 }
 
 
-# :command.parse_args_secondary
-list_parse_args() {
+
+# :command.parse_args
+configly_list_parse_args() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -495,6 +501,8 @@ list_parse_args() {
     ;;
   
   esac
+  # :command.command_filter
+  action="list"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_args_while
@@ -516,6 +524,7 @@ list_parse_args() {
     esac
   done
 }
+
 
 
 # :command.initialize

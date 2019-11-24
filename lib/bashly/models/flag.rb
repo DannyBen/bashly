@@ -11,15 +11,6 @@ module Bashly
         end
       end
 
-      def optional
-        !required
-      end
-
-      def summary
-        return "" unless help
-        help.split("\n").first
-      end
-
       def usage_string(extended: false)
         result = [aliases.join(", ")]
         result << arg.upcase if arg

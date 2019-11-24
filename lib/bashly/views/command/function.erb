@@ -1,4 +1,4 @@
 # :command.function
-<%= full_name.to_underscore %>_command() {
-<%= load_user_file("#{name.to_underscore}_command.sh").indent 2 %>
+<%= function_name %>_command() {
+<%= load_user_file(filename).indent 2 %>
 }

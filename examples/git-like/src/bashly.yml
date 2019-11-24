@@ -1,0 +1,23 @@
+name: git
+help: Git example
+version: 0.1.0
+
+commands:
+- name: status
+  short: s
+  help: Show repository status
+
+- name: commit
+  short: c
+  help: Commit changes
+
+  flags:
+  - long: --message
+    short: -m
+    arg: MESSAGE
+    help: Commit message
+
+  - long: --all
+    short: -a
+    help: Automatically stage files
+

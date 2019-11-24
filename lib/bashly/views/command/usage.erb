@@ -1,5 +1,5 @@
 # :command.usage
-<%= full_name.to_underscore %>_usage() {
+<%= function_name %>_usage() {
   if [[ -n $long_usage ]]; then
     <%- if summary == help -%>
     echo -e "<%= caption_string %>"

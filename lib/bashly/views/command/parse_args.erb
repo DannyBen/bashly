@@ -1,5 +1,9 @@
 # :command.parse_args
+<%- if root_command? -%>
 parse_args() {
+<%- else -%>
+<%= function_name %>_parse_args() {
+<%- end -%>
 <%= render(:fixed_flags_filter).indent 2 %>
 <%= render(:command_filter).indent 2 %>
 <%= render(:required_args_filter).indent 2 %>
@@ -8,5 +12,5 @@ parse_args() {
 }
 
 <%- commands.each do |command| %>
-<%= command.render 'parse_args_secondary' %>
+<%= command.render 'parse_args' %>
 <%- end -%>

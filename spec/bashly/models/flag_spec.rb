@@ -26,35 +26,6 @@ describe Models::Flag do
     end
   end
 
-  describe '#optional' do
-    context "when the flag is optional" do
-      it "returns true" do
-        expect(subject.optional).to be true
-      end
-    end
-
-    context "when the flag is required" do
-      let(:options) { {"long" => "--mandatory", "required" => true} }
-      it "returns false" do
-        expect(subject.optional).to be false
-      end
-    end
-  end
-
-  describe '#summary' do
-    let(:options) { {"long" => "--help", "help" => "summary\nadditional help"} }
-    it "returns the first line of the help string" do
-      expect(subject.summary).to eq "summary"
-    end
-
-    context "when help is empty" do
-      let(:options) { {"long" => "--help"} }
-      it "returns an empty string" do
-        expect(subject.summary).to eq ""
-      end
-    end
-  end
-
   describe '#usage_string' do
     it "returns a string suitable to be used as a usage pattern" do
       expect(subject.usage_string).to eq "--help, -h"

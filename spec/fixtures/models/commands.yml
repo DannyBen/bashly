@@ -1,0 +1,59 @@
+:basic_command: &default
+  name: get
+  short: g
+  help: |-
+    get something from somewhere
+    this is the second line
+
+  args:
+  - name: source
+    required: true
+  - name: target
+
+  flags:
+  - long: --force
+    required: true
+  - long: --verbose
+
+:git_status:
+  name: status
+  help: perform git status
+  parents: [git]
+
+:docker:
+  name: docker
+  help: run docker commands
+  commands:
+  - name: container
+    commands:
+    - name: run
+    - name: stop
+  - name: image
+
+:docker_container_run:
+  name: run
+  help: perform docker container run
+  parents: [docker, container]
+
+:long_only_command:
+  name: get
+  help: get something from somewhere
+
+:helpless:
+  name: helpless
+
+:invalid_with_args:
+  name: invalid
+  help: invalid since there are both commands and args
+  commands:
+  - name: sub
+  args:
+  - name: source
+
+:invalid_with_flags:
+  name: invalid
+  help: invalid since there are both commands and flags
+  commands:
+  - name: sub
+  flags:
+  - long: --force
