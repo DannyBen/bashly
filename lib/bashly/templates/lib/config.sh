@@ -10,8 +10,8 @@
 # ---
 
 # Create a new config file.
-# There is normally no need to use this fucntion, it is used by othe rfunctions
-# as needed.
+# There is normally no need to use this fucntion, it is used by other
+# functions as needed.
 config_init() {
   CONFIG_FILE=${CONFIG_FILE:=config.ini}
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
