@@ -5,6 +5,7 @@ Usage:
   bashly add lib [--force]
   bashly add config [--force]
   bashly add colors [--force]
+  bashly add yaml [--force]
   bashly add (-h|--help)
 
 Commands:
@@ -22,6 +23,9 @@ Commands:
   colors
     Add standard functions for printing colorful and formatted text to the lib
     directory.
+
+  yaml
+    Add standard functions for reading YAML files to the lib directory.
 
 Options:
   -f --force

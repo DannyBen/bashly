@@ -35,6 +35,7 @@ def examples
     "examples/minimal/download",
     "examples/multiline/multi",
     "examples/subcommands/cli",
+    "examples/yaml/yaml",
     "spec/fixtures/workspaces/short-flag/rush",
   ]
 end

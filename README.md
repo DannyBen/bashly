@@ -39,6 +39,7 @@ programming language.
 
 Bahsly is responsible for:
 
+- Generating a **single, standalone bash script**.
 - Generating **usage texts** and help screens, showing your tool's arguments, 
   flags and subcommands (works for subcommands also).
 - Parsing the user's command line and extracting:
@@ -52,6 +53,7 @@ Bahsly is responsible for:
   library functions:
   - **Color output**.
   - **Config file management** (INI format).
+  - **YAML parsing**.
 
 Usage
 --------------------------------------------------

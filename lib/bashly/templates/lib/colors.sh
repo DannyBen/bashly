@@ -5,8 +5,8 @@
 # Usage:
 # Use any of the functions below to color or format a portion of a string.
 # 
-#  echo "before $(red this is red) after"
-#  echo "before $(green_bold this is green_bold) after"
+#   echo "before $(red this is red) after"
+#   echo "before $(green_bold this is green_bold) after"
 #
 # ---
 

@@ -1,0 +1,46 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/initialize.sh[0m (exists)
+skipped [0;32msrc/root_command.sh[0m (exists)
+created [0;32m./yaml
+[0mrun [0;35m./yaml --help[0m to test your bash script
++ ./yaml -h
+yaml - Sample application that uses the YAML functions
+
+Usage:
+  yaml FILENAME [VARIABLE] [options]
+  yaml --help | -h
+  yaml --version
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
+  --prefix, -p PREFIX
+
+
+Arguments:
+  FILENAME
+    The YAML file to read
+
+  VARIABLE
+    Show only this variable
+
+Examples:
+  yaml settings.yml
+  yaml settings.yml --prefix config_
+  yaml settings.yml server_port
+
++ ./yaml settings.yml
+environment="production"
+server_port="3000"
+server_host="http://localhost:3000"
++ ./yaml settings.yml --prefix config_
+config_environment="production"
+config_server_port="3000"
+config_server_host="http://localhost:3000"
++ ./yaml settings.yml server_port
+server_port=3000
