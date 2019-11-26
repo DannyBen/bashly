@@ -1,0 +1,20 @@
+name: yaml
+help: Sample application that uses the YAML functions
+version: 0.1.0
+
+args:
+- name: filename
+  required: true
+  help: The YAML file to read
+- name: variable
+  help: Show only this variable
+
+flags:
+- long: --prefix
+  short: -p
+  arg: prefix
+
+examples:
+- yaml settings.yml
+- yaml settings.yml --prefix config_
+- yaml settings.yml server_port

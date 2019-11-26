@@ -73,6 +73,19 @@ describe Commands::Add do
     end
   end
 
+  context "with yaml command" do
+    let(:lib_file) { "#{source_dir}/lib/yaml.sh" }
+
+    before do
+      reset_tmp_dir create_src: true
+    end
+
+    it "copies the yaml.sh lib file to the user space" do
+      expect { subject.run %w[add yaml] }.to output_fixture('cli/add/yaml')
+      expect(File).to exist(lib_file)
+    end
+  end
+
   context "with colors command" do
     let(:lib_file) { "#{source_dir}/lib/colors.sh" }
 
