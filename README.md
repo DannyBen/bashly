@@ -133,147 +133,59 @@ The `bashly.yml` configuration file consists of these types:
 Unless otherwise specified, these definitiona can be used for both the root
 command and subcommands (under the `commands` definition).
 
-```yaml
-# The name of the script or subcommand
-name: myscript
 
-# An additional, optional pattern - usually used to denote a one letter 
-# variation of the command name.
-# You can add '*' as suffix, to denote a "starts with" pattern.
-# Applicable only in subcommands
-short: m*
-
-# The header text to display when using --help
-# This can have multiple lines. In this case, the first line will be used as
-# summary wherever appropriate.
-help: a sample script generated with bashly
-
-# The string to display when using --version
-# Applicable only in the main command
-version: 0.1.0
-
-# Specify an array of examples to show when using --help
-# Each example can have multiple lines.
-examples:
-- myscript download
-- myscript download --force
-
-# Specify an array of environment variables needed by your script.
-environment_variables:
-- ... see below ...
-
-# Specify the array of subcommands to generate.
-# Each subcommand will have its own args and flags.
-# If this is provided, you cannot specify flags or args.
-commands: 
-- ...
-
-# Specify the array of positional arguments this script needs.
-# If this is provided, then you cannot specify commands.
-args:
-- ... see below ...
-
-# Specify the array of option flags this script needs.
-# If this is provided, then you cannot specify commands.
-flags:
-- ... see below ...
-
-# Specify an array of any required external dependencies (commands).
-# The script execution will be halted with a friendly error unless all
-# dependency commands exist.
-dependencies:
-- curl
-```
-
+ Option    | Description
+-----------|-------------
+`name`     | The name of the script or subcommand.
+`short`    | An additional, optional pattern - usually used to denote a one letter variation of the command name. You can add `*` as a suffix, to denote a "starts with" pattern - for example `short: m*`. *Applicable only in subcommands*.
+`help`     | The header text to display when using `--help`. This option can have multiple lines. In this case, the first line will be used as summary wherever appropriate.
+`version`  | The string to display when using `--version`. *Applicable only in the main command*.
+`default`  | Setting this to `yes` on any subcommand, will make unrecognized command line arguments to be passed to this command. *Applicable only in subcommands*.
+`examples` | Specify an array of examples to show when using `--help`. Each example can have multiple lines.
+`environment_variables` | Specify an array of environment variables needed by your script. 
+`commands` | Specify the array of subcommands. Each subcommand will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
+`args`     | Specify the array of positional arguments this script needs.
+`flags`    | Specify the array of option flags this script needs.
+`dependencies` | Specify an array of any required external dependencies (commands). The script execution will be halted with a friendly error unless all dependency commands exist.
 
 ### Argument options
-
-The below configuration generates this argument:
-
-```
-  Usage: 
-    myscript USER
-
-  Arguments:
-    USER
-      Username to use for logging in
-```
 
 The argument's value will be available to you as `${args[user]}` in your 
 bash function.
 
-```yaml
-# The name of the argument.
-name: user
-
-# The message to display when using --help.
-# This can have multiple lines.
-help: Username to use for logging in
-
-# Specify if this argument is required.
-# Note that once you define an optional argument (without required: true)
-# then you cannot define required arguments after it.
-required: true
-```
+ Option    | Description
+-----------|-------------
+`name`     | The name of the argument.
+`help`     | The message to display when using `--help`. Can have multiple lines.
+`required` | Specify if this argument is required. Note that once you define an optional argument (without required: true) then you cannot define required arguments after it.
 
 ### Flag options
-
-The below configuration generates this flag:
-
-```
-  Options:
-    -o, --output DIRECTORY (required)
-      Specify the output directory
-```
 
 The flag's value will be available to you as `${args[--output]}` in your 
 bash function (regardless of whether the user provided ut with the long or 
 short form).
 
-```yaml
-# The long form of the flag.
-long: --output
-
-# The short form of the flag.
-short: -o
-
-# The text to display when using --help
-# This can have multiple lines.
-help: Specify the output directory
-
-# If the flag requires an argument, specify its name here.
-arg: directory
-
-# Specify if this flag is required.
-required: true
-```
+ Option    | Description
+-----------|-------------
+`long`     | The long form of the flag.
+`short`    | The short form of the flag.
+`help`     | The text to display when using `--help`. Can have multiple lines.
+`arg`      | If the flag requires an argument, specify its name here.
+`required` | Specify if this flag is required.
 
 ### Environment Variable options
 
 The below configuration generates this environment variable usage text:
 
-```
-  Environment Variables:
-    SECRET_KEY (required)
-      Your API secret key
-```
-
 If an environment variable is defined as required (false by default), the
 execution of the script will be halted with a friendly error if it is not
 set.
 
-```yaml
-# The name of the variable (it will be automatically capitalized).
-name: secret_key
-
-# The message to display when using --help.
-# This can have multiple lines.
-help: Your API secret key
-
-# Specify if this variable is required.
-required: true
-```
-
+ Option    | Description
+-----------|-------------
+`name`     | The name of the variable (it will be automatically capitalized).
+`help`     | The message to display when using --help. Can have multiple lines.
+`required` | Specify if this variable is required.
 
 
 Real World Examples
