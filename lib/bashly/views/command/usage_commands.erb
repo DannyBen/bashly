@@ -2,6 +2,8 @@
 echo -e "<%= strings[:commands] %>"
 <%- maxlen = command_names.map(&:size).max -%>
 <%- commands.each do |command| -%>
-echo "  <%= command.name.ljust maxlen %>   <%= command.summary %>"
+<%- summary = command.summary -%>
+<%- summary = "#{summary} (default)" if command.default -%>
+echo "  <%= command.name.ljust maxlen %>   <%= summary %>"
 <%- end -%>
 echo

@@ -15,6 +15,11 @@
     required: true
   - long: --verbose
 
+  environment_variables:
+  - name: secret_key
+    required: true
+  - name: target_folder
+
 :git_status:
   name: status
   help: perform git status
@@ -57,3 +62,12 @@
   - name: sub
   flags:
   - long: --force
+
+:default_command:
+  commands:
+  - name: get
+    default: true
+  - name: post
+  - name: put
+
+
