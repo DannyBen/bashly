@@ -276,6 +276,7 @@ configly_list_command() {
 
 # :command.parse_args
 parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -348,6 +349,7 @@ parse_args() {
 
 # :command.parse_args
 configly_set_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -411,6 +413,7 @@ configly_set_parse_args() {
 
 # :command.parse_args
 configly_get_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -463,6 +466,7 @@ configly_get_parse_args() {
 
 # :command.parse_args
 configly_list_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )

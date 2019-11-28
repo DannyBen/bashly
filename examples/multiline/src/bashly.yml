@@ -45,5 +45,6 @@ examples:
       multi multiline --flag
 
 environment_variables:
-  MULTI_VITAMIN: |-
+- name: multi_vitamin
+  help: |-
     Environment variables can also use multiple lines. This can be useful if we need to explain - in excruciating detail - what the environemnt variable is used for.

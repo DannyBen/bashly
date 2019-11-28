@@ -16,4 +16,5 @@ invalid_argument: "invalid argument: %{arg}"
 invalid_flag: "invalid option: %{flag}"
 missing_required_argument: "missing required argument: %{arg}\\nusage: %{usage}"
 missing_required_flag: "missing required flag: %{usage}"
+missing_required_environment_variable: "missing required environment variable: %{var}"
 

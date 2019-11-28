@@ -39,8 +39,8 @@ describe Array do
       end
     end
 
-    context "with any string with spaces" do
-      subject { "in any case" }
+    context "with any string with spaces and hyphens" do
+      subject { "in any-case" }
 
       it "returns its snake_case version" do
         expect(subject.to_underscore).to eq "in_any_case"

@@ -77,6 +77,7 @@ inspect_args() {
 
 # :command.parse_args
 parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )

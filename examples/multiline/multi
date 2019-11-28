@@ -41,6 +41,8 @@ multi_usage() {
 
     # :command.usage_environment_variables
     echo -e "Environment Variables:"
+    
+    # :environment_variable.usage
     echo "  MULTI_VITAMIN"
     echo -e "    Environment variables can also use multiple lines. This can be useful if we\n    need to explain - in excruciating detail - what the environemnt variable is\n    used for."
     echo
@@ -150,6 +152,7 @@ multi_regular_command() {
 
 # :command.parse_args
 parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -215,6 +218,7 @@ parse_args() {
 
 # :command.parse_args
 multi_multiline_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -266,6 +270,7 @@ multi_multiline_parse_args() {
 
 # :command.parse_args
 multi_regular_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )

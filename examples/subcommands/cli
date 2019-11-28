@@ -39,6 +39,8 @@ cli_usage() {
 
     # :command.usage_environment_variables
     echo -e "Environment Variables:"
+    
+    # :environment_variable.usage
     echo "  API_KEY"
     echo -e "    Set your API key"
     echo
@@ -85,6 +87,8 @@ cli_download_usage() {
     echo
     # :command.usage_environment_variables
     echo -e "Environment Variables:"
+    
+    # :environment_variable.usage
     echo "  DEFAULT_TARGET_LOCATION"
     echo -e "    Set the default location to download to"
     echo
@@ -166,6 +170,7 @@ cli_upload_command() {
 
 # :command.parse_args
 parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -231,6 +236,7 @@ parse_args() {
 
 # :command.parse_args
 cli_download_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -292,6 +298,7 @@ cli_download_parse_args() {
 
 # :command.parse_args
 cli_upload_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )

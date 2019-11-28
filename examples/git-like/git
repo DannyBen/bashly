@@ -125,6 +125,7 @@ git_commit_command() {
 
 # :command.parse_args
 parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -190,6 +191,7 @@ parse_args() {
 
 # :command.parse_args
 git_status_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -230,6 +232,7 @@ git_status_parse_args() {
 
 # :command.parse_args
 git_commit_parse_args() {
+  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )

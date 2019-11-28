@@ -1,0 +1,9 @@
+# :command.environment_variables_filter
+<%- if required_environment_variables.any? -%>
+<%- required_environment_variables.each do |env_var| -%>
+if [[ -z "$<%= env_var.name.upcase %>" ]]; then
+  echo -e "<%= strings[:missing_required_environment_variable] % { var: env_var.name.upcase } -%>"
+  exit 1
+fi
+<%- end -%>
+<%- end -%>

@@ -4,6 +4,7 @@ parse_args() {
 <%- else -%>
 <%= function_name %>_parse_args() {
 <%- end -%>
+<%= render(:environment_variables_filter).indent 2 %>
 <%= render(:fixed_flags_filter).indent 2 %>
 <%= render(:command_filter).indent 2 %>
 <%= render(:required_args_filter).indent 2 %>
@@ -12,5 +13,5 @@ parse_args() {
 }
 
 <%- commands.each do |command| %>
-<%= command.render 'parse_args' %>
+<%= command.render :parse_args %>
 <%- end -%>
