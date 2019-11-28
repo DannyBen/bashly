@@ -90,6 +90,22 @@ describe Models::Command do
     end
   end
 
+  describe '#default_command' do
+    let(:fixture) { :default_command }
+
+    it "returns a Command object of the first default command" do
+      expect(subject.default_command).to be_a Models::Command
+      expect(subject.default_command.name).to eq 'get'
+    end    
+  end
+
+  describe '#environment_cariables' do
+    it "returns an array of EnvironemntVariable objects" do
+      expect(subject.environment_variables).to be_an Array
+      expect(subject.environment_variables.first).to be_a Models::EnvironmentVariable
+    end
+  end
+
   describe '#filename' do
     context "when it is the root command" do
       it "returns root_command.sh" do
@@ -166,6 +182,13 @@ describe Models::Command do
     it "returns an array of only the required Argument objects" do
       expect(subject.required_args.size).to eq 1
       expect(subject.required_args.first.name).to eq "source"
+    end
+  end
+
+  describe '#required_environment_variables' do
+    it "returns an array of only the required Argument objects" do
+      expect(subject.required_environment_variables.size).to eq 1
+      expect(subject.required_environment_variables.first.name).to eq "secret_key"
     end
   end
 

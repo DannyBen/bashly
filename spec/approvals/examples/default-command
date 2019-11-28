@@ -1,0 +1,56 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mcreated [0;32msrc/initialize.sh
+[0mcreated [0;32msrc/upload_command.sh
+[0mcreated [0;32msrc/download_command.sh
+[0mcreated [0;32m./ftp
+[0mrun [0;35m./ftp --help[0m to test your bash script
++ ./ftp
+ftp - Sample application that uses the default command option
+
+Usage:
+  ftp [command] [options]
+  ftp [command] --help | -h
+  ftp --version
+
+Commands:
+  upload     Upload a file (default)
+  download   Download a file
+
++ ./ftp -h
+ftp - Sample application that uses the default command option
+
+Usage:
+  ftp [command] [options]
+  ftp [command] --help | -h
+  ftp --version
+
+Commands:
+  upload     Upload a file (default)
+  download   Download a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
++ ./ftp download something
+# this file is located in 'src/download_command.sh'
+# code for 'ftp download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = something
++ ./ftp upload something
+# this file is located in 'src/upload_command.sh'
+# code for 'ftp upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = something
++ ./ftp something
+# this file is located in 'src/upload_command.sh'
+# code for 'ftp upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = something

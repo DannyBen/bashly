@@ -1,0 +1,23 @@
+name: ftp
+help: Sample application that uses the default command option
+version: 0.1.0
+
+commands:
+- name: upload
+  short: u
+  help: Upload a file
+  default: true
+  args:
+  - name: source
+    required: true
+    help: File to upload
+
+- name: download
+  short: d
+  help: Download a file
+
+  args:
+  - name: source
+    required: true
+    help: File to download
+

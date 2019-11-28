@@ -9,6 +9,7 @@ module Bashly
         arg
         dependencies
         description
+        default
         environment_variables
         examples
         flags

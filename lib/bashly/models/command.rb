@@ -55,6 +55,12 @@ module Bashly
         result
       end
 
+      # If any of this command's subcommands has the default option set to
+      # true, this default command will be returned, nil otherwise.
+      def default_command
+        commands.find { |c| c.default }
+      end
+
       # Returns an array of EnvironmentVariables
       def environment_variables
         return [] unless options["environment_variables"]
