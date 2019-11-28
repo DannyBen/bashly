@@ -119,6 +119,15 @@ See the [examples](examples) folder for more examples.
 Configuration Reference
 --------------------------------------------------
 
+The `bashly.yml` configuration file consists of these types:
+
+- [Command](#command-options) - defines the root command as well as any 
+  subcommand.
+- [Argument](#argument-options) - defines positional arguments.
+- [Flag](#flag-options) - defines option flags.
+- [Environment Variable](#environment-variable-options) - defines 
+  environment variables required (or desired) by your script.
+
 ### Command options
 
 Unless otherwise specified, these definitiona can be used for both the root
@@ -149,11 +158,9 @@ examples:
 - myscript download
 - myscript download --force
 
-# Specify an array of environment variables needed by your script
-# This is used purely for displaying in the help text (when using --help)
-# The help for each variable can have multiple lines.
-environment_variable:
-  VARIABLE_NAME: Variable help text
+# Specify an array of environment variables needed by your script.
+environment_variables:
+- ... see below ...
 
 # Specify the array of subcommands to generate.
 # Each subcommand will have its own args and flags.
@@ -164,12 +171,12 @@ commands:
 # Specify the array of positional arguments this script needs.
 # If this is provided, then you cannot specify commands.
 args:
-- ...
+- ... see below ...
 
 # Specify the array of option flags this script needs.
 # If this is provided, then you cannot specify commands.
 flags:
-- ...
+- ... see below ...
 ```
 
 
@@ -208,8 +215,9 @@ required: true
 The below configuration generates this flag:
 
 ```
-   -o, --output DIRECTORY (required)
-     Specify the output directory
+  Options:
+    -o, --output DIRECTORY (required)
+      Specify the output directory
 ```
 
 The flag's value will be available to you as `${args[--output]}` in your 
@@ -233,6 +241,33 @@ arg: directory
 # Specify if this flag is required.
 required: true
 ```
+
+### Environment Variable options
+
+The below configuration generates this environment variable usage text:
+
+```
+  Environment Variables:
+    SECRET_KEY (required)
+      Your API secret key
+```
+
+If an environment variable is defined as required (false by default), the
+execution of the script will be halted with a friendly error if it is not
+set.
+
+```yaml
+# The name of the variable (it will be automatically capitalized).
+name: secret_key
+
+# The message to display when using --help.
+# This can have multiple lines.
+help: Your API secret key
+
+# Specify if this variable is required.
+required: true
+```
+
 
 
 Real World Examples

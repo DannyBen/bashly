@@ -3,7 +3,8 @@ help: Sample application
 version: 0.1.0
 
 environment_variables:
-  API_KEY: Set your API key
+- name: api_key
+  help: Set your API key
 
 commands:
 - name: download
@@ -27,7 +28,8 @@ commands:
   - cli download example.com ./output -f
 
   environment_variables:
-    DEFAULT_TARGET_LOCATION: Set the default location to download to
+  - name: default_target_location
+    help: Set the default location to download to
 
 - name: upload
   short: u

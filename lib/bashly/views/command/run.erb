@@ -1,7 +1,7 @@
 # :command.run
 run() {
   declare -A args
-  parse_args "$@"
+  parse_requirements "$@"
 
   <%- condition = "if" -%>
   <%- deep_commands.each do |command| -%>

@@ -1,7 +1,6 @@
 # :command.usage_environment_variables
 echo -e "<%= strings[:environment_variables] %>"
-<%- environment_variables.each do |name, description| -%>
-echo "  <%= name %>"
-echo -e "<%= description.wrap(76).indent(4).sanitize_for_print %>"
+
+<%- environment_variables.each do |env_var| -%>
+<%= env_var.render(:usage) %>
 <%- end -%>
-echo

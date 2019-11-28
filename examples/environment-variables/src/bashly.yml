@@ -1,0 +1,17 @@
+name: cli
+help: Sample application that requires environment variables
+version: 0.1.0
+
+environment_variables:
+- name: api_key
+  help: Set your API key
+
+commands:
+- name: verify
+  short: v
+  help: Verify your user
+
+  environment_variables:
+  - name: my_secret
+    help: Your secret
+    required: true

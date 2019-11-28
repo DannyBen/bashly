@@ -55,6 +55,14 @@ module Bashly
         result
       end
 
+      # Returns an array of EnvironmentVariables
+      def environment_variables
+        return [] unless options["environment_variables"]
+        options["environment_variables"].map do |options|
+          EnvironmentVariable.new options
+        end
+      end
+
       # Returns the bash filename that is expected to hold the user code
       # for this command
       def filename
@@ -105,6 +113,11 @@ module Bashly
       # Returns an array of all the required Arguments
       def required_args
         args.select &:required
+      end
+
+      # Returns an array of all the required EnvironmentVariables
+      def required_environment_variables
+        environment_variables.select &:required
       end
 
       # Returns an array of all the required Flags

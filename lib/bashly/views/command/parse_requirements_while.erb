@@ -1,4 +1,4 @@
-# :command.parse_args_while
+# :command.parse_requirements_while
 while [[ $# -gt 0 ]]; do
   key="$1"
   case "$key" in
@@ -13,7 +13,7 @@ while [[ $# -gt 0 ]]; do
     ;;
 
   * )
-<%= render(:parse_args_case).indent 4 %>
+<%= render(:parse_requirements_case).indent 4 %>
     ;;
 
   esac
