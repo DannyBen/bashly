@@ -125,7 +125,7 @@ The `bashly.yml` configuration file consists of these types:
   subcommand.
 - [Argument](#argument-options) - defines positional arguments.
 - [Flag](#flag-options) - defines option flags.
-- [Environment Variables](#environment-variables-options) - defines 
+- [Environment Variable](#environment-variable-options) - defines 
   environment variables required (or desired) by your script.
 
 ### Command options
@@ -215,8 +215,9 @@ required: true
 The below configuration generates this flag:
 
 ```
-   -o, --output DIRECTORY (required)
-     Specify the output directory
+  Options:
+    -o, --output DIRECTORY (required)
+      Specify the output directory
 ```
 
 The flag's value will be available to you as `${args[--output]}` in your 
