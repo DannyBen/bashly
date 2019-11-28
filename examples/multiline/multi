@@ -152,7 +152,6 @@ multi_regular_command() {
 
 # :command.parse_requirements
 parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -167,6 +166,7 @@ parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action=$1
   
@@ -218,7 +218,6 @@ parse_requirements() {
 
 # :command.parse_requirements
 multi_multiline_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -233,6 +232,7 @@ multi_multiline_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="multiline"
   # :command.required_args_filter
@@ -270,7 +270,6 @@ multi_multiline_parse_requirements() {
 
 # :command.parse_requirements
 multi_regular_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -285,6 +284,7 @@ multi_regular_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="regular"
   # :command.required_args_filter

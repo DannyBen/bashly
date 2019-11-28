@@ -68,7 +68,6 @@ inspect_args() {
 
 # :command.parse_requirements
 parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -83,6 +82,7 @@ parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="root"
   # :command.required_args_filter

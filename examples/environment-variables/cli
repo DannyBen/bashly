@@ -8,23 +8,22 @@ version_command() {
 }
 
 # :command.usage
-git_usage() {
+cli_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "git - Git example"
+    echo -e "cli - Sample application that requires environment variables"
     echo 
   else
-    echo -e "git - Git example"
+    echo -e "cli - Sample application that requires environment variables"
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  git [command] [options]"
-  echo -e "  git [command] --help | -h"
-  echo -e "  git --version"
+  echo -e "  cli [command] [options]"
+  echo -e "  cli [command] --help | -h"
+  echo -e "  cli --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
-  echo "  status   Show repository status"
-  echo "  commit   Commit changes"
+  echo "  verify   Verify your user"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -37,62 +36,44 @@ git_usage() {
     echo -e "    Show version number"
     echo
 
-  fi
-}
-
-# :command.usage
-git_status_usage() {
-  if [[ -n $long_usage ]]; then
-    echo -e "git status - Show repository status"
-    echo 
-  else
-    echo -e "git status - Show repository status"
-    echo 
-  fi
-  echo -e "Usage:"
-  echo -e "  git status [options]"
-  echo -e "  git status --help | -h"
-  echo
-
-  if [[ -n $long_usage ]]; then
-    echo -e "Options:"
-    # :command.usage_fixed_flags
-    echo "  --help, -h"
-    echo -e "    Show this help"
-    echo
-
-  fi
-}
-
-# :command.usage
-git_commit_usage() {
-  if [[ -n $long_usage ]]; then
-    echo -e "git commit - Commit changes"
-    echo 
-  else
-    echo -e "git commit - Commit changes"
-    echo 
-  fi
-  echo -e "Usage:"
-  echo -e "  git commit [options]"
-  echo -e "  git commit --help | -h"
-  echo
-
-  if [[ -n $long_usage ]]; then
-    echo -e "Options:"
-    # :command.usage_fixed_flags
-    echo "  --help, -h"
-    echo -e "    Show this help"
-    echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --message, -m MESSAGE"
-    echo -e "    Commit message"
-    echo
+    # :command.usage_environment_variables
+    echo -e "Environment Variables:"
     
-    # :flag.usage
-    echo "  --all, -a"
-    echo -e "    Automatically stage files"
+    # :environment_variable.usage
+    echo "  API_KEY"
+    echo -e "    Set your API key"
+    echo
+
+  fi
+}
+
+# :command.usage
+cli_verify_usage() {
+  if [[ -n $long_usage ]]; then
+    echo -e "cli verify - Verify your user"
+    echo 
+  else
+    echo -e "cli verify - Verify your user"
+    echo 
+  fi
+  echo -e "Usage:"
+  echo -e "  cli verify [options]"
+  echo -e "  cli verify --help | -h"
+  echo
+
+  if [[ -n $long_usage ]]; then
+    echo -e "Options:"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    echo -e "    Show this help"
+    echo
+
+    # :command.usage_environment_variables
+    echo -e "Environment Variables:"
+    
+    # :environment_variable.usage
+    echo "  MY_SECRET (required)"
+    echo -e "    Your secret"
     echo
 
   fi
@@ -106,21 +87,15 @@ inspect_args() {
 
 # :command.command_functions
 # :command.function
-git_status_command() {
-  # :src/status_command.sh
-  echo "# this file is located in 'src/status_command.sh'"
-  echo "# code for 'git status' goes here"
+cli_verify_command() {
+  # :src/verify_command.sh
+  echo "# this file is located in 'src/verify_command.sh'"
+  echo "# code for 'cli verify' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
-}
-
-# :command.function
-git_commit_command() {
-  # :src/commit_command.sh
-  echo "# this file is located in 'src/commit_command.sh'"
-  echo "# code for 'git commit' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  
+  echo "environment:"
+  echo "- MY_SECRET=$MY_SECRET"
 }
 
 # :command.parse_requirements
@@ -134,7 +109,7 @@ parse_requirements() {
   
   --help | -h ) 
     long_usage=yes
-    git_usage
+    cli_usage
     exit 1
     ;;
   
@@ -147,22 +122,15 @@ parse_requirements() {
   -* )
     ;;
   
-  status | s* )
-    action="status"
+  verify | v )
+    action="verify"
     shift
-    git_status_parse_requirements "$@"
-    shift $#
-    ;;    
-  
-  commit | c* )
-    action="commit"
-    shift
-    git_commit_parse_requirements "$@"
+    cli_verify_parse_requirements "$@"
     shift $#
     ;;    
   
   * )
-    git_usage
+    cli_usage
     exit 1
     ;;
   
@@ -190,7 +158,7 @@ parse_requirements() {
 }
 
 # :command.parse_requirements
-git_status_parse_requirements() {
+cli_verify_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -200,79 +168,24 @@ git_status_parse_requirements() {
   
   --help | -h ) 
     long_usage=yes
-    git_status_usage
+    cli_verify_usage
     exit 1
     ;;
   
   esac
   # :command.environment_variables_filter
+  if [[ -z "$MY_SECRET" ]]; then
+    echo -e "missing required environment variable: MY_SECRET"
+    exit 1
+  fi
   # :command.command_filter
-  action="status"
+  action="verify"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
-    -* )
-      echo -e "invalid option: $key"
-      exit 1
-      ;;
-  
-    * )
-      # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
-      exit 1
-      ;;
-  
-    esac
-  done
-}
-
-# :command.parse_requirements
-git_commit_parse_requirements() {
-  # :command.fixed_flag_filter
-  case "$1" in
-  --version )
-    version_command
-    exit 1
-    ;;
-  
-  --help | -h ) 
-    long_usage=yes
-    git_commit_usage
-    exit 1
-    ;;
-  
-  esac
-  # :command.environment_variables_filter
-  # :command.command_filter
-  action="commit"
-  # :command.required_args_filter
-  # :command.required_flags_filter
-  # :command.parse_requirements_while
-  while [[ $# -gt 0 ]]; do
-    key="$1"
-    case "$key" in
-    # :flag.case
-    --message | -m )
-      if [[ $2 && $2 != -* ]]; then
-        args[--message]="$2"
-        shift
-        shift
-      else
-        echo -e "--message requires an argument: --message, -m MESSAGE"
-        exit 1
-      fi
-      ;;
-  
-    # :flag.case
-    --all | -a )
-      args[--all]=1
-      shift
-      ;;
-  
   
     -* )
       echo -e "invalid option: $key"
@@ -309,27 +222,19 @@ run() {
   declare -A args
   parse_requirements "$@"
 
-  if [[ $action == "status" ]]; then
+  if [[ $action == "verify" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      git_status_usage
+      cli_verify_usage
     else
-      git_status_command
-    fi
-  
-  elif [[ $action == "commit" ]]; then
-    if [[ ${args[--help]} ]]; then
-      long_usage=yes
-      git_commit_usage
-    else
-      git_commit_command
+      cli_verify_command
     fi
   
   elif [[ ${args[--version]} ]]; then
     version_command
   elif [[ ${args[--help]} ]]; then
     long_usage=yes
-    git_usage
+    cli_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

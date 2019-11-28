@@ -170,7 +170,6 @@ cli_upload_command() {
 
 # :command.parse_requirements
 parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -185,6 +184,7 @@ parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action=$1
   
@@ -236,7 +236,6 @@ parse_requirements() {
 
 # :command.parse_requirements
 cli_download_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -251,6 +250,7 @@ cli_download_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="download"
   # :command.required_args_filter
@@ -298,7 +298,6 @@ cli_download_parse_requirements() {
 
 # :command.parse_requirements
 cli_upload_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -313,6 +312,7 @@ cli_upload_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="upload"
   # :command.required_args_filter

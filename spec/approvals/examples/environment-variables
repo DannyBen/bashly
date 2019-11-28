@@ -1,0 +1,64 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/initialize.sh[0m (exists)
+skipped [0;32msrc/verify_command.sh[0m (exists)
+created [0;32m./cli
+[0mrun [0;35m./cli --help[0m to test your bash script
++ ./cli
+cli - Sample application that requires environment variables
+
+Usage:
+  cli [command] [options]
+  cli [command] --help | -h
+  cli --version
+
+Commands:
+  verify   Verify your user
+
++ ./cli -h
+cli - Sample application that requires environment variables
+
+Usage:
+  cli [command] [options]
+  cli [command] --help | -h
+  cli --version
+
+Commands:
+  verify   Verify your user
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
+Environment Variables:
+  API_KEY
+    Set your API key
+
++ ./cli verify -h
+cli verify - Verify your user
+
+Usage:
+  cli verify [options]
+  cli verify --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Environment Variables:
+  MY_SECRET (required)
+    Your secret
+
++ ./cli verify
+missing required environment variable: MY_SECRET
++ MY_SECRET='there is no spoon'
++ ./cli verify
+# this file is located in 'src/verify_command.sh'
+# code for 'cli verify' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+environment:
+- MY_SECRET=there is no spoon

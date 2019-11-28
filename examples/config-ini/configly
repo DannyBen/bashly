@@ -276,7 +276,6 @@ configly_list_command() {
 
 # :command.parse_requirements
 parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -291,6 +290,7 @@ parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action=$1
   
@@ -349,7 +349,6 @@ parse_requirements() {
 
 # :command.parse_requirements
 configly_set_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -364,6 +363,7 @@ configly_set_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="set"
   # :command.required_args_filter
@@ -413,7 +413,6 @@ configly_set_parse_requirements() {
 
 # :command.parse_requirements
 configly_get_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -428,6 +427,7 @@ configly_get_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="get"
   # :command.required_args_filter
@@ -466,7 +466,6 @@ configly_get_parse_requirements() {
 
 # :command.parse_requirements
 configly_list_parse_requirements() {
-  # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -481,6 +480,7 @@ configly_list_parse_requirements() {
     ;;
   
   esac
+  # :command.environment_variables_filter
   # :command.command_filter
   action="list"
   # :command.required_args_filter
