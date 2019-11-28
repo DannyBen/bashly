@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Array do
-  describe '#escape_newlines' do
-    subject { "hello\nworld" }
-    it "escapes newlines" do
-      expect(subject.escape_newlines).to eq "hello\\nworld"
+  describe '#sanitize_for_print' do
+    subject { %Q[this is\na "new line"] }
+    it "escapes newlines and quotes" do
+      expect(subject.sanitize_for_print).to eq "this is\\na \\\"new line\\\""
     end
   end
 

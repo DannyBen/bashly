@@ -1,4 +1,4 @@
 # :flag.usage
 echo "  <%= usage_string extended: true %>"
-echo -e "<%= help.wrap(76).indent(4).escape_newlines %>"
+echo -e "<%= help.wrap(76).indent(4).sanitize_for_print %>"
 echo
