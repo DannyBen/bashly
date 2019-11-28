@@ -291,6 +291,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -364,6 +365,7 @@ configly_set_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="set"
   # :command.required_args_filter
@@ -428,6 +430,7 @@ configly_get_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="get"
   # :command.required_args_filter
@@ -481,6 +484,7 @@ configly_list_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="list"
   # :command.required_args_filter

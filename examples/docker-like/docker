@@ -237,6 +237,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -303,6 +304,7 @@ docker_container_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -369,6 +371,7 @@ docker_container_run_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="container run"
   # :command.required_args_filter
@@ -422,6 +425,7 @@ docker_container_stop_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="container stop"
   # :command.required_args_filter
@@ -475,6 +479,7 @@ docker_image_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -534,6 +539,7 @@ docker_image_ls_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="image ls"
   # :command.required_args_filter
