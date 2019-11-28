@@ -150,8 +150,8 @@ multi_regular_command() {
   inspect_args
 }
 
-# :command.parse_args
-parse_args() {
+# :command.parse_requirements
+parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -177,14 +177,14 @@ parse_args() {
   multiline )
     action="multiline"
     shift
-    multi_multiline_parse_args "$@"
+    multi_multiline_parse_requirements "$@"
     shift $#
     ;;    
   
   regular )
     action="regular"
     shift
-    multi_regular_parse_args "$@"
+    multi_regular_parse_requirements "$@"
     shift $#
     ;;    
   
@@ -196,7 +196,7 @@ parse_args() {
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -207,7 +207,7 @@ parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -216,8 +216,8 @@ parse_args() {
   done
 }
 
-# :command.parse_args
-multi_multiline_parse_args() {
+# :command.parse_requirements
+multi_multiline_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -237,7 +237,7 @@ multi_multiline_parse_args() {
   action="multiline"
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -254,7 +254,7 @@ multi_multiline_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[my_arg]} ]]; then
         args[my_arg]=$1
         shift
@@ -268,8 +268,8 @@ multi_multiline_parse_args() {
   done
 }
 
-# :command.parse_args
-multi_regular_parse_args() {
+# :command.parse_requirements
+multi_regular_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -289,7 +289,7 @@ multi_regular_parse_args() {
   action="regular"
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -300,7 +300,7 @@ multi_regular_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[repo]} ]]; then
         args[repo]=$1
         shift
@@ -332,7 +332,7 @@ initialize() {
 # :command.run
 run() {
   declare -A args
-  parse_args "$@"
+  parse_requirements "$@"
 
   if [[ $action == "multiline" ]]; then
     if [[ ${args[--help]} ]]; then

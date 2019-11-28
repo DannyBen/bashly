@@ -220,8 +220,8 @@ docker_image_ls_command() {
   inspect_args
 }
 
-# :command.parse_args
-parse_args() {
+# :command.parse_requirements
+parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -247,14 +247,14 @@ parse_args() {
   container | c* )
     action="container"
     shift
-    docker_container_parse_args "$@"
+    docker_container_parse_requirements "$@"
     shift $#
     ;;    
   
   image | i* )
     action="image"
     shift
-    docker_image_parse_args "$@"
+    docker_image_parse_requirements "$@"
     shift $#
     ;;    
   
@@ -266,7 +266,7 @@ parse_args() {
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -277,7 +277,7 @@ parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -286,8 +286,8 @@ parse_args() {
   done
 }
 
-# :command.parse_args
-docker_container_parse_args() {
+# :command.parse_requirements
+docker_container_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -313,14 +313,14 @@ docker_container_parse_args() {
   run )
     action="run"
     shift
-    docker_container_run_parse_args "$@"
+    docker_container_run_parse_requirements "$@"
     shift $#
     ;;    
   
   stop )
     action="stop"
     shift
-    docker_container_stop_parse_args "$@"
+    docker_container_stop_parse_requirements "$@"
     shift $#
     ;;    
   
@@ -332,7 +332,7 @@ docker_container_parse_args() {
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -343,7 +343,7 @@ docker_container_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -352,8 +352,8 @@ docker_container_parse_args() {
   done
 }
 
-# :command.parse_args
-docker_container_run_parse_args() {
+# :command.parse_requirements
+docker_container_run_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -380,7 +380,7 @@ docker_container_run_parse_args() {
     exit 1
   fi
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -391,7 +391,7 @@ docker_container_run_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[image]} ]]; then
         args[image]=$1
         shift
@@ -405,8 +405,8 @@ docker_container_run_parse_args() {
   done
 }
 
-# :command.parse_args
-docker_container_stop_parse_args() {
+# :command.parse_requirements
+docker_container_stop_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -433,7 +433,7 @@ docker_container_stop_parse_args() {
     exit 1
   fi
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -444,7 +444,7 @@ docker_container_stop_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[container]} ]]; then
         args[container]=$1
         shift
@@ -458,8 +458,8 @@ docker_container_stop_parse_args() {
   done
 }
 
-# :command.parse_args
-docker_image_parse_args() {
+# :command.parse_requirements
+docker_image_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -485,7 +485,7 @@ docker_image_parse_args() {
   ls | l )
     action="ls"
     shift
-    docker_image_ls_parse_args "$@"
+    docker_image_ls_parse_requirements "$@"
     shift $#
     ;;    
   
@@ -497,7 +497,7 @@ docker_image_parse_args() {
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -508,7 +508,7 @@ docker_image_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -517,8 +517,8 @@ docker_image_parse_args() {
   done
 }
 
-# :command.parse_args
-docker_image_ls_parse_args() {
+# :command.parse_requirements
+docker_image_ls_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -538,7 +538,7 @@ docker_image_ls_parse_args() {
   action="image ls"
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -549,7 +549,7 @@ docker_image_ls_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -576,7 +576,7 @@ initialize() {
 # :command.run
 run() {
   declare -A args
-  parse_args "$@"
+  parse_requirements "$@"
 
   if [[ $action == "container" ]]; then
     if [[ ${args[--help]} ]]; then

@@ -1,17 +1,17 @@
-# :command.parse_args
+# :command.parse_requirements
 <%- if root_command? -%>
-parse_args() {
+parse_requirements() {
 <%- else -%>
-<%= function_name %>_parse_args() {
+<%= function_name %>_parse_requirements() {
 <%- end -%>
 <%= render(:environment_variables_filter).indent 2 %>
 <%= render(:fixed_flags_filter).indent 2 %>
 <%= render(:command_filter).indent 2 %>
 <%= render(:required_args_filter).indent 2 %>
 <%= render(:required_flags_filter).indent 2 %>
-<%= render(:parse_args_while).indent 2 %>
+<%= render(:parse_requirements_while).indent 2 %>
 }
 
 <%- commands.each do |command| %>
-<%= command.render :parse_args %>
+<%= command.render :parse_requirements %>
 <%- end -%>

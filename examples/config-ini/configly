@@ -274,8 +274,8 @@ configly_list_command() {
   config_show
 }
 
-# :command.parse_args
-parse_args() {
+# :command.parse_requirements
+parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -301,21 +301,21 @@ parse_args() {
   set | s )
     action="set"
     shift
-    configly_set_parse_args "$@"
+    configly_set_parse_requirements "$@"
     shift $#
     ;;    
   
   get | g )
     action="get"
     shift
-    configly_get_parse_args "$@"
+    configly_get_parse_requirements "$@"
     shift $#
     ;;    
   
   list | l )
     action="list"
     shift
-    configly_list_parse_args "$@"
+    configly_list_parse_requirements "$@"
     shift $#
     ;;    
   
@@ -327,7 +327,7 @@ parse_args() {
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -338,7 +338,7 @@ parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -347,8 +347,8 @@ parse_args() {
   done
 }
 
-# :command.parse_args
-configly_set_parse_args() {
+# :command.parse_requirements
+configly_set_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -383,7 +383,7 @@ configly_set_parse_args() {
     exit 1
   fi
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -394,7 +394,7 @@ configly_set_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[key]} ]]; then
         args[key]=$1
         shift
@@ -411,8 +411,8 @@ configly_set_parse_args() {
   done
 }
 
-# :command.parse_args
-configly_get_parse_args() {
+# :command.parse_requirements
+configly_get_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -439,7 +439,7 @@ configly_get_parse_args() {
     exit 1
   fi
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -450,7 +450,7 @@ configly_get_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[key]} ]]; then
         args[key]=$1
         shift
@@ -464,8 +464,8 @@ configly_get_parse_args() {
   done
 }
 
-# :command.parse_args
-configly_list_parse_args() {
+# :command.parse_requirements
+configly_list_parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -485,7 +485,7 @@ configly_list_parse_args() {
   action="list"
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -496,7 +496,7 @@ configly_list_parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       echo -e "invalid argument: $key"
       exit 1
       ;;
@@ -523,7 +523,7 @@ initialize() {
 # :command.run
 run() {
   declare -A args
-  parse_args "$@"
+  parse_requirements "$@"
 
   if [[ $action == "set" ]]; then
     if [[ ${args[--help]} ]]; then

@@ -71,8 +71,8 @@ my_extra_function() {
 
 # :command.command_functions
 
-# :command.parse_args
-parse_args() {
+# :command.parse_requirements
+parse_requirements() {
   # :command.environment_variables_filter
   # :command.fixed_flag_filter
   case "$1" in
@@ -92,7 +92,7 @@ parse_args() {
   action="root"
   # :command.required_args_filter
   # :command.required_flags_filter
-  # :command.parse_args_while
+  # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -103,7 +103,7 @@ parse_args() {
       ;;
   
     * )
-      # :command.parse_args_case
+      # :command.parse_requirements_case
       if [[ ! ${args[source]} ]]; then
         args[source]=$1
         shift
@@ -135,7 +135,7 @@ initialize() {
 # :command.run
 run() {
   declare -A args
-  parse_args "$@"
+  parse_requirements "$@"
 
   if [[ ${args[--version]} ]]; then
     version_command
