@@ -7,7 +7,7 @@
     <%- else -%>
     echo -e "<%= full_name %>"
     echo 
-    echo -e "<%= help.wrap(78).indent(2).escape_newlines %>"
+    echo -e "<%= help.wrap(78).indent(2).sanitize_for_print %>"
     echo 
     <%- end -%>
   else

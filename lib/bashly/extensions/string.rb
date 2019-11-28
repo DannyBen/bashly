@@ -1,6 +1,6 @@
 class String
-  def escape_newlines
-    gsub "\n", "\\n"
+  def sanitize_for_print
+    gsub("\n", "\\n").gsub("\"", "\\\"")
   end
 
   def indent(offset)

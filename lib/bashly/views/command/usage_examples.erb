@@ -2,6 +2,6 @@
 echo -e "<%= strings[:examples] %>"
 
 <%- examples.each do |example| -%>
-echo -e "<%= example.wrap(78).indent(2).escape_newlines %>"
+echo -e "<%= example.wrap(78).indent(2).sanitize_for_print %>"
 <%- end -%>
 echo

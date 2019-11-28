@@ -2,6 +2,6 @@
 echo -e "<%= strings[:environment_variables] %>"
 <%- environment_variables.each do |name, description| -%>
 echo "  <%= name %>"
-echo -e "<%= description.wrap(76).indent(4).escape_newlines %>"
+echo -e "<%= description.wrap(76).indent(4).sanitize_for_print %>"
 <%- end -%>
 echo
