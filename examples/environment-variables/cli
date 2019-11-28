@@ -115,6 +115,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -178,6 +179,7 @@ cli_verify_parse_requirements() {
     echo -e "missing required environment variable: MY_SECRET"
     exit 1
   fi
+  # :command.dependencies_filter
   # :command.command_filter
   action="verify"
   # :command.required_args_filter

@@ -8,25 +8,23 @@ version_command() {
 }
 
 # :command.usage
-multi_usage() {
+cli_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "multi"
-    echo 
-    echo -e "  Multiline test\n  \n  This is a multiline test example. Long lines are going to be properly wrapped\n  at the 80 character mark."
+    echo -e "cli - Sample application that requires dependencies"
     echo 
   else
-    echo -e "multi - Multiline test"
+    echo -e "cli - Sample application that requires dependencies"
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  multi [command] [options]"
-  echo -e "  multi [command] --help | -h"
-  echo -e "  multi --version"
+  echo -e "  cli [command] [options]"
+  echo -e "  cli [command] --help | -h"
+  echo -e "  cli --version"
   echo
   # :command.usage_commands
   echo -e "Commands:"
-  echo "  multiline   Do some multiline work."
-  echo "  regular     Standard help line"
+  echo "  download   Download something"
+  echo "  upload     Upload something"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -39,72 +37,21 @@ multi_usage() {
     echo -e "    Show version number"
     echo
 
-    # :command.usage_environment_variables
-    echo -e "Environment Variables:"
-    
-    # :environment_variable.usage
-    echo "  MULTI_VITAMIN"
-    echo -e "    Environment variables can also use multiple lines. This can be useful if we\n    need to explain - in excruciating detail - what the environemnt variable is\n    used for."
-    echo
-    # :command.usage_examples
-    echo -e "Examples:"
-    
-    echo -e "  Examples can also use multiple lines. This can be useful if we need to explain\n  the example, for instance like we are doing here:\n  \n    multi multiline --flag"
-    echo
-
   fi
 }
 
 # :command.usage
-multi_multiline_usage() {
+cli_download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "multi multiline"
-    echo 
-    echo -e "  Do some multiline work.\n  \n  This is a long process and takes time, therefore it takes a lot of lines to\n  describe and this line is particularly long.\n  \n  But - not all hope is lost. Bashly should respect newlines and word-wrap long\n  lines properly at the 80 character mark."
+    echo -e "cli download - Download something"
     echo 
   else
-    echo -e "multi multiline - Do some multiline work."
+    echo -e "cli download - Download something"
     echo 
   fi
   echo -e "Usage:"
-  echo -e "  multi multiline [MY_ARG] [options]"
-  echo -e "  multi multiline --help | -h"
-  echo
-
-  if [[ -n $long_usage ]]; then
-    echo -e "Options:"
-    # :command.usage_fixed_flags
-    echo "  --help, -h"
-    echo -e "    Show this help"
-    echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --long"
-    echo -e "    Long flag with long text.\n    \n    Finally, this will be the last multiline string we type (hopefully), but\n    once we are done with this, we will be done with all."
-    echo
-    # :command.usage_args
-    echo -e "Arguments:"
-    
-    # :argument.usage
-    echo "  MY_ARG"
-    echo -e "    Argument with multiline.\n    \n    Once again we gather here to prepare some long lines that will most likely\n    seem silly to anyone who reads them.\n    \n    But, it is just needed for testing - otherwise, it will not only be silly,\n    but it will also be buggy!"
-    echo
-
-  fi
-}
-
-# :command.usage
-multi_regular_usage() {
-  if [[ -n $long_usage ]]; then
-    echo -e "multi regular - Standard help line"
-    echo 
-  else
-    echo -e "multi regular - Standard help line"
-    echo 
-  fi
-  echo -e "Usage:"
-  echo -e "  multi regular [REPO] [options]"
-  echo -e "  multi regular --help | -h"
+  echo -e "  cli download [options]"
+  echo -e "  cli download --help | -h"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -114,12 +61,28 @@ multi_regular_usage() {
     echo -e "    Show this help"
     echo
 
-    # :command.usage_args
-    echo -e "Arguments:"
-    
-    # :argument.usage
-    echo "  REPO"
-    echo -e "    Repository name"
+  fi
+}
+
+# :command.usage
+cli_upload_usage() {
+  if [[ -n $long_usage ]]; then
+    echo -e "cli upload - Upload something"
+    echo 
+  else
+    echo -e "cli upload - Upload something"
+    echo 
+  fi
+  echo -e "Usage:"
+  echo -e "  cli upload [options]"
+  echo -e "  cli upload --help | -h"
+  echo
+
+  if [[ -n $long_usage ]]; then
+    echo -e "Options:"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    echo -e "    Show this help"
     echo
 
   fi
@@ -133,19 +96,19 @@ inspect_args() {
 
 # :command.command_functions
 # :command.function
-multi_multiline_command() {
-  # :src/multiline_command.sh
-  echo "# this file is located in 'src/multiline_command.sh'"
-  echo "# code for 'multi multiline' goes here"
+cli_download_command() {
+  # :src/download_command.sh
+  echo "# this file is located in 'src/download_command.sh'"
+  echo "# code for 'cli download' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
 }
 
 # :command.function
-multi_regular_command() {
-  # :src/regular_command.sh
-  echo "# this file is located in 'src/regular_command.sh'"
-  echo "# code for 'multi regular' goes here"
+cli_upload_command() {
+  # :src/upload_command.sh
+  echo "# this file is located in 'src/upload_command.sh'"
+  echo "# code for 'cli upload' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
 }
@@ -161,7 +124,7 @@ parse_requirements() {
   
   --help | -h ) 
     long_usage=yes
-    multi_usage
+    cli_usage
     exit 1
     ;;
   
@@ -175,22 +138,22 @@ parse_requirements() {
   -* )
     ;;
   
-  multiline )
-    action="multiline"
+  download )
+    action="download"
     shift
-    multi_multiline_parse_requirements "$@"
+    cli_download_parse_requirements "$@"
     shift $#
     ;;    
   
-  regular )
-    action="regular"
+  upload )
+    action="upload"
     shift
-    multi_regular_parse_requirements "$@"
+    cli_upload_parse_requirements "$@"
     shift $#
     ;;    
   
   * )
-    multi_usage
+    cli_usage
     exit 1
     ;;
   
@@ -218,7 +181,7 @@ parse_requirements() {
 }
 
 # :command.parse_requirements
-multi_multiline_parse_requirements() {
+cli_download_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -228,27 +191,29 @@ multi_multiline_parse_requirements() {
   
   --help | -h ) 
     long_usage=yes
-    multi_multiline_usage
+    cli_download_usage
     exit 1
     ;;
   
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
+  if ! [[ -x "$(command -v curl)" ]]; then
+    echo -e "missing dependency: curl"
+    exit 1
+  fi
+  if ! [[ -x "$(command -v shmurl)" ]]; then
+    echo -e "missing dependency: shmurl"
+    exit 1
+  fi
   # :command.command_filter
-  action="multiline"
+  action="download"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-    # :flag.case
-    --long )
-      args[--long]=1
-      shift
-      ;;
-  
   
     -* )
       echo -e "invalid option: $key"
@@ -257,13 +222,8 @@ multi_multiline_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[my_arg]} ]]; then
-        args[my_arg]=$1
-        shift
-      else
-        echo -e "invalid argument: $key"
-        exit 1
-      fi
+      echo -e "invalid argument: $key"
+      exit 1
       ;;
   
     esac
@@ -271,7 +231,7 @@ multi_multiline_parse_requirements() {
 }
 
 # :command.parse_requirements
-multi_regular_parse_requirements() {
+cli_upload_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
   --version )
@@ -281,7 +241,7 @@ multi_regular_parse_requirements() {
   
   --help | -h ) 
     long_usage=yes
-    multi_regular_usage
+    cli_upload_usage
     exit 1
     ;;
   
@@ -289,7 +249,7 @@ multi_regular_parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action="regular"
+  action="upload"
   # :command.required_args_filter
   # :command.required_flags_filter
   # :command.parse_requirements_while
@@ -304,13 +264,8 @@ multi_regular_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[repo]} ]]; then
-        args[repo]=$1
-        shift
-      else
-        echo -e "invalid argument: $key"
-        exit 1
-      fi
+      echo -e "invalid argument: $key"
+      exit 1
       ;;
   
     esac
@@ -337,27 +292,27 @@ run() {
   declare -A args
   parse_requirements "$@"
 
-  if [[ $action == "multiline" ]]; then
+  if [[ $action == "download" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      multi_multiline_usage
+      cli_download_usage
     else
-      multi_multiline_command
+      cli_download_command
     fi
   
-  elif [[ $action == "regular" ]]; then
+  elif [[ $action == "upload" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      multi_regular_usage
+      cli_upload_usage
     else
-      multi_regular_command
+      cli_upload_command
     fi
   
   elif [[ ${args[--version]} ]]; then
     version_command
   elif [[ ${args[--help]} ]]; then
     long_usage=yes
-    multi_usage
+    cli_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

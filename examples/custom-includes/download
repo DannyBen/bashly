@@ -88,6 +88,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="root"
   # :command.required_args_filter

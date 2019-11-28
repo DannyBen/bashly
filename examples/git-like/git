@@ -140,6 +140,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -206,6 +207,7 @@ git_status_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="status"
   # :command.required_args_filter
@@ -247,6 +249,7 @@ git_commit_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="commit"
   # :command.required_args_filter

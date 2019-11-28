@@ -1,0 +1,14 @@
++ bashly generate
+creating user files in [0;32msrc
+[0mskipped [0;32msrc/initialize.sh[0m (exists)
+skipped [0;32msrc/download_command.sh[0m (exists)
+skipped [0;32msrc/upload_command.sh[0m (exists)
+created [0;32m./cli
+[0mrun [0;35m./cli --help[0m to test your bash script
++ ./cli download
+missing dependency: shmurl
++ ./cli upload
+# this file is located in 'src/upload_command.sh'
+# code for 'cli upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:

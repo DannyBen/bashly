@@ -177,6 +177,12 @@ args:
 # If this is provided, then you cannot specify commands.
 flags:
 - ... see below ...
+
+# Specify an array of any required external dependencies (commands).
+# The script execution will be halted with a friendly error unless all
+# dependency commands exist.
+dependencies:
+- curl
 ```
 
 

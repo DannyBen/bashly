@@ -185,6 +185,7 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action=$1
   
@@ -251,6 +252,7 @@ cli_download_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="download"
   # :command.required_args_filter
@@ -313,6 +315,7 @@ cli_upload_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  # :command.dependencies_filter
   # :command.command_filter
   action="upload"
   # :command.required_args_filter

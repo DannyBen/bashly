@@ -7,6 +7,7 @@ module Bashly
 
       OPTION_KEYS = %i[
         arg
+        dependencies
         description
         environment_variables
         examples

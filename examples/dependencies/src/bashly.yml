@@ -1,0 +1,13 @@
+name: cli
+help: Sample application that requires dependencies
+version: 0.1.0
+
+commands:
+- name: download
+  help: Download something
+  dependencies:
+  - curl
+  - shmurl
+
+- name: upload
+  help: Upload something
