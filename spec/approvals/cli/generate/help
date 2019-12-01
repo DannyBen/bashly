@@ -13,7 +13,7 @@ Options:
 
 Environment Variables:
   BASHLY_SOURCE_DIR
-    The path to use for creating the configuration file [default: src]
+    The path containing the bashly configuration and source files [default: src]
 
   BASHLY_TARGET_DIR
     The path to use for creating the bash script [default: .]

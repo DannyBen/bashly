@@ -18,7 +18,7 @@ module Bashly
       command "colors", "Add standard functions for printing colorful and formatted text to the lib directory."
       command "yaml", "Add standard functions for reading YAML files to the lib directory."
 
-      environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
+      environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def strings_command
         safe_copy asset("templates/strings.yml"), "#{Settings.source_dir}/bashly-strings.yml"

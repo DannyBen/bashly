@@ -8,7 +8,7 @@ module Bashly
 
       option "-f --force", "Overwrite existing files"
 
-      environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
+      environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
 
       def run
