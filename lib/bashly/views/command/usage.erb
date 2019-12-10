@@ -2,33 +2,33 @@
 <%= function_name %>_usage() {
   if [[ -n $long_usage ]]; then
     <%- if summary == help -%>
-    echo -e "<%= caption_string %>"
+    printf "<%= caption_string %>\n"
     echo 
     <%- else -%>
-    echo -e "<%= full_name %>"
+    printf "<%= full_name %>\n"
     echo 
-    echo -e "<%= help.wrap(78).indent(2).sanitize_for_print %>"
+    printf "<%= help.wrap(78).indent(2).sanitize_for_print %>\n"
     echo 
     <%- end -%>
   else
-    echo -e "<%= caption_string %>"
+    printf "<%= caption_string %>\n"
     echo 
   fi
-  echo -e "<%= strings[:usage] %>"
-  echo -e "  <%= usage_string %>"
+  printf "<%= strings[:usage] %>\n"
+  printf "  <%= usage_string %>\n"
   <%- if commands.any? -%>
-  echo -e "  <%= full_name %> [command] --help | -h"
+  printf "  <%= full_name %> [command] --help | -h\n"
   <%- else -%>
-  echo -e "  <%= full_name %> --help | -h"
+  printf "  <%= full_name %> --help | -h\n"
   <%- end -%>
   <%- if root_command? -%>
-  echo -e "  <%= full_name %> --version"
+  printf "  <%= full_name %> --version\n"
   <%- end -%>
   echo
 <%= render(:usage_commands).indent 2 if commands.any? %>
 
   if [[ -n $long_usage ]]; then
-    echo -e "<%= strings[:options] %>"
+    printf "<%= strings[:options] %>\n"
 <%= render(:usage_fixed_flags).indent 4 %>
 <%= render(:usage_flags).indent 4 if flags.any? %>
 <%= render(:usage_args).indent 4 if args.any? %>

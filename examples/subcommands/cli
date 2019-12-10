@@ -10,39 +10,39 @@ version_command() {
 # :command.usage
 cli_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli - Sample application"
+    printf "cli - Sample application\n"
     echo 
   else
-    echo -e "cli - Sample application"
+    printf "cli - Sample application\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli [command] [options]"
-  echo -e "  cli [command] --help | -h"
-  echo -e "  cli --version"
+  printf "Usage:\n"
+  printf "  cli [command] [options]\n"
+  printf "  cli [command] --help | -h\n"
+  printf "  cli --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  download   Download a file"
   echo "  upload     Upload a file"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
     # :command.usage_environment_variables
-    echo -e "Environment Variables:"
+    printf "Environment Variables:\n"
     
     # :environment_variable.usage
     echo "  API_KEY"
-    echo -e "    Set your API key"
+    printf "    Set your API key\n"
     echo
 
   fi
@@ -51,52 +51,52 @@ cli_usage() {
 # :command.usage
 cli_download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli download - Download a file"
+    printf "cli download - Download a file\n"
     echo 
   else
-    echo -e "cli download - Download a file"
+    printf "cli download - Download a file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli download SOURCE [TARGET] [options]"
-  echo -e "  cli download --help | -h"
+  printf "Usage:\n"
+  printf "  cli download SOURCE [TARGET] [options]\n"
+  printf "  cli download --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --force, -f"
-    echo -e "    Overwrite existing files"
+    printf "    Overwrite existing files\n"
     echo
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    URL to download from"
+    printf "    URL to download from\n"
     echo
     
     # :argument.usage
     echo "  TARGET"
-    echo -e "    Target filename (default: same as source)"
+    printf "    Target filename (default: same as source)\n"
     echo
     # :command.usage_environment_variables
-    echo -e "Environment Variables:"
+    printf "Environment Variables:\n"
     
     # :environment_variable.usage
     echo "  DEFAULT_TARGET_LOCATION"
-    echo -e "    Set the default location to download to"
+    printf "    Set the default location to download to\n"
     echo
     # :command.usage_examples
-    echo -e "Examples:"
+    printf "Examples:\n"
     
-    echo -e "  cli download example.com"
-    echo -e "  cli download example.com ./output -f"
+    printf "  cli download example.com\n"
+    printf "  cli download example.com ./output -f\n"
     echo
 
   fi
@@ -105,39 +105,39 @@ cli_download_usage() {
 # :command.usage
 cli_upload_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli upload - Upload a file"
+    printf "cli upload - Upload a file\n"
     echo 
   else
-    echo -e "cli upload - Upload a file"
+    printf "cli upload - Upload a file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli upload SOURCE [options]"
-  echo -e "  cli upload --help | -h"
+  printf "Usage:\n"
+  printf "  cli upload SOURCE [options]\n"
+  printf "  cli upload --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --user, -u USER (required)"
-    echo -e "    Username to use for logging in"
+    printf "    Username to use for logging in\n"
     echo
     
     # :flag.usage
     echo "  --password, -p PASSWORD"
-    echo -e "    Password to use for logging in"
+    printf "    Password to use for logging in\n"
     echo
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    File to upload"
+    printf "    File to upload\n"
     echo
 
   fi
@@ -221,13 +221,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -260,7 +260,7 @@ cli_download_parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options]"
+    printf "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -276,7 +276,7 @@ cli_download_parse_requirements() {
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -289,7 +289,7 @@ cli_download_parse_requirements() {
         args[target]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -323,13 +323,13 @@ cli_upload_parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: cli upload SOURCE [options]"
+    printf "missing required argument: SOURCE\nusage: cli upload SOURCE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
   argstring="$*"
   if [[ "$argstring" != *--user* && "$argstring" != *-u* ]]; then
-    echo -e "missing required flag: --user, -u USER"
+    printf "missing required flag: --user, -u USER\n"
     exit 1
   fi
   # :command.parse_requirements_while
@@ -343,7 +343,7 @@ cli_upload_parse_requirements() {
         shift
         shift
       else
-        echo -e "--user requires an argument: --user, -u USER"
+        printf "--user requires an argument: --user, -u USER\n"
         exit 1
       fi
       ;;
@@ -355,14 +355,14 @@ cli_upload_parse_requirements() {
         shift
         shift
       else
-        echo -e "--password requires an argument: --password, -p PASSWORD"
+        printf "--password requires an argument: --password, -p PASSWORD\n"
         exit 1
       fi
       ;;
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -372,7 +372,7 @@ cli_upload_parse_requirements() {
         args[source]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;

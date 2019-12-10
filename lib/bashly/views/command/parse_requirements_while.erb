@@ -8,7 +8,7 @@ while [[ $# -gt 0 ]]; do
   <%- end -%>
 
   -* )
-    echo -e "<%= strings[:invalid_flag] % { flag: "$key" } %>"
+    printf "<%= strings[:invalid_flag] %>\n" "$key"
     exit 1
     ;;
 

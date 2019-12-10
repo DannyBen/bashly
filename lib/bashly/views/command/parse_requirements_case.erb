@@ -8,10 +8,10 @@
 <%- condition = "elif" -%>
 <%- end -%>
 else
-  echo -e "<%= strings[:invalid_argument] % { arg: "$key" } %>"
+  printf "<%= strings[:invalid_argument] %>\n" "$key"
   exit 1
 fi
 <%- else -%>
-echo -e "<%= strings[:invalid_argument] % { arg: "$key" } %>"
+printf "<%= strings[:invalid_argument] %>\n" "$key"
 exit 1
 <%- end -%>

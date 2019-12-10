@@ -1,5 +1,5 @@
 # :command.usage_commands
-echo -e "<%= strings[:commands] %>"
+printf "<%= strings[:commands] %>\n"
 <%- maxlen = command_names.map(&:size).max -%>
 <%- commands.each do |command| -%>
 <%- summary = command.summary -%>

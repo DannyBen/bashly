@@ -6,7 +6,7 @@
     shift
     shift
   else
-    echo -e "<%= strings[:flag_requires_an_argument] % { long: long, usage: usage_string } %>"
+    printf "<%= strings[:flag_requires_an_argument] % { long: long, usage: usage_string } %>\n"
     exit 1
   fi
   <%- else -%>

@@ -18,41 +18,41 @@ version_command() {
 # :command.usage
 download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "download - Sample minimal application with custom strings"
+    printf "download - Sample minimal application with custom strings\n"
     echo 
   else
-    echo -e "download - Sample minimal application with custom strings"
+    printf "download - Sample minimal application with custom strings\n"
     echo 
   fi
-  echo -e "== Usage ==
-"
-  echo -e "  download SOURCE [options]"
-  echo -e "  download --help | -h"
-  echo -e "  download --version"
+  printf "== Usage ==
+\n"
+  printf "  download SOURCE [options]\n"
+  printf "  download --help | -h\n"
+  printf "  download --version\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "== Options ==
-"
+    printf "== Options ==
+\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this helpful help"
+    printf "    Show this helpful help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --out, -o DIR (required)"
-    echo -e "    Target directory"
+    printf "    Target directory\n"
     echo
     # :command.usage_args
-    echo -e "== Arguments ==
-    "
+    printf "== Arguments ==
+    \n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    URL to download from"
+    printf "    URL to download from\n"
     echo
 
   fi
@@ -91,13 +91,13 @@ parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "Boom! a required argument is missing: SOURCE\nusage: download SOURCE [options]"
+    printf "Boom! a required argument is missing: SOURCE\nusage: download SOURCE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
   argstring="$*"
   if [[ "$argstring" != *--out* && "$argstring" != *-o* ]]; then
-    echo -e "Yo! you forgot a flag: --out, -o DIR"
+    printf "Yo! you forgot a flag: --out, -o DIR\n"
     exit 1
   fi
   # :command.parse_requirements_while
@@ -111,14 +111,14 @@ parse_requirements() {
         shift
         shift
       else
-        echo -e "Hey! the flag --out requires an argument: --out, -o DIR"
+        printf "Hey! the flag --out requires an argument: --out, -o DIR\n"
         exit 1
       fi
       ;;
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %{flag}\n" "$key"
       exit 1
       ;;
   
@@ -128,7 +128,7 @@ parse_requirements() {
         args[source]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %{arg}\n" "$key"
         exit 1
       fi
       ;;

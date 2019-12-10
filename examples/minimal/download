@@ -18,50 +18,50 @@ version_command() {
 # :command.usage
 download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "download - Sample minimal application without subcommands"
+    printf "download - Sample minimal application without subcommands\n"
     echo 
   else
-    echo -e "download - Sample minimal application without subcommands"
+    printf "download - Sample minimal application without subcommands\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  download SOURCE [TARGET] [options]"
-  echo -e "  download --help | -h"
-  echo -e "  download --version"
+  printf "Usage:\n"
+  printf "  download SOURCE [TARGET] [options]\n"
+  printf "  download --help | -h\n"
+  printf "  download --version\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --force, -f"
-    echo -e "    Overwrite existing files"
+    printf "    Overwrite existing files\n"
     echo
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    URL to download from"
+    printf "    URL to download from\n"
     echo
     
     # :argument.usage
     echo "  TARGET"
-    echo -e "    Target filename (default: same as source)"
+    printf "    Target filename (default: same as source)\n"
     echo
 
     # :command.usage_examples
-    echo -e "Examples:"
+    printf "Examples:\n"
     
-    echo -e "  download example.com"
-    echo -e "  download example.com ./output -f"
+    printf "  download example.com\n"
+    printf "  download example.com ./output -f\n"
     echo
 
   fi
@@ -100,7 +100,7 @@ parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: download SOURCE [TARGET] [options]"
+    printf "missing required argument: SOURCE\nusage: download SOURCE [TARGET] [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -116,7 +116,7 @@ parse_requirements() {
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -129,7 +129,7 @@ parse_requirements() {
         args[target]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;

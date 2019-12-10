@@ -10,46 +10,46 @@ version_command() {
 # :command.usage
 multi_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "multi"
+    printf "multi\n"
     echo 
-    echo -e "  Multiline test\n  \n  This is a multiline test example. Long lines are going to be properly wrapped\n  at the 80 character mark."
+    printf "  Multiline test\n  \n  This is a multiline test example. Long lines are going to be properly wrapped\n  at the 80 character mark.\n"
     echo 
   else
-    echo -e "multi - Multiline test"
+    printf "multi - Multiline test\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  multi [command] [options]"
-  echo -e "  multi [command] --help | -h"
-  echo -e "  multi --version"
+  printf "Usage:\n"
+  printf "  multi [command] [options]\n"
+  printf "  multi [command] --help | -h\n"
+  printf "  multi --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  multiline   Do some multiline work."
   echo "  regular     Standard help line"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
     # :command.usage_environment_variables
-    echo -e "Environment Variables:"
+    printf "Environment Variables:\n"
     
     # :environment_variable.usage
     echo "  MULTI_VITAMIN"
-    echo -e "    Environment variables can also use multiple lines. This can be useful if we\n    need to explain - in excruciating detail - what the environemnt variable is\n    used for."
+    printf "    Environment variables can also use multiple lines. This can be useful if we\n    need to explain - in excruciating detail - what the environemnt variable is\n    used for.\n"
     echo
     # :command.usage_examples
-    echo -e "Examples:"
+    printf "Examples:\n"
     
-    echo -e "  Examples can also use multiple lines. This can be useful if we need to explain\n  the example, for instance like we are doing here:\n  \n    multi multiline --flag"
+    printf "  Examples can also use multiple lines. This can be useful if we need to explain\n  the example, for instance like we are doing here:\n  \n    multi multiline --flag\n"
     echo
 
   fi
@@ -58,36 +58,36 @@ multi_usage() {
 # :command.usage
 multi_multiline_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "multi multiline"
+    printf "multi multiline\n"
     echo 
-    echo -e "  Do some multiline work.\n  \n  This is a long process and takes time, therefore it takes a lot of lines to\n  describe and this line is particularly long.\n  \n  But - not all hope is lost. Bashly should respect newlines and word-wrap long\n  lines properly at the 80 character mark."
+    printf "  Do some multiline work.\n  \n  This is a long process and takes time, therefore it takes a lot of lines to\n  describe and this line is particularly long.\n  \n  But - not all hope is lost. Bashly should respect newlines and word-wrap long\n  lines properly at the 80 character mark.\n"
     echo 
   else
-    echo -e "multi multiline - Do some multiline work."
+    printf "multi multiline - Do some multiline work.\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  multi multiline [MY_ARG] [options]"
-  echo -e "  multi multiline --help | -h"
+  printf "Usage:\n"
+  printf "  multi multiline [MY_ARG] [options]\n"
+  printf "  multi multiline --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --long"
-    echo -e "    Long flag with long text.\n    \n    Finally, this will be the last multiline string we type (hopefully), but\n    once we are done with this, we will be done with all."
+    printf "    Long flag with long text.\n    \n    Finally, this will be the last multiline string we type (hopefully), but\n    once we are done with this, we will be done with all.\n"
     echo
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  MY_ARG"
-    echo -e "    Argument with multiline.\n    \n    Once again we gather here to prepare some long lines that will most likely\n    seem silly to anyone who reads them.\n    \n    But, it is just needed for testing - otherwise, it will not only be silly,\n    but it will also be buggy!"
+    printf "    Argument with multiline.\n    \n    Once again we gather here to prepare some long lines that will most likely\n    seem silly to anyone who reads them.\n    \n    But, it is just needed for testing - otherwise, it will not only be silly,\n    but it will also be buggy!\n"
     echo
 
   fi
@@ -96,30 +96,30 @@ multi_multiline_usage() {
 # :command.usage
 multi_regular_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "multi regular - Standard help line"
+    printf "multi regular - Standard help line\n"
     echo 
   else
-    echo -e "multi regular - Standard help line"
+    printf "multi regular - Standard help line\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  multi regular [REPO] [options]"
-  echo -e "  multi regular --help | -h"
+  printf "Usage:\n"
+  printf "  multi regular [REPO] [options]\n"
+  printf "  multi regular --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  REPO"
-    echo -e "    Repository name"
+    printf "    Repository name\n"
     echo
 
   fi
@@ -203,13 +203,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -251,7 +251,7 @@ multi_multiline_parse_requirements() {
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -261,7 +261,7 @@ multi_multiline_parse_requirements() {
         args[my_arg]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -298,7 +298,7 @@ multi_regular_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -308,7 +308,7 @@ multi_regular_parse_requirements() {
         args[repo]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;

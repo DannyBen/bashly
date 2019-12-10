@@ -10,31 +10,31 @@ version_command() {
 # :command.usage
 git_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "git - Git example"
+    printf "git - Git example\n"
     echo 
   else
-    echo -e "git - Git example"
+    printf "git - Git example\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  git [command] [options]"
-  echo -e "  git [command] --help | -h"
-  echo -e "  git --version"
+  printf "Usage:\n"
+  printf "  git [command] [options]\n"
+  printf "  git [command] --help | -h\n"
+  printf "  git --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  status   Show repository status"
   echo "  commit   Commit changes"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
   fi
@@ -43,22 +43,22 @@ git_usage() {
 # :command.usage
 git_status_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "git status - Show repository status"
+    printf "git status - Show repository status\n"
     echo 
   else
-    echo -e "git status - Show repository status"
+    printf "git status - Show repository status\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  git status [options]"
-  echo -e "  git status --help | -h"
+  printf "Usage:\n"
+  printf "  git status [options]\n"
+  printf "  git status --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -67,32 +67,32 @@ git_status_usage() {
 # :command.usage
 git_commit_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "git commit - Commit changes"
+    printf "git commit - Commit changes\n"
     echo 
   else
-    echo -e "git commit - Commit changes"
+    printf "git commit - Commit changes\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  git commit [options]"
-  echo -e "  git commit --help | -h"
+  printf "Usage:\n"
+  printf "  git commit [options]\n"
+  printf "  git commit --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     # :command.usage_flags
     # :flag.usage
     echo "  --message, -m MESSAGE"
-    echo -e "    Commit message"
+    printf "    Commit message\n"
     echo
     
     # :flag.usage
     echo "  --all, -a"
-    echo -e "    Automatically stage files"
+    printf "    Automatically stage files\n"
     echo
 
   fi
@@ -176,13 +176,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -218,13 +218,13 @@ git_status_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -265,7 +265,7 @@ git_commit_parse_requirements() {
         shift
         shift
       else
-        echo -e "--message requires an argument: --message, -m MESSAGE"
+        printf "--message requires an argument: --message, -m MESSAGE\n"
         exit 1
       fi
       ;;
@@ -278,13 +278,13 @@ git_commit_parse_requirements() {
   
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   

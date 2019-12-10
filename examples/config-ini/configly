@@ -10,32 +10,32 @@ version_command() {
 # :command.usage
 configly_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "configly - Sample application that uses the config functions"
+    printf "configly - Sample application that uses the config functions\n"
     echo 
   else
-    echo -e "configly - Sample application that uses the config functions"
+    printf "configly - Sample application that uses the config functions\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  configly [command] [options]"
-  echo -e "  configly [command] --help | -h"
-  echo -e "  configly --version"
+  printf "Usage:\n"
+  printf "  configly [command] [options]\n"
+  printf "  configly [command] --help | -h\n"
+  printf "  configly --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  set    Save a value in the config file"
   echo "  get    Read a value from the config file"
   echo "  list   Show the entire config file"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
   fi
@@ -44,41 +44,41 @@ configly_usage() {
 # :command.usage
 configly_set_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "configly set - Save a value in the config file"
+    printf "configly set - Save a value in the config file\n"
     echo 
   else
-    echo -e "configly set - Save a value in the config file"
+    printf "configly set - Save a value in the config file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  configly set KEY VALUE [options]"
-  echo -e "  configly set --help | -h"
+  printf "Usage:\n"
+  printf "  configly set KEY VALUE [options]\n"
+  printf "  configly set --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  KEY"
-    echo -e "    Config key"
+    printf "    Config key\n"
     echo
     
     # :argument.usage
     echo "  VALUE"
-    echo -e "    Config value"
+    printf "    Config value\n"
     echo
 
     # :command.usage_examples
-    echo -e "Examples:"
+    printf "Examples:\n"
     
-    echo -e "  configly set hello world"
+    printf "  configly set hello world\n"
     echo
 
   fi
@@ -87,36 +87,36 @@ configly_set_usage() {
 # :command.usage
 configly_get_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "configly get - Read a value from the config file"
+    printf "configly get - Read a value from the config file\n"
     echo 
   else
-    echo -e "configly get - Read a value from the config file"
+    printf "configly get - Read a value from the config file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  configly get KEY [options]"
-  echo -e "  configly get --help | -h"
+  printf "Usage:\n"
+  printf "  configly get KEY [options]\n"
+  printf "  configly get --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  KEY"
-    echo -e "    Config key"
+    printf "    Config key\n"
     echo
 
     # :command.usage_examples
-    echo -e "Examples:"
+    printf "Examples:\n"
     
-    echo -e "  configly set hello"
+    printf "  configly set hello\n"
     echo
 
   fi
@@ -125,22 +125,22 @@ configly_get_usage() {
 # :command.usage
 configly_list_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "configly list - Show the entire config file"
+    printf "configly list - Show the entire config file\n"
     echo 
   else
-    echo -e "configly list - Show the entire config file"
+    printf "configly list - Show the entire config file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  configly list [options]"
-  echo -e "  configly list --help | -h"
+  printf "Usage:\n"
+  printf "  configly list [options]\n"
+  printf "  configly list --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -153,20 +153,55 @@ inspect_args() {
 }
 
 # :command.user_lib
+# :src/lib/colors.sh
+# ---
+# Color functions
+# This file is a part of Bashly standard library
+#
+# Usage:
+# Use any of the functions below to color or format a portion of a string.
+# 
+#   echo "before $(red this is red) after"
+#   echo "before $(green_bold this is green_bold) after"
+#
+# ---
+
+red() { printf "\e[31m%b\e[0m\n" "$*"; }
+green() { printf "\e[32m%b\e[0m\n" "$*"; }
+yellow() { printf "\e[33m%b\e[0m\n" "$*"; }
+blue() { printf "\e[34m%b\e[0m\n" "$*"; }
+magenta() { printf "\e[35m%b\e[0m\n" "$*"; }
+cyan() { printf "\e[36m%b\e[0m\n" "$*"; }
+bold() { printf "\e[1m%b\e[0m\n" "$*"; }
+underlined() { printf "\e[4m%b\e[0m\n" "$*"; }
+red_bold() { printf "\e[1;31m%b\e[0m\n" "$*"; }
+green_bold() { printf "\e[1;32m%b\e[0m\n" "$*"; }
+yellow_bold() { printf "\e[1;33m%b\e[0m\n" "$*"; }
+blue_bold() { printf "\e[1;34m%b\e[0m\n" "$*"; }
+magenta_bold() { printf "\e[1;35m%b\e[0m\n" "$*"; }
+cyan_bold() { printf "\e[1;36m%b\e[0m\n" "$*"; }
+red_underlined() { printf "\e[4;31m%b\e[0m\n" "$*"; }
+green_underlined() { printf "\e[4;32m%b\e[0m\n" "$*"; }
+yellow_underlined() { printf "\e[4;33m%b\e[0m\n" "$*"; }
+blue_underlined() { printf "\e[4;34m%b\e[0m\n" "$*"; }
+magenta_underlined() { printf "\e[4;35m%b\e[0m\n" "$*"; }
+cyan_underlined() { printf "\e[4;36m%b\e[0m\n" "$*"; }
+
 # :src/lib/config.sh
 # ---
-# Config handling functions
-# This file is a part of bashly's standard library functions.
+# Config functions
+# This file is a part of Bashly standard library
 #
 # Usage:
 # - In your script, set the CONFIG_FILE variable. For rxample:
-#   CONFIG_FILE=config.ini
+#   CONFIG_FILE=settings.ini.
+#   If it is unset, it will default to 'config.ini'.
 # - Use any of the functions below to access the config file.
 # ---
 
 # Create a new config file.
-# There is normally no need to use this fucntion, it is used by othe rfunctions
-# as needed.
+# There is normally no need to use this fucntion, it is used by other
+# functions as needed.
 config_init() {
   CONFIG_FILE=${CONFIG_FILE:=config.ini}
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
@@ -218,7 +253,7 @@ config_set() {
     output="$output$key = $value\n"
   fi
 
-  echo -e "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
 # Delete a key from teh config.
@@ -238,13 +273,35 @@ config_del() {
     fi
   done < "$CONFIG_FILE"
 
-  echo -e "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
 # Show the config file
 config_show() {
   config_init
   cat "$CONFIG_FILE"
+}
+
+# Return an array of the keys in the config file
+# Usage:
+#
+#   for k in $(config_keys); do
+#     echo "- $k = $(config_get "$k")";
+#   done
+#
+config_keys() {
+  regex="^(.*)\s*="
+
+  config_init
+
+  keys=()
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ $line =~ $regex ]]; then
+      key="${BASH_REMATCH[1]}"
+      keys+=("$key")
+    fi
+  done < "$CONFIG_FILE"
+  echo "${keys[@]}"
 }
 
 # :command.command_functions
@@ -334,13 +391,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -373,7 +430,7 @@ configly_set_parse_requirements() {
     args[key]=$1
     shift
   else
-    echo -e "missing required argument: KEY\nusage: configly set KEY VALUE [options]"
+    printf "missing required argument: KEY\nusage: configly set KEY VALUE [options]\n"
     exit 1
   fi
   
@@ -381,7 +438,7 @@ configly_set_parse_requirements() {
     args[value]=$1
     shift
   else
-    echo -e "missing required argument: VALUE\nusage: configly set KEY VALUE [options]"
+    printf "missing required argument: VALUE\nusage: configly set KEY VALUE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -391,7 +448,7 @@ configly_set_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -404,7 +461,7 @@ configly_set_parse_requirements() {
         args[value]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -438,7 +495,7 @@ configly_get_parse_requirements() {
     args[key]=$1
     shift
   else
-    echo -e "missing required argument: KEY\nusage: configly get KEY [options]"
+    printf "missing required argument: KEY\nusage: configly get KEY [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -448,7 +505,7 @@ configly_get_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -458,7 +515,7 @@ configly_get_parse_requirements() {
         args[key]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -495,13 +552,13 @@ configly_list_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   

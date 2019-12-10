@@ -10,31 +10,31 @@ version_command() {
 # :command.usage
 ftp_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "ftp - Sample application that uses the default command option"
+    printf "ftp - Sample application that uses the default command option\n"
     echo 
   else
-    echo -e "ftp - Sample application that uses the default command option"
+    printf "ftp - Sample application that uses the default command option\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  ftp [command] [options]"
-  echo -e "  ftp [command] --help | -h"
-  echo -e "  ftp --version"
+  printf "Usage:\n"
+  printf "  ftp [command] [options]\n"
+  printf "  ftp [command] --help | -h\n"
+  printf "  ftp --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  upload     Upload a file (default)"
   echo "  download   Download a file"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
   fi
@@ -43,30 +43,30 @@ ftp_usage() {
 # :command.usage
 ftp_upload_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "ftp upload - Upload a file"
+    printf "ftp upload - Upload a file\n"
     echo 
   else
-    echo -e "ftp upload - Upload a file"
+    printf "ftp upload - Upload a file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  ftp upload SOURCE [options]"
-  echo -e "  ftp upload --help | -h"
+  printf "Usage:\n"
+  printf "  ftp upload SOURCE [options]\n"
+  printf "  ftp upload --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    File to upload"
+    printf "    File to upload\n"
     echo
 
   fi
@@ -75,30 +75,30 @@ ftp_upload_usage() {
 # :command.usage
 ftp_download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "ftp download - Download a file"
+    printf "ftp download - Download a file\n"
     echo 
   else
-    echo -e "ftp download - Download a file"
+    printf "ftp download - Download a file\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  ftp download SOURCE [options]"
-  echo -e "  ftp download --help | -h"
+  printf "Usage:\n"
+  printf "  ftp download SOURCE [options]\n"
+  printf "  ftp download --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    echo -e "    File to download"
+    printf "    File to download\n"
     echo
 
   fi
@@ -188,13 +188,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -227,7 +227,7 @@ ftp_upload_parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: ftp upload SOURCE [options]"
+    printf "missing required argument: SOURCE\nusage: ftp upload SOURCE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -237,7 +237,7 @@ ftp_upload_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -247,7 +247,7 @@ ftp_upload_parse_requirements() {
         args[source]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -281,7 +281,7 @@ ftp_download_parse_requirements() {
     args[source]=$1
     shift
   else
-    echo -e "missing required argument: SOURCE\nusage: ftp download SOURCE [options]"
+    printf "missing required argument: SOURCE\nusage: ftp download SOURCE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -291,7 +291,7 @@ ftp_download_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -301,7 +301,7 @@ ftp_download_parse_requirements() {
         args[source]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
