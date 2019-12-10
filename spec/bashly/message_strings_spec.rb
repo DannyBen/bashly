@@ -18,7 +18,7 @@ describe MessageStrings do
     end
 
     it "returns values from the user config, falling back to defaults" do
-      expect(subject[:usage]).to eq "== Usage ==\n"      
+      expect(subject[:usage]).to eq "== Usage ==\\n"
     end
   end
 end
