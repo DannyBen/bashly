@@ -12,8 +12,8 @@ version_flag_text: Show version number
 
 # Error messages
 flag_requires_an_argument: "%{long} requires an argument: %{usage}"
-invalid_argument: "invalid argument: %{arg}"
-invalid_flag: "invalid option: %{flag}"
+invalid_argument: "invalid argument: %s"
+invalid_flag: "invalid option: %s"
 missing_required_argument: "missing required argument: %{arg}\\nusage: %{usage}"
 missing_required_flag: "missing required flag: %{usage}"
 missing_required_environment_variable: "missing required environment variable: %{var}"

@@ -1,7 +1,7 @@
 # :command.usage_examples
-echo -e "<%= strings[:examples] %>"
+printf "<%= strings[:examples] %>\n"
 
 <%- examples.each do |example| -%>
-echo -e "<%= example.wrap(78).indent(2).sanitize_for_print %>"
+printf "<%= example.wrap(78).indent(2).sanitize_for_print %>\n"
 <%- end -%>
 echo

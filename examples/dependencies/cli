@@ -10,31 +10,31 @@ version_command() {
 # :command.usage
 cli_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli - Sample application that requires dependencies"
+    printf "cli - Sample application that requires dependencies\n"
     echo 
   else
-    echo -e "cli - Sample application that requires dependencies"
+    printf "cli - Sample application that requires dependencies\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli [command] [options]"
-  echo -e "  cli [command] --help | -h"
-  echo -e "  cli --version"
+  printf "Usage:\n"
+  printf "  cli [command] [options]\n"
+  printf "  cli [command] --help | -h\n"
+  printf "  cli --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  download   Download something"
   echo "  upload     Upload something"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
   fi
@@ -43,22 +43,22 @@ cli_usage() {
 # :command.usage
 cli_download_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli download - Download something"
+    printf "cli download - Download something\n"
     echo 
   else
-    echo -e "cli download - Download something"
+    printf "cli download - Download something\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli download [options]"
-  echo -e "  cli download --help | -h"
+  printf "Usage:\n"
+  printf "  cli download [options]\n"
+  printf "  cli download --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -67,22 +67,22 @@ cli_download_usage() {
 # :command.usage
 cli_upload_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli upload - Upload something"
+    printf "cli upload - Upload something\n"
     echo 
   else
-    echo -e "cli upload - Upload something"
+    printf "cli upload - Upload something\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli upload [options]"
-  echo -e "  cli upload --help | -h"
+  printf "Usage:\n"
+  printf "  cli upload [options]\n"
+  printf "  cli upload --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -166,13 +166,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -199,11 +199,11 @@ cli_download_parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   if ! [[ -x "$(command -v curl)" ]]; then
-    echo -e "missing dependency: curl"
+    printf "missing dependency: curl\n"
     exit 1
   fi
   if ! [[ -x "$(command -v shmurl)" ]]; then
-    echo -e "missing dependency: shmurl"
+    printf "missing dependency: shmurl\n"
     exit 1
   fi
   # :command.command_filter
@@ -216,13 +216,13 @@ cli_download_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -258,13 +258,13 @@ cli_upload_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   

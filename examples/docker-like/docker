@@ -10,31 +10,31 @@ version_command() {
 # :command.usage
 docker_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker - Docker example"
+    printf "docker - Docker example\n"
     echo 
   else
-    echo -e "docker - Docker example"
+    printf "docker - Docker example\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker [command] [options]"
-  echo -e "  docker [command] --help | -h"
-  echo -e "  docker --version"
+  printf "Usage:\n"
+  printf "  docker [command] [options]\n"
+  printf "  docker [command] --help | -h\n"
+  printf "  docker --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  container   Container commands"
   echo "  image       Image commands"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
   fi
@@ -43,27 +43,27 @@ docker_usage() {
 # :command.usage
 docker_container_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker container - Container commands"
+    printf "docker container - Container commands\n"
     echo 
   else
-    echo -e "docker container - Container commands"
+    printf "docker container - Container commands\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker container [command] [options]"
-  echo -e "  docker container [command] --help | -h"
+  printf "Usage:\n"
+  printf "  docker container [command] [options]\n"
+  printf "  docker container [command] --help | -h\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  run    Run a container"
   echo "  stop   Stop a container"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -72,30 +72,30 @@ docker_container_usage() {
 # :command.usage
 docker_container_run_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker container run - Run a container"
+    printf "docker container run - Run a container\n"
     echo 
   else
-    echo -e "docker container run - Run a container"
+    printf "docker container run - Run a container\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker container run IMAGE [options]"
-  echo -e "  docker container run --help | -h"
+  printf "Usage:\n"
+  printf "  docker container run IMAGE [options]\n"
+  printf "  docker container run --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  IMAGE"
-    echo -e "    Image name"
+    printf "    Image name\n"
     echo
 
   fi
@@ -104,30 +104,30 @@ docker_container_run_usage() {
 # :command.usage
 docker_container_stop_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker container stop - Stop a container"
+    printf "docker container stop - Stop a container\n"
     echo 
   else
-    echo -e "docker container stop - Stop a container"
+    printf "docker container stop - Stop a container\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker container stop CONTAINER [options]"
-  echo -e "  docker container stop --help | -h"
+  printf "Usage:\n"
+  printf "  docker container stop CONTAINER [options]\n"
+  printf "  docker container stop --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_args
-    echo -e "Arguments:"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  CONTAINER"
-    echo -e "    Container name"
+    printf "    Container name\n"
     echo
 
   fi
@@ -136,26 +136,26 @@ docker_container_stop_usage() {
 # :command.usage
 docker_image_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker image - Image commands"
+    printf "docker image - Image commands\n"
     echo 
   else
-    echo -e "docker image - Image commands"
+    printf "docker image - Image commands\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker image [command] [options]"
-  echo -e "  docker image [command] --help | -h"
+  printf "Usage:\n"
+  printf "  docker image [command] [options]\n"
+  printf "  docker image [command] --help | -h\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  ls   Show all images"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -164,22 +164,22 @@ docker_image_usage() {
 # :command.usage
 docker_image_ls_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "docker image ls - Show all images"
+    printf "docker image ls - Show all images\n"
     echo 
   else
-    echo -e "docker image ls - Show all images"
+    printf "docker image ls - Show all images\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  docker image ls [options]"
-  echo -e "  docker image ls --help | -h"
+  printf "Usage:\n"
+  printf "  docker image ls [options]\n"
+  printf "  docker image ls --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -273,13 +273,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -340,13 +340,13 @@ docker_container_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -379,7 +379,7 @@ docker_container_run_parse_requirements() {
     args[image]=$1
     shift
   else
-    echo -e "missing required argument: IMAGE\nusage: docker container run IMAGE [options]"
+    printf "missing required argument: IMAGE\nusage: docker container run IMAGE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -389,7 +389,7 @@ docker_container_run_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -399,7 +399,7 @@ docker_container_run_parse_requirements() {
         args[image]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -433,7 +433,7 @@ docker_container_stop_parse_requirements() {
     args[container]=$1
     shift
   else
-    echo -e "missing required argument: CONTAINER\nusage: docker container stop CONTAINER [options]"
+    printf "missing required argument: CONTAINER\nusage: docker container stop CONTAINER [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -443,7 +443,7 @@ docker_container_stop_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -453,7 +453,7 @@ docker_container_stop_parse_requirements() {
         args[container]=$1
         shift
       else
-        echo -e "invalid argument: $key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
@@ -508,13 +508,13 @@ docker_image_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -550,13 +550,13 @@ docker_image_ls_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   

@@ -1,5 +1,5 @@
 # :command.usage_args
-echo -e "<%= strings[:arguments] %>"
+printf "<%= strings[:arguments] %>\n"
 
 <%- args.each do |arg| -%>
 <%= arg.render(:usage) %>

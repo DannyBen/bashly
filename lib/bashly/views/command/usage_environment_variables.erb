@@ -1,5 +1,5 @@
 # :command.usage_environment_variables
-echo -e "<%= strings[:environment_variables] %>"
+printf "<%= strings[:environment_variables] %>\n"
 
 <%- environment_variables.each do |env_var| -%>
 <%= env_var.render(:usage) %>

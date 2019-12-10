@@ -30,6 +30,7 @@ def examples
     "examples/config-ini/configly",
     "examples/custom-includes/download",
     "examples/custom-strings/download",
+    "examples/default-command/ftp",
     "examples/dependencies/cli",
     "examples/docker-like/docker",
     "examples/environment-variables/cli",

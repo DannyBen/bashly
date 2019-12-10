@@ -10,38 +10,38 @@ version_command() {
 # :command.usage
 cli_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli - Sample application that requires environment variables"
+    printf "cli - Sample application that requires environment variables\n"
     echo 
   else
-    echo -e "cli - Sample application that requires environment variables"
+    printf "cli - Sample application that requires environment variables\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli [command] [options]"
-  echo -e "  cli [command] --help | -h"
-  echo -e "  cli --version"
+  printf "Usage:\n"
+  printf "  cli [command] [options]\n"
+  printf "  cli [command] --help | -h\n"
+  printf "  cli --version\n"
   echo
   # :command.usage_commands
-  echo -e "Commands:"
+  printf "Commands:\n"
   echo "  verify   Verify your user"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
     echo "  --version"
-    echo -e "    Show version number"
+    printf "    Show version number\n"
     echo
 
     # :command.usage_environment_variables
-    echo -e "Environment Variables:"
+    printf "Environment Variables:\n"
     
     # :environment_variable.usage
     echo "  API_KEY"
-    echo -e "    Set your API key"
+    printf "    Set your API key\n"
     echo
 
   fi
@@ -50,30 +50,30 @@ cli_usage() {
 # :command.usage
 cli_verify_usage() {
   if [[ -n $long_usage ]]; then
-    echo -e "cli verify - Verify your user"
+    printf "cli verify - Verify your user\n"
     echo 
   else
-    echo -e "cli verify - Verify your user"
+    printf "cli verify - Verify your user\n"
     echo 
   fi
-  echo -e "Usage:"
-  echo -e "  cli verify [options]"
-  echo -e "  cli verify --help | -h"
+  printf "Usage:\n"
+  printf "  cli verify [options]\n"
+  printf "  cli verify --help | -h\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    echo -e "Options:"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    echo -e "    Show this help"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_environment_variables
-    echo -e "Environment Variables:"
+    printf "Environment Variables:\n"
     
     # :environment_variable.usage
     echo "  MY_SECRET (required)"
-    echo -e "    Your secret"
+    printf "    Your secret\n"
     echo
 
   fi
@@ -144,13 +144,13 @@ parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   
@@ -176,7 +176,7 @@ cli_verify_parse_requirements() {
   esac
   # :command.environment_variables_filter
   if [[ -z "$MY_SECRET" ]]; then
-    echo -e "missing required environment variable: MY_SECRET"
+    printf "missing required environment variable: MY_SECRET\n"
     exit 1
   fi
   # :command.dependencies_filter
@@ -190,13 +190,13 @@ cli_verify_parse_requirements() {
     case "$key" in
   
     -* )
-      echo -e "invalid option: $key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
     * )
       # :command.parse_requirements_case
-      echo -e "invalid argument: $key"
+      printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
   

@@ -1,16 +1,17 @@
 # ---
-# Config handling functions
-# This file is a part of bashly's standard library functions.
+# Config functions
+# This file is a part of Bashly standard library
 #
 # Usage:
 # - In your script, set the CONFIG_FILE variable. For rxample:
-#   CONFIG_FILE=config.ini
+#   CONFIG_FILE=settings.ini.
+#   If it is unset, it will default to 'config.ini'.
 # - Use any of the functions below to access the config file.
 # ---
 
 # Create a new config file.
-# There is normally no need to use this fucntion, it is used by othe rfunctions
-# as needed.
+# There is normally no need to use this fucntion, it is used by other
+# functions as needed.
 config_init() {
   CONFIG_FILE=${CONFIG_FILE:=config.ini}
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
@@ -62,7 +63,7 @@ config_set() {
     output="$output$key = $value\n"
   fi
 
-  echo -e "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
 # Delete a key from teh config.
@@ -82,11 +83,33 @@ config_del() {
     fi
   done < "$CONFIG_FILE"
 
-  echo -e "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
 # Show the config file
 config_show() {
   config_init
   cat "$CONFIG_FILE"
+}
+
+# Return an array of the keys in the config file
+# Usage:
+#
+#   for k in $(config_keys); do
+#     echo "- $k = $(config_get "$k")";
+#   done
+#
+config_keys() {
+  regex="^(.*)\s*="
+
+  config_init
+
+  keys=()
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ $line =~ $regex ]]; then
+      key="${BASH_REMATCH[1]}"
+      keys+=("$key")
+    fi
+  done < "$CONFIG_FILE"
+  echo "${keys[@]}"
 }

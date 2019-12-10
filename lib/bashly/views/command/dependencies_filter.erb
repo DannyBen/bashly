@@ -2,7 +2,7 @@
 <%- if dependencies -%>
 <%- dependencies.each do |dependency| -%>
 if ! [[ -x "$(command -v <%= dependency %>)" ]]; then
-  echo -e "<%= strings[:missing_dependency] % { dependency: dependency } -%>"
+  printf "<%= strings[:missing_dependency] % { dependency: dependency } -%>\n"
   exit 1
 fi
 <%- end -%>
