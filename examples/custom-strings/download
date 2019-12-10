@@ -24,16 +24,14 @@ download_usage() {
     printf "download - Sample minimal application with custom strings\n"
     echo 
   fi
-  printf "== Usage ==
-\n"
+  printf "== Usage ==\n\n"
   printf "  download SOURCE [options]\n"
   printf "  download --help | -h\n"
   printf "  download --version\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    printf "== Options ==
-\n"
+    printf "== Options ==\n\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
     printf "    Show this helpful help\n"
@@ -47,8 +45,7 @@ download_usage() {
     printf "    Target directory\n"
     echo
     # :command.usage_args
-    printf "== Arguments ==
-    \n"
+    printf "== Arguments ==\n\n"
     
     # :argument.usage
     echo "  SOURCE"
@@ -118,7 +115,7 @@ parse_requirements() {
   
   
     -* )
-      printf "invalid option: %{flag}\n" "$key"
+      printf "invalid option: %s\n" "$key"
       exit 1
       ;;
   
@@ -128,7 +125,7 @@ parse_requirements() {
         args[source]=$1
         shift
       else
-        printf "invalid argument: %{arg}\n" "$key"
+        printf "invalid argument: %s\n" "$key"
         exit 1
       fi
       ;;
