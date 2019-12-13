@@ -16,6 +16,7 @@ ftp_usage() {
     printf "ftp - Sample application that uses the default command option\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  ftp [command] [options]\n"
   printf "  ftp [command] --help | -h\n"
@@ -49,6 +50,10 @@ ftp_upload_usage() {
     printf "ftp upload - Upload a file\n"
     echo 
   fi
+
+  printf "Shortcut: u\n"
+  echo
+
   printf "Usage:\n"
   printf "  ftp upload SOURCE [options]\n"
   printf "  ftp upload --help | -h\n"
@@ -81,6 +86,10 @@ ftp_download_usage() {
     printf "ftp download - Download a file\n"
     echo 
   fi
+
+  printf "Shortcut: d\n"
+  echo
+
   printf "Usage:\n"
   printf "  ftp download SOURCE [options]\n"
   printf "  ftp download --help | -h\n"

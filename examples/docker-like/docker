@@ -16,6 +16,7 @@ docker_usage() {
     printf "docker - Docker example\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  docker [command] [options]\n"
   printf "  docker [command] --help | -h\n"
@@ -49,6 +50,10 @@ docker_container_usage() {
     printf "docker container - Container commands\n"
     echo 
   fi
+
+  printf "Shortcut: c*\n"
+  echo
+
   printf "Usage:\n"
   printf "  docker container [command] [options]\n"
   printf "  docker container [command] --help | -h\n"
@@ -78,6 +83,7 @@ docker_container_run_usage() {
     printf "docker container run - Run a container\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  docker container run IMAGE [options]\n"
   printf "  docker container run --help | -h\n"
@@ -110,6 +116,7 @@ docker_container_stop_usage() {
     printf "docker container stop - Stop a container\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  docker container stop CONTAINER [options]\n"
   printf "  docker container stop --help | -h\n"
@@ -142,6 +149,10 @@ docker_image_usage() {
     printf "docker image - Image commands\n"
     echo 
   fi
+
+  printf "Shortcut: i*\n"
+  echo
+
   printf "Usage:\n"
   printf "  docker image [command] [options]\n"
   printf "  docker image [command] --help | -h\n"
@@ -170,6 +181,10 @@ docker_image_ls_usage() {
     printf "docker image ls - Show all images\n"
     echo 
   fi
+
+  printf "Shortcut: l\n"
+  echo
+
   printf "Usage:\n"
   printf "  docker image ls [options]\n"
   printf "  docker image ls --help | -h\n"

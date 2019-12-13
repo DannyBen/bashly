@@ -16,6 +16,7 @@ cli_usage() {
     printf "cli - Sample application that requires dependencies\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  cli [command] [options]\n"
   printf "  cli [command] --help | -h\n"
@@ -49,6 +50,7 @@ cli_download_usage() {
     printf "cli download - Download something\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  cli download [options]\n"
   printf "  cli download --help | -h\n"
@@ -73,6 +75,7 @@ cli_upload_usage() {
     printf "cli upload - Upload something\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  cli upload [options]\n"
   printf "  cli upload --help | -h\n"

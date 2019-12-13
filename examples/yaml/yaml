@@ -39,6 +39,7 @@ yaml_usage() {
     printf "yaml - Sample application that uses the YAML functions\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  yaml FILENAME [VARIABLE] [options]\n"
   printf "  yaml --help | -h\n"

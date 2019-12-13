@@ -14,7 +14,7 @@ module Bashly
       def usage_string(extended: false)
         result = [aliases.join(", ")]
         result << arg.upcase if arg
-        result << "(required)" if required and extended
+        result << strings[:required] if required and extended
         result.join " "
       end
     end

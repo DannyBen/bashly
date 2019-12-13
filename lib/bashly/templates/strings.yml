@@ -1,3 +1,6 @@
+# When overriding from the user folder, feel free to delete everything
+# you do not plan on overriding to keep the default string.
+
 # Usage captions
 usage: "Usage:"
 options: "Options:"
@@ -5,6 +8,13 @@ arguments: "Arguments:"
 commands: "Commands:"
 examples: "Examples:"
 environment_variables: "Environment Variables:"
+
+# Usage helpers
+command_shortcut: "Shortcut: %{short}"
+default_command_summary: "%{summary} (default)"
+required: "(required)"
+help_flag: "--help | -h"
+version_flag: "--version"
 
 # Fixed flags help text
 help_flag_text: Show this help

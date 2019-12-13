@@ -16,6 +16,7 @@ configly_usage() {
     printf "configly - Sample application that uses the config functions\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  configly [command] [options]\n"
   printf "  configly [command] --help | -h\n"
@@ -50,6 +51,10 @@ configly_set_usage() {
     printf "configly set - Save a value in the config file\n"
     echo 
   fi
+
+  printf "Shortcut: s\n"
+  echo
+
   printf "Usage:\n"
   printf "  configly set KEY VALUE [options]\n"
   printf "  configly set --help | -h\n"
@@ -93,6 +98,10 @@ configly_get_usage() {
     printf "configly get - Read a value from the config file\n"
     echo 
   fi
+
+  printf "Shortcut: g\n"
+  echo
+
   printf "Usage:\n"
   printf "  configly get KEY [options]\n"
   printf "  configly get --help | -h\n"
@@ -131,6 +140,10 @@ configly_list_usage() {
     printf "configly list - Show the entire config file\n"
     echo 
   fi
+
+  printf "Shortcut: l\n"
+  echo
+
   printf "Usage:\n"
   printf "  configly list [options]\n"
   printf "  configly list --help | -h\n"

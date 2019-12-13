@@ -18,6 +18,7 @@ multi_usage() {
     printf "multi - Multiline test\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  multi [command] [options]\n"
   printf "  multi [command] --help | -h\n"
@@ -66,6 +67,7 @@ multi_multiline_usage() {
     printf "multi multiline - Do some multiline work.\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  multi multiline [MY_ARG] [options]\n"
   printf "  multi multiline --help | -h\n"
@@ -102,6 +104,7 @@ multi_regular_usage() {
     printf "multi regular - Standard help line\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  multi regular [REPO] [options]\n"
   printf "  multi regular --help | -h\n"
