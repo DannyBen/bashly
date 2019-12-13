@@ -24,6 +24,7 @@ download_usage() {
     printf "download - Sample minimal application without subcommands\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  download SOURCE [TARGET] [options]\n"
   printf "  download --help | -h\n"

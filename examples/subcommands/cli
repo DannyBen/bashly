@@ -16,6 +16,7 @@ cli_usage() {
     printf "cli - Sample application\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  cli [command] [options]\n"
   printf "  cli [command] --help | -h\n"
@@ -57,6 +58,10 @@ cli_download_usage() {
     printf "cli download - Download a file\n"
     echo 
   fi
+
+  printf "Shortcut: d\n"
+  echo
+
   printf "Usage:\n"
   printf "  cli download SOURCE [TARGET] [options]\n"
   printf "  cli download --help | -h\n"
@@ -111,6 +116,10 @@ cli_upload_usage() {
     printf "cli upload - Upload a file\n"
     echo 
   fi
+
+  printf "Shortcut: u\n"
+  echo
+
   printf "Usage:\n"
   printf "  cli upload SOURCE [options]\n"
   printf "  cli upload --help | -h\n"

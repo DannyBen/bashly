@@ -16,6 +16,7 @@ git_usage() {
     printf "git - Git example\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  git [command] [options]\n"
   printf "  git [command] --help | -h\n"
@@ -49,6 +50,10 @@ git_status_usage() {
     printf "git status - Show repository status\n"
     echo 
   fi
+
+  printf "Shortcut: s*\n"
+  echo
+
   printf "Usage:\n"
   printf "  git status [options]\n"
   printf "  git status --help | -h\n"
@@ -73,6 +78,10 @@ git_commit_usage() {
     printf "git commit - Commit changes\n"
     echo 
   fi
+
+  printf "Shortcut: c*\n"
+  echo
+
   printf "Usage:\n"
   printf "  git commit [options]\n"
   printf "  git commit --help | -h\n"

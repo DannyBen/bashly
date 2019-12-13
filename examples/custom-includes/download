@@ -25,6 +25,7 @@ download_usage() {
     printf "download - Sample minimal application with custom strings\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  download [SOURCE] [options]\n"
   printf "  download --help | -h\n"

@@ -40,6 +40,8 @@ Environment Variables:
 + ./cli verify -h
 cli verify - Verify your user
 
+Shortcut: v
+
 Usage:
   cli verify [options]
   cli verify --help | -h

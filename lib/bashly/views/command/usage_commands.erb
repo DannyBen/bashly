@@ -3,7 +3,7 @@ printf "<%= strings[:commands] %>\n"
 <%- maxlen = command_names.map(&:size).max -%>
 <%- commands.each do |command| -%>
 <%- summary = command.summary -%>
-<%- summary = "#{summary} (default)" if command.default -%>
+<%- summary = strings[:default_command_summary] % { summary: summary } if command.default -%>
 echo "  <%= command.name.ljust maxlen %>   <%= summary %>"
 <%- end -%>
 echo

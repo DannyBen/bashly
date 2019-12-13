@@ -40,6 +40,8 @@ Options:
 + ./docker container
 docker container - Container commands
 
+Shortcut: c*
+
 Usage:
   docker container [command] [options]
   docker container [command] --help | -h
@@ -75,6 +77,8 @@ args:
 + ./docker con
 docker container - Container commands
 
+Shortcut: c*
+
 Usage:
   docker container [command] [options]
   docker container [command] --help | -h
@@ -85,6 +89,8 @@ Commands:
 
 + ./docker image
 docker image - Image commands
+
+Shortcut: i*
 
 Usage:
   docker image [command] [options]

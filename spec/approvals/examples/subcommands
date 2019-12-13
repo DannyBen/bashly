@@ -45,6 +45,8 @@ Environment Variables:
 + ./cli download -h
 cli download - Download a file
 
+Shortcut: d
+
 Usage:
   cli download SOURCE [TARGET] [options]
   cli download --help | -h
@@ -84,6 +86,8 @@ args:
 - ${args[--force]} = 1
 + ./cli upload --help
 cli upload - Upload a file
+
+Shortcut: u
 
 Usage:
   cli upload SOURCE [options]

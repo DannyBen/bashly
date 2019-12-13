@@ -29,6 +29,7 @@ colorly_usage() {
     printf "colorly - Sample application that uses the color functions\n"
     echo 
   fi
+
   printf "Usage:\n"
   printf "  colorly [MESSAGE] [options]\n"
   printf "  colorly --help | -h\n"
