@@ -23,13 +23,9 @@ ftp_usage() {
   printf "  ftp --version\n"
   echo
   # :command.usage_commands
-  
-  
   printf "File Commands:\n"
   echo "  download   Download a file"
   echo "  upload     Upload a file"
-  
-  
   printf "\nLogin Commands:\n"
   echo "  login      Write login credentials to the config file"
   echo "  logout     Delete login credentials to the config file"

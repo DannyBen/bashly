@@ -23,7 +23,6 @@ cli_usage() {
   printf "  cli --version\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  dir    Directory commands"
   echo "  file   File commands"
@@ -60,7 +59,6 @@ cli_dir_usage() {
   printf "  cli dir [command] --help | -h\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  list     Show files in the directory"
   echo "  remove   Remove directory"
@@ -164,7 +162,6 @@ cli_file_usage() {
   printf "  cli file [command] --help | -h\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  show   Show file contents"
   echo "  edit   Edit the file"

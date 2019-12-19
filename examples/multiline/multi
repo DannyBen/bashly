@@ -25,7 +25,6 @@ multi_usage() {
   printf "  multi --version\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  multiline   Do some multiline work."
   echo "  regular     Standard help line"

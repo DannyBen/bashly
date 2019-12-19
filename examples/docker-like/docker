@@ -23,7 +23,6 @@ docker_usage() {
   printf "  docker --version\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  container   Container commands"
   echo "  image       Image commands"
@@ -60,7 +59,6 @@ docker_container_usage() {
   printf "  docker container [command] --help | -h\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  run    Run a container"
   echo "  stop   Stop a container"
@@ -160,7 +158,6 @@ docker_image_usage() {
   printf "  docker image [command] --help | -h\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  ls   Show all images"
   echo

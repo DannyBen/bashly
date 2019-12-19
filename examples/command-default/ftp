@@ -23,7 +23,6 @@ ftp_usage() {
   printf "  ftp --version\n"
   echo
   # :command.usage_commands
-  
   printf "Commands:\n"
   echo "  upload     Upload a file (default)"
   echo "  download   Download a file"
