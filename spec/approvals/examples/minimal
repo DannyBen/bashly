@@ -8,7 +8,7 @@ creating user files in [0;32msrc
 missing required argument: SOURCE
 usage: download SOURCE [TARGET] [options]
 + ./download -h
-download - Sample minimal application without subcommands
+download - Sample minimal application without commands
 
 Usage:
   download SOURCE [TARGET] [options]

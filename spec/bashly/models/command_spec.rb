@@ -77,7 +77,7 @@ describe Models::Command do
       expect(subject.commands.first).to be_a Models::Command
     end
 
-    it "sets the parents property of its subcommands" do
+    it "sets the parents property of its commands" do
       expect(subject.commands.first.parents).to eq ["docker"]
     end
   end

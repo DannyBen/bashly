@@ -1,0 +1,29 @@
+name: ftp
+help: Sample application with command grouping
+version: 0.1.0
+
+commands:
+- name: download
+  help: Download a file
+  group: File
+
+  args:
+  - name: file
+    required: true
+    help: File to download
+
+- name: upload
+  help: Upload a file
+
+  args:
+  - name: file
+    required: true
+    help: File to upload
+
+- name: login
+  help: Write login credentials to the config file
+  group: Login
+
+- name: logout
+  help: Delete login credentials to the config file
+

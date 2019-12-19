@@ -8,6 +8,7 @@ arguments: "Arguments:"
 commands: "Commands:"
 examples: "Examples:"
 environment_variables: "Environment Variables:"
+group: "%{group} Commands:"
 
 # Usage helpers
 command_shortcut: "Shortcut: %{short}"

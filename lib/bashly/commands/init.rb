@@ -7,7 +7,7 @@ module Bashly
       usage "bashly init [--minimal]"
       usage "bashly init (-h|--help)"
 
-      option "-m --minimal", "Use a minimal configuration file (without subcommands)"
+      option "-m --minimal", "Use a minimal configuration file (without commands)"
 
       environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
 

@@ -28,12 +28,12 @@ module Bashly
         help ? "#{full_name} - #{summary}" : full_name
       end
 
-      # Returns only the names of the subcommands (Commands)
+      # Returns only the names of the Commands
       def command_names
         commands.map &:name
       end
 
-      # Returns an array of the subcommands (Commands)
+      # Returns an array of the Commands
       def commands
         return [] unless options["commands"]
         options["commands"].map do |options|

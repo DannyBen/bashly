@@ -41,11 +41,11 @@ Bahsly is responsible for:
 
 - Generating a **single, standalone bash script**.
 - Generating **usage texts** and help screens, showing your tool's arguments, 
-  flags and subcommands (works for subcommands also).
+  flags and commands (works for subcommands also).
 - Parsing the user's command line and extracting:
   - Optional or required **positional arguments**.
   - Optional or required **option flags** (with or without flag arguments).
-  - **Subcommands** (and sub-subcommands).
+  - **Commands** (and subcommands).
   - Standard flags (like **--help** and **--version**).
 - Providing you with a place to input your code for each of the functions 
   your tool performs, and merging it back to the final script.
@@ -67,7 +67,7 @@ $ bashly init --minimal
 ```
 
 This will create a sample `src/bashly.yml` file.
-You can edit this file to specify which arguments, flags and subcommands you
+You can edit this file to specify which arguments, flags and commands you
 need in your bash script.
 
 Then, generate an initial bash script and function placeholder scripts by
@@ -92,24 +92,24 @@ Examples
 
 The `bashly.yml` file can be set up to generate two types of scripts:
 
-1. Script with subcommands (for example, like `docker` or `git`).
-2. Script without subcommands (for example, like `ls`)
+1. Script with commands (for example, like `docker` or `git`).
+2. Script without commands (for example, like `ls`)
 
 This is detected automatically by the contents of the configuration: If it
-contains a `commands` definition, it will generate a script with subcommands.
+contains a `commands` definition, it will generate a script with commands.
 
 
-### Sample configuraiton for a script without subcommands
+### Sample configuraiton for a script without commands
 
 - Generate this script by running `bashly generate --minimal`
 - [See the initial sample bashly.yml file](examples/minimal/src/bashly.yml)
 - [See the generated bash script](examples/minimal/download)
 
-### Sample configuraiton for a script with subcommands
+### Sample configuraiton for a script with commands
 
 - Generate this script by running `bashly generate`
-- [See the initial sample bashly.yml file](examples/subcommands/src/bashly.yml)
-- [See the generated bash script](examples/subcommands/cli)
+- [See the initial sample bashly.yml file](examples/commands/src/bashly.yml)
+- [See the generated bash script](examples/commands/cli)
 
 
 See the [examples](examples) folder for more examples.
@@ -140,13 +140,14 @@ command and subcommands (under the `commands` definition).
 `short`    | An additional, optional pattern - usually used to denote a one letter variation of the command name. You can add `*` as a suffix, to denote a "starts with" pattern - for example `short: m*`. *Applicable only in subcommands*.
 `help`     | The header text to display when using `--help`. This option can have multiple lines. In this case, the first line will be used as summary wherever appropriate.
 `version`  | The string to display when using `--version`. *Applicable only in the main command*.
-`default`  | Setting this to `yes` on any subcommand, will make unrecognized command line arguments to be passed to this command. *Applicable only in subcommands*.
+`default`  | Setting this to `yes` on any command, will make unrecognized command line arguments to be passed to this command. *Applicable only in subcommands*.
 `examples` | Specify an array of examples to show when using `--help`. Each example can have multiple lines.
 `environment_variables` | Specify an array of environment variables needed by your script. 
-`commands` | Specify the array of subcommands. Each subcommand will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
+`commands` | Specify the array of commands. Each command will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
 `args`     | Specify the array of positional arguments this script needs.
 `flags`    | Specify the array of option flags this script needs.
 `dependencies` | Specify an array of any required external dependencies (commands). The script execution will be halted with a friendly error unless all dependency commands exist.
+`group`    | In case you have many commands, use this option to specify a caption to display before this command. This option is purely for display purposes, and needs to be specified only for the first command in each group.
 
 ### Argument options
 
