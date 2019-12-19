@@ -1,0 +1,41 @@
+name: cli
+help: Sample application with nested commands
+version: 0.1.0
+
+commands:
+- name: dir
+  short: d
+  help: Directory commands
+  commands:
+  - name: list
+    help: Show files in the directory
+
+    args: &dir_args
+    - name: path
+      help: Directory path
+      required: true
+
+  - name: remove
+    help: Remove directory
+    args: *dir_args   # reuse args from the list command
+
+    flags:
+    - long: --force
+      short: -f
+      help: Remove even if when not empty
+
+- name: file
+  short: f
+  help: File commands
+
+  commands:
+  - name: show
+    help: Show file contents
+    args: &file_args
+    - name: path
+      help: Path to file
+      required: true
+
+  - name: edit
+    help: Edit the file
+    args: *file_args   # reuse args from the show command
