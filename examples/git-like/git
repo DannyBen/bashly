@@ -23,6 +23,7 @@ git_usage() {
   printf "  git --version\n"
   echo
   # :command.usage_commands
+  
   printf "Commands:\n"
   echo "  status   Show repository status"
   echo "  commit   Commit changes"

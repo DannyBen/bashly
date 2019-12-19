@@ -13,6 +13,7 @@ module Bashly
         environment_variables
         examples
         flags
+        group
         help
         long
         name

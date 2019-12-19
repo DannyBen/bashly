@@ -1,9 +1,18 @@
 # :command.usage_commands
+<%- unless commands.first.group %>
 printf "<%= strings[:commands] %>\n"
+<%- end -%>
 <%- maxlen = command_names.map(&:size).max -%>
 <%- commands.each do |command| -%>
 <%- summary = command.summary -%>
 <%- summary = strings[:default_command_summary] % { summary: summary } if command.default -%>
+<%- if command.group %>
+<%- if command.name == commands.first.name %>
+printf "<%= strings[:group] % { group: command.group } %>\n"
+<%- else %>
+printf "\n<%= strings[:group] % { group: command.group } %>\n"
+<%- end -%>
+<%- end -%>
 echo "  <%= command.name.ljust maxlen %>   <%= summary %>"
 <%- end -%>
 echo

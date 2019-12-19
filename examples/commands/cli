@@ -23,6 +23,7 @@ cli_usage() {
   printf "  cli --version\n"
   echo
   # :command.usage_commands
+  
   printf "Commands:\n"
   echo "  download   Download a file"
   echo "  upload     Upload a file"

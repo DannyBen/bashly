@@ -28,6 +28,7 @@ def examples
   [
     "examples/colors/colorly",
     "examples/command-default/ftp",
+    "examples/command-groups/ftp",
     "examples/commands/cli",
     "examples/config-ini/configly",
     "examples/custom-includes/download",

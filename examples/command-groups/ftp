@@ -10,10 +10,10 @@ version_command() {
 # :command.usage
 ftp_usage() {
   if [[ -n $long_usage ]]; then
-    printf "ftp - Sample application that uses the default command option\n"
+    printf "ftp - Sample application with command grouping\n"
     echo 
   else
-    printf "ftp - Sample application that uses the default command option\n"
+    printf "ftp - Sample application with command grouping\n"
     echo 
   fi
 
@@ -24,9 +24,15 @@ ftp_usage() {
   echo
   # :command.usage_commands
   
-  printf "Commands:\n"
-  echo "  upload     Upload a file (default)"
+  
+  printf "File Commands:\n"
   echo "  download   Download a file"
+  echo "  upload     Upload a file"
+  
+  
+  printf "\nLogin Commands:\n"
+  echo "  login      Write login credentials to the config file"
+  echo "  logout     Delete login credentials to the config file"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -43,42 +49,6 @@ ftp_usage() {
 }
 
 # :command.usage
-ftp_upload_usage() {
-  if [[ -n $long_usage ]]; then
-    printf "ftp upload - Upload a file\n"
-    echo 
-  else
-    printf "ftp upload - Upload a file\n"
-    echo 
-  fi
-
-  printf "Shortcut: u\n"
-  echo
-
-  printf "Usage:\n"
-  printf "  ftp upload SOURCE [options]\n"
-  printf "  ftp upload --help | -h\n"
-  echo
-
-  if [[ -n $long_usage ]]; then
-    printf "Options:\n"
-    # :command.usage_fixed_flags
-    echo "  --help, -h"
-    printf "    Show this help\n"
-    echo
-
-    # :command.usage_args
-    printf "Arguments:\n"
-    
-    # :argument.usage
-    echo "  SOURCE"
-    printf "    File to upload\n"
-    echo
-
-  fi
-}
-
-# :command.usage
 ftp_download_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp download - Download a file\n"
@@ -88,11 +58,8 @@ ftp_download_usage() {
     echo 
   fi
 
-  printf "Shortcut: d\n"
-  echo
-
   printf "Usage:\n"
-  printf "  ftp download SOURCE [options]\n"
+  printf "  ftp download FILE [options]\n"
   printf "  ftp download --help | -h\n"
   echo
 
@@ -107,8 +74,91 @@ ftp_download_usage() {
     printf "Arguments:\n"
     
     # :argument.usage
-    echo "  SOURCE"
+    echo "  FILE"
     printf "    File to download\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+ftp_upload_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "ftp upload - Upload a file\n"
+    echo 
+  else
+    printf "ftp upload - Upload a file\n"
+    echo 
+  fi
+
+  printf "Usage:\n"
+  printf "  ftp upload FILE [options]\n"
+  printf "  ftp upload --help | -h\n"
+  echo
+
+  if [[ -n $long_usage ]]; then
+    printf "Options:\n"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_args
+    printf "Arguments:\n"
+    
+    # :argument.usage
+    echo "  FILE"
+    printf "    File to upload\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+ftp_login_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "ftp login - Write login credentials to the config file\n"
+    echo 
+  else
+    printf "ftp login - Write login credentials to the config file\n"
+    echo 
+  fi
+
+  printf "Usage:\n"
+  printf "  ftp login [options]\n"
+  printf "  ftp login --help | -h\n"
+  echo
+
+  if [[ -n $long_usage ]]; then
+    printf "Options:\n"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+ftp_logout_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "ftp logout - Delete login credentials to the config file\n"
+    echo 
+  else
+    printf "ftp logout - Delete login credentials to the config file\n"
+    echo 
+  fi
+
+  printf "Usage:\n"
+  printf "  ftp logout [options]\n"
+  printf "  ftp logout --help | -h\n"
+  echo
+
+  if [[ -n $long_usage ]]; then
+    printf "Options:\n"
+    # :command.usage_fixed_flags
+    echo "  --help, -h"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -122,6 +172,15 @@ inspect_args() {
 
 # :command.command_functions
 # :command.function
+ftp_download_command() {
+  # :src/download_command.sh
+  echo "# this file is located in 'src/download_command.sh'"
+  echo "# code for 'ftp download' goes here"
+  echo "# you can edit it freely and regenerate (it will not be overwritten)"
+  inspect_args
+}
+
+# :command.function
 ftp_upload_command() {
   # :src/upload_command.sh
   echo "# this file is located in 'src/upload_command.sh'"
@@ -131,10 +190,19 @@ ftp_upload_command() {
 }
 
 # :command.function
-ftp_download_command() {
-  # :src/download_command.sh
-  echo "# this file is located in 'src/download_command.sh'"
-  echo "# code for 'ftp download' goes here"
+ftp_login_command() {
+  # :src/login_command.sh
+  echo "# this file is located in 'src/login_command.sh'"
+  echo "# code for 'ftp login' goes here"
+  echo "# you can edit it freely and regenerate (it will not be overwritten)"
+  inspect_args
+}
+
+# :command.function
+ftp_logout_command() {
+  # :src/logout_command.sh
+  echo "# this file is located in 'src/logout_command.sh'"
+  echo "# code for 'ftp logout' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
 }
@@ -164,29 +232,37 @@ parse_requirements() {
   -* )
     ;;
   
-  upload | u )
-    action="upload"
-    shift
-    ftp_upload_parse_requirements "$@"
-    shift $#
-    ;;    
-  
-  download | d )
+  download )
     action="download"
     shift
     ftp_download_parse_requirements "$@"
     shift $#
     ;;    
   
-  "" )
-    ftp_usage
-    exit 1
-    ;;
-  
-  * )
+  upload )
     action="upload"
+    shift
     ftp_upload_parse_requirements "$@"
     shift $#
+    ;;    
+  
+  login )
+    action="login"
+    shift
+    ftp_login_parse_requirements "$@"
+    shift $#
+    ;;    
+  
+  logout )
+    action="logout"
+    shift
+    ftp_logout_parse_requirements "$@"
+    shift $#
+    ;;    
+  
+  * )
+    ftp_usage
+    exit 1
     ;;
   
   esac
@@ -206,60 +282,6 @@ parse_requirements() {
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
-      ;;
-  
-    esac
-  done
-}
-
-# :command.parse_requirements
-ftp_upload_parse_requirements() {
-  # :command.fixed_flag_filter
-  case "$1" in
-  --version )
-    version_command
-    exit 1
-    ;;
-  
-  --help | -h ) 
-    long_usage=yes
-    ftp_upload_usage
-    exit 1
-    ;;
-  
-  esac
-  # :command.environment_variables_filter
-  # :command.dependencies_filter
-  # :command.command_filter
-  action="upload"
-  # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    printf "missing required argument: SOURCE\nusage: ftp upload SOURCE [options]\n"
-    exit 1
-  fi
-  # :command.required_flags_filter
-  # :command.parse_requirements_while
-  while [[ $# -gt 0 ]]; do
-    key="$1"
-    case "$key" in
-  
-    -* )
-      printf "invalid option: %s\n" "$key"
-      exit 1
-      ;;
-  
-    * )
-      # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
-        shift
-      else
-        printf "invalid argument: %s\n" "$key"
-        exit 1
-      fi
       ;;
   
     esac
@@ -288,10 +310,10 @@ ftp_download_parse_requirements() {
   action="download"
   # :command.required_args_filter
   if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
+    args[file]=$1
     shift
   else
-    printf "missing required argument: SOURCE\nusage: ftp download SOURCE [options]\n"
+    printf "missing required argument: FILE\nusage: ftp download FILE [options]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -307,13 +329,151 @@ ftp_download_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
+      if [[ ! ${args[file]} ]]; then
+        args[file]=$1
         shift
       else
         printf "invalid argument: %s\n" "$key"
         exit 1
       fi
+      ;;
+  
+    esac
+  done
+}
+
+# :command.parse_requirements
+ftp_upload_parse_requirements() {
+  # :command.fixed_flag_filter
+  case "$1" in
+  --version )
+    version_command
+    exit 1
+    ;;
+  
+  --help | -h ) 
+    long_usage=yes
+    ftp_upload_usage
+    exit 1
+    ;;
+  
+  esac
+  # :command.environment_variables_filter
+  # :command.dependencies_filter
+  # :command.command_filter
+  action="upload"
+  # :command.required_args_filter
+  if [[ $1 && $1 != -* ]]; then
+    args[file]=$1
+    shift
+  else
+    printf "missing required argument: FILE\nusage: ftp upload FILE [options]\n"
+    exit 1
+  fi
+  # :command.required_flags_filter
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+  
+    -* )
+      printf "invalid option: %s\n" "$key"
+      exit 1
+      ;;
+  
+    * )
+      # :command.parse_requirements_case
+      if [[ ! ${args[file]} ]]; then
+        args[file]=$1
+        shift
+      else
+        printf "invalid argument: %s\n" "$key"
+        exit 1
+      fi
+      ;;
+  
+    esac
+  done
+}
+
+# :command.parse_requirements
+ftp_login_parse_requirements() {
+  # :command.fixed_flag_filter
+  case "$1" in
+  --version )
+    version_command
+    exit 1
+    ;;
+  
+  --help | -h ) 
+    long_usage=yes
+    ftp_login_usage
+    exit 1
+    ;;
+  
+  esac
+  # :command.environment_variables_filter
+  # :command.dependencies_filter
+  # :command.command_filter
+  action="login"
+  # :command.required_args_filter
+  # :command.required_flags_filter
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+  
+    -* )
+      printf "invalid option: %s\n" "$key"
+      exit 1
+      ;;
+  
+    * )
+      # :command.parse_requirements_case
+      printf "invalid argument: %s\n" "$key"
+      exit 1
+      ;;
+  
+    esac
+  done
+}
+
+# :command.parse_requirements
+ftp_logout_parse_requirements() {
+  # :command.fixed_flag_filter
+  case "$1" in
+  --version )
+    version_command
+    exit 1
+    ;;
+  
+  --help | -h ) 
+    long_usage=yes
+    ftp_logout_usage
+    exit 1
+    ;;
+  
+  esac
+  # :command.environment_variables_filter
+  # :command.dependencies_filter
+  # :command.command_filter
+  action="logout"
+  # :command.required_args_filter
+  # :command.required_flags_filter
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+  
+    -* )
+      printf "invalid option: %s\n" "$key"
+      exit 1
+      ;;
+  
+    * )
+      # :command.parse_requirements_case
+      printf "invalid argument: %s\n" "$key"
+      exit 1
       ;;
   
     esac
@@ -340,7 +500,15 @@ run() {
   declare -A args
   parse_requirements "$@"
 
-  if [[ $action == "upload" ]]; then
+  if [[ $action == "download" ]]; then
+    if [[ ${args[--help]} ]]; then
+      long_usage=yes
+      ftp_download_usage
+    else
+      ftp_download_command
+    fi
+  
+  elif [[ $action == "upload" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
       ftp_upload_usage
@@ -348,12 +516,20 @@ run() {
       ftp_upload_command
     fi
   
-  elif [[ $action == "download" ]]; then
+  elif [[ $action == "login" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
-      ftp_download_usage
+      ftp_login_usage
     else
-      ftp_download_command
+      ftp_login_command
+    fi
+  
+  elif [[ $action == "logout" ]]; then
+    if [[ ${args[--help]} ]]; then
+      long_usage=yes
+      ftp_logout_usage
+    else
+      ftp_logout_command
     fi
   
   elif [[ ${args[--version]} ]]; then

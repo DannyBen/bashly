@@ -23,6 +23,7 @@ configly_usage() {
   printf "  configly --version\n"
   echo
   # :command.usage_commands
+  
   printf "Commands:\n"
   echo "  set    Save a value in the config file"
   echo "  get    Read a value from the config file"
