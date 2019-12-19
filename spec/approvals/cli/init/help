@@ -9,7 +9,7 @@ Usage:
 
 Options:
   -m --minimal
-    Use a minimal configuration file (without subcommands)
+    Use a minimal configuration file (without commands)
 
   -h --help
     Show this help

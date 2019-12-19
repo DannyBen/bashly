@@ -27,17 +27,17 @@ end
 def examples
   [
     "examples/colors/colorly",
+    "examples/command-default/ftp",
+    "examples/commands/cli",
     "examples/config-ini/configly",
     "examples/custom-includes/download",
     "examples/custom-strings/download",
-    "examples/default-command/ftp",
     "examples/dependencies/cli",
     "examples/docker-like/docker",
     "examples/environment-variables/cli",
     "examples/git-like/git",
     "examples/minimal/download",
     "examples/multiline/multi",
-    "examples/subcommands/cli",
     "examples/yaml/yaml",
     "spec/fixtures/workspaces/short-flag/rush",
   ]

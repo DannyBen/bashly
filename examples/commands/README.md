@@ -1,4 +1,4 @@
-Subcommands Example
+Commands Example
 ==================================================
 
 This example was generated with:
