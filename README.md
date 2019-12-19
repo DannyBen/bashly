@@ -147,7 +147,7 @@ command and subcommands (under the `commands` definition).
 `args`     | Specify the array of positional arguments this script needs.
 `flags`    | Specify the array of option flags this script needs.
 `dependencies` | Specify an array of any required external dependencies (commands). The script execution will be halted with a friendly error unless all dependency commands exist.
-`group`    | In case you have many commands, use this option to specify a caption to display before this command. This option is purely for display purposes, and needs to be specified only once for each group.
+`group`    | In case you have many commands, use this option to specify a caption to display before this command. This option is purely for display purposes, and needs to be specified only in the first command in each group.
 
 ### Argument options
 
