@@ -38,6 +38,7 @@ def examples
     "examples/environment-variables/cli",
     "examples/git-like/git",
     "examples/minimal/download",
+    "examples/minus-v/cli",
     "examples/multiline/multi",
     "examples/yaml/yaml",
     "spec/fixtures/workspaces/short-command-code/rush",

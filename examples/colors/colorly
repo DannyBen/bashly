@@ -33,7 +33,7 @@ colorly_usage() {
   printf "Usage:\n"
   printf "  colorly [MESSAGE] [options]\n"
   printf "  colorly --help | -h\n"
-  printf "  colorly --version\n"
+  printf "  colorly --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then

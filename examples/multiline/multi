@@ -22,7 +22,7 @@ multi_usage() {
   printf "Usage:\n"
   printf "  multi [command] [options]\n"
   printf "  multi [command] --help | -h\n"
-  printf "  multi --version\n"
+  printf "  multi --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"

@@ -20,7 +20,7 @@ ftp_usage() {
   printf "Usage:\n"
   printf "  ftp [command] [options]\n"
   printf "  ftp [command] --help | -h\n"
-  printf "  ftp --version\n"
+  printf "  ftp --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"

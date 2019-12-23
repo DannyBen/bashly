@@ -13,7 +13,7 @@ cli - Sample application with nested commands
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   dir    Directory commands
@@ -25,7 +25,7 @@ cli - Sample application with nested commands
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   dir    Directory commands

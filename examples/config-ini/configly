@@ -20,7 +20,7 @@ configly_usage() {
   printf "Usage:\n"
   printf "  configly [command] [options]\n"
   printf "  configly [command] --help | -h\n"
-  printf "  configly --version\n"
+  printf "  configly --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"

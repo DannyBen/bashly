@@ -11,7 +11,7 @@ cli - Sample application
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   download   Download a file
@@ -23,7 +23,7 @@ cli - Sample application
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   download   Download a file

@@ -14,7 +14,7 @@ download - Sample minimal application with custom strings
 
   download SOURCE [options]
   download --help | -h
-  download --version
+  download --version | -v
 
 == Options ==
 

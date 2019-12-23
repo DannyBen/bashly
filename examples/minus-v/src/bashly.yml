@@ -1,0 +1,14 @@
+name: cli
+help: Example that replaces the default behavior of -v and -h
+version: 0.1.0
+
+flags:
+- long: --verbose
+  short: -v
+  help: Show verbose output
+
+- long: --host
+  short: -h
+  arg: host
+  help: Host address
+

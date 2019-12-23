@@ -11,7 +11,7 @@ ftp - Sample application that uses the default command option
 Usage:
   ftp [command] [options]
   ftp [command] --help | -h
-  ftp --version
+  ftp --version | -v
 
 Commands:
   upload     Upload a file (default)
@@ -23,7 +23,7 @@ ftp - Sample application that uses the default command option
 Usage:
   ftp [command] [options]
   ftp [command] --help | -h
-  ftp --version
+  ftp --version | -v
 
 Commands:
   upload     Upload a file (default)

@@ -20,7 +20,7 @@ git_usage() {
   printf "Usage:\n"
   printf "  git [command] [options]\n"
   printf "  git [command] --help | -h\n"
-  printf "  git --version\n"
+  printf "  git --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"
@@ -274,7 +274,7 @@ git_commit_parse_requirements() {
         shift
         shift
       else
-        printf "--message requires an argument: --message, -m MESSAGE\n"
+        printf "%s\n" "--message requires an argument: --message, -m MESSAGE"
         exit 1
       fi
       ;;

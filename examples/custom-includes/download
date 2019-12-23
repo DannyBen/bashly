@@ -29,7 +29,7 @@ download_usage() {
   printf "Usage:\n"
   printf "  download [SOURCE] [options]\n"
   printf "  download --help | -h\n"
-  printf "  download --version\n"
+  printf "  download --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then

@@ -10,7 +10,7 @@ cli - Sample application that requires environment variables
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   verify   Verify your user
@@ -21,7 +21,7 @@ cli - Sample application that requires environment variables
 Usage:
   cli [command] [options]
   cli [command] --help | -h
-  cli --version
+  cli --version | -v
 
 Commands:
   verify   Verify your user

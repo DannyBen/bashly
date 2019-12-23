@@ -43,7 +43,7 @@ yaml_usage() {
   printf "Usage:\n"
   printf "  yaml FILENAME [VARIABLE] [options]\n"
   printf "  yaml --help | -h\n"
-  printf "  yaml --version\n"
+  printf "  yaml --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -170,7 +170,7 @@ parse_requirements() {
         shift
         shift
       else
-        printf "--prefix requires an argument: --prefix, -p PREFIX\n"
+        printf "%s\n" "--prefix requires an argument: --prefix, -p PREFIX"
         exit 1
       fi
       ;;
