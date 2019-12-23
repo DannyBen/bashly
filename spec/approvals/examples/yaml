@@ -10,13 +10,13 @@ yaml - Sample application that uses the YAML functions
 Usage:
   yaml FILENAME [VARIABLE] [options]
   yaml --help | -h
-  yaml --version
+  yaml --version | -v
 
 Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
   --prefix, -p PREFIX

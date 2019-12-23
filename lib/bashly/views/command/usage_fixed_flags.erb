@@ -1,9 +1,17 @@
 # :command.usage_fixed_flags
+<%- if short_flag_exist? "-h" -%>
+echo "  --help"
+<%- else -%>
 echo "  --help, -h"
+<%- end -%>
 printf "    <%= strings[:help_flag_text] %>\n"
 echo
 <%- if root_command? -%>
+<%- if short_flag_exist? "-v" -%>
 echo "  --version"
+<%- else -%>
+echo "  --version, -v"
+<%- end -%>
 printf "    <%= strings[:version_flag_text] %>\n"
 echo
 <%- end -%>

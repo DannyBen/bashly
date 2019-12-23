@@ -12,7 +12,7 @@ docker - Docker example
 Usage:
   docker [command] [options]
   docker [command] --help | -h
-  docker --version
+  docker --version | -v
 
 Commands:
   container   Container commands
@@ -24,7 +24,7 @@ docker - Docker example
 Usage:
   docker [command] [options]
   docker [command] --help | -h
-  docker --version
+  docker --version | -v
 
 Commands:
   container   Container commands
@@ -34,7 +34,7 @@ Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
 + ./docker container

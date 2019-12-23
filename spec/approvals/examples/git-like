@@ -11,7 +11,7 @@ git - Git example
 Usage:
   git [command] [options]
   git [command] --help | -h
-  git --version
+  git --version | -v
 
 Commands:
   status   Show repository status
@@ -23,7 +23,7 @@ git - Git example
 Usage:
   git [command] [options]
   git [command] --help | -h
-  git --version
+  git --version | -v
 
 Commands:
   status   Show repository status
@@ -33,7 +33,7 @@ Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
 + ./git s

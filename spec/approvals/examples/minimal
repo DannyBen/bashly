@@ -13,13 +13,13 @@ download - Sample minimal application without commands
 Usage:
   download SOURCE [TARGET] [options]
   download --help | -h
-  download --version
+  download --version | -v
 
 Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
   --force, -f
@@ -36,7 +36,7 @@ Examples:
   download example.com
   download example.com ./output -f
 
-+ ./download --version
++ ./download -v
 0.1.0
 + ./download somesource -f
 # this file is located in 'src/root_command.sh'

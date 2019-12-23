@@ -33,7 +33,7 @@ colorly_usage() {
   printf "Usage:\n"
   printf "  colorly [MESSAGE] [options]\n"
   printf "  colorly --help | -h\n"
-  printf "  colorly --version\n"
+  printf "  colorly --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -42,7 +42,7 @@ colorly_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -104,12 +104,12 @@ cyan_underlined() { printf "\e[4;36m%b\e[0m\n" "$*"; }
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     colorly_usage
     exit 1

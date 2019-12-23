@@ -12,7 +12,7 @@ configly - Sample application that uses the config functions
 Usage:
   configly [command] [options]
   configly [command] --help | -h
-  configly --version
+  configly --version | -v
 
 Commands:
   set    Save a value in the config file
@@ -23,7 +23,7 @@ Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
 + ./configly set hello world

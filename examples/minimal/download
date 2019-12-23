@@ -28,7 +28,7 @@ download_usage() {
   printf "Usage:\n"
   printf "  download SOURCE [TARGET] [options]\n"
   printf "  download --help | -h\n"
-  printf "  download --version\n"
+  printf "  download --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -37,7 +37,7 @@ download_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
     # :command.usage_flags
@@ -80,12 +80,12 @@ inspect_args() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     download_usage
     exit 1

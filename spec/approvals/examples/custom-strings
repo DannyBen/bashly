@@ -14,14 +14,14 @@ download - Sample minimal application with custom strings
 
   download SOURCE [options]
   download --help | -h
-  download --version
+  download --version | -v
 
 == Options ==
 
   --help, -h
     Show this helpful help
 
-  --version
+  --version, -v
     Show version number
 
   --out, -o DIR (required)

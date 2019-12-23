@@ -8,5 +8,5 @@ bashly generate
 
 ./download
 ./download -h
-./download --version
+./download -v
 ./download somesource -f

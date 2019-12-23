@@ -20,7 +20,7 @@ cli_usage() {
   printf "Usage:\n"
   printf "  cli [command] [options]\n"
   printf "  cli [command] --help | -h\n"
-  printf "  cli --version\n"
+  printf "  cli --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"
@@ -34,7 +34,7 @@ cli_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -181,12 +181,12 @@ cli_upload_command() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_usage
     exit 1
@@ -248,12 +248,12 @@ parse_requirements() {
 cli_download_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_download_usage
     exit 1
@@ -311,12 +311,12 @@ cli_download_parse_requirements() {
 cli_upload_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_upload_usage
     exit 1
@@ -352,7 +352,7 @@ cli_upload_parse_requirements() {
         shift
         shift
       else
-        printf "--user requires an argument: --user, -u USER\n"
+        printf "%s\n" "--user requires an argument: --user, -u USER"
         exit 1
       fi
       ;;
@@ -364,7 +364,7 @@ cli_upload_parse_requirements() {
         shift
         shift
       else
-        printf "--password requires an argument: --password, -p PASSWORD\n"
+        printf "%s\n" "--password requires an argument: --password, -p PASSWORD"
         exit 1
       fi
       ;;

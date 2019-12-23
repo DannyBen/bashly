@@ -11,7 +11,7 @@ multi - Multiline test
 Usage:
   multi [command] [options]
   multi [command] --help | -h
-  multi --version
+  multi --version | -v
 
 Commands:
   multiline   Do some multiline work.
@@ -28,7 +28,7 @@ multi
 Usage:
   multi [command] [options]
   multi [command] --help | -h
-  multi --version
+  multi --version | -v
 
 Commands:
   multiline   Do some multiline work.
@@ -38,7 +38,7 @@ Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
 Environment Variables:

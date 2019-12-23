@@ -6,7 +6,7 @@
     shift
     shift
   else
-    printf "<%= strings[:flag_requires_an_argument] % { long: long, usage: usage_string } %>\n"
+    printf "%s\n" "<%= strings[:flag_requires_an_argument] % { long: long, usage: usage_string } %>"
     exit 1
   fi
   <%- else -%>

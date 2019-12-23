@@ -20,7 +20,7 @@ cli_usage() {
   printf "Usage:\n"
   printf "  cli [command] [options]\n"
   printf "  cli [command] --help | -h\n"
-  printf "  cli --version\n"
+  printf "  cli --version | -v\n"
   echo
   # :command.usage_commands
   printf "Commands:\n"
@@ -34,7 +34,7 @@ cli_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -291,12 +291,12 @@ cli_file_edit_command() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_usage
     exit 1
@@ -358,12 +358,12 @@ parse_requirements() {
 cli_dir_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_dir_usage
     exit 1
@@ -425,12 +425,12 @@ cli_dir_parse_requirements() {
 cli_dir_list_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_dir_list_usage
     exit 1
@@ -479,12 +479,12 @@ cli_dir_list_parse_requirements() {
 cli_dir_remove_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_dir_remove_usage
     exit 1
@@ -539,12 +539,12 @@ cli_dir_remove_parse_requirements() {
 cli_file_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_file_usage
     exit 1
@@ -606,12 +606,12 @@ cli_file_parse_requirements() {
 cli_file_show_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_file_show_usage
     exit 1
@@ -660,12 +660,12 @@ cli_file_show_parse_requirements() {
 cli_file_edit_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     cli_file_edit_usage
     exit 1

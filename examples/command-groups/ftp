@@ -20,7 +20,7 @@ ftp_usage() {
   printf "Usage:\n"
   printf "  ftp [command] [options]\n"
   printf "  ftp [command] --help | -h\n"
-  printf "  ftp --version\n"
+  printf "  ftp --version | -v\n"
   echo
   # :command.usage_commands
   printf "File Commands:\n"
@@ -37,7 +37,7 @@ ftp_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -207,12 +207,12 @@ ftp_logout_command() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     ftp_usage
     exit 1
@@ -288,12 +288,12 @@ parse_requirements() {
 ftp_download_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     ftp_download_usage
     exit 1
@@ -342,12 +342,12 @@ ftp_download_parse_requirements() {
 ftp_upload_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     ftp_upload_usage
     exit 1
@@ -396,12 +396,12 @@ ftp_upload_parse_requirements() {
 ftp_login_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     ftp_login_usage
     exit 1
@@ -438,12 +438,12 @@ ftp_login_parse_requirements() {
 ftp_logout_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     ftp_logout_usage
     exit 1

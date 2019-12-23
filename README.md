@@ -163,7 +163,7 @@ bash function.
 ### Flag options
 
 The flag's value will be available to you as `${args[--output]}` in your 
-bash function (regardless of whether the user provided ut with the long or 
+bash function (regardless of whether the user provided it with the long or 
 short form).
 
  Option    | Description
@@ -173,6 +173,12 @@ short form).
 `help`     | The text to display when using `--help`. Can have multiple lines.
 `arg`      | If the flag requires an argument, specify its name here.
 `required` | Specify if this flag is required.
+
+#### Special handling for -v and -h
+
+The `-v` and `-h` flags will be used as the short options for `--version` and
+`--help` respectively **only if you are not using them in any of your own
+flags**.
 
 ### Environment Variable options
 
