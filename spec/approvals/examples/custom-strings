@@ -21,7 +21,7 @@ download - Sample minimal application with custom strings
   --help, -h
     Show this helpful help
 
-  --version
+  --version, -v
     Show version number
 
   --out, -o DIR (required)

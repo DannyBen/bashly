@@ -36,7 +36,7 @@ multi_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -157,12 +157,12 @@ multi_regular_command() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     multi_usage
     exit 1
@@ -224,12 +224,12 @@ parse_requirements() {
 multi_multiline_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     multi_multiline_usage
     exit 1
@@ -277,12 +277,12 @@ multi_multiline_parse_requirements() {
 multi_regular_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     multi_regular_usage
     exit 1

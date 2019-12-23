@@ -70,4 +70,11 @@
   - name: post
   - name: put
 
-
+:flag_hog:
+  name: cli
+  help: test when -h and -v are defined
+  flags:
+  - short: -h
+    long: --hello
+  - short: -v
+    long: --vorld

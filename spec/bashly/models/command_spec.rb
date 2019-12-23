@@ -215,9 +215,26 @@ describe Models::Command do
     end
   end
 
+  describe '#short_flag_exist?' do
+    let(:fixture) { :flag_hog }
+
+    context "when the command has this short flag" do
+      it "returns true" do
+        expect(subject.short_flag_exist? "-h").to be true
+      end
+    end
+
+    context "when the command does not have this short flag" do
+      it "returns false" do
+        expect(subject.short_flag_exist? "-s").to be false
+      end
+    end
+  end
+
   describe '#usage_string' do
     context "when no args and no commands are defined" do
       let(:fixture) { :git_status }
+
       it "returns a string suitable to be used as a usage pattern" do
         expect(subject.usage_string).to eq "git status [options]"
       end

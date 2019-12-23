@@ -136,6 +136,11 @@ module Bashly
         parents.empty?
       end
 
+      # Returns true if one of the flags matches the provided short code
+      def short_flag_exist?(flag)
+        flags.select { |f| f.short == flag }.any?
+      end
+
       # Returns a constructed string suitable for Usage pattern
       def usage_string
         result = [full_name]

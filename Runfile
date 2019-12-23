@@ -40,7 +40,7 @@ def examples
     "examples/minimal/download",
     "examples/multiline/multi",
     "examples/yaml/yaml",
-    "spec/fixtures/workspaces/short-flag/rush",
+    "spec/fixtures/workspaces/short-command-code/rush",
   ]
 end
 

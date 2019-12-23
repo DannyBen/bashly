@@ -37,7 +37,7 @@ download_usage() {
     echo "  --help, -h"
     printf "    Show this helpful help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
     # :command.usage_flags
@@ -68,12 +68,12 @@ inspect_args() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     download_usage
     exit 1

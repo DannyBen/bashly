@@ -34,7 +34,7 @@ docker_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
 
@@ -239,12 +239,12 @@ docker_image_ls_command() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_usage
     exit 1
@@ -306,12 +306,12 @@ parse_requirements() {
 docker_container_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_container_usage
     exit 1
@@ -373,12 +373,12 @@ docker_container_parse_requirements() {
 docker_container_run_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_container_run_usage
     exit 1
@@ -427,12 +427,12 @@ docker_container_run_parse_requirements() {
 docker_container_stop_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_container_stop_usage
     exit 1
@@ -481,12 +481,12 @@ docker_container_stop_parse_requirements() {
 docker_image_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_image_usage
     exit 1
@@ -541,12 +541,12 @@ docker_image_parse_requirements() {
 docker_image_ls_parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     docker_image_ls_usage
     exit 1

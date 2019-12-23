@@ -16,7 +16,7 @@ Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
   --prefix, -p PREFIX

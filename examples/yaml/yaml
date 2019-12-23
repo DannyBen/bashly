@@ -52,7 +52,7 @@ yaml_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    echo "  --version"
+    echo "  --version, -v"
     printf "    Show version number\n"
     echo
     # :command.usage_flags
@@ -134,12 +134,12 @@ yaml_load() {
 parse_requirements() {
   # :command.fixed_flag_filter
   case "$1" in
-  --version )
+  --version | -v )
     version_command
     exit 1
     ;;
   
-  --help | -h ) 
+  --help | -h )
     long_usage=yes
     yaml_usage
     exit 1
