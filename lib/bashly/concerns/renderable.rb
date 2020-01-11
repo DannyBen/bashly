@@ -4,6 +4,9 @@ module Bashly
   module Renderable
     def render(view)
       template = File.read view_path(view)
+      # TODO: This new format is only supported in Ruby >= 2.6
+      #       So for now, we keep the old deprecated syntax
+      # ERB.new(template, trim_mode: '%-').result(binding)
       ERB.new(template, nil, '%-').result(binding)
     end
 
