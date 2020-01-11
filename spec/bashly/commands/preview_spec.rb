@@ -18,7 +18,8 @@ describe Commands::Preview do
     end
 
     it "prints the generated cli script" do
-      expect { subject.run %w[preview] }.to output_fixture('cli/preview/no-args').except(/env bash\n(.*)\nrun "\$@"/m)
+      expect { subject.run %w[preview] }.to output_fixture('cli/preview/no-args')
+        .except(/env bash\n.*\nrun "\$@"/m, "env bash\n...\nrun \"\$@\"")
     end
   end
 
