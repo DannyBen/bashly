@@ -38,7 +38,7 @@ module Bashly
         return [] unless options["commands"]
         options["commands"].map do |options|
           options['parents'] = parents + [name]
-          command = Command.new options
+          Command.new options
         end
       end
 
