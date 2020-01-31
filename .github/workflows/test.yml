@@ -34,3 +34,6 @@ jobs:
 
     - name: Run tests
       run: bundle exec rspec
+
+    - name: Run shellcheck tests
+      run: bundle exec run shellcheck
