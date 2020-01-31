@@ -1,9 +1,9 @@
 + bashly generate
-creating user files in [0;32msrc
-[0mskipped [0;32msrc/initialize.sh[0m (exists)
-skipped [0;32msrc/root_command.sh[0m (exists)
-created [0;32m./yaml
-[0mrun [0;35m./yaml --help[0m to test your bash script
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./yaml
+run ./yaml --help to test your bash script
 + ./yaml -h
 yaml - Sample application that uses the YAML functions
 

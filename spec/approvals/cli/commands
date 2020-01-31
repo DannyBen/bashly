@@ -1,7 +1,7 @@
 Bashly - Bash CLI Generator
 
 Commands:
-  [1;32minit      [0mInitialize a new workspace
-  [1;32mpreview   [0mGenerate the bash script to STDOUT
-  [1;32mgenerate  [0mGenerate the bash script and required files
-  [1;32madd       [0mAdd extra features and customization to your script
+  init      Initialize a new workspace
+  preview   Generate the bash script to STDOUT
+  generate  Generate the bash script and required files
+  add       Add extra features and customization to your script

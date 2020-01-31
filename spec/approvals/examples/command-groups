@@ -1,12 +1,12 @@
 + bashly generate
-creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/download_command.sh
-[0mcreated [0;32msrc/upload_command.sh
-[0mcreated [0;32msrc/login_command.sh
-[0mcreated [0;32msrc/logout_command.sh
-[0mcreated [0;32m./ftp
-[0mrun [0;35m./ftp --help[0m to test your bash script
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created src/upload_command.sh
+created src/login_command.sh
+created src/logout_command.sh
+created ./ftp
+run ./ftp --help to test your bash script
 + ./ftp
 ftp - Sample application with command grouping
 

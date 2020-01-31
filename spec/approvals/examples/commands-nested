@@ -1,12 +1,12 @@
 + bashly generate
-creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/dir_list_command.sh
-[0mcreated [0;32msrc/dir_remove_command.sh
-[0mcreated [0;32msrc/file_show_command.sh
-[0mcreated [0;32msrc/file_edit_command.sh
-[0mcreated [0;32m./cli
-[0mrun [0;35m./cli --help[0m to test your bash script
+creating user files in src
+created src/initialize.sh
+created src/dir_list_command.sh
+created src/dir_remove_command.sh
+created src/file_show_command.sh
+created src/file_edit_command.sh
+created ./cli
+run ./cli --help to test your bash script
 + ./cli
 cli - Sample application with nested commands
 

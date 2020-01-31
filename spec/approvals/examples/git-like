@@ -1,10 +1,10 @@
 + bashly generate
-creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/status_command.sh
-[0mcreated [0;32msrc/commit_command.sh
-[0mcreated [0;32m./git
-[0mrun [0;35m./git --help[0m to test your bash script
+creating user files in src
+created src/initialize.sh
+created src/status_command.sh
+created src/commit_command.sh
+created ./git
+run ./git --help to test your bash script
 + ./git
 git - Git example
 
