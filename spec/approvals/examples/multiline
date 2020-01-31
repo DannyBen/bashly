@@ -1,10 +1,10 @@
 + bashly generate
-creating user files in [0;32msrc
-[0mcreated [0;32msrc/initialize.sh
-[0mcreated [0;32msrc/multiline_command.sh
-[0mcreated [0;32msrc/regular_command.sh
-[0mcreated [0;32m./multi
-[0mrun [0;35m./multi --help[0m to test your bash script
+creating user files in src
+created src/initialize.sh
+created src/multiline_command.sh
+created src/regular_command.sh
+created ./multi
+run ./multi --help to test your bash script
 + ./multi
 multi - Multiline test
 

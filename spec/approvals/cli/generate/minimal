@@ -1,5 +1,5 @@
-creating user files in [0;32mspec/tmp/src
-[0mcreated [0;32mspec/tmp/src/initialize.sh
-[0mcreated [0;32mspec/tmp/src/root_command.sh
-[0mcreated [0;32mspec/tmp/download
-[0mrun [0;35mspec/tmp/download --help[0m to test your bash script
+creating user files in spec/tmp/src
+created spec/tmp/src/initialize.sh
+created spec/tmp/src/root_command.sh
+created spec/tmp/download
+run spec/tmp/download --help to test your bash script

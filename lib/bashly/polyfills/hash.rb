@@ -8,3 +8,5 @@ if !Dir.respond_to? :empty?
     end
   end
 end
+
+# :nocov:
