@@ -68,7 +68,7 @@ parse_requirements() {
   case "$1" in
   --version )
     version_command
-    exit 1
+    exit
     ;;
   
   --help )

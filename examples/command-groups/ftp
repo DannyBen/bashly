@@ -209,7 +209,7 @@ parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -290,7 +290,7 @@ ftp_download_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -344,7 +344,7 @@ ftp_upload_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -398,7 +398,7 @@ ftp_login_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -440,7 +440,7 @@ ftp_logout_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )

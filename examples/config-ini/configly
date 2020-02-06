@@ -316,7 +316,7 @@ parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -390,7 +390,7 @@ configly_set_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -455,7 +455,7 @@ configly_get_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -509,7 +509,7 @@ configly_list_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )

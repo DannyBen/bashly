@@ -138,7 +138,7 @@ parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -205,7 +205,7 @@ git_status_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -247,7 +247,7 @@ git_commit_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
