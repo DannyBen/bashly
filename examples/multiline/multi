@@ -159,7 +159,7 @@ parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -226,7 +226,7 @@ multi_multiline_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
@@ -279,7 +279,7 @@ multi_regular_parse_requirements() {
   case "$1" in
   --version | -v )
     version_command
-    exit 1
+    exit
     ;;
   
   --help | -h )
