@@ -6,7 +6,7 @@
 # recommended to have a separate file for each function.
 #
 # Subdirectories will also be scanned for *.sh, so you have no reason not
-# to organize your code nearly.
+# to organize your code neatly.
 #
 sample_function() {
   echo "it works"
