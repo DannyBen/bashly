@@ -55,10 +55,20 @@ module Bashly
         result
       end
 
+      # Returns an array of all the default Args
+      def default_args
+        args.select &:default
+      end
+
       # If any of this command's subcommands has the default option set to
       # true, this default command will be returned, nil otherwise.
       def default_command
         commands.find { |c| c.default }
+      end
+
+      # Returns an array of all the default Flags
+      def default_flags
+        flags.select &:default
       end
 
       # Returns an array of EnvironmentVariables
