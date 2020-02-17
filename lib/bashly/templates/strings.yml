@@ -14,6 +14,7 @@ group: "%{group} Commands:"
 command_shortcut: "Shortcut: %{short}"
 default_command_summary: "%{summary} (default)"
 required: "(required)"
+default: "Default: %{value}"
 
 # Fixed flags help text
 help_flag_text: Show this help

@@ -7,7 +7,7 @@ args:
   required: true
   help: URL to download from
 - name: target
-  help: "Target filename (default: same as source)"
+  help: "Target filename\nDefault: same as source"
 
 flags:
 - long: --force

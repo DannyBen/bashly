@@ -1,0 +1,20 @@
+name: convert
+help: Sample application using default arguments and flags
+version: 0.1.0
+
+args:
+- name: source
+  help: Files to convert
+  default: "*.jpg"
+
+flags:
+- long: --format
+  short: -f
+  arg: format
+  help: Format to convert to
+  default: png
+
+examples:
+- convert *.bmp
+- convert --format jpg
+- convert *.bmp --format jpg
