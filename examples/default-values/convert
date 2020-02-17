@@ -16,41 +16,51 @@ version_command() {
 }
 
 # :command.usage
-download_usage() {
+convert_usage() {
   if [[ -n $long_usage ]]; then
-    printf "download - Sample minimal application with custom strings\n"
+    printf "convert - Sample application using default arguments and flags\n"
     echo 
   else
-    printf "download - Sample minimal application with custom strings\n"
+    printf "convert - Sample application using default arguments and flags\n"
     echo 
   fi
 
-  printf "== Usage ==\n\n"
-  printf "  download SOURCE [options]\n"
-  printf "  download --help | -h\n"
-  printf "  download --version | -v\n"
+  printf "Usage:\n"
+  printf "  convert [SOURCE] [options]\n"
+  printf "  convert --help | -h\n"
+  printf "  convert --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then
-    printf "== Options ==\n\n"
+    printf "Options:\n"
     # :command.usage_fixed_flags
     echo "  --help, -h"
-    printf "    Show this helpful help\n"
+    printf "    Show this help\n"
     echo
     echo "  --version, -v"
     printf "    Show version number\n"
     echo
     # :command.usage_flags
     # :flag.usage
-    echo "  --out, -o DIR (required)"
-    printf "    Target directory\n"
+    echo "  --format, -f FORMAT"
+    printf "    Format to convert to\n"
+    printf "    Default: png\n"
     echo
     # :command.usage_args
-    printf "== Arguments ==\n\n"
+    printf "Arguments:\n"
     
     # :argument.usage
     echo "  SOURCE"
-    printf "    URL to download from\n"
+    printf "    Files to convert\n"
+    printf "    Default: *.jpg\n"
+    echo
+
+    # :command.usage_examples
+    printf "Examples:\n"
+    
+    printf "  convert *.bmp\n"
+    printf "  convert --format jpg\n"
+    printf "  convert *.bmp --format jpg\n"
     echo
 
   fi
@@ -75,7 +85,7 @@ parse_requirements() {
   
   --help | -h )
     long_usage=yes
-    download_usage
+    convert_usage
     exit 1
     ;;
   
@@ -85,31 +95,19 @@ parse_requirements() {
   # :command.command_filter
   action="root"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    printf "Boom! a required argument is missing: SOURCE\nusage: download SOURCE [options]\n"
-    exit 1
-  fi
   # :command.required_flags_filter
-  argstring="$*"
-  if [[ "$argstring" != *--out* && "$argstring" != *-o* ]]; then
-    printf "Yo! you forgot a flag: --out, -o DIR\n"
-    exit 1
-  fi
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
     # :flag.case
-    --out | -o )
+    --format | -f )
       if [[ $2 && $2 != -* ]]; then
-        args[--out]="$2"
+        args[--format]="$2"
         shift
         shift
       else
-        printf "%s\n" "Hey! the flag --out requires an argument: --out, -o DIR"
+        printf "%s\n" "--format requires an argument: --format, -f FORMAT"
         exit 1
       fi
       ;;
@@ -134,6 +132,8 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  [[ -n ${args[source]} ]] || args[source]="*.jpg"
+  [[ -n ${args[--format]} ]] || args[--format]="png"
 }
 
 # :command.initialize
@@ -160,7 +160,7 @@ run() {
     version_command
   elif [[ ${args[--help]} ]]; then
     long_usage=yes
-    download_usage
+    convert_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

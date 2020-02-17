@@ -282,6 +282,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -336,6 +337,7 @@ ftp_download_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -390,6 +392,7 @@ ftp_upload_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -432,6 +435,7 @@ ftp_login_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -474,6 +478,7 @@ ftp_logout_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.initialize

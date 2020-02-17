@@ -161,6 +161,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -207,6 +208,7 @@ cli_verify_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.initialize

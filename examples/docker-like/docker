@@ -300,6 +300,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -367,6 +368,7 @@ docker_container_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -421,6 +423,7 @@ docker_container_run_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -475,6 +478,7 @@ docker_container_stop_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -535,6 +539,7 @@ docker_image_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -577,6 +582,7 @@ docker_image_ls_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.initialize

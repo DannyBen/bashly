@@ -218,6 +218,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -271,6 +272,7 @@ multi_multiline_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.parse_requirements
@@ -318,6 +320,7 @@ multi_regular_parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.initialize

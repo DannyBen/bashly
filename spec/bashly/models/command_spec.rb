@@ -90,6 +90,15 @@ describe Models::Command do
     end
   end
 
+  describe '#default_arguments' do
+    let(:fixture) { :default_values }
+
+    it "returns an array of only the Argument objects that have default" do
+      expect(subject.default_args.size).to eq 1
+      expect(subject.default_args.first.name).to eq "files"
+    end
+  end
+
   describe '#default_command' do
     let(:fixture) { :default_command }
 
@@ -98,6 +107,16 @@ describe Models::Command do
       expect(subject.default_command.name).to eq 'get'
     end    
   end
+
+  describe '#default_flags' do
+    let(:fixture) { :default_values }
+
+    it "returns an array of only the Flags objects that have default" do
+      expect(subject.default_flags.size).to eq 1
+      expect(subject.default_flags.first.long).to eq "--format"
+    end
+  end
+
 
   describe '#environment_cariables' do
     it "returns an array of EnvironemntVariable objects" do

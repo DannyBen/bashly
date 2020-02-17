@@ -78,3 +78,13 @@
     long: --hello
   - short: -v
     long: --vorld
+
+:default_values:
+  args:
+  - name: files
+    default: "*.jpg"
+  flags:
+  - short: -f
+    long: --format
+    arg: format
+    default: png

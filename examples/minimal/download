@@ -55,7 +55,7 @@ download_usage() {
     
     # :argument.usage
     echo "  TARGET"
-    printf "    Target filename (default: same as source)\n"
+    printf "    Target filename\n    Default: same as source\n"
     echo
 
     # :command.usage_examples
@@ -137,6 +137,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.default_assignments
 }
 
 # :command.initialize
