@@ -255,8 +255,16 @@ describe Models::Command do
       let(:fixture) { :git_status }
 
       it "returns a string suitable to be used as a usage pattern" do
-        expect(subject.usage_string).to eq "git status [options]"
+        expect(subject.usage_string).to eq "git status"
       end
+    end
+
+    context "when flags are defined" do
+      let(:fixture) { :flags_only_command }
+
+      it "adds [options] to the usate string" do
+        expect(subject.usage_string).to eq "git status [options]"
+      end      
     end
 
     context "when args are defined" do
@@ -269,7 +277,7 @@ describe Models::Command do
       let(:fixture) { :docker }
 
       it "includes [command] in the usage string" do
-        expect(subject.usage_string).to eq "docker [command] [options]"
+        expect(subject.usage_string).to eq "docker [command]"
       end      
     end
   end

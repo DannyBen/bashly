@@ -1,4 +1,4 @@
-:basic_command: &default
+:basic_command:
   name: get
   short: g
   help: |-
@@ -43,6 +43,14 @@
 :long_only_command:
   name: get
   help: get something from somewhere
+
+:flags_only_command:
+  name: status
+  help: perform git status
+  flags:
+  - long: --force
+  - long: --verbose
+  parents: [git]
 
 :helpless:
   name: helpless

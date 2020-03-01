@@ -9,7 +9,7 @@ run ./multi --help to test your bash script
 multi - Multiline test
 
 Usage:
-  multi [command] [options]
+  multi [command]
   multi [command] --help | -h
   multi --version | -v
 
@@ -26,7 +26,7 @@ multi
   at the 80 character mark.
 
 Usage:
-  multi [command] [options]
+  multi [command]
   multi [command] --help | -h
   multi --version | -v
 

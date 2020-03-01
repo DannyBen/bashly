@@ -18,7 +18,7 @@ cli_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli [command] [options]\n"
+  printf "  cli [command]\n"
   printf "  cli [command] --help | -h\n"
   printf "  cli --version | -v\n"
   echo
@@ -55,7 +55,7 @@ cli_dir_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  cli dir [command] [options]\n"
+  printf "  cli dir [command]\n"
   printf "  cli dir [command] --help | -h\n"
   echo
   # :command.usage_commands
@@ -85,7 +85,7 @@ cli_dir_list_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli dir list PATH [options]\n"
+  printf "  cli dir list PATH\n"
   printf "  cli dir list --help | -h\n"
   echo
 
@@ -158,7 +158,7 @@ cli_file_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  cli file [command] [options]\n"
+  printf "  cli file [command]\n"
   printf "  cli file [command] --help | -h\n"
   echo
   # :command.usage_commands
@@ -188,7 +188,7 @@ cli_file_show_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli file show PATH [options]\n"
+  printf "  cli file show PATH\n"
   printf "  cli file show --help | -h\n"
   echo
 
@@ -221,7 +221,7 @@ cli_file_edit_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli file edit PATH [options]\n"
+  printf "  cli file edit PATH\n"
   printf "  cli file edit --help | -h\n"
   echo
 
@@ -448,7 +448,7 @@ cli_dir_list_parse_requirements() {
     args[path]=$1
     shift
   else
-    printf "missing required argument: PATH\nusage: cli dir list PATH [options]\n"
+    printf "missing required argument: PATH\nusage: cli dir list PATH\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -632,7 +632,7 @@ cli_file_show_parse_requirements() {
     args[path]=$1
     shift
   else
-    printf "missing required argument: PATH\nusage: cli file show PATH [options]\n"
+    printf "missing required argument: PATH\nusage: cli file show PATH\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -687,7 +687,7 @@ cli_file_edit_parse_requirements() {
     args[path]=$1
     shift
   else
-    printf "missing required argument: PATH\nusage: cli file edit PATH [options]\n"
+    printf "missing required argument: PATH\nusage: cli file edit PATH\n"
     exit 1
   fi
   # :command.required_flags_filter

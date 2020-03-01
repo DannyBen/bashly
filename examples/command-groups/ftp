@@ -18,7 +18,7 @@ ftp_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  ftp [command] [options]\n"
+  printf "  ftp [command]\n"
   printf "  ftp [command] --help | -h\n"
   printf "  ftp --version | -v\n"
   echo
@@ -55,7 +55,7 @@ ftp_download_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  ftp download FILE [options]\n"
+  printf "  ftp download FILE\n"
   printf "  ftp download --help | -h\n"
   echo
 
@@ -88,7 +88,7 @@ ftp_upload_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  ftp upload FILE [options]\n"
+  printf "  ftp upload FILE\n"
   printf "  ftp upload --help | -h\n"
   echo
 
@@ -121,7 +121,7 @@ ftp_login_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  ftp login [options]\n"
+  printf "  ftp login\n"
   printf "  ftp login --help | -h\n"
   echo
 
@@ -146,7 +146,7 @@ ftp_logout_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  ftp logout [options]\n"
+  printf "  ftp logout\n"
   printf "  ftp logout --help | -h\n"
   echo
 
@@ -310,7 +310,7 @@ ftp_download_parse_requirements() {
     args[file]=$1
     shift
   else
-    printf "missing required argument: FILE\nusage: ftp download FILE [options]\n"
+    printf "missing required argument: FILE\nusage: ftp download FILE\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -365,7 +365,7 @@ ftp_upload_parse_requirements() {
     args[file]=$1
     shift
   else
-    printf "missing required argument: FILE\nusage: ftp upload FILE [options]\n"
+    printf "missing required argument: FILE\nusage: ftp upload FILE\n"
     exit 1
   fi
   # :command.required_flags_filter

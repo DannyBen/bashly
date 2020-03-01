@@ -18,7 +18,7 @@ git_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  git [command] [options]\n"
+  printf "  git [command]\n"
   printf "  git [command] --help | -h\n"
   printf "  git --version | -v\n"
   echo
@@ -55,7 +55,7 @@ git_status_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  git status [options]\n"
+  printf "  git status\n"
   printf "  git status --help | -h\n"
   echo
 

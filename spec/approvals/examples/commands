@@ -9,7 +9,7 @@ run ./cli --help to test your bash script
 cli - Sample application
 
 Usage:
-  cli [command] [options]
+  cli [command]
   cli [command] --help | -h
   cli --version | -v
 
@@ -21,7 +21,7 @@ Commands:
 cli - Sample application
 
 Usage:
-  cli [command] [options]
+  cli [command]
   cli [command] --help | -h
   cli --version | -v
 

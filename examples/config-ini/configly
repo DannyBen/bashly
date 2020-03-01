@@ -18,7 +18,7 @@ configly_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  configly [command] [options]\n"
+  printf "  configly [command]\n"
   printf "  configly [command] --help | -h\n"
   printf "  configly --version | -v\n"
   echo
@@ -56,7 +56,7 @@ configly_set_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  configly set KEY VALUE [options]\n"
+  printf "  configly set KEY VALUE\n"
   printf "  configly set --help | -h\n"
   echo
 
@@ -103,7 +103,7 @@ configly_get_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  configly get KEY [options]\n"
+  printf "  configly get KEY\n"
   printf "  configly get --help | -h\n"
   echo
 
@@ -145,7 +145,7 @@ configly_list_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  configly list [options]\n"
+  printf "  configly list\n"
   printf "  configly list --help | -h\n"
   echo
 
@@ -410,7 +410,7 @@ configly_set_parse_requirements() {
     args[key]=$1
     shift
   else
-    printf "missing required argument: KEY\nusage: configly set KEY VALUE [options]\n"
+    printf "missing required argument: KEY\nusage: configly set KEY VALUE\n"
     exit 1
   fi
   
@@ -418,7 +418,7 @@ configly_set_parse_requirements() {
     args[value]=$1
     shift
   else
-    printf "missing required argument: VALUE\nusage: configly set KEY VALUE [options]\n"
+    printf "missing required argument: VALUE\nusage: configly set KEY VALUE\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -476,7 +476,7 @@ configly_get_parse_requirements() {
     args[key]=$1
     shift
   else
-    printf "missing required argument: KEY\nusage: configly get KEY [options]\n"
+    printf "missing required argument: KEY\nusage: configly get KEY\n"
     exit 1
   fi
   # :command.required_flags_filter

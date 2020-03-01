@@ -9,7 +9,7 @@ run ./git --help to test your bash script
 git - Git example
 
 Usage:
-  git [command] [options]
+  git [command]
   git [command] --help | -h
   git --version | -v
 
@@ -21,7 +21,7 @@ Commands:
 git - Git example
 
 Usage:
-  git [command] [options]
+  git [command]
   git [command] --help | -h
   git --version | -v
 
@@ -47,7 +47,7 @@ git status - Show repository status
 Shortcut: s*
 
 Usage:
-  git status [options]
+  git status
   git status --help | -h
 
 Options:

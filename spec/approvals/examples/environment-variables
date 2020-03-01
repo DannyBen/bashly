@@ -8,7 +8,7 @@ run ./cli --help to test your bash script
 cli - Sample application that requires environment variables
 
 Usage:
-  cli [command] [options]
+  cli [command]
   cli [command] --help | -h
   cli --version | -v
 
@@ -19,7 +19,7 @@ Commands:
 cli - Sample application that requires environment variables
 
 Usage:
-  cli [command] [options]
+  cli [command]
   cli [command] --help | -h
   cli --version | -v
 
@@ -43,7 +43,7 @@ cli verify - Verify your user
 Shortcut: v
 
 Usage:
-  cli verify [options]
+  cli verify
   cli verify --help | -h
 
 Options:

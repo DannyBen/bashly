@@ -31,7 +31,7 @@ colorly_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  colorly [MESSAGE] [options]\n"
+  printf "  colorly [MESSAGE]\n"
   printf "  colorly --help | -h\n"
   printf "  colorly --version | -v\n"
   echo

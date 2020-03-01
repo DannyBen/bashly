@@ -158,7 +158,7 @@ module Bashly
         args.each do |arg|
           result << arg.usage_string
         end
-        result << "[options]"
+        result << "[options]" unless flags.empty?
         result.join " "
       end
 
