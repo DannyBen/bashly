@@ -18,7 +18,7 @@ docker_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  docker [command] [options]\n"
+  printf "  docker [command]\n"
   printf "  docker [command] --help | -h\n"
   printf "  docker --version | -v\n"
   echo
@@ -55,7 +55,7 @@ docker_container_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  docker container [command] [options]\n"
+  printf "  docker container [command]\n"
   printf "  docker container [command] --help | -h\n"
   echo
   # :command.usage_commands
@@ -85,7 +85,7 @@ docker_container_run_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  docker container run IMAGE [options]\n"
+  printf "  docker container run IMAGE\n"
   printf "  docker container run --help | -h\n"
   echo
 
@@ -118,7 +118,7 @@ docker_container_stop_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  docker container stop CONTAINER [options]\n"
+  printf "  docker container stop CONTAINER\n"
   printf "  docker container stop --help | -h\n"
   echo
 
@@ -154,7 +154,7 @@ docker_image_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  docker image [command] [options]\n"
+  printf "  docker image [command]\n"
   printf "  docker image [command] --help | -h\n"
   echo
   # :command.usage_commands
@@ -186,7 +186,7 @@ docker_image_ls_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  docker image ls [options]\n"
+  printf "  docker image ls\n"
   printf "  docker image ls --help | -h\n"
   echo
 
@@ -396,7 +396,7 @@ docker_container_run_parse_requirements() {
     args[image]=$1
     shift
   else
-    printf "missing required argument: IMAGE\nusage: docker container run IMAGE [options]\n"
+    printf "missing required argument: IMAGE\nusage: docker container run IMAGE\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -451,7 +451,7 @@ docker_container_stop_parse_requirements() {
     args[container]=$1
     shift
   else
-    printf "missing required argument: CONTAINER\nusage: docker container stop CONTAINER [options]\n"
+    printf "missing required argument: CONTAINER\nusage: docker container stop CONTAINER\n"
     exit 1
   fi
   # :command.required_flags_filter

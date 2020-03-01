@@ -10,7 +10,7 @@ run ./docker --help to test your bash script
 docker - Docker example
 
 Usage:
-  docker [command] [options]
+  docker [command]
   docker [command] --help | -h
   docker --version | -v
 
@@ -22,7 +22,7 @@ Commands:
 docker - Docker example
 
 Usage:
-  docker [command] [options]
+  docker [command]
   docker [command] --help | -h
   docker --version | -v
 
@@ -43,7 +43,7 @@ docker container - Container commands
 Shortcut: c*
 
 Usage:
-  docker container [command] [options]
+  docker container [command]
   docker container [command] --help | -h
 
 Commands:
@@ -54,7 +54,7 @@ Commands:
 docker container run - Run a container
 
 Usage:
-  docker container run IMAGE [options]
+  docker container run IMAGE
   docker container run --help | -h
 
 Options:
@@ -67,7 +67,7 @@ Arguments:
 
 + ./docker container run
 missing required argument: IMAGE
-usage: docker container run IMAGE [options]
+usage: docker container run IMAGE
 + ./docker container run alpine
 # this file is located in 'src/container_run_command.sh'
 # code for 'docker container run' goes here
@@ -80,7 +80,7 @@ docker container - Container commands
 Shortcut: c*
 
 Usage:
-  docker container [command] [options]
+  docker container [command]
   docker container [command] --help | -h
 
 Commands:
@@ -93,7 +93,7 @@ docker image - Image commands
 Shortcut: i*
 
 Usage:
-  docker image [command] [options]
+  docker image [command]
   docker image [command] --help | -h
 
 Commands:

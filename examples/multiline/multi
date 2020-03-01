@@ -20,7 +20,7 @@ multi_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  multi [command] [options]\n"
+  printf "  multi [command]\n"
   printf "  multi [command] --help | -h\n"
   printf "  multi --version | -v\n"
   echo
@@ -106,7 +106,7 @@ multi_regular_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  multi regular [REPO] [options]\n"
+  printf "  multi regular [REPO]\n"
   printf "  multi regular --help | -h\n"
   echo
 

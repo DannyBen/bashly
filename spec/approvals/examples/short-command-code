@@ -12,4 +12,4 @@ run ./rush --help to test your bash script
 args:
 + ./rush g
 missing required argument: REPO
-usage: rush get REPO [options]
+usage: rush get REPO

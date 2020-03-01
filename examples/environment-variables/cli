@@ -18,7 +18,7 @@ cli_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli [command] [options]\n"
+  printf "  cli [command]\n"
   printf "  cli [command] --help | -h\n"
   printf "  cli --version | -v\n"
   echo
@@ -62,7 +62,7 @@ cli_verify_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  cli verify [options]\n"
+  printf "  cli verify\n"
   printf "  cli verify --help | -h\n"
   echo
 

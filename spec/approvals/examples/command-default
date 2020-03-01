@@ -9,7 +9,7 @@ run ./ftp --help to test your bash script
 ftp - Sample application that uses the default command option
 
 Usage:
-  ftp [command] [options]
+  ftp [command]
   ftp [command] --help | -h
   ftp --version | -v
 
@@ -21,7 +21,7 @@ Commands:
 ftp - Sample application that uses the default command option
 
 Usage:
-  ftp [command] [options]
+  ftp [command]
   ftp [command] --help | -h
   ftp --version | -v
 

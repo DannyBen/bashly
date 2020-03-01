@@ -18,7 +18,7 @@ cli_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli [command] [options]\n"
+  printf "  cli [command]\n"
   printf "  cli [command] --help | -h\n"
   printf "  cli --version | -v\n"
   echo
@@ -52,7 +52,7 @@ cli_download_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli download [options]\n"
+  printf "  cli download\n"
   printf "  cli download --help | -h\n"
   echo
 
@@ -77,7 +77,7 @@ cli_upload_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  cli upload [options]\n"
+  printf "  cli upload\n"
   printf "  cli upload --help | -h\n"
   echo
 

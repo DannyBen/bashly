@@ -10,7 +10,7 @@ run ./configly --help to test your bash script
 configly - Sample application that uses the config functions
 
 Usage:
-  configly [command] [options]
+  configly [command]
   configly [command] --help | -h
   configly --version | -v
 

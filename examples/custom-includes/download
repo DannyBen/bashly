@@ -27,7 +27,7 @@ download_usage() {
   fi
 
   printf "Usage:\n"
-  printf "  download [SOURCE] [options]\n"
+  printf "  download [SOURCE]\n"
   printf "  download --help | -h\n"
   printf "  download --version | -v\n"
   echo
