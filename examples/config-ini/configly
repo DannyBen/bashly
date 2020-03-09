@@ -283,6 +283,17 @@ config_keys() {
   echo "${keys[@]}"
 }
 
+# Returns true if the specified key exists in the config file
+# Usage:
+#
+#   if config_has_key "key" ; then
+#     echo "key exists"
+#   fi
+#
+config_has_key() {
+  [[ $(config_get "$1") ]]
+}
+
 # :command.command_functions
 # :command.function
 configly_set_command() {
@@ -296,7 +307,13 @@ configly_set_command() {
 configly_get_command() {
   # :src/get_command.sh
   # Using the standard library (lib/config.sh) to show a value from the config
-  config_get "${args[key]}"
+  
+  key="${args[key]}"
+  if config_has_key "$key" ; then 
+    config_get "$key"
+  else
+    echo "No such key: $key"
+  fi
   
   # Example of how to assign the config value to a variable:
   # result=$(config_get "${args[key]}")
