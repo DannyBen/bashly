@@ -32,6 +32,8 @@ saved: hello = world
 saved: bashly = works
 + ./configly get hello
 world
++ ./configly get invalid_key
+No such key: invalid_key
 + ./configly list
 hello = world
 bashly = works

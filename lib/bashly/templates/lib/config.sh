@@ -113,3 +113,14 @@ config_keys() {
   done < "$CONFIG_FILE"
   echo "${keys[@]}"
 }
+
+# Returns true if the specified key exists in the config file
+# Usage:
+#
+#   if config_has_key "key" ; then
+#     echo "key exists"
+#   fi
+#
+config_has_key() {
+  [[ $(config_get "$1") ]]
+}
