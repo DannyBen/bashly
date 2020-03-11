@@ -35,6 +35,9 @@ world
 + ./configly get invalid_key
 No such key: invalid_key
 + ./configly list
+; comments are allowed
 hello = world
 bashly = works
 
+hello === world
+bashly === works
