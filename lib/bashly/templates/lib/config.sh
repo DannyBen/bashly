@@ -21,7 +21,7 @@ config_init() {
 # Usage: result=$(config_get hello)
 config_get() {
   key=$1
-  regex="^$key\s*=\s*(.+)$"
+  regex="^$key *= *(.+)$"
 
   config_init
   
@@ -44,7 +44,7 @@ config_set() {
 
   config_init
 
-  regex="^($key)\s*=\s*.+$"
+  regex="^($key) *= *.+$"
   output=""
   found_key=""
   
@@ -71,7 +71,7 @@ config_set() {
 config_del() {
   key=$1
 
-  regex="^($key)\s*="
+  regex="^($key) *="
   output=""
 
   config_init
@@ -100,7 +100,7 @@ config_show() {
 #   done
 #
 config_keys() {
-  regex="^([a-zA-Z0-9_\-]+)\s*="
+  regex="^([a-zA-Z0-9_\-]+) *="
 
   config_init
 
