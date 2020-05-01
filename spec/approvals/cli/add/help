@@ -6,6 +6,7 @@ Usage:
   bashly add config [--force]
   bashly add colors [--force]
   bashly add yaml [--force]
+  bashly add is [--force]
   bashly add (-h|--help)
 
 Commands:
@@ -26,6 +27,9 @@ Commands:
 
   yaml
     Add standard functions for reading YAML files to the lib directory.
+
+  is
+    Add human readable conditions (is.sh).
 
 Options:
   -f --force
