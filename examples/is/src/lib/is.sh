@@ -1,12 +1,8 @@
-#!/bin/bash
-#
+# is.sh copyright notice:
 # Copyright (c) 2016 Józef Sokołowski
 # Distributed under the MIT License
-#
 # For most current version checkout repository:
 # https://github.com/qzb/is.sh
-#
-
 is() {
     if [ "$1" == "--help" ]; then
         cat << EOF
