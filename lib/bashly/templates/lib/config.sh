@@ -100,7 +100,7 @@ config_show() {
 #   done
 #
 config_keys() {
-  regex="^([a-zA-Z0-9_\-]+) *="
+  regex="^([a-zA-Z0-9_\-\/\.]+) *="
 
   config_init
 
