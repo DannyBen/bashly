@@ -61,7 +61,6 @@ Bahsly is responsible for:
   - **Color output**.
   - **Config file management** (INI format).
   - **YAML parsing**.
-  - and more.
 
 Usage
 --------------------------------------------------

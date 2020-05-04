@@ -8,7 +8,6 @@ module Bashly
       usage "bashly add config [--force]"
       usage "bashly add colors [--force]"
       usage "bashly add yaml [--force]"
-      usage "bashly add is [--force]"
       usage "bashly add (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
@@ -18,7 +17,6 @@ module Bashly
       command "config", "Add standard functions for handling INI files to the lib directory."
       command "colors", "Add standard functions for printing colorful and formatted text to the lib directory."
       command "yaml", "Add standard functions for reading YAML files to the lib directory."
-      command "is", "Add human readable conditions (is.sh)."
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
@@ -42,12 +40,7 @@ module Bashly
         safe_copy_lib "yaml.sh"
       end
 
-      def is_command
-        safe_copy_lib "is.sh"
-      end
-
     private
-
       def safe_copy_lib(libfile)
         safe_copy asset("templates/lib/#{libfile}"), "#{Settings.source_dir}/lib/#{libfile}"
       end

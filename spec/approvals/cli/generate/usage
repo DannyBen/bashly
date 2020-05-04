@@ -4,5 +4,4 @@ Usage:
   bashly add config [--force]
   bashly add colors [--force]
   bashly add yaml [--force]
-  bashly add is [--force]
   bashly add (-h|--help)

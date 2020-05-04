@@ -99,17 +99,4 @@ describe Commands::Add do
     end
   end
 
-  context "with is command" do
-    let(:lib_file) { "#{source_dir}/lib/is.sh" }
-
-    before do
-      reset_tmp_dir create_src: true
-    end
-
-    it "copies the is.sh lib file to the user space" do
-      expect { subject.run %w[add is] }.to output_fixture('cli/add/is')
-      expect(File).to exist(lib_file)
-    end
-  end
-
 end
