@@ -18,6 +18,8 @@ reset_tmp_dir
 
 # Consistent Colsole output (for rspec_fixtures)
 ENV['TTY'] = 'off'
+ENV['COLUMNS'] = '80'
+ENV['LINES'] = '30'
 
 RSpec.configure do |c|
   c.include SpecMixin
