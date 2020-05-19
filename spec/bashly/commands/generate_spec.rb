@@ -7,7 +7,7 @@ describe Commands::Generate do
 
   context "with --help" do
     it "shows long usage" do
-      expect{ subject.run %w[generate --help] }.to output_fixture('cli/generate/help')
+      expect{ subject.run %w[generate --help] }.to output_approval('cli/generate/help')
     end
   end
 
@@ -21,18 +21,18 @@ describe Commands::Generate do
     end
 
     it "generates the cli script" do
-      expect { subject.run %w[generate] }.to output_fixture('cli/generate/no-args')
+      expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
       expect(File).to exist(cli_script)
     end
 
     context "when source files already exist" do
       before do
-        expect { subject.run %w[generate] }.to output_fixture('cli/generate/no-args')
+        expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
         File.write "#{source_dir}/cli_get_command.sh", "some new user content"
       end
 
       it "does not overwrite them" do
-        expect { subject.run %w[generate] }.to output_fixture('cli/generate/no-args-skip')
+        expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args-skip')
         expect(File.read "#{source_dir}/cli_get_command.sh").to eq "some new user content"
       end
     end
@@ -45,7 +45,7 @@ describe Commands::Generate do
       end
 
       it "generates the cli script" do
-        expect { subject.run %w[generate] }.to output_fixture('cli/generate/minimal')
+        expect { subject.run %w[generate] }.to output_approval('cli/generate/minimal')
         expect(File).to exist(cli_script)
       end
     end

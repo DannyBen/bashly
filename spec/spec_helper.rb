@@ -23,6 +23,5 @@ ENV['LINES'] = '30'
 
 RSpec.configure do |c|
   c.include SpecMixin
-  c.fixtures_path = "spec/approvals"
   c.strip_ansi_escape = true
 end

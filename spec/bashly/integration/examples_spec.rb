@@ -30,7 +30,7 @@ describe 'generated bash scripts' do
         # This was observed in at least these two cases:
         # - The "+ ..." shell messages driven by `set -x` have no space
         # - The order of our `inspect_args` sometimes differs
-        expect(output).to match_fixture(approval_name).diff(leeway)
+        expect(output).to match_approval(approval_name).diff(leeway)
       end
     end
   end
