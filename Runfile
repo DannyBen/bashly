@@ -8,6 +8,7 @@ version Bashly::VERSION
 
 RunfileTasks::RubyGems.all 'bashly'
 RunfileTasks::Testing.rspec
+RunfileTasks::Changelog.generator 'DannyBen/bashly'
 
 help   "Run interactive console"
 action :console, :c do
