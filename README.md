@@ -25,6 +25,11 @@ Installation
 $ gem install bashly
 ```
 
+or with Docker:
+
+```shell
+$ alias bashly='docker run --rm -it --volume "$PWD:/app" dannyben/bashly'
+```
 
 Prerequisites
 --------------------------------------------------
