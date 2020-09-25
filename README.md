@@ -215,6 +215,7 @@ Real World Examples
 
 - [Rush][rush] - a Personal Package Manager
 - [Alf][alf] - a generator for bash aliases and sub-aliases
+- [git-changelog][git-changelog] - a change log generator
 
 
 Contributing / Support
@@ -226,4 +227,6 @@ to contribute, feel free to [open an issue][issues].
 [issues]: https://github.com/DannyBen/bashly/issues
 [rush]: https://github.com/DannyBen/rush-cli
 [alf]: https://github.com/DannyBen/alf
+[git-changelog]: https://github.com/DannyBen/git-changelog
+
 
