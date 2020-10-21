@@ -9,7 +9,7 @@ help_flag_text: Show this helpful help
 version_flag_text: Show version number
 
 # Error messages
-flag_requires_an_argument: "Hey! the flag %{long} requires an argument: %{usage}"
+flag_requires_an_argument: "Hey! the flag %{name} requires an argument: %{usage}"
 missing_required_argument: "Boom! a required argument is missing: %{arg}\\nusage: %{usage}"
 missing_required_flag: "Yo! you forgot a flag: %{usage}"
 

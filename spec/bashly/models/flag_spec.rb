@@ -26,6 +26,28 @@ describe Models::Flag do
     end
   end
 
+  describe '#name' do
+    context "with both short and long options" do
+      it "returns the long option" do
+        expect(subject.name).to eq "--help"
+      end
+    end
+
+    context "with long option only" do
+      let(:options) { {"long" => "-l"} }
+      it "returns the long option" do
+        expect(subject.name).to eq "-l"
+      end
+    end
+
+    context "with short option only" do
+      let(:options) { {"short" => "-s"} }
+      it "returns the short option" do
+        expect(subject.name).to eq "-s"
+      end
+    end
+  end
+
   describe '#usage_string' do
     it "returns a string suitable to be used as a usage pattern" do
       expect(subject.usage_string).to eq "--help, -h"
