@@ -11,6 +11,10 @@ module Bashly
         end
       end
 
+      def name
+        long || short
+      end
+
       def usage_string(extended: false)
         result = [aliases.join(", ")]
         result << arg.upcase if arg
