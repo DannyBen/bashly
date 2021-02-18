@@ -56,8 +56,9 @@ cli_usage() {
 
 # :command.inspect_args
 inspect_args() {
+  keys=( $( echo ${!args[@]} | tr ' ' $'\n' | sort ) )
   echo args:
-  for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  for k in "${keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 }
 
 # :command.command_functions

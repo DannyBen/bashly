@@ -78,5 +78,5 @@ Options:
 # code for 'git commit' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--message]} = initial commit
 - ${args[--all]} = 1
+- ${args[--message]} = initial commit
