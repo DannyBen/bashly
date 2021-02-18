@@ -81,9 +81,9 @@ usage: cli download SOURCE [TARGET] [options]
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[target]} = targetfile
-- ${args[source]} = sourcefile
 - ${args[--force]} = 1
+- ${args[source]} = sourcefile
+- ${args[target]} = targetfile
 + ./cli upload --help
 cli upload - Upload a file
 

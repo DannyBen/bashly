@@ -50,4 +50,4 @@ Options:
 # this file is located in 'src/login_command.sh'
 # code for 'ftp login' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
-args:
+args: none

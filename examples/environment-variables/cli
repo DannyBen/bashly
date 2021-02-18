@@ -86,8 +86,13 @@ cli_verify_usage() {
 
 # :command.inspect_args
 inspect_args() {
-  echo args:
-  for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
+  if (( ${#args[@]} )); then
+    echo args:
+    for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  else
+    echo args: none
+  fi
 }
 
 # :command.command_functions
