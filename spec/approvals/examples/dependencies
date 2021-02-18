@@ -11,4 +11,4 @@ missing dependency: shmurl
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
-args:
+args: none

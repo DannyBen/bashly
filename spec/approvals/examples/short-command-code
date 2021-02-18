@@ -9,7 +9,7 @@ run ./rush --help to test your bash script
 # this file is located in 'src/config_command.sh'
 # code for 'rush config' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
-args:
+args: none
 + ./rush g
 missing required argument: REPO
 usage: rush get REPO

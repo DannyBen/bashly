@@ -7,7 +7,7 @@ run ./cli --help to test your bash script
 + ./cli
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
-args:
+args: none
 + ./cli --help
 cli - Example that replaces the default behavior of -v and -h
 

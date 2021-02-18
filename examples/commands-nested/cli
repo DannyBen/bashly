@@ -245,9 +245,13 @@ cli_file_edit_usage() {
 
 # :command.inspect_args
 inspect_args() {
-  keys=( $( echo ${!args[@]} | tr ' ' $'\n' | sort ) )
-  echo args:
-  for k in "${keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
+  if (( ${#args[@]} )); then
+    echo args:
+    for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  else
+    echo args: none
+  fi
 }
 
 # :command.command_functions

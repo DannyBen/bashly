@@ -40,7 +40,7 @@ Options:
 # this file is located in 'src/status_command.sh'
 # code for 'git status' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
-args:
+args: none
 + ./git status -h
 git status - Show repository status
 
