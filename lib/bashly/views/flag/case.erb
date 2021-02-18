@@ -1,7 +1,7 @@
 # :flag.case
 <%= aliases.join " | " %> )
   <%- if arg -%>
-  if [[ $2 && $2 != -* ]]; then
+  if [[ $2 ]]; then
     args[<%= name %>]="$2"
     shift
     shift

@@ -1,0 +1,13 @@
+name: argflag
+help: Personal package manager
+version: 0.1.0
+
+flags:
+- long: --force
+  short: -f
+  help: Force
+
+- long: --options
+  short: -o
+  arg: list
+  help: Options

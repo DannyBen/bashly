@@ -16,19 +16,19 @@ version_command() {
 }
 
 # :command.usage
-convert_usage() {
+argflag_usage() {
   if [[ -n $long_usage ]]; then
-    printf "convert - Sample application using default arguments and flags\n"
+    printf "argflag - Personal package manager\n"
     echo 
   else
-    printf "convert - Sample application using default arguments and flags\n"
+    printf "argflag - Personal package manager\n"
     echo 
   fi
 
   printf "Usage:\n"
-  printf "  convert [SOURCE] [options]\n"
-  printf "  convert --help | -h\n"
-  printf "  convert --version | -v\n"
+  printf "  argflag [options]\n"
+  printf "  argflag --help | -h\n"
+  printf "  argflag --version | -v\n"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -42,25 +42,13 @@ convert_usage() {
     echo
     # :command.usage_flags
     # :flag.usage
-    echo "  --format, -f FORMAT"
-    printf "    Format to convert to\n"
-    printf "    Default: png\n"
+    echo "  --force, -f"
+    printf "    Force\n"
     echo
-    # :command.usage_args
-    printf "Arguments:\n"
     
-    # :argument.usage
-    echo "  SOURCE"
-    printf "    Files to convert\n"
-    printf "    Default: *.jpg\n"
-    echo
-
-    # :command.usage_examples
-    printf "Examples:\n"
-    
-    printf "  convert *.bmp\n"
-    printf "  convert --format jpg\n"
-    printf "  convert *.bmp --format jpg\n"
+    # :flag.usage
+    echo "  --options, -o LIST"
+    printf "    Options\n"
     echo
 
   fi
@@ -90,7 +78,7 @@ parse_requirements() {
   
   --help | -h )
     long_usage=yes
-    convert_usage
+    argflag_usage
     exit 1
     ;;
   
@@ -106,13 +94,19 @@ parse_requirements() {
     key="$1"
     case "$key" in
     # :flag.case
-    --format | -f )
+    --force | -f )
+      args[--force]=1
+      shift
+      ;;
+  
+    # :flag.case
+    --options | -o )
       if [[ $2 ]]; then
-        args[--format]="$2"
+        args[--options]="$2"
         shift
         shift
       else
-        printf "%s\n" "--format requires an argument: --format, -f FORMAT"
+        printf "%s\n" "--options requires an argument: --options, -o LIST"
         exit 1
       fi
       ;;
@@ -125,20 +119,13 @@ parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
-        shift
-      else
-        printf "invalid argument: %s\n" "$key"
-        exit 1
-      fi
+      printf "invalid argument: %s\n" "$key"
+      exit 1
       ;;
   
     esac
   done
   # :command.default_assignments
-  [[ -n ${args[source]} ]] || args[source]="*.jpg"
-  [[ -n ${args[--format]} ]] || args[--format]="png"
 }
 
 # :command.initialize
@@ -165,7 +152,7 @@ run() {
     version_command
   elif [[ ${args[--help]} ]]; then
     long_usage=yes
-    convert_usage
+    argflag_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi
