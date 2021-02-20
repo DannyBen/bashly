@@ -1,6 +1,18 @@
 Change Log
 ========================================
 
+v0.4.1 - 2021-02-20
+----------------------------------------
+
+- Add generate --wrap FUNCTION_NAME option to generate sourcing-friendly output
+
+
+v0.4.1rc1 - 2021-02-18
+----------------------------------------
+
+- Change flag arguments (--flag ARG) to allow argument that starts with a dash
+
+
 v0.4.0 - 2020-10-21
 ----------------------------------------
 
