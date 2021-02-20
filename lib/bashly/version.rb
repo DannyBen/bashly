@@ -1,3 +1,3 @@
 module Bashly
-  VERSION = "0.4.1rc1"
+  VERSION = "0.4.1"
 end
