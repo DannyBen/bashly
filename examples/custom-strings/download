@@ -109,7 +109,7 @@ parse_requirements() {
     case "$key" in
     # :flag.case
     --out | -o )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--out]="$2"
         shift
         shift

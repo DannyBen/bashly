@@ -354,7 +354,7 @@ cli_upload_parse_requirements() {
     case "$key" in
     # :flag.case
     --user | -u )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--user]="$2"
         shift
         shift
@@ -366,7 +366,7 @@ cli_upload_parse_requirements() {
   
     # :flag.case
     --password | -p )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--password]="$2"
         shift
         shift

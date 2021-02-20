@@ -101,7 +101,7 @@ parse_requirements() {
   
     # :flag.case
     --host | -h )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--host]="$2"
         shift
         shift

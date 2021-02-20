@@ -276,7 +276,7 @@ git_commit_parse_requirements() {
     case "$key" in
     # :flag.case
     --message | -m )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--message]="$2"
         shift
         shift

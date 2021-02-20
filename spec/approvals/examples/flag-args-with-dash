@@ -1,0 +1,19 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./argflag
+run ./argflag --help to test your bash script
++ ./argflag -f -o
+--options requires an argument: --options, -o LIST
++ ./argflag -o -f
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--options]} = -f
++ ./argflag -o '--verbose --anything' -f
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
+- ${args[--options]} = --verbose --anything
