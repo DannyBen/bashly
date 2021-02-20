@@ -26,7 +26,7 @@ module Bashly
       end
 
       def body
-        @body ||= command.render('master_script').lint
+        @body ||= command.render('master_script')
       end
     end
   end
