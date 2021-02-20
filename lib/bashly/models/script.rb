@@ -11,10 +11,12 @@ module Bashly
 
       def code
         if function_name
-          [header, render('wrapper').lint].join "\n"
+          result = [header, render('wrapper')].join "\n"
         else
-          [header, body].join "\n"
+          result = [header, body].join "\n"
         end
+
+        result.lint
       end
 
     private
