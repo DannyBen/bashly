@@ -3,13 +3,17 @@ module Bashly
     class Generate < Base
       help "Generate the bash script and required files"
 
-      usage "bashly generate [--force]"
+      usage "bashly generate [--force --wrap FUNCTION]"
       usage "bashly generate (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
+      option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
+
+      example "bashly generate --force"
+      example "bashly generate --wrap my_function"
 
       def run
         create_user_files
@@ -54,10 +58,13 @@ module Bashly
       end
 
       def create_master_script
-        master_script = command.render('master_script').lint
-        File.write master_script_path, master_script
+        File.write master_script_path, script.code
         FileUtils.chmod "+x", master_script_path
         say "created !txtgrn!#{master_script_path}"
+      end
+
+      def script
+        @script ||= Models::Script.new(command, args['--wrap'])
       end
 
       def master_script_path

@@ -11,7 +11,8 @@ module Bashly
       def run
         config = Config.new "#{Settings.source_dir}/bashly.yml"
         command = Models::Command.new(config)
-        puts command.render 'master_script'
+        script = Models::Script.new command
+        puts script.code
       end
     end
   end

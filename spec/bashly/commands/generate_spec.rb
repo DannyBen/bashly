@@ -51,4 +51,21 @@ describe Commands::Generate do
     end
   end
 
+  context "with --wrap function" do
+    let(:cli_script) { "#{target_dir}/cli" }
+
+    before do
+      reset_tmp_dir
+      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
+      expect(success).to be true
+    end
+
+    it "generates the cli script wrapped in a function" do
+      expect { subject.run %w[generate -w function] }.to output_approval('cli/generate/wrap-function')
+      expect(File).to exist(cli_script)
+      lines = File.readlines cli_script
+      expect(lines[5]).to eq "function() {\n"
+    end
+  end
+
 end
