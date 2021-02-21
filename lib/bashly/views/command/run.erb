@@ -14,12 +14,7 @@ run() {
     fi
   <% condition = "elif" %>
   <%- end -%>
-  <%= condition %> [[ ${args[--version]} ]]; then
-    version_command
-  elif [[ ${args[--help]} ]]; then
-    long_usage=yes
-    <%= name %>_usage
-  elif [[ $action == "root" ]]; then
+  <%= condition %> [[ $action == "root" ]]; then
     root_command
   fi
 }

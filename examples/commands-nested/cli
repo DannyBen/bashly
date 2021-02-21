@@ -790,11 +790,6 @@ run() {
       cli_file_edit_command
     fi
   
-  elif [[ ${args[--version]} ]]; then
-    version_command
-  elif [[ ${args[--help]} ]]; then
-    long_usage=yes
-    cli_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

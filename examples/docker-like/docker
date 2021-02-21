@@ -650,11 +650,6 @@ run() {
       docker_image_ls_command
     fi
   
-  elif [[ ${args[--version]} ]]; then
-    version_command
-  elif [[ ${args[--help]} ]]; then
-    long_usage=yes
-    docker_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi
