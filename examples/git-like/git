@@ -345,11 +345,6 @@ run() {
       git_commit_command
     fi
   
-  elif [[ ${args[--version]} ]]; then
-    version_command
-  elif [[ ${args[--help]} ]]; then
-    long_usage=yes
-    git_usage
   elif [[ $action == "root" ]]; then
     root_command
   fi

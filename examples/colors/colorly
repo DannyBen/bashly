@@ -173,12 +173,7 @@ run() {
   declare -A args
   parse_requirements "$@"
 
-  if [[ ${args[--version]} ]]; then
-    version_command
-  elif [[ ${args[--help]} ]]; then
-    long_usage=yes
-    colorly_usage
-  elif [[ $action == "root" ]]; then
+  if [[ $action == "root" ]]; then
     root_command
   fi
 }
