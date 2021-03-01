@@ -15,6 +15,7 @@ command_shortcut: "Shortcut: %{short}"
 default_command_summary: "%{summary} (default)"
 required: "(required)"
 default: "Default: %{value}"
+allowed: "Allowed: %{values}"
 
 # Fixed flags help text
 help_flag_text: Show this help
@@ -28,3 +29,4 @@ missing_required_argument: "missing required argument: %{arg}\\nusage: %{usage}"
 missing_required_flag: "missing required flag: %{usage}"
 missing_required_environment_variable: "missing required environment variable: %{var}"
 missing_dependency: "missing dependency: %{dependency}"
+disallowed_flag: "%{name} must be one of: %{allowed}"

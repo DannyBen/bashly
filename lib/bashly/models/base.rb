@@ -6,10 +6,11 @@ module Bashly
       attr_reader :options
 
       OPTION_KEYS = %i[
+        allowed
         arg
+        default
         dependencies
         description
-        default
         environment_variables
         examples
         flags

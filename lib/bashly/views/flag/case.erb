@@ -5,6 +5,13 @@
     args[<%= name %>]="$2"
     shift
     shift
+    <%- if allowed -%>
+    allowed="<%= allowed.join '|' %>"
+    if [[ ! ${args[<%= name %>]} =~ $allowed ]]; then
+      printf "%s\n" "<%= strings[:disallowed_flag] % { name: name, allowed: allowed.join(', ') } %>\n"
+      exit 1
+    fi
+    <%- end -%>
   else
     printf "%s\n" "<%= strings[:flag_requires_an_argument] % { name: name, usage: usage_string } %>"
     exit 1
