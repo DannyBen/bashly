@@ -1,0 +1,12 @@
+name: login
+help: Sample showing the use of allowed values for a flag (whitelist)
+version: 0.1.0
+
+flags:
+- long: --user
+  short: -u
+  arg: NAME
+  allowed: [user, admin]
+  default: user
+  help: "User name"
+  
