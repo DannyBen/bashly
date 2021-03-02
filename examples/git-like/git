@@ -203,6 +203,7 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -246,6 +247,7 @@ git_status_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -307,6 +309,7 @@ git_commit_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.initialize

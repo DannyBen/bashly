@@ -410,6 +410,7 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -476,6 +477,7 @@ configly_set_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -531,6 +533,7 @@ configly_get_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -574,6 +577,7 @@ configly_list_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.initialize

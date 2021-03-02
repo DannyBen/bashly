@@ -1,4 +1,4 @@
-Allowed Flag Values
+Whitelist Arguments and Flag Arguments
 ==================================================
 
 This example was generated with:

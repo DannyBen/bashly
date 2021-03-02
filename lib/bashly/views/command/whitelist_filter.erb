@@ -1,0 +1,13 @@
+# :command.whitelist_filter
+<%- whitelisted_args.each do |arg| -%>
+if [[ ! ${args[<%= arg.name %>]} =~ ^(<%= arg.allowed.join '|' %>)$ ]]; then
+  printf "%s\n" "<%= strings[:disallowed_argument] % { name: arg.name, allowed: arg.allowed.join(', ') } %>"
+  exit 1
+fi
+<%- end -%>
+<%- whitelisted_flags.each do |flag| -%>
+if [[ ! ${args[<%= flag.name %>]} =~ ^(<%= flag.allowed.join '|' %>)$ ]]; then
+  printf "%s\n" "<%= strings[:disallowed_flag] % { name: flag.name, allowed: flag.allowed.join(', ') } %>"
+  exit 1
+fi
+<%- end -%>

@@ -288,6 +288,7 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -343,6 +344,7 @@ ftp_download_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -398,6 +400,7 @@ ftp_upload_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -441,6 +444,7 @@ ftp_login_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -484,6 +488,7 @@ ftp_logout_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.initialize

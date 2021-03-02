@@ -1,0 +1,34 @@
+name: login
+help: Sample showing the use of arg and flag whitelist (allowed values)
+version: 0.1.0
+
+args:
+- name: region
+  help: Region to connect to
+  # Whitelist + required
+  allowed: [eu, us]
+  required: true
+
+- name: environment
+  help: Environment to connect to
+  # Whitelist + default
+  allowed: [stage, production, development]
+  default: development
+
+flags:
+- long: --user
+  short: -u
+  arg: name
+  help: User name
+  # Whitelist + required
+  allowed: [user, admin]
+  required: true
+
+- long: --protocol
+  short: -p
+  arg: type
+  help: Protocol to connect with
+  # Whitelist + default
+  allowed: [ftp, ssh, http]
+  default: ssh
+
