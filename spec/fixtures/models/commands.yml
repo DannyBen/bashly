@@ -96,3 +96,18 @@
     long: --format
     arg: format
     default: png
+
+:whitelist:
+  args:
+  - name: region
+    allowed: [eu, us]
+  - name: environment
+
+  flags:
+  - long: --user
+    arg: name
+    allowed: [user, admin]
+
+  - long: --protocol
+    arg: type
+
