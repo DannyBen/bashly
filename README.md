@@ -238,6 +238,7 @@ short form).
 `arg`      | If the flag requires an argument, specify its name here.
 `required` | Specify if this flag is required.
 `default`  | The value to use in case it is not provided by the user. Implies that this flag is optional, and only makes sense when the flag has an argument.
+`allowed`  | For flags with an argument, you can limit the allowed values by providing an array.
 
 #### Special handling for -v and -h
 
