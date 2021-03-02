@@ -309,7 +309,7 @@ describe Models::Command do
     end
   end
 
-  describe '#whitelisted_flags', :focus do
+  describe '#whitelisted_flags' do
     let(:fixture) { :whitelist }
 
     it "returns an array of flags that have a whitelist" do
