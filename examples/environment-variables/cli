@@ -167,6 +167,7 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.parse_requirements
@@ -214,6 +215,7 @@ cli_verify_parse_requirements() {
     esac
   done
   # :command.default_assignments
+  # :command.whitelist_filter
 }
 
 # :command.initialize

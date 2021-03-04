@@ -139,6 +139,7 @@ parse_requirements() {
   # :command.default_assignments
   [[ -n ${args[source]} ]] || args[source]="*.jpg"
   [[ -n ${args[--format]} ]] || args[--format]="png"
+  # :command.whitelist_filter
 }
 
 # :command.initialize

@@ -175,6 +175,16 @@ module Bashly
         verify_commands if commands.any?
       end
 
+      # Returns an array of all the args with a whitelist
+      def whitelisted_args
+        args.select &:allowed
+      end
+
+      # Returns an array of all the flags with a whitelist arg
+      def whitelisted_flags
+        flags.select &:allowed
+      end
+
     private
 
       def verify_commands

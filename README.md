@@ -223,6 +223,7 @@ bash function.
 `help`     | The message to display when using `--help`. Can have multiple lines.
 `required` | Specify if this argument is required. Note that once you define an optional argument (without required: true) then you cannot define required arguments after it.
 `default`  | The value to use in case it is not provided by the user. Implies that this argument is optional.
+`allowed`  | Limit the allowed values by providing an array.
 
 ### Flag options
 

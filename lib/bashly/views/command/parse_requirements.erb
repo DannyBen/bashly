@@ -12,6 +12,7 @@ parse_requirements() {
 <%= render(:required_flags_filter).indent 2 %>
 <%= render(:parse_requirements_while).indent 2 %>
 <%= render(:default_assignments).indent 2 %>
+<%= render(:whitelist_filter).indent 2 %>
 }
 
 <%- commands.each do |command| %>

@@ -300,4 +300,23 @@ describe Models::Command do
     end
   end
 
+  describe '#whitelisted_args' do
+    let(:fixture) { :whitelist }
+
+    it "returns an array of args that have a whitelist" do
+      expect(subject.whitelisted_args.size).to eq 1
+      expect(subject.whitelisted_args.first.name).to eq "region"
+    end
+  end
+
+  describe '#whitelisted_flags' do
+    let(:fixture) { :whitelist }
+
+    it "returns an array of flags that have a whitelist" do
+      expect(subject.whitelisted_flags.size).to eq 1
+      expect(subject.whitelisted_flags.first.long).to eq "--user"
+    end
+  end
+
+
 end
