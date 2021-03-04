@@ -1,6 +1,14 @@
 Change Log
 ========================================
 
+v0.4.2 - 2021-03-04
+----------------------------------------
+
+- Remove unused code for --version and --help in root command
+- Add support for allowed values for flags
+- Add support for whitelist in args
+
+
 v0.4.1 - 2021-02-20
 ----------------------------------------
 
