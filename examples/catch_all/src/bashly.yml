@@ -1,0 +1,10 @@
+name: download
+help: Catch All Example
+version: 0.1.0
+catch_all: true
+
+args:
+- name: message
+  required: true
+  help: Message
+

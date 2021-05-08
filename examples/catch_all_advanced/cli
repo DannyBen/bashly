@@ -10,10 +10,10 @@ version_command() {
 # :command.usage
 cli_usage() {
   if [[ -n $long_usage ]]; then
-    printf "cli - Sample application that requires dependencies\n"
+    printf "cli - Sample application\n"
     echo 
   else
-    printf "cli - Sample application that requires dependencies\n"
+    printf "cli - Sample application\n"
     echo 
   fi
 
@@ -24,8 +24,8 @@ cli_usage() {
   echo
   # :command.usage_commands
   printf "Commands:\n"
-  echo "  download   Download something"
-  echo "  upload     Upload something"
+  echo "  download   Download a file"
+  echo "  upload     Upload a file"
   echo
 
   if [[ -n $long_usage ]]; then
@@ -44,15 +44,18 @@ cli_usage() {
 # :command.usage
 cli_download_usage() {
   if [[ -n $long_usage ]]; then
-    printf "cli download - Download something\n"
+    printf "cli download - Download a file\n"
     echo 
   else
-    printf "cli download - Download something\n"
+    printf "cli download - Download a file\n"
     echo 
   fi
 
+  printf "Shortcut: d\n"
+  echo
+
   printf "Usage:\n"
-  printf "  cli download\n"
+  printf "  cli download SOURCE [TARGET] [options] [AWS PARAMS...]\n"
   printf "  cli download --help | -h\n"
   echo
 
@@ -62,6 +65,35 @@ cli_download_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
+    # :command.usage_flags
+    # :flag.usage
+    echo "  --force, -f"
+    printf "    Overwrite existing files\n"
+    echo
+    # :command.usage_args
+    printf "Arguments:\n"
+    
+    # :argument.usage
+    echo "  SOURCE"
+    printf "    URL to download from\n"
+    echo
+    
+    # :argument.usage
+    echo "  TARGET"
+    printf "    Target filename (default: same as source)\n"
+    echo
+    
+    
+    echo "  AWS PARAMS..."
+    printf "    Additional arguments or flags for AWS CLI\n"
+    echo
+
+    # :command.usage_examples
+    printf "Examples:\n"
+    
+    printf "  cli download example.com\n"
+    printf "  cli download example.com ./output -f\n"
+    echo
 
   fi
 }
@@ -69,15 +101,18 @@ cli_download_usage() {
 # :command.usage
 cli_upload_usage() {
   if [[ -n $long_usage ]]; then
-    printf "cli upload - Upload something\n"
+    printf "cli upload - Upload a file\n"
     echo 
   else
-    printf "cli upload - Upload something\n"
+    printf "cli upload - Upload a file\n"
     echo 
   fi
 
+  printf "Shortcut: u\n"
+  echo
+
   printf "Usage:\n"
-  printf "  cli upload\n"
+  printf "  cli upload SOURCE [options]\n"
   printf "  cli upload --help | -h\n"
   echo
 
@@ -86,6 +121,23 @@ cli_upload_usage() {
     # :command.usage_fixed_flags
     echo "  --help, -h"
     printf "    Show this help\n"
+    echo
+    # :command.usage_flags
+    # :flag.usage
+    echo "  --user, -u USER (required)"
+    printf "    Username to use for logging in\n"
+    echo
+    
+    # :flag.usage
+    echo "  --password, -p PASSWORD"
+    printf "    Password to use for logging in\n"
+    echo
+    # :command.usage_args
+    printf "Arguments:\n"
+    
+    # :argument.usage
+    echo "  SOURCE"
+    printf "    File to upload\n"
     echo
 
   fi
@@ -155,14 +207,14 @@ parse_requirements() {
   -* )
     ;;
   
-  download )
+  download | d )
     action="download"
     shift
     cli_download_parse_requirements "$@"
     shift $#
     ;;    
   
-  upload )
+  upload | u )
     action="upload"
     shift
     cli_upload_parse_requirements "$@"
@@ -217,32 +269,45 @@ cli_download_parse_requirements() {
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
-  if ! [[ -x "$(command -v curl)" ]]; then
-    printf "missing dependency: curl\n"
-    exit 1
-  fi
-  if ! [[ -x "$(command -v shmurl)" ]]; then
-    printf "missing dependency: shmurl\n"
-    exit 1
-  fi
   # :command.command_filter
   action="download"
   # :command.required_args_filter
+  if [[ $1 && $1 != -* ]]; then
+    args[source]=$1
+    shift
+  else
+    printf "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options] [AWS PARAMS...]\n"
+    exit 1
+  fi
   # :command.required_flags_filter
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
+    # :flag.case
+    --force | -f )
+      args[--force]=1
+      shift
+      ;;
+  
   
     -* )
-      printf "invalid option: %s\n" "$key"
-      exit 1
+      other_args+=("$1")
+      shift
       ;;
   
     * )
       # :command.parse_requirements_case
-      printf "invalid argument: %s\n" "$key"
-      exit 1
+      if [[ ! ${args[source]} ]]; then
+        args[source]=$1
+        shift
+      elif [[ ! ${args[target]} ]]; then
+        args[target]=$1
+        shift
+      else
+        other_args+=("$1")
+        shift
+      fi
       ;;
   
     esac
@@ -272,11 +337,47 @@ cli_upload_parse_requirements() {
   # :command.command_filter
   action="upload"
   # :command.required_args_filter
+  if [[ $1 && $1 != -* ]]; then
+    args[source]=$1
+    shift
+  else
+    printf "missing required argument: SOURCE\nusage: cli upload SOURCE [options]\n"
+    exit 1
+  fi
   # :command.required_flags_filter
+  argstring="$*"
+  if [[ "$argstring" != *--user* && "$argstring" != *-u* ]]; then
+    printf "missing required flag: --user, -u USER\n"
+    exit 1
+  fi
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
+    # :flag.case
+    --user | -u )
+      if [[ $2 ]]; then
+        args[--user]="$2"
+        shift
+        shift
+      else
+        printf "%s\n" "--user requires an argument: --user, -u USER"
+        exit 1
+      fi
+      ;;
+  
+    # :flag.case
+    --password | -p )
+      if [[ $2 ]]; then
+        args[--password]="$2"
+        shift
+        shift
+      else
+        printf "%s\n" "--password requires an argument: --password, -p PASSWORD"
+        exit 1
+      fi
+      ;;
+  
   
     -* )
       printf "invalid option: %s\n" "$key"
@@ -285,8 +386,13 @@ cli_upload_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      printf "invalid argument: %s\n" "$key"
-      exit 1
+      if [[ ! ${args[source]} ]]; then
+        args[source]=$1
+        shift
+      else
+        printf "invalid argument: %s\n" "$key"
+        exit 1
+      fi
       ;;
   
     esac

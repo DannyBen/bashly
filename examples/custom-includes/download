@@ -62,6 +62,15 @@ inspect_args() {
   else
     echo args: none
   fi
+
+  if (( ${#other_args[@]} )); then
+    echo
+    echo other_args:
+    echo "- \${other_args[*]} = ${other_args[*]}"
+    for i in "${!other_args[@]}"; do
+      echo "- \${other_args[$i]} = ${other_args[$i]}"
+    done
+  fi
 }
 
 # :command.user_lib
@@ -144,6 +153,7 @@ initialize() {
 # :command.run
 run() {
   declare -A args
+  declare -a other_args
   parse_requirements "$@"
 
   if [[ $action == "root" ]]; then

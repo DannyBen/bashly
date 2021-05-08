@@ -61,6 +61,63 @@ describe Models::Command do
     end
   end
 
+  describe '#catch_all_label' do
+    context "when catch_all is disabled" do
+      it "returns nil" do
+        expect(subject.catch_all_label).to be_nil
+      end
+    end
+
+    context "when catch_all is a string" do
+      let(:fixture) { :catch_all_string }
+
+      it "returns an uppercase version of it" do
+        expect(subject.catch_all_label).to eq "EXTRA PARAMS..."
+      end
+    end
+
+    context "when catch_all['label'] is a string" do
+      let(:fixture) { :catch_all_hash }
+
+      it "returns an uppercase version of it" do
+        expect(subject.catch_all_label).to eq "ADDITIONAL PARAMS..."
+      end
+    end
+
+    context "in other cases" do
+      let(:fixture) { :catch_all }
+
+      it "returns '...'" do
+        expect(subject.catch_all_label).to eq "..."
+      end
+    end
+  end
+  
+  describe '#catch_all_help', :focus do
+    context "when catch_all is disabled" do
+      it "returns nil" do
+        expect(subject.catch_all_help).to be_nil
+      end
+    end
+
+    context "when catch_all['help'] is a string" do
+      let(:fixture) { :catch_all_hash }
+
+      it "returns it" do
+        expect(subject.catch_all_help).to eq "Any additional argument or flag"
+      end
+    end
+
+    context "in other cases" do
+      let(:fixture) { :catch_all_string }
+
+      it "returns nil" do
+        expect(subject.catch_all_help).to be_nil
+      end
+    end
+
+  end
+
   describe '#command_names' do
     let(:fixture) { :docker }
 

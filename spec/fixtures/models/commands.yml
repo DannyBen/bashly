@@ -111,3 +111,19 @@
   - long: --protocol
     arg: type
 
+:catch_all:
+  name: get
+  help: get something from somewhere
+  catch_all: true
+
+:catch_all_string:
+  name: get
+  help: get something from somewhere
+  catch_all: extra params
+
+:catch_all_hash:
+  name: get
+  help: get something from somewhere
+  catch_all:
+    label: additional params
+    help: Any additional argument or flag

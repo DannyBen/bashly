@@ -28,6 +28,29 @@ module Bashly
         help ? "#{full_name} - #{summary}" : full_name
       end
 
+      # Returns a label for the catch_all directive
+      def catch_all_label
+        return nil unless catch_all
+
+        if catch_all.is_a? String
+          "#{catch_all.upcase}..."
+        elsif catch_all.is_a?(Hash) and catch_all['label'].is_a?(String)
+          "#{catch_all['label'].upcase}..."
+        else
+          "..."
+        end
+      end
+
+      def catch_all_help
+        return nil unless catch_all
+
+        if catch_all.is_a?(Hash) and catch_all['help'].is_a?(String)
+          catch_all['help']
+        else
+          nil
+        end
+      end
+
       # Returns only the names of the Commands
       def command_names
         commands.map &:name
@@ -159,6 +182,7 @@ module Bashly
           result << arg.usage_string
         end
         result << "[options]" unless flags.empty?
+        result << "[#{catch_all_label}]" if catch_all
         result.join " "
       end
 

@@ -1,0 +1,75 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created src/upload_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
++ ./cli download -h
+cli download - Download a file
+
+Shortcut: d
+
+Usage:
+  cli download SOURCE [TARGET] [options] [AWS PARAMS...]
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --force, -f
+    Overwrite existing files
+
+Arguments:
+  SOURCE
+    URL to download from
+
+  TARGET
+    Target filename (default: same as source)
+
+  AWS PARAMS...
+    Additional arguments or flags for AWS CLI
+
+Examples:
+  cli download example.com
+  cli download example.com ./output -f
+
++ ./cli download source
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = source
++ ./cli download source target
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = source
+- ${args[target]} = target
++ ./cli download source target and --additional stuff
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = source
+- ${args[target]} = target
+
+other_args:
+- ${other_args[*]} = and --additional stuff
+- ${other_args[0]} = and
+- ${other_args[1]} = --additional
+- ${other_args[2]} = stuff

@@ -18,15 +18,15 @@ version_command() {
 # :command.usage
 download_usage() {
   if [[ -n $long_usage ]]; then
-    printf "download - Sample minimal application without commands\n"
+    printf "download - Catch All Example\n"
     echo 
   else
-    printf "download - Sample minimal application without commands\n"
+    printf "download - Catch All Example\n"
     echo 
   fi
 
   printf "Usage:\n"
-  printf "  download SOURCE [TARGET] [options]\n"
+  printf "  download MESSAGE [...]\n"
   printf "  download --help | -h\n"
   printf "  download --version | -v\n"
   echo
@@ -40,29 +40,13 @@ download_usage() {
     echo "  --version, -v"
     printf "    Show version number\n"
     echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --force, -f"
-    printf "    Overwrite existing files\n"
-    echo
+
     # :command.usage_args
     printf "Arguments:\n"
     
     # :argument.usage
-    echo "  SOURCE"
-    printf "    URL to download from\n"
-    echo
-    
-    # :argument.usage
-    echo "  TARGET"
-    printf "    Target filename\n    Default: same as source\n"
-    echo
-
-    # :command.usage_examples
-    printf "Examples:\n"
-    
-    printf "  download example.com\n"
-    printf "  download example.com ./output -f\n"
+    echo "  MESSAGE"
+    printf "    Message\n"
     echo
 
   fi
@@ -112,10 +96,10 @@ parse_requirements() {
   action="root"
   # :command.required_args_filter
   if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
+    args[message]=$1
     shift
   else
-    printf "missing required argument: SOURCE\nusage: download SOURCE [TARGET] [options]\n"
+    printf "missing required argument: MESSAGE\nusage: download MESSAGE [...]\n"
     exit 1
   fi
   # :command.required_flags_filter
@@ -123,29 +107,20 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-    # :flag.case
-    --force | -f )
-      args[--force]=1
-      shift
-      ;;
-  
   
     -* )
-      printf "invalid option: %s\n" "$key"
-      exit 1
+      other_args+=("$1")
+      shift
       ;;
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
-        shift
-      elif [[ ! ${args[target]} ]]; then
-        args[target]=$1
+      if [[ ! ${args[message]} ]]; then
+        args[message]=$1
         shift
       else
-        printf "invalid argument: %s\n" "$key"
-        exit 1
+        other_args+=("$1")
+        shift
       fi
       ;;
   
