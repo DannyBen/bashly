@@ -72,7 +72,7 @@ describe Models::Command do
       let(:fixture) { :catch_all_string }
 
       it "returns an uppercase version of it" do
-        expect(subject.catch_all_label).to eq "EXTRA PARAMS"
+        expect(subject.catch_all_label).to eq "EXTRA PARAMS..."
       end
     end
 
@@ -80,7 +80,7 @@ describe Models::Command do
       let(:fixture) { :catch_all_hash }
 
       it "returns an uppercase version of it" do
-        expect(subject.catch_all_label).to eq "ADDITIONAL PARAMS"
+        expect(subject.catch_all_label).to eq "ADDITIONAL PARAMS..."
       end
     end
 

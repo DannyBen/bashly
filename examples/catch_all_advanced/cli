@@ -55,7 +55,7 @@ cli_download_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  cli download SOURCE [TARGET] [options] [AWS PARAMS]\n"
+  printf "  cli download SOURCE [TARGET] [options] [AWS PARAMS...]\n"
   printf "  cli download --help | -h\n"
   echo
 
@@ -84,7 +84,7 @@ cli_download_usage() {
     echo
     
     
-    echo "  AWS PARAMS"
+    echo "  AWS PARAMS..."
     printf "    Additional arguments or flags for AWS CLI\n"
     echo
 
@@ -276,7 +276,7 @@ cli_download_parse_requirements() {
     args[source]=$1
     shift
   else
-    printf "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options] [AWS PARAMS]\n"
+    printf "missing required argument: SOURCE\nusage: cli download SOURCE [TARGET] [options] [AWS PARAMS...]\n"
     exit 1
   fi
   # :command.required_flags_filter

@@ -33,9 +33,9 @@ module Bashly
         return nil unless catch_all
 
         if catch_all.is_a? String
-          catch_all.upcase
+          "#{catch_all.upcase}..."
         elsif catch_all.is_a?(Hash) and catch_all['label'].is_a?(String)
-          catch_all['label'].upcase
+          "#{catch_all['label'].upcase}..."
         else
           "..."
         end

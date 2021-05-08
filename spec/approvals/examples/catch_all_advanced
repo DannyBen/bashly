@@ -23,7 +23,7 @@ cli download - Download a file
 Shortcut: d
 
 Usage:
-  cli download SOURCE [TARGET] [options] [AWS PARAMS]
+  cli download SOURCE [TARGET] [options] [AWS PARAMS...]
   cli download --help | -h
 
 Options:
@@ -40,7 +40,7 @@ Arguments:
   TARGET
     Target filename (default: same as source)
 
-  AWS PARAMS
+  AWS PARAMS...
     Additional arguments or flags for AWS CLI
 
 Examples:
