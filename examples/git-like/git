@@ -120,7 +120,7 @@ inspect_args() {
   if (( ${#other_args[@]} )); then
     echo
     echo other_args:
-    echo "- \${other_args[@]} = ${other_args[@]}"
+    echo "- \${other_args[*]} = ${other_args[*]}"
     for i in "${!other_args[@]}"; do
       echo "- \${other_args[$i]} = ${other_args[$i]}"
     done
