@@ -8,9 +8,17 @@
 <%- condition = "elif" -%>
 <%- end -%>
 else
+<%- if catch_all -%>
+  other_args+=("$1")
+  shift
+<%- else -%>
   printf "<%= strings[:invalid_argument] %>\n" "$key"
   exit 1
+<%- end -%>
 fi
+<%- elsif catch_all -%>
+  other_args+=("$1")
+  shift
 <%- else -%>
 printf "<%= strings[:invalid_argument] %>\n" "$key"
 exit 1

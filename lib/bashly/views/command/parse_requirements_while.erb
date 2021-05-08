@@ -8,9 +8,15 @@ while [[ $# -gt 0 ]]; do
   <%- end -%>
 
   -* )
+<%- if catch_all -%>
+    other_args+=("$1")
+    shift
+    ;;
+<%- else -%>
     printf "<%= strings[:invalid_flag] %>\n" "$key"
     exit 1
     ;;
+<%- end -%>
 
   * )
 <%= render(:parse_requirements_case).indent 4 %>

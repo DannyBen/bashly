@@ -8,6 +8,7 @@ module Bashly
       OPTION_KEYS = %i[
         allowed
         arg
+        catch_all
         default
         dependencies
         description

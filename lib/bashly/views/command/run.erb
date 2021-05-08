@@ -1,6 +1,7 @@
 # :command.run
 run() {
   declare -A args
+  declare -a other_args
   parse_requirements "$@"
 
   <%- condition = "if" -%>
