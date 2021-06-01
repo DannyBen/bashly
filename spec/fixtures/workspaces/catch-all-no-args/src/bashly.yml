@@ -1,0 +1,8 @@
+name: download
+help: Download something
+version: 0.1.0
+
+help: Download a file
+catch_all:
+  label: "URLs"
+  help: "List of URLs"
