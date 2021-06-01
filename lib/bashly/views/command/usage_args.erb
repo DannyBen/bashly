@@ -1,11 +1,13 @@
 # :command.usage_args
 printf "<%= strings[:arguments] %>\n"
+<%- if args.any? -%>
 
 <%- args.each do |arg| -%>
 <%= arg.render(:usage) %>
 <%- end -%>
-
+<%- end -%>
 <%- if catch_all_help -%>
+
 echo "  <%= catch_all_label %>"
 printf "<%= catch_all_help.wrap(76).indent(4).sanitize_for_print %>\n"
 echo
