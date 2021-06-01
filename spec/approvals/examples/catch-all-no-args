@@ -9,7 +9,7 @@ run ./download --help to test your bash script
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 + ./download --help
-download - Download a file
+download - Download something
 
 Usage:
   download [URLS...]
