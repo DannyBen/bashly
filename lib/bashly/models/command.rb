@@ -41,6 +41,7 @@ module Bashly
         end
       end
 
+      # Returns a used defined help string for the catch_all directive
       def catch_all_help
         return nil unless catch_all
 

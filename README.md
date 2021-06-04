@@ -22,10 +22,10 @@ Create beautiful bash scripts from simple YAML configuration
 - [Prerequisites](#prerequisites)
 - [What is Bashly](#what-is-bashly)
 - [Usage](#usage)
-  - [Using the input arguemnts in your code](#using-the-input-arguemnts-in-your-code)
+  - [Using the input arguments in your code](#using-the-input-arguments-in-your-code)
 - [Examples](#examples)
-  - [Sample configuraiton for a script without commands](#sample-configuraiton-for-a-script-without-commands)
-  - [Sample configuraiton for a script with commands](#sample-configuraiton-for-a-script-with-commands)
+  - [Sample configuration for a script without commands](#sample-configuration-for-a-script-without-commands)
+  - [Sample configuration for a script with commands](#sample-configuration-for-a-script-with-commands)
 - [Configuration Reference](#configuration-reference)
   - [Command options](#command-options)
   - [Argument options](#argument-options)
@@ -113,7 +113,7 @@ Finally, edit the files in the `src` folder. Each of your script's commands
 get their own file. Once you edit, run `bashly generate` again to merge the
 content from your functions back into the script.
 
-### Using the input arguemnts in your code
+### Using the input arguments in your code
 
 In order to access the parsed arguments in any of your partial scripts, you
 may simply access the `$args` associative array.
@@ -163,13 +163,13 @@ This is detected automatically by the contents of the configuration: If it
 contains a `commands` definition, it will generate a script with commands.
 
 
-### Sample configuraiton for a script without commands
+### Sample configuration for a script without commands
 
 - Generate this script by running `bashly generate --minimal`
 - [See the initial sample bashly.yml file](examples/minimal/src/bashly.yml)
 - [See the generated bash script](examples/minimal/download)
 
-### Sample configuraiton for a script with commands
+### Sample configuration for a script with commands
 
 - Generate this script by running `bashly generate`
 - [See the initial sample bashly.yml file](examples/commands/src/bashly.yml)
@@ -193,7 +193,7 @@ The `bashly.yml` configuration file consists of these types:
 
 ### Command options
 
-Unless otherwise specified, these definitiona can be used for both the root
+Unless otherwise specified, these definitions can be used for both the root
 command and subcommands (under the `commands` definition).
 
  Option    | Description
@@ -274,9 +274,9 @@ set.
 If you experience any issue, have a question or a suggestion, or if you wish
 to contribute, feel free to [open an issue][issues].
 
+
+
 [issues]: https://github.com/DannyBen/bashly/issues
 [rush]: https://github.com/DannyBen/rush-cli
 [alf]: https://github.com/DannyBen/alf
 [git-changelog]: https://github.com/DannyBen/git-changelog
-
-
