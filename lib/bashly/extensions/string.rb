@@ -16,7 +16,6 @@ class String
     strip!
     split("\n").collect! do |line|
       if line.length > length
-        line.gsub!(/([^\s]{#{length}})([^\s$])/, "\\1 \\2")
         line.gsub(/(.{1,#{length}})(\s+|$)/, "\\1\n").rstrip
       else
         line
