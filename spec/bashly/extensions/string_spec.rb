@@ -20,8 +20,15 @@ describe Array do
     it "wraps the string to the specified length" do
       expect(subject.wrap 30).to eq "a long line of text that is\ngoing to be wrapped, fingers\ncrossed!"
     end
-  end
 
+    # GH-79
+    context "with an uninterrupted string" do
+      subject { "a long line of text with a nice uninterrupted-string-like-a-url-for-example" }
+      it "does not break the uninterrupted portion" do
+        expect(subject.wrap 30).to eq "a long line of text with a\nnice\nuninterrupted-string-like-a-url-for-example"
+      end
+    end
+  end
 
   describe '#to_underscore' do
     subject { "Some String" }
