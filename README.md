@@ -31,7 +31,7 @@ Create beautiful bash scripts from simple YAML configuration
   - [Argument options](#argument-options)
   - [Flag options](#flag-options)
   - [Environment Variable options](#environment-variable-options)
-- [Extensible Commands](#extensible-commands)
+- [Extensible Scripts](#extensible-scripts)
 - [Real World Examples](#real-world-examples)
 - [Contributing / Support](#contributing--support)
 
@@ -204,7 +204,7 @@ command and subcommands (under the `commands` definition).
 `help`     | The header text to display when using `--help`. This option can have multiple lines. In this case, the first line will be used as summary wherever appropriate.
 `version`  | The string to display when using `--version`. *Applicable only in the main command*.
 `default`  | Setting this to `true` on any command, will cause any unrecognized command line to be passed to this command. *Applicable only in subcommands*.
-`extensible` | Specify that this command can be [externally extended](#extensible-commands).
+`extensible` | Specify that this command can be [externally extended](#extensible-commands). *Applicable only in the main command*.
 `examples` | Specify an array of examples to show when using `--help`. Each example can have multiple lines.
 `environment_variables` | Specify an array of [environment variables](#environment-variable-options) needed by your script. 
 `commands` | Specify the array of [commands](#command-options). Each command will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
@@ -264,7 +264,7 @@ set.
 `required` | Specify if this variable is required.
 
 
-## Extensible Commands
+## Extensible Scripts
 
 You may configure your generated bash script to delegate any unknown command
 to an external executable, by setting the `extensible` option to either `true`,
