@@ -340,6 +340,7 @@ parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     cli_usage
     exit 1
@@ -409,6 +410,7 @@ cli_dir_parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     cli_dir_usage
     exit 1
@@ -596,6 +598,7 @@ cli_file_parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     cli_file_usage
     exit 1

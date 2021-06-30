@@ -33,21 +33,30 @@ end
 
 def examples
   [
+    "examples/catch_all/download",
+    "examples/catch_all_advanced/cli",
     "examples/colors/colorly",
     "examples/command-default/ftp",
     "examples/command-groups/ftp",
+    "examples/commands-nested/cli",
     "examples/commands/cli",
     "examples/config-ini/configly",
     "examples/custom-includes/download",
     "examples/custom-strings/download",
+    "examples/default-values/convert",
     "examples/dependencies/cli",
     "examples/docker-like/docker",
     "examples/environment-variables/cli",
+    "examples/extensible-delegate/mygit",
+    "examples/extensible/cli",
     "examples/git-like/git",
     "examples/minimal/download",
     "examples/minus-v/cli",
     "examples/multiline/multi",
+    "examples/whitelist/login",
     "examples/yaml/yaml",
+    "spec/fixtures/workspaces/catch-all-no-args/download",
+    "spec/fixtures/workspaces/flag-args-with-dash/argflag",
     "spec/fixtures/workspaces/short-command-code/rush",
   ]
 end

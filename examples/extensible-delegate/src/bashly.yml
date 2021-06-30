@@ -1,0 +1,13 @@
+name: mygit
+help: Sample application that delegates unknown commands to a different executable
+version: 0.1.0
+extensible: git
+
+commands:
+- name: push
+  short: p
+  help: Push to my repository
+
+- name: pull
+  short: l
+  help: Pull from my repository

@@ -31,6 +31,7 @@ Create beautiful bash scripts from simple YAML configuration
   - [Argument options](#argument-options)
   - [Flag options](#flag-options)
   - [Environment Variable options](#environment-variable-options)
+- [Extensible Commands](#extensible-commands)
 - [Real World Examples](#real-world-examples)
 - [Contributing / Support](#contributing--support)
 
@@ -203,6 +204,7 @@ command and subcommands (under the `commands` definition).
 `help`     | The header text to display when using `--help`. This option can have multiple lines. In this case, the first line will be used as summary wherever appropriate.
 `version`  | The string to display when using `--version`. *Applicable only in the main command*.
 `default`  | Setting this to `true` on any command, will cause any unrecognized command line to be passed to this command. *Applicable only in subcommands*.
+`extensible` | Specify that this command can be [externally extended](#extensible-commands).
 `examples` | Specify an array of examples to show when using `--help`. Each example can have multiple lines.
 `environment_variables` | Specify an array of [environment variables](#environment-variable-options) needed by your script. 
 `commands` | Specify the array of [commands](#command-options). Each command will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
@@ -260,6 +262,82 @@ set.
 `name`     | The name of the variable (it will be automatically capitalized).
 `help`     | The message to display when using --help. Can have multiple lines.
 `required` | Specify if this variable is required.
+
+
+## Extensible Commands
+
+You may configure your generated bash script to delegate any unknown command
+to an external executable, by setting the `extensible` option to either `true`,
+or to a different external command.
+
+This is similar to how `git` works. When you execute `git whatever`, the `git`
+command will look for a file named `git-whatever` in the path, and execute it.
+
+Note that this option cannot be specified together with the `default` option,
+since both specify a handler for unknown commands.
+
+Bashly supports two operation modes.
+
+### Extension Mode (`extensible: true`)
+
+By setting `extensible` to `true`, a specially named executable will be called
+when an unknown command is called by the user.
+
+Given this `bashly.yml` configuration:
+
+```yaml
+name: myscript
+help: Example
+version: 0.1.0
+extensible: true
+
+commands:
+- name: upload
+  help: Upload a file
+```
+
+And this user command:
+
+```
+$ myscript something
+
+```
+
+The generated script will look for an executable named `myscript-something` 
+in the path. If found, it will be called.
+
+See the [extensible example](examples/extensible)
+
+
+### Delegate Mode (`extensible: <executable name>`)
+
+By setting `extensible` to any string, unknown command calls by the user will
+be delegated to the executable with that name.
+
+Given this `bashly.yml` configuration:
+
+```yaml
+name: mygit
+help: Example
+version: 0.1.0
+extensible: git
+
+commands:
+- name: push
+  help: Push to my repository
+```
+
+And this user command:
+
+```
+$ mygit status
+
+```
+
+The generated script will execute `git status`.
+
+See the [extensible-delegate example](examples/extensible-delegate)
+
 
 
 ## Real World Examples

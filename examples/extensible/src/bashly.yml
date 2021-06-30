@@ -1,0 +1,23 @@
+name: cli
+help: Sample application that can be externally extended
+version: 0.1.0
+extensible: true
+
+commands:
+- name: upload
+  short: u
+  help: Upload a file
+  args:
+  - name: source
+    required: true
+    help: File to upload
+
+- name: download
+  short: d
+  help: Download a file
+
+  args:
+  - name: source
+    required: true
+    help: File to download
+

@@ -191,6 +191,7 @@ parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   "" )
     ftp_usage
     exit 1

@@ -1,0 +1,26 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/upload_command.sh
+created src/download_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application that can be externally extended
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  upload     Upload a file
+  download   Download a file
+
++ ./cli status --some --flags
+This is an external executable that serves as an extension to
+the cli app.
+If placed in the path, it will be executed whenever someone runs:
+$ cli status <any argument>
+
+Received args: --some --flags
