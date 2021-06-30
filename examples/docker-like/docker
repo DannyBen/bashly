@@ -288,6 +288,7 @@ parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     docker_usage
     exit 1
@@ -357,6 +358,7 @@ docker_container_parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     docker_container_usage
     exit 1
@@ -531,6 +533,7 @@ docker_image_parse_requirements() {
     shift $#
     ;;    
   
+  # :command.command_fallback
   * )
     docker_image_usage
     exit 1

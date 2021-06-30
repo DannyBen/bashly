@@ -15,25 +15,7 @@ case $action in
   ;;    
 
 <%- end -%>
-<%- if default_command -%>
-"" )
-  <%= function_name %>_usage
-  exit 1
-  ;;
-
-* )
-  action="<%= default_command.name %>"
-  <%= default_command.function_name %>_parse_requirements "$@"
-  shift $#
-  ;;
-
-<%- else -%>
-* )
-  <%= function_name %>_usage
-  exit 1
-  ;;
-
-<%- end -%>
+<%= render :command_fallback %>
 esac
 <%- else -%>
 action="<%= action_name %>"

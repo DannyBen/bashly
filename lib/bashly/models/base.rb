@@ -14,6 +14,7 @@ module Bashly
         description
         environment_variables
         examples
+        extensible
         flags
         group
         help
