@@ -306,7 +306,7 @@ $ myscript something
 The generated script will look for an executable named `myscript-something` 
 in the path. If found, it will be called.
 
-See the [extensible example](examples/extensible)
+See the [extensible example](examples/extensible).
 
 
 ### Delegate Mode (`extensible: <executable name>`)
@@ -336,7 +336,7 @@ $ mygit status
 
 The generated script will execute `git status`.
 
-See the [extensible-delegate example](examples/extensible-delegate)
+See the [extensible-delegate example](examples/extensible-delegate).
 
 
 
