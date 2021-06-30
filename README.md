@@ -251,8 +251,6 @@ flags**.
 
 ### Environment Variable options
 
-The below configuration generates this environment variable usage text:
-
 If an environment variable is defined as required (false by default), the
 execution of the script will be halted with a friendly error if it is not
 set.
