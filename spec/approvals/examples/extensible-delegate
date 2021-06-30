@@ -1,0 +1,34 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/push_command.sh
+created src/pull_command.sh
+created ./mygit
+run ./mygit --help to test your bash script
++ ./mygit
+mygit - Sample application that delegates unknown commands to a different executable
+
+Usage:
+  mygit [command]
+  mygit [command] --help | -h
+  mygit --version | -v
+
+Commands:
+  push   Push to my repository
+  pull   Pull from my repository
+
++ ./mygit push
+# this file is located in 'src/push_command.sh'
+# code for 'mygit push' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./mygit rm
+usage: git rm [<options>] [--] <file>...
+
+    -n, --dry-run         dry run
+    -q, --quiet           do not list removed files
+    --cached              only remove from the index
+    -f, --force           override the up-to-date check
+    -r                    allow recursive removal
+    --ignore-unmatch      exit with a zero status even if nothing matched
+

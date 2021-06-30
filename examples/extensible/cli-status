@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+echo "This is an external executable that serves as an extension to"
+echo "the cli app."
+echo "If placed in the path, it will be executed whenever someone runs:"
+echo "$ cli status <any argument>"
+echo ""
+echo "Received args: $@"
