@@ -270,7 +270,7 @@ You may configure your generated bash script to delegate any unknown command
 to an external executable, by setting the `extensible` option to either `true`,
 or to a different external command.
 
-This is simiilar to how `git` works. When you execute `git whatever`, the `git`
+This is similar to how `git` works. When you execute `git whatever`, the `git`
 command will look for a file named `git-whatever` in the path, and execute it.
 
 Note that this option cannot be specified together with the `default` option,
