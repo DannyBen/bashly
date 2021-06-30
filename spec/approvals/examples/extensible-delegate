@@ -22,13 +22,5 @@ Commands:
 # code for 'mygit push' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
-+ ./mygit rm
-usage: git rm [<options>] [--] <file>...
-
-    -n, --dry-run         dry run
-    -q, --quiet           do not list removed files
-    --cached              only remove from the index
-    -f, --force           override the up-to-date check
-    -r                    allow recursive removal
-    --ignore-unmatch      exit with a zero status even if nothing matched
-
++ ./mygit rm some-file-that-doesnt-exist
+fatal: pathspec 'some-file-that-doesnt-exist' did not match any files

@@ -10,4 +10,4 @@ bashly generate
 ./mygit push
 
 # any unknown command will go to the git executable
-./mygit rm
+./mygit rm some-file-that-doesnt-exist
