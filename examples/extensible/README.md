@@ -55,17 +55,12 @@ Commands:
 
 $ ./cli status --some --flags
 
-cli - Sample application that can be externally extended
+This is an external executable that serves as an extension to
+the cli app.
+If placed in the path, it will be executed whenever someone runs:
+$ cli status <any argument>
 
-Usage:
-  cli [command]
-  cli [command] --help | -h
-  cli --version | -v
-
-Commands:
-  upload     Upload a file
-  download   Download a file
-
+Received args: --some --flags
 
 
 ```

@@ -33,6 +33,8 @@ end
 
 help   "Append the content of bashly.yml to all example READMEs"
 action :examples do
+  # Patch the PATH to allow the extensible example to run properly
+  ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|
     say example.dir
     example.regenerate_readme

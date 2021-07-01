@@ -32,10 +32,7 @@ commands:
 ```shell
 $ ./cli download
 
-# this file is located in 'src/download_command.sh'
-# code for 'cli download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args: none
+missing dependency: shmurl
 
 
 $ ./cli upload
