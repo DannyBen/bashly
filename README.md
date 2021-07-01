@@ -15,6 +15,7 @@ Create beautiful bash scripts from simple YAML configuration
 
 </div>
 
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -36,6 +37,7 @@ Create beautiful bash scripts from simple YAML configuration
 - [Contributing / Support](#contributing--support)
 
 ---
+
 
 ## Installation
 
@@ -84,7 +86,16 @@ Bahsly is responsible for:
   - **YAML parsing**.
   - and more.
 
+
 ## Usage
+
+The `bashly.yml` file can be set up to generate two types of scripts:
+
+1. Script with commands (for example, like `docker` or `git`).
+2. Script without commands (for example, like `ls`)
+
+This is detected automatically by the contents of the configuration: If it
+contains a `commands` definition, it will generate a script with commands.
 
 In an empty directory, create a sample configuration file by running
 
@@ -153,32 +164,11 @@ $ ./download a --force
 downloading a with --force
 ```
 
+
 ## Examples
 
-The `bashly.yml` file can be set up to generate two types of scripts:
-
-1. Script with commands (for example, like `docker` or `git`).
-2. Script without commands (for example, like `ls`)
-
-This is detected automatically by the contents of the configuration: If it
-contains a `commands` definition, it will generate a script with commands.
-
-
-### Sample configuration for a script without commands
-
-- Generate this script by running `bashly generate --minimal`
-- [See the initial sample bashly.yml file](examples/minimal/src/bashly.yml)
-- [See the generated bash script](examples/minimal/download)
-
-### Sample configuration for a script with commands
-
-- Generate this script by running `bashly generate`
-- [See the initial sample bashly.yml file](examples/commands/src/bashly.yml)
-- [See the generated bash script](examples/commands/cli)
-
-
-See the [examples](examples) folder for more examples.
-
+The [examples folder](examples#readme) contains many detailed and documented 
+example configuration files, with their output.
 
 
 ## Configuration Reference
@@ -249,7 +239,7 @@ The `-v` and `-h` flags will be used as the short options for `--version` and
 `--help` respectively **only if you are not using them in any of your own
 flags**.
 
-### Environment Variable options
+### Environment variable options
 
 If an environment variable is defined as required (false by default), the
 execution of the script will be halted with a friendly error if it is not
@@ -335,7 +325,6 @@ $ mygit status
 The generated script will execute `git status`.
 
 See the [extensible-delegate example](examples/extensible-delegate).
-
 
 
 ## Real World Examples

@@ -1,9 +1,133 @@
-Docker Example
-==================================================
+# Git Example
 
-This example was generated manually to demonstrate sub-commands, like
-the git cli (git status, git commit, etc.)
+Demonstrates how to configure sub-commands, similar to what `git` does (`git status`, `git commit`, etc.).
 
-Then, the YAML file was converted to bash with:
+-----
 
-    $ bashly generate
+## `bashly.yml`
+
+```yaml
+name: git
+help: Git example
+version: 0.1.0
+
+commands:
+- name: status
+  short: s*
+  help: Show repository status
+
+- name: commit
+  short: c*
+  help: Commit changes
+
+  flags:
+  - long: --message
+    short: -m
+    arg: MESSAGE
+    help: Commit message
+
+  - long: --all
+    short: -a
+    help: Automatically stage files
+```
+
+## Generated script output
+
+```shell
+$ ./git
+
+git - Git example
+
+Usage:
+  git [command]
+  git [command] --help | -h
+  git --version | -v
+
+Commands:
+  status   Show repository status
+  commit   Commit changes
+
+
+
+$ ./git -h
+
+git - Git example
+
+Usage:
+  git [command]
+  git [command] --help | -h
+  git --version | -v
+
+Commands:
+  status   Show repository status
+  commit   Commit changes
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+
+
+$ ./git s
+
+# this file is located in 'src/status_command.sh'
+# code for 'git status' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+
+$ ./git status -h
+
+git status - Show repository status
+
+Shortcut: s*
+
+Usage:
+  git status
+  git status --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+
+
+$ ./git commit -h
+
+git commit - Commit changes
+
+Shortcut: c*
+
+Usage:
+  git commit [options]
+  git commit --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --message, -m MESSAGE
+    Commit message
+
+  --all, -a
+    Automatically stage files
+
+
+
+$ ./git commit -a -m "initial commit"
+
+# this file is located in 'src/commit_command.sh'
+# code for 'git commit' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--all]} = 1
+- ${args[--message]} = initial commit
+
+
+```
+
+
+

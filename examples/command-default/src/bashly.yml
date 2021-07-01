@@ -6,7 +6,12 @@ commands:
 - name: upload
   short: u
   help: Upload a file
+
+  # By setting the `upload` command as the default command, it will be executed
+  # when the command line is not recognized.
+  # Running `ftp upload something` is the same as `ftp something`
   default: true
+
   args:
   - name: source
     required: true

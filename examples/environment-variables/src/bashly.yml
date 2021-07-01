@@ -2,6 +2,7 @@ name: cli
 help: Sample application that requires environment variables
 version: 0.1.0
 
+# This option adds usage text to the help message in the generated script.
 environment_variables:
 - name: api_key
   help: Set your API key
@@ -11,6 +12,9 @@ commands:
   short: v
   help: Verify your user
 
+  # This option belongs to the `verify` command and will appear in its help
+  # message. In addition, setting `required: true` will halt the script's 
+  # execution with a friendly error message, unless the variable is set.
   environment_variables:
   - name: my_secret
     help: Your secret

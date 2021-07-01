@@ -218,6 +218,10 @@ cli_download_parse_requirements() {
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
+  if ! [[ -x "$(command -v git)" ]]; then
+    printf "missing dependency: git\n"
+    exit 1
+  fi
   if ! [[ -x "$(command -v curl)" ]]; then
     printf "missing dependency: curl\n"
     exit 1

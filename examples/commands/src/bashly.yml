@@ -6,6 +6,8 @@ environment_variables:
 - name: api_key
   help: Set your API key
 
+# Specifying a `commands` array configures the generated script to support
+# sub-commands.
 commands:
 - name: download
   short: d
