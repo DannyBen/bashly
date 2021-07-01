@@ -8,6 +8,9 @@ version: 0.1.0
 
 commands:
 - name: multiline
+  
+  # Using the YAML multiline marker allows you to define help messages with 
+  # multiple lines
   help: |-
     Do some multiline work.
 

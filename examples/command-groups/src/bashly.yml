@@ -5,6 +5,10 @@ version: 0.1.0
 commands:
 - name: download
   help: Download a file
+
+  # By specifying a group, the `download` comnmand (and all subsequent
+  # commands until the next `group`) will be printed under this `File` 
+  # caption.
   group: File
 
   args:
@@ -22,6 +26,9 @@ commands:
 
 - name: login
   help: Write login credentials to the config file
+
+  # The `login` command (and all subsequent commands) will be printed under
+  # the `Login` caption.
   group: Login
 
 - name: logout

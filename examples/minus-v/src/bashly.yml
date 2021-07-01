@@ -4,10 +4,14 @@ version: 0.1.0
 
 flags:
 - long: --verbose
+  # Normally, the `-v` flag is used as a short flag for `--version`
+  # Whenever you define such a flag in your script, the generated script
+  # will respect your request, and avoid using `-v` as a `--version` shortcut.
   short: -v
   help: Show verbose output
 
 - long: --host
+  # The same applies to `-h` (which is otherwise short for `--help`)
   short: -h
   arg: host
   help: Host address

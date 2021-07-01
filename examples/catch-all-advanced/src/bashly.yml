@@ -6,6 +6,9 @@ commands:
 - name: download
   short: d
   help: Download a file
+
+  # Configure catch_all for the `download` sub-command using the extended
+  # syntax which adds a proper help message.
   catch_all:
     label: AWS Params
     help: Additional arguments or flags for AWS CLI

@@ -5,6 +5,9 @@ version: 0.1.0
 args:
 - name: source
   help: Files to convert
+
+  # By setting a default value for the argument, this value will be used
+  # when `source` is not provided.
   default: "*.jpg"
 
 flags:
@@ -12,6 +15,8 @@ flags:
   short: -f
   arg: format
   help: Format to convert to
+
+  # Default values can also be applied to flags.
   default: png
 
 examples:

@@ -6,6 +6,10 @@ commands:
 - name: dir
   short: d
   help: Directory commands
+
+  # The `commands` array can be nested inside any other command
+  # This particular array will generate a script that answers to
+  # `cli dir list` and `cli dir remove`
   commands:
   - name: list
     help: Show files in the directory
@@ -28,6 +32,8 @@ commands:
   short: f
   help: File commands
 
+  # The nested commands for `cli file` - will generate `cli file show` and
+  # `cli file edit`.
   commands:
   - name: show
     help: Show file contents

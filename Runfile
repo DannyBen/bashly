@@ -36,7 +36,6 @@ action :examples do
   Example.all.each do |example|
     say example.dir
     example.regenerate_readme
-    exit
   end
 end
 
@@ -90,7 +89,7 @@ class Example
     test_commands.each do |command|
       result += "$ #{command}\n\n"
       Dir.chdir dir do
-        result += `#{command}`
+        result += `#{command} 2>&1`
         result += "\n\n"
       end
     end
