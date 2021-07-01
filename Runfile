@@ -16,7 +16,7 @@ end
 
 help   "Run shellcheck on all examples"
 action :shellcheck do
-  examples.each do |example|
+  Example.executables.each do |example|
     success = system "shellcheck #{example}"
     color = success ? 'txtgrn' : 'txtred'
     say "- shellcheck !#{color}!#{example}"
@@ -31,34 +31,101 @@ action :changelog do
   run "cat .changelog.old.md >> CHANGELOG.md"
 end
 
-def examples
-  [
-    "examples/catch-all/download",
-    "examples/catch-all-advanced/cli",
-    "examples/colors/colorly",
-    "examples/command-default/ftp",
-    "examples/command-groups/ftp",
-    "examples/commands-nested/cli",
-    "examples/commands/cli",
-    "examples/config-ini/configly",
-    "examples/custom-includes/download",
-    "examples/custom-strings/download",
-    "examples/default-values/convert",
-    "examples/dependencies/cli",
-    "examples/docker-like/docker",
-    "examples/environment-variables/cli",
-    "examples/extensible-delegate/mygit",
-    "examples/extensible/cli",
-    "examples/git-like/git",
-    "examples/minimal/download",
-    "examples/minus-v/cli",
-    "examples/multiline/multi",
-    "examples/whitelist/login",
-    "examples/yaml/yaml",
-    "spec/fixtures/workspaces/catch-all-no-args/download",
-    "spec/fixtures/workspaces/flag-args-with-dash/argflag",
-    "spec/fixtures/workspaces/short-command-code/rush",
-  ]
+help   "Append the content of bashly.yml to all example READMEs"
+action :examples do
+  Example.all.each do |example|
+    say example.dir
+    example.regenerate_readme
+    exit
+  end
+end
+
+class Example
+  class << self
+    def dirs
+      @dirs ||= Dir['examples/*'].select { |f| File.directory? f }
+    end
+
+    def all
+      dirs.map { |dir| Example.new dir }
+    end
+
+    def executables
+      all.map &:executable
+    end
+  end
+
+  attr_reader :dir
+
+  def initialize(dir)
+    @dir = dir
+  end
+
+  def config
+    @config ||= YAML.load_file(yaml_path)
+  end
+
+  def yaml
+    @yaml ||= File.read(yaml_path).strip
+  end
+
+  def yaml_path
+    "#{dir}/src/bashly.yml"
+  end
+
+  def readme_path
+    "#{dir}/README.md"
+  end
+
+  def readme
+    File.read readme_path
+  end
+
+  def test_commands
+    File.read("#{dir}/test.sh").scan(/\.\/#{config['name']}.*/)
+  end
+
+  def test_output
+    result = "```shell\n"
+    test_commands.each do |command|
+      result += "$ #{command}\n\n"
+      Dir.chdir dir do
+        result += `#{command}`
+        result += "\n\n"
+      end
+    end
+    result += "```\n\n"
+    result
+  end
+
+  def regenerate_readme
+    File.write readme_path, generated_readme
+  end
+
+  def generated_readme
+    marker = '-----'
+    content = readme.split(marker)[0].strip
+    <<~EOF
+    #{content}
+
+    #{marker}
+
+    ## `bashly.yml`
+
+    ```yaml
+    #{yaml}
+    ```
+
+    ## Generated script output
+
+    #{test_output}
+
+    EOF
+  end
+
+  def executable
+    "#{dir}/#{config['name']}"
+  end
 end
 
 require './debug.rb' if File.exist? 'debug.rb'
