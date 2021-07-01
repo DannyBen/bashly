@@ -10,8 +10,9 @@ commands:
   # friendly error message) unless all of these commands exist in the host
   # system.
   dependencies:
-  - curl
   - git
+  - curl
+  - shmurl
 
 - name: upload
   help: Upload something

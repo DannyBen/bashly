@@ -1,6 +1,6 @@
 # Extensible Command Example
 
-Demonstrates how to allow your script's users to add more commands to your script (in any language), without requiring them to edit it.
+Demonstrates how to allow your script's users to add more commands to your script (in any language), without requiring them to edit your script.
 
 -----
 

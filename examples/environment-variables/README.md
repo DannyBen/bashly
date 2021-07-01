@@ -1,6 +1,6 @@
 # Environment Variables Example
 
-Demonstrates hot to specify that your scripts supports (or requires) certain environment variables. This can be configured at any command level (root command or sub commands).
+Demonstrates how to specify that your script supports (or requires) certain environment variables. This can be configured at any command level (root command or sub commands).
 
 -----
 

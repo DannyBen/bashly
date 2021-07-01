@@ -17,7 +17,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [minus-v](minus-v#readme) - using `-v` and `-h` in your script
 - [multiline](multiline#readme) - help messages with multiple lines
 
-## Advanced features
+## Advanced configuration features
 
 - [catch-all](catch-all#readme) - a command that can receive an arbitrary number of arguments
 - [catch-all-advanced](catch-all-advanced#readme) - another example for the `catch_all` option
@@ -29,7 +29,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 
 - [command-groups](command-groups#readme) - grouping sub-commands in logical sections
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
-- [custom-includes](custom-includes#readme) - adding library functions
+- [custom-includes](custom-includes#readme) - adding and organizing your custom functions
 
 ## Real-world-like examples
 

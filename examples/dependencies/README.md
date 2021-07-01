@@ -19,8 +19,9 @@ commands:
   # friendly error message) unless all of these commands exist in the host
   # system.
   dependencies:
-  - curl
   - git
+  - curl
+  - shmurl
 
 - name: upload
   help: Upload something
@@ -31,7 +32,10 @@ commands:
 ```shell
 $ ./cli download
 
-missing dependency: shmurl
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
 
 
 $ ./cli upload
