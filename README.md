@@ -177,7 +177,7 @@ contains a `commands` definition, it will generate a script with commands.
 - [See the generated bash script](examples/commands/cli)
 
 
-See the [examples](examples) folder for more examples.
+For many more detailed examples, see the [examples](examples#readme) folder.
 
 
 
