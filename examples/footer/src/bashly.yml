@@ -1,0 +1,12 @@
+name: download
+help: Sample application with a help footer
+version: 0.1.0
+footer: |
+  This will appear at the end of the --help message.
+
+  It can contain multiple lines, and "double" or 'single' quotes are
+  properly escaped.
+
+args:
+- name: source
+  help: URL to download from

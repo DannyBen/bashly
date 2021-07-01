@@ -201,6 +201,7 @@ command and subcommands (under the `commands` definition).
 `catch_all` | Specify that this command should allow for additional arbitrary arguments or flags. It can be set in one of three ways:<br>- Set to `true` to just enable it.<br>- Set to a string, to use this string in the usage help text.<br>- Set to a hash containing `label` and `help` keys, to show a detailed help for it when running with `--help`.
 `dependencies` | Specify an array of any required external dependencies (commands). The script execution will be halted with a friendly error unless all dependency commands exist.
 `group`    | In case you have many commands, use this option to specify a caption to display before this command. This option is purely for display purposes, and needs to be specified only for the first command in each group.
+`footer` | Add a custom message that will be displayed at the end of the `--help` text. 
 
 ### Argument options
 
