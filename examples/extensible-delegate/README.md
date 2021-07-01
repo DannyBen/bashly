@@ -2,7 +2,6 @@
 
 Demonstrates how to configure an external delegate command that will be called (with all the arguments) whenever an unknown command is invoked.
 
-
 -----
 
 ## `bashly.yml`
