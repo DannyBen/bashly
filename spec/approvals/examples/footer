@@ -1,0 +1,35 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./download
+run ./download --help to test your bash script
++ ./download
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./download -h
+download - Sample application with a help footer
+
+Usage:
+  download [SOURCE]
+  download --help | -h
+  download --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Arguments:
+  SOURCE
+    URL to download from
+
+This will appear at the end of the --help message.
+
+It can contain multiple lines, and "double" or 'single' quotes are
+properly escaped.
+
+

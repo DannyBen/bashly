@@ -30,6 +30,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [command-groups](command-groups#readme) - grouping sub-commands in logical sections
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
 - [custom-includes](custom-includes#readme) - adding and organizing your custom functions
+- [footer](footer#readme) - adding a footer to the help message
 
 ## Real-world-like examples
 

@@ -16,6 +16,7 @@ module Bashly
         examples
         extensible
         flags
+        footer
         group
         help
         long
