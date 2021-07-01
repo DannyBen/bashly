@@ -1,10 +1,6 @@
-Default Command Example
-==================================================
+# Default Command Example
 
-This example was generated with:
-
-    $ bashly init
-    $ bashly generate
+Demonstrates how to set a command as the default command. This command can be executed without explicitly specifying the command name.
 
 -----
 

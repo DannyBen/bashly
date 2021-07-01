@@ -1,10 +1,6 @@
-Example -v and -h override
-==================================================
+# Overriding `-v` and `-h`
 
-This example was generated with:
-
-    $ bashly init --minimal
-    $ bashly generate
+Demonstrates how the `-h` and `-v` flags can be used in your script, without colliding with `--version` and `--help`.
 
 -----
 

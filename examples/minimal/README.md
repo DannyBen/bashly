@@ -1,5 +1,6 @@
-Minimal Example
-==================================================
+# Minimal Example
+
+This is the simplest "hello world" example.
 
 This example was generated with:
 

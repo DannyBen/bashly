@@ -1,10 +1,6 @@
-Environment Variables Example
-==================================================
+# Environment Variables Example
 
-This example was generated with:
-
-    $ bashly init
-    $ bashly generate
+Demonstrates hot to specify that your scripts supports (or requires) certain environment variables. This can be configured at any command level (root command or sub commands).
 
 -----
 

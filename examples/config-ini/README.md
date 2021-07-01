@@ -1,11 +1,14 @@
-Config Example
-==================================================
+# Config Example
 
 This example was generated with:
 
     $ bashly init
     $ bashly add config
     $ bashly generate
+
+Running the `bashly add config` command simply added the [src/lib/config.sh](src/lib/config.sh) file, which includes functions for reading and writing values from an INI file.
+
+See the files in the [src](src) folder for usage examples.
 
 -----
 

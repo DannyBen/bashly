@@ -1,10 +1,6 @@
-Whitelist Arguments and Flag Arguments
-==================================================
+# Whitelist Arguments and Flag Arguments
 
-This example was generated with:
-
-    $ bashly init --minimal
-    $ bashly generate
+Demonstrates how to specify a predetermined list of allowed values for arguments and flag arguments.
 
 -----
 

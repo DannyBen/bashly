@@ -1,5 +1,6 @@
-Sub-Commands Example
-==================================================
+# Sub-Commands Example
+
+Demonstrates how to commands can be nested inside other commands.
 
 This example was generated with:
 

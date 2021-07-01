@@ -1,11 +1,14 @@
-YAML Example
-==================================================
+# YAML Example
 
 This example was generated with:
 
     $ bashly init
     $ bashly add yaml
     $ bashly generate
+
+Running the `bashly add yaml` command simply adds the [src/lib/yaml.sh](src/lib.yaml.sh) file, which provides functions for reading YAML files.
+
+See the [src/root_command.sh](src/root_command.sh) for usage example.
 
 -----
 

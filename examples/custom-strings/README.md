@@ -1,11 +1,14 @@
-Custom Strings Example
-==================================================
+# Custom Strings Example
 
 This example was generated with:
 
     $ bashly init
     $ bashly add strings
     $ bashly generate
+
+Running the `bashly add strings` command, simply generates  the strings configuration file in [src/lib/bashly-strings.yml](src/lib/bashly-strings.yml). You may edit this file and regenerate your script in order to replace the format of any (or all) help messages and error messages.
+
+Note that you may delete any of the generated string values completely if you do not wish to change them.
 
 -----
 

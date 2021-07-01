@@ -1,10 +1,6 @@
-Command Groups Example
-==================================================
+# Command Groups Example
 
-This example was generated with:
-
-    $ bashly init
-    $ bashly generate
+Demonstrates how to visually group commands under their own caption. This is useful for scripts that contain many commands that provide different sets of functionality.
 
 -----
 

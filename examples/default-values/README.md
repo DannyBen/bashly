@@ -1,10 +1,6 @@
-Minimal Example
-==================================================
+# Default Values Example
 
-This example was generated with:
-
-    $ bashly init --minimal
-    $ bashly generate
+Demonstrates how to set default values for arguments and flags.
 
 -----
 

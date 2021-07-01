@@ -1,5 +1,6 @@
-Commands Example
-==================================================
+# Commands Example
+
+Demonstrates how to build a script that supports sub-commands.
 
 This example was generated with:
 

@@ -1,11 +1,14 @@
-Custom Includes Example
-==================================================
+# Custom Includes Example
 
 This example was generated with:
 
     $ bashly init
     $ bashly add lib
     $ bashly generate
+    
+Running the `bashly add lib` command, simply craetes a sample file in the [src/lib](src/lib) folder, which can then be edited to include your custom function(s).
+
+In order to keep your scripts clean and maintainable, it is recommended that you place each of your custom functions in their own file inside the `lib` folder.
 
 -----
 

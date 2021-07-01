@@ -1,10 +1,7 @@
-Extensible Delegate Command Example
-==================================================
+# Extensible Delegate Command Example
 
-This example was generated with:
+Demonstrates how to configure an external delegate command that will be called (with all the arguments) whenever an unknown command is invoked.
 
-    $ bashly init
-    $ bashly generate
 
 -----
 

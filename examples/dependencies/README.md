@@ -1,10 +1,6 @@
-Environment Variables Example
-==================================================
+# Dependencies Example
 
-This example was generated with:
-
-    $ bashly init
-    $ bashly generate
+Demonstrates how to require your script's user to have certain dependencies (commands) installed prior to using your script.
 
 -----
 
