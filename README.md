@@ -25,7 +25,6 @@ Create beautiful bash scripts from simple YAML configuration
 - [Usage](#usage)
   - [Using the input arguments in your code](#using-the-input-arguments-in-your-code)
 - [Examples](#examples)
-
 - [Configuration Reference](#configuration-reference)
   - [Command options](#command-options)
   - [Argument options](#argument-options)
