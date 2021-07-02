@@ -144,7 +144,7 @@ v0.4.0 - 2020-10-21
 
 ## [v0.3.0](https://github.com/DannyBen/bashly/tree/v0.3.0) (2019-11-28)
 
-[Full Changelog](https://github.com/DannyBen/bashly/compare/0.2.4...v0.3.0)
+[Full Changelog](https://github.com/DannyBen/bashly/compare/v0.2.4...v0.3.0)
 
 **Implemented enhancements:**
 
@@ -156,9 +156,9 @@ v0.4.0 - 2020-10-21
 - Add support for required environment variables [\#37](https://github.com/DannyBen/bashly/pull/37) ([DannyBen](https://github.com/DannyBen))
 - Sanitize usage strings for quotes [\#34](https://github.com/DannyBen/bashly/pull/34) ([DannyBen](https://github.com/DannyBen))
 
-## [0.2.4](https://github.com/DannyBen/bashly/tree/0.2.4) (2019-11-26)
+## [v0.2.4](https://github.com/DannyBen/bashly/tree/v0.2.4) (2019-11-26)
 
-[Full Changelog](https://github.com/DannyBen/bashly/compare/v0.2.3...0.2.4)
+[Full Changelog](https://github.com/DannyBen/bashly/compare/v0.2.3...v0.2.4)
 
 **Implemented enhancements:**
 
