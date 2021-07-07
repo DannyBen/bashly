@@ -54,9 +54,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./configly -h
+### `$ ./configly -h`
 
+```shell
 configly - Sample application that uses the config functions
 
 Usage:
@@ -78,28 +78,43 @@ Options:
 
 
 
-$ ./configly set hello world
+```
 
+### `$ ./configly set hello world`
+
+```shell
 saved: hello = world
 
 
-$ ./configly set bashly works
+```
 
+### `$ ./configly set bashly works`
+
+```shell
 saved: bashly = works
 
 
-$ ./configly get hello
+```
 
+### `$ ./configly get hello`
+
+```shell
 world
 
 
-$ ./configly get invalid_key
+```
 
+### `$ ./configly get invalid_key`
+
+```shell
 No such key: invalid_key
 
 
-$ ./configly list
+```
 
+### `$ ./configly list`
+
+```shell
 ; comments are allowed
 hello = world
 bashly = works

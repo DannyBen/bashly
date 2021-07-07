@@ -33,9 +33,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./git
+### `$ ./git`
 
+```shell
 git - Git example
 
 Usage:
@@ -49,8 +49,11 @@ Commands:
 
 
 
-$ ./git -h
+```
 
+### `$ ./git -h`
+
+```shell
 git - Git example
 
 Usage:
@@ -71,16 +74,22 @@ Options:
 
 
 
-$ ./git s
+```
 
+### `$ ./git s`
+
+```shell
 # this file is located in 'src/status_command.sh'
 # code for 'git status' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./git status -h
+```
 
+### `$ ./git status -h`
+
+```shell
 git status - Show repository status
 
 Shortcut: s*
@@ -95,8 +104,11 @@ Options:
 
 
 
-$ ./git commit -h
+```
 
+### `$ ./git commit -h`
+
+```shell
 git commit - Commit changes
 
 Shortcut: c*
@@ -117,8 +129,11 @@ Options:
 
 
 
-$ ./git commit -a -m "initial commit"
+```
 
+### `$ ./git commit -a -m "initial commit"`
+
+```shell
 # this file is located in 'src/commit_command.sh'
 # code for 'git commit' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

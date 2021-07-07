@@ -32,9 +32,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 cli - Sample application that requires environment variables
 
 Usage:
@@ -47,8 +47,11 @@ Commands:
 
 
 
-$ ./cli -h
+```
 
+### `$ ./cli -h`
+
+```shell
 cli - Sample application that requires environment variables
 
 Usage:
@@ -72,8 +75,11 @@ Environment Variables:
 
 
 
-$ ./cli verify -h
+```
 
+### `$ ./cli verify -h`
+
+```shell
 cli verify - Verify your user
 
 Shortcut: v
@@ -92,13 +98,19 @@ Environment Variables:
 
 
 
-$ ./cli verify
+```
 
+### `$ ./cli verify`
+
+```shell
 missing required environment variable: MY_SECRET
 
 
-$ ./cli verify
+```
 
+### `$ ./cli verify`
+
+```shell
 missing required environment variable: MY_SECRET
 
 

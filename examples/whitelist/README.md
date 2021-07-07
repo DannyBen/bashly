@@ -44,15 +44,18 @@ flags:
 
 ## Generated script output
 
-```shell
-$ ./login
+### `$ ./login`
 
+```shell
 missing required argument: REGION
 usage: login REGION [ENVIRONMENT] [options]
 
 
-$ ./login -h
+```
 
+### `$ ./login -h`
+
+```shell
 login - Sample showing the use of arg and flag whitelist (allowed values)
 
 Usage:
@@ -88,23 +91,35 @@ Arguments:
 
 
 
-$ ./login america
+```
 
+### `$ ./login america`
+
+```shell
 missing required flag: --user, -u NAME
 
 
-$ ./login america --user admin
+```
 
+### `$ ./login america --user admin`
+
+```shell
 region must be one of: eu, us
 
 
-$ ./login eu --user hacker
+```
 
+### `$ ./login eu --user hacker`
+
+```shell
 --user must be one of: user, admin
 
 
-$ ./login eu --user admin
+```
 
+### `$ ./login eu --user admin`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -114,13 +129,19 @@ args:
 - ${args[--user]} = admin
 
 
-$ ./login us --user user --protocol icmp
+```
 
+### `$ ./login us --user user --protocol icmp`
+
+```shell
 --protocol must be one of: ftp, ssh, http
 
 
-$ ./login eu production --user admin --protocol ssh
+```
 
+### `$ ./login eu production --user admin --protocol ssh`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

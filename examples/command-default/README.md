@@ -38,9 +38,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./ftp
+### `$ ./ftp`
 
+```shell
 ftp - Sample application that uses the default command option
 
 Usage:
@@ -54,8 +54,11 @@ Commands:
 
 
 
-$ ./ftp -h
+```
 
+### `$ ./ftp -h`
+
+```shell
 ftp - Sample application that uses the default command option
 
 Usage:
@@ -76,8 +79,11 @@ Options:
 
 
 
-$ ./ftp download something
+```
 
+### `$ ./ftp download something`
+
+```shell
 # this file is located in 'src/download_command.sh'
 # code for 'ftp download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -85,8 +91,11 @@ args:
 - ${args[source]} = something
 
 
-$ ./ftp upload something
+```
 
+### `$ ./ftp upload something`
+
+```shell
 # this file is located in 'src/upload_command.sh'
 # code for 'ftp upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -94,8 +103,11 @@ args:
 - ${args[source]} = something
 
 
-$ ./ftp something
+```
 
+### `$ ./ftp something`
+
+```shell
 # this file is located in 'src/upload_command.sh'
 # code for 'ftp upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

@@ -39,9 +39,9 @@ examples:
 
 ## Generated script output
 
-```shell
-$ ./yaml -h
+### `$ ./yaml -h`
 
+```shell
 yaml - Sample application that uses the YAML functions
 
 Usage:
@@ -73,22 +73,31 @@ Examples:
 
 
 
-$ ./yaml settings.yml
+```
 
+### `$ ./yaml settings.yml`
+
+```shell
 environment="production"
 server_port="3000"
 server_host="http://localhost:3000"
 
 
-$ ./yaml settings.yml --prefix config_
+```
 
+### `$ ./yaml settings.yml --prefix config_`
+
+```shell
 config_environment="production"
 config_server_port="3000"
 config_server_host="http://localhost:3000"
 
 
-$ ./yaml settings.yml server_port
+```
 
+### `$ ./yaml settings.yml server_port`
+
+```shell
 server_port=3000
 
 

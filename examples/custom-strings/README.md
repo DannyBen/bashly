@@ -34,15 +34,18 @@ flags:
 
 ## Generated script output
 
-```shell
-$ ./download
+### `$ ./download`
 
+```shell
 Boom! a required argument is missing: SOURCE
 usage: download SOURCE [options]
 
 
-$ ./download -h
+```
 
+### `$ ./download -h`
+
+```shell
 download - Sample minimal application with custom strings
 
 == Usage ==
@@ -69,13 +72,19 @@ download - Sample minimal application with custom strings
 
 
 
-$ ./download somesource
+```
 
+### `$ ./download somesource`
+
+```shell
 Yo! you forgot a flag: --out, -o DIR
 
 
-$ ./download somesource -o
+```
 
+### `$ ./download somesource -o`
+
+```shell
 Hey! the flag --out requires an argument: --out, -o DIR
 
 

@@ -37,9 +37,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 cli - Sample application that can be externally extended
 
 Usage:
@@ -53,8 +53,11 @@ Commands:
 
 
 
-$ ./cli status --some --flags
+```
 
+### `$ ./cli status --some --flags`
+
+```shell
 This is an external executable that serves as an extension to
 the cli app.
 If placed in the path, it will be executed whenever someone runs:

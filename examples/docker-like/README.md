@@ -43,9 +43,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./docker
+### `$ ./docker`
 
+```shell
 docker - Docker example
 
 Usage:
@@ -59,8 +59,11 @@ Commands:
 
 
 
-$ ./docker -h
+```
 
+### `$ ./docker -h`
+
+```shell
 docker - Docker example
 
 Usage:
@@ -81,8 +84,11 @@ Options:
 
 
 
-$ ./docker container
+```
 
+### `$ ./docker container`
+
+```shell
 docker container - Container commands
 
 Shortcut: c*
@@ -97,8 +103,11 @@ Commands:
 
 
 
-$ ./docker container run -h
+```
 
+### `$ ./docker container run -h`
+
+```shell
 docker container run - Run a container
 
 Usage:
@@ -115,14 +124,20 @@ Arguments:
 
 
 
-$ ./docker container run
+```
 
+### `$ ./docker container run`
+
+```shell
 missing required argument: IMAGE
 usage: docker container run IMAGE
 
 
-$ ./docker container run alpine
+```
 
+### `$ ./docker container run alpine`
+
+```shell
 # this file is located in 'src/container_run_command.sh'
 # code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -130,8 +145,11 @@ args:
 - ${args[image]} = alpine
 
 
-$ ./docker con
+```
 
+### `$ ./docker con`
+
+```shell
 docker container - Container commands
 
 Shortcut: c*
@@ -146,8 +164,11 @@ Commands:
 
 
 
-$ ./docker image
+```
 
+### `$ ./docker image`
+
+```shell
 docker image - Image commands
 
 Shortcut: i*
@@ -161,16 +182,22 @@ Commands:
 
 
 
-$ ./docker image ls
+```
 
+### `$ ./docker image ls`
+
+```shell
 # this file is located in 'src/image_ls_command.sh'
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./docker i l
+```
 
+### `$ ./docker i l`
+
+```shell
 # this file is located in 'src/image_ls_command.sh'
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

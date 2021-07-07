@@ -28,16 +28,19 @@ flags:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./cli --help
+```
 
+### `$ ./cli --help`
+
+```shell
 cli - Example that replaces the default behavior of -v and -h
 
 Usage:
@@ -60,26 +63,38 @@ Options:
 
 
 
-$ ./cli --version
+```
 
+### `$ ./cli --version`
+
+```shell
 0.1.0
 
 
-$ ./cli -h
+```
 
+### `$ ./cli -h`
+
+```shell
 --host requires an argument: --host, -h HOST
 
 
-$ ./cli -v
+```
 
+### `$ ./cli -v`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[--verbose]} = 1
 
 
-$ ./cli -h localhost -v
+```
 
+### `$ ./cli -h localhost -v`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

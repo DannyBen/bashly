@@ -35,15 +35,18 @@ examples:
 
 ## Generated script output
 
-```shell
-$ ./download
+### `$ ./download`
 
+```shell
 missing required argument: SOURCE
 usage: download SOURCE [TARGET] [options]
 
 
-$ ./download -h
+```
 
+### `$ ./download -h`
+
+```shell
 download - Sample minimal application without commands
 
 Usage:
@@ -75,13 +78,19 @@ Examples:
 
 
 
-$ ./download -v
+```
 
+### `$ ./download -v`
+
+```shell
 0.1.0
 
 
-$ ./download somesource -f
+```
 
+### `$ ./download somesource -f`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

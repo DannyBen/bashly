@@ -23,15 +23,18 @@ args:
 
 ## Generated script output
 
-```shell
-$ ./download
+### `$ ./download`
 
+```shell
 missing required argument: MESSAGE
 usage: download MESSAGE [...]
 
 
-$ ./download -h
+```
 
+### `$ ./download -h`
+
+```shell
 download - Catch All Example
 
 Usage:
@@ -52,16 +55,22 @@ Arguments:
 
 
 
-$ ./download something
+```
 
+### `$ ./download something`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[message]} = something
 
 
-$ ./download something with --additional args
+```
 
+### `$ ./download something with --additional args`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

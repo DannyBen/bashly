@@ -36,9 +36,9 @@ examples:
 
 ## Generated script output
 
-```shell
-$ ./convert
+### `$ ./convert`
 
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -46,8 +46,11 @@ args:
 - ${args[source]} = *.jpg
 
 
-$ ./convert -h
+```
 
+### `$ ./convert -h`
+
+```shell
 convert - Sample application using default arguments and flags
 
 Usage:
@@ -78,8 +81,11 @@ Examples:
 
 
 
-$ ./convert *.bmp
+```
 
+### `$ ./convert *.bmp`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -87,8 +93,11 @@ args:
 - ${args[source]} = *.bmp
 
 
-$ ./convert -f pdf
+```
 
+### `$ ./convert -f pdf`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -96,8 +105,11 @@ args:
 - ${args[source]} = *.jpg
 
 
-$ ./convert *.pdf --format gif
+```
 
+### `$ ./convert *.pdf --format gif`
+
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:

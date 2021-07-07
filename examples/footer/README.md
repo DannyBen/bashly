@@ -23,16 +23,19 @@ args:
 
 ## Generated script output
 
-```shell
-$ ./download
+### `$ ./download`
 
+```shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./download -h
+```
 
+### `$ ./download -h`
+
+```shell
 download - Sample application with a help footer
 
 Usage:

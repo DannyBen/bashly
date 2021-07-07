@@ -64,9 +64,9 @@ environment_variables:
 
 ## Generated script output
 
-```shell
-$ ./multi
+### `$ ./multi`
 
+```shell
 multi - Multiline test
 
 Usage:
@@ -80,8 +80,11 @@ Commands:
 
 
 
-$ ./multi -h
+```
 
+### `$ ./multi -h`
+
+```shell
 multi
 
   Multiline test
@@ -119,16 +122,22 @@ Examples:
 
 
 
-$ ./multi multiline
+```
 
+### `$ ./multi multiline`
+
+```shell
 # this file is located in 'src/multiline_command.sh'
 # code for 'multi multiline' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./multi multiline -h
+```
 
+### `$ ./multi multiline -h`
+
+```shell
 multi multiline
 
   Do some multiline work.

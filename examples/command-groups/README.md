@@ -46,9 +46,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./ftp
+### `$ ./ftp`
 
+```shell
 ftp - Sample application with command grouping
 
 Usage:
@@ -66,8 +66,11 @@ Login Commands:
 
 
 
-$ ./ftp -h
+```
 
+### `$ ./ftp -h`
+
+```shell
 ftp - Sample application with command grouping
 
 Usage:
@@ -92,8 +95,11 @@ Options:
 
 
 
-$ ./ftp login
+```
 
+### `$ ./ftp login`
+
+```shell
 # this file is located in 'src/login_command.sh'
 # code for 'ftp login' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

@@ -29,9 +29,9 @@ args:
 
 ## Generated script output
 
-```shell
-$ ./colorly
+### `$ ./colorly`
 
+```shell
 [4mMessage Recevied:[0m
 
   => [1;32mhello colors[0m

@@ -63,9 +63,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 cli - Sample application with nested commands
 
 Usage:
@@ -79,8 +79,11 @@ Commands:
 
 
 
-$ ./cli -h
+```
 
+### `$ ./cli -h`
+
+```shell
 cli - Sample application with nested commands
 
 Usage:
@@ -101,8 +104,11 @@ Options:
 
 
 
-$ ./cli dir
+```
 
+### `$ ./cli dir`
+
+```shell
 cli dir - Directory commands
 
 Shortcut: d
@@ -117,8 +123,11 @@ Commands:
 
 
 
-$ ./cli file
+```
 
+### `$ ./cli file`
+
+```shell
 cli file - File commands
 
 Shortcut: f
@@ -133,8 +142,11 @@ Commands:
 
 
 
-$ ./cli dir -h
+```
 
+### `$ ./cli dir -h`
+
+```shell
 cli dir - Directory commands
 
 Shortcut: d
@@ -153,8 +165,11 @@ Options:
 
 
 
-$ ./cli file -h
+```
 
+### `$ ./cli file -h`
+
+```shell
 cli file - File commands
 
 Shortcut: f
@@ -173,14 +188,20 @@ Options:
 
 
 
-$ ./cli dir list
+```
 
+### `$ ./cli dir list`
+
+```shell
 missing required argument: PATH
 usage: cli dir list PATH
 
 
-$ ./cli dir list -h
+```
 
+### `$ ./cli dir list -h`
+
+```shell
 cli dir list - Show files in the directory
 
 Usage:
@@ -197,14 +218,20 @@ Arguments:
 
 
 
-$ ./cli file edit
+```
 
+### `$ ./cli file edit`
+
+```shell
 missing required argument: PATH
 usage: cli file edit PATH
 
 
-$ ./cli file edit -h
+```
 
+### `$ ./cli file edit -h`
+
+```shell
 cli file edit - Edit the file
 
 Usage:
@@ -221,8 +248,11 @@ Arguments:
 
 
 
-$ ./cli file edit filename
+```
 
+### `$ ./cli file edit filename`
+
+```shell
 # this file is located in 'src/file_edit_command.sh'
 # code for 'cli file edit' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

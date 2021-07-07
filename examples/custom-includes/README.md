@@ -26,9 +26,9 @@ args:
 
 ## Generated script output
 
-```shell
-$ ./download
+### `$ ./download`
 
+```shell
 Before custom code
 ---
 This is a place to write custom code that is needed by more than

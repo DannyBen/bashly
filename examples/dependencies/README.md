@@ -29,14 +29,17 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli download
+### `$ ./cli download`
 
+```shell
 missing dependency: shmurl
 
 
-$ ./cli upload
+```
 
+### `$ ./cli upload`
+
+```shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

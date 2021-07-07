@@ -29,9 +29,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./mygit
+### `$ ./mygit`
 
+```shell
 mygit - Sample application that delegates unknown commands to a different executable
 
 Usage:
@@ -45,16 +45,22 @@ Commands:
 
 
 
-$ ./mygit push
+```
 
+### `$ ./mygit push`
+
+```shell
 # this file is located in 'src/push_command.sh'
 # code for 'mygit push' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-$ ./mygit rm some-file-that-doesnt-exist
+```
 
+### `$ ./mygit rm some-file-that-doesnt-exist`
+
+```shell
 fatal: pathspec 'some-file-that-doesnt-exist' did not match any files
 
 

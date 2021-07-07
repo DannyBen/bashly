@@ -69,9 +69,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 cli - Sample application
 
 Usage:
@@ -85,8 +85,11 @@ Commands:
 
 
 
-$ ./cli -h
+```
 
+### `$ ./cli -h`
+
+```shell
 cli - Sample application
 
 Usage:
@@ -111,13 +114,19 @@ Environment Variables:
 
 
 
-$ ./cli --version
+```
 
+### `$ ./cli --version`
+
+```shell
 0.1.0
 
 
-$ ./cli download -h
+```
 
+### `$ ./cli download -h`
+
+```shell
 cli download - Download a file
 
 Shortcut: d
@@ -150,14 +159,20 @@ Examples:
 
 
 
-$ ./cli download
+```
 
+### `$ ./cli download`
+
+```shell
 missing required argument: SOURCE
 usage: cli download SOURCE [TARGET] [options]
 
 
-$ ./cli download sourcefile targetfile -f
+```
 
+### `$ ./cli download sourcefile targetfile -f`
+
+```shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -167,8 +182,11 @@ args:
 - ${args[target]} = targetfile
 
 
-$ ./cli upload --help
+```
 
+### `$ ./cli upload --help`
+
+```shell
 cli upload - Upload a file
 
 Shortcut: u
@@ -193,13 +211,19 @@ Arguments:
 
 
 
-$ ./cli upload sourcefile
+```
 
+### `$ ./cli upload sourcefile`
+
+```shell
 missing required flag: --user, -u USER
 
 
-$ ./cli upload sourcefile -u username
+```
 
+### `$ ./cli upload sourcefile -u username`
+
+```shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)

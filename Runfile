@@ -87,15 +87,16 @@ class Example
   end
 
   def test_output
-    result = "```shell\n"
+    result = ''
     test_commands.each do |command|
-      result += "$ #{command}\n\n"
+      result += "### `$ #{command}`\n\n"
+      result += "```shell\n"
       Dir.chdir dir do
         result += `#{command} 2>&1`
         result += "\n\n"
       end
+      result += "```\n\n"
     end
-    result += "```\n\n"
     result
   end
 

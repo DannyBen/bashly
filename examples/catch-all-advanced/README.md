@@ -60,9 +60,9 @@ commands:
 
 ## Generated script output
 
-```shell
-$ ./cli
+### `$ ./cli`
 
+```shell
 cli - Sample application
 
 Usage:
@@ -76,8 +76,11 @@ Commands:
 
 
 
-$ ./cli download -h
+```
 
+### `$ ./cli download -h`
+
+```shell
 cli download - Download a file
 
 Shortcut: d
@@ -109,8 +112,11 @@ Examples:
 
 
 
-$ ./cli download source
+```
 
+### `$ ./cli download source`
+
+```shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -118,8 +124,11 @@ args:
 - ${args[source]} = source
 
 
-$ ./cli download source target
+```
 
+### `$ ./cli download source target`
+
+```shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -128,8 +137,11 @@ args:
 - ${args[target]} = target
 
 
-$ ./cli download source target and --additional stuff
+```
 
+### `$ ./cli download source target and --additional stuff`
+
+```shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
