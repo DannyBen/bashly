@@ -263,7 +263,7 @@ command will look for a file named `git-whatever` in the path, and execute it.
 Note that this option cannot be specified together with the `default` option,
 since both specify a handler for unknown commands.
 
-Bashly supports two operation modes.
+The `extensible` option supports two operation modes:
 
 ### Extension Mode (`extensible: true`)
 
