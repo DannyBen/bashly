@@ -41,6 +41,7 @@ module Bashly
       end
 
     private
+
       def safe_copy_lib(libfile)
         safe_copy asset("templates/lib/#{libfile}"), "#{Settings.source_dir}/lib/#{libfile}"
       end
