@@ -6,6 +6,7 @@ Usage:
   bashly add config [--force]
   bashly add colors [--force]
   bashly add yaml [--force]
+  bashly add comp FORMAT [OUTPUT]
   bashly add (-h|--help)
 
 Commands:
@@ -27,12 +28,27 @@ Commands:
   yaml
     Add standard functions for reading YAML files to the lib directory.
 
+  comp
+    Generate a bash completions script or function.
+
 Options:
   -f --force
     Overwrite existing files
 
   -h --help
     Show this help
+
+Parameters:
+  FORMAT
+    Output format, can be one of:
+      function : generate a function file to be included in your script.
+      script   : generate a standalone bash completions script
+      yaml     : generate a yaml compatible with 'completely'
+
+  OUTPUT
+    For the 'comp function' command: Name of the generated function.
+    For the 'comp script' or 'comp yaml' commands: path to output file.
+    In all cases, this is optional and will have sensible defaults.
 
 Environment Variables:
   BASHLY_SOURCE_DIR

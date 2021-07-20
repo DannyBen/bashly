@@ -1,3 +1,5 @@
+require 'completely'
+
 module Bashly
   # This is a `Command` concern responsible for providing bash completion data
   module Completions
@@ -11,7 +13,19 @@ module Bashly
       result
     end
 
+    def completion_script
+      completion_generator.script
+    end
+
+    def completion_function(name = nil)
+      completion_generator.wrapper_function(name)
+    end
+
   private
+
+    def completion_generator
+      Completely::Completions.new(completion_data)
+    end
 
     def completion_flag_names
       flags.map(&:name) + flags.map(&:short)
