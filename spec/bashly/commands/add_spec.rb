@@ -125,6 +125,12 @@ describe Commands::Add do
         expect(File.read "#{source_dir}/lib/send_completions.sh").to match_approval('cli/add/comp-function-file')
       end
     end
+
+    context "with an unrecognized subcommand" do
+      it "raises an error" do
+        expect { subject.run %w[add comp no-such-format] }.to raise_approval('cli/add/comp-error')
+      end
+    end
   end
 
 end
