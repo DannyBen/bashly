@@ -93,7 +93,7 @@ describe Models::Command do
     end
   end
   
-  describe '#catch_all_help', :focus do
+  describe '#catch_all_help' do
     context "when catch_all is disabled" do
       it "returns nil" do
         expect(subject.catch_all_help).to be_nil

@@ -31,18 +31,15 @@ module Bashly
       flags.map(&:name) + flags.map(&:short)
     end
 
-    def completion_actions
-      completions ? completions.map { |c| "<#{c}>" } : []
-    end
-
     def completion_words(with_version: false)
       trivial_flags = %w[--help -h]
       trivial_flags += %w[--version -v] if with_version
       all = (
         command_names + trivial_flags +
-        completion_flag_names + completion_actions
+        completion_flag_names
       )
 
+      all += completions if completions
       all.compact.uniq.sort
     end
 
