@@ -106,9 +106,9 @@ describe Commands::Add do
     end
 
     context "with yaml subcommand" do
-      it "creates completions.yaml" do
+      it "creates completions.yml" do
         expect { subject.run %w[add comp yaml] }.to output_approval('cli/add/comp-yaml')
-        expect(File.read "#{target_dir}/completions.yaml").to match_approval('cli/add/comp-yaml-file')
+        expect(File.read "#{target_dir}/completions.yml").to match_approval('cli/add/comp-yaml-file')
       end
     end
 

@@ -1,3 +1,3 @@
-created spec/tmp/completions.yaml
+created spec/tmp/completions.yml
 
 This file can be converted to a completions script using the completely gem.
