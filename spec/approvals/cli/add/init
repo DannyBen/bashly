@@ -1,0 +1,2 @@
+created spec/tmp/src/bashly.yml
+run bashly generate to create the bash script

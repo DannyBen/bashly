@@ -9,6 +9,7 @@ module Bashly
         allowed
         arg
         catch_all
+        completions
         default
         dependencies
         description

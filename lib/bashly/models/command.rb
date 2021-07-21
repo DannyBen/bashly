@@ -1,6 +1,8 @@
 module Bashly
   module Models
     class Command < Base
+      include Completions
+
       # Returns the name to be used as an action.
       # - If it is the root command, the action is "root"
       # - Else, it is all the parents, except the first tone (root) joined

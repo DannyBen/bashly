@@ -127,3 +127,30 @@
   catch_all:
     label: additional params
     help: Any additional argument or flag
+
+:completions_simple:
+  name: get
+  completions: [file]
+
+  flags:
+  - long: --force
+  - long: --verbose
+
+:completions_advanced:
+  name: say
+  commands:
+  - name: hello
+    commands:
+    - name: world
+      completions: [directory, user]
+      flags:
+      - long: --force
+      - long: --verbose
+  - name: goodbye
+    commands:
+    - name: universe
+      flags:
+      - long: --color
+        short: -c
+      - long: --verbose
+        short: -v

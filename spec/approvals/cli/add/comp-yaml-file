@@ -1,0 +1,20 @@
+---
+cli:
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- download
+- upload
+cli download:
+- "--force"
+- "--help"
+- "-f"
+- "-h"
+cli upload:
+- "--help"
+- "--password"
+- "--user"
+- "-h"
+- "-p"
+- "-u"

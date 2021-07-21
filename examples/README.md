@@ -42,3 +42,4 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [config-ini](config-ini#readme) - using the config (INI) functions
 - [colors](colors#readme) - using the color print feature
 - [yaml](yaml#readme) - using the YAML reading functions
+- [completions](completions#readme) - adding bash completion functionality

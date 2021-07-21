@@ -15,9 +15,10 @@ Gem::Specification.new do |s|
   s.executables = ['bashly']
   s.homepage    = 'https://github.com/dannyben/bashly'
   s.license     = 'MIT'
-  s.required_ruby_version = ">= 2.3.0"
+  s.required_ruby_version = ">= 2.7.0"
 
   s.add_runtime_dependency 'colsole', '~> 0.6'
+  s.add_runtime_dependency 'completely', '~> 0.1', '>= 0.1.2'
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'requires', '~> 0.1'
 end
