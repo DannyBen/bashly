@@ -26,6 +26,7 @@ commands:
 - name: download
   short: d
   help: Download a file
+  completions: [file]
 
   args:
   - name: source
@@ -50,6 +51,7 @@ commands:
 - name: upload
   short: u
   help: Upload a file
+  completions: [directory, user]
   args:
   - name: source
     required: true
@@ -146,9 +148,10 @@ _cli_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
 
   case "$COMP_LINE" in
-    'cli download'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
-    'cli upload'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v download upload" -- "$cur")) ;;
+    'cli completions'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;
+    'cli download'*) COMPREPLY=($(compgen -A file -W "--force --help -f -h" -- "$cur")) ;;
+    'cli upload'*) COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u" -- "$cur")) ;;
+    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v completions download upload" -- "$cur")) ;;
   esac
 }
 

@@ -1,3 +1,10 @@
++ bashly add comp function
+created src/lib/send_completions.sh
+
+In order to use it in your script, create a command or a flag (for example: cli completions or cli --completions) that calls the send_completions function.
+Your users can then run something like this to enable completions:
+
+  $ eval "$(cli completions)"
 + bashly generate
 creating user files in src
 skipped src/initialize.sh (exists)
@@ -63,9 +70,10 @@ _cli_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
 
   case "$COMP_LINE" in
-    'cli download'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
-    'cli upload'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v download upload" -- "$cur")) ;;
+    'cli completions'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;
+    'cli download'*) COMPREPLY=($(compgen -A file -W "--force --help -f -h" -- "$cur")) ;;
+    'cli upload'*) COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u" -- "$cur")) ;;
+    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v completions download upload" -- "$cur")) ;;
   esac
 }
 

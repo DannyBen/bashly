@@ -31,6 +31,7 @@ Create beautiful bash scripts from simple YAML configuration
   - [Flag options](#flag-options)
   - [Environment Variable options](#environment-variable-options)
 - [Extensible Scripts](#extensible-scripts)
+- [Bash Completions](#bash-completions)
 - [Real World Examples](#real-world-examples)
 - [Contributing / Support](#contributing--support)
 
@@ -75,6 +76,7 @@ Bahsly is responsible for:
   - Optional or required **option flags** (with or without flag arguments).
   - **Commands** (and subcommands).
   - Standard flags (like **--help** and **--version**).
+- Preventing your script from running unless the command line is valid.
 - Providing you with a place to input your code for each of the functions 
   your tool performs, and merging it back to the final script.
 - Providing you with additional (optional) framework-style, standard
@@ -82,6 +84,7 @@ Bahsly is responsible for:
   - **Color output**.
   - **Config file management** (INI format).
   - **YAML parsing**.
+  - **Bash completions**.
   - and more.
 
 
@@ -198,6 +201,7 @@ command and subcommands (under the `commands` definition).
 `commands` | Specify the array of [commands](#command-options). Each command will have its own args and flags. Note: if `commands` is provided, you cannot specify flags or args at the same level.
 `args`     | Specify the array of [positional arguments](#argument-options) this script needs.
 `flags`    | Specify the array of option [flags](#flag-options) this script needs.
+`completions` | Specify an array of additional completion suggestions when used in conjunction with `bashly add comp`. See [Bash Completions](#bash-completions).
 `catch_all` | Specify that this command should allow for additional arbitrary arguments or flags. It can be set in one of three ways:<br>- Set to `true` to just enable it.<br>- Set to a string, to use this string in the usage help text.<br>- Set to a hash containing `label` and `help` keys, to show a detailed help for it when running with `--help`.
 `dependencies` | Specify an array of any required external dependencies (commands). The script execution will be halted with a friendly error unless all dependency commands exist.
 `group`    | In case you have many commands, use this option to specify a caption to display before this command. This option is purely for display purposes, and needs to be specified only for the first command in each group.
@@ -326,6 +330,71 @@ The generated script will execute `git status`.
 See the [extensible-delegate example](examples/extensible-delegate).
 
 
+## Bash Completions
+
+Bashly comes with built-in bash completions generator, provided by the 
+[completely][completely] gem.
+
+By running any of the `bashly add comp` commands, you can add this
+functionality to your script in one of three ways:
+
+- `bashly add comp function` - creates a function in your `./src/lib` directory
+   that echoes a completion script. You can then call this function from any
+   command (for example `yourcli completions`) and your users will be able to 
+   install the completions by running `eval "$(yourcli completions)"`.
+- `bashly add comp script` - creates a standalone completion script that can be
+  sourced or copies to the system's bash completions directory.
+- `bashly add comp yaml` - creates the "raw data" YAML file. This is intended
+  mainly for development purposes.
+
+The bash completions generation is completely automatic, and you will have to 
+rerun the `bashly add comp *` command whenever you change your `bashly.yml` 
+script.
+
+In addition to suggesting subcommands and flags, you can instruct bashly to
+also suggest files, directories, users and more. To do this, add another option
+in your `bashly.yml` on the command you wish to alter:
+
+```yaml
+# bashly.yml
+commands:
+- name: upload
+  help: Upload a file
+  completions: [directory, user]
+
+```
+
+Valid completion additions are:
+
+| Keyword     | Meaning
+|-------------|---------------------
+| `alias`     | Alias names
+| `arrayvar`  | Array variable names
+| `binding`   | Readline key binding names
+| `builtin`   | Names of shell builtin commands
+| `command`   | Command names
+| `directory` | Directory names
+| `disabled`  | Names of disabled shell builtins
+| `enabled`   | Names of enabled shell builtins
+| `export`    | Names of exported shell variables
+| `file`      | File names
+| `function`  | Names of shell functions
+| `group`     | Group names
+| `helptopic` | Help topics as accepted by the help builtin
+| `hostname`  | Hostnames, as taken from the file specified by the HOSTFILE shell variable
+| `job`       | Job names
+| `keyword`   | Shell reserved words
+| `running`   | Names of running jobs
+| `service`   | Service names
+| `signal`    | Signal names
+| `stopped`   | Names of stopped jobs
+| `user`      | User names
+| `variable`  | Names of all shell variables
+
+Note that these are taken from the [Programmable Completion Builtin][compgen], 
+and will simply be added using the `compgen -A action` command.
+
+
 ## Real World Examples
 
 - [Rush][rush] - a Personal Package Manager
@@ -344,3 +413,5 @@ to contribute, feel free to [open an issue][issues].
 [rush]: https://github.com/DannyBen/rush-cli
 [alf]: https://github.com/DannyBen/alf
 [git-changelog]: https://github.com/DannyBen/git-changelog
+[completely]: https://github.com/DannyBen/completely
+[compgen]: https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html

@@ -2,6 +2,7 @@
 
 set -x
 
+bashly add comp function
 bashly generate
 
 ./cli
