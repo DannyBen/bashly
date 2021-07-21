@@ -349,50 +349,29 @@ functionality to your script in one of three ways:
 
 The bash completions generation is completely automatic, and you will have to 
 rerun the `bashly add comp *` command whenever you change your `bashly.yml` 
-script.
+file.
 
 In addition to suggesting subcommands and flags, you can instruct bashly to
-also suggest files, directories, users and more. To do this, add another option
-in your `bashly.yml` on the command you wish to alter:
+also suggest files, directories, users, git branches and more. To do this,
+add another option in your `bashly.yml` on the command you wish to alter:
 
 ```yaml
 # bashly.yml
 commands:
 - name: upload
   help: Upload a file
-  completions: [directory, user]
+  completions:
+  - <directory>
+  - <user>
+  - $(git branch 2> /dev/null)
 
 ```
 
-Valid completion additions are:
+- Anything between `<...>` will be added using the `compgen -A action` flag.
+- Anything else, will be appended to the `compgen -W` flag.
 
-| Keyword     | Meaning
-|-------------|---------------------
-| `alias`     | Alias names
-| `arrayvar`  | Array variable names
-| `binding`   | Readline key binding names
-| `builtin`   | Names of shell builtin commands
-| `command`   | Command names
-| `directory` | Directory names
-| `disabled`  | Names of disabled shell builtins
-| `enabled`   | Names of enabled shell builtins
-| `export`    | Names of exported shell variables
-| `file`      | File names
-| `function`  | Names of shell functions
-| `group`     | Group names
-| `helptopic` | Help topics as accepted by the help builtin
-| `hostname`  | Hostnames, as taken from the file specified by the HOSTFILE shell variable
-| `job`       | Job names
-| `keyword`   | Shell reserved words
-| `running`   | Names of running jobs
-| `service`   | Service names
-| `signal`    | Signal names
-| `stopped`   | Names of stopped jobs
-| `user`      | User names
-| `variable`  | Names of all shell variables
-
-Note that these are taken from the [Programmable Completion Builtin][compgen], 
-and will simply be added using the `compgen -A action` command.
+For more information about these custom completions, see the documentation for
+the [completely][completely] gem.
 
 
 ## Real World Examples

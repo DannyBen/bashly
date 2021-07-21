@@ -26,7 +26,8 @@ commands:
 - name: download
   short: d
   help: Download a file
-  completions: [file]
+  completions:
+  - <file>
 
   args:
   - name: source
@@ -51,7 +52,9 @@ commands:
 - name: upload
   short: u
   help: Upload a file
-  completions: [directory, user]
+  completions:
+    - <directory>
+    - <user>
   args:
   - name: source
     required: true

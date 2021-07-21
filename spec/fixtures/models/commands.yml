@@ -130,7 +130,8 @@
 
 :completions_simple:
   name: get
-  completions: [file]
+  completions:
+  - <file>
 
   flags:
   - long: --force
@@ -142,13 +143,17 @@
   - name: hello
     commands:
     - name: world
-      completions: [directory, user]
+      completions:
+      - <directory>
+      - <user>
       flags:
       - long: --force
       - long: --verbose
   - name: goodbye
     commands:
     - name: universe
+      completions:
+      - $(git branch)
       flags:
       - long: --color
         short: -c
