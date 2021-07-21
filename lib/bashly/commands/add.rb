@@ -112,7 +112,7 @@ module Bashly
       end
 
       def save_comp_yaml(filename = nil)
-        filename ||= "#{Settings.target_dir}/completions.yaml"
+        filename ||= "#{Settings.target_dir}/completions.yml"
         File.write filename, completions.to_yaml
         say "created !txtgrn!#{filename}"
         say ""
