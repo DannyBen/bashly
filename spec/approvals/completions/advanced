@@ -1,0 +1,28 @@
+---
+say:
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- goodbye
+- hello
+say hello:
+- "--help"
+- "-h"
+- world
+say hello world:
+- "--force"
+- "--help"
+- "--verbose"
+- "-h"
+say goodbye:
+- "--help"
+- "-h"
+- universe
+say goodbye universe:
+- "--color"
+- "--help"
+- "--verbose"
+- "-c"
+- "-h"
+- "-v"

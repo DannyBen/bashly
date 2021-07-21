@@ -43,7 +43,7 @@ module Bashly
         completion_flag_names + completion_actions
       )
 
-      all.uniq.sort
+      all.compact.uniq.sort
     end
 
   end

@@ -23,6 +23,10 @@ module Bashly
       command "yaml", "Add standard functions for reading YAML files to the lib directory."
       command "comp", "Generate a bash completions script or function."
 
+      example "bashly add strings --force"
+      example "bashly add comp function"
+      example "bashly add comp script completions.bash"
+
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def strings_command
@@ -111,12 +115,18 @@ module Bashly
         filename ||= "completions.yaml"
         File.write filename, completions.to_yaml
         say "created !txtgrn!#{filename}"
+        say ""
+        say "This file can be converted to a completions script using the !txtgrn!completely!txtrst! gem."
       end
 
       def save_comp_script(filename = nil)
         filename ||= "completions.bash"
         File.write filename, completions_script
         say "created !txtgrn!#{filename}"
+        say ""
+        say "To enable completions, run:"
+        say ""
+        say "  !txtpur!$ source #{filename}"
       end
 
       def save_comp_function(name = nil)
@@ -126,8 +136,13 @@ module Bashly
         
         FileUtils.mkdir_p target_dir unless Dir.exist? target_dir
         File.write filename, completions_function
-        
+
         say "created !txtgrn!#{filename}"
+        say ""
+        say "In order to use it in your script, create a command or a flag (for example: !txtgrn!#{command.name} completions!txtrst! or !txtgrn!#{command.name} --completions!txtrst!) that calls the !txtgrn!#{name}!txtrst! function."
+        say "Your users can then run something like this to enable completions:"
+        say ""
+        say "  !txtpur!$ eval \"$(#{command.name} completions)\""
       end
 
     end

@@ -127,3 +127,28 @@
   catch_all:
     label: additional params
     help: Any additional argument or flag
+
+:completions_simple:
+  name: get
+
+  flags:
+  - long: --force
+  - long: --verbose
+
+:completions_advanced:
+  name: say
+  commands:
+  - name: hello
+    commands:
+    - name: world
+      flags:
+      - long: --force
+      - long: --verbose
+  - name: goodbye
+    commands:
+    - name: universe
+      flags:
+      - long: --color
+        short: -c
+      - long: --verbose
+        short: -v

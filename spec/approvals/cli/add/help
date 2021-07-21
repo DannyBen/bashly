@@ -53,3 +53,8 @@ Parameters:
 Environment Variables:
   BASHLY_SOURCE_DIR
     The path containing the bashly configuration and source files [default: src]
+
+Examples:
+  bashly add strings --force
+  bashly add comp function
+  bashly add comp script completions.bash
