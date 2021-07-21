@@ -130,6 +130,7 @@
 
 :completions_simple:
   name: get
+  completions: [file]
 
   flags:
   - long: --force
@@ -141,6 +142,7 @@
   - name: hello
     commands:
     - name: world
+      completions: [directory, user]
       flags:
       - long: --force
       - long: --verbose

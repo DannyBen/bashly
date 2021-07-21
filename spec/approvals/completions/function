@@ -8,7 +8,7 @@ custom_name() {
   echo $'  local cur=${COMP_WORDS[COMP_CWORD]}'
   echo $''
   echo $'  case "$COMP_LINE" in'
-  echo $'    \'get\'*) COMPREPLY=($(compgen -W "--force --help --verbose --version -h -v" -- "$cur")) ;;'
+  echo $'    \'get\'*) COMPREPLY=($(compgen -A file -W "--force --help --verbose --version -h -v" -- "$cur")) ;;'
   echo $'  esac'
   echo $'}'
   echo $''

@@ -6,3 +6,4 @@ get:
 - "--version"
 - "-h"
 - "-v"
+- "<file>"

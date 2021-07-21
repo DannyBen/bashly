@@ -8,7 +8,7 @@ _say_completions() {
 
   case "$COMP_LINE" in
     'say goodbye universe'*) COMPREPLY=($(compgen -W "--color --help --verbose -c -h -v" -- "$cur")) ;;
-    'say hello world'*) COMPREPLY=($(compgen -W "--force --help --verbose -h" -- "$cur")) ;;
+    'say hello world'*) COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur")) ;;
     'say goodbye'*) COMPREPLY=($(compgen -W "--help -h universe" -- "$cur")) ;;
     'say hello'*) COMPREPLY=($(compgen -W "--help -h world" -- "$cur")) ;;
     'say'*) COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur")) ;;
