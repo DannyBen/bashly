@@ -1,0 +1,6 @@
+created spec/tmp/src/lib/send_completions.sh
+
+In order to use it in your script, create a command or a flag (for example: cli completions or cli --completions) that calls the send_completions function.
+Your users can then run something like this to enable completions:
+
+  $ eval "$(cli completions)"

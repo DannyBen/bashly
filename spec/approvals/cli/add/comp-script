@@ -1,0 +1,5 @@
+created spec/tmp/completions.bash
+
+In order to enable completions, run:
+
+  $ source spec/tmp/completions.bash

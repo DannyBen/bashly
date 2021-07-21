@@ -99,4 +99,32 @@ describe Commands::Add do
     end
   end
 
+  context "with comp command" do
+    before do
+      reset_tmp_dir create_src: true
+      expect { subject.run %w[init] }.to output_approval('cli/add/init')
+    end
+
+    context "with yaml subcommand" do
+      it "creates completions.yaml" do
+        expect { subject.run %w[add comp yaml] }.to output_approval('cli/add/comp-yaml')
+        expect(File.read "#{target_dir}/completions.yaml").to match_approval('cli/add/comp-yaml-file')
+      end
+    end
+
+    context "with script subcommand" do
+      it "creates completions.bash" do
+        expect { subject.run %w[add comp script] }.to output_approval('cli/add/comp-script')
+        expect(File.read "#{target_dir}/completions.bash").to match_approval('cli/add/comp-script-file')
+      end
+    end
+
+    context "with function subcommand" do
+      it "creates lib/send_completions.sh" do
+        expect { subject.run %w[add comp function] }.to output_approval('cli/add/comp-function')
+        expect(File.read "#{source_dir}/lib/send_completions.sh").to match_approval('cli/add/comp-function-file')
+      end
+    end
+  end
+
 end

@@ -112,7 +112,7 @@ module Bashly
       end
 
       def save_comp_yaml(filename = nil)
-        filename ||= "completions.yaml"
+        filename ||= "#{Settings.target_dir}/completions.yaml"
         File.write filename, completions.to_yaml
         say "created !txtgrn!#{filename}"
         say ""
@@ -120,11 +120,11 @@ module Bashly
       end
 
       def save_comp_script(filename = nil)
-        filename ||= "completions.bash"
+        filename ||= "#{Settings.target_dir}/completions.bash"
         File.write filename, completions_script
         say "created !txtgrn!#{filename}"
         say ""
-        say "To enable completions, run:"
+        say "In order to enable completions, run:"
         say ""
         say "  !txtpur!$ source #{filename}"
       end
