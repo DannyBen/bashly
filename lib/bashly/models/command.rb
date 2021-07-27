@@ -92,6 +92,11 @@ module Bashly
         commands.find { |c| c.default }
       end
 
+      # Returns an array of all the default Environment Variables
+      def default_environment_variables
+        environment_variables.select &:default
+      end
+
       # Returns an array of all the default Flags
       def default_flags
         flags.select &:default

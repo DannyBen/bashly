@@ -1,4 +1,9 @@
 # :command.environment_variables_filter
+<%- if default_environment_variables.any? -%>
+<%- default_environment_variables.each do |env_var| -%>
+export <%= env_var.name.upcase %>="${<%= env_var.name.upcase %>:-<%= env_var.default %>}"
+<%- end -%>
+<%- end -%>
 <%- if required_environment_variables.any? -%>
 <%- required_environment_variables.each do |env_var| -%>
 if [[ -z "$<%= env_var.name.upcase %>" ]]; then
