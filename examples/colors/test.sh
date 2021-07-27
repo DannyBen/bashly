@@ -4,4 +4,6 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./colorly

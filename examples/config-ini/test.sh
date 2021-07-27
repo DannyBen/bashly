@@ -4,6 +4,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./configly -h
 ./configly set hello world
 ./configly set bashly works

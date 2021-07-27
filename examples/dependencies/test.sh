@@ -4,5 +4,7 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./cli download
 ./cli upload

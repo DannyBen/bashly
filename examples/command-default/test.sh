@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./ftp
 ./ftp -h
 ./ftp download something

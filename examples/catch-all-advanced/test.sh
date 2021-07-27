@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./cli
 ./cli download -h
 ./cli download source

@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./multi
 ./multi -h
 ./multi multiline

@@ -81,6 +81,7 @@ Environment Variables:
 
   ENVIRONMENT
     One of development, production or test
+    Default: development
 
 
 
@@ -117,15 +118,22 @@ missing required environment variable: MY_SECRET
 
 ```
 
-### `$ ./cli verify`
+### `$ MY_SECRET="there is no spoon" ./cli verify`
 
 ```shell
-missing required environment variable: MY_SECRET
+# this file is located in 'src/verify_command.sh'
+# code for 'cli verify' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+environment:
+- API_KEY=
+- ENVIRONMENT=development
+- MY_SECRET=there is no spoon
 
 
 ```
 
-### `$ ./cli verify`
+### `$ ENVIRONMENT=production ./cli verify`
 
 ```shell
 missing required environment variable: MY_SECRET

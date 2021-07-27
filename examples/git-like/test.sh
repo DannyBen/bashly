@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./git
 ./git -h
 ./git s
