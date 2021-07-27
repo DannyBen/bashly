@@ -11,4 +11,4 @@ bashly generate
 ./cli verify -h
 ./cli verify
 MY_SECRET="there is no spoon" ./cli verify
-ENVIRONMENT=production ./cli verify
+ENVIRONMENT=production MY_SECRET=safe-with-me ./cli verify

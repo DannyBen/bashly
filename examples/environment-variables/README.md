@@ -11,16 +11,10 @@ name: cli
 help: Sample application that requires environment variables
 version: 0.1.0
 
-# These two variable options add usage text to the help message in the
-# generated script.
-# In addition, the value of the variable `ENVIRONMENT` will be set to
-# `development` if it is not already set by the user.
+# This option adds usage text to the help message in the generated script.
 environment_variables:
 - name: api_key
   help: Set your API key
-- name: environment
-  help: One of development, production or test
-  default: development
 
 commands:
 - name: verify
@@ -28,12 +22,19 @@ commands:
   help: Verify your user
 
   # This option belongs to the `verify` command and will appear in its help
-  # message. In addition, setting `required: true` will halt the script's 
-  # execution with a friendly error message, unless the variable is set.
+  # message.
   environment_variables:
+  # Setting `required: true` will halt the script's execution with a
+  # friendly error message, unless the variable is set.
   - name: my_secret
     help: Your secret
     required: true
+  
+  # Using the `default: value` option will cause the value to variable to be 
+  # set if it is not provided by the user.
+  - name: environment
+    help: One of development, production or test
+    default: development
 ```
 
 ## Generated script output
@@ -79,10 +80,6 @@ Environment Variables:
   API_KEY
     Set your API key
 
-  ENVIRONMENT
-    One of development, production or test
-    Default: development
-
 
 
 ```
@@ -105,6 +102,10 @@ Options:
 Environment Variables:
   MY_SECRET (required)
     Your secret
+
+  ENVIRONMENT
+    One of development, production or test
+    Default: development
 
 
 
@@ -133,10 +134,17 @@ environment:
 
 ```
 
-### `$ ENVIRONMENT=production ./cli verify`
+### `$ ENVIRONMENT=production MY_SECRET=safe-with-me ./cli verify`
 
 ```shell
-missing required environment variable: MY_SECRET
+# this file is located in 'src/verify_command.sh'
+# code for 'cli verify' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+environment:
+- API_KEY=
+- ENVIRONMENT=production
+- MY_SECRET=safe-with-me
 
 
 ```

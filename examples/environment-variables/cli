@@ -44,12 +44,6 @@ cli_usage() {
     echo "  API_KEY"
     printf "    Set your API key\n"
     echo
-    
-    # :environment_variable.usage
-    echo "  ENVIRONMENT"
-    printf "    One of development, production or test\n"
-    printf "    Default: development\n"
-    echo
 
   fi
 }
@@ -85,6 +79,12 @@ cli_verify_usage() {
     # :environment_variable.usage
     echo "  MY_SECRET (required)"
     printf "    Your secret\n"
+    echo
+    
+    # :environment_variable.usage
+    echo "  ENVIRONMENT"
+    printf "    One of development, production or test\n"
+    printf "    Default: development\n"
     echo
 
   fi
@@ -142,7 +142,6 @@ parse_requirements() {
   
   esac
   # :command.environment_variables_filter
-  export ENVIRONMENT="${ENVIRONMENT:-development}"
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
@@ -206,6 +205,7 @@ cli_verify_parse_requirements() {
   
   esac
   # :command.environment_variables_filter
+  export ENVIRONMENT="${ENVIRONMENT:-development}"
   if [[ -z "$MY_SECRET" ]]; then
     printf "missing required environment variable: MY_SECRET\n"
     exit 1

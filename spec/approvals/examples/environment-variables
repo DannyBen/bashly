@@ -37,10 +37,6 @@ Environment Variables:
   API_KEY
     Set your API key
 
-  ENVIRONMENT
-    One of development, production or test
-    Default: development
-
 + ./cli verify -h
 cli verify - Verify your user
 
@@ -58,6 +54,10 @@ Environment Variables:
   MY_SECRET (required)
     Your secret
 
+  ENVIRONMENT
+    One of development, production or test
+    Default: development
+
 + ./cli verify
 missing required environment variable: MY_SECRET
 + MY_SECRET='there is no spoon'
@@ -71,5 +71,13 @@ environment:
 - ENVIRONMENT=development
 - MY_SECRET=there is no spoon
 + ENVIRONMENT=production
++ MY_SECRET=safe-with-me
 + ./cli verify
-missing required environment variable: MY_SECRET
+# this file is located in 'src/verify_command.sh'
+# code for 'cli verify' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+environment:
+- API_KEY=
+- ENVIRONMENT=production
+- MY_SECRET=safe-with-me
