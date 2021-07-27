@@ -83,7 +83,13 @@ class Example
   end
 
   def test_commands
-    File.read("#{dir}/test.sh").scan(/\.\/#{config['name']}.*/)
+    filename = "#{dir}/test.sh"
+    result = File.read(filename)
+      .split(/\s*### Try Me ###\s*/).last
+      .split("\n")
+      .reject { |line| line.empty? or line.start_with? '#' }
+    abort "Can't find ### Try Me ### marker in #{filename}" if result.empty?
+    result
   end
 
   def test_output

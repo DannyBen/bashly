@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./docker
 ./docker -h
 ./docker container

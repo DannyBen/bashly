@@ -9,5 +9,7 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./cli
 ./cli status --some --flags

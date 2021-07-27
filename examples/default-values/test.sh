@@ -6,6 +6,8 @@ set -x
 
 bashly generate
 
+### Try Me ###
+
 ./convert
 ./convert -h
 ./convert *.bmp
