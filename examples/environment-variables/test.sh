@@ -9,3 +9,4 @@ bashly generate
 ./cli verify -h
 ./cli verify
 MY_SECRET="there is no spoon" ./cli verify
+ENVIRONMENT=production ./cli verify

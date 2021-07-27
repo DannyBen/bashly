@@ -2,10 +2,16 @@ name: cli
 help: Sample application that requires environment variables
 version: 0.1.0
 
-# This option adds usage text to the help message in the generated script.
+# These two variable options add usage text to the help message in the
+# generated script.
+# In addition, the value of the variable `ENVIRONMENT` will be set to
+# `development` if it is not already set by the user.
 environment_variables:
 - name: api_key
   help: Set your API key
+- name: environment
+  help: One of development, production or test
+  default: development
 
 commands:
 - name: verify

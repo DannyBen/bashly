@@ -11,10 +11,16 @@ name: cli
 help: Sample application that requires environment variables
 version: 0.1.0
 
-# This option adds usage text to the help message in the generated script.
+# These two variable options add usage text to the help message in the
+# generated script.
+# In addition, the value of the variable `ENVIRONMENT` will be set to
+# `development` if it is not already set by the user.
 environment_variables:
 - name: api_key
   help: Set your API key
+- name: environment
+  help: One of development, production or test
+  default: development
 
 commands:
 - name: verify
@@ -73,6 +79,9 @@ Environment Variables:
   API_KEY
     Set your API key
 
+  ENVIRONMENT
+    One of development, production or test
+
 
 
 ```
@@ -96,6 +105,14 @@ Environment Variables:
   MY_SECRET (required)
     Your secret
 
+
+
+```
+
+### `$ ./cli verify`
+
+```shell
+missing required environment variable: MY_SECRET
 
 
 ```

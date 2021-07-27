@@ -44,6 +44,11 @@ cli_usage() {
     echo "  API_KEY"
     printf "    Set your API key\n"
     echo
+    
+    # :environment_variable.usage
+    echo "  ENVIRONMENT"
+    printf "    One of development, production or test\n"
+    echo
 
   fi
 }
@@ -114,6 +119,8 @@ cli_verify_command() {
   inspect_args
   
   echo "environment:"
+  echo "- API_KEY=$API_KEY"
+  echo "- ENVIRONMENT=$ENVIRONMENT"
   echo "- MY_SECRET=$MY_SECRET"
 }
 

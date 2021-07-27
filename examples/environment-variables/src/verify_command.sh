@@ -4,4 +4,6 @@ echo "# you can edit it freely and regenerate (it will not be overwritten)"
 inspect_args
 
 echo "environment:"
+echo "- API_KEY=$API_KEY"
+echo "- ENVIRONMENT=$ENVIRONMENT"
 echo "- MY_SECRET=$MY_SECRET"
