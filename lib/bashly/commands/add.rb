@@ -13,7 +13,7 @@ module Bashly
 
       option "-f --force", "Overwrite existing files"
 
-      param "FORMAT", "Output format, can be one of:\n  function : generate a function file to be included in your script.\n  script   : generate a standalone bash completions script\n  yaml     : generate a yaml compatible with 'completely'"
+      param "FORMAT", "Output format, can be one of:\n  function : generate a function file to be included in your script.\n  script   : generate a standalone bash completions script.\n  yaml     : generate a yaml compatible with completely."
       param "OUTPUT", "For the 'comp function' command: Name of the generated function.\nFor the 'comp script' or 'comp yaml' commands: path to output file.\nIn all cases, this is optional and will have sensible defaults."
 
       command "strings", "Copy an additional configuration file to your project, allowing you to customize all the tips and error strings."
