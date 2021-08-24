@@ -31,3 +31,4 @@ missing_required_environment_variable: "missing required environment variable: %
 missing_dependency: "missing dependency: %{dependency}"
 disallowed_flag: "%{name} must be one of: %{allowed}"
 disallowed_argument: "%{name} must be one of: %{allowed}"
+unsupported_bash_version: "bash version 4 or higher is required"
