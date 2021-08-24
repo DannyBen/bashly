@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'bash', :focus do
+describe 'bash' do
   context "when bash version is < 4" do
     it "errors gracefully" do
       command = "docker run --rm -it -v $PWD:/app bash:3 bash /app/download"
