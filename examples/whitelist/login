@@ -204,7 +204,12 @@ parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e  
+  set -e
+
+  if [[ "${BASH_VERSINFO:-0}" -lt 4 ]]; then
+    printf "bash version 4 or higher is required\n"
+    exit 1
+  fi
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function

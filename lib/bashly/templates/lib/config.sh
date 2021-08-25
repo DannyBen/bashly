@@ -17,7 +17,7 @@ config_init() {
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
 }
 
-# Get a value from the config
+# Get a value from the config.
 # Usage: result=$(config_get hello)
 config_get() {
   key=$1
@@ -66,7 +66,7 @@ config_set() {
   printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
-# Delete a key from teh config.
+# Delete a key from the config.
 # Usage: config_del key
 config_del() {
   key=$1
@@ -92,7 +92,7 @@ config_show() {
   cat "$CONFIG_FILE"
 }
 
-# Return an array of the keys in the config file
+# Return an array of the keys in the config file.
 # Usage:
 #
 #   for k in $(config_keys); do
@@ -114,7 +114,7 @@ config_keys() {
   echo "${keys[@]}"
 }
 
-# Returns true if the specified key exists in the config file
+# Returns true if the specified key exists in the config file.
 # Usage:
 #
 #   if config_has_key "key" ; then

@@ -2,7 +2,12 @@
 initialize() {
   version="<%= version %>"
   long_usage=''
-  set -e  
+  set -e
+
+  if [[ "${BASH_VERSINFO:-0}" -lt 4 ]]; then
+    printf "<%= strings[:unsupported_bash_version] -%>\n"
+    exit 1
+  fi
 
 <%= load_user_file("initialize.sh", placeholder: false).indent 2 %>
 }

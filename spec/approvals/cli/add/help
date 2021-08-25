@@ -42,8 +42,8 @@ Parameters:
   FORMAT
     Output format, can be one of:
       function : generate a function file to be included in your script.
-      script   : generate a standalone bash completions script
-      yaml     : generate a yaml compatible with 'completely'
+      script   : generate a standalone bash completions script.
+      yaml     : generate a yaml compatible with completely.
 
   OUTPUT
     For the 'comp function' command: Name of the generated function.
