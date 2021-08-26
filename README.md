@@ -40,9 +40,9 @@ a [docker image](https://hub.docker.com/r/dannyben/bashly).
    file for you ([example](https://github.com/DannyBen/bashly/tree/master/examples/minimal#bashlyyml)).
 2. Bashly then automatically generates a bash script (when you run
    `bashly generate`) that can parse and validate user input, provide help
-   messages, and run your code for each command.
+   messages, and run your code for each command ([example](https://github.com/DannyBen/bashly/blob/master/examples/minimal/download)).
 3. Your code for each command is kept in a separate file, and can be merged
-   again if you change it.
+   again if you change it ([example](https://github.com/DannyBen/bashly/blob/master/examples/minimal/src/root_command.sh)).
 
 ## Features
 
