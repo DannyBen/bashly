@@ -10,7 +10,7 @@
 # ---
 
 # Create a new config file.
-# There is normally no need to use this fucntion, it is used by other
+# There is normally no need to use this function, it is used by other
 # functions as needed.
 config_init() {
   CONFIG_FILE=${CONFIG_FILE:=config.ini}
