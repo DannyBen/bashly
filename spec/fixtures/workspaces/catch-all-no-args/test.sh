@@ -10,7 +10,7 @@ rm -f ./download
 
 set -x
 
-bashly generate
+bundle exec bashly generate
 
 ./download
 ./download --help
