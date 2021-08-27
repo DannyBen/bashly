@@ -43,6 +43,11 @@ module Bashly
         end
       end
 
+      # Returns a string suitable for catch all usage text
+      def catch_all_usage
+        catch_all_required? ? catch_all_label : "[#{catch_all_label}]"
+      end
+
       # Returns a used defined help string for the catch_all directive
       def catch_all_help
         return nil unless catch_all
@@ -52,6 +57,11 @@ module Bashly
         else
           nil
         end
+      end
+
+      # Returns true if catch_all is required
+      def catch_all_required?
+        catch_all.is_a?(Hash) and catch_all['required']
       end
 
       # Returns only the names of the Commands
@@ -190,7 +200,7 @@ module Bashly
           result << arg.usage_string
         end
         result << "[options]" unless flags.empty?
-        result << "[#{catch_all_label}]" if catch_all
+        result << "#{catch_all_usage}" if catch_all
         result.join " "
       end
 

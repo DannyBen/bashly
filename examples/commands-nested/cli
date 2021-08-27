@@ -367,6 +367,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -437,6 +438,7 @@ cli_dir_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -493,6 +495,7 @@ cli_dir_list_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -555,6 +558,7 @@ cli_dir_remove_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -625,6 +629,7 @@ cli_file_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -681,6 +686,7 @@ cli_file_show_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -737,6 +743,7 @@ cli_file_edit_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }

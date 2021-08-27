@@ -233,6 +233,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -288,6 +289,7 @@ multi_multiline_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -337,6 +339,7 @@ multi_regular_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }

@@ -210,6 +210,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -254,6 +255,7 @@ mygit_push_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -298,6 +300,7 @@ mygit_pull_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }

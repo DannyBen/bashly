@@ -131,6 +131,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
