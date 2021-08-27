@@ -9,7 +9,7 @@ rm -f ./argflag
 
 set -x
 
-bashly generate
+bundle exec bashly generate
 
 ./argflag -f -o
 ./argflag -o -f

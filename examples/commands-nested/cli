@@ -313,7 +313,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -383,7 +383,7 @@ cli_dir_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_dir_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -453,7 +453,7 @@ cli_dir_list_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_dir_list_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -509,7 +509,7 @@ cli_dir_remove_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_dir_remove_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -571,7 +571,7 @@ cli_file_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_file_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -641,7 +641,7 @@ cli_file_show_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_file_show_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -697,7 +697,7 @@ cli_file_edit_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_file_edit_usage
-    exit 1
+    exit
     ;;
   
   esac

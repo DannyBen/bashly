@@ -9,7 +9,7 @@ rm -f ./rush
 
 set -x
 
-bashly generate
+bundle exec bashly generate
 
 ./rush c
 ./rush g

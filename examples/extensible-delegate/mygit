@@ -148,7 +148,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     mygit_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -226,7 +226,7 @@ mygit_push_parse_requirements() {
   --help | -h )
     long_usage=yes
     mygit_push_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -270,7 +270,7 @@ mygit_pull_parse_requirements() {
   --help | -h )
     long_usage=yes
     mygit_pull_usage
-    exit 1
+    exit
     ;;
   
   esac

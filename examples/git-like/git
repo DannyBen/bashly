@@ -158,7 +158,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     git_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -228,7 +228,7 @@ git_status_parse_requirements() {
   --help | -h )
     long_usage=yes
     git_status_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -272,7 +272,7 @@ git_commit_parse_requirements() {
   --help | -h )
     long_usage=yes
     git_commit_usage
-    exit 1
+    exit
     ;;
   
   esac

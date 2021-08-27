@@ -1,0 +1,53 @@
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created src/login_command.sh
+created ./cli
+run ./cli --help to test your bash script
+=== test: missing env var
+missing required environment variable: API_KEY
+  - PASS: Expected 1, got 1
+=== test: usage
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  login      Upload a file
+
+  - PASS: Expected 1, got 1
+=== test: --help
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  login      Upload a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Environment Variables:
+  API_KEY (required)
+    Set your API key
+
+  - PASS: Expected 0, got 0
+=== test: missing argument
+missing required argument: SOURCE
+usage: cli download SOURCE [TARGET]
+  - PASS: Expected 1, got 1
+=== test: missing flag
+missing required flag: --user, -u USER
+  - PASS: Expected 1, got 1
