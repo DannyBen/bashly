@@ -137,7 +137,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -200,7 +200,7 @@ cli_verify_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_verify_usage
-    exit 1
+    exit
     ;;
   
   esac

@@ -164,7 +164,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     ftp_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -240,7 +240,7 @@ ftp_upload_parse_requirements() {
   --help | -h )
     long_usage=yes
     ftp_upload_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -296,7 +296,7 @@ ftp_download_parse_requirements() {
   --help | -h )
     long_usage=yes
     ftp_download_usage
-    exit 1
+    exit
     ;;
   
   esac

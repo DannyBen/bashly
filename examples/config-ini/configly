@@ -358,7 +358,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     configly_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -435,7 +435,7 @@ configly_set_parse_requirements() {
   --help | -h )
     long_usage=yes
     configly_set_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -502,7 +502,7 @@ configly_get_parse_requirements() {
   --help | -h )
     long_usage=yes
     configly_get_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -558,7 +558,7 @@ configly_list_parse_requirements() {
   --help | -h )
     long_usage=yes
     configly_list_usage
-    exit 1
+    exit
     ;;
   
   esac

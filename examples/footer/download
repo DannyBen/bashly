@@ -89,7 +89,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     download_usage
-    exit 1
+    exit
     ;;
   
   esac

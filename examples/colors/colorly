@@ -126,7 +126,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     colorly_usage
-    exit 1
+    exit
     ;;
   
   esac

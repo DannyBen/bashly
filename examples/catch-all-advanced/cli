@@ -194,7 +194,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -264,7 +264,7 @@ cli_download_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_download_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -329,7 +329,7 @@ cli_upload_parse_requirements() {
   --help | -h )
     long_usage=yes
     cli_upload_usage
-    exit 1
+    exit
     ;;
   
   esac

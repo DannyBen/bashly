@@ -100,7 +100,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     convert_usage
-    exit 1
+    exit
     ;;
   
   esac

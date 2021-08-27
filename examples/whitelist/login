@@ -106,7 +106,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     login_usage
-    exit 1
+    exit
     ;;
   
   esac

@@ -179,7 +179,7 @@ parse_requirements() {
   --help | -h )
     long_usage=yes
     multi_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -249,7 +249,7 @@ multi_multiline_parse_requirements() {
   --help | -h )
     long_usage=yes
     multi_multiline_usage
-    exit 1
+    exit
     ;;
   
   esac
@@ -304,7 +304,7 @@ multi_regular_parse_requirements() {
   --help | -h )
     long_usage=yes
     multi_regular_usage
-    exit 1
+    exit
     ;;
   
   esac
