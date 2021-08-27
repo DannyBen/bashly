@@ -1,0 +1,2 @@
+missing required argument: SOURCE
+usage: cli download SOURCE [TARGET]

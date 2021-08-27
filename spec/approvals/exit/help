@@ -1,0 +1,22 @@
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  login      Upload a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Environment Variables:
+  API_KEY (required)
+    Set your API key
+
