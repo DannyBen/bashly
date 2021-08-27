@@ -41,21 +41,14 @@ commands:
 - name: upload
   short: u
   help: Upload a file
-  args:
-  - name: source
-    required: true
-    help: File to upload
 
-  flags:
-  - long: --user
-    short: -u
-    arg: user
-    help: Username to use for logging in
+  # Configure catch_all for the `upload` sub-command using the extended
+  # syntax, and specifying that `catch_all` is required (which means that at 
+  # least one extra argument must be provided)
+  catch_all:
+    label: Files
+    help: Files to upload
     required: true
-  - long: --password
-    short: -p
-    arg: password
-    help: Password to use for logging in
 ```
 
 ## Generated script output
@@ -154,6 +147,55 @@ other_args:
 - ${other_args[0]} = and
 - ${other_args[1]} = --additional
 - ${other_args[2]} = stuff
+
+
+```
+
+### `$ ./cli upload -h`
+
+```shell
+cli upload - Upload a file
+
+Shortcut: u
+
+Usage:
+  cli upload FILES...
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  FILES...
+    Files to upload
+
+
+
+```
+
+### `$ ./cli upload`
+
+```shell
+missing required argument: FILES...
+usage: cli upload FILES...
+
+
+```
+
+### `$ ./cli upload file1 "file 2" file3`
+
+```shell
+# this file is located in 'src/upload_command.sh'
+# code for 'cli upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+other_args:
+- ${other_args[*]} = file1 file 2 file3
+- ${other_args[0]} = file1
+- ${other_args[1]} = file 2
+- ${other_args[2]} = file3
 
 
 ```
