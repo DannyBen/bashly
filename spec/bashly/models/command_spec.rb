@@ -72,7 +72,7 @@ describe Models::Command do
       let(:fixture) { :catch_all_string }
 
       it "returns an uppercase version of it" do
-        expect(subject.catch_all_label).to eq "EXTRA PARAMS..."
+        expect(subject.catch_all_label).to eq "EXTRA_PARAMS..."
       end
     end
 
@@ -80,7 +80,7 @@ describe Models::Command do
       let(:fixture) { :catch_all_hash }
 
       it "returns an uppercase version of it" do
-        expect(subject.catch_all_label).to eq "ADDITIONAL PARAMS..."
+        expect(subject.catch_all_label).to eq "ADDITIONAL_PARAMS..."
       end
     end
 
@@ -115,7 +115,62 @@ describe Models::Command do
         expect(subject.catch_all_help).to be_nil
       end
     end
+  end
 
+  describe '#catch_all_required?' do
+    context "when catch_all is disabled" do
+      it "returns false" do
+        expect(subject.catch_all_required?).to be false
+      end
+    end
+
+    context "when catch_all['required'] is true" do
+      let(:fixture) { :catch_all_hash }
+
+      it "returns true" do
+        expect(subject.catch_all_required?).to be true
+      end
+    end
+
+    context "in other cases" do
+      let(:fixture) { :catch_all_string }
+
+      it "returns false" do
+        expect(subject.catch_all_required?).to be false
+      end
+    end
+  end
+
+  describe '#catch_all_usage' do
+    context "when catch_all is disabled" do
+      it "returns nil" do
+        expect(subject.catch_all_usage).to be_nil
+      end
+    end
+
+    context "when catch_all['required'] is true" do
+      let(:fixture) { :catch_all_hash }
+
+      it "returns a usage help without []" do
+        expect(subject.catch_all_usage).to eq "ADDITIONAL_PARAMS..."
+      end
+    end
+
+    context "when catch_all['required'] is false" do
+      let(:fixture) { :catch_all_string }
+
+      it "returns a usage help with []" do
+        expect(subject.catch_all_usage).to eq "[EXTRA_PARAMS...]"
+      end
+    end
+
+    context "when catch_all is true" do
+      let(:fixture) { :catch_all }
+
+      it "returns [...]" do
+        expect(subject.catch_all_usage).to eq "[...]"
+      end
+    end
   end
 
   describe '#command_names' do

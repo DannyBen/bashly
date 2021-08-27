@@ -112,7 +112,7 @@ cli_upload_usage() {
   echo
 
   printf "Usage:\n"
-  printf "  cli upload SOURCE [options]\n"
+  printf "  cli upload FILES...\n"
   printf "  cli upload --help | -h\n"
   echo
 
@@ -122,22 +122,12 @@ cli_upload_usage() {
     echo "  --help, -h"
     printf "    Show this help\n"
     echo
-    # :command.usage_flags
-    # :flag.usage
-    echo "  --user, -u USER (required)"
-    printf "    Username to use for logging in\n"
-    echo
-    
-    # :flag.usage
-    echo "  --password, -p PASSWORD"
-    printf "    Password to use for logging in\n"
-    echo
+
     # :command.usage_args
     printf "Arguments:\n"
     
-    # :argument.usage
-    echo "  SOURCE"
-    printf "    File to upload\n"
+    echo "  FILES..."
+    printf "    Files to upload\n"
     echo
 
   fi
@@ -248,6 +238,7 @@ parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -313,6 +304,7 @@ cli_download_parse_requirements() {
   
     esac
   done
+  # :command.catch_all_filter
   # :command.default_assignments
   # :command.whitelist_filter
 }
@@ -338,66 +330,30 @@ cli_upload_parse_requirements() {
   # :command.command_filter
   action="upload"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
-    args[source]=$1
-    shift
-  else
-    printf "missing required argument: SOURCE\nusage: cli upload SOURCE [options]\n"
-    exit 1
-  fi
   # :command.required_flags_filter
-  argstring="$*"
-  if [[ "$argstring" != *--user* && "$argstring" != *-u* ]]; then
-    printf "missing required flag: --user, -u USER\n"
-    exit 1
-  fi
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-    # :flag.case
-    --user | -u )
-      if [[ $2 ]]; then
-        args[--user]="$2"
-        shift
-        shift
-      else
-        printf "%s\n" "--user requires an argument: --user, -u USER"
-        exit 1
-      fi
-      ;;
-  
-    # :flag.case
-    --password | -p )
-      if [[ $2 ]]; then
-        args[--password]="$2"
-        shift
-        shift
-      else
-        printf "%s\n" "--password requires an argument: --password, -p PASSWORD"
-        exit 1
-      fi
-      ;;
-  
   
     -* )
-      printf "invalid option: %s\n" "$key"
-      exit 1
+      other_args+=("$1")
+      shift
       ;;
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
-        args[source]=$1
+        other_args+=("$1")
         shift
-      else
-        printf "invalid argument: %s\n" "$key"
-        exit 1
-      fi
       ;;
   
     esac
   done
+  # :command.catch_all_filter
+  if [[ ${#other_args[@]} -eq 0 ]]; then
+    printf "missing required argument: FILES...\nusage: cli upload FILES...\n"
+    exit 1
+  fi
   # :command.default_assignments
   # :command.whitelist_filter
 }

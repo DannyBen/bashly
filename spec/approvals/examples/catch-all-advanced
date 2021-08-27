@@ -73,3 +73,34 @@ other_args:
 - ${other_args[0]} = and
 - ${other_args[1]} = --additional
 - ${other_args[2]} = stuff
++ ./cli upload -h
+cli upload - Upload a file
+
+Shortcut: u
+
+Usage:
+  cli upload FILES...
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  FILES...
+    Files to upload
+
++ ./cli upload
+missing required argument: FILES...
+usage: cli upload FILES...
++ ./cli upload file1 'file 2' file3
+# this file is located in 'src/upload_command.sh'
+# code for 'cli upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+other_args:
+- ${other_args[*]} = file1 file 2 file3
+- ${other_args[0]} = file1
+- ${other_args[1]} = file 2
+- ${other_args[2]} = file3
