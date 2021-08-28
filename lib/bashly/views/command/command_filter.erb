@@ -1,12 +1,12 @@
 # :command.command_filter
-<%- if commands.any? -%>
+% if commands.any?
 action=$1
 
 case $action in
 -* )
   ;;
 
-<%- commands.each do |command| -%>
+% commands.each do |command|
 <%= command.aliases.join " | " %> )
   action="<%= command.name %>"
   shift
@@ -14,9 +14,9 @@ case $action in
   shift $#
   ;;    
 
-<%- end -%>
+% end
 <%= render :command_fallback %>
 esac
-<%- else -%>
+% else
 action="<%= action_name %>"
-<%- end -%>
+% end

@@ -1,5 +1,5 @@
 # :command.command_fallback
-<%- if default_command -%>
+% if default_command
 "" )
   <%= function_name %>_usage
   exit 1
@@ -10,7 +10,7 @@
   <%= default_command.function_name %>_parse_requirements "$@"
   shift $#
   ;;
-<%- elsif extensible.is_a? String -%>
+% elsif extensible.is_a? String
 "" )
   <%= function_name %>_usage
   exit 1
@@ -23,7 +23,7 @@
     <%= function_name %>_usage
     exit 1
   fi
-<%- elsif extensible -%>
+% elsif extensible
 "" )
   <%= function_name %>_usage
   exit 1
@@ -37,9 +37,9 @@
     <%= function_name %>_usage
     exit 1
   fi
-<%- else -%>
+% else
 * )
   <%= function_name %>_usage
   exit 1
   ;;
-<%- end -%>
+% end

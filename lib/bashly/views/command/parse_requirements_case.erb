@@ -1,25 +1,25 @@
 # :command.parse_requirements_case
-<%- if args.any? -%>
-<%- condition = "if" -%>
-<%- args.each do |arg| -%>
+% if args.any?
+% condition = "if"
+% args.each do |arg|
 <%= condition %> [[ ! ${args[<%= arg.name %>]} ]]; then
   args[<%= arg.name %>]=$1
   shift
-<%- condition = "elif" -%>
-<%- end -%>
+% condition = "elif"
+% end
 else
-<%- if catch_all -%>
+% if catch_all
   other_args+=("$1")
   shift
-<%- else -%>
+% else
   printf "<%= strings[:invalid_argument] %>\n" "$key"
   exit 1
-<%- end -%>
+% end
 fi
-<%- elsif catch_all -%>
+% elsif catch_all
   other_args+=("$1")
   shift
-<%- else -%>
+% else
 printf "<%= strings[:invalid_argument] %>\n" "$key"
 exit 1
-<%- end -%>
+% end

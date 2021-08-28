@@ -1,6 +1,6 @@
 # :flag.case
 <%= aliases.join " | " %> )
-  <%- if arg -%>
+% if arg
   if [[ $2 ]]; then
     args[<%= name %>]="$2"
     shift
@@ -9,8 +9,8 @@
     printf "%s\n" "<%= strings[:flag_requires_an_argument] % { name: name, usage: usage_string } %>"
     exit 1
   fi
-  <%- else -%>
+% else
   args[<%= name %>]=1
   shift
-  <%- end -%>
+% end
   ;;

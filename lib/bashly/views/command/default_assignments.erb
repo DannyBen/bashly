@@ -1,7 +1,7 @@
 # :command.default_assignments
-<%- default_args.each do |arg| -%>
+% default_args.each do |arg|
 [[ -n ${args[<%= arg.name %>]} ]] || args[<%= arg.name %>]="<%= arg.default %>"
-<%- end -%>
-<%- default_flags.each do |flag| -%>
+% end
+% default_flags.each do |flag|
 [[ -n ${args[<%= flag.long %>]} ]] || args[<%= flag.long %>]="<%= flag.default %>"
-<%- end -%>
+% end

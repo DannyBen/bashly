@@ -1,9 +1,9 @@
 # :command.parse_requirements
-<%- if root_command? -%>
+% if root_command?
 parse_requirements() {
-<%- else -%>
+% else
 <%= function_name %>_parse_requirements() {
-<%- end -%>
+% end
 <%= render(:fixed_flags_filter).indent 2 %>
 <%= render(:environment_variables_filter).indent 2 %>
 <%= render(:dependencies_filter).indent 2 %>
@@ -16,6 +16,6 @@ parse_requirements() {
 <%= render(:whitelist_filter).indent 2 %>
 }
 
-<%- commands.each do |command| %>
+% commands.each do |command|
 <%= command.render :parse_requirements %>
-<%- end -%>
+% end
