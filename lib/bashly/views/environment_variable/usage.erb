@@ -1,7 +1,7 @@
 # :environment_variable.usage
 echo "  <%= usage_string extended: true %>"
 printf "<%= help.wrap(76).indent(4).sanitize_for_print %>\n"
-<%- if default -%>
+% if default
 printf "    <%= strings[:default] % { value: default } -%>\n"
-<%- end -%>
+% end
 echo

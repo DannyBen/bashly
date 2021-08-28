@@ -1,6 +1,6 @@
 # :command.usage_environment_variables
 printf "<%= strings[:environment_variables] %>\n"
 
-<%- environment_variables.each do |env_var| -%>
+% environment_variables.each do |env_var|
 <%= env_var.render(:usage) %>
-<%- end -%>
+% end

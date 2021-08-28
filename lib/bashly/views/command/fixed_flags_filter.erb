@@ -1,19 +1,19 @@
 # :command.fixed_flag_filter
 case "$1" in
-<%- if short_flag_exist? "-v" -%>
+% if short_flag_exist? "-v"
 --version )
-<%- else -%>
+% else
 --version | -v )
-<%- end -%>
+% end
   version_command
   exit
   ;;
 
-<%- if short_flag_exist? "-h" -%>
+% if short_flag_exist? "-h"
 --help )
-<%- else -%>
+% else
 --help | -h )
-<%- end -%>
+% end
   long_usage=yes
   <%= function_name %>_usage
   exit

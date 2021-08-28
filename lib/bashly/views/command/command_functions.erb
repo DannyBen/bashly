@@ -1,4 +1,4 @@
 # :command.command_functions
-<%- deep_commands.each do |command| -%>
+% deep_commands.each do |command|
 <%= command.render :function unless command.commands.any? %>
-<%- end -%>
+% end

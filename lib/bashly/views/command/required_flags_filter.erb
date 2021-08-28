@@ -1,10 +1,10 @@
 # :command.required_flags_filter
-<%- if required_flags.any? -%>
+% if required_flags.any?
 argstring="$*"
-<%- end -%>
-<%- required_flags.each do |flag| -%>
+% end
+% required_flags.each do |flag|
 if [[ <%= flag.aliases.map { |a| %Q["$argstring" != *#{a}*] }.join " && " %> ]]; then
   printf "<%= strings[:missing_required_flag] % { usage: flag.usage_string } %>\n"
   exit 1
 fi
-<%- end %>
+% end
