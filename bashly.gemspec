@@ -21,4 +21,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'completely', '~> 0.1', '>= 0.1.2'
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'requires', '~> 0.1'
+
+  s.metadata = {
+    "bug_tracker_uri"   => "https://github.com/DannyBen/bashly/issues",
+    "changelog_uri"     => "https://github.com/DannyBen/bashly/blob/master/CHANGELOG.md",
+    "homepage_uri"      => "https://bashly.dannyb.co/",
+    "source_code_uri"   => "https://github.com/DannyBen/bashly",
+  }
 end
