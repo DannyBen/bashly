@@ -30,8 +30,7 @@ Arguments:
     URL to download from
 
   TARGET
-    Target filename
-    Default: same as source
+    Target filename (default: same as source)
 
 Examples:
   download example.com
