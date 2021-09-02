@@ -1,6 +1,15 @@
 # Git Example
 
-Demonstrates how to configure sub-commands, similar to what `git` does (`git status`, `git commit`, etc.).
+Demonstrates how to configure sub-commands, similar to what `git` does
+(`git status`, `git commit`, etc.).
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -30,6 +39,8 @@ commands:
     short: -a
     help: Automatically stage files
 ```
+
+
 
 ## Generated script output
 

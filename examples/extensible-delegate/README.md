@@ -1,6 +1,15 @@
 # Extensible Delegate Command Example
 
-Demonstrates how to configure an external delegate command that will be called (with all the arguments) whenever an unknown command is invoked.
+Demonstrates how to configure an external delegate command that will be called
+(with all the arguments) whenever an unknown command is invoked.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -26,6 +35,8 @@ commands:
   short: l
   help: Pull from my repository
 ```
+
+
 
 ## Generated script output
 

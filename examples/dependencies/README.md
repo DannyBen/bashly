@@ -1,6 +1,15 @@
 # Dependencies Example
 
-Demonstrates how to require your script's user to have certain dependencies (commands) installed prior to using your script.
+Demonstrates how to require your script's user to have certain dependencies
+(commands) installed prior to using your script.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -26,6 +35,8 @@ commands:
 - name: upload
   help: Upload something
 ```
+
+
 
 ## Generated script output
 

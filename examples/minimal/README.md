@@ -4,8 +4,10 @@ This is the simplest "hello world" example.
 
 This example was generated with:
 
-    $ bashly init --minimal
-    $ bashly generate
+```bash
+$ bashly init --minimal
+$ bashly generate
+```
 
 -----
 
@@ -21,7 +23,7 @@ args:
   required: true
   help: URL to download from
 - name: target
-  help: "Target filename\nDefault: same as source"
+  help: "Target filename (default: same as source)"
 
 flags:
 - long: --force
@@ -32,6 +34,8 @@ examples:
 - download example.com
 - download example.com ./output -f
 ```
+
+
 
 ## Generated script output
 
@@ -69,8 +73,7 @@ Arguments:
     URL to download from
 
   TARGET
-    Target filename
-    Default: same as source
+    Target filename (default: same as source)
 
 Examples:
   download example.com

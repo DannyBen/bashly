@@ -2,6 +2,14 @@
 
 Demonstrates how to write more detailed help messages.
 
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
+
 -----
 
 ## `bashly.yml`
@@ -61,6 +69,8 @@ environment_variables:
   help: |-
     Environment variables can also use multiple lines. This can be useful if we need to explain - in excruciating detail - what the environemnt variable is used for.
 ```
+
+
 
 ## Generated script output
 

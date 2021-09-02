@@ -4,8 +4,11 @@ Demonstrates how to commands can be nested inside other commands.
 
 This example was generated with:
 
-    $ bashly init
-    $ bashly generate
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -60,6 +63,8 @@ commands:
     help: Edit the file
     args: *file_args   # reuse args from the show command
 ```
+
+
 
 ## Generated script output
 

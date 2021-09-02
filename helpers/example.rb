@@ -71,6 +71,12 @@ class Example
   def generated_readme
     marker = '-----'
     content = readme.split(marker)[0].strip
+    extra_files = ""
+    if content =~ /<!-- include: (.*) -->/
+      included_files = $1.split(' ')
+      extra_files = files_markdown included_files
+    end
+
     <<~EOF
     #{content}
 
@@ -82,11 +88,42 @@ class Example
     #{yaml}
     ```
 
+    #{extra_files}
+
     ## Generated script output
 
     #{test_output}
 
     EOF
+  end
+
+  def files_markdown(files)
+    result = []
+    files.each do |file|
+      lang = markdown_lang file
+      result << "## `#{file}`\n"
+      result << "```#{lang}"
+      result << File.read("#{dir}/#{file}")
+      result << "```\n"
+    end
+
+    result.join "\n"
+  end
+
+  def markdown_lang(file)
+    result = langs[File.extname file]
+    raise "Cannot determine language for #{file}" unless result
+    result
+  end
+
+  def langs
+    @langs ||= {
+      "" => "bash",
+      ".sh" => "bash",
+      ".ini" => "ini",
+      ".yml" => "yaml",
+      ".yaml" => "yaml",
+    }
   end
 
   def executable

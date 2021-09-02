@@ -1,6 +1,15 @@
 # Docker Example
 
-Demonstrates how to define deeply nested commands, similar to the docker cli (`docker container run`, `docker image ls`, etc.).
+Demonstrates how to define deeply nested commands, similar to the docker cli
+(`docker container run`, `docker image ls`, etc.).
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -40,6 +49,8 @@ commands:
     short: l
     help: Show all images
 ```
+
+
 
 ## Generated script output
 

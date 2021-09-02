@@ -4,9 +4,16 @@ Demonstrates how to build a script that supports bash completions.
 
 This example was generated with:
 
-    $ bashly init
-    $ bashly add comp function
-    $ bashly generate
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly add comp function
+$ bashly generate
+# ... now edit src/completions_command.sh ...
+$ bashly generate
+```
+
+<!-- include: src/completions_command.sh -->
 
 -----
 
@@ -71,6 +78,22 @@ commands:
     arg: password
     help: Password to use for logging in
 ```
+
+## `src/completions_command.sh`
+
+```bash
+# Call the `send_completions` function which was added by running:
+#
+#   $ bashly add comp function
+#
+# Users can now enable bash completion for this script by running:
+#
+#   $ eval "$(cli completions)"
+#
+send_completions
+
+```
+
 
 ## Generated script output
 

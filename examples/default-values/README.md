@@ -2,6 +2,14 @@
 
 Demonstrates how to set default values for arguments and flags.
 
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
+
 -----
 
 ## `bashly.yml`
@@ -33,6 +41,8 @@ examples:
 - convert --format jpg
 - convert *.bmp --format jpg
 ```
+
+
 
 ## Generated script output
 

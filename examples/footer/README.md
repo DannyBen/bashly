@@ -2,6 +2,14 @@
 
 Demonstrates how to add a footer text to the `--help` message.
 
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
+
 -----
 
 ## `bashly.yml`
@@ -20,6 +28,8 @@ args:
 - name: source
   help: URL to download from
 ```
+
+
 
 ## Generated script output
 

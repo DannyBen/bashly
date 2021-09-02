@@ -1,6 +1,15 @@
 # Catch All Advanced Example
 
-Demonstrates the advanced form of `catch_all`, where you can specify a help message .
+Demonstrates the advanced form of `catch_all`, where you can specify a help
+message.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -50,6 +59,8 @@ commands:
     help: Files to upload
     required: true
 ```
+
+
 
 ## Generated script output
 

@@ -1,14 +1,24 @@
 # Custom Strings Example
 
+Demonstrates how to customize bashly's error strings and usage string templates.
+
 This example was generated with:
 
-    $ bashly init
-    $ bashly add strings
-    $ bashly generate
+```bash
+$ bashly init --minimal
+$ bashly add strings
+$ bashly generate
+```
 
-Running the `bashly add strings` command, simply generates  the strings configuration file in [src/bashly-strings.yml](src/bashly-strings.yml). You may edit this file and regenerate your script in order to replace the format of any (or all) help messages and error messages.
+Running the `bashly add strings` command, simply generates  the strings
+configuration file in [src/bashly-strings.yml](src/bashly-strings.yml). You may
+edit this file and regenerate your script in order to replace the format of
+any (or all) help messages and error messages.
 
-Note that you may delete any of the generated string values completely if you do not wish to change them.
+Note that you may delete any of the generated string values completely if you do
+not wish to change them.
+
+<!-- include: src/bashly-strings.yml -->
 
 -----
 
@@ -31,6 +41,28 @@ flags:
   required: true
   help: Target directory
 ```
+
+## `src/bashly-strings.yml`
+
+```yaml
+# Usage captions
+usage: "== Usage ==\\n"
+options: "== Options ==\\n"
+arguments: "== Arguments ==\\n"
+commands: "== Commands ==\\n"
+
+# Fixed flags help text
+help_flag_text: Show this helpful help
+version_flag_text: Show version number
+
+# Error messages
+flag_requires_an_argument: "Hey! the flag %{name} requires an argument: %{usage}"
+missing_required_argument: "Boom! a required argument is missing: %{arg}\\nusage: %{usage}"
+missing_required_flag: "Yo! you forgot a flag: %{usage}"
+
+
+```
+
 
 ## Generated script output
 

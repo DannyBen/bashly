@@ -3,6 +3,14 @@
 Demonstrates the use of the `catch_all` option, which will allows any command
 to receive an arbitrary list of arguments.
 
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
+
 -----
 
 ## `bashly.yml`
@@ -20,6 +28,8 @@ args:
   required: true
   help: Message
 ```
+
+
 
 ## Generated script output
 

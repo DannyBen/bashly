@@ -1,6 +1,17 @@
 # Extensible Command Example
 
-Demonstrates how to allow your script's users to add more commands to your script (in any language), without requiring them to edit your script.
+Demonstrates how to allow your script's users to add more commands to your
+script (in any language), without requiring them to edit your script.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
+
+<!-- include: cli-status -->
 
 -----
 
@@ -34,6 +45,19 @@ commands:
     required: true
     help: File to download
 ```
+
+## `cli-status`
+
+```bash
+#!/usr/bin/env bash
+echo "This is an external executable that serves as an extension to"
+echo "the cli app."
+echo "If placed in the path, it will be executed whenever someone runs:"
+echo "$ cli status <any argument>"
+echo ""
+echo "Received args: $@"
+```
+
 
 ## Generated script output
 

@@ -1,6 +1,20 @@
 # Environment Variables Example
 
-Demonstrates how to specify that your script supports (or requires) certain environment variables. This can be configured at any command level (root command or sub commands).
+Demonstrates how to specify that your script supports (or requires) certain
+environment variables. This can be configured at any command level(root command
+or sub commands).
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+# ... now edit src/verify_command.sh ...
+$ bashly generate
+```
+
+<!-- include: src/verify_command.sh -->
 
 -----
 
@@ -36,6 +50,22 @@ commands:
     help: One of development, production or test
     default: development
 ```
+
+## `src/verify_command.sh`
+
+```bash
+echo "# this file is located in 'src/verify_command.sh'"
+echo "# code for 'cli verify' goes here"
+echo "# you can edit it freely and regenerate (it will not be overwritten)"
+inspect_args
+
+echo "environment:"
+echo "- API_KEY=$API_KEY"
+echo "- ENVIRONMENT=$ENVIRONMENT"
+echo "- MY_SECRET=$MY_SECRET"
+
+```
+
 
 ## Generated script output
 

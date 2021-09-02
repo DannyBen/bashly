@@ -1,6 +1,15 @@
 # Default Command Example
 
-Demonstrates how to set a command as the default command. This command can be executed without explicitly specifying the command name.
+Demonstrates how to set a command as the default command. This command can be
+executed without explicitly specifying the command name.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -35,6 +44,8 @@ commands:
     required: true
     help: File to download
 ```
+
+
 
 ## Generated script output
 

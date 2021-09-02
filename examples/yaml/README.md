@@ -1,14 +1,25 @@
 # YAML Example
 
+Demonstrates how to add functions to read YAML files.
+
 This example was generated with:
 
-    $ bashly init
-    $ bashly add yaml
-    $ bashly generate
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly add yaml
+$ bashly generate
+# ... now edit src/root_command.sh ...
+$ bashly generate
+```
 
-Running the `bashly add yaml` command simply adds the [src/lib/yaml.sh](src/lib/yaml.sh) file, which provides functions for reading YAML files.
+Running the `bashly add yaml` command simply adds the [src/lib/yaml.sh]
+(src/lib/yaml.sh) file, which provides functions for reading YAML files.
 
 See the [src/root_command.sh](src/root_command.sh) for usage example.
+
+
+<!-- include: settings.yml src/root_command.sh -->
 
 -----
 
@@ -36,6 +47,43 @@ examples:
 - yaml settings.yml --prefix config_
 - yaml settings.yml server_port
 ```
+
+## `settings.yml`
+
+```yaml
+---
+# Sample YAML file
+environment: production
+
+server:
+  port: 3000
+  host: 'http://localhost:3000'
+
+```
+
+## `src/root_command.sh`
+
+```bash
+filename=${args[filename]}
+variable=${args[variable]}
+prefix=${args[--prefix]}
+
+if [[ $variable ]]; then
+  eval "$(yaml_load "$filename" "$prefix")"
+  value=${!variable}
+
+  if [[ $value ]]; then
+    echo "$variable=$value"
+  else
+    echo "variable not found: $variable"
+  fi
+
+else
+  yaml_load "$filename" "$prefix"
+
+fi
+```
+
 
 ## Generated script output
 

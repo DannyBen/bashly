@@ -1,14 +1,23 @@
 # Config Example
 
+Demonstrates how to add functions for reading and writing INI files.
+
 This example was generated with:
 
-    $ bashly init
-    $ bashly add config
-    $ bashly generate
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly add config
+$ bashly generate
+# ... now edit all files in the src folder ...
+$ bashly generate
+```
 
 Running the `bashly add config` command simply added the [src/lib/config.sh](src/lib/config.sh) file, which includes functions for reading and writing values from an INI file.
 
 See the files in the [src](src) folder for usage examples.
+
+<!-- include: config.ini src/get_command.sh src/list_command.sh src/set_command.sh -->
 
 -----
 
@@ -51,6 +60,58 @@ commands:
   short: l
   help: Show the entire config file
 ```
+
+## `config.ini`
+
+```ini
+; comments are allowed
+hello = world
+bashly = works
+
+
+```
+
+## `src/get_command.sh`
+
+```bash
+# Using the standard library (lib/config.sh) to show a value from the config
+
+key="${args[key]}"
+if config_has_key "$key" ; then 
+  config_get "$key"
+else
+  echo "No such key: $key"
+fi
+
+# Example of how to assign the config value to a variable:
+# result=$(config_get "${args[key]}")
+# echo $result
+
+
+```
+
+## `src/list_command.sh`
+
+```bash
+# Using the standard library (lib/config.sh) to show the entire config file
+config_show
+
+# Or to iterate through keys
+for key in $(config_keys) ; do
+  echo "$key === $(config_get "$key")"
+done
+
+```
+
+## `src/set_command.sh`
+
+```bash
+# Using the standard library (lib/config.sh) to store a value to the config
+config_set "${args[key]}" "${args[value]}"
+echo "saved: ${args[key]} = ${args[value]}"
+
+```
+
 
 ## Generated script output
 

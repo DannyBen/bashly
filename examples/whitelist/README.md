@@ -1,6 +1,15 @@
 # Whitelist Arguments and Flag Arguments
 
-Demonstrates how to specify a predetermined list of allowed values for arguments and flag arguments.
+Demonstrates how to specify a predetermined list of allowed values for arguments
+and flag arguments.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -41,6 +50,8 @@ flags:
   allowed: [ftp, ssh, http]
   default: ssh
 ```
+
+
 
 ## Generated script output
 

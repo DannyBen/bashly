@@ -1,6 +1,15 @@
 # Overriding `-v` and `-h`
 
-Demonstrates how the `-h` and `-v` flags can be used in your script, without colliding with `--version` and `--help`.
+Demonstrates how the `-h` and `-v` flags can be used in your script, without
+colliding with `--version` and `--help`.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -25,6 +34,8 @@ flags:
   arg: host
   help: Host address
 ```
+
+
 
 ## Generated script output
 

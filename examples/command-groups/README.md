@@ -1,6 +1,16 @@
 # Command Groups Example
 
-Demonstrates how to visually group commands under their own caption. This is useful for scripts that contain many commands that provide different sets of functionality.
+Demonstrates how to visually group commands under their own caption. This is
+useful for scripts that contain many commands that provide different sets of
+functionality.
+
+This example was generated with:
+
+```bash
+$ bashly init
+# ... now edit src/bashly.yml to match the example ...
+$ bashly generate
+```
 
 -----
 
@@ -43,6 +53,8 @@ commands:
 - name: logout
   help: Delete login credentials to the config file
 ```
+
+
 
 ## Generated script output
 

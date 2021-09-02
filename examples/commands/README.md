@@ -4,8 +4,10 @@ Demonstrates how to build a script that supports sub-commands.
 
 This example was generated with:
 
-    $ bashly init
-    $ bashly generate
+```bash
+$ bashly init
+$ bashly generate
+```
 
 -----
 
@@ -66,6 +68,8 @@ commands:
     arg: password
     help: Password to use for logging in
 ```
+
+
 
 ## Generated script output
 
