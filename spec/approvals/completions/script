@@ -5,13 +5,14 @@
 # Modifying it manually is not recommended
 _say_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
+  local comp_line="${COMP_WORDS[*]:1}"
 
-  case "$COMP_LINE" in
-    'say goodbye universe'*) COMPREPLY=($(compgen -W "$(git branch) --color --help --verbose -c -h -v" -- "$cur")) ;;
-    'say hello world'*) COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur")) ;;
-    'say goodbye'*) COMPREPLY=($(compgen -W "--help -h universe" -- "$cur")) ;;
-    'say hello'*) COMPREPLY=($(compgen -W "--help -h world" -- "$cur")) ;;
-    'say'*) COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur")) ;;
+  case "$comp_line" in
+    'goodbye universe'*) COMPREPLY=($(compgen -W "$(git branch) --color --help --verbose -c -h -v" -- "$cur")) ;;
+    'hello world'*) COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur")) ;;
+    'goodbye'*) COMPREPLY=($(compgen -W "--help -h universe" -- "$cur")) ;;
+    'hello'*) COMPREPLY=($(compgen -W "--help -h world" -- "$cur")) ;;
+    ''*) COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur")) ;;
   esac
 }
 

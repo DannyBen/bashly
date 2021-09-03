@@ -5,11 +5,12 @@
 # Modifying it manually is not recommended
 _cli_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
+  local comp_line="${COMP_WORDS[*]:1}"
 
-  case "$COMP_LINE" in
-    'cli download'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
-    'cli upload'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v download upload" -- "$cur")) ;;
+  case "$comp_line" in
+    'download'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
+    'upload'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
+    ''*) COMPREPLY=($(compgen -W "--help --version -h -v download upload" -- "$cur")) ;;
   esac
 }
 
