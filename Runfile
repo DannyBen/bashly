@@ -51,7 +51,18 @@ action :build, :b do
   run "docker images |grep bashly"
 end
 
-help   "Push the docker images to Docker Hub (since autobuilds are only for the rich and famous...)"
+help   "Smoke test the docker image"
+action :test, :t do
+  bashly_version = `docker run --rm dannyben/bashly --version`.chomp
+  if bashly_version != Bashly::VERSION
+    say "!txtred!FAIL: docker bashly version is #{bashly_version}, expected #{Bashly::VERSION}"
+    exit 1
+  else
+    say "!txtgrn!PASS: docker bashly version is #{bashly_version}"
+  end
+end
+
+help   "Push the docker images to Docker Hub"
 action :push, :p do
   run "docker push dannyben/bashly"
   run "docker push dannyben/bashly:#{Bashly::VERSION}"
