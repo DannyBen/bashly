@@ -200,6 +200,31 @@ docker_image_ls_usage() {
   fi
 }
 
+# :command.normalize_input
+normalize_input() {
+  local arg flags
+
+  while [[ $# -gt 0 ]]; do
+    arg="$1"
+    if [[ $arg =~ ^(--[^=]+)=(.+)$ ]]; then
+      input+=("${BASH_REMATCH[1]}")
+      input+=("${BASH_REMATCH[2]}")
+    elif [[ $arg =~ ^(-[^=])=(.+)$ ]]; then
+      input+=("${BASH_REMATCH[1]}")
+      input+=("${BASH_REMATCH[2]}")
+    elif [[ $arg =~ ^-([^-]..+)$ ]]; then
+      flags="${BASH_REMATCH[1]}"
+      for (( i=0 ; i < ${#flags} ; i++ )); do
+        input+=("-${flags:i:1}")
+      done
+    else
+      input+=("$arg")
+    fi    
+    
+    shift
+  done
+}
+
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
@@ -638,7 +663,9 @@ initialize() {
 run() {
   declare -A args
   declare -a other_args
-  parse_requirements "$@"
+  declare -a input
+  normalize_input "$@"
+  parse_requirements "${input[@]}"
 
   if [[ $action == "container" ]]; then
     if [[ ${args[--help]} ]]; then
