@@ -2,7 +2,9 @@
 run() {
   declare -A args
   declare -a other_args
-  parse_requirements "$@"
+  declare -a input
+  normalize_input "$@"
+  parse_requirements "${input[@]}"
 
   <%- condition = "if" -%>
   <%- deep_commands.each do |command| -%>

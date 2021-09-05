@@ -1,0 +1,30 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./flags
+run ./flags --help to test your bash script
++ ./flags -abC
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--alfa]} = 1
+- ${args[--bravo]} = 1
+- ${args[--charlie]} = 1
++ ./flags -d=2
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--delta]} = 2
++ ./flags --echo=2
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--echo]} = 2
++ ./flags '-E=- hello world'
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--echo]} = - hello world
++ ./flags -abCd
+--delta requires an argument: --delta, -d VALUE
