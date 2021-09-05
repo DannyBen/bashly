@@ -191,8 +191,8 @@ normalize_input() {
       done
     else
       input+=("$arg")
-    fi    
-    
+    fi
+
     shift
   done
 }
