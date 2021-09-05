@@ -1,0 +1,27 @@
+name: flags
+help: Test script for different flag notations
+version: 0.1.0
+
+flags:
+- long: --alfa
+  short: -a
+  help: Alfa
+
+- long: --bravo
+  short: -b
+  help: Bravo
+
+- long: --charlie
+  short: -C
+  help: Charlie
+
+- long: --delta
+  short: -d
+  arg: value
+  help: Delta
+
+- long: --echo
+  short: -E
+  arg: value
+  help: Delta
+

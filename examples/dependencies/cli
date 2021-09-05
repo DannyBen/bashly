@@ -97,13 +97,13 @@ normalize_input() {
 
   while [[ $# -gt 0 ]]; do
     arg="$1"
-    if [[ $arg =~ ^(--[^=]+)=(.+)$ ]]; then
+    if [[ $arg =~ ^(--[a-zA-Z0-9_\-]+)=(.+)$ ]]; then
       input+=("${BASH_REMATCH[1]}")
       input+=("${BASH_REMATCH[2]}")
-    elif [[ $arg =~ ^(-[^=])=(.+)$ ]]; then
+    elif [[ $arg =~ ^(-[a-zA-Z0-9])=(.+)$ ]]; then
       input+=("${BASH_REMATCH[1]}")
       input+=("${BASH_REMATCH[2]}")
-    elif [[ $arg =~ ^-([^-]..+)$ ]]; then
+    elif [[ $arg =~ ^-([a-zA-Z0-9][a-zA-Z0-9]+)$ ]]; then
       flags="${BASH_REMATCH[1]}"
       for (( i=0 ; i < ${#flags} ; i++ )); do
         input+=("-${flags:i:1}")
@@ -115,7 +115,6 @@ normalize_input() {
     shift
   done
 }
-
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
