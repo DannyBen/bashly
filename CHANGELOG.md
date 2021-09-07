@@ -1,10 +1,11 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v0.6.6 - 2021-09-07
 ----------------------------------------
 
 - Add support for -abc, -a=arg and --flag=arg
+- Sort lib files to ensure consistent inclusion
 
 
 v0.6.5 - 2021-09-03
