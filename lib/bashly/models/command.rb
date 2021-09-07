@@ -209,7 +209,7 @@ module Bashly
       # This is meant to provide the user with the ability to add custom
       # functions
       def user_lib
-        @user_lib ||= Dir["#{Settings.source_dir}/lib/**/*.sh"]
+        @user_lib ||= Dir["#{Settings.source_dir}/lib/**/*.sh"].sort
       end
 
       # Raise an exception if there are some serious issues with the command
