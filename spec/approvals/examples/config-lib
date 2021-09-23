@@ -1,0 +1,11 @@
++ bundle exec bashly add config --force
+created src/lib/config.sh
++ bundle exec bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./download
+run ./download --help to test your bash script
++ ./download
+foo=BOOM
+bar=
