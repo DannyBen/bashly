@@ -20,8 +20,9 @@ config_init() {
 # Get a value from the config.
 # Usage: result=$(config_get hello)
 config_get() {
-  key=$1
-  regex="^$key *= *(.+)$"
+  local key=$1
+  local regex="^$key *= *(.+)$"
+  local value=""
 
   config_init
   
@@ -38,15 +39,16 @@ config_get() {
 # Add or update a key=value pair in the config.
 # Usage: config_set key value
 config_set() {
-  key=$1
+  local key=$1
   shift
-  value="$*"
+  local value="$*"
 
   config_init
 
-  regex="^($key) *= *.+$"
-  output=""
-  found_key=""
+  local regex="^($key) *= *.+$"
+  local output=""
+  local found_key=""
+  local newline
   
   while IFS= read -r line || [ -n "$line" ]; do
     newline=$line
@@ -69,15 +71,14 @@ config_set() {
 # Delete a key from the config.
 # Usage: config_del key
 config_del() {
-  key=$1
+  local key=$1
 
-  regex="^($key) *="
-  output=""
+  local regex="^($key) *="
+  local output=""
 
   config_init
 
   while IFS= read -r line || [ -n "$line" ]; do
-    newline=$line
     if [[ $line ]] && [[ ! $line =~ $regex ]]; then
       output="$output$line\n"
     fi
@@ -100,11 +101,13 @@ config_show() {
 #   done
 #
 config_keys() {
-  regex="^([a-zA-Z0-9_\-\/\.]+) *="
+  local regex="^([a-zA-Z0-9_\-\/\.]+) *="
 
   config_init
 
-  keys=()
+  local keys=()
+  local key
+  
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       key="${BASH_REMATCH[1]}"
