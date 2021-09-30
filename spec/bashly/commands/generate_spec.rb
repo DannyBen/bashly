@@ -51,6 +51,34 @@ describe Commands::Generate do
     end
   end
 
+  context "with --quiet" do
+    let(:cli_script) { "#{target_dir}/cli" }
+
+    before do
+      reset_tmp_dir
+      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
+      expect(success).to be true
+    end
+
+    it "generates the cli script" do
+      expect { subject.run %w[generate --quiet] }.to output_approval('cli/generate/quiet')
+      expect(File).to exist(cli_script)
+    end
+
+    context "when source files already exist" do
+      before do
+        expect { subject.run %w[generate --quiet] } #.to output_nothing
+        File.write "#{source_dir}/download_command.sh", "some new user content"
+      end
+
+      it "does not overwrite them" do
+        expect { subject.run %w[generate --quiet] } #.to output_nothing
+        expect(File.read "#{source_dir}/download_command.sh").to eq "some new user content"
+      end
+    end
+
+  end
+
   context "with --wrap function" do
     let(:cli_script) { "#{target_dir}/cli" }
 
