@@ -12,7 +12,7 @@ Options:
     Wrap the entire script in a function so it can also be sourced
 
   -q --quiet
-    Less verbose output
+    Disable on-screen progress report
 
   -h --help
     Show this help

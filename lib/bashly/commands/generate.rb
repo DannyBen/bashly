@@ -8,7 +8,7 @@ module Bashly
 
       option "-f --force", "Overwrite existing files"
       option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
-      option "-q --quiet", "Less verbose output"
+      option "-q --quiet", "Disable on-screen progress report"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
@@ -19,13 +19,17 @@ module Bashly
       def run
         create_user_files
         create_master_script
-        say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script" unless args['--quiet']
+        quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script"
       end
 
     private
 
+      def quiet_say(message)
+        say message unless args['--quiet']
+      end
+
       def create_user_files
-        say "creating user files in !txtgrn!#{Settings.source_dir}" unless args['--quiet']
+        quiet_say "creating user files in !txtgrn!#{Settings.source_dir}"
 
         create_file "#{Settings.source_dir}/initialize.sh", command.render(:default_initialize_script)
 
@@ -51,17 +55,17 @@ module Bashly
 
       def create_file(file, content)
         if File.exist? file and !args['--force']
-          say "skipped !txtgrn!#{file}!txtrst! (exists)" unless args['--quiet']
+          quiet_say "skipped !txtgrn!#{file}!txtrst! (exists)"
         else
           File.write file, content
-          say "created !txtgrn!#{file}"
+          quiet_say "created !txtgrn!#{file}"
         end
       end
 
       def create_master_script
         File.write master_script_path, script.code
         FileUtils.chmod "+x", master_script_path
-        say "created !txtgrn!#{master_script_path}" unless args['--quiet']
+        quiet_say "created !txtgrn!#{master_script_path}"
       end
 
       def script
