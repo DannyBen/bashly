@@ -1,6 +1,6 @@
 filename=${args[filename]}
-variable=${args[variable]}
-prefix=${args[--prefix]}
+variable=${args[variable]:-}
+prefix=${args[--prefix]:-}
 
 if [[ $variable ]]; then
   eval "$(yaml_load "$filename" "$prefix")"

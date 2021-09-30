@@ -139,14 +139,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -178,7 +178,7 @@ git_commit_command() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -194,7 +194,7 @@ parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -249,7 +249,7 @@ parse_requirements() {
 # :command.parse_requirements
 git_status_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -294,7 +294,7 @@ git_status_parse_requirements() {
 # :command.parse_requirements
 git_commit_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -319,7 +319,7 @@ git_commit_parse_requirements() {
     case "$key" in
     # :flag.case
     --message | -m )
-      if [[ $2 ]]; then
+      if [[ -n "${2+present}" ]]; then
         args[--message]="$2"
         shift
         shift
@@ -358,7 +358,7 @@ git_commit_parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function
@@ -378,7 +378,7 @@ run() {
   parse_requirements "${input[@]}"
 
   if [[ $action == "status" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       git_status_usage
     else
@@ -386,7 +386,7 @@ run() {
     fi
   
   elif [[ $action == "commit" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       git_commit_usage
     else

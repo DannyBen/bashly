@@ -11,8 +11,8 @@ fi
 root_command() {
   # :src/root_command.sh
   filename=${args[filename]}
-  variable=${args[variable]}
-  prefix=${args[--prefix]}
+  variable=${args[variable]:-}
+  prefix=${args[--prefix]:-}
   
   if [[ $variable ]]; then
     eval "$(yaml_load "$filename" "$prefix")"
@@ -116,14 +116,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -176,7 +176,7 @@ yaml_load() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -194,7 +194,7 @@ parse_requirements() {
   # :command.command_filter
   action="root"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[filename]=$1
     shift
   else
@@ -208,7 +208,7 @@ parse_requirements() {
     case "$key" in
     # :flag.case
     --prefix | -p )
-      if [[ $2 ]]; then
+      if [[ -n "${2+present}" ]]; then
         args[--prefix]="$2"
         shift
         shift
@@ -226,10 +226,10 @@ parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[filename]} ]]; then
+      if [[ ! -v args[filename] ]]; then
         args[filename]=$1
         shift
-      elif [[ ! ${args[variable]} ]]; then
+      elif [[ ! -v args[variable] ]]; then
         args[variable]=$1
         shift
       else
@@ -249,7 +249,7 @@ parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function

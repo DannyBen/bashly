@@ -204,14 +204,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -280,7 +280,7 @@ cli_upload_command() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -296,7 +296,7 @@ parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -358,7 +358,7 @@ parse_requirements() {
 # :command.parse_requirements
 cli_completions_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -403,7 +403,7 @@ cli_completions_parse_requirements() {
 # :command.parse_requirements
 cli_download_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -421,7 +421,7 @@ cli_download_parse_requirements() {
   # :command.command_filter
   action="download"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[source]=$1
     shift
   else
@@ -447,10 +447,10 @@ cli_download_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
+      if [[ ! -v args[source] ]]; then
         args[source]=$1
         shift
-      elif [[ ! ${args[target]} ]]; then
+      elif [[ ! -v args[target] ]]; then
         args[target]=$1
         shift
       else
@@ -469,7 +469,7 @@ cli_download_parse_requirements() {
 # :command.parse_requirements
 cli_upload_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -487,7 +487,7 @@ cli_upload_parse_requirements() {
   # :command.command_filter
   action="upload"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[source]=$1
     shift
   else
@@ -506,7 +506,7 @@ cli_upload_parse_requirements() {
     case "$key" in
     # :flag.case
     --user | -u )
-      if [[ $2 ]]; then
+      if [[ -n "${2+present}" ]]; then
         args[--user]="$2"
         shift
         shift
@@ -518,7 +518,7 @@ cli_upload_parse_requirements() {
   
     # :flag.case
     --password | -p )
-      if [[ $2 ]]; then
+      if [[ -n "${2+present}" ]]; then
         args[--password]="$2"
         shift
         shift
@@ -536,7 +536,7 @@ cli_upload_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
+      if [[ ! -v args[source] ]]; then
         args[source]=$1
         shift
       else
@@ -556,7 +556,7 @@ cli_upload_parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function
@@ -576,7 +576,7 @@ run() {
   parse_requirements "${input[@]}"
 
   if [[ $action == "completions" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_completions_usage
     else
@@ -584,7 +584,7 @@ run() {
     fi
   
   elif [[ $action == "download" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_download_usage
     else
@@ -592,7 +592,7 @@ run() {
     fi
   
   elif [[ $action == "upload" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_upload_usage
     else

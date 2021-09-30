@@ -191,14 +191,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -229,11 +229,12 @@ config_init() {
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
 }
 
-# Get a value from the config
+# Get a value from the config.
 # Usage: result=$(config_get hello)
 config_get() {
-  key=$1
-  regex="^$key\s*=\s*(.+)$"
+  local key=$1
+  local regex="^$key *= *(.+)$"
+  local value=""
 
   config_init
   
@@ -250,15 +251,16 @@ config_get() {
 # Add or update a key=value pair in the config.
 # Usage: config_set key value
 config_set() {
-  key=$1
+  local key=$1
   shift
-  value="$*"
+  local value="$*"
 
   config_init
 
-  regex="^($key)\s*=\s*.+$"
-  output=""
-  found_key=""
+  local regex="^($key) *= *.+$"
+  local output=""
+  local found_key=""
+  local newline
   
   while IFS= read -r line || [ -n "$line" ]; do
     newline=$line
@@ -278,18 +280,17 @@ config_set() {
   printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
-# Delete a key from teh config.
+# Delete a key from the config.
 # Usage: config_del key
 config_del() {
-  key=$1
+  local key=$1
 
-  regex="^($key)\s*="
-  output=""
+  local regex="^($key) *="
+  local output=""
 
   config_init
 
   while IFS= read -r line || [ -n "$line" ]; do
-    newline=$line
     if [[ $line ]] && [[ ! $line =~ $regex ]]; then
       output="$output$line\n"
     fi
@@ -304,7 +305,7 @@ config_show() {
   cat "$CONFIG_FILE"
 }
 
-# Return an array of the keys in the config file
+# Return an array of the keys in the config file.
 # Usage:
 #
 #   for k in $(config_keys); do
@@ -312,11 +313,13 @@ config_show() {
 #   done
 #
 config_keys() {
-  regex="^(.*)\s*="
+  local regex="^([a-zA-Z0-9_\-\/\.]+) *="
 
   config_init
 
-  keys=()
+  local keys=()
+  local key
+  
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       key="${BASH_REMATCH[1]}"
@@ -326,7 +329,7 @@ config_keys() {
   echo "${keys[@]}"
 }
 
-# Returns true if the specified key exists in the config file
+# Returns true if the specified key exists in the config file.
 # Usage:
 #
 #   if config_has_key "key" ; then
@@ -334,7 +337,7 @@ config_keys() {
 #   fi
 #
 config_has_key() {
-  [[ $(config_get "$1") ]]
+  [[ $(config_get "${1:-}") ]]
 }
 
 # :command.command_functions
@@ -378,7 +381,7 @@ configly_list_command() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -394,7 +397,7 @@ parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -456,7 +459,7 @@ parse_requirements() {
 # :command.parse_requirements
 configly_set_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -474,7 +477,7 @@ configly_set_parse_requirements() {
   # :command.command_filter
   action="set"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[key]=$1
     shift
   else
@@ -482,7 +485,7 @@ configly_set_parse_requirements() {
     exit 1
   fi
   
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[value]=$1
     shift
   else
@@ -502,10 +505,10 @@ configly_set_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[key]} ]]; then
+      if [[ ! -v args[key] ]]; then
         args[key]=$1
         shift
-      elif [[ ! ${args[value]} ]]; then
+      elif [[ ! -v args[value] ]]; then
         args[value]=$1
         shift
       else
@@ -524,7 +527,7 @@ configly_set_parse_requirements() {
 # :command.parse_requirements
 configly_get_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -542,7 +545,7 @@ configly_get_parse_requirements() {
   # :command.command_filter
   action="get"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[key]=$1
     shift
   else
@@ -562,7 +565,7 @@ configly_get_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[key]} ]]; then
+      if [[ ! -v args[key] ]]; then
         args[key]=$1
         shift
       else
@@ -581,7 +584,7 @@ configly_get_parse_requirements() {
 # :command.parse_requirements
 configly_list_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -627,7 +630,7 @@ configly_list_parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function
@@ -647,7 +650,7 @@ run() {
   parse_requirements "${input[@]}"
 
   if [[ $action == "set" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       configly_set_usage
     else
@@ -655,7 +658,7 @@ run() {
     fi
   
   elif [[ $action == "get" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       configly_get_usage
     else
@@ -663,7 +666,7 @@ run() {
     fi
   
   elif [[ $action == "list" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       configly_list_usage
     else

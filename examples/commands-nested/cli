@@ -275,14 +275,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -333,7 +333,7 @@ cli_file_edit_command() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -349,7 +349,7 @@ parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -404,7 +404,7 @@ parse_requirements() {
 # :command.parse_requirements
 cli_dir_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -420,7 +420,7 @@ cli_dir_parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -475,7 +475,7 @@ cli_dir_parse_requirements() {
 # :command.parse_requirements
 cli_dir_list_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -493,7 +493,7 @@ cli_dir_list_parse_requirements() {
   # :command.command_filter
   action="dir list"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[path]=$1
     shift
   else
@@ -513,7 +513,7 @@ cli_dir_list_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[path]} ]]; then
+      if [[ ! -v args[path] ]]; then
         args[path]=$1
         shift
       else
@@ -532,7 +532,7 @@ cli_dir_list_parse_requirements() {
 # :command.parse_requirements
 cli_dir_remove_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -550,7 +550,7 @@ cli_dir_remove_parse_requirements() {
   # :command.command_filter
   action="dir remove"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[path]=$1
     shift
   else
@@ -576,7 +576,7 @@ cli_dir_remove_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[path]} ]]; then
+      if [[ ! -v args[path] ]]; then
         args[path]=$1
         shift
       else
@@ -595,7 +595,7 @@ cli_dir_remove_parse_requirements() {
 # :command.parse_requirements
 cli_file_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -611,7 +611,7 @@ cli_file_parse_requirements() {
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
-  action=$1
+  action=${1:-}
   
   case $action in
   -* )
@@ -666,7 +666,7 @@ cli_file_parse_requirements() {
 # :command.parse_requirements
 cli_file_show_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -684,7 +684,7 @@ cli_file_show_parse_requirements() {
   # :command.command_filter
   action="file show"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[path]=$1
     shift
   else
@@ -704,7 +704,7 @@ cli_file_show_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[path]} ]]; then
+      if [[ ! -v args[path] ]]; then
         args[path]=$1
         shift
       else
@@ -723,7 +723,7 @@ cli_file_show_parse_requirements() {
 # :command.parse_requirements
 cli_file_edit_parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -741,7 +741,7 @@ cli_file_edit_parse_requirements() {
   # :command.command_filter
   action="file edit"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[path]=$1
     shift
   else
@@ -761,7 +761,7 @@ cli_file_edit_parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[path]} ]]; then
+      if [[ ! -v args[path] ]]; then
         args[path]=$1
         shift
       else
@@ -781,7 +781,7 @@ cli_file_edit_parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function
@@ -801,7 +801,7 @@ run() {
   parse_requirements "${input[@]}"
 
   if [[ $action == "dir" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_dir_usage
     else
@@ -809,7 +809,7 @@ run() {
     fi
   
   elif [[ $action == "dir list" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_dir_list_usage
     else
@@ -817,7 +817,7 @@ run() {
     fi
   
   elif [[ $action == "dir remove" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_dir_remove_usage
     else
@@ -825,7 +825,7 @@ run() {
     fi
   
   elif [[ $action == "file" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_file_usage
     else
@@ -833,7 +833,7 @@ run() {
     fi
   
   elif [[ $action == "file show" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_file_show_usage
     else
@@ -841,7 +841,7 @@ run() {
     fi
   
   elif [[ $action == "file edit" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ -v args[--help] ]]; then
       long_usage=yes
       cli_file_edit_usage
     else

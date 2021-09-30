@@ -17,11 +17,12 @@ config_init() {
   [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
 }
 
-# Get a value from the config
+# Get a value from the config.
 # Usage: result=$(config_get hello)
 config_get() {
-  key=$1
-  regex="^$key\s*=\s*(.+)$"
+  local key=$1
+  local regex="^$key *= *(.+)$"
+  local value=""
 
   config_init
   
@@ -38,15 +39,16 @@ config_get() {
 # Add or update a key=value pair in the config.
 # Usage: config_set key value
 config_set() {
-  key=$1
+  local key=$1
   shift
-  value="$*"
+  local value="$*"
 
   config_init
 
-  regex="^($key)\s*=\s*.+$"
-  output=""
-  found_key=""
+  local regex="^($key) *= *.+$"
+  local output=""
+  local found_key=""
+  local newline
   
   while IFS= read -r line || [ -n "$line" ]; do
     newline=$line
@@ -66,18 +68,17 @@ config_set() {
   printf "%b\n" "$output" > "$CONFIG_FILE"
 }
 
-# Delete a key from teh config.
+# Delete a key from the config.
 # Usage: config_del key
 config_del() {
-  key=$1
+  local key=$1
 
-  regex="^($key)\s*="
-  output=""
+  local regex="^($key) *="
+  local output=""
 
   config_init
 
   while IFS= read -r line || [ -n "$line" ]; do
-    newline=$line
     if [[ $line ]] && [[ ! $line =~ $regex ]]; then
       output="$output$line\n"
     fi
@@ -92,7 +93,7 @@ config_show() {
   cat "$CONFIG_FILE"
 }
 
-# Return an array of the keys in the config file
+# Return an array of the keys in the config file.
 # Usage:
 #
 #   for k in $(config_keys); do
@@ -100,11 +101,13 @@ config_show() {
 #   done
 #
 config_keys() {
-  regex="^(.*)\s*="
+  local regex="^([a-zA-Z0-9_\-\/\.]+) *="
 
   config_init
 
-  keys=()
+  local keys=()
+  local key
+  
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       key="${BASH_REMATCH[1]}"
@@ -114,7 +117,7 @@ config_keys() {
   echo "${keys[@]}"
 }
 
-# Returns true if the specified key exists in the config file
+# Returns true if the specified key exists in the config file.
 # Usage:
 #
 #   if config_has_key "key" ; then
@@ -122,5 +125,5 @@ config_keys() {
 #   fi
 #
 config_has_key() {
-  [[ $(config_get "$1") ]]
+  [[ $(config_get "${1:-}") ]]
 }

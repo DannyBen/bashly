@@ -100,14 +100,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -122,7 +122,7 @@ inspect_args() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -140,7 +140,7 @@ parse_requirements() {
   # :command.command_filter
   action="root"
   # :command.required_args_filter
-  if [[ $1 && $1 != -* ]]; then
+  if [[ ${1+present} && $1 != -* ]]; then
     args[source]=$1
     shift
   else
@@ -166,10 +166,10 @@ parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
+      if [[ ! -v args[source] ]]; then
         args[source]=$1
         shift
-      elif [[ ! ${args[target]} ]]; then
+      elif [[ ! -v args[target] ]]; then
         args[target]=$1
         shift
       else
@@ -189,7 +189,7 @@ parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function

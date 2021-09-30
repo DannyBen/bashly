@@ -125,5 +125,5 @@ config_keys() {
 #   fi
 #
 config_has_key() {
-  [[ $(config_get "$1") ]]
+  [[ $(config_get "${1:-}") ]]
 }

@@ -18,7 +18,10 @@ end
 help   "Run shellcheck on all examples"
 action :shellcheck do
   Example.executables.each do |example|
-    success = system "shellcheck #{example}"
+    # TODO the exclusion for SC2102 is due to a bug in shellcheck which was fixed in v0.8.0;
+    #      remove this exclusion once that version is released.
+    #      See https://github.com/koalaman/shellcheck/issues/2285 for details.
+    success = system "shellcheck --exclude=SC2102 #{example}"
     color = success ? 'txtgrn' : 'txtred'
     say "- shellcheck !#{color}!#{example}"
     exit 1 unless success

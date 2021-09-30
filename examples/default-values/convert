@@ -98,14 +98,14 @@ normalize_input() {
 # :command.inspect_args
 inspect_args() {
   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
-  if (( ${#args[@]} )); then
+  if [[ -v args[@] ]]; then
     echo args:
     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
   else
     echo args: none
   fi
 
-  if (( ${#other_args[@]} )); then
+  if [[ -v other_args[@] ]]; then
     echo
     echo other_args:
     echo "- \${other_args[*]} = ${other_args[*]}"
@@ -120,7 +120,7 @@ inspect_args() {
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flag_filter
-  case "$1" in
+  case "${1:-}" in
   --version | -v )
     version_command
     exit
@@ -145,7 +145,7 @@ parse_requirements() {
     case "$key" in
     # :flag.case
     --format | -f )
-      if [[ $2 ]]; then
+      if [[ -n "${2+present}" ]]; then
         args[--format]="$2"
         shift
         shift
@@ -163,7 +163,7 @@ parse_requirements() {
   
     * )
       # :command.parse_requirements_case
-      if [[ ! ${args[source]} ]]; then
+      if [[ ! -v args[source] ]]; then
         args[source]=$1
         shift
       else
@@ -176,8 +176,8 @@ parse_requirements() {
   done
   # :command.catch_all_filter
   # :command.default_assignments
-  [[ -n ${args[source]} ]] || args[source]="*.jpg"
-  [[ -n ${args[--format]} ]] || args[--format]="png"
+  [[ -n ${args[source]:-} ]] || args[source]="*.jpg"
+  [[ -n ${args[--format]:-} ]] || args[--format]="png"
   # :command.whitelist_filter
 }
 
@@ -185,7 +185,7 @@ parse_requirements() {
 initialize() {
   version="0.1.0"
   long_usage=''
-  set -e
+  set -eu -o pipefail
 
   # :src/initialize.sh
   # Code here runs inside the initialize() function
