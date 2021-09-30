@@ -8,6 +8,7 @@ describe 'bash' do
       command = "docker run --rm -v $PWD:/app bash:3 bash /app/download"
 
       Dir.chdir "examples/minimal" do
+        system "bashly generate 2>&1 >/dev/null"
         expect(`#{command} 2>&1`).to match_approval('bash/error')
       end
     end
