@@ -28,12 +28,12 @@ describe Commands::Generate do
     context "when source files already exist" do
       before do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
-        File.write "#{source_dir}/cli_get_command.sh", "some new user content"
+        File.write "#{source_dir}/download_command.sh", "some new user content"
       end
 
       it "does not overwrite them" do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args-skip')
-        expect(File.read "#{source_dir}/cli_get_command.sh").to eq "some new user content"
+        expect(File.read "#{source_dir}/download_command.sh").to eq "some new user content"
       end
     end
 
