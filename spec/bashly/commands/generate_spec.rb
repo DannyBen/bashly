@@ -28,12 +28,12 @@ describe Commands::Generate do
     context "when source files already exist" do
       before do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
-        File.write "#{source_dir}/cli_get_command.sh", "some new user content"
+        File.write "#{source_dir}/download_command.sh", "some new user content"
       end
 
       it "does not overwrite them" do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args-skip')
-        expect(File.read "#{source_dir}/cli_get_command.sh").to eq "some new user content"
+        expect(File.read "#{source_dir}/download_command.sh").to eq "some new user content"
       end
     end
 
@@ -48,6 +48,21 @@ describe Commands::Generate do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/minimal')
         expect(File).to exist(cli_script)
       end
+    end
+  end
+
+  context "with --quiet" do
+    let(:cli_script) { "#{target_dir}/cli" }
+
+    before do
+      reset_tmp_dir
+      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
+      expect(success).to be true
+    end
+
+    it "generates the cli script" do
+      expect { subject.run %w[generate --quiet] }.to_not output.to_stdout
+      expect(File).to exist(cli_script)
     end
   end
 
