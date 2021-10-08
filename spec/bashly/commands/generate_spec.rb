@@ -79,7 +79,7 @@ describe Commands::Generate do
       expect { subject.run %w[generate -w function] }.to output_approval('cli/generate/wrap-function')
       expect(File).to exist(cli_script)
       lines = File.readlines cli_script
-      expect(lines[5]).to eq "function() {\n"
+      expect(lines[10]).to eq "function() {\n"
     end
   end
 
