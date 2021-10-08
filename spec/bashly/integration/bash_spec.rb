@@ -5,9 +5,10 @@ describe 'bash' do
     before { system "docker pull bash:3 >/dev/null" }
 
     it "errors gracefully" do
-      command = "docker run --rm -v $PWD:/app bash:3 bash /app/download"
+      command = "docker run --rm -v $PWD:/app bash:3 bash /app/cli"
 
-      Dir.chdir "examples/minimal" do
+      Dir.chdir "spec/fixtures/workspaces/bash-3-syntax" do
+        system "bashly generate 2>&1 >/dev/null"
         expect(`#{command} 2>&1`).to match_approval('bash/error')
       end
     end
