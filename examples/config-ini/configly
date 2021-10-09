@@ -11,10 +11,12 @@ version_command() {
 configly_usage() {
   if [[ -n $long_usage ]]; then
     printf "configly - Sample application that uses the config functions\n"
-    echo 
+    echo
+
   else
     printf "configly - Sample application that uses the config functions\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -46,10 +48,12 @@ configly_usage() {
 configly_set_usage() {
   if [[ -n $long_usage ]]; then
     printf "configly set - Save a value in the config file\n"
-    echo 
+    echo
+
   else
     printf "configly set - Save a value in the config file\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: s\n"
@@ -69,12 +73,12 @@ configly_set_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  KEY"
     printf "    Config key\n"
     echo
-    
+
     # :argument.usage
     echo "  VALUE"
     printf "    Config value\n"
@@ -82,7 +86,7 @@ configly_set_usage() {
 
     # :command.usage_examples
     printf "Examples:\n"
-    
+
     printf "  configly set hello world\n"
     echo
 
@@ -93,10 +97,12 @@ configly_set_usage() {
 configly_get_usage() {
   if [[ -n $long_usage ]]; then
     printf "configly get - Read a value from the config file\n"
-    echo 
+    echo
+
   else
     printf "configly get - Read a value from the config file\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: g\n"
@@ -116,7 +122,7 @@ configly_get_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  KEY"
     printf "    Config key\n"
@@ -124,7 +130,7 @@ configly_get_usage() {
 
     # :command.usage_examples
     printf "Examples:\n"
-    
+
     printf "  configly set hello\n"
     echo
 
@@ -135,10 +141,12 @@ configly_get_usage() {
 configly_list_usage() {
   if [[ -n $long_usage ]]; then
     printf "configly list - Show the entire config file\n"
-    echo 
+    echo
+
   else
     printf "configly list - Show the entire config file\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: l\n"
@@ -231,7 +239,7 @@ config_get() {
   regex="^$key\s*=\s*(.+)$"
 
   config_init
-  
+
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       value="${BASH_REMATCH[1]}"
@@ -254,7 +262,7 @@ config_set() {
   regex="^($key)\s*=\s*.+$"
   output=""
   found_key=""
-  
+
   while IFS= read -r line || [ -n "$line" ]; do
     newline=$line
     if [[ $line =~ $regex ]]; then
@@ -345,14 +353,15 @@ configly_set_command() {
 configly_get_command() {
   # :src/get_command.sh
   # Using the standard library (lib/config.sh) to show a value from the config
-  
+
   key="${args[key]}"
-  if config_has_key "$key" ; then 
+  if config_has_key "$key" ; then
+
     config_get "$key"
   else
     echo "No such key: $key"
   fi
-  
+
   # Example of how to assign the config value to a variable:
   # result=$(config_get "${args[key]}")
   # echo $result
@@ -363,7 +372,7 @@ configly_list_command() {
   # :src/list_command.sh
   # Using the standard library (lib/config.sh) to show the entire config file
   config_show
-  
+
   # Or to iterate through keys
   for key in $(config_keys) ; do
     echo "$key === $(config_get "$key")"
@@ -378,50 +387,50 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     configly_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   set | s )
     action="set"
     shift
     configly_set_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   get | g )
     action="get"
     shift
     configly_get_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   list | l )
     action="list"
     shift
     configly_list_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     configly_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -429,18 +438,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -456,13 +465,13 @@ configly_set_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     configly_set_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -476,7 +485,7 @@ configly_set_parse_requirements() {
     printf "missing required argument: KEY\nusage: configly set KEY VALUE\n"
     exit 1
   fi
-  
+
   if [[ $1 && $1 != -* ]]; then
     args[value]=$1
     shift
@@ -489,12 +498,12 @@ configly_set_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[key]} ]]; then
@@ -508,7 +517,7 @@ configly_set_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -524,13 +533,13 @@ configly_get_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     configly_get_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -549,12 +558,12 @@ configly_get_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[key]} ]]; then
@@ -565,7 +574,7 @@ configly_get_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -581,13 +590,13 @@ configly_list_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     configly_list_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -599,18 +608,18 @@ configly_list_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -653,7 +662,7 @@ run() {
     else
       configly_set_command
     fi
-  
+
   elif [[ $action == "get" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -661,7 +670,7 @@ run() {
     else
       configly_get_command
     fi
-  
+
   elif [[ $action == "list" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -669,7 +678,7 @@ run() {
     else
       configly_list_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

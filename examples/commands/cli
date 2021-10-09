@@ -11,10 +11,12 @@ version_command() {
 cli_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli - Sample application\n"
-    echo 
+    echo
+
   else
     printf "cli - Sample application\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -40,7 +42,7 @@ cli_usage() {
 
     # :command.usage_environment_variables
     printf "Environment Variables:\n"
-    
+
     # :environment_variable.usage
     echo "  API_KEY"
     printf "    Set your API key\n"
@@ -53,10 +55,12 @@ cli_usage() {
 cli_download_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli download - Download a file\n"
-    echo 
+    echo
+
   else
     printf "cli download - Download a file\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: d\n"
@@ -80,26 +84,26 @@ cli_download_usage() {
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  SOURCE"
     printf "    URL to download from\n"
     echo
-    
+
     # :argument.usage
     echo "  TARGET"
     printf "    Target filename (default: same as source)\n"
     echo
     # :command.usage_environment_variables
     printf "Environment Variables:\n"
-    
+
     # :environment_variable.usage
     echo "  DEFAULT_TARGET_LOCATION"
     printf "    Set the default location to download to\n"
     echo
     # :command.usage_examples
     printf "Examples:\n"
-    
+
     printf "  cli download example.com\n"
     printf "  cli download example.com ./output -f\n"
     echo
@@ -111,10 +115,12 @@ cli_download_usage() {
 cli_upload_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli upload - Upload a file\n"
-    echo 
+    echo
+
   else
     printf "cli upload - Upload a file\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: u\n"
@@ -136,14 +142,14 @@ cli_upload_usage() {
     echo "  --user, -u USER (required)"
     printf "    Username to use for logging in\n"
     echo
-    
+
     # :flag.usage
     echo "  --password, -p PASSWORD"
     printf "    Password to use for logging in\n"
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  SOURCE"
     printf "    File to upload\n"
@@ -223,43 +229,43 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   download | d )
     action="download"
     shift
     cli_download_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   upload | u )
     action="upload"
     shift
     cli_upload_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -267,18 +273,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -294,13 +300,13 @@ cli_download_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_download_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -324,13 +330,12 @@ cli_download_parse_requirements() {
       args[--force]=1
       shift
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[source]} ]]; then
@@ -344,7 +349,7 @@ cli_download_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -360,13 +365,13 @@ cli_upload_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_upload_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -401,7 +406,7 @@ cli_upload_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     # :flag.case
     --password | -p )
       if [[ $2 ]]; then
@@ -413,13 +418,12 @@ cli_upload_parse_requirements() {
         exit 1
       fi
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[source]} ]]; then
@@ -430,7 +434,7 @@ cli_upload_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -473,7 +477,7 @@ run() {
     else
       cli_download_command
     fi
-  
+
   elif [[ $action == "upload" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -481,7 +485,7 @@ run() {
     else
       cli_upload_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

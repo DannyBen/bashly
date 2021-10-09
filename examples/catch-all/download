@@ -19,10 +19,12 @@ version_command() {
 download_usage() {
   if [[ -n $long_usage ]]; then
     printf "download - Catch All Example\n"
-    echo 
+    echo
+
   else
     printf "download - Catch All Example\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -43,7 +45,7 @@ download_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  MESSAGE"
     printf "    Message\n"
@@ -106,13 +108,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     download_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -131,12 +133,12 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       other_args+=("$1")
       shift
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[message]} ]]; then
@@ -147,7 +149,7 @@ parse_requirements() {
         shift
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

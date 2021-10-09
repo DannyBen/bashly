@@ -11,10 +11,12 @@ version_command() {
 cli_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli - Sample application with nested commands\n"
-    echo 
+    echo
+
   else
     printf "cli - Sample application with nested commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -45,10 +47,12 @@ cli_usage() {
 cli_dir_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli dir - Directory commands\n"
-    echo 
+    echo
+
   else
     printf "cli dir - Directory commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: d\n"
@@ -78,10 +82,12 @@ cli_dir_usage() {
 cli_dir_list_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli dir list - Show files in the directory\n"
-    echo 
+    echo
+
   else
     printf "cli dir list - Show files in the directory\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -98,7 +104,7 @@ cli_dir_list_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  PATH"
     printf "    Directory path\n"
@@ -111,10 +117,12 @@ cli_dir_list_usage() {
 cli_dir_remove_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli dir remove - Remove directory\n"
-    echo 
+    echo
+
   else
     printf "cli dir remove - Remove directory\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -135,7 +143,7 @@ cli_dir_remove_usage() {
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  PATH"
     printf "    Directory path\n"
@@ -148,10 +156,12 @@ cli_dir_remove_usage() {
 cli_file_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli file - File commands\n"
-    echo 
+    echo
+
   else
     printf "cli file - File commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: f\n"
@@ -181,10 +191,12 @@ cli_file_usage() {
 cli_file_show_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli file show - Show file contents\n"
-    echo 
+    echo
+
   else
     printf "cli file show - Show file contents\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -201,7 +213,7 @@ cli_file_show_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  PATH"
     printf "    Path to file\n"
@@ -214,10 +226,12 @@ cli_file_show_usage() {
 cli_file_edit_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli file edit - Edit the file\n"
-    echo 
+    echo
+
   else
     printf "cli file edit - Edit the file\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -234,7 +248,7 @@ cli_file_edit_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  PATH"
     printf "    Path to file\n"
@@ -333,43 +347,43 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   dir | d )
     action="dir"
     shift
     cli_dir_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   file | f )
     action="file"
     shift
     cli_file_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -377,18 +391,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -404,43 +418,43 @@ cli_dir_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_dir_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   list )
     action="list"
     shift
     cli_dir_list_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   remove )
     action="remove"
     shift
     cli_dir_remove_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_dir_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -448,18 +462,18 @@ cli_dir_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -475,13 +489,13 @@ cli_dir_list_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_dir_list_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -500,12 +514,12 @@ cli_dir_list_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[path]} ]]; then
@@ -516,7 +530,7 @@ cli_dir_list_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -532,13 +546,13 @@ cli_dir_remove_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_dir_remove_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -562,13 +576,12 @@ cli_dir_remove_parse_requirements() {
       args[--force]=1
       shift
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[path]} ]]; then
@@ -579,7 +592,7 @@ cli_dir_remove_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -595,43 +608,43 @@ cli_file_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_file_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   show )
     action="show"
     shift
     cli_file_show_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   edit )
     action="edit"
     shift
     cli_file_edit_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_file_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -639,18 +652,18 @@ cli_file_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -666,13 +679,13 @@ cli_file_show_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_file_show_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -691,12 +704,12 @@ cli_file_show_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[path]} ]]; then
@@ -707,7 +720,7 @@ cli_file_show_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -723,13 +736,13 @@ cli_file_edit_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_file_edit_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -748,12 +761,12 @@ cli_file_edit_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[path]} ]]; then
@@ -764,7 +777,7 @@ cli_file_edit_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -807,7 +820,7 @@ run() {
     else
       cli_dir_command
     fi
-  
+
   elif [[ $action == "dir list" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -815,7 +828,7 @@ run() {
     else
       cli_dir_list_command
     fi
-  
+
   elif [[ $action == "dir remove" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -823,7 +836,7 @@ run() {
     else
       cli_dir_remove_command
     fi
-  
+
   elif [[ $action == "file" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -831,7 +844,7 @@ run() {
     else
       cli_file_command
     fi
-  
+
   elif [[ $action == "file show" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -839,7 +852,7 @@ run() {
     else
       cli_file_show_command
     fi
-  
+
   elif [[ $action == "file edit" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -847,7 +860,7 @@ run() {
     else
       cli_file_edit_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi
