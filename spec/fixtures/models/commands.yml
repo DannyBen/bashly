@@ -160,3 +160,6 @@
         short: -c
       - long: --verbose
         short: -v
+
+:custom_header:
+  name: check

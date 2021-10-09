@@ -172,12 +172,13 @@ Options:
 # Modifying it manually is not recommended
 _cli_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
+  local comp_line="${COMP_WORDS[*]:1}"
 
-  case "$COMP_LINE" in
-    'cli completions'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;
-    'cli download'*) COMPREPLY=($(compgen -A file -W "--force --help -f -h" -- "$cur")) ;;
-    'cli upload'*) COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    'cli'*) COMPREPLY=($(compgen -W "--help --version -h -v completions download upload" -- "$cur")) ;;
+  case "$comp_line" in
+    'completions'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;
+    'download'*) COMPREPLY=($(compgen -A file -W "--force --help -f -h" -- "$cur")) ;;
+    'upload'*) COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u" -- "$cur")) ;;
+    ''*) COMPREPLY=($(compgen -W "--help --version -h -v completions download upload" -- "$cur")) ;;
   esac
 }
 
