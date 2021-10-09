@@ -1,0 +1,8 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./download
+run ./download --help to test your bash script
++ ./download
+Some condition was met, aborting
