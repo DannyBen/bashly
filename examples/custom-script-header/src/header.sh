@@ -6,7 +6,7 @@
 
 some_condition=true
 
-if [[ some_condition ]]; then
+if [ "$some_condition" = true ]; then
   echo "Some condition was met, aborting"
   exit
 fi
