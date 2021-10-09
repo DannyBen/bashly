@@ -8,20 +8,20 @@ root_command() {
   filename=${args[filename]}
   variable=${args[variable]}
   prefix=${args[--prefix]}
-  
+
   if [[ $variable ]]; then
     eval "$(yaml_load "$filename" "$prefix")"
     value=${!variable}
-  
+
     if [[ $value ]]; then
       echo "$variable=$value"
     else
       echo "variable not found: $variable"
     fi
-  
+
   else
     yaml_load "$filename" "$prefix"
-  
+
   fi
 }
 
@@ -34,10 +34,12 @@ version_command() {
 yaml_usage() {
   if [[ -n $long_usage ]]; then
     printf "yaml - Sample application that uses the YAML functions\n"
-    echo 
+    echo
+
   else
     printf "yaml - Sample application that uses the YAML functions\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -62,12 +64,12 @@ yaml_usage() {
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  FILENAME"
     printf "    The YAML file to read\n"
     echo
-    
+
     # :argument.usage
     echo "  VARIABLE"
     printf "    Show only this variable\n"
@@ -75,7 +77,7 @@ yaml_usage() {
 
     # :command.usage_examples
     printf "Examples:\n"
-    
+
     printf "  yaml settings.yml\n"
     printf "  yaml settings.yml --prefix config_\n"
     printf "  yaml settings.yml server_port\n"
@@ -176,13 +178,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     yaml_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -212,13 +214,12 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[filename]} ]]; then
@@ -232,7 +233,7 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

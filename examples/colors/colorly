@@ -6,7 +6,7 @@
 root_command() {
   # :src/root_command.sh
   message=${args[message]:-hello colors}
-  
+
   underlined "Message Recevied":
   echo
   echo "  => $(green_bold "$message")"
@@ -24,10 +24,12 @@ version_command() {
 colorly_usage() {
   if [[ -n $long_usage ]]; then
     printf "colorly - Sample application that uses the color functions\n"
-    echo 
+    echo
+
   else
     printf "colorly - Sample application that uses the color functions\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -48,7 +50,7 @@ colorly_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  MESSAGE"
     printf "    Message to show [default: hello colors]\n"
@@ -109,7 +111,8 @@ inspect_args() {
 #
 # Usage:
 # Use any of the functions below to color or format a portion of a string.
-# 
+#
+
 #   echo "before $(red this is red) after"
 #   echo "before $(green_bold this is green_bold) after"
 #
@@ -146,13 +149,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     colorly_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -164,12 +167,12 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[message]} ]]; then
@@ -180,7 +183,7 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

@@ -19,10 +19,12 @@ version_command() {
 cli_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli - Example that replaces the default behavior of -v and -h\n"
-    echo 
+    echo
+
   else
     printf "cli - Example that replaces the default behavior of -v and -h\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -45,7 +47,7 @@ cli_usage() {
     echo "  --verbose, -v"
     printf "    Show verbose output\n"
     echo
-    
+
     # :flag.usage
     echo "  --host, -h HOST"
     printf "    Host address\n"
@@ -108,13 +110,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help )
     long_usage=yes
     cli_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -131,7 +133,7 @@ parse_requirements() {
       args[--verbose]=1
       shift
       ;;
-  
+
     # :flag.case
     --host | -h )
       if [[ $2 ]]; then
@@ -143,19 +145,18 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

@@ -19,10 +19,12 @@ version_command() {
 login_usage() {
   if [[ -n $long_usage ]]; then
     printf "login - Sample showing the use of arg and flag whitelist (allowed values)\n"
-    echo 
+    echo
+
   else
     printf "login - Sample showing the use of arg and flag whitelist (allowed values)\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -46,7 +48,7 @@ login_usage() {
     printf "    User name\n"
     printf "    Allowed: user, admin\n"
     echo
-    
+
     # :flag.usage
     echo "  --protocol, -p TYPE"
     printf "    Protocol to connect with\n"
@@ -55,13 +57,13 @@ login_usage() {
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  REGION"
     printf "    Region to connect to\n"
     printf "    Allowed: eu, us\n"
     echo
-    
+
     # :argument.usage
     echo "  ENVIRONMENT"
     printf "    Environment to connect to\n"
@@ -126,13 +128,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     login_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -167,7 +169,7 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     # :flag.case
     --protocol | -p )
       if [[ $2 ]]; then
@@ -179,13 +181,12 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[region]} ]]; then
@@ -199,7 +200,7 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

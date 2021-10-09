@@ -11,10 +11,12 @@ version_command() {
 cli_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli - Sample application that requires environment variables\n"
-    echo 
+    echo
+
   else
     printf "cli - Sample application that requires environment variables\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -39,7 +41,7 @@ cli_usage() {
 
     # :command.usage_environment_variables
     printf "Environment Variables:\n"
-    
+
     # :environment_variable.usage
     echo "  API_KEY"
     printf "    Set your API key\n"
@@ -52,10 +54,12 @@ cli_usage() {
 cli_verify_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli verify - Verify your user\n"
-    echo 
+    echo
+
   else
     printf "cli verify - Verify your user\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: v\n"
@@ -75,12 +79,12 @@ cli_verify_usage() {
 
     # :command.usage_environment_variables
     printf "Environment Variables:\n"
-    
+
     # :environment_variable.usage
     echo "  MY_SECRET (required)"
     printf "    Your secret\n"
     echo
-    
+
     # :environment_variable.usage
     echo "  ENVIRONMENT"
     printf "    One of development, production or test\n"
@@ -142,7 +146,7 @@ cli_verify_command() {
   echo "# code for 'cli verify' goes here"
   echo "# you can edit it freely and regenerate (it will not be overwritten)"
   inspect_args
-  
+
   echo "environment:"
   echo "- API_KEY=$API_KEY"
   echo "- ENVIRONMENT=$ENVIRONMENT"
@@ -157,36 +161,36 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   verify | v )
     action="verify"
     shift
     cli_verify_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -194,18 +198,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -221,13 +225,13 @@ cli_verify_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_verify_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   export ENVIRONMENT="${ENVIRONMENT:-development}"
@@ -244,18 +248,18 @@ cli_verify_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -298,7 +302,7 @@ run() {
     else
       cli_verify_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

@@ -19,10 +19,12 @@ version_command() {
 download_usage() {
   if [[ -n $long_usage ]]; then
     printf "download - Sample minimal application without commands\n"
-    echo 
+    echo
+
   else
     printf "download - Sample minimal application without commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -47,12 +49,12 @@ download_usage() {
     echo
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  SOURCE"
     printf "    URL to download from\n"
     echo
-    
+
     # :argument.usage
     echo "  TARGET"
     printf "    Target filename (default: same as source)\n"
@@ -60,7 +62,7 @@ download_usage() {
 
     # :command.usage_examples
     printf "Examples:\n"
-    
+
     printf "  download example.com\n"
     printf "  download example.com ./output -f\n"
     echo
@@ -122,13 +124,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     download_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -152,13 +154,12 @@ parse_requirements() {
       args[--force]=1
       shift
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[source]} ]]; then
@@ -172,7 +173,7 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter

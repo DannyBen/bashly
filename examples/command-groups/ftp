@@ -11,10 +11,12 @@ version_command() {
 ftp_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp - Sample application with command grouping\n"
-    echo 
+    echo
+
   else
     printf "ftp - Sample application with command grouping\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -48,10 +50,12 @@ ftp_usage() {
 ftp_download_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp download - Download a file\n"
-    echo 
+    echo
+
   else
     printf "ftp download - Download a file\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -68,7 +72,7 @@ ftp_download_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  FILE"
     printf "    File to download\n"
@@ -81,10 +85,12 @@ ftp_download_usage() {
 ftp_upload_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp upload - Upload a file\n"
-    echo 
+    echo
+
   else
     printf "ftp upload - Upload a file\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -101,7 +107,7 @@ ftp_upload_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  FILE"
     printf "    File to upload\n"
@@ -114,10 +120,12 @@ ftp_upload_usage() {
 ftp_login_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp login - Write login credentials to the config file\n"
-    echo 
+    echo
+
   else
     printf "ftp login - Write login credentials to the config file\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -139,10 +147,12 @@ ftp_login_usage() {
 ftp_logout_usage() {
   if [[ -n $long_usage ]]; then
     printf "ftp logout - Delete login credentials to the config file\n"
-    echo 
+    echo
+
   else
     printf "ftp logout - Delete login credentials to the config file\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -249,57 +259,57 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     ftp_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   download )
     action="download"
     shift
     ftp_download_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   upload )
     action="upload"
     shift
     ftp_upload_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   login )
     action="login"
     shift
     ftp_login_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   logout )
     action="logout"
     shift
     ftp_logout_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     ftp_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -307,18 +317,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -334,13 +344,13 @@ ftp_download_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     ftp_download_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -359,12 +369,12 @@ ftp_download_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[file]} ]]; then
@@ -375,7 +385,7 @@ ftp_download_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -391,13 +401,13 @@ ftp_upload_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     ftp_upload_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -416,12 +426,12 @@ ftp_upload_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[file]} ]]; then
@@ -432,7 +442,7 @@ ftp_upload_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -448,13 +458,13 @@ ftp_login_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     ftp_login_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -466,18 +476,18 @@ ftp_login_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -493,13 +503,13 @@ ftp_logout_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     ftp_logout_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -511,18 +521,18 @@ ftp_logout_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -565,7 +575,7 @@ run() {
     else
       ftp_download_command
     fi
-  
+
   elif [[ $action == "upload" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -573,7 +583,7 @@ run() {
     else
       ftp_upload_command
     fi
-  
+
   elif [[ $action == "login" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -581,7 +591,7 @@ run() {
     else
       ftp_login_command
     fi
-  
+
   elif [[ $action == "logout" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -589,7 +599,7 @@ run() {
     else
       ftp_logout_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

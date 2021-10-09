@@ -11,10 +11,12 @@ version_command() {
 mygit_usage() {
   if [[ -n $long_usage ]]; then
     printf "mygit - Sample application that delegates unknown commands to a different executable\n"
-    echo 
+    echo
+
   else
     printf "mygit - Sample application that delegates unknown commands to a different executable\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -45,10 +47,12 @@ mygit_usage() {
 mygit_push_usage() {
   if [[ -n $long_usage ]]; then
     printf "mygit push - Push to my repository\n"
-    echo 
+    echo
+
   else
     printf "mygit push - Push to my repository\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: p\n"
@@ -73,10 +77,12 @@ mygit_push_usage() {
 mygit_pull_usage() {
   if [[ -n $long_usage ]]; then
     printf "mygit pull - Pull from my repository\n"
-    echo 
+    echo
+
   else
     printf "mygit pull - Pull from my repository\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: l\n"
@@ -168,43 +174,43 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     mygit_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   push | p )
     action="push"
     shift
     mygit_push_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   pull | l )
     action="pull"
     shift
     mygit_pull_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   "" )
     mygit_usage
     exit 1
     ;;
-  
+
   * )
     if [[ -x "$(command -v "git")" ]]; then
       exec git "$@"
@@ -212,7 +218,7 @@ parse_requirements() {
       mygit_usage
       exit 1
     fi
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -220,18 +226,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -247,13 +253,13 @@ mygit_push_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     mygit_push_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -265,18 +271,18 @@ mygit_push_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -292,13 +298,13 @@ mygit_pull_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     mygit_pull_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -310,18 +316,18 @@ mygit_pull_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -364,7 +370,7 @@ run() {
     else
       mygit_push_command
     fi
-  
+
   elif [[ $action == "pull" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -372,7 +378,7 @@ run() {
     else
       mygit_pull_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

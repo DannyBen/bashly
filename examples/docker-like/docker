@@ -11,10 +11,12 @@ version_command() {
 docker_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker - Docker example\n"
-    echo 
+    echo
+
   else
     printf "docker - Docker example\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -45,10 +47,12 @@ docker_usage() {
 docker_container_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker container - Container commands\n"
-    echo 
+    echo
+
   else
     printf "docker container - Container commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: c*\n"
@@ -78,10 +82,12 @@ docker_container_usage() {
 docker_container_run_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker container run - Run a container\n"
-    echo 
+    echo
+
   else
     printf "docker container run - Run a container\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -98,7 +104,7 @@ docker_container_run_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  IMAGE"
     printf "    Image name\n"
@@ -111,10 +117,12 @@ docker_container_run_usage() {
 docker_container_stop_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker container stop - Stop a container\n"
-    echo 
+    echo
+
   else
     printf "docker container stop - Stop a container\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -131,7 +139,7 @@ docker_container_stop_usage() {
 
     # :command.usage_args
     printf "Arguments:\n"
-    
+
     # :argument.usage
     echo "  CONTAINER"
     printf "    Container name\n"
@@ -144,10 +152,12 @@ docker_container_stop_usage() {
 docker_image_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker image - Image commands\n"
-    echo 
+    echo
+
   else
     printf "docker image - Image commands\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: i*\n"
@@ -176,10 +186,12 @@ docker_image_usage() {
 docker_image_ls_usage() {
   if [[ -n $long_usage ]]; then
     printf "docker image ls - Show all images\n"
-    echo 
+    echo
+
   else
     printf "docker image ls - Show all images\n"
-    echo 
+    echo
+
   fi
 
   printf "Shortcut: l\n"
@@ -281,43 +293,43 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   container | c* )
     action="container"
     shift
     docker_container_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   image | i* )
     action="image"
     shift
     docker_image_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     docker_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -325,18 +337,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -352,43 +364,43 @@ docker_container_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_container_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   run )
     action="run"
     shift
     docker_container_run_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   stop )
     action="stop"
     shift
     docker_container_stop_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     docker_container_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -396,18 +408,18 @@ docker_container_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -423,13 +435,13 @@ docker_container_run_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_container_run_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -448,12 +460,12 @@ docker_container_run_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[image]} ]]; then
@@ -464,7 +476,7 @@ docker_container_run_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -480,13 +492,13 @@ docker_container_stop_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_container_stop_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -505,12 +517,12 @@ docker_container_stop_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       if [[ ! ${args[container]} ]]; then
@@ -521,7 +533,7 @@ docker_container_stop_parse_requirements() {
         exit 1
       fi
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -537,36 +549,36 @@ docker_image_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_image_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   ls | l )
     action="ls"
     shift
     docker_image_ls_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     docker_image_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -574,18 +586,18 @@ docker_image_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -601,13 +613,13 @@ docker_image_ls_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     docker_image_ls_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -619,18 +631,18 @@ docker_image_ls_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -673,7 +685,7 @@ run() {
     else
       docker_container_command
     fi
-  
+
   elif [[ $action == "container run" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -681,7 +693,7 @@ run() {
     else
       docker_container_run_command
     fi
-  
+
   elif [[ $action == "container stop" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -689,7 +701,7 @@ run() {
     else
       docker_container_stop_command
     fi
-  
+
   elif [[ $action == "image" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -697,7 +709,7 @@ run() {
     else
       docker_image_command
     fi
-  
+
   elif [[ $action == "image ls" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -705,7 +717,7 @@ run() {
     else
       docker_image_ls_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi

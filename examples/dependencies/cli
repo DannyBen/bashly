@@ -11,10 +11,12 @@ version_command() {
 cli_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli - Sample application that requires dependencies\n"
-    echo 
+    echo
+
   else
     printf "cli - Sample application that requires dependencies\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -45,10 +47,12 @@ cli_usage() {
 cli_download_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli download - Download something\n"
-    echo 
+    echo
+
   else
     printf "cli download - Download something\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -70,10 +74,12 @@ cli_download_usage() {
 cli_upload_usage() {
   if [[ -n $long_usage ]]; then
     printf "cli upload - Upload something\n"
-    echo 
+    echo
+
   else
     printf "cli upload - Upload something\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -162,43 +168,43 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
   # :command.command_filter
   action=$1
-  
+
   case $action in
   -* )
     ;;
-  
+
   download )
     action="download"
     shift
     cli_download_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   upload )
     action="upload"
     shift
     cli_upload_parse_requirements "$@"
     shift $#
-    ;;    
-  
+    ;;
+
   # :command.command_fallback
   * )
     cli_usage
     exit 1
     ;;
-  
+
   esac
   # :command.required_args_filter
   # :command.required_flags_filter
@@ -206,18 +212,18 @@ parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -233,13 +239,13 @@ cli_download_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_download_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -263,18 +269,18 @@ cli_download_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -290,13 +296,13 @@ cli_upload_parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     cli_upload_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -308,18 +314,18 @@ cli_upload_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
@@ -362,7 +368,7 @@ run() {
     else
       cli_download_command
     fi
-  
+
   elif [[ $action == "upload" ]]; then
     if [[ ${args[--help]} ]]; then
       long_usage=yes
@@ -370,7 +376,7 @@ run() {
     else
       cli_upload_command
     fi
-  
+
   elif [[ $action == "root" ]]; then
     root_command
   fi
