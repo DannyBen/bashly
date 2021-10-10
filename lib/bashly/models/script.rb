@@ -22,11 +22,23 @@ module Bashly
     private
 
       def header
-        @header ||= render('header')
+        @header ||= header!
+      end
+
+      def header!
+        if File.exist? custom_header_path
+          File.read custom_header_path
+        else
+          render('header')
+        end
       end
 
       def body
         @body ||= command.render('master_script')
+      end
+
+      def custom_header_path
+        @custom_header_path ||= "#{Settings.source_dir}/header.sh"
       end
     end
   end
