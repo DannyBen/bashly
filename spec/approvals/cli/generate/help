@@ -1,7 +1,7 @@
 Generate the bash script and required files
 
 Usage:
-  bashly generate [--force --wrap FUNCTION]
+  bashly generate [--force --quiet --wrap FUNCTION]
   bashly generate (-h|--help)
 
 Options:
@@ -10,6 +10,9 @@ Options:
 
   -w --wrap FUNCTION
     Wrap the entire script in a function so it can also be sourced
+
+  -q --quiet
+    Disable on-screen progress report
 
   -h --help
     Show this help

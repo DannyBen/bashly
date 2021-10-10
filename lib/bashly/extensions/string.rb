@@ -24,7 +24,7 @@ class String
   end
 
   def lint
-    gsub(/\n{2,}/, "\n\n")
+    gsub(/\s+\n/m, "\n\n")
   end
 
 end

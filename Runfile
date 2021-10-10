@@ -1,7 +1,9 @@
 require "runfile-tasks"
 require "byebug"
+require "colsole"
 require_relative 'lib/bashly'
 require_relative 'helpers/example'
+include Colsole
 
 title   "Bashly Developer Toolbelt"
 summary "Runfile tasks for building the Bashly gem"

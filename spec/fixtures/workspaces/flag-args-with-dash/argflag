@@ -24,10 +24,12 @@ version_command() {
 argflag_usage() {
   if [[ -n $long_usage ]]; then
     printf "argflag - Personal package manager\n"
-    echo 
+    echo
+
   else
     printf "argflag - Personal package manager\n"
-    echo 
+    echo
+
   fi
 
   printf "Usage:\n"
@@ -50,7 +52,7 @@ argflag_usage() {
     echo "  --force, -f"
     printf "    Force\n"
     echo
-    
+
     # :flag.usage
     echo "  --options, -o LIST"
     printf "    Options\n"
@@ -113,13 +115,13 @@ parse_requirements() {
     version_command
     exit
     ;;
-  
+
   --help | -h )
     long_usage=yes
     argflag_usage
     exit
     ;;
-  
+
   esac
   # :command.environment_variables_filter
   # :command.dependencies_filter
@@ -136,7 +138,7 @@ parse_requirements() {
       args[--force]=1
       shift
       ;;
-  
+
     # :flag.case
     --options | -o )
       if [[ -n "${2+present}" ]]; then
@@ -148,19 +150,18 @@ parse_requirements() {
         exit 1
       fi
       ;;
-  
-  
+
     -* )
       printf "invalid option: %s\n" "$key"
       exit 1
       ;;
-  
+
     * )
       # :command.parse_requirements_case
       printf "invalid argument: %s\n" "$key"
       exit 1
       ;;
-  
+
     esac
   done
   # :command.catch_all_filter
