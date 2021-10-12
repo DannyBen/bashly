@@ -1,7 +1,16 @@
 Change Log
 ========================================
 
-v0.6.7 - 2021-09-23
+v0.6.8 - 2021-10-12
+----------------------------------------
+
+- Add --quiet to bashly generate
+- Fix --wrap func generation excess newlines
+- Add support for a custom script header
+- Improve friendly error on bash 3
+
+
+v0.6.7 - 2021-09-27
 ----------------------------------------
 
 - Fix config library context contamination
