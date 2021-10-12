@@ -75,11 +75,11 @@ describe Commands::Generate do
       expect(success).to be true
     end
 
-    it "generates the cli script wrapped in a function" do
+    it "generates the cli script wrapped in a function without bash3 bouncer" do
       expect { subject.run %w[generate -w function] }.to output_approval('cli/generate/wrap-function')
       expect(File).to exist(cli_script)
       lines = File.readlines cli_script
-      expect(lines[5]).to eq "function() {\n"
+      expect(lines[0..10].join).to match_approval('cli/generate/wrap-script')
     end
   end
 
