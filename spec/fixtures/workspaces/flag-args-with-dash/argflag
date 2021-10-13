@@ -142,7 +142,7 @@ parse_requirements() {
 
     # :flag.case
     --options | -o )
-      if [[ $2 ]]; then
+      if [[ -n ${2+x} ]]; then
         args[--options]="$2"
         shift
         shift
