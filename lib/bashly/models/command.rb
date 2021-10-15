@@ -197,10 +197,13 @@ module Bashly
       def usage_string
         result = [full_name]
         result << "[command]" if commands.any?
+        result << "[options]" unless flags.empty?
+        required_flags.each do |flag|
+          result << flag.usage_string
+        end
         args.each do |arg|
           result << arg.usage_string
         end
-        result << "[options]" unless flags.empty?
         result << catch_all_usage if catch_all
         result.join " "
       end

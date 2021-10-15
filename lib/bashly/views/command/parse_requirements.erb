@@ -8,9 +8,9 @@ parse_requirements() {
 <%= render(:environment_variables_filter).indent 2 %>
 <%= render(:dependencies_filter).indent 2 %>
 <%= render(:command_filter).indent 2 %>
-<%= render(:required_args_filter).indent 2 %>
 <%= render(:required_flags_filter).indent 2 %>
 <%= render(:parse_requirements_while).indent 2 %>
+<%= render(:required_args_filter).indent 2 %>
 <%= render(:catch_all_filter).indent 2 %>
 <%= render(:default_assignments).indent 2 %>
 <%= render(:whitelist_filter).indent 2 %>
