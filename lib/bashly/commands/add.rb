@@ -8,6 +8,7 @@ module Bashly
       usage "bashly add config [--force]"
       usage "bashly add colors [--force]"
       usage "bashly add yaml [--force]"
+      usage "bashly add validations [--force]"
       usage "bashly add comp FORMAT [OUTPUT]"
       usage "bashly add (-h|--help)"
 
@@ -21,6 +22,7 @@ module Bashly
       command "config", "Add standard functions for handling INI files to the lib directory."
       command "colors", "Add standard functions for printing colorful and formatted text to the lib directory."
       command "yaml", "Add standard functions for reading YAML files to the lib directory."
+      command "validations", "Add argument validation functions to the lib directory."
       command "comp", "Generate a bash completions script or function."
 
       example "bashly add strings --force"
@@ -34,19 +36,23 @@ module Bashly
       end
 
       def lib_command
-        safe_copy_lib "sample_function.sh"
+        safe_copy_file "sample_function.sh"
       end
 
       def config_command
-        safe_copy_lib "config.sh"
+        safe_copy_file "config.sh"
       end
 
       def colors_command
-        safe_copy_lib "colors.sh"
+        safe_copy_file "colors.sh"
       end
 
       def yaml_command
-        safe_copy_lib "yaml.sh"
+        safe_copy_file "yaml.sh"
+      end
+
+      def validations_command
+        safe_copy_dir "validations"
       end
 
       def comp_command
@@ -68,8 +74,14 @@ module Bashly
 
     private
 
-      def safe_copy_lib(libfile)
-        safe_copy asset("templates/lib/#{libfile}"), "#{Settings.source_dir}/lib/#{libfile}"
+      def safe_copy_dir(dir)
+        Dir[asset("templates/lib/#{dir}/*.sh")].each do |file|
+          safe_copy_file "#{dir}/#{File.basename file}"
+        end
+      end
+
+      def safe_copy_file(file)
+        safe_copy asset("templates/lib/#{file}"), "#{Settings.source_dir}/lib/#{file}"
       end
 
       def safe_copy(source, target)

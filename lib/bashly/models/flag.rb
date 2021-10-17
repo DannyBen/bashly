@@ -21,15 +21,6 @@ module Bashly
         result << strings[:required] if required and extended
         result.join " "
       end
-
-      def validations
-        return [] unless options['validate']
-        if options['validate'].is_a? String
-          [options['validate']]
-        else
-          options['validate']
-        end
-      end
     end
   end
 end

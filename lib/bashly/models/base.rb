@@ -47,6 +47,15 @@ module Bashly
         options['help'] ||= ''
       end
 
+      def validations
+        return [] unless options['validate']
+        if options['validate'].is_a? String
+          [options['validate']]
+        else
+          options['validate']
+        end
+      end
+
       def method_missing(method_name, *arguments, &block)
         key = method_name.to_s
         respond_to?(method_name) ? options[key] : super

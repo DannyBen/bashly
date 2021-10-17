@@ -1,0 +1,40 @@
++ bashly add validations
+created src/lib/validations/validate_integer.sh
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/add_command.sh
+created ./calc
+run ./calc --help to test your bash script
++ ./calc -h
+calc - Sample application demonstrating validations
+
+Usage:
+  calc [command]
+  calc [command] --help | -h
+  calc --version | -v
+
+Commands:
+  add   Add two numbers
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./calc add 1 2 --multiply 3
+# this file is located in 'src/add_command.sh'
+# code for 'calc add' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[first]} = 1
+- ${args[--multiply]} = 3
+- ${args[second]} = 2
++ ./calc add A
+validation error: FIRST must be an integer
++ ./calc add 1 B
+validation error: SECOND must be an integer
++ ./calc add 1 2 --multiply C
+validation error: --multiply, -m FACTOR must be an integer
