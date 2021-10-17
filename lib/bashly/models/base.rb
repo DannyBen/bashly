@@ -25,6 +25,7 @@ module Bashly
         parent_name
         required
         short
+        validate
         version
       ]
 
