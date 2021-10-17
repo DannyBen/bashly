@@ -67,11 +67,13 @@ Bashly is responsible for:
 ## Contributing / Support
 
 If you experience any issue, have a question or a suggestion, or if you wish
-to contribute, feel free to [open an issue][issues].
+to contribute, feel free to [open an issue][issues] or
+[start a discussion][discussions].
 
 
 
 [issues]: https://github.com/DannyBen/bashly/issues
+[discussions]: https://github.com/DannyBen/bashly/discussions
 [docs]: https://bashly.dannyb.co/
 [examples]: https://github.com/DannyBen/bashly/tree/master/examples#bashly-examples
 
