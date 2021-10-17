@@ -29,8 +29,14 @@ module Bashly
         if File.exist? custom_header_path
           File.read custom_header_path
         else
-          render('header')
+          default_header
         end
+      end
+
+      def default_header
+        result = render('header')
+        result += render('bash3_bouncer') unless function_name
+        result
       end
 
       def body

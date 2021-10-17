@@ -14,7 +14,7 @@ RunfileTasks::Testing.rspec
 
 help   "Run interactive console"
 action :console, :c do
-  run "bundle exec bin/console"
+  exec "bundle exec bin/console"
 end
 
 help   "Run shellcheck on all examples"
@@ -32,9 +32,9 @@ end
 
 help   "Generate changelog and append old changelog"
 action :changelog do
-  run "git changelog --save"
+  system "git changelog --save"
   # append older changelog (prior to switching to git-changelog)
-  run "cat .changelog.old.md >> CHANGELOG.md"
+  system "cat .changelog.old.md >> CHANGELOG.md"
 end
 
 help   "Append the content of bashly.yml to all example READMEs"
@@ -51,9 +51,9 @@ command :docker
 
 help   "Build the docker images"
 action :build, :b do
-  run "docker build -t dannyben/bashly ."
-  run "docker tag dannyben/bashly dannyben/bashly:#{Bashly::VERSION}"
-  run "docker images |grep bashly"
+  system "docker build -t dannyben/bashly ."
+  system "docker tag dannyben/bashly dannyben/bashly:#{Bashly::VERSION}"
+  system "docker images |grep bashly"
 end
 
 help   "Smoke test the docker image"
@@ -69,8 +69,8 @@ end
 
 help   "Push the docker images to Docker Hub"
 action :push, :p do
-  run "docker push dannyben/bashly"
-  run "docker push dannyben/bashly:#{Bashly::VERSION}"
+  system "docker push dannyben/bashly"
+  system "docker push dannyben/bashly:#{Bashly::VERSION}"
 end
 
 endcommand
