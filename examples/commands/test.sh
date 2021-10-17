@@ -17,4 +17,3 @@ bashly generate
 ./cli upload --help
 ./cli upload sourcefile
 ./cli upload sourcefile -u username
-./cli upload sourcefile -u username -p ''

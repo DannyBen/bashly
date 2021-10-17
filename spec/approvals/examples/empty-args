@@ -1,0 +1,17 @@
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/test_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli test ''
+# this file is located in 'src/test_command.sh'
+# code for 'cli test' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[arg]} = 
++ ./cli test --flag ''
+# this file is located in 'src/test_command.sh'
+# code for 'cli test' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--flag]} = 
