@@ -64,7 +64,61 @@ commands:
 ### `$ ./calc -h`
 
 ```shell
-sh: 1: ./calc: not found
+calc - Sample application demonstrating validations
+
+Usage:
+  calc [command]
+  calc [command] --help | -h
+  calc --version | -v
+
+Commands:
+  add   Add two numbers
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+
+
+```
+
+### `$ ./calc add 1 2 --multiply 3`
+
+```shell
+# this file is located in 'src/add_command.sh'
+# code for 'calc add' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[first]} = 1
+- ${args[--multiply]} = 3
+- ${args[second]} = 2
+
+
+```
+
+### `$ ./calc add A`
+
+```shell
+validation error: FIRST must be an integer
+
+
+```
+
+### `$ ./calc add 1 B`
+
+```shell
+validation error: SECOND must be an integer
+
+
+```
+
+### `$ ./calc add 1 2 --multiply C`
+
+```shell
+validation error: --multiply, -m FACTOR must be an integer
 
 
 ```
