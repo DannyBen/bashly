@@ -2,6 +2,7 @@
 <%= aliases.join " | " %> )
 % if arg
   if [[ $2 ]]; then
+<%= render(:validations).indent 4 %>
     args[<%= name %>]="$2"
     shift
     shift
