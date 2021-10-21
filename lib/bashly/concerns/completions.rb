@@ -31,8 +31,8 @@ module Bashly
       flags.map(&:name) + flags.map(&:short)
     end
 
-    def completion_flag_whitelist
-      flags.map(&:allowed).flatten
+    def completion_allowed_args
+      flags.map(&:allowed).flatten + args.map(&:allowed).flatten
     end
 
     def completion_words(with_version: false)
@@ -40,12 +40,10 @@ module Bashly
       trivial_flags += %w[--version -v] if with_version
       all = (
         command_names + trivial_flags +
-        completion_flag_names +
-        completion_flag_whitelist
+        completion_flag_names + completion_allowed_args
       )
 
       all += completions if completions
-      all += allowed if allowed
       all.compact.uniq.sort
     end
 
