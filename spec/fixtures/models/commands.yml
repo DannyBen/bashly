@@ -161,5 +161,20 @@
       - long: --verbose
         short: -v
 
+:completions_whitelist:
+  name: download
+  args:
+  - name: protocol
+    allowed: [https, ssh]
+  - name: port
+    allowed: ["80", "22", "3000"]
+  flags:
+  - long: --role
+    arg: name
+    allowed: [user, admin]
+  - long: --method
+    arg: name
+    allowed: [get, post]
+
 :custom_header:
   name: check

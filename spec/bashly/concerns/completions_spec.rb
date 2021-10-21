@@ -38,4 +38,15 @@ describe Models::Command do
       end
     end
   end
+
+  context "with a command that uses whitelist args" do
+    let(:fixture) { :completions_whitelist }
+
+    describe '#completion_data' do
+      it "returns a data structure that includes thw whitelist" do
+        expect(subject.completion_data.to_yaml)
+          .to match_approval("completions/whitelist")
+      end
+    end
+  end
 end
