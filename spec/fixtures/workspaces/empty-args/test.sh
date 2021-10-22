@@ -7,5 +7,7 @@ bundle exec bashly generate
 
 set -x
 
+./cli test a b --flag c
 ./cli test ''
-./cli test --flag ''
+./cli test '' --flag ''
+./cli test '' '' --flag ''

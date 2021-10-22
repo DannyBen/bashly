@@ -9,4 +9,6 @@ commands:
   - long: --flag
     arg: value
   args:
-  - name: arg
+  - name: required_arg
+    required: true
+  - name: optional_arg
