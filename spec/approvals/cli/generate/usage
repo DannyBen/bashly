@@ -4,5 +4,6 @@ Usage:
   bashly add config [--force]
   bashly add colors [--force]
   bashly add yaml [--force]
+  bashly add validations [--force]
   bashly add comp FORMAT [OUTPUT]
   bashly add (-h|--help)

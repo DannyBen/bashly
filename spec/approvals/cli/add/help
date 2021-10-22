@@ -6,6 +6,7 @@ Usage:
   bashly add config [--force]
   bashly add colors [--force]
   bashly add yaml [--force]
+  bashly add validations [--force]
   bashly add comp FORMAT [OUTPUT]
   bashly add (-h|--help)
 
@@ -27,6 +28,9 @@ Commands:
 
   yaml
     Add standard functions for reading YAML files to the lib directory.
+
+  validations
+    Add argument validation functions to the lib directory.
 
   comp
     Generate a bash completions script or function.

@@ -3,6 +3,7 @@
 % condition = "if"
 % args.each do |arg|
 <%= condition %> [[ ! ${args[<%= arg.name %>]} ]]; then
+<%= arg.render(:validations).indent 2 %>
   args[<%= arg.name %>]=$1
   shift
 % condition = "elif"

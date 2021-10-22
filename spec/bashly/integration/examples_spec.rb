@@ -14,6 +14,9 @@ describe 'generated bash scripts' do
 
   test_cases = fixtures + examples
 
+  # To test one example, run: EXAMPLE=yaml bundle exec run spec examples
+  test_cases = ["examples/#{ENV['EXAMPLE']}"] if ENV['EXAMPLE']
+
   leeway = ENV['CI'] ? 30 : 0
 
   test_cases.each do |example|

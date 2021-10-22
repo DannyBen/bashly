@@ -25,6 +25,7 @@ module Bashly
         parent_name
         required
         short
+        validate
         version
       ]
 
@@ -44,6 +45,15 @@ module Bashly
 
       def help
         options['help'] ||= ''
+      end
+
+      def validations
+        return [] unless options['validate']
+        if options['validate'].is_a? String
+          [options['validate']]
+        else
+          options['validate']
+        end
       end
 
       def method_missing(method_name, *arguments, &block)
