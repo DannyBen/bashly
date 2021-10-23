@@ -1,9 +1,19 @@
++ bashly add colors --force
+created src/lib/colors.sh
 + bashly generate
 creating user files in src
 skipped src/initialize.sh (exists)
 skipped src/root_command.sh (exists)
 created ./colorly
 run ./colorly --help to test your bash script
++ ./colorly
+Message Recevied:
+
+  => hello colors
+  ==> hello colors
+  ===> hello colors
+
++ NO_COLOR=1
 + ./colorly
 Message Recevied:
 
