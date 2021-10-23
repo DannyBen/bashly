@@ -75,7 +75,7 @@ module Bashly
     private
 
       def safe_copy_dir(dir)
-        Dir[asset("templates/lib/#{dir}/*.sh")].each do |file|
+        Dir[asset("templates/lib/#{dir}/*.sh")].sort.each do |file|
           safe_copy_file "#{dir}/#{File.basename file}"
         end
       end
