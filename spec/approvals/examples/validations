@@ -1,21 +1,25 @@
 + bashly add validations
+created src/lib/validations/validate_file_exists.sh
 created src/lib/validations/validate_integer.sh
+created src/lib/validations/validate_not_empty.sh
 + bashly generate
 creating user files in src
 created src/initialize.sh
-created src/add_command.sh
-created ./calc
-run ./calc --help to test your bash script
-+ ./calc -h
-calc - Sample application demonstrating validations
+created src/calc_command.sh
+created src/cat_command.sh
+created ./validate
+run ./validate --help to test your bash script
++ ./validate -h
+validate - Sample application demonstrating validations
 
 Usage:
-  calc [command]
-  calc [command] --help | -h
-  calc --version | -v
+  validate [command]
+  validate [command] --help | -h
+  validate --version | -v
 
 Commands:
-  add   Add two numbers
+  calc   Add two numbers
+  cat    Show a file
 
 Options:
   --help, -h
@@ -24,17 +28,29 @@ Options:
   --version, -v
     Show version number
 
-+ ./calc add 1 2 --multiply 3
-# this file is located in 'src/add_command.sh'
-# code for 'calc add' goes here
++ ./validate calc 1 2 --multiply 3
+# this file is located in 'src/calc_command.sh'
+# code for 'validate calc' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[first]} = 1
 - ${args[--multiply]} = 3
 - ${args[second]} = 2
-+ ./calc add A
-validation error: FIRST must be an integer
-+ ./calc add 1 B
-validation error: SECOND must be an integer
-+ ./calc add 1 2 --multiply C
-validation error: --multiply, -m FACTOR must be an integer
++ ./validate calc A
+validation error in FIRST:
+must be an integer
++ ./validate calc 1 B
+validation error in SECOND:
+must be an integer
++ ./validate calc 1 2 --multiply C
+validation error in --multiply, -m FACTOR:
+must be an integer
++ ./validate cat .gitignore
+# this file is located in 'src/cat_command.sh'
+# code for 'validate cat' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[path]} = .gitignore
++ ./validate cat no-such-file
+validation error in PATH:
+must be an existing file

@@ -1,10 +1,9 @@
-name: calc
+name: validate
 help: Sample application demonstrating validations
 version: 0.1.0
 
 commands:
-- name: add
-  short: a
+- name: calc
   help: Add two numbers
 
   args:
@@ -31,3 +30,12 @@ commands:
 
     # Validations also work on flags (when they have arguments)
     validate: integer
+
+# Additional validation examples
+- name: cat
+  help: Show a file
+  args:
+  - name: path
+    help: Path to file
+    required: true
+    validate: file_exists

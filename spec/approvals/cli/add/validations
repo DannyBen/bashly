@@ -1,1 +1,3 @@
+created spec/tmp/src/lib/validations/validate_file_exists.sh
 created spec/tmp/src/lib/validations/validate_integer.sh
+created spec/tmp/src/lib/validations/validate_not_empty.sh

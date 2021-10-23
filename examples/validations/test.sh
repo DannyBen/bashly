@@ -10,10 +10,12 @@ bashly generate
 
 ### Try Me ###
 
-./calc -h
-./calc add 1 2 --multiply 3
-./calc add A
-./calc add 1 B
-./calc add 1 2 --multiply C
+./validate -h
+./validate calc 1 2 --multiply 3
+./validate calc A
+./validate calc 1 B
+./validate calc 1 2 --multiply C
+./validate cat .gitignore
+./validate cat no-such-file
 
 

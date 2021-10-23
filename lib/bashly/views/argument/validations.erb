@@ -1,6 +1,6 @@
 % validations.each do |validation_function|
 if [[ -n $(validate_<%= validation_function %> "$1") ]]; then
-  printf "<%= strings[:validation_error] %>\n" "<%= name.upcase %> $(validate_<%= validation_function %> "$1")"
+  printf "<%= strings[:validation_error] %>\n" "<%= name.upcase %>" "$(validate_<%= validation_function %> "$1")"
   exit 1
 fi
 % end
