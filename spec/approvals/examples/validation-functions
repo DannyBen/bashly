@@ -1,0 +1,49 @@
++ bundle exec bashly add validations --force
+created src/lib/validations/validate_dir_exists.sh
+created src/lib/validations/validate_file_exists.sh
+created src/lib/validations/validate_integer.sh
+created src/lib/validations/validate_not_empty.sh
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./validate
+run ./validate --help to test your bash script
++ ./validate 1
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[integer_arg]} = 1
++ ./validate A
+validation error in INTEGER_ARG:
+must be an integer
++ ./validate 1 README.md
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[file_exists_arg]} = README.md
+- ${args[integer_arg]} = 1
++ ./validate 1 no-such-file
+validation error in FILE_EXISTS_ARG:
+must be an existing file
++ ./validate 1 README.md src
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[dir_exists_arg]} = src
+- ${args[file_exists_arg]} = README.md
+- ${args[integer_arg]} = 1
++ ./validate 1 README.md no-such-dir
+validation error in DIR_EXISTS_ARG:
+must be an existing directory
++ ./validate 1 README.md src non-empty
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[dir_exists_arg]} = src
+- ${args[file_exists_arg]} = README.md
+- ${args[integer_arg]} = 1
+- ${args[not_empty_arg]} = non-empty
++ ./validate 1 README.md src ''
+validation error in NOT_EMPTY_ARG:
+must not be empty

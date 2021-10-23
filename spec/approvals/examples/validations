@@ -1,4 +1,5 @@
-+ bashly add validations
++ bashly add validations --force
+created src/lib/validations/validate_dir_exists.sh
 created src/lib/validations/validate_file_exists.sh
 created src/lib/validations/validate_integer.sh
 created src/lib/validations/validate_not_empty.sh
@@ -6,35 +7,15 @@ created src/lib/validations/validate_not_empty.sh
 creating user files in src
 created src/initialize.sh
 created src/calc_command.sh
-created src/cat_command.sh
 created ./validate
 run ./validate --help to test your bash script
-+ ./validate -h
-validate - Sample application demonstrating validations
-
-Usage:
-  validate [command]
-  validate [command] --help | -h
-  validate --version | -v
-
-Commands:
-  calc   Add two numbers
-  cat    Show a file
-
-Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
-+ ./validate calc 1 2 --multiply 3
++ ./validate calc 1 2 --save README.md
 # this file is located in 'src/calc_command.sh'
 # code for 'validate calc' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[first]} = 1
-- ${args[--multiply]} = 3
+- ${args[--save]} = README.md
 - ${args[second]} = 2
 + ./validate calc A
 validation error in FIRST:
@@ -42,15 +23,6 @@ must be an integer
 + ./validate calc 1 B
 validation error in SECOND:
 must be an integer
-+ ./validate calc 1 2 --multiply C
-validation error in --multiply, -m FACTOR:
-must be an integer
-+ ./validate cat .gitignore
-# this file is located in 'src/cat_command.sh'
-# code for 'validate cat' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args:
-- ${args[path]} = .gitignore
-+ ./validate cat no-such-file
-validation error in PATH:
++ ./validate calc 1 2 --save no-such-file.txt
+validation error in --save PATH:
 must be an existing file

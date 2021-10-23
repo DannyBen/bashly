@@ -1,0 +1,13 @@
+name: validate
+help: Test all built-in validations
+version: 0.1.0
+
+args:
+- name: integer_arg
+  validate: integer
+- name: file_exists_arg
+  validate: file_exists
+- name: dir_exists_arg
+  validate: dir_exists
+- name: not_empty_arg
+  validate: not_empty

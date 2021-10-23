@@ -1,0 +1,3 @@
+src/*.sh
+src/validations/*.sh
+validate

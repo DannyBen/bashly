@@ -11,31 +11,19 @@ commands:
     help: First number
     required: true
 
-    # Specify one or more validation types (as string or array)
-    # This validation will look for a function named `validate_integer` in your
-    # script.
+    # Specify a validation function.
+    # Bashly will look for a function named `validate_integer` in your
+    # script, you can use any name as long as it has a matching function.
     validate: integer
   - name: second
     help: Second number
-
-    # Using the array syntax, you can specify more than one validations
-    validate:
-      - integer
-
-  flags:
-  - long: --multiply
-    short: -m
-    arg: factor
-    help: Multiply the result
-
-    # Validations also work on flags (when they have arguments)
     validate: integer
 
-# Additional validation examples
-- name: cat
-  help: Show a file
-  args:
-  - name: path
-    help: Path to file
-    required: true
+  flags:
+  - long: --save
+    arg: path
+    help: Save the result to a file
+
+    # Validations also work on flags (when they have arguments)
     validate: file_exists
+
