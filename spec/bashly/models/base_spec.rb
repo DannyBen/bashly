@@ -39,26 +39,4 @@ describe Models::Base do
       end
     end
   end
-
-  describe '#validations' do
-    context "when validate is empty" do
-      it "returns an empty array" do
-        expect(subject.validations).to eq []
-      end
-    end
-
-    context "when validate is a String" do
-      let(:options) { {"validate" => "integer"} }
-      it "returns an array of validation names" do
-        expect(subject.validations).to eq ["integer"]
-      end
-    end
-
-    context "when validate is an array" do
-      let(:options) { {"validate" => ["black", "white"]} }
-      it "returns an array of validation names" do
-        expect(subject.validations).to eq ["black", "white"]
-      end
-    end
-  end
 end
