@@ -22,13 +22,12 @@ failure, or an empty string on success.
 ## `bashly.yml`
 
 ```yaml
-name: calc
+name: validate
 help: Sample application demonstrating validations
 version: 0.1.0
 
 commands:
-- name: add
-  short: a
+- name: calc
   help: Add two numbers
 
   args:
@@ -36,89 +35,64 @@ commands:
     help: First number
     required: true
 
-    # Specify one or more validation types (as string or array)
-    # This validation will look for a function named `validate_integer` in your
-    # script.
+    # Specify a validation function.
+    # Bashly will look for a function named `validate_integer` in your
+    # script, you can use any name as long as it has a matching function.
     validate: integer
   - name: second
     help: Second number
-
-    # Using the array syntax, you can specify more than one validations
-    validate:
-      - integer
+    validate: integer
 
   flags:
-  - long: --multiply
-    short: -m
-    arg: factor
-    help: Multiply the result
+  - long: --save
+    arg: path
+    help: Save the result to a file
 
     # Validations also work on flags (when they have arguments)
-    validate: integer
+    validate: file_exists
 ```
 
 
 
 ## Generated script output
 
-### `$ ./calc -h`
+### `$ ./validate calc 1 2 --save README.md`
 
 ```shell
-calc - Sample application demonstrating validations
-
-Usage:
-  calc [command]
-  calc [command] --help | -h
-  calc --version | -v
-
-Commands:
-  add   Add two numbers
-
-Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
-
-
-```
-
-### `$ ./calc add 1 2 --multiply 3`
-
-```shell
-# this file is located in 'src/add_command.sh'
-# code for 'calc add' goes here
+# this file is located in 'src/calc_command.sh'
+# code for 'validate calc' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[first]} = 1
-- ${args[--multiply]} = 3
+- ${args[--save]} = README.md
 - ${args[second]} = 2
 
 
 ```
 
-### `$ ./calc add A`
+### `$ ./validate calc A`
 
 ```shell
-validation error: FIRST must be an integer
+validation error in FIRST:
+must be an integer
 
 
 ```
 
-### `$ ./calc add 1 B`
+### `$ ./validate calc 1 B`
 
 ```shell
-validation error: SECOND must be an integer
+validation error in SECOND:
+must be an integer
 
 
 ```
 
-### `$ ./calc add 1 2 --multiply C`
+### `$ ./validate calc 1 2 --save no-such-file.txt`
 
 ```shell
-validation error: --multiply, -m FACTOR must be an integer
+validation error in --save PATH:
+must be an existing file
 
 
 ```
