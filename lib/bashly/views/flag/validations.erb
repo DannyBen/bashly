@@ -1,6 +1,8 @@
-% validations.each do |validation_function|
-if [[ -n $(validate_<%= validation_function %> "$2") ]]; then
-  printf "<%= strings[:validation_error] %>\n" "<%= usage_string %> $(validate_<%= validation_function %> "$2")"
+# :flag.validations
+% if validate
+if [[ -n $(validate_<%= validate %> "$2") ]]; then
+  printf "<%= strings[:validation_error] %>\n" "<%= usage_string %>" "$(validate_<%= validate %> "$2")"
   exit 1
 fi
+
 % end

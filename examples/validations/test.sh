@@ -5,15 +5,12 @@ rm -rf ./src/lib
 
 set -x
 
-bashly add validations
+bashly add validations --force
 bashly generate
 
 ### Try Me ###
 
-./calc -h
-./calc add 1 2 --multiply 3
-./calc add A
-./calc add 1 B
-./calc add 1 2 --multiply C
-
-
+./validate calc 1 2 --save README.md
+./validate calc A
+./validate calc 1 B
+./validate calc 1 2 --save no-such-file.txt
