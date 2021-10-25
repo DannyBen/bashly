@@ -1,7 +1,7 @@
 # :flag.case
 <%= aliases.join " | " %> )
 % if arg
-  if [[ $2 ]]; then
+  if [[ -n ${2+x} ]]; then
 <%= render(:validations).indent 4 %>
     args[<%= name %>]="$2"
     shift

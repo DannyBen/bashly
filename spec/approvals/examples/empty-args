@@ -1,0 +1,22 @@
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/test_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli test a b --flag c
+args:
+- ${args[--flag]} = c
+- ${args[optional_arg]} = b
+- ${args[required_arg]} = a
++ ./cli test ''
+args:
+- ${args[required_arg]} = 
++ ./cli test '' --flag ''
+args:
+- ${args[--flag]} = 
+- ${args[required_arg]} = 
++ ./cli test '' '' --flag ''
+args:
+- ${args[--flag]} = 
+- ${args[optional_arg]} = 
+- ${args[required_arg]} = 
