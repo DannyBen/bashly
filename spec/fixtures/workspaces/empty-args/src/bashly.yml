@@ -1,0 +1,14 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+commands:
+- name: test
+  help: Run test
+  flags:
+  - long: --flag
+    arg: value
+  args:
+  - name: required_arg
+    required: true
+  - name: optional_arg
