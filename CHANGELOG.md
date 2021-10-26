@@ -1,10 +1,13 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v0.6.9 - 2021-10-26
 ----------------------------------------
 
 - Add optional arg/flag validation functions
+- Automatically add allowed arguments to completions
+- Add more custom validations
+- Add support for NO_COLORS
 
 
 v0.6.8 - 2021-10-12
