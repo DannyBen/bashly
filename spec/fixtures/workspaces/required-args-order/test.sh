@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# This fixture tests that short command codes work properly
-# It is executed as part of the Runfile examples test
-# Reference issue: https://github.com/DannyBen/bashly/issues/16
+# This fixture ensures that required args and flags are allowed to appear after
+# the optional flags.
+# Reference issue: https://github.com/DannyBen/bashly/issues/124
 
 rm -f ./src/*.sh
 rm -f ./download
