@@ -1,0 +1,45 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./download
+run ./download --help to test your bash script
++ ./download
+missing required argument: PROTOCOL
+usage: download PROTOCOL PORT [BODY] [options]
++ ./download http
+missing required argument: PORT
+usage: download PROTOCOL PORT [BODY] [options]
++ ./download http 3000
+missing required flag: --method NAME
++ ./download http 3000 --method GET
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--method]} = GET
+- ${args[port]} = 3000
+- ${args[protocol]} = http
++ ./download http 3000 --method GET --role admin
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--method]} = GET
+- ${args[port]} = 3000
+- ${args[protocol]} = http
+- ${args[--role]} = admin
++ ./download http --role admin --method GET 3000
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--method]} = GET
+- ${args[port]} = 3000
+- ${args[protocol]} = http
+- ${args[--role]} = admin
++ ./download --role admin --method GET http 3000
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--method]} = GET
+- ${args[port]} = 3000
+- ${args[protocol]} = http
+- ${args[--role]} = admin

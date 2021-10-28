@@ -1,12 +1,7 @@
 # :command.required_args_filter
 % required_args.each do |arg|
-if [[ -n ${1+x} && $1 != -* ]]; then
-<%= arg.render(:validations).indent 2 %>
-  args[<%= arg.name %>]=$1
-  shift
-else
+if [[ -z ${args[<%= arg.name %>]+x} ]]; then
   printf "<%= strings[:missing_required_argument] % { arg: arg.name.upcase, usage: usage_string } %>\n"
   exit 1
 fi
-
 % end
