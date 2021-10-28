@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# This fixture tests Bash 4+-only syntax
-# It is executed as part of the Runfile examples test
+# This fixture ensures that empty args and flag args are supported
+# Reference issue: https://github.com/DannyBen/bashly/pull/135
 
 bundle exec bashly generate
 
