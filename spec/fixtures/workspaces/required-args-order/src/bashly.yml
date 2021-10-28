@@ -1,0 +1,20 @@
+name: download
+
+args:
+- name: protocol
+  help: Protocol to use
+  required: true
+- name: port
+  help: Port to use
+  required: true
+- name: body
+  help: Message body
+
+flags:
+- long: --method
+  help: HTTP method
+  arg: name
+  required: true
+- long: --role
+  help: role
+  arg: name
