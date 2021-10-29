@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v0.7.0 - 2021-10-29
+----------------------------------------
+
+- Allow required args to appear after flags
+- Refactor library functions (internal)
+- Auto upgrade libraries
+- Add support for hidden comments
+
+
 v0.6.9 - 2021-10-26
 ----------------------------------------
 
