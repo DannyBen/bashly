@@ -1,5 +1,5 @@
 module Bashly
-  module Models
+  module Script
     class Flag < Base
       def aliases
         if long and short

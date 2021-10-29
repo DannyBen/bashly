@@ -1,5 +1,5 @@
 module Bashly
-  module Models
+  module Script
     class EnvironmentVariable < Base
       def usage_string(extended: false)
         result = [name.upcase]

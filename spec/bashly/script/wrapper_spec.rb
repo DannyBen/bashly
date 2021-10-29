@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe Models::Script do
+describe Script::Wrapper do
   subject { described_class.new command }
-  let(:command) { Models::Command.new config }
-  let(:config) { load_fixture('models/commands')[fixture] }
+  let(:command) { Script::Command.new config }
+  let(:config) { load_fixture('script/commands')[fixture] }
   let(:fixture) { :basic_command }
 
   describe '#code' do
     context "without function name" do
       it "returns the complete script" do
         lines = subject.code.split "\n"
-        expect(lines[0..12].join("\n")).to match_approval('models/script/code')
+        expect(lines[0..12].join("\n")).to match_approval('script/wrapper/code')
         expect(lines[-1]).to eq 'run "$@"'
       end
     end
@@ -20,7 +20,7 @@ describe Models::Script do
 
       it "returns the complete script wrapped in a function without a bash3 bouncer" do
         lines = subject.code.split "\n"
-        expect(lines[0..12].join("\n")).to match_approval('models/script/code-wrapped')
+        expect(lines[0..12].join("\n")).to match_approval('script/wrapper/code-wrapped')
         expect(lines[-1]).to eq '(return 0 2>/dev/null) || my_super_function "$@"'
       end
     end

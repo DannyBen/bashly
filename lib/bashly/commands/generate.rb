@@ -69,7 +69,7 @@ module Bashly
       end
 
       def script
-        @script ||= Models::Script.new(command, args['--wrap'])
+        @script ||= Script::Wrapper.new(command, args['--wrap'])
       end
 
       def master_script_path
@@ -81,7 +81,7 @@ module Bashly
       end
 
       def command
-        @command ||= Models::Command.new config
+        @command ||= Script::Command.new config
       end
 
     end

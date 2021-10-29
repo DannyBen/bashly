@@ -1,5 +1,5 @@
 module Bashly
-  module Models
+  module Script
     class Base
       include Renderable
 

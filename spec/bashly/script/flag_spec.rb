@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Models::Flag do
+describe Script::Flag do
   let(:options) { {"long" => "--help", "short" => "-h", "help" => "show this help"} }
   subject { described_class.new options }
 

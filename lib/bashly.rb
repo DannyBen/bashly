@@ -9,6 +9,6 @@ requires 'bashly/concerns'
 
 requires 'bashly/settings'
 requires 'bashly/exceptions'
-requires 'bashly/models/base'
+requires 'bashly/script/base'
 requires 'bashly/commands/base'
 requires 'bashly'

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Models::Command do
+describe Script::Command do
   let(:fixture) { :basic_command }
 
   subject do
-    options = load_fixture('models/commands')[fixture]
+    options = load_fixture('script/commands')[fixture]
     described_class.new options
   end
 
@@ -51,7 +51,7 @@ describe Models::Command do
   describe '#args' do
     it "returns an array of Argument objects" do
       expect(subject.args).to be_an Array
-      expect(subject.args.first).to be_a Models::Argument
+      expect(subject.args.first).to be_a Script::Argument
     end
   end
 
@@ -186,7 +186,7 @@ describe Models::Command do
 
     it "returns an array of Command objects" do
       expect(subject.commands).to be_an Array
-      expect(subject.commands.first).to be_a Models::Command
+      expect(subject.commands.first).to be_a Script::Command
     end
 
     it "sets the parents property of its commands" do
@@ -215,7 +215,7 @@ describe Models::Command do
     let(:fixture) { :default_command }
 
     it "returns a Command object of the first default command" do
-      expect(subject.default_command).to be_a Models::Command
+      expect(subject.default_command).to be_a Script::Command
       expect(subject.default_command.name).to eq 'get'
     end    
   end
@@ -233,7 +233,7 @@ describe Models::Command do
   describe '#environment_cariables' do
     it "returns an array of EnvironemntVariable objects" do
       expect(subject.environment_variables).to be_an Array
-      expect(subject.environment_variables.first).to be_a Models::EnvironmentVariable
+      expect(subject.environment_variables.first).to be_a Script::EnvironmentVariable
     end
   end
 
@@ -264,7 +264,7 @@ describe Models::Command do
   describe '#flags' do
     it "returns an array of Flag objects" do
       expect(subject.flags).to be_an Array
-      expect(subject.flags.first).to be_a Models::Flag
+      expect(subject.flags.first).to be_a Script::Flag
     end
   end
 

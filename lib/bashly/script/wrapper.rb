@@ -1,6 +1,6 @@
 module Bashly
-  module Models
-    class Script
+  module Script
+    class Wrapper
       include Renderable
 
       attr_reader :command, :function_name
