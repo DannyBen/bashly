@@ -1,18 +1,15 @@
-# ---
-# YAML parser [@bashly-upgrade yaml]
-# This file is a part of Bashly standard library
-# Does not support arrays, only hashes
-#
-# Source: https://stackoverflow.com/a/21189044/413924
-#
-# Usage:
-#
-#   yaml_load "settings.yml"             # print variables
-#   yaml_load "settings.yml" "config_"   # use prefix
-#   eval $(yaml_load "settings.yml")     # create variables in scope
-#
-# ---
-
+## YAML parser [@bashly-upgrade yaml]
+## This file is a part of Bashly standard library
+## Does not support arrays, only hashes
+##
+## Source: https://stackoverflow.com/a/21189044/413924
+##
+## Usage:
+##
+##   yaml_load "settings.yml"             # print variables
+##   yaml_load "settings.yml" "config_"   # use prefix
+##   eval $(yaml_load "settings.yml")     # create variables in scope
+##
 yaml_load() {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*'
