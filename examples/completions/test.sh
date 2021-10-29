@@ -2,7 +2,7 @@
 
 set -x
 
-bashly add comp function
+bashly add comp function --force
 bashly generate
 
 ### Try Me ###

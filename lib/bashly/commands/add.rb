@@ -9,7 +9,7 @@ module Bashly
       usage "bashly add colors [--force]"
       usage "bashly add yaml [--force]"
       usage "bashly add validations [--force]"
-      usage "bashly add comp FORMAT [OUTPUT]"
+      usage "bashly add comp FORMAT [OUTPUT --force]"
       usage "bashly add (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
@@ -32,129 +32,81 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def strings_command
-        safe_copy asset("templates/strings.yml"), "#{Settings.source_dir}/bashly-strings.yml"
+        add_lib Library::Strings.new
       end
 
       def lib_command
-        safe_copy_file "sample_function.sh"
+        add_lib Library::Sample.new
       end
 
       def config_command
-        safe_copy_file "config.sh"
+        add_lib Library::Config.new
       end
 
       def colors_command
-        safe_copy_file "colors.sh"
+        add_lib Library::Colors.new
       end
 
       def yaml_command
-        safe_copy_file "yaml.sh"
+        add_lib Library::YAML.new
       end
 
       def validations_command
-        safe_copy_dir "validations"
+        add_lib Library::Validations.new
       end
 
       def comp_command
         format = args['FORMAT']
         output = args['OUTPUT']
-        
+
         case format
-        when "function"
-          save_comp_function output
-        when "yaml"
-          save_comp_yaml output
         when "script"
-          save_comp_script output
+          path = output || "#{Settings.target_dir}/completions.bash"
+          add_lib Library::Completions.new(path, format: format)
+        
+        when "function"
+          function = output || "send_completions"
+          path = "#{Settings.source_dir}/lib/#{function}.sh"
+          add_lib Library::Completions.new(path, format: format, function: function)
+
+        when "yaml"
+          path = output || "#{Settings.target_dir}/completions.yml"
+          add_lib Library::Completions.new(path, format: format)
+        
         else
           raise Error, "Unrecognized format: #{format}"
+
         end
 
       end
 
     private
 
-      def safe_copy_dir(dir)
-        Dir[asset("templates/lib/#{dir}/*.sh")].sort.each do |file|
-          safe_copy_file "#{dir}/#{File.basename file}"
+      def add_lib(handler)
+        files_created = 0
+        handler.files.each do |file|
+          created = safe_write file[:path], file[:content]
+          files_created += 1 if created
         end
+        message = handler.post_install_message
+        say "\n#{message}" if message and files_created > 0
       end
 
-      def safe_copy_file(file)
-        safe_copy asset("templates/lib/#{file}"), "#{Settings.source_dir}/lib/#{file}"
-      end
-
-      def safe_copy(source, target)
+      def safe_write(path, content)
         if !Dir.exist? Settings.source_dir
           raise InitError, "Directory !txtgrn!#{Settings.source_dir}!txtrst! does not exist\nRun !txtpur!bashly init!txtrst! first"
         end
 
-        if File.exist? target and !args['--force']
-          say "skipped !txtgrn!#{target}!txtrst! (exists)"
-        else
-          deep_copy source, target
-          say "created !txtgrn!#{target}"
-        end
-      end
-
-      def deep_copy(source, target)
-        target_dir = File.dirname target
-        FileUtils.mkdir_p target_dir unless Dir.exist? target_dir
-        FileUtils.cp source, target
-      end
-
-      def config
-        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
-      end
-
-      def command
-        @command ||= Script::Command.new config
-      end
-
-      def completions
-        @completions ||= command.completion_data
-      end
-
-      def completions_script
-        @completions_script ||= command.completion_script
-      end
-
-      def completions_function
-        @completions_function ||= command.completion_function
-      end
-
-      def save_comp_yaml(filename = nil)
-        filename ||= "#{Settings.target_dir}/completions.yml"
-        File.write filename, completions.to_yaml
-        say "created !txtgrn!#{filename}"
-        say ""
-        say "This file can be converted to a completions script using the !txtgrn!completely!txtrst! gem."
-      end
-
-      def save_comp_script(filename = nil)
-        filename ||= "#{Settings.target_dir}/completions.bash"
-        File.write filename, completions_script
-        say "created !txtgrn!#{filename}"
-        say ""
-        say "In order to enable completions, run:"
-        say ""
-        say "  !txtpur!$ source #{filename}"
-      end
-
-      def save_comp_function(name = nil)
-        name ||= "send_completions"
-        target_dir = "#{Settings.source_dir}/lib"
-        filename = "#{target_dir}/#{name}.sh"
+        if File.exist? path and !args['--force']
+          say "skipped !txtgrn!#{path}!txtrst! (exists)"
+          false
         
-        FileUtils.mkdir_p target_dir unless Dir.exist? target_dir
-        File.write filename, completions_function
-
-        say "created !txtgrn!#{filename}"
-        say ""
-        say "In order to use it in your script, create a command or a flag (for example: !txtgrn!#{command.name} completions!txtrst! or !txtgrn!#{command.name} --completions!txtrst!) that calls the !txtgrn!#{name}!txtrst! function."
-        say "Your users can then run something like this to enable completions:"
-        say ""
-        say "  !txtpur!$ eval \"$(#{command.name} completions)\""
+        else
+          File.deep_write path, content
+          say "created !txtgrn!#{path}"
+          true
+        
+        end
       end
 
     end

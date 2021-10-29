@@ -5,5 +5,5 @@ Usage:
   bashly add colors [--force]
   bashly add yaml [--force]
   bashly add validations [--force]
-  bashly add comp FORMAT [OUTPUT]
+  bashly add comp FORMAT [OUTPUT --force]
   bashly add (-h|--help)
