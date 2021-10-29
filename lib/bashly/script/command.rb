@@ -1,5 +1,5 @@
 module Bashly
-  module Models
+  module Script
     class Command < Base
       include Completions
 

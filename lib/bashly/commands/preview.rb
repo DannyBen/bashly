@@ -10,8 +10,8 @@ module Bashly
 
       def run
         config = Config.new "#{Settings.source_dir}/bashly.yml"
-        command = Models::Command.new(config)
-        script = Models::Script.new command
+        command = Script::Command.new(config)
+        script = Script::Wrapper.new command
         puts script.code
       end
     end

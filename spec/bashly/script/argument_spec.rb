@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Models::Argument do
+describe Script::Argument do
   let(:options) { {"name" => "file"} }
   subject { described_class.new options }
 

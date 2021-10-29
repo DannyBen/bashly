@@ -108,7 +108,7 @@ module Bashly
       end
 
       def command
-        @command ||= Models::Command.new config
+        @command ||= Script::Command.new config
       end
 
       def completions

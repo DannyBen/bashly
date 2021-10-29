@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Models::Command do
+describe Script::Command do
   let(:fixture) { :completions_simple }
 
   subject do
-    options = load_fixture('models/commands')[fixture]
+    options = load_fixture('script/commands')[fixture]
     described_class.new options
   end
 
