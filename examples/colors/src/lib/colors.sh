@@ -9,7 +9,7 @@
 ##
 ## Color output will be disabled if `NO_COLOR` environment variable is set
 ## in compliance with https://no-color.org/
-
+##
 print_in_color() {
   local color="$1"
   shift
