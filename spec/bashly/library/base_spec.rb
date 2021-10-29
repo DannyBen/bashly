@@ -34,7 +34,7 @@ describe Library::Base do
 
     context "when #content is a string representing a lib/dir" do
       subject do
-        Class.new(described_class) { def content = "validations" }.new
+        Class.new(described_class) { def content; "validations"; end }.new
       end
       
       it "returns an array of hashes" do
