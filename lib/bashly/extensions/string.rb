@@ -24,7 +24,7 @@ class String
   end
 
   def lint
-    gsub(/\s+\n/m, "\n\n")
+    gsub(/\s+\n/m, "\n\n").lines.reject { |l| l =~ /^\s*##/ }.join ""
   end
 
 end

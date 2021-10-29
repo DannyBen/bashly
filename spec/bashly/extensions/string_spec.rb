@@ -56,10 +56,20 @@ describe Array do
   end
 
   describe '#lint' do
-    subject { "one\n  two\n  \n    three\n \n \nfour\n\n\n\n" }
+    context "with a string that contains multiple consecutive newlines" do
+      subject { "one\n  two\n  \n    three\n \n \nfour\n\n\n\n" }
 
-    it "replaces two or more newlines with two newlines" do
-      expect(subject.lint).to eq "one\n  two\n\n    three\n\nfour\n\n"
+      it "replaces two or more newlines with two newlines" do
+        expect(subject.lint).to eq "one\n  two\n\n    three\n\nfour\n\n"
+      end
+    end
+
+    context "with a string that contains double-hash comments" do
+      subject { "this is important\n## SECRET\n  ## ANOTHER SECRET\n  also important\n" }
+
+      it "removes these comments" do
+        expect(subject.lint).to eq "this is important\n  also important\n"
+      end
     end
   end
 end
