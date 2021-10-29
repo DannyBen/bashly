@@ -82,5 +82,68 @@ describe Commands::Generate do
       expect(lines[0..10].join).to match_approval('cli/generate/wrap-script')
     end
   end
+  
+  context "with --upgrade" do
+    let(:lib_files) { Dir["spec/tmp/src/lib/**/*.sh"].sort }
+    let(:outdated_text) { "OUTDATED TEXT" }
 
+    before do
+      reset_tmp_dir copy_from: 'spec/fixtures/workspaces/lib-upgrade'
+    end
+
+    it "claims to upgrade all upgradable libraries" do
+      expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade')
+    end
+
+    it "actually upgrades all upgradable libraries" do
+      lib_files.each do |file|
+        File.append file, outdated_text
+      end
+
+      expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade')
+
+      lib_files.each do |file|
+        expect(File.read file).to_not include(outdated_text),
+          "Expected to not find #{outdated_text} in #{file}, but found it"
+      end
+    end
+
+    context "when the magic comment does not exist in the target file" do
+      let(:selective_lib_files) { lib_files[0..-2] }
+
+      before do
+        selective_lib_files.each do |file|
+          File.write file, File.read(file).gsub("[@bashly-upgrade", "[@please-dont")
+        end
+      end
+
+      it "avoids upgrading it" do
+        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/dont-upgrade')
+
+        selective_lib_files.each do |file|
+          expect(File.read file).to include("@please-dont"),
+            "Expected to find @please-dont in #{file}, but didn't"
+        end
+      end
+    end
+
+    context "when the upgrade candidate has a different path than the library's" do
+      let(:file) { lib_files[0] }
+      let(:custom_text) { "CUSTOM TEXT" }
+      let(:alt_filename) { file.gsub /([a-z])\.sh/, '\1-b.sh' }
+
+      before do
+        File.append file, custom_text
+        expect(system "mv #{file} #{alt_filename}").to be true
+      end
+
+      it "avoids upgrading it and shows a warning" do
+        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade-path-mismatch')
+
+        expect(File.read alt_filename).to include(custom_text),
+          "Expected to find #{custom_text} in #{file}, but didn't"
+      end
+    end
+
+  end
 end

@@ -1,0 +1,7 @@
+creating user files in spec/tmp/src
+skipped spec/tmp/src/initialize.sh (exists)
+skipped spec/tmp/src/download_command.sh (exists)
+skipped spec/tmp/src/upload_command.sh (exists)
+updated spec/tmp/src/lib/yaml.sh
+created spec/tmp/cli
+run spec/tmp/cli --help to test your bash script
