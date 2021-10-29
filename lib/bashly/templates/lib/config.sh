@@ -1,5 +1,5 @@
 # ---
-# Config functions
+# Config functions [@bashly-upgrade config]
 # This file is a part of Bashly standard library
 #
 # Usage:

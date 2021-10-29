@@ -1,21 +1,25 @@
 ---
 - :path: spec/tmp/src/lib/validations/validate_dir_exists.sh
   :content: |
+    # [@bashly-upgrade validations]
     validate_dir_exists() {
       [[ -d "$1" ]] || echo "must be an existing directory"
     }
 - :path: spec/tmp/src/lib/validations/validate_file_exists.sh
   :content: |
+    # [@bashly-upgrade validations]
     validate_file_exists() {
       [[ -f "$1" ]] || echo "must be an existing file"
     }
 - :path: spec/tmp/src/lib/validations/validate_integer.sh
   :content: |-
+    # [@bashly-upgrade validations]
     validate_integer() {
       [[ "$1" =~ ^[0-9]+$ ]] || echo "must be an integer"
     }
 - :path: spec/tmp/src/lib/validations/validate_not_empty.sh
   :content: |
+    # [@bashly-upgrade validations]
     validate_not_empty() {
       [[ -z "$1" ]] && echo "must not be empty"
     }

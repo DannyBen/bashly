@@ -17,7 +17,7 @@ module Bashly
         end
         Dir.mkdir target_dir unless Dir.exist? target_dir
         File.write "#{target_dir}/bashly.yml", yaml_content
-        say "created !txtgrn!#{target_dir}/bashly.yml"
+        say "!txtgrn!created!txtrst! #{target_dir}/bashly.yml"
         say "run !txtpur!bashly generate!txtrst! to create the bash script"
       end
 

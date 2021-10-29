@@ -1,18 +1,21 @@
 Generate the bash script and required files
 
 Usage:
-  bashly generate [--force --quiet --wrap FUNCTION]
+  bashly generate [--force --quiet --upgrade --wrap FUNCTION]
   bashly generate (-h|--help)
 
 Options:
   -f --force
     Overwrite existing files
 
-  -w --wrap FUNCTION
-    Wrap the entire script in a function so it can also be sourced
-
   -q --quiet
     Disable on-screen progress report
+
+  -u --upgrade
+    Upgrade all added library functions
+
+  -w --wrap FUNCTION
+    Wrap the entire script in a function so it can also be sourced
 
   -h --help
     Show this help

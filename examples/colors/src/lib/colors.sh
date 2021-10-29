@@ -1,5 +1,5 @@
 # ---
-# Color functions
+# Color functions [@bashly-upgrade colors]
 # This file is a part of Bashly standard library
 #
 # Usage:

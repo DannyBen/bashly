@@ -98,12 +98,12 @@ module Bashly
         end
 
         if File.exist? path and !args['--force']
-          say "skipped !txtgrn!#{path}!txtrst! (exists)"
+          say "!txtblu!skipped!txtrst! #{path} (exists)"
           false
         
         else
           File.deep_write path, content
-          say "created !txtgrn!#{path}"
+          say "!txtgrn!created!txtrst! #{path}"
           true
         
         end

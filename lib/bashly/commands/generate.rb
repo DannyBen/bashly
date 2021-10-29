@@ -3,12 +3,13 @@ module Bashly
     class Generate < Base
       help "Generate the bash script and required files"
 
-      usage "bashly generate [--force --quiet --wrap FUNCTION]"
+      usage "bashly generate [--force --quiet --upgrade --wrap FUNCTION]"
       usage "bashly generate (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
-      option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
       option "-q --quiet", "Disable on-screen progress report"
+      option "-u --upgrade", "Upgrade all added library functions"
+      option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
@@ -18,6 +19,7 @@ module Bashly
 
       def run
         create_user_files
+        upgrade_libs if args['--upgrade']
         create_master_script
         quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script"
       end
@@ -26,6 +28,44 @@ module Bashly
 
       def quiet_say(message)
         say message unless args['--quiet']
+      end
+
+      def upgrade_libs
+        generated_files.each do |file|
+          content = File.read file
+          
+          if content =~ /\[@bashly-upgrade (.+)\]/
+            lib = $1
+            
+            case lib
+            when "colors"
+              upgrade file, Library::Colors.new
+            when "config"
+              upgrade file, Library::Config.new
+            when "yaml"
+              upgrade file, Library::YAML.new
+            when "validations"
+              upgrade file, Library::Validations.new
+            when /completions (.+)/
+              upgrade file, Library::CompletionsFunction.new(file, function: $1)
+            end
+          end
+        end
+      end
+
+      def generated_files
+        Dir["#{Settings.source_dir}/**/*.*"].sort
+      end
+
+      def upgrade(existing_file, handler)
+        file = handler.files.select { |f| f[:path] == existing_file }.first
+
+        if file
+          File.deep_write file[:path], file[:content]
+          quiet_say "!txtcyn!updated!txtrst! #{file[:path]}"
+        else
+          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, path mismatch"
+        end
       end
 
       def create_user_files
@@ -55,17 +95,17 @@ module Bashly
 
       def create_file(file, content)
         if File.exist? file and !args['--force']
-          quiet_say "skipped !txtgrn!#{file}!txtrst! (exists)"
+          quiet_say "!txtblu!skipped!txtrst! #{file} (exists)"
         else
           File.write file, content
-          quiet_say "created !txtgrn!#{file}"
+          quiet_say "!txtgrn!created!txtrst! #{file}"
         end
       end
 
       def create_master_script
         File.write master_script_path, script.code
         FileUtils.chmod "+x", master_script_path
-        quiet_say "created !txtgrn!#{master_script_path}"
+        quiet_say "!txtgrn!created!txtrst! #{master_script_path}"
       end
 
       def script

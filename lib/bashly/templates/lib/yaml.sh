@@ -1,5 +1,5 @@
 # ---
-# YAML parser
+# YAML parser [@bashly-upgrade yaml]
 # This file is a part of Bashly standard library
 # Does not support arrays, only hashes
 #

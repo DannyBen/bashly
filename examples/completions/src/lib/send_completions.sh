@@ -1,3 +1,4 @@
+# [@bashly-upgrade completions send_completions]
 send_completions() {
   echo $'#!/usr/bin/env bash'
   echo $''
