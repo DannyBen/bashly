@@ -16,7 +16,7 @@ describe Library::Base do
 
     context "when #content is a string representing a lib/file" do
       subject do
-        Class.new(described_class) { def content = "colors.sh" }.new
+        Class.new(described_class) { def content; "colors.sh"; end }.new
       end
       
       it "returns an array of hashes" do
@@ -54,7 +54,7 @@ describe Library::Base do
 
     context "when #content is a hash" do
       subject do
-        Class.new(described_class) { def content = { some: 'hash' } }.new
+        Class.new(described_class) { def content; { some: 'hash' }; end }.new
       end
       
       it "returns an array with the hash as its first and only element" do
@@ -66,7 +66,7 @@ describe Library::Base do
 
     context "when #content is something else" do
       subject do
-        Class.new(described_class) { def content = ["something else"] }.new
+        Class.new(described_class) { def content; ["something else"]; end }.new
       end
       
       it "returns it as is" do
