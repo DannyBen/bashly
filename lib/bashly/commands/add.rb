@@ -62,16 +62,16 @@ module Bashly
         case format
         when "script"
           path = output || "#{Settings.target_dir}/completions.bash"
-          add_lib Library::Completions.new(path, format: format)
+          add_lib Library::CompletionsScript.new(path)
         
         when "function"
           function = output || "send_completions"
           path = "#{Settings.source_dir}/lib/#{function}.sh"
-          add_lib Library::Completions.new(path, format: format, function: function)
+          add_lib Library::CompletionsFunction.new(path, function: function)
 
         when "yaml"
           path = output || "#{Settings.target_dir}/completions.yml"
-          add_lib Library::Completions.new(path, format: format)
+          add_lib Library::CompletionsYAML.new(path)
         
         else
           raise Error, "Unrecognized format: #{format}"
