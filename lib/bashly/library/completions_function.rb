@@ -2,7 +2,10 @@ module Bashly
   module Library
     class CompletionsFunction < Completions
       def file_content
-        command.completion_function function_name
+        [
+          "# [@bashly-upgrade completions #{function_name}]",
+          command.completion_function(function_name)
+        ].join "\n"
       end
 
       def post_install_message

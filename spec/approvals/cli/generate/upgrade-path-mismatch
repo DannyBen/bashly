@@ -1,0 +1,14 @@
+creating user files in spec/tmp/src
+skipped spec/tmp/src/initialize.sh (exists)
+skipped spec/tmp/src/download_command.sh (exists)
+skipped spec/tmp/src/upload_command.sh (exists)
+warning not upgrading spec/tmp/src/lib/colors-b.sh, path mismatch
+updated spec/tmp/src/lib/config.sh
+updated spec/tmp/src/lib/send_completions.sh
+updated spec/tmp/src/lib/validations/validate_dir_exists.sh
+updated spec/tmp/src/lib/validations/validate_file_exists.sh
+updated spec/tmp/src/lib/validations/validate_integer.sh
+updated spec/tmp/src/lib/validations/validate_not_empty.sh
+updated spec/tmp/src/lib/yaml.sh
+created spec/tmp/cli
+run spec/tmp/cli --help to test your bash script
