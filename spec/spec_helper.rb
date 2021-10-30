@@ -21,6 +21,9 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
+# Force generated scripts to strict mode (set -euo pipefile)
+ENV['BASHLY_STRICT'] = '1'
+
 RSpec.configure do |c|
   c.include SpecMixin
   c.strip_ansi_escape = true

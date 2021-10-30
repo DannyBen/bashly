@@ -1,6 +1,6 @@
 # :command.command_filter
 % if commands.any?
-action=$1
+action=${1:-}
 
 case $action in
 -* )

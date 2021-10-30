@@ -13,6 +13,7 @@ module Bashly
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
+      environment "BASHLY_STRICT", "When not empty, enable bash strict mode (set -euo pipefail)"
 
       example "bashly generate --force"
       example "bashly generate --wrap my_function"

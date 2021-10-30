@@ -22,6 +22,7 @@ config_init() {
 config_get() {
   key=$1
   regex="^$key\s*=\s*(.+)$"
+  value=''
 
   config_init
   
@@ -122,5 +123,5 @@ config_keys() {
 #   fi
 #
 config_has_key() {
-  [[ $(config_get "$1") ]]
+  [[ $(config_get "${1:-}") ]]
 }

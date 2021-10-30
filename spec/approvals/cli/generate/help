@@ -27,6 +27,9 @@ Environment Variables:
   BASHLY_TARGET_DIR
     The path to use for creating the bash script [default: .]
 
+  BASHLY_STRICT
+    When not empty, enable bash strict mode (set -euo pipefail)
+
 Examples:
   bashly generate --force
   bashly generate --wrap my_function
