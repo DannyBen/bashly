@@ -1,0 +1,10 @@
+---
+- colors
+- config
+- yaml
+- lib
+- strings
+- validations
+- completions
+- completions_script
+- completions_yaml

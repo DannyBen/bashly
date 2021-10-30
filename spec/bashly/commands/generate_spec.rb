@@ -145,5 +145,19 @@ describe Commands::Generate do
       end
     end
 
+    context "when the upgrade candidate has magic comment with an unknown library" do
+      let(:file) { lib_files[0] }
+      let(:patched_content) { file_content.gsub "[@bashly-upgrade colors]", "[@bashly-upgrade no-such-lib]" }
+      let(:file_content) { File.read file }
+
+      before do
+        File.write file, patched_content
+      end
+
+      it "shows a warning" do
+        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade-unknown-lib')
+      end
+    end
+
   end
 end

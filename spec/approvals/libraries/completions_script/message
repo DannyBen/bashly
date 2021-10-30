@@ -1,0 +1,3 @@
+In order to enable completions, run:
+
+  !txtpur!$ source spec/tmp/completions.bash

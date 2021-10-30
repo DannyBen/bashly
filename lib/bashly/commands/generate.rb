@@ -35,20 +35,9 @@ module Bashly
           content = File.read file
           
           if content =~ /\[@bashly-upgrade (.+)\]/
-            lib = $1
-            
-            case lib
-            when "colors"
-              upgrade file, Library::Colors.new
-            when "config"
-              upgrade file, Library::Config.new
-            when "yaml"
-              upgrade file, Library::YAML.new
-            when "validations"
-              upgrade file, Library::Validations.new
-            when /completions (.+)/
-              upgrade file, Library::CompletionsFunction.new(file, function: $1)
-            end
+            args = $1.split ' '
+            library_name = args.shift
+            upgrade file, library_name, *args
           end
         end
       end
@@ -57,8 +46,17 @@ module Bashly
         Dir["#{Settings.source_dir}/**/*.*"].sort
       end
 
-      def upgrade(existing_file, handler)
-        file = handler.files.select { |f| f[:path] == existing_file }.first
+      def upgrade(existing_file, library_name, *args)
+        if Library.exist? library_name
+          upgrade! existing_file, library_name, *args
+        else
+          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, unknown library '#{library_name}'"
+        end
+      end
+
+      def upgrade!(existing_file, library_name, *args)
+        library = Bashly::Library.new library_name, *args
+        file = library.find_file existing_file
 
         if file
           File.deep_write file[:path], file[:content]

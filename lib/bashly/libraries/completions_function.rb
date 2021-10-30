@@ -1,11 +1,13 @@
 module Bashly
-  module Library
+  module Libraries
     class CompletionsFunction < Completions
-      def file_content
+      def files
         [
-          "# [@bashly-upgrade completions #{function_name}]",
-          command.completion_function(function_name)
-        ].join "\n"
+          {
+            path: "#{Settings.source_dir}/lib/#{function_name}.sh",
+            content: completions_function_code(function_name)
+          }
+        ]
       end
 
       def post_install_message
@@ -18,9 +20,19 @@ module Bashly
         EOF
       end
 
+    private
+
       def function_name
-        options[:function]
+        @function_name ||= args[0] || 'send_completions'
       end
+
+      def completions_function_code(function_name)
+        [
+          "# [@bashly-upgrade completions #{function_name}]",
+          command.completion_function(function_name)
+        ].join "\n"
+      end
+
     end
   end
 end
