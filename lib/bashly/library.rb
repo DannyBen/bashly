@@ -22,7 +22,7 @@ module Bashly
     end
 
     def files
-      if config.is_a? Symbol
+      if custom_handler
         custom_handler.files
 
       else
@@ -34,16 +34,21 @@ module Bashly
     end
 
     def post_install_message
-      if config.is_a? Symbol
+      if custom_handler
         custom_handler.post_install_message
       else
         config['post_install_message']
       end
     end
 
+    def find_file(path)
+      files.select { |f| f[:path] == path }.first
+    end
+
   private
 
     def custom_handler
+      return nil unless config.is_a? Symbol
       @custom_handler ||= Bashly::Libraries.const_get(config).new(*args)
     end
 

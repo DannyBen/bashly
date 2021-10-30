@@ -35,7 +35,8 @@ module Bashly
           content = File.read file
           
           if content =~ /\[@bashly-upgrade (.+)\]/
-            library_name, args = $1.split(' ', 2)
+            args = $1.split ' '
+            library_name = args.shift
             upgrade file, library_name, *args
           end
         end
@@ -55,7 +56,7 @@ module Bashly
 
       def upgrade!(existing_file, library_name, *args)
         library = Bashly::Library.new library_name, *args
-        file = library.files.select { |f| f[:path] == existing_file }.first
+        file = library.find_file existing_file
 
         if file
           File.deep_write file[:path], file[:content]
