@@ -28,7 +28,7 @@ module Bashly
 
       def completions_function_code(function_name)
         [
-          "# [@bashly-upgrade completions #{function_name}]",
+          "## [@bashly-upgrade completions #{function_name}]",
           command.completion_function(function_name)
         ].join "\n"
       end
