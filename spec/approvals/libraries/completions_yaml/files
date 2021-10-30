@@ -1,0 +1,11 @@
+---
+- :path: spec/tmp/completions.yml
+  :content: |
+    ---
+    download:
+    - "--force"
+    - "--help"
+    - "--version"
+    - "-f"
+    - "-h"
+    - "-v"

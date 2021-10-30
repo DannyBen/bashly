@@ -1,0 +1,5 @@
+In order to enable completions in your script, create a command or a flag (for example: !txtgrn!download completions!txtrst! or !txtgrn!download --completions!txtrst!) that calls the !txtgrn!send_completions!txtrst! function.
+
+Your users can then run something like this to enable completions:
+
+  !txtpur!$ eval "$(download completions)"
