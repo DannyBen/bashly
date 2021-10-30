@@ -32,27 +32,27 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def strings_command
-        add_lib Library::Strings.new
+        add_lib 'strings'
       end
 
       def lib_command
-        add_lib Library::Sample.new
+        add_lib 'lib'
       end
 
       def config_command
-        add_lib Library::Config.new
+        add_lib 'config'
       end
 
       def colors_command
-        add_lib Library::Colors.new
+        add_lib 'colors'
       end
 
       def yaml_command
-        add_lib Library::YAML.new
+        add_lib 'yaml'
       end
 
       def validations_command
-        add_lib Library::Validations.new
+        add_lib 'validations'
       end
 
       def comp_command
@@ -60,35 +60,24 @@ module Bashly
         output = args['OUTPUT']
 
         case format
-        when "script"
-          path = output || "#{Settings.target_dir}/completions.bash"
-          add_lib Library::CompletionsScript.new(path)
-        
-        when "function"
-          function = output || "send_completions"
-          path = "#{Settings.source_dir}/lib/#{function}.sh"
-          add_lib Library::CompletionsFunction.new(path, function: function)
-
-        when "yaml"
-          path = output || "#{Settings.target_dir}/completions.yml"
-          add_lib Library::CompletionsYAML.new(path)
-        
-        else
-          raise Error, "Unrecognized format: #{format}"
-
+        when "script"   then add_lib 'completions_script', output
+        when "function" then add_lib 'completions', output
+        when "yaml"     then add_lib 'completions_yaml', output
+        else            raise Error, "Unrecognized format: #{format}"
         end
 
       end
 
     private
 
-      def add_lib(handler)
+      def add_lib(name, *args)
+        library = Bashly::Library.new name, *args
         files_created = 0
-        handler.files.each do |file|
+        library.files.each do |file|
           created = safe_write file[:path], file[:content]
           files_created += 1 if created
         end
-        message = handler.post_install_message
+        message = library.post_install_message
         say "\n#{message}" if message and files_created > 0
       end
 
