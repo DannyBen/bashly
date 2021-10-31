@@ -1,6 +1,6 @@
 # :command.catch_all_filter
 % if catch_all_required?
-if [[ ! -v other_args[@] ]]; then
+if [[ ${#other_args[@]} -eq 0 ]]; then
   printf "<%= strings[:missing_required_argument] % { arg: catch_all_label, usage: usage_string } %>\n"
   exit 1
 fi
