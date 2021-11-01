@@ -1,15 +1,15 @@
 # :command.run
 run() {
-  declare -A args
-  declare -a other_args
-  declare -a input
+  declare -A args=()
+  declare -a other_args=()
+  declare -a input=()
   normalize_input "$@"
   parse_requirements "${input[@]}"
 
   <%- condition = "if" -%>
   <%- deep_commands.each do |command| -%>
   <%= condition %> [[ $action == "<%= command.action_name %>" ]]; then
-    if [[ ${args[--help]} ]]; then
+    if [[ ${args[--help]:-} ]]; then
       long_usage=yes
       <%= command.function_name %>_usage
     else

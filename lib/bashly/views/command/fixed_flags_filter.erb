@@ -1,5 +1,5 @@
 # :command.fixed_flag_filter
-case "$1" in
+case "${1:-}" in
 % if short_flag_exist? "-v"
 --version )
 % else
