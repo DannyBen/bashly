@@ -3,7 +3,7 @@
 printf "<%= strings[:commands] %>\n"
 % end
 % maxlen = command_names.map(&:size).max
-% commands.each do |command|
+% commands.reject(&:private).each do |command|
 % summary = command.summary
 % summary = strings[:default_command_summary] % { summary: summary } if command.default
 % if command.group
