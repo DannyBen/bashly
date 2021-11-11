@@ -1,0 +1,24 @@
+name: cli
+help: Sample application with private commands
+version: 0.1.0
+
+commands:
+- name: connect
+  short: c
+  help: Connect to the metaverse
+
+  args:
+  - name: protocol
+    required: true
+    allowed: [ftp, ssh]
+    help: Protocol to use for connection
+
+# These two commands will be hidden from the commands list, but still executable
+# and visible when running 'cli connect-ftp --help' or 'cli connect-ssh --help'
+- name: connect-ftp
+  help: Connect via FTP
+  private: true
+
+- name: connect-ssh
+  help: Connect via SSH
+  private: true
