@@ -6,7 +6,7 @@ module ComposeRefinements
       result = {}
       each do |k, v|
         if k.to_s == keyword
-          sub = YAML.load_file(v).compose keyword
+          sub = safe_load_yaml(v).compose keyword
           if sub.is_a? Array
             result = sub
           else
@@ -19,6 +19,15 @@ module ComposeRefinements
         end
       end
       result
+    end
+
+    def safe_load_yaml(path)
+      loaded = YAML.load_file path
+      return loaded if loaded.is_a? Array or loaded.is_a? Hash
+      raise Bashly::ConfigurationError, "Cannot find a valid YAML in '#{path}'"
+
+    rescue Errno::ENOENT
+      raise Bashly::ConfigurationError, "Cannot find import file '#{path}'"
     end
   end
 
