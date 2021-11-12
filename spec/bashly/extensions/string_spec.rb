@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Array do
+describe String do
   describe '#sanitize_for_print' do
     subject { %Q[this is\na "new line"] }
     it "escapes newlines and quotes" do
@@ -69,6 +69,36 @@ describe Array do
 
       it "removes these comments" do
         expect(subject.lint).to eq "this is important\n  also important\n"
+      end
+    end
+  end
+
+  describe '#remove_front_matter' do
+    context "with a string that does not have front matter" do
+      subject { "this is a\nsample script" }
+
+      it "returns it as is" do
+        expect(subject.remove_front_matter).to eq subject
+      end
+    end
+
+    context "with a string that contains front matter" do
+      subject { "#{front_matter}\n---\n#{rest}" }
+      let(:front_matter) { "this is the front matter" }
+      let(:rest) { "this is\nthe script" }
+
+      it "returns the string without the front matter" do
+        expect(subject.remove_front_matter).to eq rest
+      end
+    end
+
+    context "with a string that contains front matter with a leading separator" do
+      subject { "---\n#{front_matter}\n---\n#{rest}" }
+      let(:front_matter) { "this is the front matter" }
+      let(:rest) { "this is\nthe script" }
+
+      it "returns the string without the front matter" do
+        expect(subject.remove_front_matter).to eq rest
       end
     end
   end

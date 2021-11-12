@@ -2,7 +2,7 @@ require 'yaml'
 
 module ComposeRefinements
   refine Hash do
-    def compose(keyword = 'load')
+    def compose(keyword = 'import')
       result = {}
       each do |k, v|
         if k.to_s == keyword
@@ -23,7 +23,7 @@ module ComposeRefinements
   end
 
   refine Array do
-    def compose(keyword = 'load')
+    def compose(keyword = 'import')
       map do |x|
         if x.respond_to? :compose
           x.compose keyword

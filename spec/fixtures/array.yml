@@ -1,0 +1,4 @@
+- name: protocol
+  required: true
+- name: user
+  allowed: [root, admin]
