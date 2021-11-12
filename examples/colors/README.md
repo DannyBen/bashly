@@ -66,5 +66,18 @@ echo
 
 ```
 
+### `$ NO_COLOR=1 ./colorly`
+
+```shell
+Message Recevied:
+
+  => hello colors
+  ==> hello colors
+  ===> hello colors
+
+
+
+```
+
 
 

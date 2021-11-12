@@ -1,0 +1,59 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+skipped src/connect_command.sh (exists)
+created src/connect_ftp_command.sh
+created src/connect_ssh_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application with private commands
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  connect       Connect to the metaverse
+
++ ./cli -h
+cli - Sample application with private commands
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  connect       Connect to the metaverse
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli connect ftp
+=== Calling ./cli connect-ftp
+# this file is located in 'src/connect_ftp_command.sh'
+# code for 'cli connect-ftp' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./cli connect-ssh
+# this file is located in 'src/connect_ssh_command.sh'
+# code for 'cli connect-ssh' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./cli connect-ftp --help
+cli connect-ftp - Connect via FTP
+
+Usage:
+  cli connect-ftp
+  cli connect-ftp --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
