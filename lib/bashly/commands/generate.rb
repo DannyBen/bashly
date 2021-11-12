@@ -1,6 +1,8 @@
 module Bashly
   module Commands
     class Generate < Base
+      using ComposeRefinements
+
       help "Generate the bash script and required files"
 
       usage "bashly generate [--force --quiet --upgrade --wrap FUNCTION]"
@@ -116,7 +118,7 @@ module Bashly
       end
 
       def config
-        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
+        @config ||= Config.new("#{Settings.source_dir}/bashly.yml").compose
       end
 
       def command
