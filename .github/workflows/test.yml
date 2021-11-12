@@ -13,7 +13,7 @@ jobs:
       LC_ALL: en_US.UTF-8 # consistent sort order
 
     strategy:
-      matrix: { ruby: ['2.7', '3.0'] }
+      matrix: { ruby: ['2.7', '3.0', '3.1.0-preview1'] }
 
     steps:
     - name: Checkout code
