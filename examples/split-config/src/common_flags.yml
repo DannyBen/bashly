@@ -1,0 +1,3 @@
+- long: --force
+  short: -f
+  help: Overwrite existing files

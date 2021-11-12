@@ -1,0 +1,13 @@
+name: download
+short: d
+help: Download a file
+
+args:
+- name: source
+  required: true
+  help: URL to download from
+- name: target
+  help: "Target filename (default: same as source)"
+
+flags:
+  import: src/common_flags.yml

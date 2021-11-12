@@ -1,0 +1,11 @@
+name: cli
+help: Configuration splitting example
+version: 0.1.0
+
+commands:
+  # Import a command that is defined in another YAML file
+  - import: src/download_command.yml
+  
+  # Import a command that is defined in the front matter of its own shell
+  # function.
+  - import: src/upload_command.sh

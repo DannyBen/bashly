@@ -64,9 +64,9 @@ server:
 ## `src/root_command.sh`
 
 ```bash
-filename=${args[filename]}
-variable=${args[variable]}
-prefix=${args[--prefix]}
+filename=${args[filename]:-}
+variable=${args[variable]:-}
+prefix=${args[--prefix]:-}
 
 if [[ $variable ]]; then
   eval "$(yaml_load "$filename" "$prefix")"
