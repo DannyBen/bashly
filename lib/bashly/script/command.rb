@@ -154,7 +154,7 @@ module Bashly
         default_content = placeholder ? "echo \"error: cannot load file\"" : ''
 
         content = if File.exist? path
-          File.read path
+          File.read(path).remove_front_matter
         else 
           default_content
         end
