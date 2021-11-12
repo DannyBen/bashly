@@ -23,6 +23,7 @@ module Bashly
         long
         name
         parent_name
+        private
         required
         short
         validate
