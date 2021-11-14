@@ -24,10 +24,10 @@ module ComposeRefinements
     def safe_load_yaml(path)
       loaded = YAML.load_file path
       return loaded if loaded.is_a? Array or loaded.is_a? Hash
-      raise Bashly::ConfigurationError, "Cannot find a valid YAML in '#{path}'"
+      raise Bashly::ConfigurationError, "Cannot find a valid YAML in !txtgrn!#{path}"
 
     rescue Errno::ENOENT
-      raise Bashly::ConfigurationError, "Cannot find import file '#{path}'"
+      raise Bashly::ConfigurationError, "Cannot find import file !txtgrn!#{path}"
     end
   end
 
