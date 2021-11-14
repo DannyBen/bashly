@@ -216,6 +216,7 @@ module Bashly
       # definition.
       def verify
         verify_commands if commands.any?
+        raise ConfigurationError, "Command must have a name" unless name
       end
 
       # Returns an array of all the args with a whitelist

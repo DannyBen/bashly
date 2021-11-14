@@ -1,0 +1,9 @@
+:basic_argument:
+  name: file
+
+:required:
+  name: file
+  required: true
+
+:invalid_without_name:
+  help: invalid since there is no name
