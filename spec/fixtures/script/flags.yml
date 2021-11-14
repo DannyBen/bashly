@@ -1,0 +1,17 @@
+:basic_flag:
+  long: --help
+  short: -h
+  help: show this help
+
+:long_only:
+  long: --long
+
+:short_only:
+  short: -s
+
+:required:
+  long: --mandatory
+  required: true
+
+:invalid_without_name:
+  help: invalid since there is no name

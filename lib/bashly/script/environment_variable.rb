@@ -6,6 +6,10 @@ module Bashly
         result << strings[:required] if required and extended
         result.join " "
       end
+
+      def verify
+        raise ConfigurationError, "EnvironmentVariable must have a name" unless name
+      end
     end
   end
 end

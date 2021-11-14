@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe Script::Flag do
-  let(:options) { {"long" => "--help", "short" => "-h", "help" => "show this help"} }
-  subject { described_class.new options }
+  let(:fixture) { :basic_flag }
+
+  subject do
+    options = load_fixture('script/flags')[fixture]
+    described_class.new options
+  end
 
   describe '#aliases' do
     context "with long and short options" do
@@ -12,14 +16,16 @@ describe Script::Flag do
     end
 
     context "with long option only" do
-      let(:options) { {"long" => "--long"} }
+      let(:fixture) { :long_only }
+
       it "returns an array with the long value" do
         expect(subject.aliases).to eq ["--long"]
       end
     end
 
     context "with short option only" do
-      let(:options) { {"short" => "-s"} }
+      let(:fixture) { :short_only }
+
       it "returns an array with the short value" do
         expect(subject.aliases).to eq ["-s"]
       end
@@ -34,14 +40,16 @@ describe Script::Flag do
     end
 
     context "with long option only" do
-      let(:options) { {"long" => "-l"} }
+      let(:fixture) { :long_only }
+
       it "returns the long option" do
-        expect(subject.name).to eq "-l"
+        expect(subject.name).to eq "--long"
       end
     end
 
     context "with short option only" do
-      let(:options) { {"short" => "-s"} }
+      let(:fixture) { :short_only }
+
       it "returns the short option" do
         expect(subject.name).to eq "-s"
       end
@@ -61,7 +69,8 @@ describe Script::Flag do
       end
 
       context "when the flag is required" do
-        let(:options) { {"long" => "--mandatory", "required" => true} }
+        let(:fixture) { :required }
+
         it "appends (required) to the usage string" do
           expect(subject.usage_string extended: true).to eq "#{subject.usage_string} (required)"
         end        
@@ -69,5 +78,16 @@ describe Script::Flag do
       
     end
   end
+
+  describe '#verify' do
+    context "when the flag has no short or long" do
+      let(:fixture) { :invalid_without_name }
+
+      it "raises an error" do
+        expect { subject.verify }.to raise_error(ConfigurationError, /must have a long and\/or short property/)
+      end
+    end
+  end
+
 
 end

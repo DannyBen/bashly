@@ -410,6 +410,14 @@ describe Script::Command do
         expect { subject.verify }.to raise_error(ConfigurationError, /cannot be at the same level/)
       end
     end
+
+    context "when the command has no name" do
+      let(:fixture) { :invalid_without_name }
+
+      it "raises an error" do
+        expect { subject.verify }.to raise_error(ConfigurationError, /must have a name/)
+      end
+    end
   end
 
   describe '#whitelisted_args' do
@@ -429,6 +437,5 @@ describe Script::Command do
       expect(subject.whitelisted_flags.first.long).to eq "--user"
     end
   end
-
 
 end

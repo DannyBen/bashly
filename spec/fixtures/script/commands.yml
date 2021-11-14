@@ -71,7 +71,11 @@
   flags:
   - long: --force
 
+:invalid_without_name:
+  help: invalid since there is no name
+
 :default_command:
+  name: cli
   commands:
   - name: get
     default: true
@@ -88,6 +92,7 @@
     long: --vorld
 
 :default_values:
+  name: cli
   args:
   - name: files
     default: "*.jpg"
@@ -98,6 +103,7 @@
     default: png
 
 :whitelist:
+  name: cli
   args:
   - name: region
     allowed: [eu, us]
