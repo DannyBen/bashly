@@ -213,10 +213,9 @@ module Bashly
       end
 
       # Raise an exception if there are some serious issues with the command
-      # definition.
-      def verify
-        verify_commands if commands.any?
-        raise ConfigurationError, "Command must have a name" unless name
+      # definition. This is called by Base#initialize.
+      def validate_options
+        Bashly::ConfigValidator.new(options).validate
       end
 
       # Returns an array of all the args with a whitelist
@@ -227,14 +226,6 @@ module Bashly
       # Returns an array of all the flags with a whitelist arg
       def whitelisted_flags
         flags.select &:allowed
-      end
-
-    private
-
-      def verify_commands
-        if args.any? or flags.any?
-          raise ConfigurationError, "Error in the !txtgrn!#{full_name}!txtrst! command.\nThe !txtgrn!commands!txtrst! key cannot be at the same level as the !txtgrn!args!txtrst! or !txtgrn!flags!txtrst! keys."
-        end
       end
 
     end

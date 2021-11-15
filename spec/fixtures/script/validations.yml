@@ -1,0 +1,38 @@
+:commands_and_args:
+  name: invalid
+  help: invalid since there are both commands and args
+  commands:
+  - name: sub
+  args:
+  - name: source
+
+:commands_and_flags:
+  name: invalid
+  help: invalid since there are both commands and flags
+  commands:
+  - name: sub
+  flags:
+  - long: --force
+
+:no_name:
+  help: invalid since there is no name
+
+:extensible:
+  name: invalid
+  help: invalid since extensible shuold be a boolean or string
+  extensible: 1
+
+:nested:
+  name: invalid
+  commands:
+    - name: level1
+      commands:
+        - name: level2a
+          args:
+            - name: ok
+            - name: alright
+        - name: level2b
+          args:          
+            - name: ok
+            - help: invalid since there is no name
+

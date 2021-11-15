@@ -21,15 +21,4 @@ describe Script::Argument do
       end
     end
   end
-
-  describe '#verify' do
-    context "when the argument has no name" do
-      let(:fixture) { :invalid_without_name }
-
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /must have a name/)
-      end
-    end
-  end
-
 end
