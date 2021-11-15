@@ -24,6 +24,10 @@ module Bashly
       assert value.is_a?(String), "#{key} must be a string"
     end
 
+    def assert_optional_string(key, value)
+      assert_string key, value if value
+    end
+
     def assert_boolean(key, value)
       assert [true, false, nil].include?(value), "#{key} must be a boolean" 
     end
@@ -43,6 +47,7 @@ module Bashly
     end
 
     def assert_version(key, value)
+      return unless value
       assert [String, Integer, Float].include?(value.class),
         "#{key} must be a string or a number" 
     end
@@ -62,9 +67,9 @@ module Bashly
     def assert_arg(key, value)
       assert_hash key, value
       assert_string "#{key}.name", value['name']
-      assert_string "#{key}.help", value['help'] if value['help']
-      assert_string "#{key}.default", value['default'] if value['default']
-      assert_string "#{key}.validate", value['validate'] if value['validate']
+      assert_optional_string "#{key}.help", value['help']
+      assert_optional_string "#{key}.default", value['default']
+      assert_optional_string "#{key}.validate", value['validate']
       assert_boolean "#{key}.required", value['required']
       
       assert_array "#{key}.allowed", value['allowed'], of: :string
@@ -74,23 +79,22 @@ module Bashly
       assert_hash key, value
       assert value['short'] || value['long'], "#{key} must have at least one of long or short name"
 
-      assert_string "#{key}.long", value['long'] if value['long']
-      assert_string "#{key}.short", value['short'] if value['short']
-      assert_string "#{key}.help", value['help'] if value['help']
-      assert_string "#{key}.arg", value['arg'] if value['arg']
-
-      assert_string "#{key}.default", value['default'] if value['default']
-      assert_string "#{key}.validate", value['validate'] if value['validate']
-      assert_boolean "#{key}.required", value['required']
+      assert_optional_string "#{key}.long", value['long']
+      assert_optional_string "#{key}.short", value['short']
+      assert_optional_string "#{key}.help", value['help']
+      assert_optional_string "#{key}.arg", value['arg']
+      assert_optional_string "#{key}.default", value['default']
+      assert_optional_string "#{key}.validate", value['validate']
       
+      assert_boolean "#{key}.required", value['required']
       assert_array "#{key}.allowed", value['allowed'], of: :string
     end
 
     def assert_env_var(key, value)
       assert_hash key, value
       assert_string "#{key}.name", value['name']
-      assert_string "#{key}.help", value['help'] if value['help']
-      assert_string "#{key}.default", value['default'] if value['default']
+      assert_optional_string "#{key}.help", value['help']
+      assert_optional_string "#{key}.default", value['default']
       assert_boolean "#{key}.required", value['required']
     end
 
@@ -101,13 +105,13 @@ module Bashly
       refute value['commands'] && value['flags'], "#{key} cannot have both commands and flags"
       
       assert_string "#{key}.name", value['name']
-      assert_string "#{key}.short", value['short'] if value['short']
-      assert_string "#{key}.help", value['help'] if value['help']
-      assert_string "#{key}.footer", value['footer'] if value['footer']
-      assert_string "#{key}.group", value['group'] if value['group']
+      assert_optional_string "#{key}.short", value['short']
+      assert_optional_string "#{key}.help", value['help']
+      assert_optional_string "#{key}.footer", value['footer']
+      assert_optional_string "#{key}.group", value['group']
+
       assert_boolean "#{key}.default", value['default']
-      
-      assert_version "#{key}.version", value['version'] if value['version']
+      assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_extensible "#{key}.extensible", value['extensible']
       
