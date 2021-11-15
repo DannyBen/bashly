@@ -32,14 +32,11 @@ module Bashly
 
       # Returns a label for the catch_all directive
       def catch_all_label
-        return nil unless catch_all
-
-        if catch_all.is_a? String
-          "#{catch_all.upcase}..."
-        elsif catch_all.is_a?(Hash)
-          "#{catch_all['label'].upcase}..."
-        else
-          "..."
+        case catch_all
+        when nil then nil
+        when String then "#{catch_all.upcase}..."
+        when Hash then "#{catch_all['label'].upcase}..."
+        else "..."
         end
       end
 
