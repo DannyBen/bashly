@@ -56,6 +56,14 @@ module Bashly
       return unless value
       assert [TrueClass, String, Hash].include?(value.class),
         "#{key} must be a boolean, a string or a hash" 
+
+      assert_catch_all_hash key, value if value.is_a? Hash
+    end
+
+    def assert_catch_all_hash(key, value)
+      assert_string "#{key}.label", value['label']
+      assert_optional_string "#{key}.help", value['help']
+      assert_boolean "#{key}.required", value['required']
     end
 
     def assert_extensible(key, value)
