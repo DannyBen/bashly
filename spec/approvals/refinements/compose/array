@@ -1,0 +1,15 @@
+---
+array:
+- hello
+- - hello
+  - key: value
+    loaded: yes indeed
+- key: value
+  loaded: yes indeed
+args:
+- name: protocol
+  required: true
+- name: user
+  allowed:
+  - root
+  - admin

@@ -27,4 +27,8 @@ class String
     gsub(/\s+\n/m, "\n\n").lines.reject { |l| l =~ /^\s*##/ }.join ""
   end
 
+  def remove_front_matter
+    split(/^---\s*/).last
+  end
+
 end
