@@ -21,11 +21,6 @@ module Bashly
         result << strings[:required] if required and extended
         result.join " "
       end
-
-      def verify
-        raise ConfigurationError, "Flag must have a long and/or short property" unless short or long
-      end
-
     end
   end
 end

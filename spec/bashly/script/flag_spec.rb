@@ -79,15 +79,4 @@ describe Script::Flag do
     end
   end
 
-  describe '#verify' do
-    context "when the flag has no short or long" do
-      let(:fixture) { :invalid_without_name }
-
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /must have a long and\/or short property/)
-      end
-    end
-  end
-
-
 end

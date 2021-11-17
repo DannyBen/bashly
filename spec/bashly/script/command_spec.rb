@@ -394,29 +394,15 @@ describe Script::Command do
     end
   end
 
-  describe '#verify' do
-    context "when commands and flags are present" do
-      let(:fixture) { :invalid_with_flags }
+  describe '#validate_options' do
+    let(:validator_double) { double :validator, validate: "ok" }
 
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /cannot be at the same level/)
-      end
-    end
+    it "delegates to Bashly::ConfigValidator" do
+      expect(Bashly::ConfigValidator).to receive(:new).with(subject.options)
+        .and_return(validator_double)
+      expect(validator_double).to receive(:validate)
 
-    context "when commands and args are present" do
-      let(:fixture) { :invalid_with_args }
-
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /cannot be at the same level/)
-      end
-    end
-
-    context "when the command has no name" do
-      let(:fixture) { :invalid_without_name }
-
-      it "raises an error" do
-        expect { subject.verify }.to raise_error(ConfigurationError, /must have a name/)
-      end
+      subject.validate_options
     end
   end
 
