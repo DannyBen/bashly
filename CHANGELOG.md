@@ -1,6 +1,18 @@
 Change Log
 ========================================
 
+v0.7.1 - 2021-11-17
+----------------------------------------
+
+- Refactor library handling (internal)
+- Make generated scripts compatible with bash strict mode
+- Add support for private commands
+- Add ability to import external snippets in bashly.yml
+- Add basic validation for key config properties
+- Validate the entire config prior to generating
+- Add bashly validate CLI command
+
+
 v0.7.0 - 2021-10-29
 ----------------------------------------
 
