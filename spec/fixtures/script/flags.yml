@@ -12,6 +12,3 @@
 :required:
   long: --mandatory
   required: true
-
-:invalid_without_name:
-  help: invalid since there is no name

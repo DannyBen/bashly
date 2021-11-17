@@ -55,25 +55,6 @@
 :helpless:
   name: helpless
 
-:invalid_with_args:
-  name: invalid
-  help: invalid since there are both commands and args
-  commands:
-  - name: sub
-  args:
-  - name: source
-
-:invalid_with_flags:
-  name: invalid
-  help: invalid since there are both commands and flags
-  commands:
-  - name: sub
-  flags:
-  - long: --force
-
-:invalid_without_name:
-  help: invalid since there is no name
-
 :default_command:
   name: cli
   commands:
