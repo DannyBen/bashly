@@ -1,0 +1,22 @@
+name: cli
+help: STDIN Example
+version: 0.1.0
+
+args:
+- name: path
+  
+  # Set the default path value to -, which is the standard operator for stdin.
+  default: "-"
+  help: Path to file (reads from stdin if empty)
+
+flags:
+- long: --file
+  short: -f
+  arg: path
+
+  # This is also supported in flags
+  # Note that in both cases, your script needs to handle the value '-' as there
+  # is no special treatment in bashly, other than allowing '-' as argument.
+  default: "-"
+  help: Another path to file
+
