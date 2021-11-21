@@ -30,36 +30,8 @@ module Bashly
         help ? "#{full_name} - #{summary}" : full_name
       end
 
-      # Returns a label for the catch_all directive
-      def catch_all_label
-        case catch_all
-        when nil then nil
-        when String then "#{catch_all.upcase}..."
-        when Hash then "#{catch_all['label'].upcase}..."
-        else "..."
-        end
-      end
-
-      # Returns a user defined help string for the catch_all directive
-      def catch_all_help
-        return nil unless catch_all
-
-        if catch_all.is_a?(Hash) and catch_all['help'].is_a?(String)
-          catch_all['help']
-        else
-          nil
-        end
-      end
-
-      # Returns true if catch_all is required
-      def catch_all_required?
-        catch_all.is_a?(Hash) and catch_all['required']
-      end
-
-      # Returns a string suitable for catch_all Usage pattern
-      def catch_all_usage
-        return nil unless catch_all
-        catch_all_required? ? catch_all_label : "[#{catch_all_label}]"
+      def catch_all
+        @catch_all ||= CatchAll.from_config options['catch_all']
       end
 
       # Returns only the names of the Commands
@@ -198,7 +170,7 @@ module Bashly
           result << arg.usage_string
         end
         result << "[options]" unless flags.empty?
-        result << catch_all_usage if catch_all
+        result << catch_all.usage_string if catch_all.enabled?
         result.join " "
       end
 

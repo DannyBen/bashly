@@ -6,9 +6,9 @@ printf "<%= strings[:arguments] %>\n"
 <%= arg.render(:usage) %>
 % end
 % end
-% if catch_all_help
+% if catch_all.help
 
-echo "  <%= catch_all_label %>"
-printf "<%= catch_all_help.wrap(76).indent(4).sanitize_for_print %>\n"
+echo "  <%= catch_all.label %>"
+printf "<%= catch_all.help.wrap(76).indent(4).sanitize_for_print %>\n"
 echo
 % end
