@@ -2,6 +2,7 @@ module Bashly
   module Script
     class Command < Base
       include Completions
+      include CommandScopes
 
       # Returns the name to be used as an action.
       # - If it is the root command, the action is "root"
@@ -34,11 +35,6 @@ module Bashly
         @catch_all ||= CatchAll.from_config options['catch_all']
       end
 
-      # Returns only the names of the Commands
-      def command_names
-        commands.map &:name
-      end
-
       # Returns an array of the Commands
       def commands
         return [] unless options["commands"]
@@ -46,40 +42,6 @@ module Bashly
           options['parents'] = parents + [name]
           Command.new options
         end
-      end
-
-      # Returns a flat array containing all the commands in this tree.
-      # This includes self + children + grandchildres + ...
-      def deep_commands
-        result = []
-        commands.each do |command|
-          result << command
-          if command.commands.any?
-            result += command.deep_commands
-          end
-        end
-        result
-      end
-
-      # Returns an array of all the default Args
-      def default_args
-        args.select &:default
-      end
-
-      # If any of this command's subcommands has the default option set to
-      # true, this default command will be returned, nil otherwise.
-      def default_command
-        commands.find { |c| c.default }
-      end
-
-      # Returns an array of all the default Environment Variables
-      def default_environment_variables
-        environment_variables.select &:default
-      end
-
-      # Returns an array of all the default Flags
-      def default_flags
-        flags.select &:default
       end
 
       # Returns an array of EnvironmentVariables
@@ -137,21 +99,6 @@ module Bashly
         options['parents'] || []
       end
 
-      # Returns an array of all the required Arguments
-      def required_args
-        args.select &:required
-      end
-
-      # Returns an array of all the required EnvironmentVariables
-      def required_environment_variables
-        environment_variables.select &:required
-      end
-
-      # Returns an array of all the required Flags
-      def required_flags
-        flags.select &:required
-      end
-
       # Returns trus if this is the root command (no parents)
       def root_command?
         parents.empty?
@@ -185,16 +132,6 @@ module Bashly
       # definition. This is called by Base#initialize.
       def validate_options
         Bashly::ConfigValidator.new(options).validate
-      end
-
-      # Returns an array of all the args with a whitelist
-      def whitelisted_args
-        args.select &:allowed
-      end
-
-      # Returns an array of all the flags with a whitelist arg
-      def whitelisted_flags
-        flags.select &:allowed
       end
 
     end
