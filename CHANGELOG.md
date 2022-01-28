@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v0.7.2 - 2022-01-28
+----------------------------------------
+
+- Add support for stdin
+- Refactor catch_all (internal)
+- Refactor command scopes
+- Fix autocomplete in ZSH
+
+
 v0.7.1 - 2021-11-17
 ----------------------------------------
 

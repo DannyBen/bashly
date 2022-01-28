@@ -172,7 +172,7 @@ Options:
 # Modifying it manually is not recommended
 _cli_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
-  local comp_line="${COMP_WORDS[*]:1}"
+  local comp_line="${COMP_WORDS[@]:1}"
 
   case "$comp_line" in
     'completions'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;
