@@ -7,7 +7,7 @@ send_completions() {
   echo $'# Modifying it manually is not recommended'
   echo $'_cli_completions() {'
   echo $'  local cur=${COMP_WORDS[COMP_CWORD]}'
-  echo $'  local comp_line="${COMP_WORDS[*]:1}"'
+  echo $'  local comp_line="${COMP_WORDS[@]:1}"'
   echo $''
   echo $'  case "$comp_line" in'
   echo $'    \'completions\'*) COMPREPLY=($(compgen -W "--help -h" -- "$cur")) ;;'

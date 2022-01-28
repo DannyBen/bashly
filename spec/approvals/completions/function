@@ -6,7 +6,7 @@ custom_name() {
   echo $'# Modifying it manually is not recommended'
   echo $'_get_completions() {'
   echo $'  local cur=${COMP_WORDS[COMP_CWORD]}'
-  echo $'  local comp_line="${COMP_WORDS[*]:1}"'
+  echo $'  local comp_line="${COMP_WORDS[@]:1}"'
   echo $''
   echo $'  case "$comp_line" in'
   echo $'    \'\'*) COMPREPLY=($(compgen -A file -W "--force --help --verbose --version -h -v" -- "$cur")) ;;'
