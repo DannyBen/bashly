@@ -10,7 +10,7 @@
       echo $'# Modifying it manually is not recommended'
       echo $'_download_completions() {'
       echo $'  local cur=${COMP_WORDS[COMP_CWORD]}'
-      echo $'  local comp_line="${COMP_WORDS[*]:1}"'
+      echo $'  local comp_line="${COMP_WORDS[@]:1}"'
       echo $''
       echo $'  case "$comp_line" in'
       echo $'    \'\'*) COMPREPLY=($(compgen -W "--force --help --version -f -h -v" -- "$cur")) ;;'
