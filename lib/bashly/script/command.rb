@@ -55,7 +55,7 @@ module Bashly
       # Returns the bash filename that is expected to hold the user code
       # for this command
       def filename
-        "#{action_name.to_underscore}_command.sh"
+        options["filename"] || "#{action_name.to_underscore}_command.sh"
       end
 
       # Returns an array of Flags
