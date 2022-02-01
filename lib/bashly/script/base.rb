@@ -53,7 +53,7 @@ module Bashly
         respond_to?(method_name) ? options[key] : super
       end
 
-      def respond_to?(method_name, include_private = false)
+      def respond_to_missing?(method_name, include_private = false)
         OPTION_KEYS.include?(method_name) || super
       end
     end
