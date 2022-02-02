@@ -165,3 +165,7 @@
 
 :custom_header:
   name: check
+
+:custom_filename:
+  name: run
+  filename: ops/run_command.sh

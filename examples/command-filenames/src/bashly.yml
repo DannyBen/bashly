@@ -1,0 +1,35 @@
+name: cli
+help: Demonstrate custom command filenames
+version: 0.1.0
+
+commands:
+- name: dir
+  short: d
+  help: Directory commands
+
+  commands:
+  - name: list
+    help: Show files in the directory
+    
+    # Define a custom filename for this command source.
+    # This is relative to the `src` directory, and sub-directories will be
+    # created as needed.
+    filename: dir_commands/list.sh
+
+  - name: remove
+    help: Remove directory
+    filename: dir_commands/remove.sh
+
+- name: file
+  short: f
+  help: File commands
+
+  commands:
+  - name: show
+    help: Show file contents
+    filename: file_commands/show.sh
+
+  - name: edit
+    help: Edit the file
+    filename: file_commands/edit.sh
+

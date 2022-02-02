@@ -82,7 +82,7 @@ module Bashly
       end
 
       def create_root_command_file
-        create_file "#{Settings.source_dir}/root_command.sh", command.render(:default_root_script)
+        create_file "#{Settings.source_dir}/#{command.filename}", command.render(:default_root_script)
       end
 
       def create_all_command_files
@@ -98,7 +98,7 @@ module Bashly
         if File.exist? file and !args['--force']
           quiet_say "!txtblu!skipped!txtrst! #{file} (exists)"
         else
-          File.write file, content
+          File.deep_write file, content
           quiet_say "!txtgrn!created!txtrst! #{file}"
         end
       end

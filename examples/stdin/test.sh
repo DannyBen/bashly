@@ -2,8 +2,6 @@
 
 rm -f "src/initialize.sh"
 
-set -x
-
 bashly generate
 
 ### Try Me ###

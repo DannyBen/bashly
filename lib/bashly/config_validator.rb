@@ -117,6 +117,7 @@ module Bashly
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.footer", value['footer']
       assert_optional_string "#{key}.group", value['group']
+      assert_optional_string "#{key}.filename", value['filename']
 
       assert_boolean "#{key}.default", value['default']
       assert_version "#{key}.version", value['version']
