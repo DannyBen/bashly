@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.args[0].name must not start with a '-'>
+#<Bashly::ConfigurationError: root.args[0].name must not start with '-'>
