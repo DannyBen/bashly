@@ -1,0 +1,45 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/dir_commands/list.sh
+created src/dir_commands/remove.sh
+created src/file_commands/show.sh
+created src/file_commands/edit.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Demonstrate custom command filenames
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  dir    Directory commands
+  file   File commands
+
++ ./cli -h
+cli - Demonstrate custom command filenames
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  dir    Directory commands
+  file   File commands
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli dir list
+# this file is located in 'src/dir_commands/list.sh'
+# code for 'cli dir list' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none

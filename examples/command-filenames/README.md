@@ -1,8 +1,10 @@
-# Command Groups Example
+# Command Filenames Example
 
-Demonstrates how to visually group commands under their own caption. This is
-useful for scripts that contain many commands that provide different sets of
-functionality.
+Demonstrates how to specify custom filenames for command source files.
+This is useful for scripts with many commands, in case you wish to organize
+your source files in sub-folders.
+
+Note that the specified path is relative to the `sec` folder.
 
 This example was generated with:
 
@@ -17,86 +19,77 @@ $ bashly generate
 ## `bashly.yml`
 
 ```yaml
-name: ftp
-help: Sample application with command grouping
+name: cli
+help: Demonstrate custom command filenames
 version: 0.1.0
 
 commands:
-- name: download
-  help: Download a file
+- name: dir
+  short: d
+  help: Directory commands
 
-  # By specifying a group, the `download` comnmand (and all subsequent
-  # commands until the next `group`) will be printed under this `File` 
-  # caption.
-  group: File
+  commands:
+  - name: list
+    help: Show files in the directory
+    
+    # Define a custom filename for this command source.
+    # This is relative to the `src` directory, and sub-directories will be
+    # created as needed.
+    filename: dir_commands/list.sh
 
-  args:
-  - name: file
-    required: true
-    help: File to download
+  - name: remove
+    help: Remove directory
+    filename: dir_commands/remove.sh
 
-- name: upload
-  help: Upload a file
+- name: file
+  short: f
+  help: File commands
 
-  args:
-  - name: file
-    required: true
-    help: File to upload
+  commands:
+  - name: show
+    help: Show file contents
+    filename: file_commands/show.sh
 
-- name: login
-  help: Write login credentials to the config file
-
-  # The `login` command (and all subsequent commands) will be printed under
-  # the `Login` caption.
-  group: Login
-
-- name: logout
-  help: Delete login credentials to the config file
+  - name: edit
+    help: Edit the file
+    filename: file_commands/edit.sh
 ```
 
 
 
 ## Generated script output
 
-### `$ ./ftp`
+### `$ ./cli`
 
 ```shell
-ftp - Sample application with command grouping
+cli - Demonstrate custom command filenames
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
-  ftp --version | -v
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
 
-File Commands:
-  download   Download a file
-  upload     Upload a file
-
-Login Commands:
-  login      Write login credentials to the config file
-  logout     Delete login credentials to the config file
+Commands:
+  dir    Directory commands
+  file   File commands
 
 
 
 ```
 
-### `$ ./ftp -h`
+### `$ ./cli -h`
 
 ```shell
-ftp - Sample application with command grouping
+cli - Demonstrate custom command filenames
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
-  ftp --version | -v
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
 
-File Commands:
-  download   Download a file
-  upload     Upload a file
-
-Login Commands:
-  login      Write login credentials to the config file
-  logout     Delete login credentials to the config file
+Commands:
+  dir    Directory commands
+  file   File commands
 
 Options:
   --help, -h
@@ -109,11 +102,11 @@ Options:
 
 ```
 
-### `$ ./ftp login`
+### `$ ./cli dir list`
 
 ```shell
-# this file is located in 'src/login_command.sh'
-# code for 'ftp login' goes here
+# this file is located in 'src/dir_commands/list.sh'
+# code for 'cli dir list' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 

@@ -1,22 +1,16 @@
-+ bashly generate
 creating user files in src
 created src/initialize.sh
 skipped src/root_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script
-+ ./cli some-file
 args:
 - ${args[--file]} = -
 - ${args[path]} = some-file
 some file with some content
-+ cat some-file
-+ ./cli
 args:
 - ${args[--file]} = -
 - ${args[path]} = -
 some file with some content
-+ cat some-file
-+ ./cli -
 args:
 - ${args[--file]} = -
 - ${args[path]} = -
