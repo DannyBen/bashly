@@ -36,3 +36,28 @@
             - name: ok
             - help: invalid since there is no name
 
+:invalid_long_flag:
+  name: invalid
+  help: invalid since the long flag is not in the form of --force
+  flags:
+  - long: force
+
+:invalid_short_flag:
+  name: invalid
+  help: invalid since the short flag is not in the form of -f
+  flags:
+  - short: f
+
+:invalid_flag_arg:
+  name: invalid
+  help: invalid since the flag.arg should not start with --
+  flags:
+  - long: --user
+    arg: --name
+
+:invalid_arg:
+  name: invalid
+  help: invalid since the arg.name should not start with --
+  args:
+  - name: --user
+
