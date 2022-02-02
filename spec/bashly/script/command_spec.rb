@@ -147,6 +147,14 @@ describe Script::Command do
         expect(subject.filename).to eq "container_run_command.sh"
       end
     end
+
+    context "when filename is provided by the user's config" do
+      let(:fixture) { :custom_filename }
+
+      it "returns its value" do
+        expect(subject.filename).to eq "ops/run_command.sh"
+      end
+    end
   end
 
   describe '#flags' do
