@@ -24,13 +24,18 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [extensible](extensible#readme) - letting your script's users extend the script
 - [extensible-delegate](extensible-delegate#readme) - extending your script by delegating commands to an external executable
 - [whitelist](whitelist#readme) - arguments and flags with a predefined allowed list of values
+- [command-private](command-private#readme) - hiding commands from the command list
+- [stdin](stdin#readme) - reading input from stdin
 
 ## Customization
 
 - [command-groups](command-groups#readme) - grouping sub-commands in logical sections
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
 - [custom-includes](custom-includes#readme) - adding and organizing your custom functions
+- [custom-script-header](custom-script-header#readme) - configuring a different script header
 - [footer](footer#readme) - adding a footer to the help message
+- [command-filenames](command-filenames#readme) - configuring paths for your source scripts
+- [split-config](split-config#readme) - splitting your `bashly.yml` into several smaller files
 
 ## Real-world-like examples
 
