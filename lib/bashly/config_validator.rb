@@ -81,6 +81,8 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
       
       assert_array "#{key}.allowed", value['allowed'], of: :string
+
+      refute value['name'].match(/^-/), "#{key}.name must not start with '-'"
     end
 
     def assert_flag(key, value)
@@ -96,6 +98,10 @@ module Bashly
       
       assert_boolean "#{key}.required", value['required']
       assert_array "#{key}.allowed", value['allowed'], of: :string
+
+      assert value['long'].match(/^--[a-zA-Z0-9_\-]+$/), "#{key}.long must be in the form of '--name'" if value['long']
+      assert value['short'].match(/^-[a-zA-Z0-9]$/), "#{key}.short must be in the form of '-n'" if value['short']
+      refute value['arg'].match(/^-/), "#{key}.arg must not start with '-'" if value['arg']
     end
 
     def assert_env_var(key, value)

@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.flags[0].arg must not start with '-'>
