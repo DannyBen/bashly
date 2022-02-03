@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v0.7.3 - 2022-02-03
+----------------------------------------
+
+- Allow specifying filenames for command partials
+- Add validations for flag and arg names
+
+
 v0.7.2 - 2022-01-28
 ----------------------------------------
 
