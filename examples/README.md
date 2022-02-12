@@ -26,6 +26,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [whitelist](whitelist#readme) - arguments and flags with a predefined allowed list of values
 - [command-private](command-private#readme) - hiding commands from the command list
 - [stdin](stdin#readme) - reading input from stdin
+- [filters](filters#readme) - preventing commands from running unless custom conditions are met
 
 ## Customization
 
