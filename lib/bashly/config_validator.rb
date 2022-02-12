@@ -72,6 +72,14 @@ module Bashly
         "#{key} must be a boolean or a string" 
     end
 
+    def assert_filters(key, value)
+      return unless value
+      assert [Array, String].include?(value.class),
+        "#{key} must be an array or a string" 
+
+      assert_array key, value, of: :string if value.is_a? Array
+    end
+
     def assert_arg(key, value)
       assert_hash key, value
       assert_string "#{key}.name", value['name']
@@ -129,6 +137,7 @@ module Bashly
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_extensible "#{key}.extensible", value['extensible']
+      assert_filters "#{key}.filters", value['filters']
       
       assert_array "#{key}.args", value['args'], of: :arg
       assert_array "#{key}.flags", value['flags'] , of: :flag
