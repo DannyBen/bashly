@@ -13,5 +13,3 @@ args:
 - ${args[id]} = sample-id
 + ./cli redis
 Redis must be running (fake)
-+ echo 1
-1

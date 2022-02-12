@@ -8,4 +8,3 @@ bashly generate
 
 ./cli container sample-id
 ./cli redis
-echo $?

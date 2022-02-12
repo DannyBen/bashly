@@ -90,13 +90,5 @@ Redis must be running (fake)
 
 ```
 
-### `$ echo $?`
-
-```shell
-0
-
-
-```
-
 
 
