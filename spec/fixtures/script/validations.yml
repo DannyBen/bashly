@@ -61,3 +61,15 @@
   args:
   - name: --user
 
+:invalid_filters_type:
+  name: invalid
+  help: invalid since command.filters should be an array or string
+  filters: 1
+
+:invalid_filters_array:
+  name: invalid
+  help: invalid since command.filters in array form must have strings
+  filters:
+    one: two
+    three: four
+

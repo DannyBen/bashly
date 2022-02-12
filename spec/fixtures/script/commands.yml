@@ -169,3 +169,13 @@
 :custom_filename:
   name: run
   filename: ops/run_command.sh
+
+:filters_array:
+  name: run
+  filters:
+  - docker_running
+  - redis_running
+
+:filters_string:
+  name: run
+  filters: docker_running
