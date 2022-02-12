@@ -1,0 +1,17 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/container_command.sh (exists)
+skipped src/redis_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli container sample-id
+# this file is located in 'src/container_command.sh'
+# code for 'cli container' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[id]} = sample-id
++ ./cli redis
+Redis must be running (fake)
++ echo 1
+1

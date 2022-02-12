@@ -16,6 +16,7 @@ module Bashly
         environment_variables
         examples
         extensible
+        filters
         flags
         footer
         group

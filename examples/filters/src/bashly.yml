@@ -1,0 +1,22 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+commands:
+- name: container
+  help: Perform actions on a docker container
+
+  # The filters option can be a string or an array of strings.
+  # When the command is executed, your script will look for a function named
+  # "filter_docker_running" and execute it. If it prints a string, it will be
+  # considered an error and the command execution will be halted.
+  filters: docker_running
+
+  args:
+  - name: id
+    required: true
+    help: Container ID
+
+- name: redis
+  help: Perform actions in redis
+  filters: [docker_running, redis_running]
