@@ -13,7 +13,7 @@ $ bashly init
 $ bashly generate
 ```
 
-<!-- include: src/lib/filter_docker_running.sh -->
+<!-- include: src/lib/filter_docker_running.sh src/lib/filter_redis_running.sh -->
 
 ---
 
@@ -53,6 +53,16 @@ commands:
 # The script will automatically exit if this function prints anything.
 filter_docker_running() {
   docker info > /dev/null 2>&1 || echo "Docker must be running"
+}
+
+```
+
+## `src/lib/filter_redis_running.sh`
+
+```bash
+# This is just a sample filter designed to always fail
+filter_redis_running() {
+  echo "Redis must be running (fake)"
 }
 
 ```
