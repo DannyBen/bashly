@@ -12,4 +12,4 @@ run ./cli --help to test your bash script
 args:
 - ${args[id]} = sample-id
 + ./cli redis
-Redis must be running (fake)
+Redis must be running (always fails)

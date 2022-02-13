@@ -58,13 +58,6 @@ module Bashly
         options["filename"] || "#{action_name.to_underscore}_command.sh"
       end
 
-      # Returns an array of filters
-      def filters
-        return nil unless options["filters"]
-        result = options["filters"]
-        result.is_a?(Array) ? result : [result]
-      end
-
       # Returns an array of Flags
       def flags
         return [] unless options["flags"]
