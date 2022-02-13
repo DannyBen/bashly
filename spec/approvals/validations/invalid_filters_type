@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.filters must be an array or a string>
+#<Bashly::ConfigurationError: root.filters must be an array>

@@ -164,19 +164,11 @@ describe Script::Command do
       end
     end
 
-    context "when filters is defined as array" do
+    context "when filters is defined" do
       let(:fixture) { :filters_array }
 
       it "returns it as is" do
         expect(subject.filters).to eq %w[docker_running redis_running]
-      end
-    end
-
-    context "when filters is defined as a string" do
-      let(:fixture) { :filters_string }
-
-      it "returns it as an array" do
-        expect(subject.filters).to eq %w[docker_running]
       end
     end
   end
