@@ -18,8 +18,17 @@ describe Config do
 
   context "with a string argument" do
     let(:config) { "spec/fixtures/config.yml" }
+    
     it "treats the string as a path to YAML and loads it" do
-      expect(subject["loaded"]).to eq "yes indeed"      
+      expect(subject["loaded"]).to eq "yes indeed"
+    end
+
+    context "when the loaded YAML contains import directives" do
+      let(:config) { "spec/fixtures/import.yml" }
+
+      it "evaluates them" do
+        expect(subject["commands"].first['loaded']).to eq "yes indeed"
+      end
     end
   end
 

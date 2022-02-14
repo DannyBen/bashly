@@ -7,7 +7,7 @@ module Bashly
       end
 
       def config
-        @config ||= Bashly::Config.new "#{Settings.source_dir}/bashly.yml"
+        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
       end
     end
   end
