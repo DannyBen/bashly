@@ -1,0 +1,3 @@
+commands:
+  - import: spec/fixtures/config.yml
+
