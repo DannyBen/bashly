@@ -1,8 +1,6 @@
 module Bashly
   module Commands
     class Preview < Base
-      using ComposeRefinements
-      
       help "Generate the bash script to STDOUT"
 
       usage "bashly preview"
@@ -11,7 +9,7 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def run
-        config = Config.new("#{Settings.source_dir}/bashly.yml").compose
+        config = Config.new "#{Settings.source_dir}/bashly.yml"
         command = Script::Command.new(config)
         script = Script::Wrapper.new command
         puts script.code
