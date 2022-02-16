@@ -1,0 +1,40 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./download
+run ./download --help to test your bash script
++ ./download -h
+download - Sample application to demonstrate the use of repeatable flags
+
+Usage:
+  download [options]
+  download --help | -h
+  download --version
+
+Options:
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
+
+  --data, -d DATA (required) (repeatable)
+    Provide data values
+
+  --verbose, -v (repeatable)
+    Set verbosity level
+
+Examples:
+  download -d one -d "two three" -vvv
+
++ ./download -d one -d 'two three' -vvv
+Data elements:
+one
+two three
+
+Verbosity level: 3
+
+args:
+- ${args[--data]} = "one" "two three"
+- ${args[--verbose]} = 3

@@ -3,7 +3,15 @@
 % if arg
   if [[ -n ${2+x} ]]; then
 <%= render(:validations).indent 4 %>
+% if repeatable
+    if [[ -z ${args[<%= name %>]+x} ]]; then
+      args[<%= name %>]="\"$2\""
+    else
+      args[<%= name %>]="${args[<%= name %>]} \"$2\""
+    fi
+% else
     args[<%= name %>]="$2"
+% end
     shift
     shift
   else
@@ -11,7 +19,11 @@
     exit 1
   fi
 % else
+% if repeatable
+  (( args[<%= name %>]+=1 ))
+% else
   args[<%= name %>]=1
+% end
   shift
 % end
   ;;
