@@ -1,14 +1,6 @@
 # :flag.case
 <%= aliases.join " | " %> )
-% if conflicts
-  for conflicts in <%= conflicts.join ' ' %>; do
-    if [[ -n "${args[$conflicts]:-}" ]]; then
-      printf "<%= strings[:conflicting_flags] %>\n" "$key" "$conflicts"
-      exit 1
-    fi
-  done
-
-% end
+<%= render(:conflicts).indent 2 %>
 % if arg
   if [[ -n ${2+x} ]]; then
 <%= render(:validations).indent 4 %>
