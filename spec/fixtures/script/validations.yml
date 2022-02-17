@@ -71,3 +71,17 @@
   help: invalid since command.filters should be an array of strings
   filters: [1, 2]
 
+:invalid_conflicts_type:
+  name: invalid
+  help: invalid since flag.conflicts should be an array
+  flags:
+  - long: --cache
+    conflicts: --no-cache
+
+:invalid_conflicts_array:
+  name: invalid
+  help: invalid since flag.conflicts should be an array of strings
+  flags:
+  - long: --cache
+    conflicts: [1, 2]
+

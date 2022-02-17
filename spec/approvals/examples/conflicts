@@ -1,0 +1,37 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./download
+run ./download --help to test your bash script
++ ./download -h
+download - Sample application to demonstrate the use of conflicting flags
+
+Usage:
+  download [options]
+  download --help | -h
+  download --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+  --cache
+    Enable cache
+
+  --no-cache
+    Diisable cache
+
+  --fast
+    Run faster
+
++ ./download --cache
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--cache]} = 1
++ ./download --no-cache --fast
+conflicting options: --fast cannot be used with --no-cache
