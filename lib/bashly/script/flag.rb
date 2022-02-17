@@ -19,6 +19,7 @@ module Bashly
         result = [aliases.join(", ")]
         result << arg.upcase if arg
         result << strings[:required] if required and extended
+        result << strings[:repeatable] if repeatable and extended
         result.join " "
       end
     end

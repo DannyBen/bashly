@@ -14,6 +14,7 @@ group: "%{group} Commands:"
 command_shortcut: "Shortcut: %{short}"
 default_command_summary: "%{summary} (default)"
 required: "(required)"
+repeatable: "(repeatable)"
 default: "Default: %{value}"
 allowed: "Allowed: %{values}"
 

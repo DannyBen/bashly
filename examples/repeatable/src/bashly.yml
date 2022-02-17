@@ -1,0 +1,29 @@
+name: download
+help: Sample application to demonstrate the use of repeatable flags
+version: 0.1.0
+
+flags:
+- long: --data
+  short: -d
+  arg: data
+  help: Provide data values
+  required: true
+
+  # Setting this to true on a flag with an argument means the user can type it
+  # multiple times, like --data a --data b.
+  # The argument will be received as a quoted and space-delimited string which
+  # needs to be converted to an array with `eval "data=(${args[--data]})"`
+  repeatable: true
+
+- long: --verbose
+  short: -v
+  help: Set verbosity level
+
+  # Setting this to true on a regular flag means the user can type it multiple
+  # times, in the form of -vvv or -v -v -v.
+  # The argument's value will hold the number of times it was entered.
+  repeatable: true
+
+examples:
+  - download -d one -d "two three" -vvv
+

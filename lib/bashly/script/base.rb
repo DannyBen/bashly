@@ -25,6 +25,7 @@ module Bashly
         name
         parent_name
         private
+        repeatable
         required
         short
         validate
