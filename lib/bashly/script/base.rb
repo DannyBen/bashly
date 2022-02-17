@@ -10,6 +10,7 @@ module Bashly
         arg
         catch_all
         completions
+        conflicts
         default
         dependencies
         description

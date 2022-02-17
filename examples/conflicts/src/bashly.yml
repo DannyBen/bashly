@@ -1,0 +1,18 @@
+name: download
+help: Sample application to demonstrate the use of conflicting flags
+version: 0.1.0
+
+flags:
+- long: --cache
+  help: Enable cache
+  # Running --cache with --no-cache is not permitted
+  conflicts: [--no-cache]
+- long: --no-cache
+  help: Diisable cache
+  # Running --no-cache with --cache or with --fast is not permitted
+  conflicts: [--cache, --fast]
+- long: --fast
+  help: Run faster
+  # Make sure to add the conflicting flags in both flags
+  conflicts: [--no-cache]
+

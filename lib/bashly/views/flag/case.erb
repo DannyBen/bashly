@@ -1,5 +1,6 @@
 # :flag.case
 <%= aliases.join " | " %> )
+<%= render(:conflicts).indent 2 %>
 % if arg
   if [[ -n ${2+x} ]]; then
 <%= render(:validations).indent 4 %>

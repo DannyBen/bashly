@@ -76,7 +76,7 @@ inspect_args
 ### `$ ./download -h`
 
 ```shell
-download - Sample application to demonstrate use of repeatable flags
+download - Sample application to demonstrate the use of repeatable flags
 
 Usage:
   download [options]
