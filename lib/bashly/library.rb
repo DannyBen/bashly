@@ -57,7 +57,10 @@ module Bashly
     end
 
     def target_file_args
-      { user_source_dir: Settings.source_dir }
+      {
+        user_source_dir: Settings.source_dir,
+        user_target_dir: Settings.target_dir
+      }
     end
   end
 end

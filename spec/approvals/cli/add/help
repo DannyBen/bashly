@@ -7,6 +7,7 @@ Usage:
   bashly add colors [--force]
   bashly add yaml [--force]
   bashly add validations [--force]
+  bashly add test [--force]
   bashly add comp FORMAT [OUTPUT --force]
   bashly add (-h|--help)
 
@@ -31,6 +32,9 @@ Commands:
 
   validations
     Add argument validation functions to the lib directory.
+
+  test
+    Add approval testing.
 
   comp
     Generate a bash completions script or function.
