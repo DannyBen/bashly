@@ -99,6 +99,20 @@ describe Commands::Add do
     end
   end
 
+  context "with test command" do
+    let(:lib_file) { "#{target_dir}/test/approvals.bash" }
+
+    before do
+      reset_tmp_dir create_src: true
+    end
+
+    it "copies the test folder to the user space" do
+      expect { subject.run %w[add test] }.to output_approval('cli/add/test')
+      expect(File).to exist(lib_file)
+    end
+  end
+
+
   context "with colors command" do
     let(:lib_file) { "#{source_dir}/lib/colors.sh" }
 

@@ -1,0 +1,9 @@
+created spec/tmp/test/approvals.bash
+created spec/tmp/test/approve
+
+Edit your tests in test/approve and then run:
+
+  $ ./test/approve"
+
+Docs: https://github.com/DannyBen/approvals.bash
+

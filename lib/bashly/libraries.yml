@@ -23,6 +23,21 @@ strings:
     - source: "templates/strings.yml"
       target: "%{user_source_dir}/bashly-strings.yml"
 
+test:
+  files:
+    - source: "templates/test/approvals.bash"
+      target: "%{user_target_dir}/test/approvals.bash"
+    - source: "templates/test/approve"
+      target: "%{user_target_dir}/test/approve"
+
+  post_install_message: |
+    Edit your tests in !txtgrn!test/approve!txtrst! and then run:
+
+      !txtpur!$ ./test/approve!txtrst!"
+
+    Docs: !undblu!https://github.com/DannyBen/approvals.bash
+
+
 validations:
   files:
     - source: "templates/lib/validations/validate_dir_exists.sh"

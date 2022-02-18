@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Run this from the root directory
+
+cd ./test || exit
+source approvals.bash
+PATH="$PATH:../"
+
+# Update me
+cli=download
+
+# Tests
+describe "root command"
+  approve "$cli"
+  approve "$cli --help"
+
+describe "some other command"
+  approve "$cli other"
+  approve "$cli other --help"
+
+# ...more tests...

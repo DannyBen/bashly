@@ -9,6 +9,7 @@ module Bashly
       usage "bashly add colors [--force]"
       usage "bashly add yaml [--force]"
       usage "bashly add validations [--force]"
+      usage "bashly add test [--force]"
       usage "bashly add comp FORMAT [OUTPUT --force]"
       usage "bashly add (-h|--help)"
 
@@ -23,6 +24,7 @@ module Bashly
       command "colors", "Add standard functions for printing colorful and formatted text to the lib directory."
       command "yaml", "Add standard functions for reading YAML files to the lib directory."
       command "validations", "Add argument validation functions to the lib directory."
+      command "test", "Add approval testing."
       command "comp", "Generate a bash completions script or function."
 
       example "bashly add strings --force"
@@ -53,6 +55,10 @@ module Bashly
 
       def validations_command
         add_lib 'validations'
+      end
+
+      def test_command
+        add_lib 'test'
       end
 
       def comp_command

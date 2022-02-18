@@ -4,6 +4,7 @@
 - yaml
 - lib
 - strings
+- test
 - validations
 - completions
 - completions_script
