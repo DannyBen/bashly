@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v0.7.6 - 2022-02-18
+----------------------------------------
+
+- Add support for repeatable flags
+- Make args array available in user filters
+- Add support for exclusive flags (conflicts)
+- Add approvals.bash testing library
+
+
 v0.7.5 - 2022-02-14
 ----------------------------------------
 
