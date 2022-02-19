@@ -12,7 +12,7 @@ module Bashly
       end
 
       def strict
-        @strict ||= ENV['BASHLY_STRICT'] || '.'
+        @strict ||= ENV['BASHLY_STRICT']
       end
     end
   end

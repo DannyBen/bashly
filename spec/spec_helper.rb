@@ -22,7 +22,6 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
-
 RSpec.configure do |c|
   c.include SpecMixin
   c.strip_ansi_escape = true
