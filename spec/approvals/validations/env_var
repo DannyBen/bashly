@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.environment_variables[0].required must be a boolean>

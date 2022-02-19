@@ -36,7 +36,6 @@ module Bashly
       def initialize(options)
         raise Error, "Invalid options provided" unless options.respond_to? :keys
         @options = options
-        validate_options if respond_to? :validate_options
       end
 
       def optional

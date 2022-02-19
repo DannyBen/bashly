@@ -306,18 +306,6 @@ describe Script::Command do
     end
   end
 
-  describe '#validate_options' do
-    let(:validator_double) { double :validator, validate: "ok" }
-
-    it "delegates to Bashly::ConfigValidator" do
-      expect(Bashly::ConfigValidator).to receive(:new).with(subject.options)
-        .and_return(validator_double)
-      expect(validator_double).to receive(:validate)
-
-      subject.validate_options
-    end
-  end
-
   describe '#whitelisted_args' do
     let(:fixture) { :whitelist }
 
