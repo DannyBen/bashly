@@ -128,12 +128,6 @@ module Bashly
         @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.sh"].sort
       end
 
-      # Raise an exception if there are some serious issues with the command
-      # definition. This is called by Base#initialize.
-      def validate_options
-        Bashly::ConfigValidator.new(options).validate
-      end
-
     end
   end
 end

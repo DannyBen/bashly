@@ -84,6 +84,8 @@ module Bashly
       assert_array "#{key}.allowed", value['allowed'], of: :string
 
       refute value['name'].match(/^-/), "#{key}.name must not start with '-'"
+
+      refute value['required'] && value['default'], "#{key} cannot have both required and default"
     end
 
     def assert_flag(key, value)
@@ -104,6 +106,16 @@ module Bashly
       assert value['long'].match(/^--[a-zA-Z0-9_\-]+$/), "#{key}.long must be in the form of '--name'" if value['long']
       assert value['short'].match(/^-[a-zA-Z0-9]$/), "#{key}.short must be in the form of '-n'" if value['short']
       refute value['arg'].match(/^-/), "#{key}.arg must not start with '-'" if value['arg']
+
+      refute value['required'] && value['default'], "#{key} cannot have both required and default"
+
+      if value['default']
+        assert value['arg'], "#{key}.default does not make sense without arg"
+      end
+
+      if value['allowed']
+        assert value['arg'], "#{key}.allowed does not make sense without arg"
+      end
     end
 
     def assert_env_var(key, value)
@@ -140,6 +152,16 @@ module Bashly
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
       assert_array "#{key}.examples", value['examples'], of: :string
+
+      if key == "root"
+        refute value['short'], "#{key}.short makes no sense"
+        refute value['group'], "#{key}.group makes no sense"
+        refute value['default'], "#{key}.default makes no sense"
+        refute value['private'], "#{key}.private makes no sense"
+      else
+        refute value['version'], "#{key}.version makes no sense"
+        refute value['extensible'], "#{key}.extensible makes no sense"
+      end
     end
   end
 end

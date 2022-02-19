@@ -20,6 +20,7 @@ module Bashly
       example "bashly generate --wrap my_function"
 
       def run
+        validate_config
         create_user_files
         upgrade_libs if args['--upgrade']
         create_master_script

@@ -9,9 +9,7 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def run
-        config = Config.new "#{Settings.source_dir}/bashly.yml"
-        validator = ConfigValidator.new config
-        validator.validate
+        validate_config
         say "!txtgrn!OK"
       end
     end
