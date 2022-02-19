@@ -13,7 +13,7 @@ module Bashly
   private
 
     def values!
-      defaults = YAML.load_file asset("templates/strings.yml")
+      defaults = YAML.properly_load_file asset("templates/strings.yml")
       defaults.merge project_strings
     end
 
@@ -23,7 +23,7 @@ module Bashly
 
     def project_strings!
       if File.exist? project_strings_path
-        YAML.load_file project_strings_path
+        YAML.properly_load_file project_strings_path
       else
         {}
       end
