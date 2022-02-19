@@ -1,0 +1,12 @@
+name: download
+help: Test that repeatable does not break allowed
+version: 0.1.0
+
+flags:
+- long: --protocol
+  short: -p
+  help: Choose protocol
+  arg: protocol
+  allowed: [ssh, ftp, sftp]
+  default: ftp
+  repeatable: true
