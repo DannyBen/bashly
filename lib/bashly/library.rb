@@ -60,7 +60,7 @@ module Bashly
       {
         user_source_dir: Settings.source_dir,
         user_target_dir: Settings.target_dir,
-        user_lib_dir: "#{Settings.source_dir}/#{Settings.lib_dir}",
+        user_lib_dir: Settings.full_lib_dir,
       }
     end
   end

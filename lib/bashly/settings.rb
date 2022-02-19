@@ -18,6 +18,10 @@ module Bashly
       def strict
         @strict ||= ENV['BASHLY_STRICT']
       end
+
+      def full_lib_dir
+        "#{source_dir}/#{lib_dir}"
+      end
     end
   end
 end
