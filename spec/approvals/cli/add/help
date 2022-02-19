@@ -62,6 +62,10 @@ Environment Variables:
   BASHLY_SOURCE_DIR
     The path containing the bashly configuration and source files [default: src]
 
+  BASHLY_LIB_DIR
+    The path to use for creating the library files, relative to the source dir
+    [default: lib]
+
 Examples:
   bashly add strings --force
   bashly add comp function

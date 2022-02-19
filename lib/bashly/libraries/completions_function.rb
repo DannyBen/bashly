@@ -4,7 +4,7 @@ module Bashly
       def files
         [
           {
-            path: "#{Settings.source_dir}/lib/#{function_name}.sh",
+            path: "#{Settings.source_dir}/#{Settings.lib_dir}/#{function_name}.sh",
             content: completions_function_code(function_name)
           }
         ]

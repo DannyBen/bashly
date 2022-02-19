@@ -1,22 +1,22 @@
 colors:
   files:
     - source: "templates/lib/colors.sh"
-      target: "%{user_source_dir}/lib/colors.sh"
+      target: "%{user_lib_dir}/colors.sh"
 
 config:
   files:
     - source: "templates/lib/config.sh"
-      target: "%{user_source_dir}/lib/config.sh"
+      target: "%{user_lib_dir}/config.sh"
 
 yaml:
   files:
     - source: "templates/lib/yaml.sh"
-      target: "%{user_source_dir}/lib/yaml.sh"
+      target: "%{user_lib_dir}/yaml.sh"
 
 lib:
   files:
     - source: "templates/lib/sample_function.sh"
-      target: "%{user_source_dir}/lib/sample_function.sh"
+      target: "%{user_lib_dir}/sample_function.sh"
 
 strings:
   files:
@@ -41,13 +41,13 @@ test:
 validations:
   files:
     - source: "templates/lib/validations/validate_dir_exists.sh"
-      target: "%{user_source_dir}/lib/validations/validate_dir_exists.sh"
+      target: "%{user_lib_dir}/validations/validate_dir_exists.sh"
     - source: "templates/lib/validations/validate_file_exists.sh"
-      target: "%{user_source_dir}/lib/validations/validate_file_exists.sh"
+      target: "%{user_lib_dir}/validations/validate_file_exists.sh"
     - source: "templates/lib/validations/validate_integer.sh"
-      target: "%{user_source_dir}/lib/validations/validate_integer.sh"
+      target: "%{user_lib_dir}/validations/validate_integer.sh"
     - source: "templates/lib/validations/validate_not_empty.sh"
-      target: "%{user_source_dir}/lib/validations/validate_not_empty.sh"
+      target: "%{user_lib_dir}/validations/validate_not_empty.sh"
 
 completions: :CompletionsFunction
 completions_script: :CompletionsScript

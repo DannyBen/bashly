@@ -27,6 +27,10 @@ Environment Variables:
   BASHLY_TARGET_DIR
     The path to use for creating the bash script [default: .]
 
+  BASHLY_LIB_DIR
+    The path to use for upgrading library files, relative to the source dir
+    [default: lib]
+
   BASHLY_STRICT
     When not empty, enable bash strict mode (set -euo pipefail)
 
