@@ -6,8 +6,18 @@ if [[ ! ${args[<%= arg.name %>]} =~ ^(<%= arg.allowed.join '|' %>)$ ]]; then
 fi
 % end
 % whitelisted_flags.each do |flag|
+% if flag.repeatable
+eval "input_array=(${args[<%= flag.name %>]})"
+for i in "${input_array[@]}"; do
+  if [[ ! $i =~ ^(<%= flag.allowed.join '|' %>)$ ]]; then
+    printf "%s\n" "<%= strings[:disallowed_flag] % { name: flag.name, allowed: flag.allowed.join(', ') } %>"
+    exit 1
+  fi
+done
+% else
 if [[ ! ${args[<%= flag.name %>]} =~ ^(<%= flag.allowed.join '|' %>)$ ]]; then
   printf "%s\n" "<%= strings[:disallowed_flag] % { name: flag.name, allowed: flag.allowed.join(', ') } %>"
   exit 1
 fi
+% end
 % end
