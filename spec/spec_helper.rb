@@ -14,6 +14,7 @@ include SpecMixin
 # Set up working directory for the specs
 Settings.source_dir = 'spec/tmp/src'
 Settings.target_dir = 'spec/tmp'
+Settings.strict = '1' # generate scripts with `set -euo pipefile`
 reset_tmp_dir
 
 # Consistent Colsole output (for rspec_fixtures)
@@ -21,8 +22,6 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
-# Force generated scripts to strict mode (set -euo pipefile)
-ENV['BASHLY_STRICT'] = '1'
 
 RSpec.configure do |c|
   c.include SpecMixin
