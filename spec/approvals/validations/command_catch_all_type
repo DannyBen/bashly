@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.catch_all must be a boolean, a string or a hash>
