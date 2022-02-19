@@ -32,6 +32,7 @@ module Bashly
       example "bashly add comp script completions.bash"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
+      environment "BASHLY_LIB_DIR", "The path to use for creating the library files, relative to the source dir [default: lib]"
 
       def strings_command
         add_lib 'strings'

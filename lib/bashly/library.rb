@@ -59,7 +59,8 @@ module Bashly
     def target_file_args
       {
         user_source_dir: Settings.source_dir,
-        user_target_dir: Settings.target_dir
+        user_target_dir: Settings.target_dir,
+        user_lib_dir: Settings.full_lib_dir,
       }
     end
   end

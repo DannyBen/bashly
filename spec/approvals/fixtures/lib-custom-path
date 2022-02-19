@@ -1,0 +1,34 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ bundle exec bashly add lib
+created src/my-libz/sample_function.sh
++ bundle exec bashly add colors
+created src/my-libz/colors.sh
++ bundle exec bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+it works
++ bundle exec bashly generate --upgrade
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+updated src/my-libz/colors.sh
+created ./cli
+run ./cli --help to test your bash script
++ bundle exec bashly add comp function
+created src/my-libz/send_completions.sh
+
+In order to enable completions in your script, create a command or a flag (for example: cli completions or cli --completions) that calls the send_completions function.
+
+Your users can then run something like this to enable completions:
+
+  $ eval "$(cli completions)"
+
