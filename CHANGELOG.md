@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v0.7.7 - 2022-02-20
+----------------------------------------
+
+- Add bashly version to generated script header comment
+- Fix whitelist filter on repeatable flags
+- Add BASHLY_LIB_DIR configuration variable
+- Add more friendly errors on invalid configuration
+- Adjust YAML loading to allow aliases in Ruby 3.1
+
+
 v0.7.6 - 2022-02-18
 ----------------------------------------
 
