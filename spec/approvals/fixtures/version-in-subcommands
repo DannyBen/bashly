@@ -1,0 +1,41 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/git_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli --version
+1.2.3
++ ./cli help
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  git   Delegate to git
+
++ ./cli git --version
+# this file is located in 'src/git_command.sh'
+# code for 'cli git' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+other_args:
+- ${other_args[*]} = --version
+- ${other_args[0]} = --version
++ ./cli git any 'other args' -or --flags
+# this file is located in 'src/git_command.sh'
+# code for 'cli git' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+other_args:
+- ${other_args[*]} = any other args -o -r --flags
+- ${other_args[0]} = any
+- ${other_args[1]} = other args
+- ${other_args[2]} = -o
+- ${other_args[3]} = -r
+- ${other_args[4]} = --flags

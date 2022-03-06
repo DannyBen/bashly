@@ -1,5 +1,6 @@
 # :command.fixed_flag_filter
 case "${1:-}" in
+% if root_command?
 % if short_flag_exist? "-v"
 --version )
 % else
@@ -9,6 +10,7 @@ case "${1:-}" in
   exit
   ;;
 
+% end
 % if short_flag_exist? "-h"
 --help )
 % else

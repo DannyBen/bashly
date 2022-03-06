@@ -1,0 +1,8 @@
+name: cli
+help: Sample application
+version: 1.2.3
+
+commands:
+- name: git
+  help: Delegate to git
+  catch_all: git_params
