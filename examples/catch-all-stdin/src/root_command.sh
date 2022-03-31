@@ -16,5 +16,3 @@ echo
 echo "collected file contents:"
 echo "$content"
 echo
-
-

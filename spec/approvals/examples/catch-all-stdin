@@ -1,10 +1,8 @@
-+ bashly generate
 creating user files in src
 skipped src/initialize.sh (exists)
 skipped src/root_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script
-+ ./cli -h
 cli - Sample application
 
 Usage:
@@ -34,7 +32,6 @@ Examples:
   cat file1 | cli --format csv
   cat file* | cli - --format csv
 
-+ ./cli file1 file2 --format csv
 args:
 - ${args[--format]} = csv
 
@@ -48,7 +45,6 @@ file1 content
 file2 content
 
 
-+ ./cli -f=csv file1 file2
 args:
 - ${args[--format]} = csv
 
@@ -62,16 +58,12 @@ file1 content
 file2 content
 
 
-+ cat file1
-+ ./cli --format csv
 args:
 - ${args[--format]} = csv
 
 collected file contents:
 file1 content
 
-+ ./cli -
-+ cat file1 file2
 args:
 - ${args[--format]} = json
 
