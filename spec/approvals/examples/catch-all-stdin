@@ -42,9 +42,11 @@ other_args:
 - ${other_args[*]} = file1 file2
 - ${other_args[0]} = file1
 - ${other_args[1]} = file2
-Collected file contents:
+
+collected file contents:
 file1 content
 file2 content
+
 
 + ./cli -f=csv file1 file2
 args:
@@ -54,16 +56,20 @@ other_args:
 - ${other_args[*]} = file1 file2
 - ${other_args[0]} = file1
 - ${other_args[1]} = file2
-Collected file contents:
+
+collected file contents:
 file1 content
 file2 content
+
 
 + cat file1
 + ./cli --format csv
 args:
 - ${args[--format]} = csv
-Collected file contents:
+
+collected file contents:
 file1 content
+
 + ./cli -
 + cat file1 file2
 args:
@@ -72,7 +78,9 @@ args:
 other_args:
 - ${other_args[*]} = -
 - ${other_args[0]} = -
-Collected file contents:
+
+collected file contents:
 file1 content
 file2 content
+
 

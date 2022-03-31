@@ -15,7 +15,9 @@ if [[ -z "$content" ]]; then
   content="$(cat -)"
 fi
 
-echo "Collected file contents:"
+echo
+echo "collected file contents:"
 echo "$content"
+echo
 
 
