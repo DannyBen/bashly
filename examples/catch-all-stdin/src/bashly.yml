@@ -1,0 +1,21 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+catch_all:
+  label: file
+  help: Path to one or more files. Reads from stdin if empty or "-".
+
+flags:
+- long: --format
+  short: -f
+  arg: format
+  help: Specify file format
+  default: json
+  allowed: [csv, json]
+
+examples:
+- cli file1 file2 --format csv
+- cli --format csv file1 file2
+- cat file1 | cli --format csv
+- cat file* | cli - --format csv

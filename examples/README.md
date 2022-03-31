@@ -21,6 +21,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 
 - [catch-all](catch-all#readme) - a command that can receive an arbitrary number of arguments
 - [catch-all-advanced](catch-all-advanced#readme) - another example for the `catch_all` option
+- [catch-all-stdin](catch-all-stdin#readme) - combining `catch_all` with `stdin` to read multiple files
 - [extensible](extensible#readme) - letting your script's users extend the script
 - [extensible-delegate](extensible-delegate#readme) - extending your script by delegating commands to an external executable
 - [whitelist](whitelist#readme) - arguments and flags with a predefined allowed list of values

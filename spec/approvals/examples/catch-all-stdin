@@ -1,0 +1,78 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli [options] [FILE...]
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+  --format, -f FORMAT
+    Specify file format
+    Allowed: csv, json
+    Default: json
+
+Arguments:
+  FILE...
+    Path to one or more files. Reads from stdin if empty or "-".
+
+Examples:
+  cli file1 file2 --format csv
+  cli --format csv file1 file2
+  cat file1 | cli --format csv
+  cat file* | cli - --format csv
+
++ ./cli file1 file2 --format csv
+args:
+- ${args[--format]} = csv
+
+other_args:
+- ${other_args[*]} = file1 file2
+- ${other_args[0]} = file1
+- ${other_args[1]} = file2
+Collected file contents:
+file1 content
+file2 content
+
++ ./cli -f=csv file1 file2
+args:
+- ${args[--format]} = csv
+
+other_args:
+- ${other_args[*]} = file1 file2
+- ${other_args[0]} = file1
+- ${other_args[1]} = file2
+Collected file contents:
+file1 content
+file2 content
+
++ cat file1
++ ./cli --format csv
+args:
+- ${args[--format]} = csv
+Collected file contents:
+file1 content
++ ./cli -
++ cat file1 file2
+args:
+- ${args[--format]} = json
+
+other_args:
+- ${other_args[*]} = -
+- ${other_args[0]} = -
+Collected file contents:
+file1 content
+file2 content
+
