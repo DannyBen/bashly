@@ -1,9 +1,19 @@
 # :command.whitelist_filter
 % whitelisted_args.each do |arg|
+% if arg.repeatable
+eval "input_array=(${args[<%= arg.name %>]})"
+for i in "${input_array[@]}"; do
+  if [[ ! $i =~ ^(<%= arg.allowed.join '|' %>)$ ]]; then
+    printf "%s\n" "<%= strings[:disallowed_argument] % { name: arg.name, allowed: arg.allowed.join(', ') } %>"
+    exit 1
+  fi
+done
+% else
 if [[ ! ${args[<%= arg.name %>]} =~ ^(<%= arg.allowed.join '|' %>)$ ]]; then
   printf "%s\n" "<%= strings[:disallowed_argument] % { name: arg.name, allowed: arg.allowed.join(', ') } %>"
   exit 1
 fi
+% end
 % end
 % whitelisted_flags.each do |flag|
 % if flag.repeatable

@@ -1,5 +1,5 @@
 # :argument.usage
-echo "  <%= name.upcase %>"
+echo "  <%= label %>"
 printf "<%= help.wrap(76).indent(4).sanitize_for_print %>\n"
 % if allowed
 printf "    <%= strings[:allowed] % { values: allowed.join(', ') } -%>\n"
