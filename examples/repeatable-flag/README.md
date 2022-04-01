@@ -1,4 +1,4 @@
-# Repeatable Example
+# Repeatable Flag Example
 
 Demonstrates the use of repeatable flags that allow users to run commands such
 as `download -d one -d "two three" -vvv`.
@@ -46,7 +46,7 @@ flags:
   repeatable: true
 
 examples:
-  - download -d one -d "two three" -vvv
+- download -d one -d "two three" -vvv
 ```
 
 ## `src/root_command.sh`

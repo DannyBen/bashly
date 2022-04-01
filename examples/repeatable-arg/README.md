@@ -1,12 +1,12 @@
-# Repeatable Example
+# Repeatable Argument Example
 
-Demonstrates the use of repeatable flags that allow users to run commands such
-as `download -d one -d "two three" -vvv`.
+Demonstrates the use of repeatable arguments that allow users to run commands
+such `convert *.png` or `convert 1.png 2.png 3.png`.
 
 This example was generated with:
 
 ```bash
-$ bashly init --minimal
+$ bashly init
 # ... now edit src/bashly.yml to match the example ...
 # ... now edit src/root_command.sh to match the example ...
 $ bashly generate
@@ -19,53 +19,43 @@ $ bashly generate
 ## `bashly.yml`
 
 ```yaml
-name: download
-help: Sample application to demonstrate the use of repeatable flags
+name: upcase
+help: Sample application to demonstrate the use of repeatable arguments
 version: 0.1.0
 
-flags:
-- long: --data
-  short: -d
-  arg: data
-  help: Provide data values
+args:
+- name: file
+  help: One or more files to process
   required: true
 
-  # Setting this to true on a flag with an argument means the user can type it
-  # multiple times, like --data a --data b.
+  # Setting repeatable to true means that the user can provide multiple arguments
+  # for it.
   # The argument will be received as a quoted and space-delimited string which
-  # needs to be converted to an array with `eval "data=(${args[--data]})"`
-  repeatable: true
-
-- long: --verbose
-  short: -v
-  help: Set verbosity level
-
-  # Setting this to true on a regular flag means the user can type it multiple
-  # times, in the form of -vvv or -v -v -v.
-  # The argument's value will hold the number of times it was entered.
+  # needs to be converted to an array with `eval "data=(${args[file]})"`
   repeatable: true
 
 examples:
-  - download -d one -d "two three" -vvv
+- upcase README.md LICENSE
+- upcase *.md
 ```
 
 ## `src/root_command.sh`
 
 ```bash
 # Convert the space delimited string to an array
-eval "data=(${args[--data]})"
+files=''
+eval "files=(${args[file]})"
 
-echo "Data elements:"
-for i in "${data[@]}"; do
-  echo "$i"
+echo
+echo "files:"
+for i in "${files[@]}"; do
+  echo "  path: $i:"
+  content="$(cat "$i")"
+  echo "  content: ${content}"
+  echo "  upcase: ${content^^}"
 done
 
-# The --verbose arg will contain the number of times it was used by the user
-verbose=${args[--verbose]}
-echo ""
-echo "Verbosity level: $verbose"
-echo ""
-
+echo
 inspect_args
 
 ```
@@ -73,48 +63,64 @@ inspect_args
 
 ## Generated script output
 
-### `$ ./download -h`
+### `$ ./upcase -h`
 
 ```shell
-download - Sample application to demonstrate the use of repeatable flags
+upcase - Sample application to demonstrate the use of repeatable arguments
 
 Usage:
-  download [options]
-  download --help | -h
-  download --version
+  upcase FILE...
+  upcase --help | -h
+  upcase --version | -v
 
 Options:
   --help, -h
     Show this help
 
-  --version
+  --version, -v
     Show version number
 
-  --data, -d DATA (required) (repeatable)
-    Provide data values
-
-  --verbose, -v (repeatable)
-    Set verbosity level
+Arguments:
+  FILE...
+    One or more files to process
 
 Examples:
-  download -d one -d "two three" -vvv
+  upcase README.md LICENSE
+  upcase *.md
 
 
 
 ```
 
-### `$ ./download -d one -d "two three" -vvv`
+### `$ ./upcase file1`
 
 ```shell
-Data elements:
-one
-two three
 
-Verbosity level: 3
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
 
 args:
-- ${args[--data]} = "one" "two three"
-- ${args[--verbose]} = 3
+- ${args[file]} = "file1"
+
+
+```
+
+### `$ ./upcase file*`
+
+```shell
+
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
+  path: file2:
+  content: content of file2
+  upcase: CONTENT OF FILE2
+
+args:
+- ${args[file]} = "file1" "file2"
 
 
 ```

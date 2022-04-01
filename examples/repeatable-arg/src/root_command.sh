@@ -1,4 +1,5 @@
 # Convert the space delimited string to an array
+files=''
 eval "files=(${args[file]})"
 
 echo
