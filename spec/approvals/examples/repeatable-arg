@@ -1,0 +1,50 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./upcase
+run ./upcase --help to test your bash script
++ ./upcase -h
+upcase - Sample application to demonstrate the use of repeatable arguments
+
+Usage:
+  upcase FILE...
+  upcase --help | -h
+  upcase --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Arguments:
+  FILE...
+    One or more files to process
+
+Examples:
+  upcase README.md LICENSE
+  upcase *.md
+
++ ./upcase file1
+
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
+
+args:
+- ${args[file]} = "file1"
++ ./upcase file1 file2
+
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
+  path: file2:
+  content: content of file2
+  upcase: CONTENT OF FILE2
+
+args:
+- ${args[file]} = "file1" "file2"
