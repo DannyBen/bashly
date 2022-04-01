@@ -126,7 +126,7 @@ module Bashly
     end
 
     def assert_env_var(key, value)
-      assert_hash key, value, Script::Argument.option_keys
+      assert_hash key, value, Script::EnvironmentVariable.option_keys
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.default", value['default']
