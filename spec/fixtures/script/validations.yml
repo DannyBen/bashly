@@ -166,3 +166,37 @@
   help: root cannot have private
   private: true
 
+:invalid_arg_keys:
+  name: invalid
+  help: disallowed arg keys
+  args:
+  - name: user
+    private: true
+    disallowed: false
+
+:invalid_catch_all_keys:
+  name: invalid
+  help: disallowed catch_all keys
+  catch_all:
+    label: files
+    private: true
+
+:invalid_command_keys:
+  name: invalid
+  help: disallowed command keys
+  disallowed: false
+  
+:invalid_env_var_keys:
+  name: invalid
+  help: disallowed environment variable keys
+  environment_variables:
+  - name: api_key
+    disallowed: true
+  
+:invalid_flag_keys:
+  name: invalid
+  help: disallowed flag keys
+  flags:
+  - long: --user
+    disallowed: true
+  

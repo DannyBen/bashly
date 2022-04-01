@@ -4,6 +4,18 @@ module Bashly
       include Completions
       include CommandScopes
 
+      class << self
+        def option_keys
+          @option_keys ||= %i[
+            args catch_all commands completions
+            default dependencies environment_variables examples
+            extensible filename filters flags
+            footer group help name
+            private short version
+          ]
+        end
+      end
+
       # Returns the name to be used as an action.
       # - If it is the root command, the action is "root"
       # - Else, it is all the parents, except the first one (root) joined

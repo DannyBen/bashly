@@ -2,6 +2,10 @@ module Bashly
   module Script
     class CatchAll
       class << self
+        def option_keys
+          @option_keys ||= %i[label help required]
+        end
+
         def from_config(config)
           options = case config
           when nil

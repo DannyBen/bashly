@@ -5,33 +5,11 @@ module Bashly
 
       attr_reader :options
 
-      OPTION_KEYS = %i[
-        allowed
-        arg
-        catch_all
-        completions
-        conflicts
-        default
-        dependencies
-        description
-        environment_variables
-        examples
-        extensible
-        filters
-        flags
-        footer
-        group
-        help
-        long
-        name
-        parent_name
-        private
-        repeatable
-        required
-        short
-        validate
-        version
-      ]
+      class << self
+        def option_keys
+          @option_keys ||= []
+        end
+      end
 
       def initialize(options)
         raise Error, "Invalid options provided" unless options.respond_to? :keys
@@ -39,7 +17,7 @@ module Bashly
       end
 
       def optional
-        !required
+        !options['required']
       end
 
       def summary
@@ -56,7 +34,7 @@ module Bashly
       end
 
       def respond_to_missing?(method_name, include_private = false)
-        OPTION_KEYS.include?(method_name) || super
+        self.class.option_keys.include?(method_name) || super
       end
     end
   end

@@ -1,6 +1,15 @@
 module Bashly
   module Script
     class Flag < Base
+      class << self
+        def option_keys
+          @option_keys ||= %i[
+            allowed arg conflicts default help long repeatable required
+            short validate
+          ]
+        end
+      end
+      
       def aliases
         if long and short
           [long, short]

@@ -4,6 +4,12 @@ describe Script::Base do
   let(:options) { {"name" => "file", "help" => "line one\nline two"} }
   subject { described_class.new options }
 
+  describe '::option_keys' do
+    it "returns an empty array" do
+      expect(described_class.option_keys).to eq []
+    end
+  end
+
   describe '#optional' do
     context "when required is false" do
       it "returns true" do
