@@ -15,7 +15,7 @@ module Bashly
 
     def view_marker(id = nil)
       id ||= ":#{caller_locations.first.path}"
-      "# #{id}" unless ENV['BASHLY_PRODUCTION']
+      "# #{id}" unless Bashly.production?
     end
 
   private

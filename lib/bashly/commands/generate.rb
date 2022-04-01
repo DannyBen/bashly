@@ -3,24 +3,34 @@ module Bashly
     class Generate < Base
       help "Generate the bash script and required files"
 
-      usage "bashly generate [--force --quiet --upgrade --wrap FUNCTION]"
+      usage "bashly generate [options]"
       usage "bashly generate (-h|--help)"
 
       option "-f --force", "Overwrite existing files"
       option "-q --quiet", "Disable on-screen progress report"
       option "-u --upgrade", "Upgrade all added library functions"
       option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
+      option "-e --env ENV", "Force the generation environment (see BASHLY_ENV)"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
       environment "BASHLY_LIB_DIR", "The path to use for upgrading library files, relative to the source dir [default: lib]"
       environment "BASHLY_STRICT", "When not empty, enable bash strict mode (set -euo pipefail)"
+      environment "BASHLY_ENV", <<~EOF
+        Set to 'production' or 'development':
+        - production    generate a smaller script, without file markers
+        - development   generate with file markers
+
+        Can be overridden with --env [default: development]
+      EOF
 
       example "bashly generate --force"
       example "bashly generate --wrap my_function"
 
       def run
         validate_config
+        ENV['BASHLY_ENV'] = args['--env'] if args['--env']
+        quiet_say "creating !txtgrn!production!txtrst! version" if Bashly.production?
         create_user_files
         upgrade_libs if args['--upgrade']
         create_master_script
