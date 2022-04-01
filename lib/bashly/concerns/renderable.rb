@@ -4,11 +4,18 @@ module Bashly
   module Renderable
     def render(view)
       template = File.read view_path(view)
-      ERB.new(template, trim_mode: '%-').result(binding)
+      erb = ERB.new(template, trim_mode: '%-')
+      erb.filename = "#{views_subfolder}.#{view}"
+      erb.result binding
     end
 
     def strings
       @strings ||= MessageStrings.new
+    end
+
+    def view_marker(id = nil)
+      id ||= ":#{caller_locations.first.path}"
+      "# #{id}" unless ENV['BASHLY_PRODUCTION']
     end
 
   private

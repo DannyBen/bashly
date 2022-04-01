@@ -102,7 +102,7 @@ module Bashly
           default_content
         end
 
-        "# :#{path}\n#{content}"
+        ENV['BASHLY_PRODUCTION'] ? content : "#{view_marker path}\n#{content}"
       end
 
       # Returns an array of all parents. For example, the command 

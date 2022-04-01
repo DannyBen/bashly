@@ -1,6 +1,6 @@
-# :command.user_lib
+<%= view_marker %>
 % user_lib.each do |file|
-# <%= ":#{file}" %>
+<%= view_marker file %>
 <%= File.read file %>
 
 % end

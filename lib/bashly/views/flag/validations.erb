@@ -1,4 +1,4 @@
-# :flag.validations
+<%= view_marker %>
 % if validate
 if [[ -n $(validate_<%= validate %> "$2") ]]; then
   printf "<%= strings[:validation_error] %>\n" "<%= usage_string %>" "$(validate_<%= validate %> "$2")"

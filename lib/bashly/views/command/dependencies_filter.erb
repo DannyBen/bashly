@@ -1,4 +1,4 @@
-# :command.dependencies_filter
+<%= view_marker %>
 % if dependencies
 % dependencies.each do |dependency|
 if ! [[ -x "$(command -v <%= dependency %>)" ]]; then
