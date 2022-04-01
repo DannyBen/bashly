@@ -6,7 +6,8 @@ module Bashly
   class CLI
     def self.runner
       runner = MisterBin::Runner.new version: Bashly::VERSION,
-        header: "Bashly - Bash CLI Generator"
+        header: "Bashly - Bash CLI Generator",
+        footer: "Help: !txtpur!bashly COMMAND --help!txtrst!\nDocs: !undblu!https://bashly.dannyb.co"
 
       runner.route 'init',      to: Commands::Init
       runner.route 'preview',   to: Commands::Preview
