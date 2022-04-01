@@ -1,18 +1,30 @@
 # :command.parse_requirements_case
+% repeatable_arg = false
 % if args.any?
 % condition = "if"
 % args.each do |arg|
 <%= condition %> [[ -z ${args[<%= arg.name %>]+x} ]]; then
 <%= arg.render(:validations).indent 2 %>
+% if arg.repeatable
+% repeatable_arg = true
+  args[<%= arg.name %>]="\"$1\""
+  shift
+else
+  args[<%= arg.name %>]="${args[<%= arg.name %>]} \"$1\""
+  shift
+% else
   args[<%= arg.name %>]=$1
   shift
+% end
 % condition = "elif"
 % end
+% if !repeatable_arg
 else
+% end
 % if catch_all.enabled?
   other_args+=("$1")
   shift
-% else
+% elsif !repeatable_arg
   printf "<%= strings[:invalid_argument] %>\n" "$key"
   exit 1
 % end
@@ -20,7 +32,7 @@ fi
 % elsif catch_all.enabled?
   other_args+=("$1")
   shift
-% else
+% elsif !repeatable_arg
 printf "<%= strings[:invalid_argument] %>\n" "$key"
 exit 1
 % end

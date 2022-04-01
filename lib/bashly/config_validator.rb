@@ -99,6 +99,7 @@ module Bashly
       assert_optional_string "#{key}.default", value['default']
       assert_optional_string "#{key}.validate", value['validate']
       
+      assert_boolean "#{key}.repeatable", value['repeatable']
       assert_boolean "#{key}.required", value['required']
       assert_array "#{key}.allowed", value['allowed'], of: :string
       assert_array "#{key}.conflicts", value['conflicts'], of: :string
