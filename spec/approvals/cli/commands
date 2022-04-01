@@ -6,3 +6,6 @@ Commands:
   validate  Scan the configuration file for errors
   generate  Generate the bash script and required files
   add       Add extra features and customization to your script
+
+Help: bashly COMMAND --help
+Docs: https://bashly.dannyb.co
