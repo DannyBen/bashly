@@ -1,7 +1,7 @@
 Generate the bash script and required files
 
 Usage:
-  bashly generate [--force --quiet --upgrade --wrap FUNCTION]
+  bashly generate [options]
   bashly generate (-h|--help)
 
 Options:
@@ -16,6 +16,9 @@ Options:
 
   -w --wrap FUNCTION
     Wrap the entire script in a function so it can also be sourced
+
+  -e --env ENV
+    Force the generation environment (see BASHLY_ENV)
 
   -h --help
     Show this help
@@ -33,6 +36,13 @@ Environment Variables:
 
   BASHLY_STRICT
     When not empty, enable bash strict mode (set -euo pipefail)
+
+  BASHLY_ENV
+    Set to 'production' or 'development':
+    - production    generate a smaller script, without file markers
+    - development   generate with file markers
+    
+    Can be overridden with --env [default: development]
 
 Examples:
   bashly generate --force

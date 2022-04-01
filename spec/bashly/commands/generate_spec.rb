@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Commands::Generate do
   let(:source_dir) { Settings.source_dir }
   let(:target_dir) { Settings.target_dir }
+  let(:cli_script_content) { File.read cli_script }
   subject { CLI.runner }
 
   context "with --help" do
@@ -23,6 +24,17 @@ describe Commands::Generate do
     it "generates the cli script" do
       expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
       expect(File).to exist(cli_script)
+    end
+
+    context "when BASHLY_ENV=production" do
+      before { ENV['BASHLY_ENV'] = 'production' }
+      after  { ENV['BASHLY_ENV'] = nil }
+
+      it "generates a script without view markers" do
+        expect { subject.run %w[generate] }.to output_approval('cli/generate/production-env-var')
+        expect(File).to exist(cli_script)
+        expect(cli_script_content).to_not include '# :'
+      end
     end
 
     context "when source files already exist" do
@@ -83,6 +95,25 @@ describe Commands::Generate do
     end
   end
   
+  context "with --env production" do
+    let(:cli_script) { "#{target_dir}/cli" }
+    let(:cli_script_content) { File.read cli_script }
+
+    before do
+      reset_tmp_dir
+      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
+      expect(success).to be true
+    end
+
+    after  { ENV['BASHLY_ENV'] = nil }
+
+    it "generates a script without view markers" do
+      expect { subject.run %w[generate --env production] }.to output_approval('cli/generate/production')
+      expect(File).to exist(cli_script)
+      expect(cli_script_content).to_not include '# :'
+    end
+  end
+
   context "with --upgrade" do
     let(:lib_files) { Dir["spec/tmp/src/lib/**/*.sh"].sort }
     let(:outdated_text) { "OUTDATED TEXT" }

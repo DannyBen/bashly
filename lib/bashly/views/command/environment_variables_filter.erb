@@ -1,4 +1,4 @@
-# :command.environment_variables_filter
+<%= view_marker %>
 % if default_environment_variables.any?
 % default_environment_variables.each do |env_var|
 export <%= env_var.name.upcase %>="${<%= env_var.name.upcase %>:-<%= env_var.default %>}"

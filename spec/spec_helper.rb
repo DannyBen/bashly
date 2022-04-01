@@ -22,6 +22,9 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
+# Unset any user env settings
+ENV['BASHLY_ENV'] = nil
+
 RSpec.configure do |c|
   c.include SpecMixin
   c.strip_ansi_escape = true
