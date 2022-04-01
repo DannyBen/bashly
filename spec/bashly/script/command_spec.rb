@@ -211,12 +211,12 @@ describe Script::Command do
     end
 
     it "returns the contents of a file in ./src along with a header " do
-      expect(subject.load_user_file 'test.sh').to eq "# :spec/tmp/src/test.sh\nhello Command#load_user_file"
+      expect(subject.load_user_file 'test.sh').to eq "# spec/tmp/src/test.sh\nhello Command#load_user_file"
     end
 
     context "when the file is not found" do
       it "returns a string containing a friendly error message" do
-        expect(subject.load_user_file 'notfound.sh').to eq "# :spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
+        expect(subject.load_user_file 'notfound.sh').to eq "# spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
       end
     end
   end
