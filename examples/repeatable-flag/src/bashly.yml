@@ -25,5 +25,5 @@ flags:
   repeatable: true
 
 examples:
-  - download -d one -d "two three" -vvv
+- download -d one -d "two three" -vvv
 

@@ -1,0 +1,18 @@
+name: upcase
+help: Sample application to demonstrate the use of repeatable arguments
+version: 0.1.0
+
+args:
+- name: file
+  help: One or more files to process
+  required: true
+
+  # Setting repeatable to true means that the user can provide multiple arguments
+  # for it.
+  # The argument will be received as a quoted and space-delimited string which
+  # needs to be converted to an array with `eval "data=(${args[file]})"`
+  repeatable: true
+
+examples:
+- upcase README.md LICENSE
+- upcase *.md
