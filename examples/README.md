@@ -25,7 +25,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [extensible](extensible#readme) - letting your script's users extend the script
 - [extensible-delegate](extensible-delegate#readme) - extending your script by delegating commands to an external executable
 - [whitelist](whitelist#readme) - arguments and flags with a predefined allowed list of values
-- [repeatable-arg](repeatable-arg#readme) - allowing args to be provided multiple times
+- [repeatable-arg](repeatable-arg#readme) - allowing arguments to be provided multiple times
 - [repeatable-flag](repeatable-flag#readme) - allowing flags to be provided multiple times
 - [conflicts](conflicts#readme) - defining mutually exclusive flags
 - [command-private](command-private#readme) - hiding commands from the command list
