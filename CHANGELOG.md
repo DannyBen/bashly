@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v0.7.9 - 2022-04-02
+----------------------------------------
+
+- Add support for repeatable args
+- Abort generation if the config file contains unknown keys
+- Allow generating script without file marker comments
+- Add BASHLY_ENV and bashly generate --env
+- Add a help footer when running bashly without arguments
+
+
 v0.7.8 - 2022-03-11
 ----------------------------------------
 
