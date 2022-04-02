@@ -138,7 +138,7 @@ module Bashly
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
       refute value['commands'] && value['flags'], "#{key} cannot have both commands and flags"
-      
+
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.short", value['short']
       assert_optional_string "#{key}.help", value['help']
@@ -160,6 +160,11 @@ module Bashly
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
       assert_array "#{key}.examples", value['examples'], of: :string
+
+      if value['catch_all'] and value['args']
+        repeatable_arg = value['args'].select { |a| a['repeatable'] }.first&.dig 'name'
+        refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
+      end
 
       if key == "root"
         refute value['short'], "#{key}.short makes no sense"

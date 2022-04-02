@@ -200,3 +200,12 @@
   - long: --user
     disallowed: true
   
+:catch_all_and_repeatable_arg:
+  name: invalid
+  help: catch_all and repeatable arg make no sense together
+  catch_all: true
+  args:
+  - name: path
+    help: Path to one or more files
+    repeatable: true
+    required: true
