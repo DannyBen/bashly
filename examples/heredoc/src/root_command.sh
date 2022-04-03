@@ -1,1 +1,2 @@
-echo "$(message1)"
+text="$(message1)"
+echo "$text"

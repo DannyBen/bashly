@@ -33,7 +33,8 @@ version: 0.1.0
 ## `src/root_command.sh`
 
 ```bash
-echo "$(message1)"
+text="$(message1)"
+echo "$text"
 ```
 
 ## `src/lib/heredocs.sh`
