@@ -47,10 +47,6 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [docker-like](docker-like#readme) - a sample script with deep commands (like `docker container run`)
 - [git-like](git-like#readme) - a sample script with sub-commands similar to git
 
-## Other Examples
-
-- [heredoc](heredoc#readme) - using heredoc strings
-
 ## Bashly library features
 
 - [config-ini](config-ini#readme) - using the config (INI) functions
@@ -58,3 +54,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [yaml](yaml#readme) - using the YAML reading functions
 - [completions](completions#readme) - adding bash completion functionality
 - [validations](validations#readme) - adding argument validation functions
+
+## Other Examples
+
+- [heredoc](heredoc#readme) - using heredoc strings
