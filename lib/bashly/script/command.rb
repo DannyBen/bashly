@@ -111,7 +111,12 @@ module Bashly
         options['parents'] || []
       end
 
-      # Returns trus if this is the root command (no parents)
+      # Returns true if one of the args is repeatable
+      def repeatable_arg_exist?
+        args.select(&:repeatable).any?
+      end
+
+      # Returns true if this is the root command (no parents)
       def root_command?
         parents.empty?
       end

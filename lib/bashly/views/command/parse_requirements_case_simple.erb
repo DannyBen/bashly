@@ -1,0 +1,18 @@
+<%= view_marker %>
+% if args.any?
+% condition = "if"
+% args.each do |arg|
+<%= condition %> [[ -z ${args[<%= arg.name %>]+x} ]]; then
+<%= arg.render(:validations).indent 2 %>
+  args[<%= arg.name %>]=$1
+  shift
+% condition = "elif"
+% end
+else
+  printf "<%= strings[:invalid_argument] %>\n" "$key"
+  exit 1
+fi
+% else
+printf "<%= strings[:invalid_argument] %>\n" "$key"
+exit 1
+% end
