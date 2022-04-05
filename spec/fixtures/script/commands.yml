@@ -179,3 +179,10 @@
 :filters_string:
   name: run
   filters: docker_running
+
+:repeatable_arg:
+  name: get
+  args:
+  - name: source
+  - name: target
+    repeatable: true
