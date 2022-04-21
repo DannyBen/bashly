@@ -16,7 +16,7 @@ describe String do
       expect(subject.indent 3).to eq "   hello"
     end
 
-    context "with offset is 0" do
+    context "when offset is 0" do
       it "returns the string as is" do
         expect(subject.indent 0).to eq subject
       end
