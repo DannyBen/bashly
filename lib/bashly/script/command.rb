@@ -40,7 +40,7 @@ module Bashly
 
       # Returns a string suitable to be a headline
       def caption_string
-        help ? "#{full_name} - #{summary}" : full_name
+        help.empty? ? full_name : "#{full_name} - #{summary}"
       end
 
       def catch_all

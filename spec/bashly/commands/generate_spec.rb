@@ -61,6 +61,19 @@ describe Commands::Generate do
         expect(File).to exist(cli_script)
       end
     end
+
+    context "with 2 levels of nested commands" do
+      let(:file) { "#{target_dir}/src/upload_command.sh" }
+
+      before do
+        system "cp spec/fixtures/nested.yml #{source_dir}/bashly.yml"
+      end
+
+      it "does not generate the file for the middle command" do
+        expect { subject.run %w[generate] }.to output_approval('cli/generate/nested')
+        expect(File).to_not exist(file)
+      end
+    end
   end
 
   context "with --quiet" do

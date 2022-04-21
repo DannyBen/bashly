@@ -3,6 +3,7 @@ require 'spec_helper'
 describe String do
   describe '#sanitize_for_print' do
     subject { %Q[this is\na "new line"] }
+    
     it "escapes newlines and quotes" do
       expect(subject.sanitize_for_print).to eq "this is\\na \\\"new line\\\""
     end
@@ -10,13 +11,21 @@ describe String do
 
   describe '#indent' do
     subject { "hello" }
+    
     it "prepends the string with spaces" do
       expect(subject.indent 3).to eq "   hello"
+    end
+
+    context "when offset is 0" do
+      it "returns the string as is" do
+        expect(subject.indent 0).to eq subject
+      end
     end
   end
 
   describe '#wrap' do
     subject { "a long line of text that is going to be wrapped, fingers crossed!" }
+    
     it "wraps the string to the specified length" do
       expect(subject.wrap 30).to eq "a long line of text that is\ngoing to be wrapped, fingers\ncrossed!"
     end
@@ -24,6 +33,7 @@ describe String do
     # GH-79
     context "with an uninterrupted string" do
       subject { "a long line of text with a nice uninterrupted-string-like-a-url-for-example" }
+      
       it "does not break the uninterrupted portion" do
         expect(subject.wrap 30).to eq "a long line of text with a\nnice\nuninterrupted-string-like-a-url-for-example"
       end
@@ -84,6 +94,7 @@ describe String do
 
     context "with a string that contains front matter" do
       subject { "#{front_matter}\n---\n#{rest}" }
+      
       let(:front_matter) { "this is the front matter" }
       let(:rest) { "this is\nthe script" }
 
@@ -94,6 +105,7 @@ describe String do
 
     context "with a string that contains front matter with a leading separator" do
       subject { "---\n#{front_matter}\n---\n#{rest}" }
+      
       let(:front_matter) { "this is the front matter" }
       let(:rest) { "this is\nthe script" }
 
