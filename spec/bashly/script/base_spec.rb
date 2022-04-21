@@ -10,6 +10,24 @@ describe Script::Base do
     end
   end
 
+  describe '#initialize' do
+    context "with invalid options" do
+      let(:options) { "not-a-hash" }
+      
+      it "raises an error" do
+        expect { subject }.to raise_error(Bashly::Error, /Invalid options/)
+      end
+    end
+  end
+
+  describe '#method_missing' do
+    context "when the method is not a valid option key" do
+      it "raises an error" do
+        expect { subject.no_such_option }.to raise_error(NoMethodError)
+      end
+    end
+  end
+
   describe '#optional' do
     context "when required is false" do
       it "returns true" do

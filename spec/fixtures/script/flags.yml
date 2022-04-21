@@ -12,3 +12,7 @@
 :required:
   long: --mandatory
   required: true
+
+:repeatable:
+  long: --mandatory
+  repeatable: true

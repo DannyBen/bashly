@@ -21,4 +21,18 @@ describe Script::Argument do
       end
     end
   end
+
+  describe '#label' do
+    it "returns a string suitable to be used as a compact usage pattern" do
+      expect(subject.label).to eq "FILE"
+    end
+
+    context "with a repeatable arg" do
+      let(:fixture) { :repeatable }
+
+      it "adds a ... suffix" do
+        expect(subject.label).to eq "FILE..."
+      end
+    end
+  end
 end

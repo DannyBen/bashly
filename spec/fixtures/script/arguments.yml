@@ -4,3 +4,7 @@
 :required:
   name: file
   required: true
+
+:repeatable:
+  name: file
+  repeatable: true

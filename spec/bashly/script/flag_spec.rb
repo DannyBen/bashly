@@ -68,11 +68,19 @@ describe Script::Flag do
         end
       end
 
-      context "when the flag is required" do
+      context "when the flag is also required" do
         let(:fixture) { :required }
 
         it "appends (required) to the usage string" do
           expect(subject.usage_string extended: true).to eq "#{subject.usage_string} (required)"
+        end        
+      end
+
+      context "when the flag is also repeatable" do
+        let(:fixture) { :repeatable }
+
+        it "appends (repeatable) to the usage string" do
+          expect(subject.usage_string extended: true).to eq "#{subject.usage_string} (repeatable)"
         end        
       end
       

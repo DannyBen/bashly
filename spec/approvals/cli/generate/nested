@@ -1,0 +1,7 @@
+creating user files in spec/tmp/src
+created spec/tmp/src/initialize.sh
+created spec/tmp/src/download_command.sh
+created spec/tmp/src/upload_ftp_command.sh
+created spec/tmp/src/upload_ssh_command.sh
+created spec/tmp/cli
+run spec/tmp/cli --help to test your bash script
