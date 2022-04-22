@@ -94,12 +94,13 @@ module Bashly
       # If the file is not found, returns a string with a hint.
       def load_user_file(file, placeholder: true)
         path = "#{Settings.source_dir}/#{file}"
-        default_content = placeholder ? "echo \"error: cannot load file\"" : ''
 
         content = if File.exist? path
           File.read(path).remove_front_matter
-        else 
-          default_content
+        elsif placeholder
+          %q[echo "error: cannot load file"]
+        else
+          ''
         end
 
         Bashly.production? ? content : "#{view_marker path}\n#{content}"
