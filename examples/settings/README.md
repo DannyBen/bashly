@@ -7,7 +7,7 @@ This example was generated with:
 
 ```bash
 $ bashly add settings
-# ... now edit settings.yml file to match the example ...
+# ... now edit settings.yml to match the example ...
 $ bashly init
 $ bashly generate
 ```
