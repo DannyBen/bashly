@@ -58,3 +58,4 @@ Each of these examples demonstrates one aspect or feature of bashly.
 ## Other Examples
 
 - [heredoc](heredoc#readme) - using heredoc strings
+- [settings](settings#readme) - using the settings.yml file to adjust bashly's behavior
