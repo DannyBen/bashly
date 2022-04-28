@@ -20,7 +20,7 @@ include SpecMixin
 Settings.source_dir = 'spec/tmp/src'
 Settings.target_dir = 'spec/tmp'
 Settings.strict = '1' # generate scripts with `set -euo pipefile`
-Settings.env = nil
+Settings.env = :development
 reset_tmp_dir
 
 # Consistent Colsole output (for rspec_fixtures)
