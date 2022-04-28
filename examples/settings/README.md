@@ -12,10 +12,19 @@ $ bashly init
 $ bashly generate
 ```
 
+<!-- include: settings.yml -->
+
 -----
 
 
 
+## `settings.yml`
+
+```yaml
+source_dir: source
+target_dir: out
+
+```
 
 
 ## Generated script output
