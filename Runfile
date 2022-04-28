@@ -20,10 +20,14 @@ end
 help   "Run shellcheck on all examples"
 action :shellcheck do
   Example.executables.each do |example|
-    success = system "shellcheck #{example}"
-    color = success ? 'txtgrn' : 'txtred'
-    say "- shellcheck !#{color}!#{example}"
-    exit 1 unless success
+    if File.exist? example
+      success = system "shellcheck #{example}"
+      color = success ? 'txtgrn' : 'txtred'
+      say "- shellcheck !#{color}!#{example}"
+      exit 1 unless success
+    else
+      say "- skip       !txtcyn!#{example}"
+    end
   end
 end
 
