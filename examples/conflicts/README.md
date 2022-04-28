@@ -36,6 +36,7 @@ flags:
 
 
 
+
 ## Generated script output
 
 ### `$ ./download -h`

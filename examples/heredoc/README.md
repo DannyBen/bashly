@@ -30,6 +30,7 @@ help: Sample application showing the use of heredoc
 version: 0.1.0
 ```
 
+
 ## `src/root_command.sh`
 
 ```bash

@@ -36,6 +36,7 @@ args:
   help: URL to download from
 ```
 
+
 ## `src/root_command.sh`
 
 ```bash

@@ -51,6 +51,7 @@ commands:
     default: development
 ```
 
+
 ## `src/verify_command.sh`
 
 ```bash

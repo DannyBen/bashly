@@ -46,6 +46,7 @@ commands:
     help: File to download
 ```
 
+
 ## `cli-status`
 
 ```bash

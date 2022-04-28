@@ -66,6 +66,7 @@ commands:
 
 
 
+
 ## Generated script output
 
 ### `$ ./cli`

@@ -38,6 +38,7 @@ commands:
 
 
 
+
 ## Generated script output
 
 ### `$ ./mygit`

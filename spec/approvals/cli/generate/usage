@@ -1,10 +1,11 @@
 Usage:
-  bashly add strings [--force]
-  bashly add lib [--force]
-  bashly add config [--force]
   bashly add colors [--force]
-  bashly add yaml [--force]
-  bashly add validations [--force]
-  bashly add test [--force]
   bashly add comp FORMAT [OUTPUT --force]
+  bashly add config [--force]
+  bashly add lib [--force]
+  bashly add settings [--force]
+  bashly add strings [--force]
+  bashly add test [--force]
+  bashly add validations [--force]
+  bashly add yaml [--force]
   bashly add (-h|--help)

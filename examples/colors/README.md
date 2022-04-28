@@ -36,6 +36,7 @@ args:
   help: "Message to show [default: hello colors]"
 ```
 
+
 ## `src/root_command.sh`
 
 ```bash

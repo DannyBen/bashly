@@ -42,6 +42,7 @@ flags:
   help: Another path to file
 ```
 
+
 ## `src/root_command.sh`
 
 ```bash

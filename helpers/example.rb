@@ -77,16 +77,24 @@ class Example
       extra_files = files_markdown included_files
     end
 
+    yaml_section = if File.exist? yaml_path
+      <<~EOF
+        ## `bashly.yml`
+
+        ```yaml
+        #{yaml}
+        ```
+      EOF
+    else
+      ''
+    end
+
     <<~EOF
     #{content}
 
     #{marker}
 
-    ## `bashly.yml`
-
-    ```yaml
-    #{yaml}
-    ```
+    #{yaml_section}
 
     #{extra_files}
 

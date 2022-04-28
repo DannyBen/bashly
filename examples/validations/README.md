@@ -54,6 +54,7 @@ commands:
 
 
 
+
 ## Generated script output
 
 ### `$ ./validate calc 1 2 --save README.md`

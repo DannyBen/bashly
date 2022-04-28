@@ -79,6 +79,7 @@ commands:
     help: Password to use for logging in
 ```
 
+
 ## `src/completions_command.sh`
 
 ```bash

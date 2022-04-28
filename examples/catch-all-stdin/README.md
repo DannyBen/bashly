@@ -41,6 +41,7 @@ examples:
 - cat file* | cli - --format csv
 ```
 
+
 ## `src/root_command.sh`
 
 ```bash
