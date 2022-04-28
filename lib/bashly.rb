@@ -15,15 +15,3 @@ requires 'bashly/script/base'
 requires 'bashly/commands/base'
 requires 'bashly/libraries/base'
 requires 'bashly'
-
-module Bashly
-  class << self
-    def env
-      ENV['BASHLY_ENV']&.to_sym
-    end
-
-    def production?
-      env == :production
-    end
-  end
-end

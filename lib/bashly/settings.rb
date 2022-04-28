@@ -23,6 +23,18 @@ module Bashly
         @tab_indent ||= get :tab_indent
       end
 
+      def env
+        @env ||= get(:env, :development)&.to_sym
+      end
+
+      def env=(value)
+        @env = value&.to_sym
+      end
+
+      def production?
+        env == :production
+      end
+
       def full_lib_dir
         "#{source_dir}/#{lib_dir}"
       end

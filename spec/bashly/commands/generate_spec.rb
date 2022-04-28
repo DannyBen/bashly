@@ -27,8 +27,8 @@ describe Commands::Generate do
     end
 
     context "when BASHLY_ENV=production" do
-      before { ENV['BASHLY_ENV'] = 'production' }
-      after  { ENV['BASHLY_ENV'] = nil }
+      before { Settings.env = :production }
+      after  { Settings.env = nil }
 
       it "generates a script without view markers" do
         expect { subject.run %w[generate] }.to output_approval('cli/generate/production-env-var')
@@ -118,7 +118,7 @@ describe Commands::Generate do
       expect(success).to be true
     end
 
-    after  { ENV['BASHLY_ENV'] = nil }
+    after  { Settings.env = nil }
 
     it "generates a script without view markers" do
       expect { subject.run %w[generate --env production] }.to output_approval('cli/generate/production')
