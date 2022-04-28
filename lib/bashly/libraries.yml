@@ -3,20 +3,24 @@ colors:
     - source: "templates/lib/colors.sh"
       target: "%{user_lib_dir}/colors.sh"
 
+completions: :CompletionsFunction
+completions_script: :CompletionsScript
+completions_yaml: :CompletionsYAML
+
 config:
   files:
     - source: "templates/lib/config.sh"
       target: "%{user_lib_dir}/config.sh"
 
-yaml:
-  files:
-    - source: "templates/lib/yaml.sh"
-      target: "%{user_lib_dir}/yaml.sh"
-
 lib:
   files:
     - source: "templates/lib/sample_function.sh"
       target: "%{user_lib_dir}/sample_function.sh"
+
+settings:
+  files:
+    - source: "templates/settings.yml"
+      target: "settings.yml"
 
 strings:
   files:
@@ -37,7 +41,6 @@ test:
 
     Docs: !undblu!https://github.com/DannyBen/approvals.bash
 
-
 validations:
   files:
     - source: "templates/lib/validations/validate_dir_exists.sh"
@@ -49,6 +52,7 @@ validations:
     - source: "templates/lib/validations/validate_not_empty.sh"
       target: "%{user_lib_dir}/validations/validate_not_empty.sh"
 
-completions: :CompletionsFunction
-completions_script: :CompletionsScript
-completions_yaml: :CompletionsYAML
+yaml:
+  files:
+    - source: "templates/lib/yaml.sh"
+      target: "%{user_lib_dir}/yaml.sh"

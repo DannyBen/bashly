@@ -1,43 +1,48 @@
 Add extra features and customization to your script
 
 Usage:
-  bashly add strings [--force]
-  bashly add lib [--force]
-  bashly add config [--force]
   bashly add colors [--force]
-  bashly add yaml [--force]
-  bashly add validations [--force]
-  bashly add test [--force]
   bashly add comp FORMAT [OUTPUT --force]
+  bashly add config [--force]
+  bashly add lib [--force]
+  bashly add settings [--force]
+  bashly add strings [--force]
+  bashly add test [--force]
+  bashly add validations [--force]
+  bashly add yaml [--force]
   bashly add (-h|--help)
 
 Commands:
-  strings
-    Copy an additional configuration file to your project, allowing you to
-    customize all the tips and error strings.
+  colors
+    Add standard functions for printing colorful and formatted text to the lib
+    directory.
+
+  comp
+    Generate a bash completions script or function.
+
+  config
+    Add standard functions for handling INI files to the lib directory.
 
   lib
     Create the additional lib directory for additional user scripts. All *.sh
     scripts in this folder will be included in the final bash script.
 
-  config
-    Add standard functions for handling INI files to the lib directory.
+  settings
+    Copy a sample settings.yml file to your project, allowing you to customize
+    some bashly options.
 
-  colors
-    Add standard functions for printing colorful and formatted text to the lib
-    directory.
-
-  yaml
-    Add standard functions for reading YAML files to the lib directory.
-
-  validations
-    Add argument validation functions to the lib directory.
+  strings
+    Copy an additional configuration file to your project, allowing you to
+    customize all the tips and error strings.
 
   test
     Add approval testing.
 
-  comp
-    Generate a bash completions script or function.
+  validations
+    Add argument validation functions to the lib directory.
+
+  yaml
+    Add standard functions for reading YAML files to the lib directory.
 
 Options:
   -f --force
