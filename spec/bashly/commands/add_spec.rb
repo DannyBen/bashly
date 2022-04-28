@@ -92,6 +92,7 @@ describe Commands::Add do
 
   context "with settings command" do
     let(:settings_file) { "#{target_dir}/settings.yml" }
+    let(:template_file) { "lib/bashly/templates/settings.yml" }
 
     before do
       reset_tmp_dir
@@ -104,6 +105,7 @@ describe Commands::Add do
         end
       end.to output_approval('cli/add/settings')
       expect(File).to exist(settings_file)
+      expect(File.read settings_file).to eq File.read(template_file)
     end
 
     context "when the file exists" do

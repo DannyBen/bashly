@@ -103,7 +103,7 @@ module Bashly
           ''
         end
 
-        Bashly.production? ? content : "#{view_marker path}\n#{content}"
+        Settings.production? ? content : "#{view_marker path}\n#{content}"
       end
 
       # Returns an array of all parents. For example, the command 

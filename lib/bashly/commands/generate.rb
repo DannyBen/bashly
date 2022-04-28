@@ -30,8 +30,8 @@ module Bashly
 
       def run
         validate_config
-        ENV['BASHLY_ENV'] = args['--env'] if args['--env']
-        quiet_say "creating !txtgrn!production!txtrst! version" if Bashly.production?
+        Settings.env = args['--env'] if args['--env']
+        quiet_say "creating !txtgrn!production!txtrst! version" if Settings.production?
         create_user_files
         upgrade_libs if args['--upgrade']
         create_master_script
