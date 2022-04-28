@@ -83,6 +83,23 @@ describe String do
     end
   end
 
+  describe '#expand_tabs' do
+    subject { "start\n  indented\n    indented more\nend" }
+    let(:expected) { "start\n\tindented\n\t\tindented more\nend" }
+
+    it "replaces double leading spaces with tabs" do
+      expect(subject.expand_tabs).to eq expected
+    end
+
+    context "with an explicit tab stop of 4" do
+      subject { "start\n    indented\n        indented more\nend" }
+
+      it "replaces each 4 spaces with a tab" do
+        expect(subject.expand_tabs 4).to eq expected
+      end
+    end
+  end
+
   describe '#remove_front_matter' do
     context "with a string that does not have front matter" do
       subject { "this is a\nsample script" }

@@ -16,6 +16,7 @@ module Bashly
       environment "BASHLY_TARGET_DIR", "The path to use for creating the bash script [default: .]"
       environment "BASHLY_LIB_DIR", "The path to use for upgrading library files, relative to the source dir [default: lib]"
       environment "BASHLY_STRICT", "When not empty, enable bash strict mode (set -euo pipefail)"
+      environment "BASHLY_TAB_INDENT", "When not empty, the generated script will use tab indentation instead of spaces (every 2 leading spaces will be converted to a tab character)"
       environment "BASHLY_ENV", <<~EOF
         Set to 'production' or 'development':
         - production    generate a smaller script, without file markers
@@ -114,7 +115,7 @@ module Bashly
       end
 
       def create_master_script
-        File.write master_script_path, script.code
+        File.write master_script_path, script.code(tab_indent: Settings.tab_indent)
         FileUtils.chmod "+x", master_script_path
         quiet_say "!txtgrn!created!txtrst! #{master_script_path}"
       end

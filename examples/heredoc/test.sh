@@ -2,7 +2,7 @@
 
 set -x
 
-bashly generate
+BASHLY_TAB_INDENT=1 bashly generate
 
 ### Try Me ###
 

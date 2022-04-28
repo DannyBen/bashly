@@ -1,7 +1,7 @@
 module Bashly
   class Settings
     class << self
-      attr_writer :source_dir, :target_dir, :lib_dir, :strict
+      attr_writer :source_dir, :target_dir, :lib_dir, :strict, :tab_indent
 
       def source_dir
         @source_dir ||= ENV['BASHLY_SOURCE_DIR'] || 'src'
@@ -21,6 +21,10 @@ module Bashly
 
       def full_lib_dir
         "#{source_dir}/#{lib_dir}"
+      end
+
+      def tab_indent
+        @tab_indent ||= ENV['BASHLY_TAB_INDENT']
       end
     end
   end

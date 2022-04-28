@@ -31,4 +31,10 @@ class String
     split(/^---\s*/).last
   end
 
+  def expand_tabs(tabstop = 2)
+    gsub(/^( {#{tabstop}}+)/) do
+      "\t" * ($1.size / tabstop)
+    end
+  end
+
 end

@@ -9,17 +9,21 @@ module Bashly
         @command, @function_name = command, function_name
       end
 
-      def code
-        if function_name
-          result = [header, render('wrapper')].join "\n"
-        else
-          result = [header, body].join "\n"
-        end
-
-        result.lint
+      def code(tab_indent: false)
+        tab_indent ? base_code.expand_tabs : base_code
       end
 
     private
+
+      def base_code
+        result = if function_name
+          [header, render('wrapper')]
+        else
+          [header, body]
+        end
+
+        result.join("\n").lint
+      end
 
       def header
         @header ||= header!

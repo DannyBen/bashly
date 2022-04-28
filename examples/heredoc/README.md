@@ -1,24 +1,24 @@
 # Heredoc Example
 
-This example shows how (and where) you can use *Here document* (heredoc)
-constructs.
+This example shows how you can use *Here document* (heredoc) constructs.
 
-Since bashly applies indentation to most of your code, it is not possible to 
-use heredoc everywhere. Code in the `src/lib` directory is injected to your
-script as is, so in cases where you must use heredocs, this is where you can.
+By default, bashly indents all code using spaces. In order for heredoc to
+properly work in bash, all leading spaces within the heredoc document must use
+the tab character.
+
+Setting the environment variable `BASHLY_TAB_INDENT` to any value will make
+bashly replace the space indentation in the result, with tabs.
 
 This example was generated with:
 
 ```bash
 $ bashly init
-$ bashly add lib
 # ... now edit src/bashly.yml to match the example ...
 # ... now edit src/root_command.sh to match the example ...
-# ... now edit src/lib/heredocs.sh to match the example ...
-$ bashly generate
+$ BASHLY_TAB_INDENT=1 bashly generate
 ```
 
-<!-- include: src/root_command.sh src/lib/heredocs.sh -->
+<!-- include: src/root_command.sh -->
 
 -----
 
@@ -33,20 +33,19 @@ version: 0.1.0
 ## `src/root_command.sh`
 
 ```bash
-text="$(message1)"
-echo "$text"
-```
-
-## `src/lib/heredocs.sh`
-
-```bash
-message1() {
-  cat << EOF
-this is a
-  multiline
-    heredoc text
+cat <<-EOF
+multiline
+heredoc text
 EOF
-}
+
+# In case an inner indentation is needed, use a whitespace that is not a space
+# and not a tab character. For example, Unicode U+3000 [　]
+cat <<-EOF
+this is
+　an indented
+　　multiline text
+EOF
+
 
 ```
 
@@ -56,9 +55,11 @@ EOF
 ### `$ ./cli`
 
 ```shell
-this is a
-  multiline
-    heredoc text
+multiline
+heredoc text
+this is
+　an indented
+　　multiline text
 
 
 ```
