@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rm -f ./source/*.sh
+rm -f ./src/*.sh
 
 set -x
 

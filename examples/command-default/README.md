@@ -47,7 +47,6 @@ commands:
 
 
 
-
 ## Generated script output
 
 ### `$ ./ftp`

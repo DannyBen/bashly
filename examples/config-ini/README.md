@@ -61,7 +61,6 @@ commands:
   help: Show the entire config file
 ```
 
-
 ## `config.ini`
 
 ```ini

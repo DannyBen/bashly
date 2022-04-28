@@ -52,7 +52,6 @@ commands:
 
 
 
-
 ## Generated script output
 
 ### `$ ./docker`

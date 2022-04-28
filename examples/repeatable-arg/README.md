@@ -39,7 +39,6 @@ examples:
 - upcase *.md
 ```
 
-
 ## `src/root_command.sh`
 
 ```bash

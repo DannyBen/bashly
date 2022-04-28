@@ -41,7 +41,6 @@ examples:
 - download example.com ./output -f
 ```
 
-
 ## `src/header.sh`
 
 ```bash

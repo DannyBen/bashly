@@ -44,7 +44,6 @@ examples:
 
 
 
-
 ## Generated script output
 
 ### `$ ./convert`

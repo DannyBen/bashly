@@ -37,7 +37,6 @@ flags:
 
 
 
-
 ## Generated script output
 
 ### `$ ./cli`

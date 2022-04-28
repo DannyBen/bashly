@@ -49,7 +49,6 @@ examples:
 - download -d one -d "two three" -vvv
 ```
 
-
 ## `src/root_command.sh`
 
 ```bash

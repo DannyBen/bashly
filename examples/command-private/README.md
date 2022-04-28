@@ -43,7 +43,6 @@ commands:
   private: true
 ```
 
-
 ## `src/connect_command.sh`
 
 ```bash
