@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v0.7.10 - 2022-04-29
+----------------------------------------
+
+- Disallow catch_all together with repeatable arg
+- Refactor parse_requirements views
+- Add support for generating tab-indented scripts using BASHLY_TAB_INDENT
+- Add settings.yml as an alternative to environment variables
+- Support env value in settings.yml as an alternative to BASHLY_ENV
+
+
 v0.7.9 - 2022-04-02
 ----------------------------------------
 
