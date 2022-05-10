@@ -25,7 +25,7 @@ version: 0.1.0
 
 commands:
 - name: dir
-  short: d
+  alias: d
   help: Directory commands
 
   commands:
@@ -42,7 +42,7 @@ commands:
     filename: dir_commands/remove.sh
 
 - name: file
-  short: f
+  alias: f
   help: File commands
 
   commands:

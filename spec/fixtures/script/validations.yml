@@ -146,10 +146,10 @@
   - long: --role
     allowed: [admin, noob]
 
-:root_short:
+:root_alias:
   name: invalid
-  help: root cannot have short
-  short: i
+  help: root cannot have alias
+  alias: i
 
 :root_group:
   name: invalid

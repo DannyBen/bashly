@@ -4,11 +4,11 @@ version: 0.1.0
 
 commands:
 - name: status
-  short: s*
+  alias: s*
   help: Show repository status
 
 - name: commit
-  short: c*
+  alias: c*
   help: Commit changes
 
   flags:

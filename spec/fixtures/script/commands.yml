@@ -1,6 +1,6 @@
 :basic_command:
   name: get
-  short: g
+  alias: g
   help: |-
     get something from somewhere
     this is the second line

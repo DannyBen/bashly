@@ -2,7 +2,7 @@
 # It is imported to bashly.yml when running "bashly generate"
 
 name: upload
-short: u
+alias: u
 help: Upload a file
 args:
 - name: source

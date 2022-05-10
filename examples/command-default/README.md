@@ -22,7 +22,7 @@ version: 0.1.0
 
 commands:
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
 
   # By setting the `upload` command as the default command, it will be executed
@@ -36,7 +36,7 @@ commands:
     help: File to upload
 
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   args:

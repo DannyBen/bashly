@@ -4,11 +4,11 @@ version: 0.1.0
 
 commands:
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
   commands:
   - name: ftp

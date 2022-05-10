@@ -4,7 +4,7 @@ version: 0.1.0
 
 commands:
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   # Configure catch_all for the `download` sub-command using the extended
@@ -30,7 +30,7 @@ commands:
   - cli download example.com ./output -f
 
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
 
   # Configure catch_all for the `upload` sub-command using the extended

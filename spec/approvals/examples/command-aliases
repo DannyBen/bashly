@@ -40,23 +40,18 @@ Environment Variables:
   API_KEY
     Set your API key
 
-+ ./cli --version
-0.1.0
 + ./cli download -h
 cli download - Download a file
 
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [options]
+  cli download SOURCE [TARGET]
   cli download --help | -h
 
 Options:
   --help, -h
     Show this help
-
-  --force, -f
-    Overwrite existing files
 
 Arguments:
   SOURCE
@@ -65,54 +60,63 @@ Arguments:
   TARGET
     Target filename (default: same as source)
 
-Environment Variables:
-  DEFAULT_TARGET_LOCATION
-    Set the default location to download to
-
 Examples:
   cli download example.com
-  cli download example.com ./output -f
+  cli d example.com ./output
 
-+ ./cli download
-missing required argument: SOURCE
-usage: cli download SOURCE [TARGET] [options]
-+ ./cli download sourcefile targetfile -f
++ ./cli d somefile
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--force]} = 1
-- ${args[source]} = sourcefile
-- ${args[target]} = targetfile
+- ${args[source]} = somefile
 + ./cli upload --help
 cli upload - Upload a file
 
-Alias: u
+Alias: u, push
 
 Usage:
-  cli upload SOURCE [options]
+  cli upload SOURCE
   cli upload --help | -h
 
 Options:
   --help, -h
     Show this help
 
-  --user, -u USER (required)
-    Username to use for logging in
+Arguments:
+  SOURCE
+    File to upload
 
-  --password, -p PASSWORD
-    Password to use for logging in
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
+
++ ./cli u --help
+cli upload - Upload a file
+
+Alias: u, push
+
+Usage:
+  cli upload SOURCE
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
 
 Arguments:
   SOURCE
     File to upload
 
-+ ./cli upload sourcefile
-missing required flag: --user, -u USER
-+ ./cli upload sourcefile -u username
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
+
++ ./cli push somefile
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[source]} = sourcefile
-- ${args[--user]} = username
+- ${args[source]} = somefile

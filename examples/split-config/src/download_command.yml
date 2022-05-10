@@ -1,5 +1,5 @@
 name: download
-short: d
+alias: d
 help: Download a file
 
 args:

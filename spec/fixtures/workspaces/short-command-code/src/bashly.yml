@@ -4,11 +4,11 @@ version: 0.1.0
 
 commands:
 - name: config
-  short: c
+  alias: c
   help: Show the configuration file
 
 - name: get
-  short: g
+  alias: g
   help: Install a package
 
   args:

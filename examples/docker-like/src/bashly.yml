@@ -4,7 +4,7 @@ version: 0.1.0
 
 commands:
 - name: container
-  short: c*
+  alias: c*
   help: Container commands
 
   commands:
@@ -23,10 +23,10 @@ commands:
       required: true
 
 - name: image
-  short: i*
+  alias: i*
   help: Image commands
 
   commands:
   - name: ls
-    short: l
+    alias: l
     help: Show all images

@@ -9,7 +9,7 @@ environment_variables:
 
 commands:
 - name: verify
-  short: v
+  alias: v
   help: Verify your user
 
   # This option belongs to the `verify` command and will appear in its help

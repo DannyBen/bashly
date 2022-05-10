@@ -1,11 +1,12 @@
-# Commands Example
+# Command Aliases Example
 
-Demonstrates how to build a script that supports sub-commands.
+Demonstrates how to set multiple aliases to a command.
 
 This example was generated with:
 
 ```bash
 $ bashly init
+# ... now edit src/bashly.yml to match the example ...
 $ bashly generate
 ```
 
@@ -22,10 +23,10 @@ environment_variables:
 - name: api_key
   help: Set your API key
 
-# Specifying a `commands` array configures the generated script to support
-# sub-commands.
 commands:
 - name: download
+
+  # alias the "download" command as "d"
   alias: d
   help: Download a file
 
@@ -36,37 +37,24 @@ commands:
   - name: target
     help: "Target filename (default: same as source)"
 
-  flags:
-  - long: --force
-    short: -f
-    help: Overwrite existing files
-
   examples:
   - cli download example.com
-  - cli download example.com ./output -f
-
-  environment_variables:
-  - name: default_target_location
-    help: Set the default location to download to
+  - cli d example.com ./output
 
 - name: upload
-  alias: u
+
+  # alias the "upload" command as both "u" and "push"
+  alias: [u, push]
   help: Upload a file
   args:
   - name: source
     required: true
     help: File to upload
 
-  flags:
-  - long: --user
-    short: -u
-    arg: user
-    help: Username to use for logging in
-    required: true
-  - long: --password
-    short: -p
-    arg: password
-    help: Password to use for logging in
+  examples:
+  - cli upload README.md
+  - cli push README.md
+  - cli u README.md
 ```
 
 
@@ -120,14 +108,6 @@ Environment Variables:
 
 ```
 
-### `$ ./cli --version`
-
-```shell
-0.1.0
-
-
-```
-
 ### `$ ./cli download -h`
 
 ```shell
@@ -136,15 +116,12 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [options]
+  cli download SOURCE [TARGET]
   cli download --help | -h
 
 Options:
   --help, -h
     Show this help
-
-  --force, -f
-    Overwrite existing files
 
 Arguments:
   SOURCE
@@ -153,37 +130,22 @@ Arguments:
   TARGET
     Target filename (default: same as source)
 
-Environment Variables:
-  DEFAULT_TARGET_LOCATION
-    Set the default location to download to
-
 Examples:
   cli download example.com
-  cli download example.com ./output -f
+  cli d example.com ./output
 
 
 
 ```
 
-### `$ ./cli download`
-
-```shell
-missing required argument: SOURCE
-usage: cli download SOURCE [TARGET] [options]
-
-
-```
-
-### `$ ./cli download sourcefile targetfile -f`
+### `$ ./cli d somefile`
 
 ```shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--force]} = 1
-- ${args[source]} = sourcefile
-- ${args[target]} = targetfile
+- ${args[source]} = somefile
 
 
 ```
@@ -193,47 +155,65 @@ args:
 ```shell
 cli upload - Upload a file
 
-Alias: u
+Alias: u, push
 
 Usage:
-  cli upload SOURCE [options]
+  cli upload SOURCE
   cli upload --help | -h
 
 Options:
   --help, -h
     Show this help
 
-  --user, -u USER (required)
-    Username to use for logging in
+Arguments:
+  SOURCE
+    File to upload
 
-  --password, -p PASSWORD
-    Password to use for logging in
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
+
+
+
+```
+
+### `$ ./cli u --help`
+
+```shell
+cli upload - Upload a file
+
+Alias: u, push
+
+Usage:
+  cli upload SOURCE
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
 
 Arguments:
   SOURCE
     File to upload
 
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
 
-
-```
-
-### `$ ./cli upload sourcefile`
-
-```shell
-missing required flag: --user, -u USER
 
 
 ```
 
-### `$ ./cli upload sourcefile -u username`
+### `$ ./cli push somefile`
 
 ```shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[source]} = sourcefile
-- ${args[--user]} = username
+- ${args[source]} = somefile
 
 
 ```

@@ -22,7 +22,7 @@ version: 0.1.0
 
 commands:
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   # Configure catch_all for the `download` sub-command using the extended
@@ -48,7 +48,7 @@ commands:
   - cli download example.com ./output -f
 
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
 
   # Configure catch_all for the `upload` sub-command using the extended
@@ -87,7 +87,7 @@ Commands:
 ```shell
 cli download - Download a file
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli download SOURCE [TARGET] [options] [AWS PARAMS...]
@@ -167,7 +167,7 @@ other_args:
 ```shell
 cli upload - Upload a file
 
-Shortcut: u
+Alias: u
 
 Usage:
   cli upload FILES...

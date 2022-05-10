@@ -30,7 +30,7 @@ version: 0.1.0
 
 commands:
 - name: set
-  short: s
+  alias: s
   help: Save a value in the config file
 
   args:
@@ -45,7 +45,7 @@ commands:
   - configly set hello world
 
 - name: get
-  short: g
+  alias: g
   help: Read a value from the config file
 
   args:
@@ -57,7 +57,7 @@ commands:
   - configly set hello
 
 - name: list
-  short: l
+  alias: l
   help: Show the entire config file
 ```
 

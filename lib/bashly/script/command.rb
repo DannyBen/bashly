@@ -7,11 +7,11 @@ module Bashly
       class << self
         def option_keys
           @option_keys ||= %i[
-            args catch_all commands completions
+            alias args catch_all commands completions
             default dependencies environment_variables examples
             extensible filename filters flags
             footer group help name
-            private short version
+            private version
           ]
         end
       end
@@ -27,7 +27,13 @@ module Bashly
 
       # Returns all the possible aliases for this command
       def aliases
-        short ? [name, short] : [name]
+        alt ? [name] + alt : [name]
+      end
+
+      # Returns an array of alternative aliases if any
+      def alt
+        return [] unless options["alias"]
+        options['alias'].is_a?(String) ? [options['alias']] : options['alias']
       end
 
       # Returns an array of Arguments

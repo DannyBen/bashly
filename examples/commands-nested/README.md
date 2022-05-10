@@ -21,7 +21,7 @@ version: 0.1.0
 
 commands:
 - name: dir
-  short: d
+  alias: d
   help: Directory commands
 
   # The `commands` array can be nested inside any other command
@@ -46,7 +46,7 @@ commands:
       help: Remove even if when not empty
 
 - name: file
-  short: f
+  alias: f
   help: File commands
 
   # The nested commands for `cli file` - will generate `cli file show` and
@@ -116,7 +116,7 @@ Options:
 ```shell
 cli dir - Directory commands
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli dir [command]
@@ -135,7 +135,7 @@ Commands:
 ```shell
 cli file - File commands
 
-Shortcut: f
+Alias: f
 
 Usage:
   cli file [command]
@@ -154,7 +154,7 @@ Commands:
 ```shell
 cli dir - Directory commands
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli dir [command]
@@ -177,7 +177,7 @@ Options:
 ```shell
 cli file - File commands
 
-Shortcut: f
+Alias: f
 
 Usage:
   cli file [command]
