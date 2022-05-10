@@ -1,0 +1,122 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/download_command.sh (exists)
+skipped src/upload_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Environment Variables:
+  API_KEY
+    Set your API key
+
++ ./cli download -h
+cli download - Download a file
+
+Alias: d
+
+Usage:
+  cli download SOURCE [TARGET]
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    URL to download from
+
+  TARGET
+    Target filename (default: same as source)
+
+Examples:
+  cli download example.com
+  cli d example.com ./output
+
++ ./cli d somefile
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = somefile
++ ./cli upload --help
+cli upload - Upload a file
+
+Alias: u, push
+
+Usage:
+  cli upload SOURCE
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    File to upload
+
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
+
++ ./cli u --help
+cli upload - Upload a file
+
+Alias: u, push
+
+Usage:
+  cli upload SOURCE
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    File to upload
+
+Examples:
+  cli upload README.md
+  cli push README.md
+  cli u README.md
+
++ ./cli push somefile
+# this file is located in 'src/upload_command.sh'
+# code for 'cli upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = somefile

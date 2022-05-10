@@ -55,11 +55,9 @@ EOF
 ### `$ ./cli`
 
 ```shell
-multiline
-heredoc text
-this is
-　an indented
-　　multiline text
+this is a
+  multiline
+    heredoc text
 
 
 ```

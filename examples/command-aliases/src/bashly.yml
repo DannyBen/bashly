@@ -1,0 +1,40 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+environment_variables:
+- name: api_key
+  help: Set your API key
+
+commands:
+- name: download
+
+  # alias the "download" command as "d"
+  alias: d
+  help: Download a file
+
+  args:
+  - name: source
+    required: true
+    help: URL to download from
+  - name: target
+    help: "Target filename (default: same as source)"
+
+  examples:
+  - cli download example.com
+  - cli d example.com ./output
+
+- name: upload
+
+  # alias the "upload" command as both "u" and "push"
+  alias: [u, push]
+  help: Upload a file
+  args:
+  - name: source
+    required: true
+    help: File to upload
+
+  examples:
+  - cli upload README.md
+  - cli push README.md
+  - cli u README.md
