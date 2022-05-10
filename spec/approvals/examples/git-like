@@ -44,7 +44,7 @@ args: none
 + ./git status -h
 git status - Show repository status
 
-Shortcut: s*
+Alias: s*
 
 Usage:
   git status
@@ -57,7 +57,7 @@ Options:
 + ./git commit -h
 git commit - Commit changes
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   git commit [options]

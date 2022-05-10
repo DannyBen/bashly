@@ -37,7 +37,7 @@ commands:
 
 ```yaml
 name: download
-short: d
+alias: d
 help: Download a file
 
 args:
@@ -59,7 +59,7 @@ flags:
 # It is imported to bashly.yml when running "bashly generate"
 
 name: upload
-short: u
+alias: u
 help: Upload a file
 args:
 - name: source
@@ -110,7 +110,7 @@ Commands:
 ```shell
 cli download - Download a file
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli download SOURCE [TARGET] [options]
@@ -139,7 +139,7 @@ Arguments:
 ```shell
 cli upload - Upload a file
 
-Shortcut: u
+Alias: u
 
 Usage:
   cli upload SOURCE [options]

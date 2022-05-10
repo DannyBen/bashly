@@ -41,7 +41,7 @@ Options:
 + ./cli dir
 cli dir - Directory commands
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli dir [command]
@@ -54,7 +54,7 @@ Commands:
 + ./cli file
 cli file - File commands
 
-Shortcut: f
+Alias: f
 
 Usage:
   cli file [command]
@@ -67,7 +67,7 @@ Commands:
 + ./cli dir -h
 cli dir - Directory commands
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli dir [command]
@@ -84,7 +84,7 @@ Options:
 + ./cli file -h
 cli file - File commands
 
-Shortcut: f
+Alias: f
 
 Usage:
   cli file [command]

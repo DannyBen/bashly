@@ -32,7 +32,7 @@ environment_variables:
 
 commands:
 - name: verify
-  short: v
+  alias: v
   help: Verify your user
 
   # This option belongs to the `verify` command and will appear in its help
@@ -119,7 +119,7 @@ Environment Variables:
 ```shell
 cli verify - Verify your user
 
-Shortcut: v
+Alias: v
 
 Usage:
   cli verify

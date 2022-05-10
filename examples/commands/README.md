@@ -26,7 +26,7 @@ environment_variables:
 # sub-commands.
 commands:
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   args:
@@ -50,7 +50,7 @@ commands:
     help: Set the default location to download to
 
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
   args:
   - name: source
@@ -133,7 +133,7 @@ Environment Variables:
 ```shell
 cli download - Download a file
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli download SOURCE [TARGET] [options]
@@ -193,7 +193,7 @@ args:
 ```shell
 cli upload - Upload a file
 
-Shortcut: u
+Alias: u
 
 Usage:
   cli upload SOURCE [options]

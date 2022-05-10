@@ -40,7 +40,7 @@ Options:
 + ./docker container
 docker container - Container commands
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   docker container [command]
@@ -77,7 +77,7 @@ args:
 + ./docker con
 docker container - Container commands
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   docker container [command]
@@ -90,7 +90,7 @@ Commands:
 + ./docker image
 docker image - Image commands
 
-Shortcut: i*
+Alias: i*
 
 Usage:
   docker image [command]

@@ -51,6 +51,14 @@ module Bashly
       end
     end
 
+    def assert_string_or_array(key, value)
+      return unless value
+      assert [Array, String].include?(value.class),
+        "#{key} must be a string or an array"
+
+      assert_array key, value, of: :string if value.is_a? Array
+    end
+
     def assert_version(key, value)
       return unless value
       assert [String, Integer, Float].include?(value.class),
@@ -140,7 +148,6 @@ module Bashly
       refute value['commands'] && value['flags'], "#{key} cannot have both commands and flags"
 
       assert_string "#{key}.name", value['name']
-      assert_optional_string "#{key}.short", value['short']
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.footer", value['footer']
       assert_optional_string "#{key}.group", value['group']
@@ -150,6 +157,7 @@ module Bashly
       assert_boolean "#{key}.default", value['default']
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
+      assert_string_or_array "#{key}.alias", value['alias']
       assert_extensible "#{key}.extensible", value['extensible']
       
       assert_array "#{key}.args", value['args'], of: :arg
@@ -167,7 +175,7 @@ module Bashly
       end
 
       if key == "root"
-        refute value['short'], "#{key}.short makes no sense"
+        refute value['alias'], "#{key}.alias makes no sense"
         refute value['group'], "#{key}.group makes no sense"
         refute value['default'], "#{key}.default makes no sense"
         refute value['private'], "#{key}.private makes no sense"

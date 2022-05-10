@@ -22,11 +22,11 @@ version: 0.1.0
 
 commands:
 - name: status
-  short: s*
+  alias: s*
   help: Show repository status
 
 - name: commit
-  short: c*
+  alias: c*
   help: Commit changes
 
   flags:
@@ -103,7 +103,7 @@ args: none
 ```shell
 git status - Show repository status
 
-Shortcut: s*
+Alias: s*
 
 Usage:
   git status
@@ -122,7 +122,7 @@ Options:
 ```shell
 git commit - Commit changes
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   git commit [options]

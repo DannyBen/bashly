@@ -29,7 +29,7 @@ extensible: true
 
 commands:
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
   args:
   - name: source
@@ -37,7 +37,7 @@ commands:
     help: File to upload
 
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   args:

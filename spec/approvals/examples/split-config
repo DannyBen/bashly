@@ -20,7 +20,7 @@ Commands:
 + ./cli download -h
 cli download - Download a file
 
-Shortcut: d
+Alias: d
 
 Usage:
   cli download SOURCE [TARGET] [options]
@@ -43,7 +43,7 @@ Arguments:
 + ./cli upload -h
 cli upload - Upload a file
 
-Shortcut: u
+Alias: u
 
 Usage:
   cli upload SOURCE [options]

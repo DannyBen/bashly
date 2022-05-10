@@ -15,8 +15,8 @@
     echo 
   fi
 
-  <%- if short -%>
-  printf "<%= strings[:command_shortcut] % { short: short } %>\n"
+  <%- if alt.any? -%>
+  printf "<%= strings[:command_aliases] % { alias: alt.join(', ') } %>\n"
   echo
   <%- end -%>
 

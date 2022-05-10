@@ -29,7 +29,7 @@ environment_variables:
 
 commands:
 - name: download
-  short: d
+  alias: d
   help: Download a file
 
   args:
@@ -53,7 +53,7 @@ commands:
     help: Set the default location to download to
 
 - name: upload
-  short: u
+  alias: u
   help: Upload a file
   args:
   - name: source

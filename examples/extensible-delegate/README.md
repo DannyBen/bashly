@@ -28,11 +28,11 @@ extensible: git
 
 commands:
 - name: push
-  short: p
+  alias: p
   help: Push to my repository
 
 - name: pull
-  short: l
+  alias: l
   help: Pull from my repository
 ```
 

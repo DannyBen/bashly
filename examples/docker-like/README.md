@@ -22,7 +22,7 @@ version: 0.1.0
 
 commands:
 - name: container
-  short: c*
+  alias: c*
   help: Container commands
 
   commands:
@@ -41,12 +41,12 @@ commands:
       required: true
 
 - name: image
-  short: i*
+  alias: i*
   help: Image commands
 
   commands:
   - name: ls
-    short: l
+    alias: l
     help: Show all images
 ```
 
@@ -102,7 +102,7 @@ Options:
 ```shell
 docker container - Container commands
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   docker container [command]
@@ -163,7 +163,7 @@ args:
 ```shell
 docker container - Container commands
 
-Shortcut: c*
+Alias: c*
 
 Usage:
   docker container [command]
@@ -182,7 +182,7 @@ Commands:
 ```shell
 docker image - Image commands
 
-Shortcut: i*
+Alias: i*
 
 Usage:
   docker image [command]
