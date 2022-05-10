@@ -29,6 +29,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [repeatable-flag](repeatable-flag#readme) - allowing flags to be provided multiple times
 - [conflicts](conflicts#readme) - defining mutually exclusive flags
 - [command-private](command-private#readme) - hiding commands from the command list
+- [command-aliases](command-aliases#readme) - allowing a command to be called with multiple names
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
 
