@@ -16,7 +16,7 @@
   fi
 
   <%- if alt.any? -%>
-  printf "<%= strings[:command_aliases] % { alias: alt.join(', ') } %>\n"
+  printf "<%= strings[:command_alias] % { alias: alt.join(', ') } %>\n"
   echo
   <%- end -%>
 

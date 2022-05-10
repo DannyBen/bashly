@@ -11,7 +11,7 @@ environment_variables: "Environment Variables:"
 group: "%{group} Commands:"
 
 # Usage helpers
-command_aliases: "Alias: %{alias}"
+command_alias: "Alias: %{alias}"
 default_command_summary: "%{summary} (default)"
 required: "(required)"
 repeatable: "(repeatable)"
