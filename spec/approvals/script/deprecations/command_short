@@ -1,0 +1,4 @@
+---
+- :old: root.commands[0].short
+  :replacement: alias
+  :reference: https://github.com/DannyBen/bashly/pull/220

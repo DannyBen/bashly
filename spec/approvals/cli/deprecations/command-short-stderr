@@ -1,0 +1,11 @@
+
+▐ Deprecation Warning:
+▐ root.commands[0].short is deprecated
+▐ use alias instead
+▐ see https://github.com/DannyBen/bashly/pull/220
+
+▐ Deprecation Warning:
+▐ root.commands[1].short is deprecated
+▐ use alias instead
+▐ see https://github.com/DannyBen/bashly/pull/220
+

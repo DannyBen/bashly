@@ -1,0 +1,7 @@
+# DEPRECATION 0.8.0
+:command_short:
+  name: invalid
+  help: command.short is deprecated, use alias instead
+  commands:
+  - name: download
+    short: d

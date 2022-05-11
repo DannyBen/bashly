@@ -1,0 +1,44 @@
++ bundle exec bashly generate
+
+▐ Deprecation Warning:
+▐ root.commands[0].short is deprecated
+▐ use alias instead
+▐ see https://github.com/DannyBen/bashly/pull/220
+
+▐ Deprecation Warning:
+▐ root.commands[1].short is deprecated
+▐ use alias instead
+▐ see https://github.com/DannyBen/bashly/pull/220
+
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created src/upload_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli upload --help
+cli upload
+
+Alias: u
+
+Usage:
+  cli upload
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
++ ./cli download --help
+cli download
+
+Alias: d
+
+Usage:
+  cli download
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
