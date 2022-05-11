@@ -155,7 +155,7 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
     end
 
-    def assert_command(key, value)      
+    def assert_command(key, value)
       assert_hash key, value, Script::Command.option_keys
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
