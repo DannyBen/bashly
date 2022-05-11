@@ -4,4 +4,9 @@ class Array
     indentation = " " * offset
     map { |line| "#{indentation}#{line}" }
   end
+
+  def uniq?
+    self == uniq
+  end
+
 end
