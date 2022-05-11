@@ -59,6 +59,12 @@ module Bashly
       end
     end
 
+    def assert_uniq(key, value, array_key)
+      return unless value
+      list = value.map { |c| c[array_key] }.compact.flatten
+      assert list.uniq?, "#{key} cannot have elements with similar #{array_key} values"
+    end
+
     def assert_string_or_array(key, value)
       return unless value
       assert [Array, String].include?(value.class),
@@ -149,7 +155,7 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
     end
 
-    def assert_command(key, value)
+    def assert_command(key, value)      
       assert_hash key, value, Script::Command.option_keys
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
@@ -176,6 +182,12 @@ module Bashly
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
       assert_array "#{key}.examples", value['examples'], of: :string
+
+      assert_uniq "#{key}.commands", value['commands'], 'name'
+      assert_uniq "#{key}.commands", value['commands'], 'alias'
+      assert_uniq "#{key}.flags", value['flags'], 'long'
+      assert_uniq "#{key}.flags", value['flags'], 'short'
+      assert_uniq "#{key}.args", value['args'], 'name'
 
       if value['catch_all'] and value['args']
         repeatable_arg = value['args'].select { |a| a['repeatable'] }.first&.dig 'name'

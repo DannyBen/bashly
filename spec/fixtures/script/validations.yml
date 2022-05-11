@@ -209,3 +209,42 @@
     help: Path to one or more files
     repeatable: true
     required: true
+
+:non_uniq_command_names:
+  name: invalid
+  help: commands with the same name
+  commands:
+  - name: upload
+  - name: download
+  - name: download
+
+:non_uniq_command_aliases:
+  name: invalid
+  help: commands with the same alias
+  commands:
+  - name: connect
+    alias: c
+  - name: config
+    alias: [c, conf]
+
+:non_uniq_flags_longs:
+  name: invalid
+  help: flags with the same long name
+  flags:
+  - long: --force
+  - long: --force
+
+:non_uniq_flags_shorts:
+  name: invalid
+  help: flags with the same short name
+  flags:
+  - short: -f
+  - short: -f
+  
+:non_uniq_arg_names:
+  name: invalid
+  help: args with the same name
+  args:
+  - name: file
+  - name: file
+  
