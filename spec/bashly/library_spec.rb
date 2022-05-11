@@ -44,7 +44,7 @@ describe Library do
 
     context "for libraries with a custom handler" do
       let(:name) { "completions" }
-      before { reset_tmp_dir copy_from: 'examples/minimal'}
+      before { reset_tmp_dir example: 'minimal' }
 
       it "delegaes the request to a custom handler" do
         expect(subject.files).to be_an Array
@@ -72,7 +72,7 @@ describe Library do
 
     context "for libraries with a custom handler" do
       let(:name) { "completions_yaml" }
-      before { reset_tmp_dir copy_from: 'examples/minimal'}
+      before { reset_tmp_dir example: 'minimal'}
 
       it "returns the message form the handler" do
         expect(subject.post_install_message).to include "completely"

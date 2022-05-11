@@ -16,9 +16,8 @@ describe Commands::Generate do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
-      reset_tmp_dir
-      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
-      expect(success).to be true
+      reset_tmp_dir create_src: true
+      cp "lib/bashly/templates/bashly.yml", "#{source_dir}/bashly.yml"
     end
 
     it "generates the cli script" do
@@ -80,9 +79,8 @@ describe Commands::Generate do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
-      reset_tmp_dir
-      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
-      expect(success).to be true
+      reset_tmp_dir create_src: true
+      cp "lib/bashly/templates/bashly.yml", "#{source_dir}/bashly.yml"
     end
 
     it "generates the cli script" do
@@ -95,9 +93,8 @@ describe Commands::Generate do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
-      reset_tmp_dir
-      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
-      expect(success).to be true
+      reset_tmp_dir create_src: true
+      cp "lib/bashly/templates/bashly.yml", "#{source_dir}/bashly.yml"
     end
 
     it "generates the cli script wrapped in a function without bash3 bouncer" do
@@ -113,9 +110,8 @@ describe Commands::Generate do
     let(:cli_script_content) { File.read cli_script }
 
     before do
-      reset_tmp_dir
-      success = system "mkdir -p #{source_dir} && cp lib/bashly/templates/bashly.yml #{source_dir}/bashly.yml"
-      expect(success).to be true
+      reset_tmp_dir create_src: true
+      cp "lib/bashly/templates/bashly.yml", "#{source_dir}/bashly.yml"
     end
 
     after  { Settings.env = nil }
@@ -132,7 +128,8 @@ describe Commands::Generate do
     let(:outdated_text) { "OUTDATED TEXT" }
 
     before do
-      reset_tmp_dir copy_from: 'spec/fixtures/workspaces/lib-upgrade'
+      reset_tmp_dir
+      cp 'spec/fixtures/workspaces/lib-upgrade/*'
     end
 
     it "claims to upgrade all upgradable libraries" do
@@ -202,6 +199,18 @@ describe Commands::Generate do
         expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade-unknown-lib')
       end
     end
-
   end
+
+  # DEPRECATION 0.8.0
+  context "with deprecated command.short option" do
+    before do
+      reset_tmp_dir create_src: true
+      cp "spec/fixtures/deprecations/command-short.yml", "#{source_dir}/bashly.yml"
+    end
+
+    it "shows deprecations messages in stderr" do
+      expect { subject.run %w[generate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
+    end
+  end
+
 end

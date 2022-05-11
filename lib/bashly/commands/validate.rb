@@ -10,7 +10,13 @@ module Bashly
 
       def run
         validate_config
-        say "!txtgrn!OK"
+        show_deprecations
+        deprecations = config_validator.deprecations
+        if deprecations.empty?
+          say "!txtgrn!OK"
+        else
+          say "!txtred!WARNING!txtrst! Found #{deprecations.count} deprecations"
+        end
       end
     end
   end

@@ -13,8 +13,7 @@ describe MessageStrings do
 
     before do
       reset_tmp_dir create_src: true
-      success = system "cp #{config_template} #{userspace}"
-      expect(success).to be true
+      cp config_template, userspace
     end
 
     it "returns values from the user config, falling back to defaults" do

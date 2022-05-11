@@ -1,0 +1,9 @@
+name: cli
+help: Testing command.short deprecations
+version: 0.1.0
+
+commands:
+  - name: download
+    short: d
+  - name: upload
+    short: u

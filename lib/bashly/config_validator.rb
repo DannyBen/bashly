@@ -10,6 +10,10 @@ module Bashly
       assert_command "root", data
     end
 
+    def deprecations
+      @deprecations ||= []
+    end
+
   private
 
     def assert(valid, message)
@@ -18,6 +22,10 @@ module Bashly
 
     def refute(invalid, message)
       assert !invalid, message
+    end
+
+    def deprecate(key, **options)
+      deprecations.push Deprecation.new(key, **options)
     end
 
     def assert_string(key, value)
@@ -182,6 +190,11 @@ module Bashly
       else
         refute value['version'], "#{key}.version makes no sense"
         refute value['extensible'], "#{key}.extensible makes no sense"
+      end
+
+      # DEPRECATION 0.8.0
+      if value['short']
+        deprecate "#{key}.short", replacement: "alias", reference: "https://github.com/DannyBen/bashly/pull/220"
       end
     end
   end
