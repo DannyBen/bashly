@@ -6,10 +6,16 @@ module Bashly
     class Base < MisterBin::Command
       include AssetHelper
 
+      def config
+        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
+      end
+
+      def config_validator
+        @config_validator ||= ConfigValidator.new config
+      end
+
       def validate_config
-        config = Config.new "#{Settings.source_dir}/bashly.yml"
-        validator = ConfigValidator.new config
-        validator.validate
+        config_validator.validate
       end
     end
   end

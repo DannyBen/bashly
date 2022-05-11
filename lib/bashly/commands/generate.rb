@@ -128,10 +128,6 @@ module Bashly
         "#{Settings.target_dir}/#{command.name}"
       end
 
-      def config
-        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
-      end
-
       def command
         @command ||= Script::Command.new config
       end
