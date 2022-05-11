@@ -32,9 +32,7 @@ module Bashly
         with_valid_config do
           Settings.env = args['--env'] if args['--env']
           quiet_say "creating !txtgrn!production!txtrst! version" if Settings.production?
-          create_user_files
-          upgrade_libs if args['--upgrade']
-          create_master_script
+          generate_all_files
           quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script"
         end
       end
@@ -43,6 +41,12 @@ module Bashly
 
       def quiet_say(message)
         say message unless args['--quiet']
+      end
+
+      def generate_all_files
+        create_user_files
+        upgrade_libs if args['--upgrade']
+        create_master_script
       end
 
       def upgrade_libs
