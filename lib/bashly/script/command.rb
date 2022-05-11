@@ -27,7 +27,7 @@ module Bashly
 
       # Returns all the possible aliases for this command
       def aliases
-        alt ? [name] + alt : [name]
+        [name] + alt
       end
 
       # Returns an array of alternative aliases if any
