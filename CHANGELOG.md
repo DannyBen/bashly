@@ -1,6 +1,14 @@
 Change Log
 ========================================
 
+v0.8.0 - 2022-05-12
+----------------------------------------
+
+- Breaking change: Rename Command.short to Command.alias and add support for multiple values
+- Add deprecation warning for command.short
+- Validate uniqueness of command args, flags and subcommands
+
+
 v0.7.10 - 2022-04-29
 ----------------------------------------
 
