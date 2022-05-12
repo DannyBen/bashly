@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.commands cannot have elements with similar alias values>
+#<Bashly::ConfigurationError: root.commands contains non-unique elements (c) in name or alias>

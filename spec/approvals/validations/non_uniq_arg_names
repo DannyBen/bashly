@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.args cannot have elements with similar name values>
+#<Bashly::ConfigurationError: root.args contains non-unique elements (file) in name>

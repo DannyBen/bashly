@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.flags cannot have elements with similar long values>
+#<Bashly::ConfigurationError: root.flags contains non-unique elements (--force) in long>

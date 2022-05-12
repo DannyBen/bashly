@@ -5,8 +5,8 @@ class Array
     map { |line| "#{indentation}#{line}" }
   end
 
-  def uniq?
-    self == uniq
+  def nonuniq
+    tally.select { |key, count| count > 1 }.keys
   end
 
 end

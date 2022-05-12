@@ -52,10 +52,16 @@ module Bashly
       end
     end
 
-    def assert_uniq(key, value, array_key)
+    def assert_uniq(key, value, array_keys)
       return unless value
-      list = value.map { |c| c[array_key] }.compact.flatten
-      assert list.uniq?, "#{key} cannot have elements with similar #{array_key} values"
+      array_keys = [array_keys] unless array_keys.is_a? Array
+      list = []
+      array_keys.each do |array_key|
+        list += value.map { |c| c[array_key] }.compact.flatten
+      end
+
+      nonuniqs = list.nonuniq
+      assert nonuniqs.empty?, "#{key} contains non-unique elements (#{nonuniqs.join ', '}) in #{array_keys.join ' or '}"
     end
 
     def assert_string_or_array(key, value)
