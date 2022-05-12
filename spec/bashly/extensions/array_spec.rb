@@ -13,4 +13,11 @@ describe Array do
       end
     end
   end
+
+  describe '#nonuniq' do
+    subject { %w[one it it two works three works] }
+    it "returns an array of non unique elements" do
+      expect(subject.nonuniq).to eq %w[it works]
+    end
+  end
 end

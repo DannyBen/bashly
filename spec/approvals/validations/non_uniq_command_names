@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.commands cannot have elements with similar name values>
+#<Bashly::ConfigurationError: root.commands contains non-unique elements (download) in name or alias>

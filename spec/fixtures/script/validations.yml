@@ -227,6 +227,15 @@
   - name: config
     alias: [c, conf]
 
+:non_uniq_command_mix:
+  name: invalid
+  help: alias of one command conflicts with name of another
+  commands:
+  - name: download
+    alias: pull
+  - name: pull
+    alias: [p, get]
+
 :non_uniq_flags_longs:
   name: invalid
   help: flags with the same long name
