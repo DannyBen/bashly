@@ -11,6 +11,7 @@ version Bashly::VERSION
 
 RunfileTasks::RubyGems.all 'bashly'
 RunfileTasks::Testing.rspec
+RunfileTasks::Docker.all 'dannyben/bashly', Bashly::VERSION
 
 help   "Run interactive console"
 action :console, :c do
@@ -50,33 +51,5 @@ action :examples do
     example.regenerate_readme
   end
 end
-
-command :docker
-
-help   "Build the docker images"
-action :build, :b do
-  system "docker build -t dannyben/bashly ."
-  system "docker tag dannyben/bashly dannyben/bashly:#{Bashly::VERSION}"
-  system "docker images |grep bashly"
-end
-
-help   "Smoke test the docker image"
-action :test, :t do
-  bashly_version = `docker run --rm dannyben/bashly --version`.chomp
-  if bashly_version != Bashly::VERSION
-    say "!txtred!FAIL: docker bashly version is #{bashly_version}, expected #{Bashly::VERSION}"
-    exit 1
-  else
-    say "!txtgrn!PASS: docker bashly version is #{bashly_version}"
-  end
-end
-
-help   "Push the docker images to Docker Hub"
-action :push, :p do
-  system "docker push dannyben/bashly"
-  system "docker push dannyben/bashly:#{Bashly::VERSION}"
-end
-
-endcommand
 
 require './debug.rb' if File.exist? 'debug.rb'
