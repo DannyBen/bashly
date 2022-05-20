@@ -8,4 +8,6 @@ gem 'runfile'
 gem 'runfile-tasks'
 gem 'simplecov'
 
+gem 'completely', path: '/vagrant/gems/completely'
+
 gemspec

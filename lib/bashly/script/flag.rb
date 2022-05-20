@@ -1,11 +1,13 @@
 module Bashly
   module Script
     class Flag < Base
+      include Completions::Flag
+
       class << self
         def option_keys
           @option_keys ||= %i[
-            allowed arg conflicts default help long repeatable required
-            short validate
+            allowed arg completions conflicts default help long repeatable
+            required short validate
           ]
         end
       end

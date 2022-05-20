@@ -9,9 +9,11 @@ download:
 - '22'
 - '3000'
 - '80'
-- admin
-- get
 - https
-- post
 - ssh
+download*--role:
 - user
+- admin
+download*--method:
+- get
+- post
