@@ -146,6 +146,21 @@
   - long: --role
     allowed: [admin, noob]
 
+:flag_completions_without_arg:
+  name: invalid
+  help: flag must have an arg when using completions
+  flags:
+  - long: --target
+    completions: [<dir>]
+
+:flag_allowed_and_completions:
+  name: invalid
+  help: flag with both allowed and completions
+  flags:
+  - long: --file
+    allowed: [one, two]
+    completions: [<file>]
+
 :root_alias:
   name: invalid
   help: root cannot have alias
