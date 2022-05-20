@@ -10,14 +10,14 @@ module Bashly
       end
     end
 
-    # Returns only the names of the Commands
-    def command_names
-      commands.map &:name
-    end
-
     # Returns a full list of the Command names and aliases combined
     def command_aliases
       commands.map(&:aliases).flatten
+    end
+
+    # Returns only the names of the Commands
+    def command_names
+      commands.map &:name
     end
 
     # Returns a flat array containing all the commands in this tree.

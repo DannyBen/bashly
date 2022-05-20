@@ -25,7 +25,14 @@ say goodbye universe:
 - "$(git branch)"
 - "--color"
 - "--help"
+- "--path"
 - "--verbose"
 - "-c"
 - "-h"
 - "-v"
+say goodbye universe*--color: &1
+- green
+- red
+say goodbye universe*-c: *1
+say goodbye universe*--path:
+- "<file>"
