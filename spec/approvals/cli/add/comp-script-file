@@ -7,15 +7,31 @@
 _cli_completions() {
   local cur compline
   _init_completion -s || return
+
   cur=${COMP_WORDS[COMP_CWORD]}
   compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
 
   case "$compline" in
-    'download'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
-    'upload'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    'd'*) COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur")) ;;
-    'u'*) COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur")) ;;
-    *) COMPREPLY=($(compgen -W "--help --version -h -v d download u upload" -- "$cur")) ;;
+    'download'*)
+      COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur"))
+      ;;
+
+    'upload'*)
+      COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur"))
+      ;;
+
+    'd'*)
+      COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur"))
+      ;;
+
+    'u'*)
+      COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur"))
+      ;;
+
+    *)
+      COMPREPLY=($(compgen -W "--help --version -h -v d download u upload" -- "$cur"))
+      ;;
+
   esac
 } &&
 complete -F _cli_completions cli

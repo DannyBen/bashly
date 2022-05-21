@@ -10,11 +10,15 @@
     _download_completions() {
       local cur compline
       _init_completion -s || return
+
       cur=${COMP_WORDS[COMP_CWORD]}
       compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
 
       case "$compline" in
-        *) COMPREPLY=($(compgen -W "--force --help --version -f -h -v" -- "$cur")) ;;
+        *)
+          COMPREPLY=($(compgen -W "--force --help --version -f -h -v" -- "$cur"))
+          ;;
+
       esac
     } &&
     complete -F _download_completions download

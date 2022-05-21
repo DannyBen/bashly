@@ -7,18 +7,43 @@
 _say_completions() {
   local cur compline
   _init_completion -s || return
+
   cur=${COMP_WORDS[COMP_CWORD]}
   compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
 
   case "$compline" in
-    'goodbye universe'*'--color') COMPREPLY=($(compgen -W "green red" -- "$cur")) ;;
-    'goodbye universe'*'--path') COMPREPLY=($(compgen -A file -- "$cur")) ;;
-    'goodbye universe'*'-c') COMPREPLY=($(compgen -W "green red" -- "$cur")) ;;
-    'goodbye universe'*) COMPREPLY=($(compgen -W "$(git branch) --color --help --path --verbose -c -h -v" -- "$cur")) ;;
-    'hello world'*) COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur")) ;;
-    'goodbye'*) COMPREPLY=($(compgen -W "--help -h universe" -- "$cur")) ;;
-    'hello'*) COMPREPLY=($(compgen -W "--help -h world" -- "$cur")) ;;
-    *) COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur")) ;;
+    'goodbye universe'*'--color')
+      COMPREPLY=($(compgen -W "green red" -- "$cur"))
+      ;;
+
+    'goodbye universe'*'--path')
+      COMPREPLY=($(compgen -A file -- "$cur"))
+      ;;
+
+    'goodbye universe'*'-c')
+      COMPREPLY=($(compgen -W "green red" -- "$cur"))
+      ;;
+
+    'goodbye universe'*)
+      COMPREPLY=($(compgen -W "$(git branch) --color --help --path --verbose -c -h -v" -- "$cur"))
+      ;;
+
+    'hello world'*)
+      COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur"))
+      ;;
+
+    'goodbye'*)
+      COMPREPLY=($(compgen -W "--help -h universe" -- "$cur"))
+      ;;
+
+    'hello'*)
+      COMPREPLY=($(compgen -W "--help -h world" -- "$cur"))
+      ;;
+
+    *)
+      COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur"))
+      ;;
+
   esac
 } &&
 complete -F _say_completions say
