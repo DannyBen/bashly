@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.7.0"
 
   s.add_runtime_dependency 'colsole', '~> 0.7'
-  s.add_runtime_dependency 'completely', '~> 0.4.0'
+  s.add_runtime_dependency 'completely', '~> 0.4.1'
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'requires', '~> 0.2'
 

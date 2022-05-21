@@ -5,11 +5,8 @@
 # Modifying it manually is not recommended
 
 _cli_completions() {
-  local cur compline
-  _init_completion -s || return
-
-  cur=${COMP_WORDS[COMP_CWORD]}
-  compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  local compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
 
   case "$compline" in
     'download'*)
