@@ -47,4 +47,15 @@ describe Script::Command do
       end
     end
   end
+
+  context "with a command that has nested command aliases" do
+    let(:fixture) { :nested_aliases }
+
+    describe '#completion_data' do
+      it "returns a data structure that includes all command full names" do
+        expect(subject.completion_data.to_yaml)
+          .to match_approval("completions/nested_aliases")
+      end
+    end
+  end
 end

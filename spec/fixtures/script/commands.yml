@@ -178,6 +178,25 @@
   name: get
   help: get something from somewhere
 
+:nested_aliases:
+  name: cli
+  commands:
+  - name: alpha
+    alias: a
+    commands:
+    - name: bravo
+      alias: [b, beta]
+      commands:
+      - name: charlie
+        alias: c
+        commands:
+        - name: delta
+          alias: d
+          flags:
+          - long: --color
+            short: -c
+            allowed: [green, red]
+
 :repeatable_arg:
   name: get
   args:

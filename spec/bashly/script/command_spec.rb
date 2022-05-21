@@ -46,10 +46,11 @@ describe Script::Command do
   end
 
   describe '#all_full_names' do
-    let(:fixture) { :aliases }
+    let(:fixture) { :nested_aliases }
     
     it "returns an array of all full names including aliases" do
-      expect(subject.commands.first.all_full_names).to eq ["apt download", "apt d", "apt pull"]
+      expect(subject.deep_commands.last.all_full_names.to_yaml)
+        .to match_approval('script/command/nested_aliases')
     end
   end
 
@@ -137,7 +138,6 @@ describe Script::Command do
       expect(subject.default_flags.first.long).to eq "--format"
     end
   end
-
 
   describe '#environment_cariables' do
     it "returns an array of EnvironemntVariable objects" do
