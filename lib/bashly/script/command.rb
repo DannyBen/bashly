@@ -62,6 +62,7 @@ module Bashly
         return [] unless options["commands"]
         options["commands"].map do |options|
           options['parents'] = parents + [name]
+          options['parent_command'] = self
           Command.new options
         end
       end
@@ -114,6 +115,11 @@ module Bashly
         end
 
         Settings.production? ? content : "#{view_marker path}\n#{content}"
+      end
+
+      # Returns the Command instance of the direct parent
+      def parent_command
+        options['parent_command']
       end
 
       # Returns an array of all parents. For example, the command 

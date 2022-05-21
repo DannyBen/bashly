@@ -1,0 +1,280 @@
+---
+cli:
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- a
+- alpha
+cli alpha:
+- "--help"
+- "-h"
+- b
+- beta
+- bravo
+cli a:
+- "--help"
+- "-h"
+- b
+- beta
+- bravo
+cli alpha bravo:
+- "--help"
+- "-h"
+- c
+- charlie
+cli alpha b:
+- "--help"
+- "-h"
+- c
+- charlie
+cli alpha beta:
+- "--help"
+- "-h"
+- c
+- charlie
+cli a bravo:
+- "--help"
+- "-h"
+- c
+- charlie
+cli a b:
+- "--help"
+- "-h"
+- c
+- charlie
+cli a beta:
+- "--help"
+- "-h"
+- c
+- charlie
+cli alpha bravo charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha bravo c:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha b charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha b c:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha beta charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha beta c:
+- "--help"
+- "-h"
+- d
+- delta
+cli a bravo charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli a bravo c:
+- "--help"
+- "-h"
+- d
+- delta
+cli a b charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli a b c:
+- "--help"
+- "-h"
+- d
+- delta
+cli a beta charlie:
+- "--help"
+- "-h"
+- d
+- delta
+cli a beta c:
+- "--help"
+- "-h"
+- d
+- delta
+cli alpha bravo charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha bravo charlie delta*--color: &1
+- green
+- red
+cli alpha bravo charlie delta*-c: *1
+cli alpha bravo charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha bravo charlie d*--color: *1
+cli alpha bravo charlie d*-c: *1
+cli alpha bravo c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha bravo c delta*--color: *1
+cli alpha bravo c delta*-c: *1
+cli alpha bravo c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha bravo c d*--color: *1
+cli alpha bravo c d*-c: *1
+cli alpha b charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha b charlie delta*--color: *1
+cli alpha b charlie delta*-c: *1
+cli alpha b charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha b charlie d*--color: *1
+cli alpha b charlie d*-c: *1
+cli alpha b c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha b c delta*--color: *1
+cli alpha b c delta*-c: *1
+cli alpha b c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha b c d*--color: *1
+cli alpha b c d*-c: *1
+cli alpha beta charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha beta charlie delta*--color: *1
+cli alpha beta charlie delta*-c: *1
+cli alpha beta charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha beta charlie d*--color: *1
+cli alpha beta charlie d*-c: *1
+cli alpha beta c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha beta c delta*--color: *1
+cli alpha beta c delta*-c: *1
+cli alpha beta c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli alpha beta c d*--color: *1
+cli alpha beta c d*-c: *1
+cli a bravo charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a bravo charlie delta*--color: *1
+cli a bravo charlie delta*-c: *1
+cli a bravo charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a bravo charlie d*--color: *1
+cli a bravo charlie d*-c: *1
+cli a bravo c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a bravo c delta*--color: *1
+cli a bravo c delta*-c: *1
+cli a bravo c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a bravo c d*--color: *1
+cli a bravo c d*-c: *1
+cli a b charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a b charlie delta*--color: *1
+cli a b charlie delta*-c: *1
+cli a b charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a b charlie d*--color: *1
+cli a b charlie d*-c: *1
+cli a b c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a b c delta*--color: *1
+cli a b c delta*-c: *1
+cli a b c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a b c d*--color: *1
+cli a b c d*-c: *1
+cli a beta charlie delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a beta charlie delta*--color: *1
+cli a beta charlie delta*-c: *1
+cli a beta charlie d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a beta charlie d*--color: *1
+cli a beta charlie d*-c: *1
+cli a beta c delta:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a beta c delta*--color: *1
+cli a beta c delta*-c: *1
+cli a beta c d:
+- "--color"
+- "--help"
+- "-c"
+- "-h"
+cli a beta c d*--color: *1
+cli a beta c d*-c: *1
