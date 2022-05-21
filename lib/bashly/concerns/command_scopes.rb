@@ -1,12 +1,13 @@
 module Bashly
   # This is a `Command` concern responsible for providing additional scopes.
   module CommandScopes
-    # Returns an array of all full names (including aliases)
+    # Returns an array of all full names (including aliases and aliases of
+    # parents)
     def all_full_names
-      [full_name] + if parents.any?
-        alt.map { |a| (parents + [a]).join(' ') }
+      if parent_command
+        parent_command.all_full_names.product(aliases).map { |a| a.join ' ' }
       else
-        alt
+        aliases
       end
     end
 
