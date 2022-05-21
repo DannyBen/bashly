@@ -16,3 +16,13 @@
 :repeatable:
   long: --mandatory
   repeatable: true
+
+:completions_allowed:
+  long: --protocol
+  short: -p
+  allowed: [ssh, sftp, https]
+
+:completions_completions:
+  long: --path
+  short: -p
+  completions: [<file>, README.md]

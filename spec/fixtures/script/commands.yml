@@ -1,3 +1,13 @@
+:aliases:
+  name: apt
+  commands:
+  - name: download
+    alias: [d, pull]
+  - name: upload
+    alias: [u, push]
+  - name: update
+    alias: upgrade
+
 :basic_command:
   name: get
   alias: g
@@ -19,84 +29,6 @@
   - name: secret_key
     required: true
   - name: target_folder
-
-:git_status:
-  name: status
-  help: perform git status
-  parents: [git]
-
-:docker:
-  name: docker
-  help: run docker commands
-  commands:
-  - name: container
-    commands:
-    - name: run
-    - name: stop
-  - name: image
-
-:docker_container_run:
-  name: run
-  help: perform docker container run
-  parents: [docker, container]
-
-:long_only_command:
-  name: get
-  help: get something from somewhere
-
-:flags_only_command:
-  name: status
-  help: perform git status
-  flags:
-  - long: --force
-  - long: --verbose
-  parents: [git]
-
-:helpless:
-  name: helpless
-
-:default_command:
-  name: cli
-  commands:
-  - name: get
-    default: true
-  - name: post
-  - name: put
-
-:flag_hog:
-  name: cli
-  help: test when -h and -v are defined
-  flags:
-  - short: -h
-    long: --hello
-  - short: -v
-    long: --vorld
-
-:default_values:
-  name: cli
-  args:
-  - name: files
-    default: "*.jpg"
-  flags:
-  - short: -f
-    long: --format
-    arg: format
-    default: png
-
-:whitelist:
-  name: cli
-  args:
-  - name: region
-    allowed: [eu, us]
-  - name: environment
-
-  flags:
-  - long: --user
-    arg: name
-    allowed: [user, admin]
-
-  - long: --protocol
-    arg: type
 
 :catch_all:
   name: get
@@ -145,6 +77,9 @@
       flags:
       - long: --color
         short: -c
+        allowed: [green, red]
+      - long: --path
+        completions: [<file>]
       - long: --verbose
         short: -v
 
@@ -163,12 +98,46 @@
     arg: name
     allowed: [get, post]
 
-:custom_header:
-  name: check
-
 :custom_filename:
   name: run
   filename: ops/run_command.sh
+
+:custom_header:
+  name: check
+
+:default_command:
+  name: cli
+  commands:
+  - name: get
+    default: true
+  - name: post
+  - name: put
+
+:default_values:
+  name: cli
+  args:
+  - name: files
+    default: "*.jpg"
+  flags:
+  - short: -f
+    long: --format
+    arg: format
+    default: png
+
+:docker:
+  name: docker
+  help: run docker commands
+  commands:
+  - name: container
+    commands:
+    - name: run
+    - name: stop
+  - name: image
+
+:docker_container_run:
+  name: run
+  help: perform docker container run
+  parents: [docker, container]
 
 :filters_array:
   name: run
@@ -180,9 +149,54 @@
   name: run
   filters: docker_running
 
+:flag_hog:
+  name: cli
+  help: test when -h and -v are defined
+  flags:
+  - short: -h
+    long: --hello
+  - short: -v
+    long: --vorld
+
+:flags_only_command:
+  name: status
+  help: perform git status
+  flags:
+  - long: --force
+  - long: --verbose
+  parents: [git]
+
+:git_status:
+  name: status
+  help: perform git status
+  parents: [git]
+
+:helpless:
+  name: helpless
+
+:long_only_command:
+  name: get
+  help: get something from somewhere
+
 :repeatable_arg:
   name: get
   args:
   - name: source
   - name: target
     repeatable: true
+
+:whitelist:
+  name: cli
+  args:
+  - name: region
+    allowed: [eu, us]
+  - name: environment
+
+  flags:
+  - long: --user
+    arg: name
+    allowed: [user, admin]
+
+  - long: --protocol
+    arg: type
+

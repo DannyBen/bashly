@@ -2,11 +2,8 @@ require 'spec_helper'
 
 describe Script::Command do
   let(:fixture) { :basic_command }
-
-  subject do
-    options = load_fixture('script/commands')[fixture]
-    described_class.new options
-  end
+  fixtures = load_fixture('script/commands')
+  subject { described_class.new fixtures[fixture] }
 
   describe '#action_name' do
     context "when it is the root command" do
@@ -48,6 +45,14 @@ describe Script::Command do
     end
   end
 
+  describe '#all_full_names' do
+    let(:fixture) { :aliases }
+    
+    it "returns an array of all full names including aliases" do
+      expect(subject.commands.first.all_full_names).to eq ["apt download", "apt d", "apt pull"]
+    end
+  end
+
   describe '#args' do
     it "returns an array of Argument objects" do
       expect(subject.args).to be_an Array
@@ -66,6 +71,14 @@ describe Script::Command do
       it "returns the full name only" do
         expect(subject.caption_string).to eq "helpless"
       end
+    end
+  end
+
+  describe '#command_aliases' do
+    let(:fixture) { :aliases }
+
+    it "returns an array of command aliases" do
+      expect(subject.command_aliases).to eq ["download", "d", "pull", "upload", "u", "push", "update", "upgrade"]
     end
   end
 

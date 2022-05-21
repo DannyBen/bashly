@@ -61,6 +61,8 @@ module Bashly
       assert_hash key, value, Script::Flag.option_keys
       assert value['short'] || value['long'], "#{key} must have at least one of long or short name"
 
+      refute value['allowed'] && value['completions'], "#{key} cannot have both allowed and completions"
+
       assert_optional_string "#{key}.long", value['long']
       assert_optional_string "#{key}.short", value['short']
       assert_optional_string "#{key}.help", value['help']
@@ -72,6 +74,7 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
       assert_array "#{key}.allowed", value['allowed'], of: :string
       assert_array "#{key}.conflicts", value['conflicts'], of: :string
+      assert_array "#{key}.completions", value['completions'], of: :string
 
       assert value['long'].match(/^--[a-zA-Z0-9_\-]+$/), "#{key}.long must be in the form of '--name'" if value['long']
       assert value['short'].match(/^-[a-zA-Z0-9]$/), "#{key}.short must be in the form of '-n'" if value['short']
@@ -85,6 +88,10 @@ module Bashly
 
       if value['allowed']
         assert value['arg'], "#{key}.allowed does not make sense without arg"
+      end
+
+      if value['completions']
+        assert value['arg'], "#{key}.completions does not make sense without arg"
       end
     end
 

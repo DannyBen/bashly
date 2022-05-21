@@ -1,0 +1,5 @@
+---
+some command*--path: &1
+- "<file>"
+- README.md
+some command*-p: *1

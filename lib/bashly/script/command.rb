@@ -1,7 +1,7 @@
 module Bashly
   module Script
     class Command < Base
-      include Completions
+      include Completions::Command
       include CommandScopes
 
       class << self
