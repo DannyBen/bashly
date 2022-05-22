@@ -1,6 +1,14 @@
 Change Log
 ========================================
 
+v0.8.1 - 2022-05-22
+----------------------------------------
+
+- Improve non-unique command validation by testing name and aliases together
+- Improve bash completion generation
+- Fix completions for deep command aliases
+
+
 v0.8.0 - 2022-05-12
 ----------------------------------------
 
