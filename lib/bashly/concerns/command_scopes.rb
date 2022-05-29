@@ -70,33 +70,21 @@ module Bashly
       flags.select &:required
     end
 
+    def public_commands
+      commands.reject &:private
+    end
+
     # Returns a data structure for displaying subcommands help
     def commands_help_data
-      group_string = strings[:commands]
       result = {}
 
-      commands.reject(&:private).each do |command|
-        summary = if command.default
-          strings[:default_command_summary] % { summary: command.summary } 
-        else
-          command.summary
-        end
-        
-        group_string = strings[:group] % { group: command.group } if command.group
+      public_commands.each do |command|
+        result[command.group_string] ||= {}
+        result[command.group_string][command.name] = command.summary_string
+        next unless command.deep_help
 
-        result[group_string] ||= {}
-        result[group_string][command.name] = summary
-
-        if command.deep_help
-          command.commands.reject(&:private).each do |subcommand|
-            sub_summary = if subcommand.default
-              strings[:default_command_summary] % { summary: subcommand.summary } 
-            else
-              subcommand.summary
-            end
-            
-            result[group_string]["#{command.name} #{subcommand.name}"] = sub_summary
-          end
+        command.public_commands.each do |subcommand|
+          result[command.group_string]["#{command.name} #{subcommand.name}"] = subcommand.summary_string
         end
       end
 
