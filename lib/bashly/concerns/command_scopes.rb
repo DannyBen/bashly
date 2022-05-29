@@ -70,6 +70,39 @@ module Bashly
       flags.select &:required
     end
 
+    # Returns a data structure for displaying subcommands help
+    def commands_help_data
+      group_string = strings[:commands]
+      result = {}
+
+      commands.reject(&:private).each do |command|
+        summary = if command.default
+          strings[:default_command_summary] % { summary: command.summary } 
+        else
+          command.summary
+        end
+        
+        group_string = strings[:group] % { group: command.group } if command.group
+
+        result[group_string] ||= {}
+        result[group_string][command.name] = summary
+
+        if command.deep_help
+          command.commands.reject(&:private).each do |subcommand|
+            sub_summary = if subcommand.default
+              strings[:default_command_summary] % { summary: subcommand.summary } 
+            else
+              subcommand.summary
+            end
+            
+            result[group_string]["#{command.name} #{subcommand.name}"] = sub_summary
+          end
+        end
+      end
+
+      result
+    end
+
     # Returns an array of all the args with a whitelist
     def whitelisted_args
       args.select &:allowed

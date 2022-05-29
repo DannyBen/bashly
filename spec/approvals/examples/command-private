@@ -15,7 +15,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect       Connect to the metaverse
+  connect   Connect to the metaverse
 
 + ./cli -h
 cli - Sample application with private commands
@@ -26,7 +26,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect       Connect to the metaverse
+  connect   Connect to the metaverse
 
 Options:
   --help, -h
