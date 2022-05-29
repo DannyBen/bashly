@@ -8,8 +8,8 @@ module Bashly
         def option_keys
           @option_keys ||= %i[
             alias args catch_all commands completions
-            deep_help default dependencies environment_variables examples
-            extensible filename filters flags
+            default dependencies environment_variables examples
+            extensible expose filename filters flags
             footer group help name
             private version
             short

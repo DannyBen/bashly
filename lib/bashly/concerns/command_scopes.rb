@@ -23,7 +23,7 @@ module Bashly
       public_commands.each do |command|
         result[command.group_string] ||= {}
         result[command.group_string][command.name] = command.summary_string
-        next unless command.deep_help
+        next unless command.expose
 
         command.public_commands.each do |subcommand|
           result[command.group_string]["#{command.name} #{subcommand.name}"] = subcommand.summary_string

@@ -70,13 +70,11 @@ Usage:
 
 File Commands:
   download   Download a file
-
-Commands:
   upload     Upload a file
-  logout     Delete login credentials to the config file
 
 Login Commands:
   login      Write login credentials to the config file
+  logout     Delete login credentials to the config file
 
 
 
@@ -94,13 +92,11 @@ Usage:
 
 File Commands:
   download   Download a file
-
-Commands:
   upload     Upload a file
-  logout     Delete login credentials to the config file
 
 Login Commands:
   login      Write login credentials to the config file
+  logout     Delete login credentials to the config file
 
 Options:
   --help, -h

@@ -109,6 +109,7 @@
   name: cli
   commands:
   - name: get
+    help: get this
     default: true
   - name: post
   - name: put
@@ -138,6 +139,40 @@
   name: run
   help: perform docker container run
   parents: [docker, container]
+
+:exposed:
+  name: cli
+  commands:
+  - name: init
+    help: Start a new project
+  - name: config
+    help: Config management commands
+    expose: true
+    commands:
+    - name: edit
+      help: Edit config file
+    - name: show
+      help: Show config file
+  - name: server
+    help: Server management commands
+    expose: true
+    group: Cluster
+    commands:
+    - name: start
+      help: Start the server
+    - name: stop
+      help: Stop the server
+
+  - name: container
+    alias: c
+    help: Container management commands
+    expose: true
+    group: Cluster
+    commands:
+    - name: exec
+      help: Run a command in the container
+    - name: down
+      help: Terminate a container
 
 :filters_array:
   name: run
@@ -170,6 +205,10 @@
   name: status
   help: perform git status
   parents: [git]
+
+:grouped:
+  name: push
+  group: Repository
 
 :helpless:
   name: helpless

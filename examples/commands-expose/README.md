@@ -1,4 +1,4 @@
-# Commands Deep Help Example
+# Commands Expose Example
 
 Demonstrates how to show the summary help of subcommands in the `--help`
 message of their parent command.
@@ -25,10 +25,10 @@ commands:
 - name: config
   help: Config management commands
 
-  # Setting `deep_help` to true will show the summary of the commands when
-  # running the help for this command. In this case, `config edit` and
+  # Setting `expose` to true will show the summary of the subcommands when
+  # running the help for the parent command. In this case, `config edit` and
   # `config show` will be displayed when running `cli --help`.
-  deep_help: true
+  expose: true
   commands:
   - name: edit
     help: Edit config file
@@ -38,9 +38,11 @@ commands:
 - name: server
   help: Server management commands
   
-  # Adding a `group` works well with `deep_help`.
-  deep_help: true
+  # Adding a `group` works well with `expose`. In this case, `server start` and
+  # `server stop` will be listed under `Cluster Commands`.
+  expose: true
   group: Cluster
+
   commands:
   - name: start
     help: Start the server
@@ -50,7 +52,7 @@ commands:
 - name: container
   alias: c
   help: Container management commands
-  deep_help: true
+  expose: true
   group: Cluster
   commands:
   - name: exec

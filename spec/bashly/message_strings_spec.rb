@@ -16,6 +16,10 @@ describe MessageStrings do
       cp config_template, userspace
     end
 
+    after do
+      reset_tmp_dir
+    end
+
     it "returns values from the user config, falling back to defaults" do
       expect(subject[:usage]).to eq "== Usage ==\\n"
     end

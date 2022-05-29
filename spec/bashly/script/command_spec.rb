@@ -83,6 +83,15 @@ describe Script::Command do
     end
   end
 
+  describe '#command_help_data' do
+    let(:fixture) { :exposed }
+
+    it "returns a hash suitable for showing command and exposed subcommand help" do
+      expect(subject.command_help_data.to_yaml)
+        .to match_approval('script/command/exposed_commands')
+    end
+  end
+
   describe '#command_names' do
     let(:fixture) { :docker }
 
@@ -225,6 +234,20 @@ describe Script::Command do
     end
   end
 
+  describe '#group_string' do
+    it "returns a string suitable for showing the group in usage" do
+      expect(subject.group_string).to eq "Commands:"
+    end
+
+    context "when the command is grouped" do
+      let(:fixture) { :grouped }
+
+      it "returns group string" do
+        expect(subject.group_string).to eq "Repository Commands:"
+      end
+    end
+  end
+
   describe '#load_user_file' do
     before do      
       Dir.mkdir 'spec/tmp/src' unless Dir.exist? 'spec/tmp/src'
@@ -307,6 +330,20 @@ describe Script::Command do
     context "when the command does not have this short flag" do
       it "returns false" do
         expect(subject.short_flag_exist? "-s").to be false
+      end
+    end
+  end
+
+  describe '#summary_string' do
+    it "returns the user defined summary" do
+      expect(subject.summary_string).to eq "get something from somewhere"
+    end
+
+    context "when the command is the default" do
+      let(:fixture) { :default_command }
+
+      it "returns group string" do
+        expect(subject.default_command.summary_string).to eq "get this (default)"
       end
     end
   end
