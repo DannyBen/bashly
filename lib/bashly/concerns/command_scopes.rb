@@ -16,6 +16,23 @@ module Bashly
       commands.map(&:aliases).flatten
     end
 
+    # Returns a data structure for displaying subcommands help
+    def command_help_data
+      result = {}
+
+      public_commands.each do |command|
+        result[command.group_string] ||= {}
+        result[command.group_string][command.name] = command.summary_string
+        next unless command.deep_help
+
+        command.public_commands.each do |subcommand|
+          result[command.group_string]["#{command.name} #{subcommand.name}"] = subcommand.summary_string
+        end
+      end
+
+      result
+    end
+
     # Returns only the names of the Commands
     def command_names
       commands.map &:name
@@ -72,23 +89,6 @@ module Bashly
 
     def public_commands
       commands.reject &:private
-    end
-
-    # Returns a data structure for displaying subcommands help
-    def commands_help_data
-      result = {}
-
-      public_commands.each do |command|
-        result[command.group_string] ||= {}
-        result[command.group_string][command.name] = command.summary_string
-        next unless command.deep_help
-
-        command.public_commands.each do |subcommand|
-          result[command.group_string]["#{command.name} #{subcommand.name}"] = subcommand.summary_string
-        end
-      end
-
-      result
     end
 
     # Returns an array of all the args with a whitelist

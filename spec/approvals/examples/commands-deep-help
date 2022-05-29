@@ -1,0 +1,63 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/init_command.sh
+created src/config_edit_command.sh
+created src/config_show_command.sh
+created src/server_start_command.sh
+created src/server_stop_command.sh
+created src/container_exec_command.sh
+created src/container_down_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  init             Start a new project
+  config           Config management commands
+  config edit      Edit config file
+  config show      Show config file
+
+Cluster Commands:
+  server           Server management commands
+  server start     Start the server
+  server stop      Stop the server
+  container        Container management commands
+  container exec   Run a command in the container
+  container down   Terminate a container
+
++ ./cli -h
+cli
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  init             Start a new project
+  config           Config management commands
+  config edit      Edit config file
+  config show      Show config file
+
+Cluster Commands:
+  server           Server management commands
+  server start     Start the server
+  server stop      Stop the server
+  container        Container management commands
+  container exec   Run a command in the container
+  container down   Terminate a container
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+

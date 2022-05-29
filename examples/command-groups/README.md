@@ -25,9 +25,8 @@ commands:
 - name: download
   help: Download a file
 
-  # By specifying a group, the `download` comnmand (and all subsequent
-  # commands until the next `group`) will be printed under this `File` 
-  # caption.
+  # By specifying a group, the `download` comnmand will be printed under
+  # this `File` caption.
   group: File
 
   args:
@@ -37,6 +36,7 @@ commands:
 
 - name: upload
   help: Upload a file
+  group: File
 
   args:
   - name: file
@@ -46,12 +46,12 @@ commands:
 - name: login
   help: Write login credentials to the config file
 
-  # The `login` command (and all subsequent commands) will be printed under
-  # the `Login` caption.
+  # The `login` command will be printed under the `Login` caption.
   group: Login
 
 - name: logout
   help: Delete login credentials to the config file
+  group: Login
 ```
 
 
@@ -70,11 +70,13 @@ Usage:
 
 File Commands:
   download   Download a file
+
+Commands:
   upload     Upload a file
+  logout     Delete login credentials to the config file
 
 Login Commands:
   login      Write login credentials to the config file
-  logout     Delete login credentials to the config file
 
 
 
@@ -92,11 +94,13 @@ Usage:
 
 File Commands:
   download   Download a file
+
+Commands:
   upload     Upload a file
+  logout     Delete login credentials to the config file
 
 Login Commands:
   login      Write login credentials to the config file
-  logout     Delete login credentials to the config file
 
 Options:
   --help, -h

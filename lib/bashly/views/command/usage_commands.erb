@@ -1,6 +1,6 @@
 <%= view_marker %>
-% maxlen = commands_help_data.values.map(&:keys).flatten.map(&:size).max
-% commands_help_data.each do |group, commands|
+% maxlen = command_help_data.values.map(&:keys).flatten.map(&:size).max
+% command_help_data.each do |group, commands|
 printf "<%= group %>\n"
 % commands.each do |command, summary|
 echo "  <%= command.ljust maxlen %>   <%= summary %>"
