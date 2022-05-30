@@ -77,11 +77,14 @@ module Bashly
 
         public_commands.each do |command|
           result[command.group_string] ||= {}
-          result[command.group_string][command.name] = command.summary_string
+          result[command.group_string][command.name] = { summary: command.summary_string }
           next unless command.expose
 
           command.public_commands.each do |subcommand|
-            result[command.group_string]["#{command.name} #{subcommand.name}"] = subcommand.summary_string
+            result[command.group_string]["#{command.name} #{subcommand.name}"] = {
+              summary: subcommand.summary_string,
+              extended: true
+            }
           end
         end
 

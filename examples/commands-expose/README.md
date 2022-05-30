@@ -78,16 +78,10 @@ Usage:
 Commands:
   init             Start a new project
   config           Config management commands
-  config edit      Edit config file
-  config show      Show config file
 
 Cluster Commands:
   server           Server management commands
-  server start     Start the server
-  server stop      Stop the server
   container        Container management commands
-  container exec   Run a command in the container
-  container down   Terminate a container
 
 
 

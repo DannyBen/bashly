@@ -1,13 +1,29 @@
 ---
 'Commands:':
-  init: Start a new project
-  config: Config management commands
-  config edit: Edit config file
-  config show: Show config file
+  init:
+    :summary: Start a new project
+  config:
+    :summary: Config management commands
+  config edit:
+    :summary: Edit config file
+    :extended: true
+  config show:
+    :summary: Show config file
+    :extended: true
 'Cluster Commands:':
-  server: Server management commands
-  server start: Start the server
-  server stop: Stop the server
-  container: Container management commands
-  container exec: Run a command in the container
-  container down: Terminate a container
+  server:
+    :summary: Server management commands
+  server start:
+    :summary: Start the server
+    :extended: true
+  server stop:
+    :summary: Stop the server
+    :extended: true
+  container:
+    :summary: Container management commands
+  container exec:
+    :summary: Run a command in the container
+    :extended: true
+  container down:
+    :summary: Terminate a container
+    :extended: true
