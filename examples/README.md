@@ -32,6 +32,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [command-private](command-private#readme) - hiding commands from the command list
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
+- [commands-expose](commands-expose#readme) - showing subcommands in the parent's help
 
 ## Customization
 
