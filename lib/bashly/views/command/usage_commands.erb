@@ -2,8 +2,12 @@
 % maxlen = command_help_data.values.map(&:keys).flatten.map(&:size).max
 % command_help_data.each do |group, commands|
 printf "<%= group %>\n"
-% commands.each do |command, summary|
-echo "  <%= command.ljust maxlen %>   <%= summary %>"
+% commands.each do |command, info|
+% if info[:extended]
+[[ -n $long_usage ]] && echo "  <%= command.ljust maxlen %>   <%= info[:summary] %>"
+% else
+echo "  <%= command.ljust maxlen %>   <%= info[:summary] %>"
+% end
 % end
 echo
 % end
