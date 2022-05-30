@@ -12,11 +12,7 @@ commands:
   alias: h
   help: Show help about a command
   args:
-  
-  # The command argument will be validated with our custom validation
-  # `help_exists`, which is placed in `src/lib/validate_help_exists.sh`
   - name: command
-    validate: help_exists
     help: Help subject
 
 # The rest of this file is not important for the purpose of this example

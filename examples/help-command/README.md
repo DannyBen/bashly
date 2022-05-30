@@ -4,23 +4,18 @@ Demonstrates how to add a `help` command to your script. This is only needed
 if you prefer to have the `your-cli help COMMAND` syntax in addition to the 
 natively supported `your-cli COMMAND --help` syntax.
 
-This functionality is achieved by adding a custom validation filter that
-verifies the requested help function is callable.
-
 This example was generated with:
 
 ```bash
 $ bashly init
-$ bashly add lib
 # ... now edit src/bashly.yml to match the example ...
-# ... now edit src/lib/validate_help_exists.sh to match the example ...
 $ bashly generate
 # ... now edit src/help_command.sh to match the example ...
 $ bashly generate
 
 ```
 
-<!-- include: src/lib/validate_help_exists.sh src/help_command.sh -->
+<!-- include: src/help_command.sh -->
 
 -----
 
@@ -41,11 +36,7 @@ commands:
   alias: h
   help: Show help about a command
   args:
-  
-  # The command argument will be validated with our custom validation
-  # `help_exists`, which is placed in `src/lib/validate_help_exists.sh`
   - name: command
-    validate: help_exists
     help: Help subject
 
 # The rest of this file is not important for the purpose of this example
@@ -94,44 +85,28 @@ commands:
     help: Password to use for logging in
 ```
 
-## `src/lib/validate_help_exists.sh`
-
-```bash
-# This function will be called automatically with the argument under validation
-# as provided by the user.
-# It will then check that the internal bashly function responsible for showing
-# help exists, and echo an error if it does not.
-validate_help_exists() {
-  command="$1"
-  
-  if [[ -z "$command" ]]; then
-    # The user called `cli help` - so the help function is the root cli_usage
-    # function (replace 'cli' with the name of your script).
-    function_name="cli_usage"
-  
-  else
-    # The user called `cli help COMMAND` - so we check that the command is valid
-    # by ensuring we have a help function for it.
-    function_name="cli_${command}_usage"
-  fi
-  
-  [[ $(type -t "$function_name") ]] || echo "no help for this command"
-}
-```
-
 ## `src/help_command.sh`
 
 ```bash
 command="${args[command]}"
 long_usage=yes
 
-# If we have reached this point, we know that the help subject is valid, so 
-# just call the relevant help function.
 if [[ -z "$command" ]]; then
-  cli_usage
+  # No command argument, show the global help
+  help_function=cli_usage
 else
-  "cli_${command}_usage"
+  # Show the help for the requested command
+  help_function="cli_${command}_usage"
 fi
+
+# Call the help function if it exists
+if [[ $(type -t "$help_function") ]]; then
+  "$help_function"
+else
+  echo "No help available for this command"
+  exit 1
+fi
+
 
 ```
 
@@ -257,8 +232,7 @@ Examples:
 ### `$ ./cli help no_such_command`
 
 ```shell
-validation error in COMMAND:
-no help for this command
+No help available for this command
 
 
 ```

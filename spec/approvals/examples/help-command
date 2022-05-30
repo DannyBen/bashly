@@ -99,5 +99,4 @@ Examples:
   cli download example.com ./output -f
 
 + ./cli help no_such_command
-validation error in COMMAND:
-no help for this command
+No help available for this command
