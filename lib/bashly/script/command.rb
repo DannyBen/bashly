@@ -9,7 +9,7 @@ module Bashly
           @option_keys ||= %i[
             alias args catch_all commands completions
             default dependencies environment_variables examples
-            extensible filename filters flags
+            extensible expose filename filters flags
             footer group help name
             private version
             short
@@ -100,6 +100,15 @@ module Bashly
         parents.any? ? (parents + [name]).join(' ') : name
       end
 
+      # Returns the string for the group caption
+      def group_string
+        if group
+          strings[:group] % { group: group } 
+        else
+          strings[:commands]
+        end
+      end
+
       # Reads a file from the userspace (Settings.source_dir) and returns
       # its contents. 
       # If the file is not found, returns a string with a hint.
@@ -141,6 +150,15 @@ module Bashly
       # Returns true if one of the flags matches the provided short code
       def short_flag_exist?(flag)
         flags.select { |f| f.short == flag }.any?
+      end
+
+      # Returns the summary string
+      def summary_string
+        if default
+          strings[:default_command_summary] % { summary: summary }
+        else
+          summary
+        end
       end
 
       # Returns a constructed string suitable for Usage pattern

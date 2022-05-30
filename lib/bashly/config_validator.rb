@@ -117,6 +117,7 @@ module Bashly
 
       assert_boolean "#{key}.private", value['private']
       assert_boolean "#{key}.default", value['default']
+      assert_boolean "#{key}.expose", value['expose']
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_string_or_array "#{key}.alias", value['alias']
@@ -141,11 +142,16 @@ module Bashly
         refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
       end
 
+      if value['expose']
+        assert value['commands'], "#{key}.expose makes no sense without commands"
+      end
+
       if key == "root"
         refute value['alias'], "#{key}.alias makes no sense"
         refute value['group'], "#{key}.group makes no sense"
         refute value['default'], "#{key}.default makes no sense"
         refute value['private'], "#{key}.private makes no sense"
+        refute value['expose'], "#{key}.expose makes no sense"
       else
         refute value['version'], "#{key}.version makes no sense"
         refute value['extensible'], "#{key}.extensible makes no sense"

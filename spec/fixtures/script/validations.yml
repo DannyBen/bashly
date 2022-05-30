@@ -36,6 +36,23 @@
     help: catch_all.required should be boolean
     required: 1
 
+:command_expose_not_boolean:
+  name: invalid
+  help: expose should be boolean
+  commands:
+  - name: config
+    expose: 1
+    commands:
+    - name: edit
+    - name: show
+
+:command_expose_no_commands:
+  name: invalid
+  help: expose without commands makes no sense
+  commands:
+  - name: config
+    expose: true
+
 :command_extensible:
   name: invalid
   help: extensible shuold be a boolean or string
@@ -81,7 +98,6 @@
   environment_variables:
   - name: api_key
     required: 1
-
 
 :flag_long:
   name: invalid
@@ -175,6 +191,13 @@
   name: invalid
   help: root cannot have default
   default: true
+
+:root_expose:
+  name: invalid
+  help: root cannot have expose
+  expose: true
+  commands:
+  - name: config
 
 :root_private:
   name: invalid
