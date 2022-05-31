@@ -28,7 +28,7 @@ commands:
   # Setting `expose` to true will show the summary of the subcommands when
   # using `cli --help` for the parent command. In this case, `config edit` and
   # `config show` will be displayed.
-  expose: truea
+  expose: true
   commands:
   - name: edit
     help: Edit config file
