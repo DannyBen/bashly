@@ -17,6 +17,9 @@ module Bashly
         end
       end
 
+      attr_accessor :parent_command
+      attr_writer :parents
+
       # Returns the name to be used as an action.
       # - If it is the root command, the action is "root"
       # - Else, it is all the parents, except the first one (root) joined
@@ -83,7 +86,7 @@ module Bashly
           command.public_commands.each do |subcommand|
             result[command.group_string]["#{command.name} #{subcommand.name}"] = {
               summary: subcommand.summary_string,
-              extended: true
+              help_only: command.expose != 'always'
             }
           end
         end
@@ -100,9 +103,10 @@ module Bashly
       def commands
         return [] unless options["commands"]
         options["commands"].map do |options|
-          options['parents'] = parents + [name]
-          options['parent_command'] = self
-          Command.new options
+          result = Command.new options
+          result.parents = parents + [name]
+          result.parent_command = self
+          result
         end
       end
 
@@ -182,15 +186,10 @@ module Bashly
         end
       end
 
-      # Returns the Command instance of the direct parent
-      def parent_command
-        options['parent_command']
-      end
-
       # Returns an array of all parents. For example, the command 
       # "docker container run" will have [docker, container] as its parents
       def parents
-        options['parents'] || []
+        @parents ||= []
       end
 
       # Returns only commands that are not private

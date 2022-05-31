@@ -41,6 +41,11 @@ module Bashly
         "#{key} must be a boolean or a string" 
     end
 
+    def assert_expose(key, value)
+      return unless value
+      assert [true, false, nil, 'always'].include?(value), "#{key} must be a boolean, or the string 'always'" 
+    end
+
     def assert_arg(key, value)
       assert_hash key, value, Script::Argument.option_keys
       assert_string "#{key}.name", value['name']
@@ -117,7 +122,7 @@ module Bashly
 
       assert_boolean "#{key}.private", value['private']
       assert_boolean "#{key}.default", value['default']
-      assert_boolean "#{key}.expose", value['expose']
+      assert_expose "#{key}.expose", value['expose']
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_string_or_array "#{key}.alias", value['alias']
