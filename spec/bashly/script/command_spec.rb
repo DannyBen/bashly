@@ -3,7 +3,11 @@ require 'spec_helper'
 describe Script::Command do
   let(:fixture) { :basic_command }
   fixtures = load_fixture('script/commands')
-  subject { described_class.new fixtures[fixture] }
+  subject do
+    result = described_class.new fixtures[fixture]
+    result.parents = result.options['parents']
+    result
+  end
 
   describe '#action_name' do
     context "when it is the root command" do
