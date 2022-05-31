@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'completely', '~> 0.4.2'
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'requires', '~> 0.2'
+  s.add_runtime_dependency 'filewatcher', '~> 1.1'
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/DannyBen/bashly/issues",

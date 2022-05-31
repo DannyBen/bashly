@@ -14,7 +14,10 @@ Options:
   -u --upgrade
     Upgrade all added library functions
 
-  -w --wrap FUNCTION
+  -w --watch
+    Watch the source directory for changes and regenerate on change
+
+  -r --wrap FUNCTION
     Wrap the entire script in a function so it can also be sourced
 
   -e --env ENV
@@ -51,3 +54,4 @@ Environment Variables:
 Examples:
   bashly generate --force
   bashly generate --wrap my_function
+  bashly g -uw

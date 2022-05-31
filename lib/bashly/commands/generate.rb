@@ -1,3 +1,5 @@
+require 'filewatcher'
+
 module Bashly
   module Commands
     class Generate < Base
@@ -9,7 +11,8 @@ module Bashly
       option "-f --force", "Overwrite existing files"
       option "-q --quiet", "Disable on-screen progress report"
       option "-u --upgrade", "Upgrade all added library functions"
-      option "-w --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
+      option "-w --watch", "Watch the source directory for changes and regenerate on change"
+      option "-r --wrap FUNCTION", "Wrap the entire script in a function so it can also be sourced"
       option "-e --env ENV", "Force the generation environment (see BASHLY_ENV)"
 
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
@@ -27,17 +30,50 @@ module Bashly
 
       example "bashly generate --force"
       example "bashly generate --wrap my_function"
+      example "bashly g -uw"
+
+      attr_reader :watching
 
       def run
-        with_valid_config do
-          Settings.env = args['--env'] if args['--env']
-          quiet_say "creating !txtgrn!production!txtrst! version" if Settings.production?
-          generate_all_files
-          quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script"
-        end
+        Settings.env = args['--env'] if args['--env']
+        @watching = args['--watch']
+
+        generate
+        watch if watching
       end
 
     private
+
+      def watch
+        quiet_say "!txtgrn!watching!txtrst! #{Settings.source_dir}\n"
+
+        Filewatcher.new([Settings.source_dir]).watch do
+          reset
+          generate
+
+        rescue Bashly::ConfigurationError => e
+          say! "!undred!#{e.class}!txtrst!\n#{e.message}"
+
+        ensure
+          quiet_say "!txtgrn!waiting\n"
+        
+        end
+      end
+
+      def generate
+        with_valid_config do
+          quiet_say "creating !txtgrn!production!txtrst! version" if Settings.production?
+          generate_all_files
+          quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script" unless watching
+        end
+      end
+
+      def reset
+        @config = nil
+        @config_validator = nil
+        @command = nil
+        @script = nil
+      end
 
       def quiet_say(message)
         say message unless args['--quiet']
