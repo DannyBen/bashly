@@ -24,6 +24,8 @@ Commands:
 
 Cluster Commands:
   server           Server management commands
+  server start     Start the server
+  server stop      Stop the server
   container        Container management commands
 
 + ./cli -h

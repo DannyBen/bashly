@@ -26,9 +26,9 @@ commands:
   help: Config management commands
 
   # Setting `expose` to true will show the summary of the subcommands when
-  # running the help for the parent command. In this case, `config edit` and
-  # `config show` will be displayed when running `cli --help`.
-  expose: true
+  # using `cli --help` for the parent command. In this case, `config edit` and
+  # `config show` will be displayed.
+  expose: truea
   commands:
   - name: edit
     help: Edit config file
@@ -38,9 +38,12 @@ commands:
 - name: server
   help: Server management commands
   
+  # Setting `expose` to `always` will also show the summary of the subcommands
+  # when running `cli` without arguments.
+  expose: always
+
   # Adding a `group` works well with `expose`. In this case, `server start` and
   # `server stop` will be listed under `Cluster Commands`.
-  expose: true
   group: Cluster
 
   commands:
@@ -81,6 +84,8 @@ Commands:
 
 Cluster Commands:
   server           Server management commands
+  server start     Start the server
+  server stop      Stop the server
   container        Container management commands
 
 

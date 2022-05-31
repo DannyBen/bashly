@@ -6,24 +6,24 @@
     :summary: Config management commands
   config edit:
     :summary: Edit config file
-    :extended: true
+    :help_only: false
   config show:
     :summary: Show config file
-    :extended: true
+    :help_only: false
 'Cluster Commands:':
   server:
     :summary: Server management commands
   server start:
     :summary: Start the server
-    :extended: true
+    :help_only: true
   server stop:
     :summary: Stop the server
-    :extended: true
+    :help_only: true
   container:
     :summary: Container management commands
   container exec:
     :summary: Run a command in the container
-    :extended: true
+    :help_only: true
   container down:
     :summary: Terminate a container
-    :extended: true
+    :help_only: true

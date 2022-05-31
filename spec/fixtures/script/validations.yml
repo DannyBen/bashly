@@ -36,12 +36,22 @@
     help: catch_all.required should be boolean
     required: 1
 
-:command_expose_not_boolean:
+:command_expose_invalid_type:
   name: invalid
-  help: expose should be boolean
+  help: expose should be boolean or 'always'
   commands:
   - name: config
     expose: 1
+    commands:
+    - name: edit
+    - name: show
+
+:command_expose_invalid_string:
+  name: invalid
+  help: expose should be boolean or 'always'
+  commands:
+  - name: config
+    expose: never
     commands:
     - name: edit
     - name: show
