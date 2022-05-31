@@ -201,6 +201,40 @@ describe Commands::Generate do
     end
   end
 
+  context "with --watch" do
+    before do
+      reset_tmp_dir create_src: true
+      cp "lib/bashly/templates/bashly.yml", bashly_config_path
+    end
+
+    let(:bashly_config_path) { "#{source_dir}/bashly.yml" }
+    let(:bashly_config) { YAML.load_file bashly_config_path }
+
+    it "generates immediately and on change" do
+      expect do
+        expect_any_instance_of(Filewatcher).to receive(:watch) do |watcher, &block|
+          block.call
+        end
+
+        subject.run %W[generate --watch]
+      end.to output_approval('cli/generate/watch')
+    end
+
+    context "when ConfigurationError is raised during watch" do
+      it "shows the error gracefully and continues to watch" do
+        expect do
+          expect_any_instance_of(Filewatcher).to receive(:watch) do |watcher, &block|
+            bashly_config['invalid_option'] = 'error this'
+            File.write bashly_config_path, bashly_config.to_yaml
+            block.call
+          end
+
+          subject.run %W[generate --watch]
+        end.to output_approval('cli/generate/watch-stderr').to_stderr
+      end
+    end
+  end
+
   # DEPRECATION 0.8.0
   context "with deprecated command.short option" do
     before do
