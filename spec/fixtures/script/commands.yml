@@ -147,7 +147,7 @@
     help: Start a new project
   - name: config
     help: Config management commands
-    expose: true
+    expose: always
     commands:
     - name: edit
       help: Edit config file

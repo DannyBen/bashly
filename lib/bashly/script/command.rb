@@ -86,7 +86,7 @@ module Bashly
           command.public_commands.each do |subcommand|
             result[command.group_string]["#{command.name} #{subcommand.name}"] = {
               summary: subcommand.summary_string,
-              extended: true
+              help_only: command.expose != 'always'
             }
           end
         end

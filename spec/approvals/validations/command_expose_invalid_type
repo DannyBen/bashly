@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.commands[0].expose must be a boolean, or the string 'always'>
