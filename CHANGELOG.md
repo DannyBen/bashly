@@ -1,6 +1,18 @@
 Change Log
 ========================================
 
+v0.8.2 - 2022-06-01
+----------------------------------------
+
+- Add command.deep_help option
+- Change the group option so that it no longer lingers
+- Rename command.deep_help to command.expose
+- Add help command example
+- Fix parents revalidation issue
+- Refactor command.expose to show subcommands without --help when set to 'always'
+- Add --watch to the generate command
+
+
 v0.8.1 - 2022-05-22
 ----------------------------------------
 
