@@ -26,7 +26,7 @@ jobs:
         bundler-cache: true
 
     - name: Run tests
-      run: bundle exec rspec --format RSpec::Github::Formatter
+      run: bundle exec rspec --format RSpec::Github::Formatter --format documentation
 
     - name: Run shellcheck tests
       run: bundle exec run shellcheck
