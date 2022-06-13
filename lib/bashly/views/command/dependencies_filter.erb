@@ -1,9 +1,0 @@
-<%= view_marker %>
-% if dependencies
-% dependencies.each do |dependency|
-if ! [[ -x "$(command -v <%= dependency %>)" ]]; then
-  printf "<%= strings[:missing_dependency] % { dependency: dependency } -%>\n"
-  exit 1
-fi
-% end
-% end

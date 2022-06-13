@@ -1,0 +1,61 @@
+= view_marker
+> {{ function_name }}_usage() {
+>   if [[ -n $long_usage ]]; then
+
+if summary == help
+>     printf "{{ caption_string }}\n"
+>     echo 
+else
+>     printf "{{ full_name }}\n"
+>     echo 
+>     printf "{{ help.wrap(78).indent(2).sanitize_for_print }}\n"
+>     echo 
+end
+
+>   else
+>     printf "{{ caption_string }}\n"
+>     echo 
+>   fi
+> 
+
+if alt&.any?
+>   printf "{{ strings[:command_alias] % { alias: alt.join(', ') } }}\n"
+>   echo
+end
+
+>
+>   printf "{{ strings[:usage] }}\n"
+>   printf "  {{ usage_string }}\n"
+
+if commands.any?
+>   printf "  {{ full_name }} [command] --help{{ " | -h" unless short_flag_exist? "-h" }}\n"
+else
+>   printf "  {{ full_name }} --help{{ " | -h" unless short_flag_exist? "-h" }}\n"
+end
+
+if root_command?
+>   printf "  {{ full_name }} --version{{ " | -v" unless short_flag_exist? "-v" }}\n"
+end
+>   echo
+
+= render(:usage_commands).indent 2 if commands.any?
+>
+
+>   if [[ -n $long_usage ]]; then
+>     printf "{{ strings[:options] }}\n"
+
+= render(:usage_fixed_flags).indent 4
+= render(:usage_flags).indent 4 if flags.any?
+= render(:usage_args).indent 4 if args.any? or catch_all.help
+= render(:usage_environment_variables).indent 4 if environment_variables.any?
+= render(:usage_examples).indent 4 if examples
+= render(:footer).indent 4 if footer
+
+> 
+>   fi
+> }
+>
+
+commands.each do |command|
+= command.render 'usage'
+end

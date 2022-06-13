@@ -1,0 +1,12 @@
+= view_marker
+
+if filters
+  filters.each do |filter|
+    > filter_error=$(filter_{{ filter }})
+    > if [[ -n $filter_error ]]; then
+    >   echo "$filter_error"
+    >   exit 1
+    > fi
+    > 
+  end
+end

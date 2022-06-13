@@ -1,0 +1,15 @@
+= view_marker
+
+> echo "  {{ usage_string extended: true }}"
+> printf "{{ help.wrap(76).indent(4).sanitize_for_print }}\n"
+
+if allowed
+> printf "    {{ strings[:allowed] % { values: allowed.join(', ') } }}\n"
+end
+
+if default
+> printf "    {{ strings[:default] % { value: default } }}\n"
+end
+
+> echo
+> 

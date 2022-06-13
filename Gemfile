@@ -7,5 +7,6 @@ gem 'rspec_approvals'
 gem 'runfile'
 gem 'runfile-tasks'
 gem 'simplecov'
+gem 'gtx', path: '/vagrant/gems/gtx'
 
 gemspec

@@ -1,0 +1,11 @@
+= view_marker
+
+if catch_all.enabled?
+= render :parse_requirements_case_catch_all
+elsif repeatable_arg_exist?
+= render :parse_requirements_case_repeatable
+else
+= render :parse_requirements_case_simple
+end
+
+>
