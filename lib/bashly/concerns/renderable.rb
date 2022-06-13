@@ -1,17 +1,9 @@
-require 'erb'
 require 'gtx'
 
 module Bashly
   module Renderable
     def render(view)
-      if erb? view
-        template = File.read erb_view_path(view)
-        erb = ERB.new(template, trim_mode: '%-')
-        erb.filename = "#{views_subfolder}.#{view}"
-        erb.result binding
-      else
-        GTX.render_file view_path(view), context: binding, filename: "#{views_subfolder}.#{view}"
-      end
+      GTX.render_file view_path(view), context: binding, filename: "#{views_subfolder}.#{view}"
     end
 
     def strings
@@ -41,16 +33,8 @@ module Bashly
 
   private
 
-    def erb?(view)
-      File.exist? erb_view_path view
-    end
-
     def view_path(view)
       "#{self_views_path}/#{view}.gtx"
-    end
-
-    def erb_view_path(view)
-      "#{self_views_path}/#{view}.erb"
     end
 
     def self_views_path
