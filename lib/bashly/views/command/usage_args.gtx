@@ -1,0 +1,17 @@
+= view_marker
+
+> printf "{{ strings[:arguments] }}\n"
+
+if args.any?
+  >
+  args.each do |arg|
+    = arg.render(:usage)
+  end
+end
+
+if catch_all.help
+>
+> echo "  {{ catch_all.label }}"
+> printf "{{ catch_all.help.wrap(76).indent(4).sanitize_for_print }}\n"
+> echo
+end

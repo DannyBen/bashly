@@ -1,0 +1,11 @@
+= view_marker
+
+default_args.each do |arg|
+> [[ -n ${args[{{ arg.name }}]:-} ]] || args[{{ arg.name }}]="{{ arg.default }}"
+end
+
+default_flags.each do |flag|
+> [[ -n ${args[{{ flag.long }}]:-} ]] || args[{{ flag.long }}]="{{ flag.default }}"
+end
+
+>

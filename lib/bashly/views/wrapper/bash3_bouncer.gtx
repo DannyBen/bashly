@@ -1,0 +1,7 @@
+= view_marker
+
+> if [[ "${BASH_VERSINFO:-0}" -lt 4 ]]; then
+>   printf "{{ strings[:unsupported_bash_version] }}\n"
+>   exit 1
+> fi
+> 

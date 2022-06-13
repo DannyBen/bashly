@@ -1,0 +1,24 @@
+= view_marker
+
+condition = "if"
+args.each do |arg|
+  > {{ condition }} [[ -z ${args[{{ arg.name }}]+x} ]]; then
+  = arg.render(:validations).indent 2
+
+  if arg.repeatable
+    >   args[{{ arg.name }}]="\"$1\""
+    >   shift
+    > else
+    >   args[{{ arg.name }}]="${args[{{ arg.name }}]} \"$1\""
+    >   shift
+
+  else
+    >   args[{{ arg.name }}]=$1
+    >   shift
+
+  end
+  condition = "elif"
+end
+
+> fi
+> 

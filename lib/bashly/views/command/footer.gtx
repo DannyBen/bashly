@@ -1,0 +1,4 @@
+= view_marker
+> printf "{{ footer.gsub("\n", '\n').gsub('"', '\"') }}\n"
+> echo
+>

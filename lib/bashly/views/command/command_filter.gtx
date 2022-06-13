@@ -1,0 +1,28 @@
+= view_marker
+
+if commands.any?
+> action=${1:-}
+> 
+> case $action in
+> -* )
+>   ;;
+> 
+
+commands.each do |command|
+> {{ command.aliases.join " | " }} )
+>   action="{{ command.name }}"
+>   shift
+>   {{ command.function_name }}_parse_requirements "$@"
+>   shift $#
+>   ;;    
+> 
+
+end
+
+= render :command_fallback
+> esac
+>
+
+else
+> action="{{ action_name }}"
+end

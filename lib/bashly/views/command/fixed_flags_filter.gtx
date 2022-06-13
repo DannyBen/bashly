@@ -1,0 +1,20 @@
+= view_marker
+
+> case "${1:-}" in
+
+if root_command?
+  = short_flag_exist?("-v") ? "--version )" : "--version | -v )"
+  >   version_command
+  >   exit
+  >   ;;
+  > 
+end
+
+= short_flag_exist?("-h") ? "--help )" : "--help | -h )"
+>   long_usage=yes
+>   <%= function_name %>_usage
+>   exit
+>   ;;
+> 
+> esac
+>

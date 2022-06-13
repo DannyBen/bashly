@@ -1,0 +1,11 @@
+= view_marker
+> initialize() {
+>   version="<%= version %>"
+>   long_usage=''
+>   {{ Settings.strict ? "set -euo pipefail" : "set -e" }}
+> 
+
+= load_user_file("initialize.sh", placeholder: false).indent 2
+
+> }
+>

@@ -1,0 +1,7 @@
+= view_marker
+> {{ function_name }}() {
+= body.indent 2
+> }
+>
+> (return 0 2>/dev/null) || {{ function_name }} "$@"
+>
