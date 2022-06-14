@@ -1,55 +1,55 @@
 = view_marker
 
 if default_command
-> "" )
->   {{ function_name }}_usage
->   exit 1
->   ;;
-> 
-> * )
->   action="{{ default_command.name }}"
->   {{ default_command.function_name }}_parse_requirements "$@"
->   shift $#
->   ;;
->
+  > "" )
+  >   {{ function_name }}_usage
+  >   exit 1
+  >   ;;
+  > 
+  > * )
+  >   action="{{ default_command.name }}"
+  >   {{ default_command.function_name }}_parse_requirements "$@"
+  >   shift $#
+  >   ;;
+  >
 
 elsif extensible.is_a? String
-> "" )
->   {{ function_name }}_usage
->   exit 1
->   ;;
-> 
-> * )
->   if [[ -x "$(command -v "{{ extensible }}")" ]]; then
->     exec {{ extensible }} "$@"
->   else
->     {{ function_name }}_usage
->     exit 1
->   fi
->
+  > "" )
+  >   {{ function_name }}_usage
+  >   exit 1
+  >   ;;
+  > 
+  > * )
+  >   if [[ -x "$(command -v "{{ extensible }}")" ]]; then
+  >     exec {{ extensible }} "$@"
+  >   else
+  >     {{ function_name }}_usage
+  >     exit 1
+  >   fi
+  >
 
 elsif extensible
-> "" )
->   {{ function_name }}_usage
->   exit 1
->   ;;
-> 
-> * )
->   if [[ -x "$(command -v "{{ function_name }}-$action")" ]]; then
->     shift
->     exec "{{ function_name }}-$action" "$@"
->   else
->     {{ function_name }}_usage
->     exit 1
->   fi
->
+  > "" )
+  >   {{ function_name }}_usage
+  >   exit 1
+  >   ;;
+  > 
+  > * )
+  >   if [[ -x "$(command -v "{{ function_name }}-$action")" ]]; then
+  >     shift
+  >     exec "{{ function_name }}-$action" "$@"
+  >   else
+  >     {{ function_name }}_usage
+  >     exit 1
+  >   fi
+  >
 
 else
-> * )
->   {{ function_name }}_usage
->   exit 1
->   ;;
->
+  > * )
+  >   {{ function_name }}_usage
+  >   exit 1
+  >   ;;
+  >
 
 end
 

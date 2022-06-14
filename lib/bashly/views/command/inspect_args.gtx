@@ -1,4 +1,5 @@
 = view_marker
+
 > inspect_args() {
 >   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
 >   if (( ${#args[@]} )); then

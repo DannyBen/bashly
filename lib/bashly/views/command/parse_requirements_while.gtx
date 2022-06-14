@@ -5,22 +5,21 @@
 >   case "$key" in
 
 flags.each do |flag|
-= flag.render(:case).indent 2
->
+  = flag.render(:case).indent 2
 end
 
-> 
+>
 >   -?* )
 
 if catch_all.enabled?
->     other_args+=("$1")
->     shift
->     ;;
+  >     other_args+=("$1")
+  >     shift
+  >     ;;
 
 else
->     printf "<%= strings[:invalid_flag] %>\n" "$key"
->     exit 1
->     ;;
+  >     printf "<%= strings[:invalid_flag] %>\n" "$key"
+  >     exit 1
+  >     ;;
 
 end
 
@@ -31,3 +30,4 @@ end
 > 
 >   esac
 > done
+

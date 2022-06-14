@@ -1,4 +1,5 @@
 = view_marker
+
 deep_commands.each do |command|
-= command.render :function unless command.commands.any?
+  = command.render :function unless command.commands.any?
 end

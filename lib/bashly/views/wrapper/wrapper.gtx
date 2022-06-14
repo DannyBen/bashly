@@ -1,4 +1,5 @@
 = view_marker
+
 > {{ function_name }}() {
 = body.indent 2
 > }

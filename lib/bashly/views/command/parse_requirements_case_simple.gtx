@@ -17,8 +17,8 @@ if args.any?
   > fi
 
 else
-> printf "{{ strings[:invalid_argument] }}\n" "$key"
-> exit 1
+  > printf "{{ strings[:invalid_argument] }}\n" "$key"
+  > exit 1
 
 end
 

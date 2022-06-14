@@ -1,4 +1,5 @@
 = view_marker
+
 > normalize_input() {
 >   local arg flags
 > 
