@@ -1,7 +1,6 @@
 = view_marker
 
 > printf "{{ strings[:examples] }}\n"
-> 
 
 examples.each do |example|
 > printf "{{ example.wrap(78).indent(2).sanitize_for_print }}\n"

@@ -5,7 +5,7 @@ class String
 
   def indent(offset)
     return self unless offset > 0
-    split("\n").indent(offset).join("\n")
+    lines.indent(offset).join
   end
 
   def to_underscore
@@ -24,7 +24,7 @@ class String
   end
 
   def lint
-    gsub(/\s+\n/m, "\n\n").lines.reject { |l| l =~ /^\s*##/ }.join ""
+    gsub(/\s+\n/m, "\n\n").lines.reject { |l| l =~ /^\s*##/ }.join
   end
 
   def remove_front_matter

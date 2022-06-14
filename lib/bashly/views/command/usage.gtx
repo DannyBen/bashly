@@ -40,19 +40,7 @@ end
 
 = render(:usage_commands).indent 2 if commands.any?
 >
-
->   if [[ -n $long_usage ]]; then
->     printf "{{ strings[:options] }}\n"
-
-= render(:usage_fixed_flags).indent 4
-= render(:usage_flags).indent 4 if flags.any?
-= render(:usage_args).indent 4 if args.any? or catch_all.help
-= render(:usage_environment_variables).indent 4 if environment_variables.any?
-= render(:usage_examples).indent 4 if examples
-= render(:footer).indent 4 if footer
-
-> 
->   fi
+= render(:long_usage).indent 2
 > }
 >
 

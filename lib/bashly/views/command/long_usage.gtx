@@ -1,0 +1,13 @@
+= view_marker
+
+> if [[ -n $long_usage ]]; then
+>   printf "{{ strings[:options] }}\n"
+>
+= render(:usage_fixed_flags).indent 2
+= render(:usage_flags).indent 2 if flags.any?
+= render(:usage_args).indent 2 if args.any? or catch_all.help
+= render(:usage_environment_variables).indent 2 if environment_variables.any?
+= render(:usage_examples).indent 2 if examples
+= render(:footer).indent 2 if footer
+>
+> fi
