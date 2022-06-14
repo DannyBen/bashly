@@ -1,6 +1,7 @@
-= view_marker
-
 if filters
+
+  = view_marker
+
   filters.each do |filter|
     > filter_error=$(filter_{{ filter }})
     > if [[ -n $filter_error ]]; then

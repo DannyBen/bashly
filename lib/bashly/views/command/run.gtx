@@ -1,4 +1,5 @@
 = view_marker
+
 > run() {
 >   declare -A args=()
 >   declare -a other_args=()
@@ -9,14 +10,14 @@
 
 condition = "if"
 deep_commands.each do |command|
->   {{ condition }} [[ $action == "{{ command.action_name }}" ]]; then
->     if [[ ${args[--help]:-} ]]; then
->       long_usage=yes
->       {{ command.function_name }}_usage
->     else
->       {{ command.function_name }}_command
->     fi
->
+  >   {{ condition }} [[ $action == "{{ command.action_name }}" ]]; then
+  >     if [[ ${args[--help]:-} ]]; then
+  >       long_usage=yes
+  >       {{ command.function_name }}_usage
+  >     else
+  >       {{ command.function_name }}_command
+  >     fi
+  >
     
   condition = "elif"
 end

@@ -4,7 +4,7 @@
 > 
 
 environment_variables.each do |env_var|
-= env_var.render :usage
+  = env_var.render :usage
 end
 
 >

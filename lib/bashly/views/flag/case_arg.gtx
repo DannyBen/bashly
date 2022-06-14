@@ -4,14 +4,14 @@
 = render(:validations).indent 2
 
 if repeatable
->   if [[ -z ${args[{{ name }}]+x} ]]; then
->     args[{{ name }}]="\"$2\""
->   else
->     args[{{ name }}]="${args[{{ name }}]} \"$2\""
->   fi
+  >   if [[ -z ${args[{{ name }}]+x} ]]; then
+  >     args[{{ name }}]="\"$2\""
+  >   else
+  >     args[{{ name }}]="${args[{{ name }}]} \"$2\""
+  >   fi
 
 else
->   args[{{ name }}]="$2"
+  >   args[{{ name }}]="$2"
 
 end
 

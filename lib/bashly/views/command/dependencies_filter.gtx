@@ -1,6 +1,6 @@
-= view_marker
-
 if dependencies
+  = view_marker
+
   dependencies.each do |dependency|
     > if ! [[ -x "$(command -v {{ dependency }})" ]]; then
     >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n"

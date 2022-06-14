@@ -1,9 +1,9 @@
 = view_marker
 
 if root_command?
-> parse_requirements() {
+  > parse_requirements() {
 else
-> {{ function_name }}_parse_requirements() {
+  > {{ function_name }}_parse_requirements() {
 end
 
 = render(:fixed_flags_filter).indent 2
@@ -22,5 +22,5 @@ end
 > 
 
 commands.each do |command|
-= command.render :parse_requirements
+  = command.render :parse_requirements
 end

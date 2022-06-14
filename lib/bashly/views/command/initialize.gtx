@@ -1,4 +1,5 @@
 = view_marker
+
 > initialize() {
 >   version="<%= version %>"
 >   long_usage=''

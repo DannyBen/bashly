@@ -3,3 +3,4 @@
 > {{ aliases.join " | " }} )
 = render(:conflicts).indent 2
 = render(arg ? :case_arg : :case_no_arg).indent 2
+>
