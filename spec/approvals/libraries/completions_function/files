@@ -15,7 +15,7 @@
       echo $''
       echo $'  case "$compline" in'
       echo $'    *)'
-      echo $'      COMPREPLY=($(compgen -W "--force --help --version -f -h -v" -- "$cur"))'
+      echo $'      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--force --help --version -f -h -v" -- "$cur" )'
       echo $'      ;;'
       echo $''
       echo $'  esac'

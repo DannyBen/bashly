@@ -75,51 +75,51 @@ _cli_completions() {
 
   case "$compline" in
     'download'*'--handler')
-      COMPREPLY=($(compgen -W "curl wget" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "curl wget" -- "$cur" )
       ;;
 
     'upload'*'--user')
-      COMPREPLY=($(compgen -A user -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
       ;;
 
     'completions'*)
-      COMPREPLY=($(compgen -W "--help -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help -h" -- "$cur" )
       ;;
 
     'd'*'--handler')
-      COMPREPLY=($(compgen -W "curl wget" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "curl wget" -- "$cur" )
       ;;
 
     'upload'*'-u')
-      COMPREPLY=($(compgen -A user -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
       ;;
 
     'download'*)
-      COMPREPLY=($(compgen -A file -W "--force --handler --help -f -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -W "--force --handler --help -f -h" -- "$cur" )
       ;;
 
     'u'*'--user')
-      COMPREPLY=($(compgen -A user -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
       ;;
 
     'upload'*)
-      COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u CHANGELOG.md README.md" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "--help --password --user -h -p -u CHANGELOG.md README.md" -- "$cur" )
       ;;
 
     'u'*'-u')
-      COMPREPLY=($(compgen -A user -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
       ;;
 
     'd'*)
-      COMPREPLY=($(compgen -A file -W "--force --handler --help -f -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -W "--force --handler --help -f -h" -- "$cur" )
       ;;
 
     'u'*)
-      COMPREPLY=($(compgen -A directory -A user -W "--help --password --user -h -p -u CHANGELOG.md README.md" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "--help --password --user -h -p -u CHANGELOG.md README.md" -- "$cur" )
       ;;
 
     *)
-      COMPREPLY=($(compgen -W "--help --version -h -v completions d download u upload" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --version -h -v completions d download u upload" -- "$cur" )
       ;;
 
   esac

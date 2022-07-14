@@ -11,7 +11,7 @@ custom_name() {
   echo $''
   echo $'  case "$compline" in'
   echo $'    *)'
-  echo $'      COMPREPLY=($(compgen -A file -W "--force --help --verbose --version -h -v" -- "$cur"))'
+  echo $'      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -W "--force --help --verbose --version -h -v" -- "$cur" )'
   echo $'      ;;'
   echo $''
   echo $'  esac'

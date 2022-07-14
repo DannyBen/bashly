@@ -10,35 +10,35 @@ _say_completions() {
 
   case "$compline" in
     'goodbye universe'*'--color')
-      COMPREPLY=($(compgen -W "green red" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "green red" -- "$cur" )
       ;;
 
     'goodbye universe'*'--path')
-      COMPREPLY=($(compgen -A file -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -- "$cur" )
       ;;
 
     'goodbye universe'*'-c')
-      COMPREPLY=($(compgen -W "green red" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "green red" -- "$cur" )
       ;;
 
     'goodbye universe'*)
-      COMPREPLY=($(compgen -W "$(git branch) --color --help --path --verbose -c -h -v" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(git branch) --color --help --path --verbose -c -h -v" -- "$cur" )
       ;;
 
     'hello world'*)
-      COMPREPLY=($(compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur" )
       ;;
 
     'goodbye'*)
-      COMPREPLY=($(compgen -W "--help -h universe" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help -h universe" -- "$cur" )
       ;;
 
     'hello'*)
-      COMPREPLY=($(compgen -W "--help -h world" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help -h world" -- "$cur" )
       ;;
 
     *)
-      COMPREPLY=($(compgen -W "--help --version -h -v goodbye hello" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --version -h -v goodbye hello" -- "$cur" )
       ;;
 
   esac

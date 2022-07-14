@@ -13,7 +13,7 @@
 
       case "$compline" in
         *)
-          COMPREPLY=($(compgen -W "--force --help --version -f -h -v" -- "$cur"))
+          while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--force --help --version -f -h -v" -- "$cur" )
           ;;
 
       esac

@@ -10,23 +10,23 @@ _cli_completions() {
 
   case "$compline" in
     'download'*)
-      COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--force --help -f -h" -- "$cur" )
       ;;
 
     'upload'*)
-      COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --password --user -h -p -u" -- "$cur" )
       ;;
 
     'd'*)
-      COMPREPLY=($(compgen -W "--force --help -f -h" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--force --help -f -h" -- "$cur" )
       ;;
 
     'u'*)
-      COMPREPLY=($(compgen -W "--help --password --user -h -p -u" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --password --user -h -p -u" -- "$cur" )
       ;;
 
     *)
-      COMPREPLY=($(compgen -W "--help --version -h -v d download u upload" -- "$cur"))
+      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --version -h -v d download u upload" -- "$cur" )
       ;;
 
   esac
