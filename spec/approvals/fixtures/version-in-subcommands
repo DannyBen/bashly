@@ -6,7 +6,7 @@ created ./cli
 run ./cli --help to test your bash script
 + ./cli --version
 1.2.3
-+ ./cli help
++ ./cli --help
 cli - Sample application
 
 Usage:
@@ -16,6 +16,13 @@ Usage:
 
 Commands:
   git   Delegate to git
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
 
 + ./cli git --version
 # this file is located in 'src/git_command.sh'
