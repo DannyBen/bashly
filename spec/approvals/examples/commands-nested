@@ -64,6 +64,8 @@ Commands:
   show   Show file contents
   edit   Edit the file
 
++ ./cli dig
+invalid command: dig
 + ./cli dir -h
 cli dir - Directory commands
 
@@ -116,6 +118,8 @@ Arguments:
   PATH
     Directory path
 
++ ./cli dir lost -h
+invalid command: lost
 + ./cli file edit
 missing required argument: PATH
 usage: cli file edit PATH

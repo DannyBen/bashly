@@ -7,6 +7,6 @@ set -x
 bundle exec bashly generate
 
 ./cli --version
-./cli help
+./cli --help
 ./cli git --version
 ./cli git any "other args" -or --flags
