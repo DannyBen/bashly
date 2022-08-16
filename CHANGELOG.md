@@ -1,6 +1,14 @@
 Change Log
 ========================================
 
+v0.8.3 - 2022-08-16
+----------------------------------------
+
+- Switch from ERB to GTX templates
+- Upgrade to completely 0.4.3
+- Show error instead of usage on invalid command call
+
+
 v0.8.2 - 2022-06-01
 ----------------------------------------
 
