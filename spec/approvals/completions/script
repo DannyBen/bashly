@@ -4,41 +4,60 @@
 # completely (https://github.com/dannyben/completely)
 # Modifying it manually is not recommended
 
+_say_completions_filter() {
+  local words="$1"
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  local result=()
+
+  if [[ "${cur:0:1}" == "-" ]]; then
+    echo "$words"
+  
+  else
+    for word in $words; do
+      [[ "${word:0:1}" != "-" ]] && result+=("$word")
+    done
+
+    echo "${result[*]}"
+
+  fi
+}
+
 _say_completions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
-  local compline="${COMP_WORDS[@]:1:$COMP_CWORD-1}"
+  local compwords=("${COMP_WORDS[@]:1:$COMP_CWORD-1}")
+  local compline="${compwords[*]}"
 
   case "$compline" in
     'goodbye universe'*'--color')
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "green red" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "green red")" -- "$cur" )
       ;;
 
     'goodbye universe'*'--path')
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -- "$cur" )
       ;;
 
     'goodbye universe'*'-c')
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "green red" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "green red")" -- "$cur" )
       ;;
 
     'goodbye universe'*)
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(git branch) --color --help --path --verbose -c -h -v" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "$(git branch) --color --help --path --verbose -c -h -v")" -- "$cur" )
       ;;
 
     'hello world'*)
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "--force --help --verbose -h" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "$(_say_completions_filter "--force --help --verbose -h")" -- "$cur" )
       ;;
 
     'goodbye'*)
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help -h universe" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "--help -h universe")" -- "$cur" )
       ;;
 
     'hello'*)
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help -h world" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "--help -h world")" -- "$cur" )
       ;;
 
     *)
-      while read; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "--help --version -h -v goodbye hello" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_say_completions_filter "--help --version -h -v goodbye hello")" -- "$cur" )
       ;;
 
   esac
