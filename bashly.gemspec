@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = "Generate bash command line tools using YAML configuration"
   s.authors     = ["Danny Ben Shitrit"]
   s.email       = 'db@dannyben.com'
-  s.files       = Dir['README.md', 'lib/**/*.*']
+  s.files       = Dir['README.md', 'lib/**/*']
   s.executables = ['bashly']
   s.homepage    = 'https://github.com/dannyben/bashly'
   s.license     = 'MIT'
