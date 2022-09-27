@@ -142,6 +142,10 @@ module Bashly
       assert_uniq "#{key}.flags", value['flags'], 'short'
       assert_uniq "#{key}.args", value['args'], 'name'
 
+      if value['default']
+        assert value['args'], "#{key}.default makes no sense without args"
+      end
+
       if value['catch_all'] and value['args']
         repeatable_arg = value['args'].select { |a| a['repeatable'] }.first&.dig 'name'
         refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
