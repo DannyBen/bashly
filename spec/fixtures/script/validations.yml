@@ -8,16 +8,16 @@
   name: invalid
   help: last nested arg does not have a name
   commands:
-    - name: level1
-      commands:
-        - name: level2a
-          args:
-            - name: ok
-            - name: alright
-        - name: level2b
-          args:          
-            - name: ok
-            - help: there is no name
+  - name: level1
+    commands:
+    - name: level2a
+      args:
+      - name: ok
+      - name: alright
+    - name: level2b
+      args:          
+      - name: ok
+      - help: there is no name
 
 :command_catch_all_type:
   name: invalid
@@ -101,6 +101,13 @@
   - name: sub
   flags:
   - long: --force
+
+:commands_default_without_args:
+  name: invalid
+  help: default command requires args
+  commands:
+  - name: sub
+    default: true
 
 :env_var:
   name: invalid
@@ -201,6 +208,8 @@
   name: invalid
   help: root cannot have default
   default: true
+  args:
+  - name: ok
 
 :root_expose:
   name: invalid
