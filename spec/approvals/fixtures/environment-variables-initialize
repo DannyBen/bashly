@@ -1,0 +1,31 @@
+creating user files in src
+skipped src/initialize.sh (exists)
+created src/download_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+PASS: API_KEY=must-be-available-in-initialize
+missing required environment variable: CONFIG_PATH
++ export CONFIG_PATH=somepath
++ CONFIG_PATH=somepath
++ ./cli download source
+PASS: API_KEY=must-be-available-in-initialize
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[source]} = source
++ export API_KEY=override-value
++ API_KEY=override-value
++ ./cli
+PASS: API_KEY=override-value
+cli - Sample application
+
+Usage:
+  cli [command]
+  cli [command] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+
