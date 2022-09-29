@@ -70,10 +70,12 @@ If you experience any issue, have a question or a suggestion, or if you wish
 to contribute, feel free to [open an issue][issues] or
 [start a discussion][discussions].
 
+Visit the *[How to contribute][contributing]* page for more information.
+
 
 
 [issues]: https://github.com/DannyBen/bashly/issues
 [discussions]: https://github.com/DannyBen/bashly/discussions
 [docs]: https://bashly.dannyb.co/
 [examples]: https://github.com/DannyBen/bashly/tree/master/examples#bashly-examples
-
+[contributing]: https://github.com/DannyBen/bashly/blob/master/CONTRIBUTING.md#how-to-contribute
