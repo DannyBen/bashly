@@ -1,0 +1,7 @@
+if default_environment_variables.any?
+  = view_marker 
+
+  default_environment_variables.each do |env_var|
+    > export {{ env_var.name.upcase }}="${<%= env_var.name.upcase %>:-<%= env_var.default %>}"
+  end
+end

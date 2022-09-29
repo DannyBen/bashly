@@ -1,0 +1,28 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+environment_variables:
+- name: api_key
+  default: must-be-available-in-initialize
+  help: Set your API key
+- name: config_path
+  required: true
+  help: Set the config path
+
+commands:
+- name: download
+  alias: d
+  help: Download a file
+
+  args:
+  - name: source
+    help: URL to download from
+  - name: target
+    help: "Target filename (default: same as source)"
+
+  environment_variables:
+  - name: nested_var
+    default: not-available-in-initialize
+    help: Set the default location to download to
+
