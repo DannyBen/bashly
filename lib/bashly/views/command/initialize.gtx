@@ -6,6 +6,10 @@
 >   {{ Settings.strict ? "set -euo pipefail" : "set -e" }}
 > 
 
+if root_command?
+  = render(:environment_variables_default).indent 2
+end
+
 = load_user_file("initialize.sh", placeholder: false).indent 2
 
 > }
