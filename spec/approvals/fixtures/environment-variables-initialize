@@ -5,11 +5,13 @@ created ./cli
 run ./cli --help to test your bash script
 + ./cli
 PASS: API_KEY=must-be-available-in-initialize
+PASS: NESTED_VAR is empty
 missing required environment variable: CONFIG_PATH
 + export CONFIG_PATH=somepath
 + CONFIG_PATH=somepath
 + ./cli download source
 PASS: API_KEY=must-be-available-in-initialize
+PASS: NESTED_VAR is empty
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -19,6 +21,7 @@ args:
 + API_KEY=override-value
 + ./cli
 PASS: API_KEY=override-value
+PASS: NESTED_VAR is empty
 cli - Sample application
 
 Usage:

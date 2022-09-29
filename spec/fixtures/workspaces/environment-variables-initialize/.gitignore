@@ -1,2 +1,2 @@
 cli
-src/*.sh
+src/download_command.sh

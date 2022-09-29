@@ -22,7 +22,7 @@ commands:
     help: "Target filename (default: same as source)"
 
   environment_variables:
-  - name: default_target_location
+  - name: nested_var
     default: not-available-in-initialize
     help: Set the default location to download to
 
