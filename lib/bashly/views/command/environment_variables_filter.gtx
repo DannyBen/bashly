@@ -5,7 +5,7 @@ if default_environment_variables.any? or required_environment_variables.any?
   if required_environment_variables.any?
     required_environment_variables.each do |env_var|
       > if [[ -z "${<%= env_var.name.upcase %>:-}" ]]; then
-      >   printf "{{ strings[:missing_required_environment_variable] % { var: env_var.name.upcase } }}\n"
+      >   printf "{{ strings[:missing_required_environment_variable] % { var: env_var.name.upcase } }}\n" >&2
       >   exit 1
       > fi
     end

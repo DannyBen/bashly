@@ -3,7 +3,7 @@ if validate
   = view_marker
 
   > if [[ -n $(validate_{{ validate }} "$2") ]]; then
-  >   printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$(validate_{{ validate }} "$2")"
+  >   printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$(validate_{{ validate }} "$2")" >&2
   >   exit 1
   > fi
   > 

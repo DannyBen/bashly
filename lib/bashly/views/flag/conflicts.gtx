@@ -4,7 +4,7 @@ if conflicts
   
   if conflicts.count == 1
     > if [[ -n "${args[{{ conflicts.first }}]:-}" ]]; then
-    >   printf "{{ strings[:conflicting_flags] }}\n" "$key" "{{ conflicts.first }}"
+    >   printf "{{ strings[:conflicting_flags] }}\n" "$key" "{{ conflicts.first }}" >&2
     >   exit 1
     > fi
     >
@@ -12,7 +12,7 @@ if conflicts
   else
     > for conflict in {{ conflicts.join ' ' }}; do
     >   if [[ -n "${args[$conflict]:-}" ]]; then
-    >     printf "{{ strings[:conflicting_flags] }}\n" "$key" "$conflict"
+    >     printf "{{ strings[:conflicting_flags] }}\n" "$key" "$conflict" >&2
     >     exit 1
     >   fi
     > done

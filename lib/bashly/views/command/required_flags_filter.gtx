@@ -3,7 +3,7 @@ if required_flags.any?
 
   required_flags.each do |flag|
     > if [[ -z ${args[{{ flag.long }}]+x} ]]; then
-    >   printf "{{ strings[:missing_required_flag] % { usage: flag.usage_string } }}\n"
+    >   printf "{{ strings[:missing_required_flag] % { usage: flag.usage_string } }}\n" >&2
     >   exit 1
     > fi
   end

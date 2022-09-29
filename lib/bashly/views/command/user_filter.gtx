@@ -5,7 +5,7 @@ if filters
   filters.each do |filter|
     > filter_error=$(filter_{{ filter }})
     > if [[ -n $filter_error ]]; then
-    >   echo "$filter_error"
+    >   echo "$filter_error" >&2
     >   exit 1
     > fi
     > 

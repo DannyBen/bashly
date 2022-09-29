@@ -4,7 +4,7 @@
 
 # :wrapper.bash3_bouncer
 if [[ "${BASH_VERSINFO:-0}" -lt 4 ]]; then
-  printf "bash version 4 or higher is required\n"
+  printf "bash version 4 or higher is required\n" >&2
   exit 1
 fi
 
