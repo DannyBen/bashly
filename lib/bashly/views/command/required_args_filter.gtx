@@ -3,7 +3,7 @@ if required_args.any?
 
   required_args.each do |arg|
     > if [[ -z ${args[{{ arg.name }}]+x} ]]; then
-    >   printf "{{ strings[:missing_required_argument] % { arg: arg.name.upcase, usage: usage_string } }}\n"
+    >   printf "{{ strings[:missing_required_argument] % { arg: arg.name.upcase, usage: usage_string } }}\n" >&2
     >   exit 1
     > fi
   end

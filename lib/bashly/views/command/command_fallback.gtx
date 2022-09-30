@@ -1,7 +1,7 @@
 = view_marker
 
 > "" )
->   {{ function_name }}_usage
+>   {{ function_name }}_usage >&2
 >   exit 1
 >   ;;
 >
@@ -18,7 +18,7 @@ elsif extensible.is_a? String
   >   if [[ -x "$(command -v "{{ extensible }}")" ]]; then
   >     exec {{ extensible }} "$@"
   >   else
-  >     printf "{{ strings[:invalid_command] }}\n" "$action"
+  >     printf "{{ strings[:invalid_command] }}\n" "$action" >&2
   >     exit 1
   >   fi
   >
@@ -28,13 +28,13 @@ elsif extensible
   >     shift
   >     exec "{{ function_name }}-$action" "$@"
   >   else
-  >     printf "{{ strings[:invalid_command] }}\n" "$action"
+  >     printf "{{ strings[:invalid_command] }}\n" "$action" >&2
   >     exit 1
   >   fi
   >
 
 else
-  >   printf "{{ strings[:invalid_command] }}\n" "$action"
+  >   printf "{{ strings[:invalid_command] }}\n" "$action" >&2
   >   exit 1
   >   ;;
   >

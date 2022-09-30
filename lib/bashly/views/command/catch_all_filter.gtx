@@ -2,7 +2,7 @@ if catch_all.required?
   = view_marker
 
   > if [[ ${#other_args[@]} -eq 0 ]]; then
-  >   printf "{{ strings[:missing_required_argument] % { arg: catch_all.label, usage: usage_string } }}\n"
+  >   printf "{{ strings[:missing_required_argument] % { arg: catch_all.label, usage: usage_string } }}\n" >&2
   >   exit 1
   > fi
   >

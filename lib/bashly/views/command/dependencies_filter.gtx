@@ -3,7 +3,7 @@ if dependencies
 
   dependencies.each do |dependency|
     > if ! [[ -x "$(command -v {{ dependency }})" ]]; then
-    >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n"
+    >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n" >&2
     >   exit 1
     > fi
   end
