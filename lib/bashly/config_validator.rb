@@ -112,6 +112,7 @@ module Bashly
       assert_hash key, value, Script::Command.option_keys
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
+      refute value['commands'] && value['catch_all'], "#{key} cannot have both commands and catch_all"
 
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
@@ -148,10 +149,6 @@ module Bashly
       if value['catch_all'] and value['args']
         repeatable_arg = value['args'].select { |a| a['repeatable'] }.first&.dig 'name'
         refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
-      end
-
-      if value['catch_all']
-        refute value['commands'], "#{key}.catch_all makes no sense with commands"
       end
 
       if value['expose']
