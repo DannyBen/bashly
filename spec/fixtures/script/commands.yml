@@ -217,6 +217,70 @@
   name: get
   help: get something from somewhere
 
+:mode_global_flags:
+  name: get
+  help: get something from somewhere
+
+  flags:
+  - long: --force
+  - long: --verbose
+
+  commands:
+  - name: download
+    flags:
+    - long: --http
+  - name: upload
+
+:mode_commands:
+  name: get
+  help: get something from somewhere
+
+  commands:
+  - name: download
+    flags:
+    - long: --http
+  - name: upload
+
+:mode_args_and_flags:
+  name: get
+  help: get something from somewhere
+  catch_all: params
+
+  args:
+  - name: source
+    required: true
+  - name: target
+
+  flags:
+  - long: --force
+    required: true
+  - long: --verbose
+
+:mode_args:
+  name: get
+  help: get something from somewhere
+  catch_all: params
+
+  args:
+  - name: source
+    required: true
+  - name: target
+
+:mode_flags:
+  name: get
+  help: get something from somewhere
+  catch_all: params
+
+  flags:
+  - long: --force
+    required: true
+  - long: --verbose
+
+:mode_empty:
+  name: get
+  help: get something from somewhere
+  catch_all: params
+
 :nested_aliases:
   name: cli
   commands:
