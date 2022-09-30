@@ -16,5 +16,12 @@ end
 >   exit
 >   ;;
 > 
+
+if global_flags?
+  flags.each do |flag|
+    = flag.render(:case)
+  end
+end
+
 > esac
 >

@@ -10,8 +10,8 @@ run ./docker --help to test your bash script
 docker - Docker example
 
 Usage:
-  docker [command]
-  docker [command] --help | -h
+  docker COMMAND
+  docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
@@ -22,8 +22,8 @@ Commands:
 docker - Docker example
 
 Usage:
-  docker [command]
-  docker [command] --help | -h
+  docker COMMAND
+  docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
@@ -43,8 +43,8 @@ docker container - Container commands
 Alias: c*
 
 Usage:
-  docker container [command]
-  docker container [command] --help | -h
+  docker container COMMAND
+  docker container [COMMAND] --help | -h
 
 Commands:
   run    Run a container
@@ -80,8 +80,8 @@ docker container - Container commands
 Alias: c*
 
 Usage:
-  docker container [command]
-  docker container [command] --help | -h
+  docker container COMMAND
+  docker container [COMMAND] --help | -h
 
 Commands:
   run    Run a container
@@ -93,8 +93,8 @@ docker image - Image commands
 Alias: i*
 
 Usage:
-  docker image [command]
-  docker image [command] --help | -h
+  docker image COMMAND
+  docker image [COMMAND] --help | -h
 
 Commands:
   ls   Show all images

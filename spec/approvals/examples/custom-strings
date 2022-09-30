@@ -6,13 +6,13 @@ created ./download
 run ./download --help to test your bash script
 + ./download
 Boom! a required argument is missing: SOURCE
-usage: download SOURCE [options]
+usage: download SOURCE [OPTIONS]
 + ./download -h
 download - Sample minimal application with custom strings
 
 == Usage ==
 
-  download SOURCE [options]
+  download SOURCE [OPTIONS]
   download --help | -h
   download --version | -v
 

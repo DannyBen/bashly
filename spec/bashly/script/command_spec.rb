@@ -364,14 +364,14 @@ describe Script::Command do
     context "when flags are defined" do
       let(:fixture) { :flags_only_command }
 
-      it "adds [options] to the usate string" do
-        expect(subject.usage_string).to eq "git status [options]"
+      it "adds [OPTIONS] to the usage string" do
+        expect(subject.usage_string).to eq "git status [OPTIONS]"
       end      
     end
 
     context "when args are defined" do
       it "includes them in the usage string" do
-        expect(subject.usage_string).to eq "get SOURCE [TARGET] [options]"
+        expect(subject.usage_string).to eq "get SOURCE [TARGET] [OPTIONS]"
       end      
     end
 
@@ -379,7 +379,7 @@ describe Script::Command do
       let(:fixture) { :docker }
 
       it "includes [command] in the usage string" do
-        expect(subject.usage_string).to eq "docker [command]"
+        expect(subject.usage_string).to eq "docker COMMAND"
       end      
     end
 

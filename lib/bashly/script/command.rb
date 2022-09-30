@@ -177,6 +177,12 @@ module Bashly
         parents.any? ? (parents + [name]).join(' ') : name
       end
 
+      # Returns true if this command's flags should be considered as gloal
+      # flags, and cascade to subcommands
+      def global_flags?
+        flags.any? and commands.any?
+      end
+
       # Returns the string for the group caption
       def group_string
         if group
@@ -239,11 +245,12 @@ module Bashly
       # Returns a constructed string suitable for Usage pattern
       def usage_string
         result = [full_name]
-        result << "[command]" if commands.any?
+        result << "[OPTIONS]" if global_flags?
+        result << "COMMAND" if commands.any?
         args.each do |arg|
           result << arg.usage_string
         end
-        result << "[options]" unless flags.empty?
+        result << "[OPTIONS]" unless flags.empty? || global_flags?
         result << catch_all.usage_string if catch_all.enabled?
         result.join " "
       end

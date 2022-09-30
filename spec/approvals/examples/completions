@@ -19,8 +19,8 @@ run ./cli --help to test your bash script
 cli - Sample application with bash completions
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -32,8 +32,8 @@ Commands:
 cli - Sample application with bash completions
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

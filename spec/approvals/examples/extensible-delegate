@@ -9,8 +9,8 @@ run ./mygit --help to test your bash script
 mygit - Sample application that delegates unknown commands to a different executable
 
 Usage:
-  mygit [command]
-  mygit [command] --help | -h
+  mygit COMMAND
+  mygit [COMMAND] --help | -h
   mygit --version | -v
 
 Commands:

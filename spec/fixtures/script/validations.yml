@@ -94,13 +94,13 @@
   args:
   - name: source
 
-:commands_and_flags:
-  name: invalid
-  help: there are both commands and flags
-  commands:
-  - name: sub
-  flags:
-  - long: --force
+# :commands_and_flags:
+#   name: invalid
+#   help: there are both commands and flags
+#   commands:
+#   - name: sub
+#   flags:
+#   - long: --force
 
 :commands_default_without_args:
   name: invalid

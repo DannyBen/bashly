@@ -29,7 +29,7 @@ end
 >   printf "  {{ usage_string }}\n"
 
 if commands.any?
-  >   printf "  {{ full_name }} [command] --help{{ " | -h" unless short_flag_exist? "-h" }}\n"
+  >   printf "  {{ full_name }} [COMMAND] --help{{ " | -h" unless short_flag_exist? "-h" }}\n"
 else
   >   printf "  {{ full_name }} --help{{ " | -h" unless short_flag_exist? "-h" }}\n"
 end
