@@ -36,6 +36,14 @@
     help: catch_all.required should be boolean
     required: 1
 
+:command_catch_all_commands:
+  name: invalid
+  catch_all:
+    label: params
+    help: catch_all makes no sense with commands
+  commands:
+  - name: config
+
 :command_expose_invalid_type:
   name: invalid
   help: expose should be boolean or 'always'
@@ -93,14 +101,6 @@
   - name: sub
   args:
   - name: source
-
-:commands_and_flags:
-  name: invalid
-  help: there are both commands and flags
-  commands:
-  - name: sub
-  flags:
-  - long: --force
 
 :commands_default_without_args:
   name: invalid

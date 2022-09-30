@@ -43,7 +43,7 @@ examples:
 
 ```shell
 missing required argument: SOURCE
-usage: download SOURCE [TARGET] [options]
+usage: download SOURCE [TARGET] [OPTIONS]
 
 
 ```
@@ -54,7 +54,7 @@ usage: download SOURCE [TARGET] [options]
 download - Sample minimal application without commands
 
 Usage:
-  download SOURCE [TARGET] [options]
+  download SOURCE [TARGET] [OPTIONS]
   download --help | -h
   download --version | -v
 

@@ -112,7 +112,7 @@ module Bashly
       assert_hash key, value, Script::Command.option_keys
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
-      refute value['commands'] && value['flags'], "#{key} cannot have both commands and flags"
+      refute value['commands'] && value['catch_all'], "#{key} cannot have both commands and catch_all"
 
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']

@@ -65,8 +65,8 @@ commands:
 cli - Demonstrate custom command filenames
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -83,8 +83,8 @@ Commands:
 cli - Demonstrate custom command filenames
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

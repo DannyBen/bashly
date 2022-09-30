@@ -6,12 +6,12 @@ created ./download
 run ./download --help to test your bash script
 + ./download
 missing required argument: SOURCE
-usage: download SOURCE [TARGET] [options]
+usage: download SOURCE [TARGET] [OPTIONS]
 + ./download -h
 download - Sample minimal application without commands
 
 Usage:
-  download SOURCE [TARGET] [options]
+  download SOURCE [TARGET] [OPTIONS]
   download --help | -h
   download --version | -v
 

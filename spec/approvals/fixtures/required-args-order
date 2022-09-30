@@ -6,10 +6,10 @@ created ./download
 run ./download --help to test your bash script
 + ./download
 missing required argument: PROTOCOL
-usage: download PROTOCOL PORT [BODY] [options]
+usage: download PROTOCOL PORT [BODY] [OPTIONS]
 + ./download http
 missing required argument: PORT
-usage: download PROTOCOL PORT [BODY] [options]
+usage: download PROTOCOL PORT [BODY] [OPTIONS]
 + ./download http 3000
 missing required flag: --method NAME
 + ./download http 3000 --method GET

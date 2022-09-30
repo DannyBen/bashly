@@ -44,7 +44,7 @@ flags:
 download - Sample application to demonstrate the use of conflicting flags
 
 Usage:
-  download [options]
+  download [OPTIONS]
   download --help | -h
   download --version | -v
 

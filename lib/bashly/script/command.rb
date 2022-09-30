@@ -177,12 +177,31 @@ module Bashly
         parents.any? ? (parents + [name]).join(' ') : name
       end
 
+      # Returns true if this command's flags should be considered as gloal
+      # flags, and cascade to subcommands
+      def global_flags?
+        flags.any? and commands.any?
+      end
+
       # Returns the string for the group caption
       def group_string
         if group
           strings[:group] % { group: group } 
         else
           strings[:commands]
+        end
+      end
+
+      # Returns a mode identifier
+      def mode
+        @mode ||= begin
+          if global_flags?               then :global_flags
+          elsif commands.any?            then :commands
+          elsif args.any? and flags.any? then :args_and_flags
+          elsif args.any?                then :args
+          elsif flags.any?               then :flags
+          else                           :empty
+          end
         end
       end
 
@@ -239,13 +258,23 @@ module Bashly
       # Returns a constructed string suitable for Usage pattern
       def usage_string
         result = [full_name]
-        result << "[command]" if commands.any?
-        args.each do |arg|
-          result << arg.usage_string
+
+        result.push case mode
+        when :global_flags    then ["[OPTIONS]", "COMMAND"]
+        when :commands        then ["COMMAND"]
+        when :args_and_flags  then usage_string_args + ["[OPTIONS]"]
+        when :args            then usage_string_args
+        when :flags           then ["[OPTIONS]"]
+        else                  nil
         end
-        result << "[options]" unless flags.empty?
-        result << catch_all.usage_string if catch_all.enabled?
-        result.join " "
+
+        result.push catch_all.usage_string if catch_all.enabled? && commands.empty?
+        result.compact.join " "
+      end
+
+      # Returns an array of args usage_string for the command's usage_string
+      def usage_string_args
+        args.map { |arg| arg.usage_string }
       end
 
       # Returns an array of files to include as is inside the script

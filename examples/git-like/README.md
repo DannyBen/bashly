@@ -50,8 +50,8 @@ commands:
 git - Git example
 
 Usage:
-  git [command]
-  git [command] --help | -h
+  git COMMAND
+  git [COMMAND] --help | -h
   git --version | -v
 
 Commands:
@@ -68,8 +68,8 @@ Commands:
 git - Git example
 
 Usage:
-  git [command]
-  git [command] --help | -h
+  git COMMAND
+  git [COMMAND] --help | -h
   git --version | -v
 
 Commands:
@@ -125,7 +125,7 @@ git commit - Commit changes
 Alias: c*
 
 Usage:
-  git commit [options]
+  git commit [OPTIONS]
   git commit --help | -h
 
 Options:

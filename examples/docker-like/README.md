@@ -3,6 +3,10 @@
 Demonstrates how to define deeply nested commands, similar to the docker cli
 (`docker container run`, `docker image ls`, etc.).
 
+In addition, this example shows the use of global flags, where flags defined 
+at the root level, become available to all nested commands, like the`--debug`
+flag in `docker --debug ps --all`.
+
 This example was generated with:
 
 ```bash
@@ -19,6 +23,11 @@ $ bashly generate
 name: docker
 help: Docker example
 version: 0.1.0
+
+flags:
+- long: --debug
+  short: -d
+  help: Enable debug mode
 
 commands:
 - name: container
@@ -48,6 +57,14 @@ commands:
   - name: ls
     alias: l
     help: Show all images
+
+- name: ps
+  help: List containers
+
+  flags:
+  - long: --all
+    short: -a
+    help: Show all containers
 ```
 
 
@@ -60,13 +77,14 @@ commands:
 docker - Docker example
 
 Usage:
-  docker [command]
-  docker [command] --help | -h
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
   container   Container commands
   image       Image commands
+  ps          List containers
 
 
 
@@ -78,13 +96,14 @@ Commands:
 docker - Docker example
 
 Usage:
-  docker [command]
-  docker [command] --help | -h
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
   container   Container commands
   image       Image commands
+  ps          List containers
 
 Options:
   --help, -h
@@ -92,6 +111,9 @@ Options:
 
   --version, -v
     Show version number
+
+  --debug, -d
+    Enable debug mode
 
 
 
@@ -105,8 +127,8 @@ docker container - Container commands
 Alias: c*
 
 Usage:
-  docker container [command]
-  docker container [command] --help | -h
+  docker container COMMAND
+  docker container [COMMAND] --help | -h
 
 Commands:
   run    Run a container
@@ -146,13 +168,14 @@ usage: docker container run IMAGE
 
 ```
 
-### `$ ./docker container run alpine`
+### `$ ./docker -d container run alpine`
 
 ```shell
 # this file is located in 'src/container_run_command.sh'
 # code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
+- ${args[--debug]} = 1
 - ${args[image]} = alpine
 
 
@@ -166,8 +189,8 @@ docker container - Container commands
 Alias: c*
 
 Usage:
-  docker container [command]
-  docker container [command] --help | -h
+  docker container COMMAND
+  docker container [COMMAND] --help | -h
 
 Commands:
   run    Run a container
@@ -185,8 +208,8 @@ docker image - Image commands
 Alias: i*
 
 Usage:
-  docker image [command]
-  docker image [command] --help | -h
+  docker image COMMAND
+  docker image [COMMAND] --help | -h
 
 Commands:
   ls   Show all images
@@ -213,6 +236,19 @@ args: none
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
+
+
+```
+
+### `$ ./docker --debug ps --all`
+
+```shell
+# this file is located in 'src/ps_command.sh'
+# code for 'docker ps' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--all]} = 1
+- ${args[--debug]} = 1
 
 
 ```

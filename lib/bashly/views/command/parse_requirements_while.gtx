@@ -4,8 +4,10 @@
 >   key="$1"
 >   case "$key" in
 
-flags.each do |flag|
-  = flag.render(:case).indent 2
+unless global_flags?
+  flags.each do |flag|
+    = flag.render(:case).indent 2
+  end
 end
 
 >

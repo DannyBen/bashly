@@ -79,7 +79,7 @@ inspect_args
 download - Sample application to demonstrate the use of repeatable flags
 
 Usage:
-  download [options]
+  download [OPTIONS]
   download --help | -h
   download --version
 

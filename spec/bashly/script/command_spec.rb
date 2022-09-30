@@ -140,7 +140,7 @@ describe Script::Command do
     it "returns a Command object of the first default command" do
       expect(subject.default_command).to be_a Script::Command
       expect(subject.default_command.name).to eq 'get'
-    end    
+    end
   end
 
   describe '#default_flags' do
@@ -234,6 +234,32 @@ describe Script::Command do
 
       it "returns the a string with all parents joined" do
         expect(subject.full_name).to eq "git status"
+      end
+    end
+  end
+
+  describe '#global_flags?' do
+    context "when a command has flags and commands" do
+      let(:fixture) { :mode_global_flags }
+
+      it "returns true" do
+        expect(subject.global_flags?).to be_truthy
+      end
+    end
+
+    context "when a command has flags but no commands" do
+      let(:fixture) { :mode_flags }
+
+      it "returns false" do
+        expect(subject.global_flags?).to be_falsy
+      end
+    end
+
+    context "when a command has commands but no flags" do
+      let(:fixture) { :mode_commands }
+
+      it "returns false" do
+        expect(subject.global_flags?).to be_falsy
       end
     end
   end
@@ -352,42 +378,118 @@ describe Script::Command do
     end
   end
 
-  describe '#usage_string' do
-    context "when no args and no commands are defined" do
-      let(:fixture) { :git_status }
+  describe '#mode' do
+    context "when flags and commands are defined" do
+      let(:fixture) { :mode_global_flags }
 
-      it "returns a string suitable to be used as a usage pattern" do
-        expect(subject.usage_string).to eq "git status"
+      it "returns :global_flags" do
+        expect(subject.mode).to eq :global_flags
       end
     end
 
-    context "when flags are defined" do
-      let(:fixture) { :flags_only_command }
+    context "when only commands are defined" do
+      let(:fixture) { :mode_commands }
 
-      it "adds [options] to the usate string" do
-        expect(subject.usage_string).to eq "git status [options]"
-      end      
+      it "returns :commands" do
+        expect(subject.mode).to eq :commands
+      end
     end
 
-    context "when args are defined" do
-      it "includes them in the usage string" do
-        expect(subject.usage_string).to eq "get SOURCE [TARGET] [options]"
-      end      
+    context "when args and flags are defined" do
+      let(:fixture) { :mode_args_and_flags }
+
+      it "returns :args_and_flags" do
+        expect(subject.mode).to eq :args_and_flags
+      end
     end
 
-    context "when commands are defined" do
-      let(:fixture) { :docker }
+    context "when only args are defined" do
+      let(:fixture) { :mode_args }
 
-      it "includes [command] in the usage string" do
-        expect(subject.usage_string).to eq "docker [command]"
-      end      
+      it "returns :args" do
+        expect(subject.mode).to eq :args
+      end
     end
 
-    context "when catch_all is enabled" do
-      let(:fixture) { :catch_all }
+    context "when only flags are defined" do
+      let(:fixture) { :mode_flags }
 
-      it "includes the catch_all usage string" do
-        expect(subject.usage_string).to eq "get [...]"
+      it "returns :flags" do
+        expect(subject.mode).to eq :flags
+      end
+    end
+
+    context "when nothing is defined" do
+      let(:fixture) { :mode_empty }
+
+      it "returns :empty" do
+        expect(subject.mode).to eq :empty
+      end
+    end
+  end
+
+  describe '#usage_string' do
+    context "when flags and commands are defined" do
+      let(:fixture) { :mode_global_flags }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get [OPTIONS] COMMAND"
+      end
+    end
+
+    context "when only commands are defined" do
+      let(:fixture) { :mode_commands }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get COMMAND"
+      end
+    end
+
+    context "when args and flags are defined" do
+      let(:fixture) { :mode_args_and_flags }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get SOURCE [TARGET] [OPTIONS] [PARAMS...]"
+      end
+    end
+
+    context "when only args are defined" do
+      let(:fixture) { :mode_args }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get SOURCE [TARGET] [PARAMS...]"
+      end
+    end
+
+    context "when only flags are defined" do
+      let(:fixture) { :mode_flags }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get [OPTIONS] [PARAMS...]"
+      end
+
+      context "when it has a parent" do
+        let(:fixture) { :flags_only_command }
+
+        it "returns the correct string" do
+          expect(subject.usage_string).to eq "git status [OPTIONS]"
+        end
+      end
+    end
+
+    context "when nothing is defined" do
+      let(:fixture) { :mode_empty }
+
+      it "returns the correct string" do
+        expect(subject.usage_string).to eq "get [PARAMS...]"
+      end
+
+      context "when it has a parent" do
+        let(:fixture) { :git_status }
+
+        it "returns the correct string" do
+          expect(subject.usage_string).to eq "git status"
+        end
       end
     end
   end

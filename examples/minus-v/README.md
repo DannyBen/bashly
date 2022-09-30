@@ -55,7 +55,7 @@ args: none
 cli - Example that replaces the default behavior of -v and -h
 
 Usage:
-  cli [options]
+  cli [OPTIONS]
   cli --help
   cli --version
 

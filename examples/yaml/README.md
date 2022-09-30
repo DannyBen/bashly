@@ -93,7 +93,7 @@ fi
 yaml - Sample application that uses the YAML functions
 
 Usage:
-  yaml FILENAME [VARIABLE] [options]
+  yaml FILENAME [VARIABLE] [OPTIONS]
   yaml --help | -h
   yaml --version | -v
 

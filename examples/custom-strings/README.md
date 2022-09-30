@@ -70,7 +70,7 @@ missing_required_flag: "Yo! you forgot a flag: %{usage}"
 
 ```shell
 Boom! a required argument is missing: SOURCE
-usage: download SOURCE [options]
+usage: download SOURCE [OPTIONS]
 
 
 ```
@@ -82,7 +82,7 @@ download - Sample minimal application with custom strings
 
 == Usage ==
 
-  download SOURCE [options]
+  download SOURCE [OPTIONS]
   download --help | -h
   download --version | -v
 

@@ -70,8 +70,8 @@ commands:
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -90,7 +90,7 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [options] [AWS PARAMS...]
+  cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
   cli download --help | -h
 
 Options:

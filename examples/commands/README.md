@@ -79,8 +79,8 @@ commands:
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -97,8 +97,8 @@ Commands:
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -136,7 +136,7 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [options]
+  cli download SOURCE [TARGET] [OPTIONS]
   cli download --help | -h
 
 Options:
@@ -169,7 +169,7 @@ Examples:
 
 ```shell
 missing required argument: SOURCE
-usage: cli download SOURCE [TARGET] [options]
+usage: cli download SOURCE [TARGET] [OPTIONS]
 
 
 ```
@@ -196,7 +196,7 @@ cli upload - Upload a file
 Alias: u
 
 Usage:
-  cli upload SOURCE [options]
+  cli upload SOURCE [OPTIONS]
   cli upload --help | -h
 
 Options:

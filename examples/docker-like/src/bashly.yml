@@ -2,6 +2,11 @@ name: docker
 help: Docker example
 version: 0.1.0
 
+flags:
+- long: --debug
+  short: -d
+  help: Enable debug mode
+
 commands:
 - name: container
   alias: c*
@@ -30,3 +35,11 @@ commands:
   - name: ls
     alias: l
     help: Show all images
+
+- name: ps
+  help: List containers
+
+  flags:
+  - long: --all
+    short: -a
+    help: Show all containers
