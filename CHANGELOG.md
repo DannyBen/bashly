@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v0.8.7 - 2022-09-30
+----------------------------------------
+
+- Update validator to alert when a default command has no args
+- Make default environment variables values available in initialize()
+- Redirect error messages to stderr
+- Add support for global command flags
+- Update all examples and show global flags use in examples/docker-like
+
+
 v0.8.6 - 2022-09-23
 ----------------------------------------
 
