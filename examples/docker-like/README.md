@@ -3,6 +3,10 @@
 Demonstrates how to define deeply nested commands, similar to the docker cli
 (`docker container run`, `docker image ls`, etc.).
 
+In addition, this example shows the use of global flags, where flags defined 
+at the root level, become available to all nested commands, like the`--debug`
+flag in `docker --debug ps --all`.
+
 This example was generated with:
 
 ```bash
