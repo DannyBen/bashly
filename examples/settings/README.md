@@ -89,8 +89,8 @@ strict: true
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

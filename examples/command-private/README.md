@@ -62,8 +62,8 @@ $cmd
 cli - Sample application with private commands
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -79,8 +79,8 @@ Commands:
 cli - Sample application with private commands
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

@@ -4,31 +4,34 @@ created src/initialize.sh
 created src/container_run_command.sh
 created src/container_stop_command.sh
 created src/image_ls_command.sh
+created src/ps_command.sh
 created ./docker
 run ./docker --help to test your bash script
 + ./docker
 docker - Docker example
 
 Usage:
-  docker COMMAND
+  docker [OPTIONS] COMMAND
   docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
   container   Container commands
   image       Image commands
+  ps          List containers
 
 + ./docker -h
 docker - Docker example
 
 Usage:
-  docker COMMAND
+  docker [OPTIONS] COMMAND
   docker [COMMAND] --help | -h
   docker --version | -v
 
 Commands:
   container   Container commands
   image       Image commands
+  ps          List containers
 
 Options:
   --help, -h
@@ -36,6 +39,9 @@ Options:
 
   --version, -v
     Show version number
+
+  --debug, -d
+    Enable debug mode
 
 + ./docker container
 docker container - Container commands
@@ -68,11 +74,12 @@ Arguments:
 + ./docker container run
 missing required argument: IMAGE
 usage: docker container run IMAGE
-+ ./docker container run alpine
++ ./docker -d container run alpine
 # this file is located in 'src/container_run_command.sh'
 # code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
+- ${args[--debug]} = 1
 - ${args[image]} = alpine
 + ./docker con
 docker container - Container commands
@@ -109,3 +116,10 @@ args: none
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
++ ./docker --debug ps --all
+# this file is located in 'src/ps_command.sh'
+# code for 'docker ps' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--all]} = 1
+- ${args[--debug]} = 1

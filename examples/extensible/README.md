@@ -67,8 +67,8 @@ echo "Received args: $@"
 cli - Sample application that can be externally extended
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

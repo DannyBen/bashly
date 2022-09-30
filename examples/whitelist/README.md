@@ -59,7 +59,7 @@ flags:
 
 ```shell
 missing required argument: REGION
-usage: login REGION [ENVIRONMENT] [options]
+usage: login REGION [ENVIRONMENT] [OPTIONS]
 
 
 ```
@@ -70,7 +70,7 @@ usage: login REGION [ENVIRONMENT] [options]
 login - Sample showing the use of arg and flag whitelist (allowed values)
 
 Usage:
-  login REGION [ENVIRONMENT] [options]
+  login REGION [ENVIRONMENT] [OPTIONS]
   login --help | -h
   login --version | -v
 

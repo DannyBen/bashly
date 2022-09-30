@@ -64,8 +64,8 @@ commands:
 ftp - Sample application with command grouping
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
+  ftp COMMAND
+  ftp [COMMAND] --help | -h
   ftp --version | -v
 
 File Commands:
@@ -86,8 +86,8 @@ Login Commands:
 ftp - Sample application with command grouping
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
+  ftp COMMAND
+  ftp [COMMAND] --help | -h
   ftp --version | -v
 
 File Commands:

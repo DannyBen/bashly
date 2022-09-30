@@ -75,8 +75,8 @@ echo "- MY_SECRET=${MY_SECRET:-}"
 cli - Sample application that requires environment variables
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -92,8 +92,8 @@ Commands:
 cli - Sample application that requires environment variables
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:

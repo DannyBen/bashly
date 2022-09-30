@@ -55,8 +55,8 @@ commands:
 ftp - Sample application that uses the default command option
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
+  ftp COMMAND
+  ftp [COMMAND] --help | -h
   ftp --version | -v
 
 Commands:
@@ -73,8 +73,8 @@ Commands:
 ftp - Sample application that uses the default command option
 
 Usage:
-  ftp [command]
-  ftp [command] --help | -h
+  ftp COMMAND
+  ftp [COMMAND] --help | -h
   ftp --version | -v
 
 Commands:

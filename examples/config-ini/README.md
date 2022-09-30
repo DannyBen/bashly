@@ -121,8 +121,8 @@ echo "saved: ${args[key]} = ${args[value]}"
 configly - Sample application that uses the config functions
 
 Usage:
-  configly [command]
-  configly [command] --help | -h
+  configly COMMAND
+  configly [COMMAND] --help | -h
   configly --version | -v
 
 Commands:

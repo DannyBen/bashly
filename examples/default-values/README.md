@@ -64,7 +64,7 @@ args:
 convert - Sample application using default arguments and flags
 
 Usage:
-  convert [SOURCE] [options]
+  convert [SOURCE] [OPTIONS]
   convert --help | -h
   convert --version | -v
 

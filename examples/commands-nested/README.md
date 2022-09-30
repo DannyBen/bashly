@@ -74,8 +74,8 @@ commands:
 cli - Sample application with nested commands
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -92,8 +92,8 @@ Commands:
 cli - Sample application with nested commands
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -119,8 +119,8 @@ cli dir - Directory commands
 Alias: d
 
 Usage:
-  cli dir [command]
-  cli dir [command] --help | -h
+  cli dir COMMAND
+  cli dir [COMMAND] --help | -h
 
 Commands:
   list     Show files in the directory
@@ -138,13 +138,21 @@ cli file - File commands
 Alias: f
 
 Usage:
-  cli file [command]
-  cli file [command] --help | -h
+  cli file COMMAND
+  cli file [COMMAND] --help | -h
 
 Commands:
   show   Show file contents
   edit   Edit the file
 
+
+
+```
+
+### `$ ./cli dig`
+
+```shell
+invalid command: dig
 
 
 ```
@@ -157,8 +165,8 @@ cli dir - Directory commands
 Alias: d
 
 Usage:
-  cli dir [command]
-  cli dir [command] --help | -h
+  cli dir COMMAND
+  cli dir [COMMAND] --help | -h
 
 Commands:
   list     Show files in the directory
@@ -180,8 +188,8 @@ cli file - File commands
 Alias: f
 
 Usage:
-  cli file [command]
-  cli file [command] --help | -h
+  cli file COMMAND
+  cli file [COMMAND] --help | -h
 
 Commands:
   show   Show file contents
@@ -221,6 +229,14 @@ Arguments:
   PATH
     Directory path
 
+
+
+```
+
+### `$ ./cli dir lost -h`
+
+```shell
+invalid command: lost
 
 
 ```

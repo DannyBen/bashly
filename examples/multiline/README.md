@@ -80,8 +80,8 @@ environment_variables:
 multi - Multiline test
 
 Usage:
-  multi [command]
-  multi [command] --help | -h
+  multi COMMAND
+  multi [COMMAND] --help | -h
   multi --version | -v
 
 Commands:
@@ -103,8 +103,8 @@ multi
   at the 80 character mark.
 
 Usage:
-  multi [command]
-  multi [command] --help | -h
+  multi COMMAND
+  multi [COMMAND] --help | -h
   multi --version | -v
 
 Commands:
@@ -159,7 +159,7 @@ multi multiline
   lines properly at the 80 character mark.
 
 Usage:
-  multi multiline [MY_ARG] [options]
+  multi multiline [MY_ARG] [OPTIONS]
   multi multiline --help | -h
 
 Options:

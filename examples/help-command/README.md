@@ -119,8 +119,8 @@ fi
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -138,8 +138,8 @@ Commands:
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -168,8 +168,8 @@ Environment Variables:
 cli - Sample application
 
 Usage:
-  cli [command]
-  cli [command] --help | -h
+  cli COMMAND
+  cli [COMMAND] --help | -h
   cli --version | -v
 
 Commands:
@@ -200,7 +200,7 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [options]
+  cli download SOURCE [TARGET] [OPTIONS]
   cli download --help | -h
 
 Options:
