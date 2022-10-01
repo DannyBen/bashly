@@ -1,0 +1,75 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/download_command.sh (exists)
+skipped src/upload_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli download -h
+cli download - Download a file
+
+Usage:
+  cli download [OPTIONS]
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --force, -f
+    Overwrite existing files
+
+  --debug, -d
+    Show debug information
+
++ ./cli upload -h
+cli upload - Upload a file
+
+Usage:
+  cli upload [OPTIONS]
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --force, -f
+    Overwrite existing files
+
+  --debug, -d
+    Show debug information
+
+  --password, -p PASSWORD
+    Password to use for logging in
+
++ ./cli upload --force
+# this file is located in 'src/upload_command.sh'
+# code for 'cli upload' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
++ ./cli download --debug
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--debug]} = 1
