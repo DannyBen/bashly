@@ -6,7 +6,7 @@ commands:
 - name: download
   help: Download a file
 
-  # Label these flags (&force, &debug) so we can reference it later
+  # Label these flags (&force, &debug) so we can reference them later
   flags:
   - &force
     long: --force

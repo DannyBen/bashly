@@ -24,6 +24,8 @@ name: docker
 help: Docker example
 version: 0.1.0
 
+# Since we have a `commands` section below, these flags will be considered
+# "global flags" and available to all sub-commands.
 flags:
 - long: --debug
   short: -d
