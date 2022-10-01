@@ -28,6 +28,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [whitelist](whitelist#readme) - arguments and flags with a predefined allowed list of values
 - [repeatable-arg](repeatable-arg#readme) - allowing arguments to be provided multiple times
 - [repeatable-flag](repeatable-flag#readme) - allowing flags to be provided multiple times
+- [reusable-flags](reusable-flags#readme) - reuse flag definition for multiple commands
 - [conflicts](conflicts#readme) - defining mutually exclusive flags
 - [command-private](command-private#readme) - hiding commands from the command list
 - [stdin](stdin#readme) - reading input from stdin

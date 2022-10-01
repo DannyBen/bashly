@@ -1,0 +1,31 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+commands:
+- name: download
+  help: Download a file
+
+  # Label these flags (&force, &debug) so we can reference it later
+  flags:
+  - &force
+    long: --force
+    short: -f
+    help: Overwrite existing files
+
+  - &debug
+    long: --debug
+    short: -d
+    help: Show debug information
+
+- name: upload
+  help: Upload a file
+
+  # Reuse previously defined flags, and then add new ones
+  flags:
+  - *force
+  - *debug
+  - long: --password
+    short: -p
+    arg: password
+    help: Password to use for logging in
