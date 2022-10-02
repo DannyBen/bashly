@@ -1,0 +1,29 @@
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -abc --delta
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--alpha]} = 1
+- ${args[--bravo]} = 1
+- ${args[--charlie]} = 1
+- ${args[--delta]} = 1
++ BASHLY_COMPACT_SHORT_FLAGS=no
++ bundle exec bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -abc --delta
+invalid option: -abc
++ ./cli -a -b -c
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--alpha]} = 1
+- ${args[--bravo]} = 1
+- ${args[--charlie]} = 1
