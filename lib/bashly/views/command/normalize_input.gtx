@@ -11,11 +11,15 @@
 >     elif [[ $arg =~ ^(-[a-zA-Z0-9])=(.+)$ ]]; then
 >       input+=("${BASH_REMATCH[1]}")
 >       input+=("${BASH_REMATCH[2]}")
+
+if Settings.compact_short_flags
 >     elif [[ $arg =~ ^-([a-zA-Z0-9][a-zA-Z0-9]+)$ ]]; then
 >       flags="${BASH_REMATCH[1]}"
 >       for (( i=0 ; i < ${#flags} ; i++ )); do
 >         input+=("-${flags:i:1}")
 >       done
+end
+
 >     else
 >       input+=("$arg")
 >     fi

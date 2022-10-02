@@ -3,7 +3,8 @@ module Bashly
     class << self
       include AssetHelper
 
-      attr_writer :source_dir, :target_dir, :lib_dir, :strict, :tab_indent
+      attr_writer :compact_short_flags, :source_dir, :target_dir,
+        :lib_dir, :strict, :tab_indent
 
       def source_dir
         @source_dir ||= get :source_dir
@@ -23,6 +24,10 @@ module Bashly
 
       def tab_indent
         @tab_indent ||= get :tab_indent
+      end
+
+      def compact_short_flags
+        @compact_short_flags ||= get :compact_short_flags
       end
 
       def env
