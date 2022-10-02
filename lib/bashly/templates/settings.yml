@@ -1,6 +1,10 @@
 # All settings are optional (with their default values provided below), and
 # can also be set with an environment variable with the same name, capitalized
 # and prefixed by `BASHLY_` - for example: BASHLY_SOURCE_DIR
+#
+# When setting environment variables, you can use:
+# - "0", "false" or "no" to represent false
+# - "1", "true" or "yes" to represent true
 
 # The path containing the bashly configuration and source files
 source_dir: src
