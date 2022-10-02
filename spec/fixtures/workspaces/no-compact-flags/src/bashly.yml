@@ -1,0 +1,21 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+flags:
+- long: --alpha
+  short: -a
+  help: Alpha
+- long: --bravo
+  short: -b
+  help: Bravo
+- long: --charlie
+  short: -c
+  help: Charlie
+- long: --delta
+  short: -d
+  help: Delta
+
+
+
+

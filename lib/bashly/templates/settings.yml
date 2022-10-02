@@ -22,6 +22,10 @@ strict: false
 # (every 2 leading spaces will be converted to a tab character)
 tab_indent: false
 
+# When true, the generated script will consider any argument in the form of
+# `-abc` as if it is `-a -b -c`.
+compact_short_flags: true
+
 # Set to 'production' or 'development':
 # - production    generate a smaller script, without file markers
 # - development   generate with file markers
