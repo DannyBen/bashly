@@ -1,0 +1,8 @@
+name: cli
+
+commands:
+- name: invalid
+  help: This one will not validate
+  commands:
+    name: nested
+    help: Not an array

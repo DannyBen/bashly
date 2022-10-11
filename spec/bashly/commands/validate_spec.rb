@@ -21,6 +21,29 @@ describe Commands::Validate do
     end
   end
 
+  context "with --verbose" do
+    before do
+      reset_tmp_dir create_src: true
+      cp 'spec/fixtures/workspaces/import/*'
+    end
+
+    it "shows the compiled config file prior to validation" do
+      expect { subject.run %w[validate -v] }.to output_approval('cli/validate/verbose-valid')
+    end
+
+    context "when the compiled config is invalid" do
+      before do
+        reset_tmp_dir create_src: true
+        cp 'spec/fixtures/invalid.yml', "#{source_dir}/bashly.yml"
+      end
+
+      it "still shows it prior to validation" do
+        expect { subject.run %w[validate -v] }.to raise_error(ConfigurationError)
+          .and output_approval('cli/validate/verbose-invalid')
+      end
+    end
+  end
+
   # DEPRECATION 0.8.0
   context "with deprecated command.short option" do
     before do
