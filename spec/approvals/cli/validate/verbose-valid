@@ -1,0 +1,10 @@
+---
+name: cli
+commands:
+- name: toplevel
+  help: The toplevel command namespace
+  commands:
+  - name: nested
+    help: The nested command
+---
+OK

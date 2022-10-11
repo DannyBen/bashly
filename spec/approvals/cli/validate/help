@@ -1,10 +1,15 @@
 Scan the configuration file for errors
 
 Usage:
-  bashly validate
+  bashly validate [--verbose]
   bashly validate (-h|--help)
 
 Options:
+  -v --verbose
+    Show the bashly configuration file prior to validating. This is useful when
+    using split config (import) since it will show the final compiled
+    configuration.
+
   -h --help
     Show this help
 

@@ -1,0 +1,7 @@
+name: cli
+
+commands:
+- name: toplevel
+  help: "The toplevel command namespace"
+  commands:
+  - import: spec/tmp/src/nested_command.sh
