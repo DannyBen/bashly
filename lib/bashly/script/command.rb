@@ -9,7 +9,7 @@ module Bashly
             alias args catch_all commands completions
             default dependencies environment_variables examples
             extensible expose filename filters flags
-            footer group help name
+            footer function group help name
             private version
             short
           ]
@@ -168,7 +168,7 @@ module Bashly
 
       # Returns a unique name, suitable to be used in a bash function
       def function_name
-        full_name.to_underscore
+        options['function'] || full_name.to_underscore
       end
 
       # Returns the name of the command, including its parent name (in case
