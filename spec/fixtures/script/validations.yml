@@ -86,6 +86,11 @@
   help: command.filters should be an array of strings
   filters: [1, 2]
 
+:command_function:
+  name: invalid
+  help: command.function must match /[a-z0-9_]+/
+  function: myCamelCaseFunction
+
 :command_version:
   name: invalid
   help: version should be a string or a number

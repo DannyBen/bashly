@@ -220,6 +220,14 @@ describe Script::Command do
     it "returns the full name underscored" do
       expect(subject.function_name).to eq "docker_container_run"
     end
+
+    context "when function is provided by the user's config" do
+      let(:fixture) { :custom_function }
+
+      it "returns the requested function name" do
+        expect(subject.function_name).to eq "my_custom_function"
+      end
+    end
   end
 
   describe '#full_name' do

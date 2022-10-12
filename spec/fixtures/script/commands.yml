@@ -102,6 +102,10 @@
   name: run
   filename: ops/run_command.sh
 
+:custom_function:
+  name: run
+  function: my_custom_function
+
 :custom_header:
   name: check
 
