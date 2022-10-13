@@ -119,6 +119,7 @@ module Bashly
       assert_optional_string "#{key}.footer", value['footer']
       assert_optional_string "#{key}.group", value['group']
       assert_optional_string "#{key}.filename", value['filename']
+      assert_optional_string "#{key}.function", value['function']
 
       assert_boolean "#{key}.private", value['private']
       assert_boolean "#{key}.default", value['default']
@@ -141,6 +142,10 @@ module Bashly
       assert_uniq "#{key}.flags", value['flags'], 'long'
       assert_uniq "#{key}.flags", value['flags'], 'short'
       assert_uniq "#{key}.args", value['args'], 'name'
+
+      if value['function']
+        assert value['function'].match(/^[a-z0-9_]+$/), "#{key}.function must contain lowercase alphanumeric characters and underscores only" 
+      end
 
       if value['default']
         assert value['args'], "#{key}.default makes no sense without args"
