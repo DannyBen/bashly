@@ -1,0 +1,62 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/container_start_command.sh (exists)
+skipped src/container_start_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application with custom function names
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  container-start   Start a new container (deprecated)
+  container         Container commands
+
++ ./cli -h
+cli - Sample application with custom function names
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  container-start   Start a new container (deprecated)
+  container         Container commands
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli container-start --help
+cli container-start - Start a new container (deprecated)
+
+Usage:
+  cli container-start
+  cli container-start --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+This command is deprecated, use 'container start' instead
+
++ ./cli container start --help
+cli container start - Start a new container
+
+Usage:
+  cli container start
+  cli container start --help | -h
+
+Options:
+  --help, -h
+    Show this help
+

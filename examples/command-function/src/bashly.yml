@@ -1,0 +1,19 @@
+name: cli
+help: Sample application with custom function names
+version: 0.1.0
+
+commands:
+- name: container-start
+  help: Start a new container (deprecated)
+
+  # Override the name of the internal functions bashly uses. This is needed
+  # in this case since the command `container-start` and the nested command
+  # `container start` will have the same underlying function name otherwise.
+  function: deprecated_container_start
+  footer: This command is deprecated, use 'container start' instead
+
+- name: container
+  help: Container commands
+  commands:
+  - name: start
+    help: Start a new container

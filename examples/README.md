@@ -43,6 +43,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [custom-script-header](custom-script-header#readme) - configuring a different script header
 - [footer](footer#readme) - adding a footer to the help message
 - [command-filenames](command-filenames#readme) - configuring paths for your source scripts
+- [command-function](command-function#readme) - configuring custom internal function names
 - [split-config](split-config#readme) - splitting your `bashly.yml` into several smaller files
 
 ## Real-world-like examples
