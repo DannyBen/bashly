@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v0.8.9 - 2022-10-14
+----------------------------------------
+
+- Add --verbose to bashly validate, to show the compiled config
+- Add command function directive
+
+
 v0.8.8 - 2022-10-08
 ----------------------------------------
 
