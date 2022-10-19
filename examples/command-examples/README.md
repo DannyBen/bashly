@@ -66,11 +66,11 @@ commands:
   # over how the examples are displayed. Note the use of the '|-' marker
   # that tells YAML to use the string as is, including the newlines it contains.
   examples: |-
-    Upload a file
-    $ cli upload profile.png --user admin
+    Upload a file 
+    $ cli upload profile.png -u admin -p s3cr3t
 
-    Upload a file and prompt for password
-    $ cli upload profile.png -u admin -p
+    Upload a file (you will be prompted to provide a password)
+    $ cli upload profile.png --user admin
 ```
 
 
