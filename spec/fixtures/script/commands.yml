@@ -144,6 +144,25 @@
   help: perform docker container run
   parents: [docker, container]
 
+:examples_array:
+  name: get
+  help: get something from somewhere
+
+  examples:
+  - get url --out path
+  - get url --force
+
+:examples_string:
+  name: get
+  help: get something from somewhere
+
+  examples: |-
+    Download a file
+    $ get url --out path
+
+    Force download
+    $ get url --force
+
 :exposed:
   name: cli
   commands:

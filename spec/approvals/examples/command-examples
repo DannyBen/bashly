@@ -1,0 +1,64 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created src/upload_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli download -h
+cli download - Download a file
+
+Alias: d
+
+Usage:
+  cli download SOURCE [TARGET] [OPTIONS]
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --force, -f
+    Overwrite existing files
+
+Arguments:
+  SOURCE
+    URL to download from
+
+  TARGET
+    Target filename (default: same as source)
+
+Examples:
+  cli download example.com
+  cli download example.com ./output -f
+
++ ./cli upload -h
+cli upload - Upload a file
+
+Alias: u
+
+Usage:
+  cli upload SOURCE [OPTIONS]
+  cli upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --user, -u USER (required)
+    Username to use for logging in
+
+  --password, -p PASSWORD
+    Password to use for logging in
+
+Arguments:
+  SOURCE
+    File to upload
+
+Examples:
+  Upload a file
+  $ cli upload profile.png --user admin
+  
+  Upload a file and prompt for password
+  $ cli upload profile.png -u admin -p
+

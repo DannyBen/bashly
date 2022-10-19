@@ -127,6 +127,7 @@ module Bashly
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_string_or_array "#{key}.alias", value['alias']
+      assert_string_or_array "#{key}.examples", value['examples']
       assert_extensible "#{key}.extensible", value['extensible']
       
       assert_array "#{key}.args", value['args'], of: :arg
@@ -136,7 +137,6 @@ module Bashly
       assert_array "#{key}.dependencies", value['dependencies'], of: :string
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
-      assert_array "#{key}.examples", value['examples'], of: :string
 
       assert_uniq "#{key}.commands", value['commands'], ['name', 'alias']
       assert_uniq "#{key}.flags", value['flags'], 'long'
