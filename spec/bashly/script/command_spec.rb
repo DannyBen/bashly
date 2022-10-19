@@ -159,6 +159,32 @@ describe Script::Command do
     end
   end
 
+  describe '#examples', :focus do
+    context "when there are no examples" do
+      it "returns nil" do
+        expect(subject.examples).to be_nil
+      end
+    end
+
+    context "when there are examples as array" do
+      let(:fixture) { :examples_array }
+
+      it "returns the array" do
+        expect(subject.examples).to be_an Array
+      end
+    end
+
+    context "when there are examples as string" do
+      let(:fixture) { :examples_string }
+
+      it "returns an array with one item" do
+        expect(subject.examples).to be_an Array
+        expect(subject.examples.count).to eq 1
+        expect(subject.examples.first).to start_with "Download a file"
+      end
+    end
+  end
+
   describe '#filename' do
     context "when it is the root command" do
       it "returns root_command.sh" do

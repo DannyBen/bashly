@@ -35,6 +35,14 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
     end
 
+    def assert_examples(key, value)
+      return unless value
+      assert [Array, String].include?(value.class),
+        "#{key} must be an array or a string" 
+      
+      assert_array key, value, of: :string if value.is_a? Array
+    end
+
     def assert_extensible(key, value)
       return unless value
       assert [TrueClass, String].include?(value.class),
@@ -128,6 +136,7 @@ module Bashly
       assert_catch_all "#{key}.catch_all", value['catch_all']
       assert_string_or_array "#{key}.alias", value['alias']
       assert_extensible "#{key}.extensible", value['extensible']
+      assert_examples "#{key}.examples", value['examples']
       
       assert_array "#{key}.args", value['args'], of: :arg
       assert_array "#{key}.flags", value['flags'] , of: :flag
@@ -136,7 +145,6 @@ module Bashly
       assert_array "#{key}.dependencies", value['dependencies'], of: :string
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
-      assert_array "#{key}.examples", value['examples'], of: :string
 
       assert_uniq "#{key}.commands", value['commands'], ['name', 'alias']
       assert_uniq "#{key}.flags", value['flags'], 'long'

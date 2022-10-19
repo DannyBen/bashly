@@ -152,6 +152,12 @@ module Bashly
         end
       end
 
+      # Returns an array of examples
+      def examples
+        return nil unless options["examples"]
+        options["examples"].is_a?(Array) ? options['examples'] : [options['examples']]
+      end
+
       # Returns the bash filename that is expected to hold the user code
       # for this command
       def filename
