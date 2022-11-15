@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Commands::Add do
   let(:source_dir) { Settings.source_dir }
@@ -7,13 +7,13 @@ describe Commands::Add do
 
   context "with --help" do
     it "shows long usage" do
-      expect{ subject.run %w[add --help] }.to output_approval('cli/add/help')
+      expect { subject.run %w[add --help] }.to output_approval("cli/add/help")
     end
   end
 
   context "without arguments" do
     it "shows long usage" do
-      expect{ subject.run %w[add] }.to output_approval('cli/generate/usage')
+      expect { subject.run %w[add] }.to output_approval("cli/generate/usage")
     end
   end
 
@@ -25,7 +25,7 @@ describe Commands::Add do
     end
 
     it "copies the colors.sh lib file to the user space" do
-      expect { subject.run %w[add colors] }.to output_approval('cli/add/colors')
+      expect { subject.run %w[add colors] }.to output_approval("cli/add/colors")
       expect(File).to exist(lib_file)
     end
   end
@@ -33,33 +33,33 @@ describe Commands::Add do
   context "with comp command" do
     before do
       reset_tmp_dir create_src: true
-      expect { subject.run %w[init] }.to output_approval('cli/add/init')
+      expect { subject.run %w[init] }.to output_approval("cli/add/init")
     end
 
     context "with yaml subcommand" do
       it "creates completions.yml" do
-        expect { subject.run %w[add comp yaml] }.to output_approval('cli/add/comp-yaml')
-        expect(File.read "#{target_dir}/completions.yml").to match_approval('cli/add/comp-yaml-file')
+        expect { subject.run %w[add comp yaml] }.to output_approval("cli/add/comp-yaml")
+        expect(File.read("#{target_dir}/completions.yml")).to match_approval("cli/add/comp-yaml-file")
       end
     end
 
     context "with script subcommand" do
       it "creates completions.bash" do
-        expect { subject.run %w[add comp script] }.to output_approval('cli/add/comp-script')
-        expect(File.read "#{target_dir}/completions.bash").to match_approval('cli/add/comp-script-file')
+        expect { subject.run %w[add comp script] }.to output_approval("cli/add/comp-script")
+        expect(File.read("#{target_dir}/completions.bash")).to match_approval("cli/add/comp-script-file")
       end
     end
 
     context "with function subcommand" do
       it "creates lib/send_completions.sh" do
-        expect { subject.run %w[add comp function] }.to output_approval('cli/add/comp-function')
-        expect(File.read "#{source_dir}/lib/send_completions.sh").to match_approval('cli/add/comp-function-file')
+        expect { subject.run %w[add comp function] }.to output_approval("cli/add/comp-function")
+        expect(File.read("#{source_dir}/lib/send_completions.sh")).to match_approval("cli/add/comp-function-file")
       end
     end
 
     context "with an unrecognized subcommand" do
       it "raises an error" do
-        expect { subject.run %w[add comp no-such-format] }.to raise_approval('cli/add/comp-error')
+        expect { subject.run %w[add comp no-such-format] }.to raise_approval("cli/add/comp-error")
       end
     end
   end
@@ -72,7 +72,7 @@ describe Commands::Add do
     end
 
     it "copies the config.sh lib file to the user space" do
-      expect { subject.run %w[add config] }.to output_approval('cli/add/config')
+      expect { subject.run %w[add config] }.to output_approval("cli/add/config")
       expect(File).to exist(lib_file)
     end
   end
@@ -85,7 +85,7 @@ describe Commands::Add do
     end
 
     it "copies a sample function to the user space under lib directory" do
-      expect { subject.run %w[add lib] }.to output_approval('cli/add/lib')
+      expect { subject.run %w[add lib] }.to output_approval("cli/add/lib")
       expect(File).to exist(lib_file)
     end
   end
@@ -103,9 +103,9 @@ describe Commands::Add do
         Dir.chdir target_dir do
           subject.run %w[add settings]
         end
-      end.to output_approval('cli/add/settings')
+      end.to output_approval("cli/add/settings")
       expect(File).to exist(settings_file)
-      expect(File.read settings_file).to eq File.read(template_file)
+      expect(File.read(settings_file)).to eq File.read(template_file)
     end
 
     context "when the file exists" do
@@ -115,7 +115,7 @@ describe Commands::Add do
             subject.run %w[add settings]
             subject.run %w[add settings]
           end
-        end.to output_approval('cli/add/settings-exist')
+        end.to output_approval("cli/add/settings-exist")
       end
     end
   end
@@ -128,7 +128,7 @@ describe Commands::Add do
     end
 
     it "copies the strings configuration to the user space" do
-      expect { subject.run %w[add strings] }.to output_approval('cli/add/strings')
+      expect { subject.run %w[add strings] }.to output_approval("cli/add/strings")
       expect(File).to exist(strings_file)
     end
 
@@ -144,8 +144,8 @@ describe Commands::Add do
 
     context "when the file exists" do
       it "skips copying it" do
-        expect { subject.run %w[add strings] }.to output_approval('cli/add/strings')
-        expect { subject.run %w[add strings] }.to output_approval('cli/add/strings-exist')
+        expect { subject.run %w[add strings] }.to output_approval("cli/add/strings")
+        expect { subject.run %w[add strings] }.to output_approval("cli/add/strings-exist")
       end
     end
   end
@@ -158,7 +158,7 @@ describe Commands::Add do
     end
 
     it "copies the test folder to the user space" do
-      expect { subject.run %w[add test] }.to output_approval('cli/add/test')
+      expect { subject.run %w[add test] }.to output_approval("cli/add/test")
       expect(File).to exist(lib_file)
     end
   end
@@ -171,7 +171,7 @@ describe Commands::Add do
     end
 
     it "copies the validation lib folder to the user space" do
-      expect { subject.run %w[add validations] }.to output_approval('cli/add/validations')
+      expect { subject.run %w[add validations] }.to output_approval("cli/add/validations")
       expect(File).to exist(lib_file)
     end
   end
@@ -184,9 +184,8 @@ describe Commands::Add do
     end
 
     it "copies the yaml.sh lib file to the user space" do
-      expect { subject.run %w[add yaml] }.to output_approval('cli/add/yaml')
+      expect { subject.run %w[add yaml] }.to output_approval("cli/add/yaml")
       expect(File).to exist(lib_file)
     end
   end
-
 end

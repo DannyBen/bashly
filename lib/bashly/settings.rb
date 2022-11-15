@@ -34,7 +34,7 @@ module Bashly
         @env ||= get(:env)&.to_sym
       end
 
-      def env=(value)
+      def env= value
         @env = value&.to_sym
       end
 
@@ -46,9 +46,9 @@ module Bashly
         "#{source_dir}/#{lib_dir}"
       end
 
-    private
+      private
 
-      def get(key)
+      def get key
         case env_value key
         when nil                 then config[key.to_s]
         when "0", "false", "no"  then false
@@ -57,7 +57,7 @@ module Bashly
         end
       end
 
-      def env_value(key)
+      def env_value key
         ENV["BASHLY_#{key.upcase}"]
       end
 
@@ -66,17 +66,16 @@ module Bashly
       end
 
       def user_settings
-        @user_settings ||= File.exist?('settings.yml') ? Config.new('settings.yml') : {}
+        @user_settings ||= File.exist?("settings.yml") ? Config.new("settings.yml") : {}
       end
 
       def defsult_settings
-        @defsult_settings ||= Config.new(default_settings_path)
+        @defsult_settings ||= Config.new default_settings_path
       end
 
       def default_settings_path
         asset "templates/settings.yml"
       end
-
     end
   end
 end

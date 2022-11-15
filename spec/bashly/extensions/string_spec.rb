@@ -1,46 +1,46 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe String do
-  describe '#sanitize_for_print' do
-    subject { %Q[this is\na "new line"] }
-    
+  describe "#sanitize_for_print" do
+    subject { %[this is\na "new line"] }
+
     it "escapes newlines and quotes" do
       expect(subject.sanitize_for_print).to eq "this is\\na \\\"new line\\\""
     end
   end
 
-  describe '#indent' do
+  describe "#indent" do
     subject { "hello" }
-    
+
     it "prepends the string with spaces" do
-      expect(subject.indent 3).to eq "   hello"
+      expect(subject.indent(3)).to eq "   hello"
     end
 
     context "when offset is 0" do
       it "returns the string as is" do
-        expect(subject.indent 0).to eq subject
+        expect(subject.indent(0)).to eq subject
       end
     end
   end
 
-  describe '#wrap' do
+  describe "#wrap" do
     subject { "a long line of text that is going to be wrapped, fingers crossed!" }
-    
+
     it "wraps the string to the specified length" do
-      expect(subject.wrap 30).to eq "a long line of text that is\ngoing to be wrapped, fingers\ncrossed!"
+      expect(subject.wrap(30)).to eq "a long line of text that is\ngoing to be wrapped, fingers\ncrossed!"
     end
 
     # GH-79
     context "with an uninterrupted string" do
       subject { "a long line of text with a nice uninterrupted-string-like-a-url-for-example" }
-      
+
       it "does not break the uninterrupted portion" do
-        expect(subject.wrap 30).to eq "a long line of text with a\nnice\nuninterrupted-string-like-a-url-for-example"
+        expect(subject.wrap(30)).to eq "a long line of text with a\nnice\nuninterrupted-string-like-a-url-for-example"
       end
     end
   end
 
-  describe '#to_underscore' do
+  describe "#to_underscore" do
     subject { "Some String" }
 
     it "does not mutate the source" do
@@ -65,7 +65,7 @@ describe String do
     end
   end
 
-  describe '#lint' do
+  describe "#lint" do
     context "with a string that contains multiple consecutive newlines" do
       subject { "one\n  two\n  \n    three\n \n \nfour\n\n\n\n" }
 
@@ -83,7 +83,7 @@ describe String do
     end
   end
 
-  describe '#expand_tabs' do
+  describe "#expand_tabs" do
     subject { "start\n  indented\n    indented more\nend" }
     let(:expected) { "start\n\tindented\n\t\tindented more\nend" }
 
@@ -95,12 +95,12 @@ describe String do
       subject { "start\n    indented\n        indented more\nend" }
 
       it "replaces each 4 spaces with a tab" do
-        expect(subject.expand_tabs 4).to eq expected
+        expect(subject.expand_tabs(4)).to eq expected
       end
     end
   end
 
-  describe '#remove_front_matter' do
+  describe "#remove_front_matter" do
     context "with a string that does not have front matter" do
       subject { "this is a\nsample script" }
 
@@ -111,7 +111,7 @@ describe String do
 
     context "with a string that contains front matter" do
       subject { "#{front_matter}\n---\n#{rest}" }
-      
+
       let(:front_matter) { "this is the front matter" }
       let(:rest) { "this is\nthe script" }
 
@@ -122,7 +122,7 @@ describe String do
 
     context "with a string that contains front matter with a leading separator" do
       subject { "---\n#{front_matter}\n---\n#{rest}" }
-      
+
       let(:front_matter) { "this is the front matter" }
       let(:rest) { "this is\nthe script" }
 

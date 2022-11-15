@@ -1,6 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe 'bash' do
+describe "bash" do
   context "when bash version is < 4" do
     before { system "docker pull bash:3 >/dev/null" }
 
@@ -9,7 +9,7 @@ describe 'bash' do
 
       Dir.chdir "spec/fixtures/workspaces/bash-3-syntax" do
         system "bashly generate 2>&1 >/dev/null"
-        expect(`#{command} 2>&1`).to match_approval('bash/error')
+        expect(`#{command} 2>&1`).to match_approval("bash/error")
       end
     end
   end

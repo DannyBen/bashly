@@ -1,14 +1,14 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Script::Flag do
-  fixtures = load_fixture('script/flags')
+  fixtures = load_fixture "script/flags"
 
   let(:fixture) { :basic_flag }
-  let(:command) { "some command"}
-  
+  let(:command) { "some command" }
+
   subject { described_class.new fixtures[fixture] }
 
-  describe '#completion_data' do
+  describe "#completion_data" do
     context "when the flag has allowed defined" do
       let(:fixture) { :completions_allowed }
 

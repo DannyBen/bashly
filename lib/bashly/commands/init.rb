@@ -12,7 +12,7 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path to use for creating the configuration file [default: src]"
 
       def run
-        if Dir.exist? target_dir and !Dir.empty? target_dir
+        if Dir.exist?(target_dir) && !Dir.empty?(target_dir)
           raise InitError, "Directory !txtgrn!#{target_dir}!txtrst! already exists and is not empty"
         end
         Dir.mkdir target_dir unless Dir.exist? target_dir
@@ -21,17 +21,17 @@ module Bashly
         say "run !txtpur!bashly generate!txtrst! to create the bash script"
       end
 
-    private
+      private
 
       def yaml_content
         @yaml_content ||= yaml_content!
       end
 
       def yaml_content!
-        if args['--minimal']
-          File.read asset('templates/minimal.yml')
+        if args["--minimal"]
+          File.read asset("templates/minimal.yml")
         else
-          File.read asset('templates/bashly.yml')
+          File.read asset("templates/bashly.yml")
         end
       end
 

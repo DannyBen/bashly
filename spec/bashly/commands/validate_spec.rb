@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Commands::Validate do
   let(:source_dir) { Settings.source_dir }
@@ -6,7 +6,7 @@ describe Commands::Validate do
 
   context "with --help" do
     it "shows long usage" do
-      expect{ subject.run %w[validate --help] }.to output_approval('cli/validate/help')
+      expect { subject.run %w[validate --help] }.to output_approval("cli/validate/help")
     end
   end
 
@@ -24,22 +24,22 @@ describe Commands::Validate do
   context "with --verbose" do
     before do
       reset_tmp_dir create_src: true
-      cp 'spec/fixtures/workspaces/import/*'
+      cp "spec/fixtures/workspaces/import/*"
     end
 
     it "shows the compiled config file prior to validation" do
-      expect { subject.run %w[validate -v] }.to output_approval('cli/validate/verbose-valid')
+      expect { subject.run %w[validate -v] }.to output_approval("cli/validate/verbose-valid")
     end
 
     context "when the compiled config is invalid" do
       before do
         reset_tmp_dir create_src: true
-        cp 'spec/fixtures/invalid.yml', "#{source_dir}/bashly.yml"
+        cp "spec/fixtures/invalid.yml", "#{source_dir}/bashly.yml"
       end
 
       it "still shows it prior to validation" do
         expect { subject.run %w[validate -v] }.to raise_error(ConfigurationError)
-          .and output_approval('cli/validate/verbose-invalid')
+          .and output_approval("cli/validate/verbose-invalid")
       end
     end
   end
@@ -52,11 +52,11 @@ describe Commands::Validate do
     end
 
     it "shows deprecations count in stdout" do
-      expect { subject.run %w[validate] }.to output_approval('cli/validate/deprecation-command-short')
+      expect { subject.run %w[validate] }.to output_approval("cli/validate/deprecation-command-short")
     end
 
     it "shows deprecations messages in stderr" do
-      expect { subject.run %w[validate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
+      expect { subject.run %w[validate] }.to output_approval("cli/deprecations/command-short-stderr").to_stderr
     end
   end
 end

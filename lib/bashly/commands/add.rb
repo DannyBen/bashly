@@ -39,53 +39,53 @@ module Bashly
       attr_reader :skip_src_check
 
       def colors_command
-        add_lib 'colors'
+        add_lib "colors"
       end
 
       def comp_command
-        format = args['FORMAT']
-        output = args['OUTPUT']
+        format = args["FORMAT"]
+        output = args["OUTPUT"]
 
         case format
-        when "script"   then add_lib 'completions_script', output
-        when "function" then add_lib 'completions', output
-        when "yaml"     then add_lib 'completions_yaml', output
+        when "script"   then add_lib "completions_script", output
+        when "function" then add_lib "completions", output
+        when "yaml"     then add_lib "completions_yaml", output
         else            raise Error, "Unrecognized format: #{format}"
         end
       end
 
       def config_command
-        add_lib 'config'
+        add_lib "config"
       end
 
       def settings_command
         @skip_src_check = true
-        add_lib 'settings'
+        add_lib "settings"
       end
 
       def strings_command
-        add_lib 'strings'
+        add_lib "strings"
       end
 
       def lib_command
-        add_lib 'lib'
+        add_lib "lib"
       end
 
       def test_command
-        add_lib 'test'
+        add_lib "test"
       end
 
       def yaml_command
-        add_lib 'yaml'
+        add_lib "yaml"
       end
 
       def validations_command
-        add_lib 'validations'
+        add_lib "validations"
       end
 
-    private
+      private
 
-      def add_lib(name, *args)
+      def add_lib name, *args
         library = Bashly::Library.new name, *args
         files_created = 0
         library.files.each do |file|
@@ -93,26 +93,25 @@ module Bashly
           files_created += 1 if created
         end
         message = library.post_install_message
-        say "\n#{message}" if message and files_created > 0
+        say "\n#{message}" if message && files_created.positive?
       end
 
-      def safe_write(path, content)
-        if !skip_src_check and !Dir.exist? Settings.source_dir
+      def safe_write path, content
+        if !skip_src_check && !Dir.exist?(Settings.source_dir)
           raise InitError, "Directory !txtgrn!#{Settings.source_dir}!txtrst! does not exist\nRun !txtpur!bashly init!txtrst! first"
         end
 
-        if File.exist? path and !args['--force']
+        if File.exist?(path) && !args["--force"]
           say "!txtblu!skipped!txtrst! #{path} (exists)"
           false
-        
+
         else
           File.deep_write path, content
           say "!txtgrn!created!txtrst! #{path}"
           true
-        
+
         end
       end
-
     end
   end
 end

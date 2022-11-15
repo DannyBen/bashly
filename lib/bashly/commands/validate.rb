@@ -11,7 +11,7 @@ module Bashly
       environment "BASHLY_SOURCE_DIR", "The path containing the bashly configuration and source files [default: src]"
 
       def run
-        if args['--verbose']
+        if args["--verbose"]
           lp config
           puts "---"
         end

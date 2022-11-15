@@ -1,11 +1,11 @@
-require 'spec_helper'
+require "spec_helper"
 
 # This spec tests that the generated bash scripts are actually doing
 # what they are supposed to do, and running without errors.
 # It will run several tests on all the configuration files in the examples
 # folder
 
-describe 'generated bash scripts' do
+describe "generated bash scripts" do
   # Test public examples from the examples folder...
   examples = Dir["examples/*"].select { |f| File.directory? f }
 
@@ -17,9 +17,9 @@ describe 'generated bash scripts' do
   test_cases = fixtures + examples
 
   # To test one example, run: EXAMPLE=yaml bundle exec run spec examples
-  test_cases = ["examples/#{ENV['EXAMPLE']}"] if ENV['EXAMPLE']
+  test_cases = ["examples/#{ENV['EXAMPLE']}"] if ENV["EXAMPLE"]
 
-  leeway = ENV['CI'] ? 30 : 0
+  leeway = ENV["CI"] ? 30 : 0
 
   test_cases.each do |example|
     approval_name = example.gsub "spec/fixtures/workspaces", "fixtures"
@@ -30,7 +30,7 @@ describe 'generated bash scripts' do
         Dir.chdir example do
           output = `bash test.sh 2>&1`
         end
-        
+
         # Use .diff to give CI some leeway, since its shell differs soemtimes
         # This was observed in at least these two cases:
         # - The "+ ..." shell messages driven by `set -x` have no space
@@ -39,5 +39,4 @@ describe 'generated bash scripts' do
       end
     end
   end
-
 end

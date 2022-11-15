@@ -6,24 +6,27 @@ module Bashly
           @option_keys ||= %i[label help required]
         end
 
-        def from_config(config)
+        def from_config config
           options = case config
           when nil
             { enabled: false }
           when String
             { label: config }
           when Hash
-            { label: config['label'], help: config['help'], required: config['required'] }
+            { label: config["label"], help: config["help"], required: config["required"] }
           else
             {}
           end
 
-          new **options
+          new(**options)
         end
       end
 
-      def initialize(label: nil, help: nil, required: false, enabled: true)
-        @label, @help, @required, @enabled = label, help, required, enabled
+      def initialize label: nil, help: nil, required: false, enabled: true
+        @label = label
+        @help = help
+        @required = required
+        @enabled = enabled
       end
 
       def enabled?
@@ -46,8 +49,6 @@ module Bashly
         return nil unless enabled?
         required? ? label : "[#{label}]"
       end
-
     end
   end
 end
-
