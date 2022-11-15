@@ -2,7 +2,7 @@ module Bashly
   class MessageStrings
     include AssetHelper
 
-    def [](key)
+    def [] key
       values[key.to_s]
     end
 
@@ -10,7 +10,7 @@ module Bashly
       @values ||= values!
     end
 
-  private
+    private
 
     def values!
       defaults = YAML.properly_load_file asset("templates/strings.yml")

@@ -26,7 +26,7 @@ module Bashly
       #   by space. For example, for a command like "docker container run"
       #   the action name is "container run".
       def action_name
-        parents.any? ? (parents[1..-1] + [name]).join(' ') : "root"
+        parents.any? ? (parents[1..] + [name]).join(" ") : "root"
       end
 
       # Returns all the possible aliases for this command
@@ -38,7 +38,7 @@ module Bashly
       # parents)
       def all_full_names
         if parent_command
-          parent_command.all_full_names.product(aliases).map { |a| a.join ' ' }
+          parent_command.all_full_names.product(aliases).map { |a| a.join " " }
         else
           aliases
         end
@@ -47,9 +47,9 @@ module Bashly
       # Returns an array of alternative aliases if any
       def alt
         # DEPRECATION 0.8.0
-        options['alias'] ||= options['short']
+        options["alias"] ||= options["short"]
         return [] unless options["alias"]
-        options['alias'].is_a?(String) ? [options['alias']] : options['alias']
+        options["alias"].is_a?(String) ? [options["alias"]] : options["alias"]
       end
 
       # Returns an array of Arguments
@@ -66,7 +66,7 @@ module Bashly
       end
 
       def catch_all
-        @catch_all ||= CatchAll.from_config options['catch_all']
+        @catch_all ||= CatchAll.from_config options["catch_all"]
       end
 
       # Returns a full list of the Command names and aliases combined
@@ -86,7 +86,7 @@ module Bashly
           command.public_commands.each do |subcommand|
             result[command.group_string]["#{command.name} #{subcommand.name}"] = {
               summary: subcommand.summary_string,
-              help_only: command.expose != 'always'
+              help_only: command.expose != "always"
             }
           end
         end
@@ -96,7 +96,7 @@ module Bashly
 
       # Returns only the names of the Commands
       def command_names
-        commands.map &:name
+        commands.map(&:name)
       end
 
       # Returns an array of the Commands
@@ -126,22 +126,22 @@ module Bashly
       # If any of this command's subcommands has the default option set to
       # true, this default command will be returned, nil otherwise.
       def default_command
-        commands.find { |c| c.default }
+        commands.find(&:default)
       end
 
       # Returns an array of all the default Args
       def default_args
-        args.select &:default
+        args.select(&:default)
       end
 
       # Returns an array of all the default Environment Variables
       def default_environment_variables
-        environment_variables.select &:default
+        environment_variables.select(&:default)
       end
 
       # Returns an array of all the default Flags
       def default_flags
-        flags.select &:default
+        flags.select(&:default)
       end
 
       # Returns an array of EnvironmentVariables
@@ -155,7 +155,7 @@ module Bashly
       # Returns an array of examples
       def examples
         return nil unless options["examples"]
-        options["examples"].is_a?(Array) ? options['examples'] : [options['examples']]
+        options["examples"].is_a?(Array) ? options["examples"] : [options["examples"]]
       end
 
       # Returns the bash filename that is expected to hold the user code
@@ -174,13 +174,13 @@ module Bashly
 
       # Returns a unique name, suitable to be used in a bash function
       def function_name
-        options['function'] || full_name.to_underscore
+        options["function"] || full_name.to_underscore
       end
 
       # Returns the name of the command, including its parent name (in case
       # this is a subcommand)
       def full_name
-        parents.any? ? (parents + [name]).join(' ') : name
+        parents.any? ? (parents + [name]).join(" ") : name
       end
 
       # Returns true if this command's flags should be considered as gloal
@@ -192,7 +192,7 @@ module Bashly
       # Returns the string for the group caption
       def group_string
         if group
-          strings[:group] % { group: group } 
+          strings[:group] % { group: group }
         else
           strings[:commands]
         end
@@ -201,17 +201,17 @@ module Bashly
       # Returns a mode identifier
       def mode
         @mode ||= begin
-          if global_flags?               then :global_flags
-          elsif commands.any?            then :commands
-          elsif args.any? and flags.any? then :args_and_flags
-          elsif args.any?                then :args
-          elsif flags.any?               then :flags
-          else                           :empty
+          if global_flags?              then :global_flags
+          elsif commands.any?           then :commands
+          elsif args.any? && flags.any? then :args_and_flags
+          elsif args.any?               then :args
+          elsif flags.any?              then :flags
+          else                          :empty
           end
         end
       end
 
-      # Returns an array of all parents. For example, the command 
+      # Returns an array of all parents. For example, the command
       # "docker container run" will have [docker, container] as its parents
       def parents
         @parents ||= []
@@ -219,7 +219,7 @@ module Bashly
 
       # Returns only commands that are not private
       def public_commands
-        commands.reject &:private
+        commands.reject(&:private)
       end
 
       # Returns true if one of the args is repeatable
@@ -229,17 +229,17 @@ module Bashly
 
       # Returns an array of all the required Arguments
       def required_args
-        args.select &:required
+        args.select(&:required)
       end
 
       # Returns an array of all the required EnvironmentVariables
       def required_environment_variables
-        environment_variables.select &:required
+        environment_variables.select(&:required)
       end
 
       # Returns an array of all the required Flags
       def required_flags
-        flags.select &:required
+        flags.select(&:required)
       end
 
       # Returns true if this is the root command (no parents)
@@ -248,7 +248,7 @@ module Bashly
       end
 
       # Returns true if one of the flags matches the provided short code
-      def short_flag_exist?(flag)
+      def short_flag_exist? flag
         flags.select { |f| f.short == flag }.any?
       end
 
@@ -280,7 +280,7 @@ module Bashly
 
       # Returns an array of args usage_string for the command's usage_string
       def usage_string_args
-        args.map { |arg| arg.usage_string }
+        args.map(&:usage_string)
       end
 
       # Returns an array of files to include as is inside the script
@@ -292,12 +292,12 @@ module Bashly
 
       # Returns an array of all the args with a whitelist
       def whitelisted_args
-        args.select &:allowed
+        args.select(&:allowed)
       end
 
       # Returns an array of all the flags with a whitelist arg
       def whitelisted_flags
-        flags.select &:allowed
+        flags.select(&:allowed)
       end
     end
   end

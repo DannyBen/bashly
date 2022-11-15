@@ -1,24 +1,25 @@
 module Bashly
   class Library
     class << self
-      def exist?(name)
-        config.has_key? name.to_s
+      def exist? name
+        config.key? name.to_s
       end
 
       def config
-        @config ||= YAML.properly_load_file(config_path)
+        @config ||= YAML.properly_load_file config_path
       end
 
       def config_path
-        @config_path ||= File.expand_path 'libraries.yml', __dir__
+        @config_path ||= File.expand_path "libraries.yml", __dir__
       end
     end
 
     include AssetHelper
     attr_reader :name, :args
 
-    def initialize(name, *args)
-      @name, @args = name.to_s, args
+    def initialize name, *args
+      @name = name.to_s
+      @args = args
     end
 
     def files
@@ -26,9 +27,9 @@ module Bashly
         custom_handler.files
 
       else
-        config['files'].map do |file|
-          { path: file['target'] % target_file_args,
-            content: asset_content(file['source']) }
+        config["files"].map do |file|
+          { path: file["target"] % target_file_args,
+            content: asset_content(file["source"]) }
         end
       end
     end
@@ -37,15 +38,15 @@ module Bashly
       if custom_handler
         custom_handler.post_install_message
       else
-        config['post_install_message']
+        config["post_install_message"]
       end
     end
 
-    def find_file(path)
+    def find_file path
       files.select { |f| f[:path] == path }.first
     end
 
-  private
+    private
 
     def custom_handler
       return nil unless config.is_a? Symbol
@@ -60,7 +61,7 @@ module Bashly
       {
         user_source_dir: Settings.source_dir,
         user_target_dir: Settings.target_dir,
-        user_lib_dir: Settings.full_lib_dir,
+        user_lib_dir: Settings.full_lib_dir
       }
     end
   end

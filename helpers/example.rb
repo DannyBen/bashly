@@ -2,7 +2,7 @@
 class Example
   class << self
     def dirs
-      @dirs ||= Dir['examples/*'].select { |f| File.directory? f }
+      @dirs ||= Dir["examples/*"].select { |f| File.directory? f }
     end
 
     def all
@@ -10,18 +10,18 @@ class Example
     end
 
     def executables
-      all.map &:executable
+      all.map(&:executable)
     end
   end
 
   attr_reader :dir
 
-  def initialize(dir)
+  def initialize dir
     @dir = dir
   end
 
   def config
-    @config ||= YAML.properly_load_file(yaml_path)
+    @config ||= YAML.properly_load_file yaml_path
   end
 
   def yaml
@@ -45,13 +45,13 @@ class Example
     result = File.read(filename)
       .split(/\s*### Try Me ###\s*/).last
       .split("\n")
-      .reject { |line| line.empty? or line.start_with? '#' }
+      .reject { |line| line.empty? or line.start_with? "#" }
     abort "Can't find ### Try Me ### marker in #{filename}" if result.empty?
     result
   end
 
   def test_output
-    result = ''
+    result = ""
     test_commands.each do |command|
       result += "### `$ #{command}`\n\n"
       result += "```shell\n"
@@ -69,35 +69,35 @@ class Example
   end
 
   def generated_readme
-    marker = '-----'
+    marker = "-----"
     content = readme.split(marker)[0].strip
     extra_files = ""
     if content =~ /<!-- include: (.*) -->/
-      included_files = $1.split(' ')
+      included_files = ::Regexp.last_match(1).split
       extra_files = files_markdown included_files
     end
 
-    <<~EOF
-    #{content}
+    <<~MARKDOWN
+      #{content}
 
-    #{marker}
+      #{marker}
 
-    ## `bashly.yml`
+      ## `bashly.yml`
 
-    ```yaml
-    #{yaml}
-    ```
+      ```yaml
+      #{yaml}
+      ```
 
-    #{extra_files}
+      #{extra_files}
 
-    ## Generated script output
+      ## Generated script output
 
-    #{test_output}
+      #{test_output}
 
-    EOF
+    MARKDOWN
   end
 
-  def files_markdown(files)
+  def files_markdown files
     result = []
     files.each do |file|
       lang = markdown_lang file
@@ -110,7 +110,7 @@ class Example
     result.join "\n"
   end
 
-  def markdown_lang(file)
+  def markdown_lang file
     result = langs[File.extname file]
     raise "Cannot determine language for #{file}" unless result
     result
@@ -122,7 +122,7 @@ class Example
       ".sh" => "bash",
       ".ini" => "ini",
       ".yml" => "yaml",
-      ".yaml" => "yaml",
+      ".yaml" => "yaml"
     }
   end
 

@@ -11,13 +11,13 @@ module Bashly
         end
       end
 
-      def initialize(options)
+      def initialize options
         raise Error, "Invalid options provided" unless options.respond_to? :keys
         @options = options
       end
 
       def optional
-        !options['required']
+        !options["required"]
       end
 
       def summary
@@ -25,15 +25,15 @@ module Bashly
       end
 
       def help
-        options['help'] ||= ''
+        options["help"] ||= ""
       end
 
-      def method_missing(method_name, *arguments, &block)
+      def method_missing method_name, *arguments, &block
         key = method_name.to_s
         respond_to?(method_name) ? options[key] : super
       end
 
-      def respond_to_missing?(method_name, include_private = false)
+      def respond_to_missing? method_name, include_private = false
         self.class.option_keys.include?(method_name) || super
       end
     end

@@ -11,9 +11,9 @@ module Bashly
           ]
         end
       end
-      
+
       def aliases
-        if long and short
+        if long && short
           [long, short]
         elsif long
           [long]
@@ -26,11 +26,11 @@ module Bashly
         long || short
       end
 
-      def usage_string(extended: false)
+      def usage_string extended: false
         result = [aliases.join(", ")]
         result << arg.upcase if arg
-        result << strings[:required] if required and extended
-        result << strings[:repeatable] if repeatable and extended
+        result << strings[:required] if required && extended
+        result << strings[:repeatable] if repeatable && extended
         result.join " "
       end
     end

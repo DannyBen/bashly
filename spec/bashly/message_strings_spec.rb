@@ -1,7 +1,7 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MessageStrings do
-  describe '[]' do
+  describe "[]" do
     it "returns a default string for use in the generated bash" do
       expect(subject[:usage]).to eq "Usage:"
     end

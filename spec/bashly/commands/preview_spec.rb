@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Commands::Preview do
   let(:source_dir) { Settings.source_dir }
@@ -6,7 +6,7 @@ describe Commands::Preview do
 
   context "with --help" do
     it "shows long usage" do
-      expect{ subject.run %w[preview --help] }.to output_approval('cli/preview/help')
+      expect { subject.run %w[preview --help] }.to output_approval("cli/preview/help")
     end
   end
 
@@ -17,7 +17,7 @@ describe Commands::Preview do
     end
 
     it "prints the generated cli script" do
-      expect { subject.run %w[preview] }.to output_approval('cli/preview/no-args')
+      expect { subject.run %w[preview] }.to output_approval("cli/preview/no-args")
         .except(/env bash\n.*\nrun "\$@"/m, "env bash\n...\nrun \"\$@\"")
     end
   end
@@ -30,8 +30,7 @@ describe Commands::Preview do
     end
 
     it "shows deprecations messages in stderr" do
-      expect { subject.run %w[preview] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
+      expect { subject.run %w[preview] }.to output_approval("cli/deprecations/command-short-stderr").to_stderr
     end
   end
-
 end

@@ -1,14 +1,14 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Script::CatchAll do
   let(:fixture) { :basic_command }
 
   subject do
-    options = load_fixture('script/commands')[fixture]
+    options = load_fixture("script/commands")[fixture]
     Script::Command.new(options).catch_all
   end
 
-  describe '#label' do
+  describe "#label" do
     context "when catch_all is disabled" do
       it "returns nil" do
         expect(subject.label).to be_nil
@@ -39,8 +39,8 @@ describe Script::CatchAll do
       end
     end
   end
-  
-  describe '#help' do
+
+  describe "#help" do
     context "when catch_all is disabled" do
       it "returns nil" do
         expect(subject.help).to be_nil
@@ -64,7 +64,7 @@ describe Script::CatchAll do
     end
   end
 
-  describe '#required?' do
+  describe "#required?" do
     context "when catch_all is disabled" do
       it "returns false" do
         expect(subject.required?).to be false
@@ -88,7 +88,7 @@ describe Script::CatchAll do
     end
   end
 
-  describe '#usage_string' do
+  describe "#usage_string" do
     context "when catch_all is disabled" do
       it "returns nil" do
         expect(subject.usage_string).to be_nil
@@ -119,5 +119,4 @@ describe Script::CatchAll do
       end
     end
   end
-
 end

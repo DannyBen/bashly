@@ -1,4 +1,4 @@
-require 'filewatcher'
+require "filewatcher"
 
 module Bashly
   module Commands
@@ -20,13 +20,13 @@ module Bashly
       environment "BASHLY_LIB_DIR", "The path to use for upgrading library files, relative to the source dir [default: lib]"
       environment "BASHLY_STRICT", "When not empty, enable bash strict mode (set -euo pipefail)"
       environment "BASHLY_TAB_INDENT", "When not empty, the generated script will use tab indentation instead of spaces (every 2 leading spaces will be converted to a tab character)"
-      environment "BASHLY_ENV", <<~EOF
+      environment "BASHLY_ENV", <<~HELP
         Set to 'production' or 'development':
         - production    generate a smaller script, without file markers
         - development   generate with file markers
 
         Can be overridden with --env [default: development]
-      EOF
+      HELP
 
       example "bashly generate --force"
       example "bashly generate --wrap my_function"
@@ -35,14 +35,14 @@ module Bashly
       attr_reader :watching
 
       def run
-        Settings.env = args['--env'] if args['--env']
-        @watching = args['--watch']
+        Settings.env = args["--env"] if args["--env"]
+        @watching = args["--watch"]
 
         generate
         watch if watching
       end
 
-    private
+      private
 
       def watch
         quiet_say "!txtgrn!watching!txtrst! #{Settings.source_dir}\n"
@@ -56,7 +56,6 @@ module Bashly
 
         ensure
           quiet_say "!txtgrn!waiting\n"
-        
         end
       end
 
@@ -75,25 +74,24 @@ module Bashly
         @script = nil
       end
 
-      def quiet_say(message)
-        say message unless args['--quiet']
+      def quiet_say message
+        say message unless args["--quiet"]
       end
 
       def generate_all_files
         create_user_files
-        upgrade_libs if args['--upgrade']
+        upgrade_libs if args["--upgrade"]
         create_master_script
       end
 
       def upgrade_libs
         generated_files.each do |file|
           content = File.read file
-          
-          if content =~ /\[@bashly-upgrade (.+)\]/
-            args = $1.split ' '
-            library_name = args.shift
-            upgrade file, library_name, *args
-          end
+          next unless content =~ /\[@bashly-upgrade (.+)\]/
+
+          args = ::Regexp.last_match(1).split
+          library_name = args.shift
+          upgrade file, library_name, *args
         end
       end
 
@@ -101,7 +99,7 @@ module Bashly
         Dir["#{Settings.source_dir}/**/*.*"].sort
       end
 
-      def upgrade(existing_file, library_name, *args)
+      def upgrade existing_file, library_name, *args
         if Library.exist? library_name
           upgrade! existing_file, library_name, *args
         else
@@ -109,7 +107,7 @@ module Bashly
         end
       end
 
-      def upgrade!(existing_file, library_name, *args)
+      def upgrade! existing_file, library_name, *args
         library = Bashly::Library.new library_name, *args
         file = library.find_file existing_file
 
@@ -146,8 +144,8 @@ module Bashly
         end
       end
 
-      def create_file(file, content)
-        if File.exist? file and !args['--force']
+      def create_file file, content
+        if File.exist?(file) && !args["--force"]
           quiet_say "!txtblu!skipped!txtrst! #{file} (exists)"
         else
           File.deep_write file, content
@@ -162,7 +160,7 @@ module Bashly
       end
 
       def script
-        @script ||= Script::Wrapper.new(command, args['--wrap'])
+        @script ||= Script::Wrapper.new command, args["--wrap"]
       end
 
       def master_script_path
@@ -172,7 +170,6 @@ module Bashly
       def command
         @command ||= Script::Command.new config
       end
-
     end
   end
 end

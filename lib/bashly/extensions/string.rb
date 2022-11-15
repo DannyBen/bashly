@@ -3,16 +3,16 @@ class String
     gsub("\n", "\\n").gsub("\"", "\\\"")
   end
 
-  def indent(offset)
-    return self unless offset > 0
+  def indent offset
+    return self unless offset.positive?
     lines.indent(offset).join
   end
 
   def to_underscore
-    gsub(/(.)([A-Z])/,'\1_\2').gsub(/[\- ]/, '_').downcase
+    gsub(/(.)([A-Z])/, '\1_\2').gsub(/[- ]/, "_").downcase
   end
 
-  def wrap(length = 80)
+  def wrap length = 80
     strip!
     split("\n").collect! do |line|
       if line.length > length
@@ -31,10 +31,9 @@ class String
     split(/^---\s*/).last
   end
 
-  def expand_tabs(tabstop = 2)
+  def expand_tabs tabstop = 2
     gsub(/^( {#{tabstop}}+)/) do
-      "\t" * ($1.size / tabstop)
+      "\t" * (::Regexp.last_match(1).size / tabstop)
     end
   end
-
 end

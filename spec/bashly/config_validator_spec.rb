@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ConfigValidator do
-  fixtures = load_fixture 'script/validations'
+  fixtures = load_fixture "script/validations"
   subject { described_class.new options }
 
-  describe '#validate' do
+  describe "#validate" do
     fixtures.each do |fixture, options|
       context "with :#{fixture}" do
         let(:options) { options }
@@ -17,9 +17,9 @@ describe ConfigValidator do
   end
 
   context "deprecations" do
-    fixtures = load_fixture 'script/deprecations'
+    fixtures = load_fixture "script/deprecations"
 
-    describe '#validate' do
+    describe "#validate" do
       fixtures.each do |fixture, options|
         context "with :#{fixture}" do
           let(:options) { options }
@@ -33,5 +33,4 @@ describe ConfigValidator do
       end
     end
   end
-
 end

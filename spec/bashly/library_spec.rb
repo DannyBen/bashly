@@ -1,33 +1,33 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Library do
   subject { described_class.new name, args }
-  let(:name) { 'colors' }
+  let(:name) { "colors" }
   let(:args) { nil }
-  let(:lib_dir) { 'lib/bashly/templates/lib' }
+  let(:lib_dir) { "lib/bashly/templates/lib" }
 
   context "eigenclass" do
     subject { described_class }
 
-    describe '::exist?' do
+    describe "::exist?" do
       it "returns true if the provided library name exists" do
-        expect(subject).to exist 'colors'
+        expect(subject).to exist "colors"
       end
 
       it "returns false if the provided library name does not exist" do
-        expect(subject).to_not exist 'crypto_mining'
+        expect(subject).to_not exist "crypto_mining"
       end
     end
 
-    describe '::config' do
+    describe "::config" do
       it "returns the entire libraries configuration data" do
         expect(subject.config).to be_a Hash
-        expect(subject.config.keys.to_yaml).to match_approval('library/config-keys')
+        expect(subject.config.keys.to_yaml).to match_approval("library/config-keys")
       end
     end
   end
 
-  describe '#files' do
+  describe "#files" do
     context "for basic libraries" do
       it "returns an array of hashes" do
         expect(subject.files).to be_an Array
@@ -44,7 +44,7 @@ describe Library do
 
     context "for libraries with a custom handler" do
       let(:name) { "completions" }
-      before { reset_tmp_dir example: 'minimal' }
+      before { reset_tmp_dir example: "minimal" }
 
       it "delegaes the request to a custom handler" do
         expect(subject.files).to be_an Array
@@ -54,7 +54,7 @@ describe Library do
     end
   end
 
-  describe '#post_install_message' do
+  describe "#post_install_message" do
     context "for basic libraries with no configured message" do
       it "returns nil" do
         expect(subject.post_install_message).to be_nil
@@ -62,8 +62,8 @@ describe Library do
     end
 
     context "for basic libraries with configured message" do
-      before { Library.config['colors']['post_install_message'] = "the message" }
-      after { Library.config['colors'].delete 'post_install_message' }
+      before { Library.config["colors"]["post_install_message"] = "the message" }
+      after { Library.config["colors"].delete "post_install_message" }
 
       it "returns the message" do
         expect(subject.post_install_message).to eq "the message"
@@ -72,7 +72,7 @@ describe Library do
 
     context "for libraries with a custom handler" do
       let(:name) { "completions_yaml" }
-      before { reset_tmp_dir example: 'minimal'}
+      before { reset_tmp_dir example: "minimal" }
 
       it "returns the message form the handler" do
         expect(subject.post_install_message).to include "completely"

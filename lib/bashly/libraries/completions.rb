@@ -1,7 +1,8 @@
 module Bashly
   module Libraries
     class Completions < Base
-    protected
+      protected
+
       def command
         @command ||= Script::Command.new config
       end
