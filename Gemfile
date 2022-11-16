@@ -1,12 +1,14 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "byebug"
-gem "google-style"
-gem "lp"
-gem "rspec"
-gem "rspec_approvals"
-gem "runfile"
-gem "runfile-tasks"
-gem "simplecov"
+gem 'byebug'
+gem 'lp'
+gem 'rentacop', path: '/vagrant/gems/rentacop'
+gem 'rspec'
+gem 'rspec_approvals'
+gem 'rubocop'
+gem 'rubocop-rspec'
+gem 'runfile'
+gem 'runfile-tasks'
+gem 'simplecov'
 
 gemspec

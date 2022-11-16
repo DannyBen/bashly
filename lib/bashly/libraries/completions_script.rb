@@ -4,9 +4,9 @@ module Bashly
       def files
         [
           {
-            path: target_path,
-            content: command.completion_script
-          }
+            path:    target_path,
+            content: command.completion_script,
+          },
         ]
       end
 
@@ -18,7 +18,7 @@ module Bashly
         MESSAGE
       end
 
-      private
+    private
 
       def target_path
         @target_path ||= args[0] || "#{Settings.target_dir}/completions.bash"

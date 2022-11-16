@@ -1,5 +1,5 @@
-require "mister_bin"
-require "fileutils"
+require 'mister_bin'
+require 'fileutils'
 
 module Bashly
   module Commands
@@ -25,9 +25,10 @@ module Bashly
       end
 
       def show_deprecations
-        return if config_validator.deprecations.empty? || ENV["BASHLY_HIDE_DEPRECATIONS"]
-        messages = "\n" + config_validator.deprecations.map(&:message).join("\n\n") + "\n\n"
-        say! messages
+        return if config_validator.deprecations.empty? || ENV['BASHLY_HIDE_DEPRECATIONS']
+
+        messages = config_validator.deprecations.map(&:message).join("\n\n")
+        say! "\n#{messages}\n\n"
       end
     end
   end

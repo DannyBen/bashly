@@ -1,57 +1,37 @@
+require: rubocop-rspec
+
 inherit_gem:
-  google-style: google-style.yml
+  rentacop: rentacop.yml
 
 AllCops:
   TargetRubyVersion: 2.7
 
+# The `ConfigValidator` class is a DSL, give it some complexity leeway
 Metrics/AbcSize:
   Exclude:
   - lib/bashly/config_validator.rb
 
-Metrics/BlockLength:
-  Exclude:
-  - 'spec/**/*_spec.rb'
-
+# (same as previous rule)
 Metrics/CyclomaticComplexity:
   Exclude:
   - lib/bashly/config_validator.rb
 
+# (same as previous rule)
 Metrics/PerceivedComplexity:
   Exclude:
   - lib/bashly/config_validator.rb
 
+# (same as previous rule)
 Metrics/MethodLength:
   Exclude:
   - lib/bashly/config_validator.rb
 
+# Guard clauses are less readable in the case of `ConfigValidator` 
 Style/GuardClause:
   Exclude:
   - lib/bashly/config_validator.rb
 
-Style/RescueStandardError:
+# Commands may include long lines
+Layout/LineLength:
   Exclude:
-  - bin/bashly
-
-Style/MixinUsage:
-  Exclude:
-  - bin/*
-  - spec/spec_helper.rb
-
-Layout/ArgumentAlignment: { Enabled: false }
-Layout/CaseIndentation: { Enabled: false }
-Layout/ElseAlignment: { Enabled: false }
-Layout/EndAlignment: { Enabled: false }
-Layout/IndentationWidth: { Enabled: false }
-Layout/LineLength: { Enabled: false }
-Layout/MultilineMethodCallIndentation: { Enabled: false }
-Lint/ElseLayout: { Enabled: false }
-Lint/NonAtomicFileOperation: { Enabled: false }
-Metrics/ClassLength: { Enabled: false }
-Style/AccessorGrouping: { Enabled: false }
-Style/Documentation: { Enabled: false }
-Style/EmptyElse: { Enabled: false }
-Style/FormatString: { Enabled: false }
-Style/PercentLiteralDelimiters: { Enabled: false }
-Style/SymbolArray: { Enabled: false }
-Style/WordArray: { Enabled: false }
-Style/StringConcatenation: { Enabled: false }
+    - 'lib/bashly/commands/*'

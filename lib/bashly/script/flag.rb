@@ -26,12 +26,12 @@ module Bashly
         long || short
       end
 
-      def usage_string extended: false
-        result = [aliases.join(", ")]
+      def usage_string(extended: false)
+        result = [aliases.join(', ')]
         result << arg.upcase if arg
         result << strings[:required] if required && extended
         result << strings[:repeatable] if repeatable && extended
-        result.join " "
+        result.join ' '
       end
     end
   end

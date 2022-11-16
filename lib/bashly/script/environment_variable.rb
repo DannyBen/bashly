@@ -7,10 +7,10 @@ module Bashly
         end
       end
 
-      def usage_string extended: false
+      def usage_string(extended: false)
         result = [name.upcase]
         result << strings[:required] if required && extended
-        result.join " "
+        result.join ' '
       end
     end
   end

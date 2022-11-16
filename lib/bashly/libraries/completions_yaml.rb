@@ -4,9 +4,9 @@ module Bashly
       def files
         [
           {
-            path: target_path,
-            content: command.completion_data.to_yaml
-          }
+            path:    target_path,
+            content: command.completion_data.to_yaml,
+          },
         ]
       end
 
@@ -16,7 +16,7 @@ module Bashly
         MESSAGE
       end
 
-      private
+    private
 
       def target_path
         @target_path ||= args[0] || "#{Settings.target_dir}/completions.yml"
