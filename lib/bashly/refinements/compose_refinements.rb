@@ -1,8 +1,8 @@
-require "yaml"
+require 'yaml'
 
 module ComposeRefinements
   refine Hash do
-    def compose keyword = "import"
+    def compose(keyword = 'import')
       result = {}
       each do |k, v|
         if k.to_s == keyword
@@ -21,9 +21,10 @@ module ComposeRefinements
       result
     end
 
-    def safe_load_yaml path
+    def safe_load_yaml(path)
       loaded = YAML.properly_load_file path
       return loaded if loaded.is_a?(Array) || loaded.is_a?(Hash)
+
       raise Bashly::ConfigurationError, "Cannot find a valid YAML in !txtgrn!#{path}"
     rescue Errno::ENOENT
       raise Bashly::ConfigurationError, "Cannot find import file !txtgrn!#{path}"
@@ -31,7 +32,7 @@ module ComposeRefinements
   end
 
   refine Array do
-    def compose keyword = "import"
+    def compose(keyword = 'import')
       map do |x|
         if x.respond_to? :compose
           x.compose keyword

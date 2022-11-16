@@ -4,9 +4,9 @@ module Bashly
       def files
         [
           {
-            path: "#{Settings.full_lib_dir}/#{function_name}.sh",
-            content: completions_function_code(function_name)
-          }
+            path:    "#{Settings.full_lib_dir}/#{function_name}.sh",
+            content: completions_function_code(function_name),
+          },
         ]
       end
 
@@ -16,20 +16,20 @@ module Bashly
 
           Your users can then run something like this to enable completions:
 
-            !txtpur!$ eval \"$(#{command.name} completions)\"
+            !txtpur!$ eval "$(#{command.name} completions)"
         MESSAGE
       end
 
-      private
+    private
 
       def function_name
-        @function_name ||= args[0] || "send_completions"
+        @function_name ||= args[0] || 'send_completions'
       end
 
-      def completions_function_code function_name
+      def completions_function_code(function_name)
         [
           "## [@bashly-upgrade completions #{function_name}]",
-          command.completion_function(function_name)
+          command.completion_function(function_name),
         ].join "\n"
       end
     end

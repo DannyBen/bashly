@@ -2,7 +2,7 @@
 class Example
   class << self
     def dirs
-      @dirs ||= Dir["examples/*"].select { |f| File.directory? f }
+      @dirs ||= Dir['examples/*'].select { |f| File.directory? f }
     end
 
     def all
@@ -16,7 +16,7 @@ class Example
 
   attr_reader :dir
 
-  def initialize dir
+  def initialize(dir)
     @dir = dir
   end
 
@@ -45,13 +45,13 @@ class Example
     result = File.read(filename)
       .split(/\s*### Try Me ###\s*/).last
       .split("\n")
-      .reject { |line| line.empty? or line.start_with? "#" }
+      .reject { |line| line.empty? or line.start_with? '#' }
     abort "Can't find ### Try Me ### marker in #{filename}" if result.empty?
     result
   end
 
   def test_output
-    result = ""
+    result = ''
     test_commands.each do |command|
       result += "### `$ #{command}`\n\n"
       result += "```shell\n"
@@ -69,9 +69,9 @@ class Example
   end
 
   def generated_readme
-    marker = "-----"
+    marker = '-----'
     content = readme.split(marker)[0].strip
-    extra_files = ""
+    extra_files = ''
     if content =~ /<!-- include: (.*) -->/
       included_files = ::Regexp.last_match(1).split
       extra_files = files_markdown included_files
@@ -97,7 +97,7 @@ class Example
     MARKDOWN
   end
 
-  def files_markdown files
+  def files_markdown(files)
     result = []
     files.each do |file|
       lang = markdown_lang file
@@ -110,19 +110,20 @@ class Example
     result.join "\n"
   end
 
-  def markdown_lang file
+  def markdown_lang(file)
     result = langs[File.extname file]
     raise "Cannot determine language for #{file}" unless result
+
     result
   end
 
   def langs
     @langs ||= {
-      "" => "bash",
-      ".sh" => "bash",
-      ".ini" => "ini",
-      ".yml" => "yaml",
-      ".yaml" => "yaml"
+      ''      => 'bash',
+      '.sh'   => 'bash',
+      '.ini'  => 'ini',
+      '.yml'  => 'yaml',
+      '.yaml' => 'yaml',
     }
   end
 

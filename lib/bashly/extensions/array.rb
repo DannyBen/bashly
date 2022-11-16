@@ -1,7 +1,8 @@
 class Array
-  def indent offset
+  def indent(offset)
     return self unless offset.positive?
-    indentation = " " * offset
+
+    indentation = ' ' * offset
     map { |line| "#{indentation}#{line}" }
   end
 

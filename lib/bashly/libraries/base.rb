@@ -3,12 +3,12 @@ module Bashly
     class Base
       attr_reader :args
 
-      def initialize *args
+      def initialize(*args)
         @args = args
       end
 
       def files
-        raise NotImplementedError, "Please implement #files"
+        raise NotImplementedError, 'Please implement #files'
       end
 
       def post_install_message

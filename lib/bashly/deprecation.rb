@@ -2,14 +2,14 @@ module Bashly
   class Deprecation
     attr_reader :old, :replacement, :reference
 
-    def initialize old, replacement: nil, reference: nil
+    def initialize(old, replacement: nil, reference: nil)
       @old = old
       @replacement = replacement
       @reference = reference
     end
 
     def message
-      result = ["Deprecation Warning:", "!txtred!#{old}!txtrst! is deprecated"]
+      result = ['Deprecation Warning:', "!txtred!#{old}!txtrst! is deprecated"]
       result.push "use !txtgrn!#{replacement}!txtrst! instead" if replacement
       result.push "see !undblu!#{reference}!txtrst!" if reference
 
@@ -18,9 +18,9 @@ module Bashly
 
     def to_h
       {
-        old: old,
+        old:         old,
         replacement: replacement,
-        reference: reference
+        reference:   reference,
       }
     end
   end

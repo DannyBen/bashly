@@ -52,35 +52,4 @@ action :examples do
   end
 end
 
-
-command :rubocop
-
-help   "Save RuboCop Inspection Report"
-action :save do |args|
-  say "generating report at rc.md"
-  system "bundle exec rubocop -fm -o rc.md"
-end
-
-help   "Fix a single rule"
-usage  "fix RULE"
-action :fix do |args|
-  rule = args['RULE']
-  say "!txtgrn!fixing #{rule}"
-  system "bundle exec rubocop -a --only #{rule}"
-end
-
-help   "Check all or a single rule"
-usage  "check [RULE]"
-action :check do |args|
-  rule = args['RULE']
-  if rule
-    say "!txtgrn!checking #{rule}"
-    system "bundle exec rubocop --only #{rule}"
-  else
-    system "bundle exec rubocop"
-  end
-end
-
-endcommand
-
 require './debug.rb' if File.exist? 'debug.rb'
