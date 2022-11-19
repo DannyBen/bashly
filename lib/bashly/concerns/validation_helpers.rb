@@ -57,7 +57,7 @@ module Bashly
       array_keys = [array_keys] unless array_keys.is_a? Array
       list = []
       array_keys.each do |array_key|
-        list += value.map { |c| c[array_key] }.compact.flatten
+        list += value.filter_map { |c| c[array_key] }.flatten
       end
 
       nonuniqs = list.nonuniq

@@ -43,7 +43,7 @@ module Bashly
     end
 
     def find_file(path)
-      files.select { |f| f[:path] == path }.first
+      files.find { |f| f[:path] == path }
     end
 
   private

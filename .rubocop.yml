@@ -1,3 +1,6 @@
+require:
+  - rubocop-performance
+
 inherit_gem:
   rentacop: rentacop.yml
 
@@ -34,4 +37,3 @@ Style/GuardClause:
 Layout/LineLength:
   Exclude:
     - 'lib/bashly/commands/*'
-
