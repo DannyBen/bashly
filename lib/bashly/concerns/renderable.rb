@@ -11,7 +11,7 @@ module Bashly
     end
 
     def view_marker(id = nil)
-      id ||= ":#{caller_locations.first.path}"
+      id ||= ":#{caller_locations(1..1).first.path}"
       "# #{id}" unless Settings.production?
     end
 

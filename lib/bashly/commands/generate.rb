@@ -89,7 +89,7 @@ module Bashly
           content = File.read file
           next unless content =~ /\[@bashly-upgrade (.+)\]/
 
-          args = ::Regexp.last_match(1).split
+          args = $1.split
           library_name = args.shift
           upgrade file, library_name, *args
         end

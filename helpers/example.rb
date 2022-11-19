@@ -73,7 +73,7 @@ class Example
     content = readme.split(marker)[0].strip
     extra_files = ''
     if content =~ /<!-- include: (.*) -->/
-      included_files = ::Regexp.last_match(1).split
+      included_files = $1.split
       extra_files = files_markdown included_files
     end
 

@@ -157,7 +157,7 @@ module Bashly
       end
 
       if value['catch_all'] && value['args']
-        repeatable_arg = value['args'].select { |a| a['repeatable'] }.first&.dig 'name'
+        repeatable_arg = value['args'].find { |a| a['repeatable'] }&.dig 'name'
         refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
       end
 
