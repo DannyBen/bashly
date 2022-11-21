@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Script::Wrapper do
   subject { described_class.new command }
+
   let(:command) { Script::Command.new config }
   let(:config) { load_fixture('script/commands')[fixture] }
   let(:fixture) { :basic_command }

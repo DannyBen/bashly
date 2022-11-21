@@ -85,6 +85,7 @@ describe String do
 
   describe '#expand_tabs' do
     subject { "start\n  indented\n    indented more\nend" }
+
     let(:expected) { "start\n\tindented\n\t\tindented more\nend" }
 
     it 'replaces double leading spaces with tabs' do

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Script::CatchAll do
-  let(:fixture) { :basic_command }
-
   subject do
     options = load_fixture('script/commands')[fixture]
     Script::Command.new(options).catch_all
   end
+
+  let(:fixture) { :basic_command }
 
   describe '#label' do
     context 'when catch_all is disabled' do
@@ -23,7 +23,7 @@ describe Script::CatchAll do
       end
     end
 
-    context 'when catch_all is set' do
+    context 'when catch_all is a hash' do
       let(:fixture) { :catch_all_hash }
 
       it 'returns an uppercase version of it' do
@@ -31,7 +31,7 @@ describe Script::CatchAll do
       end
     end
 
-    context 'in other cases' do
+    context 'when catch_all is true' do
       let(:fixture) { :catch_all }
 
       it "returns '...'" do
@@ -55,7 +55,7 @@ describe Script::CatchAll do
       end
     end
 
-    context 'in other cases' do
+    context 'when catch_all is something else' do
       let(:fixture) { :catch_all_string }
 
       it 'returns nil' do
@@ -79,7 +79,7 @@ describe Script::CatchAll do
       end
     end
 
-    context 'in other cases' do
+    context "when catch_all['required'] is set to something else" do
       let(:fixture) { :catch_all_string }
 
       it 'returns false' do

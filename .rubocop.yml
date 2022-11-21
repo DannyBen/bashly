@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rspec
 
 inherit_gem:
   rentacop: rentacop.yml
@@ -37,3 +38,42 @@ Style/GuardClause:
 Layout/LineLength:
   Exclude:
     - 'lib/bashly/commands/*'
+
+# Prefer `receive` over `have_received` spies
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+# Allow unnamed subjects
+RSpec/NamedSubject:
+  Enabled: false
+
+# Allow the first `describe` to be arbitrary
+RSpec/DescribeClass:
+  Enabled: false
+
+# Allow longer tests
+RSpec/ExampleLength:
+  Max: 8
+
+# Allow multiple expectations
+RSpec/MultipleExpectations:
+  Max: 3
+
+# Allow more `let` per test
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
+# Allow nested groups
+RSpec/NestedGroups:
+  Max: 4
+
+# Allow `expect` in `before` hook, it is used as a utility to trap output and
+# ensure state
+RSpec/ExpectInHook:
+  Enabled: false
+
+# Allow irregular filenames in some cases
+RSpec/FilePath:
+  Exclude:
+    - 'spec/bashly/concerns/completions_command_spec.rb'
+    - 'spec/bashly/concerns/completions_flag_spec.rb'

@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Script::Base do
-  let(:options) { { 'name' => 'file', 'help' => "line one\nline two" } }
   subject { described_class.new options }
+
+  let(:options) { { 'name' => 'file', 'help' => "line one\nline two" } }
 
   describe '::option_keys' do
     it 'returns an empty array' do
@@ -37,6 +38,7 @@ describe Script::Base do
 
     context 'when required is true' do
       let(:options) { { 'name' => 'file', 'required' => true } }
+
       it 'returns false' do
         expect(subject.optional).to be false
       end
@@ -45,6 +47,7 @@ describe Script::Base do
 
   describe '#help' do
     let(:options) { { 'name' => 'file' } }
+
     it 'defaults to an empty string' do
       expect(subject.help).to be_a String
       expect(subject.help).to eq ''
@@ -58,6 +61,7 @@ describe Script::Base do
 
     context 'when help is empty' do
       let(:options) { { 'name' => 'file' } }
+
       it 'returns an empty string' do
         expect(subject.summary).to eq ''
       end

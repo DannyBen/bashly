@@ -14,12 +14,10 @@ describe ConfigValidator do
         end
       end
     end
-  end
 
-  context 'deprecations' do
-    fixtures = load_fixture 'script/deprecations'
+    context 'when deprecated options are in use' do
+      fixtures = load_fixture 'script/deprecations'
 
-    describe '#validate' do
       fixtures.each do |fixture, options|
         context "with :#{fixture}" do
           let(:options) { options }

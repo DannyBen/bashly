@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe AssetHelper do
   subject { Class.new { include AssetHelper }.new }
+
   let(:path) { 'version.rb' }
 
   describe '#asset' do

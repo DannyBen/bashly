@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe Commands::Validate do
+  subject { described_class.new }
+
   let(:source_dir) { Settings.source_dir }
-  subject { CLI.runner }
 
   context 'with --help' do
     it 'shows long usage' do
-      expect { subject.run %w[validate --help] }.to output_approval('cli/validate/help')
+      expect { subject.execute %w[validate --help] }.to output_approval('cli/validate/help')
     end
   end
 
@@ -17,7 +18,7 @@ describe Commands::Validate do
     end
 
     it 'validates the script' do
-      expect { subject.run %w[validate] }.to output("OK\n").to_stdout
+      expect { subject.execute %w[validate] }.to output("OK\n").to_stdout
     end
   end
 
@@ -28,7 +29,7 @@ describe Commands::Validate do
     end
 
     it 'shows the compiled config file prior to validation' do
-      expect { subject.run %w[validate -v] }.to output_approval('cli/validate/verbose-valid')
+      expect { subject.execute %w[validate -v] }.to output_approval('cli/validate/verbose-valid')
     end
 
     context 'when the compiled config is invalid' do
@@ -38,7 +39,7 @@ describe Commands::Validate do
       end
 
       it 'still shows it prior to validation' do
-        expect { subject.run %w[validate -v] }.to raise_error(ConfigurationError)
+        expect { subject.execute %w[validate -v] }.to raise_error(ConfigurationError)
           .and output_approval('cli/validate/verbose-invalid')
       end
     end
@@ -52,11 +53,11 @@ describe Commands::Validate do
     end
 
     it 'shows deprecations count in stdout' do
-      expect { subject.run %w[validate] }.to output_approval('cli/validate/deprecation-command-short')
+      expect { subject.execute %w[validate] }.to output_approval('cli/validate/deprecation-command-short')
     end
 
     it 'shows deprecations messages in stderr' do
-      expect { subject.run %w[validate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
+      expect { subject.execute %w[validate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
     end
   end
 end
