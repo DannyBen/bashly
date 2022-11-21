@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'colsole', '~> 0.7'
   s.add_runtime_dependency 'filewatcher', '~> 2.0'
   s.add_runtime_dependency 'lp', '~> 0.2'
-  s.add_runtime_dependency 'mister_bin', '~> 0.7'
+  s.add_runtime_dependency 'mister_bin', '~> 0.7.2'
   s.add_runtime_dependency 'requires', '~> 0.2'
 
   s.metadata = {

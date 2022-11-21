@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Libraries::CompletionsYAML do
   subject { described_class.new(*args) }
+
   let(:args) { nil }
+
   before { reset_tmp_dir example: 'minimal' }
 
   describe '#files' do

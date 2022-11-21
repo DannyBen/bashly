@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe Script::Command do
-  let(:fixture) { :basic_command }
-  fixtures = load_fixture 'script/commands'
   subject do
     result = described_class.new fixtures[fixture]
     result.parents = result.options['parents']
     result
   end
+
+  let(:fixtures) { load_fixture 'script/commands' }
+  let(:fixture) { :basic_command }
 
   describe '#action_name' do
     context 'when it is the root command' do
@@ -109,7 +110,7 @@ describe Script::Command do
 
     it 'returns an array of Command objects' do
       expect(subject.commands).to be_an Array
-      expect(subject.commands.first).to be_a Script::Command
+      expect(subject.commands.first).to be_a described_class
     end
 
     it 'sets the parents property of its commands' do
@@ -139,7 +140,7 @@ describe Script::Command do
     let(:fixture) { :default_command }
 
     it 'returns a Command object of the first default command' do
-      expect(subject.default_command).to be_a Script::Command
+      expect(subject.default_command).to be_a described_class
       expect(subject.default_command.name).to eq 'get'
     end
   end
@@ -160,7 +161,7 @@ describe Script::Command do
     end
   end
 
-  describe '#examples', :focus do
+  describe '#examples' do
     context 'when there are no examples' do
       it 'returns nil' do
         expect(subject.examples).to be_nil
@@ -278,7 +279,7 @@ describe Script::Command do
       let(:fixture) { :mode_global_flags }
 
       it 'returns true' do
-        expect(subject.global_flags?).to be_truthy
+        expect(subject).to be_global_flags
       end
     end
 
@@ -286,7 +287,7 @@ describe Script::Command do
       let(:fixture) { :mode_flags }
 
       it 'returns false' do
-        expect(subject.global_flags?).to be_falsy
+        expect(subject).not_to be_global_flags
       end
     end
 
@@ -294,7 +295,7 @@ describe Script::Command do
       let(:fixture) { :mode_commands }
 
       it 'returns false' do
-        expect(subject.global_flags?).to be_falsy
+        expect(subject).not_to be_global_flags
       end
     end
   end
@@ -319,7 +320,7 @@ describe Script::Command do
       File.write 'spec/tmp/src/test.sh', 'hello Command#load_user_file'
     end
 
-    it 'returns the contents of a file in ./src along with a header ' do
+    it 'returns the contents of a file in ./src along with a header' do
       expect(subject.load_user_file('test.sh')).to eq "# spec/tmp/src/test.sh\nhello Command#load_user_file"
     end
 

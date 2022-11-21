@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ComposeRefinements do
-  using ComposeRefinements
+  using described_class
 
   subject do
     {

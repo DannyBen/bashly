@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Script::Flag do
-  let(:fixture) { :basic_flag }
-
   subject do
     options = load_fixture('script/flags')[fixture]
     described_class.new options
   end
+
+  let(:fixture) { :basic_flag }
 
   describe '#aliases' do
     context 'with long and short options' do

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Deprecation do
   subject { described_class.new old, **options }
+
   let(:old) { 'old' }
   let(:options) { { replacement: 'new', reference: 'https://somewhere' } }
 

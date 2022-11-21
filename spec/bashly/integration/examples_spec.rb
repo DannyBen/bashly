@@ -25,7 +25,7 @@ describe 'generated bash scripts' do
     approval_name = example.gsub 'spec/fixtures/workspaces', 'fixtures'
 
     describe example do
-      it 'works' do
+      it 'is executed properly' do
         output = 'not executed'
         Dir.chdir example do
           output = `bash test.sh 2>&1`

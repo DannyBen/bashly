@@ -9,14 +9,10 @@ describe Settings do
     end
 
     context 'when its corresponding env var is set' do
-      before do
-        Settings.tab_indent = nil
-        @original_value = ENV['BASHLY_TAB_INDENT']
-      end
+      original_value = ENV['BASHLY_TAB_INDENT']
 
-      after do
-        ENV['BASHLY_TAB_INDENT'] = @original_value
-      end
+      before { described_class.tab_indent = nil }
+      after { ENV['BASHLY_TAB_INDENT'] = original_value }
 
       it 'returns true when the env var is truthy' do
         %w[1 true yes].each do |value|

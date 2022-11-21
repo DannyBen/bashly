@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Config do
-  let(:config) { { 'hello' => 'world' } }
   subject { described_class.new config }
+
+  let(:config) { { 'hello' => 'world' } }
 
   describe '::new' do
     it 'returns a hash (and not a Config object)' do

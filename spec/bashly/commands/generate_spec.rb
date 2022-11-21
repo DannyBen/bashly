@@ -1,14 +1,15 @@
 require 'spec_helper'
 
 describe Commands::Generate do
+  subject { described_class.new }
+
   let(:source_dir) { Settings.source_dir }
   let(:target_dir) { Settings.target_dir }
   let(:cli_script_content) { File.read cli_script }
-  subject { CLI.runner }
 
   context 'with --help' do
     it 'shows long usage' do
-      expect { subject.run %w[generate --help] }.to output_approval('cli/generate/help')
+      expect { subject.execute %w[generate --help] }.to output_approval('cli/generate/help')
     end
   end
 
@@ -21,7 +22,7 @@ describe Commands::Generate do
     end
 
     it 'generates the cli script' do
-      expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
+      expect { subject.execute %w[generate] }.to output_approval('cli/generate/no-args')
       expect(File).to exist(cli_script)
     end
 
@@ -30,20 +31,20 @@ describe Commands::Generate do
       after  { Settings.env = nil }
 
       it 'generates a script without view markers' do
-        expect { subject.run %w[generate] }.to output_approval('cli/generate/production-env-var')
+        expect { subject.execute %w[generate] }.to output_approval('cli/generate/production-env-var')
         expect(File).to exist(cli_script)
-        expect(cli_script_content).to_not include '# :'
+        expect(cli_script_content).not_to include '# :'
       end
     end
 
     context 'when source files already exist' do
       before do
-        expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args')
+        expect { subject.execute %w[generate] }.to output_approval('cli/generate/no-args')
         File.write "#{source_dir}/download_command.sh", 'some new user content'
       end
 
       it 'does not overwrite them' do
-        expect { subject.run %w[generate] }.to output_approval('cli/generate/no-args-skip')
+        expect { subject.execute %w[generate] }.to output_approval('cli/generate/no-args-skip')
         expect(File.read("#{source_dir}/download_command.sh")).to eq 'some new user content'
       end
     end
@@ -56,7 +57,7 @@ describe Commands::Generate do
       end
 
       it 'generates the cli script' do
-        expect { subject.run %w[generate] }.to output_approval('cli/generate/minimal')
+        expect { subject.execute %w[generate] }.to output_approval('cli/generate/minimal')
         expect(File).to exist(cli_script)
       end
     end
@@ -69,8 +70,8 @@ describe Commands::Generate do
       end
 
       it 'does not generate the file for the middle command' do
-        expect { subject.run %w[generate] }.to output_approval('cli/generate/nested')
-        expect(File).to_not exist(file)
+        expect { subject.execute %w[generate] }.to output_approval('cli/generate/nested')
+        expect(File).not_to exist(file)
       end
     end
   end
@@ -84,7 +85,7 @@ describe Commands::Generate do
     end
 
     it 'generates the cli script' do
-      expect { subject.run %w[generate --quiet] }.to_not output.to_stdout
+      expect { subject.execute %w[generate --quiet] }.not_to output.to_stdout
       expect(File).to exist(cli_script)
     end
   end
@@ -98,7 +99,7 @@ describe Commands::Generate do
     end
 
     it 'generates the cli script wrapped in a function without bash3 bouncer' do
-      expect { subject.run %w[generate --wrap function] }.to output_approval('cli/generate/wrap-function')
+      expect { subject.execute %w[generate --wrap function] }.to output_approval('cli/generate/wrap-function')
       expect(File).to exist(cli_script)
       lines = File.readlines cli_script
       expect(lines[0..10].join).to match_approval('cli/generate/wrap-script').except(/\d+\.\d+\.\d+/)
@@ -117,9 +118,9 @@ describe Commands::Generate do
     after { Settings.env = nil }
 
     it 'generates a script without view markers' do
-      expect { subject.run %w[generate --env production] }.to output_approval('cli/generate/production')
+      expect { subject.execute %w[generate --env production] }.to output_approval('cli/generate/production')
       expect(File).to exist(cli_script)
-      expect(cli_script_content).to_not include '# :'
+      expect(cli_script_content).not_to include '# :'
     end
   end
 
@@ -133,7 +134,7 @@ describe Commands::Generate do
     end
 
     it 'claims to upgrade all upgradable libraries' do
-      expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade')
+      expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade')
     end
 
     it 'actually upgrades all upgradable libraries' do
@@ -141,10 +142,10 @@ describe Commands::Generate do
         File.append file, outdated_text
       end
 
-      expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade')
+      expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade')
 
       lib_files.each do |file|
-        expect(File.read(file)).to_not include(outdated_text),
+        expect(File.read(file)).not_to include(outdated_text),
           "Expected to not find #{outdated_text} in #{file}, but found it"
       end
     end
@@ -159,7 +160,7 @@ describe Commands::Generate do
       end
 
       it 'avoids upgrading it' do
-        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/dont-upgrade')
+        expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/dont-upgrade')
 
         selective_lib_files.each do |file|
           expect(File.read(file)).to include('@please-dont'),
@@ -179,7 +180,7 @@ describe Commands::Generate do
       end
 
       it 'avoids upgrading it and shows a warning' do
-        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade-path-mismatch')
+        expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade-path-mismatch')
 
         expect(File.read(alt_filename)).to include(custom_text),
           "Expected to find #{custom_text} in #{file}, but didn't"
@@ -196,7 +197,7 @@ describe Commands::Generate do
       end
 
       it 'shows a warning' do
-        expect { subject.run %w[generate -u] }.to output_approval('cli/generate/upgrade-unknown-lib')
+        expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade-unknown-lib')
       end
     end
   end
@@ -209,28 +210,29 @@ describe Commands::Generate do
 
     let(:bashly_config_path) { "#{source_dir}/bashly.yml" }
     let(:bashly_config) { YAML.load_file bashly_config_path }
+    let(:watcher_double) { instance_double Filewatcher, watch: nil }
 
     it 'generates immediately and on change' do
-      expect do
-        expect_any_instance_of(Filewatcher).to receive(:watch) do |_watcher, &block|
-          block.call
-        end
+      allow(Filewatcher).to receive(:new).and_return(watcher_double)
+      allow(watcher_double).to receive(:watch).and_yield
 
-        subject.run %w[generate --watch]
-      end.to output_approval('cli/generate/watch')
+      expect { subject.execute %w[generate --watch] }
+        .to output_approval('cli/generate/watch')
     end
 
     context 'when ConfigurationError is raised during watch' do
-      it 'shows the error gracefully and continues to watch' do
-        expect do
-          expect_any_instance_of(Filewatcher).to receive(:watch) do |_watcher, &block|
-            bashly_config['invalid_option'] = 'error this'
-            File.write bashly_config_path, bashly_config.to_yaml
-            block.call
-          end
+      let(:watcher_double) { instance_double Filewatcher, watch: nil }
 
-          subject.run %w[generate --watch]
-        end.to output_approval('cli/generate/watch-stderr').to_stderr
+      it 'shows the error gracefully and continues to watch' do
+        allow(Filewatcher).to receive(:new).and_return(watcher_double)
+        allow(watcher_double).to receive(:watch) do |&block|
+          bashly_config['invalid_option'] = 'error this'
+          File.write bashly_config_path, bashly_config.to_yaml
+          block.call
+        end
+
+        expect { subject.execute %w[generate --watch] }
+          .to output_approval('cli/generate/watch-stderr').to_stderr
       end
     end
   end
@@ -243,7 +245,7 @@ describe Commands::Generate do
     end
 
     it 'shows deprecations messages in stderr' do
-      expect { subject.run %w[generate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
+      expect { subject.execute %w[generate] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
     end
   end
 end

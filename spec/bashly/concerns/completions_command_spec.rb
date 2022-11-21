@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Script::Command do
   fixtures = load_fixture 'script/commands'
 
-  let(:fixture) { :completions_simple }
   subject { described_class.new fixtures[fixture] }
+
+  let(:fixture) { :completions_simple }
 
   describe '#completion_data' do
     it 'returns a data structure for completely' do
