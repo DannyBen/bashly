@@ -73,6 +73,13 @@ to contribute, feel free to [open an issue][issues] or
 Visit the *[How to contribute][contributing]* page for more information.
 
 
+## Stargazers and Forkers
+
+[![Stargazers repo roster for @DannyBen/bashly](https://reporoster.com/stars/DannyBen/bashly)](https://github.com/DannyBen/bashly/stargazers)
+
+[![Forkers repo roster for @DannyBen/bashly](https://reporoster.com/forks/DannyBen/bashly)](https://github.com/DannyBen/bashly/network/members)
+
+
 
 [issues]: https://github.com/DannyBen/bashly/issues
 [discussions]: https://github.com/DannyBen/bashly/discussions
