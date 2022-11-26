@@ -24,7 +24,7 @@ if global_flags?
   end
 end
 
->   *)
+>   * )
 >     break
 >     ;;
 >
