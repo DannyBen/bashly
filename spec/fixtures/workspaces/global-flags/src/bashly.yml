@@ -1,0 +1,20 @@
+name: flags
+help: Verifies multiple global flags work as expected
+version: 0.1.0
+
+flags:
+  - long: --alpha
+    short: -a
+    help: Alpha
+  - long: --bravo
+    short: -b
+    help: Bravo
+  - long: --charlie
+    short: -c
+    help: Charlie
+    arg: name
+    required: true
+    allowed: [chaplin]
+
+commands:
+  - name: show

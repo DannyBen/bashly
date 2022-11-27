@@ -1,6 +1,7 @@
 = view_marker
 
-> case "${1:-}" in
+> while [[ $# -gt 0 ]]; do
+>   case "${1:-}" in
 
 if root_command?
   = short_flag_exist?("-v") ? "--version )" : "--version | -v )"
@@ -19,9 +20,14 @@ end
 
 if global_flags?
   flags.each do |flag|
-    = flag.render(:case)
+    = flag.render(:case).indent(2)
   end
 end
 
-> esac
+>   * )
+>     break
+>     ;;
+>
+>   esac
+> done
 >

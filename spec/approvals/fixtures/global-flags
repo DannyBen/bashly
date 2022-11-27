@@ -1,0 +1,52 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/show_command.sh
+created ./flags
+run ./flags --help to test your bash script
++ ./flags -h
+flags - Verifies multiple global flags work as expected
+
+Usage:
+  flags [OPTIONS] COMMAND
+  flags [COMMAND] --help | -h
+  flags --version | -v
+
+Commands:
+  show   
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+  --alpha, -a
+    Alpha
+
+  --bravo, -b
+    Bravo
+
+  --charlie, -c NAME (required)
+    Charlie
+    Allowed: chaplin
+
++ ./flags show
+missing required flag: --charlie, -c NAME
++ ./flags -c clark show
+--charlie must be one of: chaplin
++ ./flags -c chaplin show
+# this file is located in 'src/show_command.sh'
+# code for 'flags show' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--charlie]} = chaplin
++ ./flags -c chaplin -ab show
+# this file is located in 'src/show_command.sh'
+# code for 'flags show' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--alpha]} = 1
+- ${args[--bravo]} = 1
+- ${args[--charlie]} = chaplin
