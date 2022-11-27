@@ -25,7 +25,7 @@ module Bashly
       environment 'BASHLY_STRICT', 'When not empty, enable bash strict mode (set -euo pipefail)'
       environment 'BASHLY_TAB_INDENT',
         'When not empty, the generated script will use tab indentation instead of spaces ' \
-        '(every 2 leading spaces will be converted to a tab character)'
+          '(every 2 leading spaces will be converted to a tab character)'
 
       environment 'BASHLY_ENV', <<~HELP
         Set to 'production' or 'development':
@@ -110,8 +110,8 @@ module Bashly
         if Library.exist? library_name
           upgrade! existing_file, library_name, *args
         else
-          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, ' \
-            'unknown library '#{library_name}'"
+          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, " \
+            "unknown library '#{library_name}'"
         end
       end
 

@@ -2,16 +2,14 @@ module Bashly
   module Commands
     class Init < Base
       summary 'Initialize a new workspace'
-      help 'This command will create the source folder, and place a template ' \
-        'configuration file in it.'
+      help 'This command will create the source folder, and place a template configuration file in it.'
 
       usage 'bashly init [--minimal]'
       usage 'bashly init (-h|--help)'
 
       option '-m --minimal', 'Use a minimal configuration file (without commands)'
 
-      environment 'BASHLY_SOURCE_DIR',
-        'The path to use for creating the configuration file [default: src]'
+      environment 'BASHLY_SOURCE_DIR', 'The path to use for creating the configuration file [default: src]'
 
       def run
         if Dir.exist?(target_dir) && !Dir.empty?(target_dir)

@@ -29,23 +29,17 @@ module Bashly
         In all cases, this is optional and will have sensible defaults.
       USAGE
 
-      command 'colors',
-        'Add standard functions for printing colorful and formatted text to the ' \
-        'lib directory.'
-
+      command 'colors', 'Add standard functions for printing colorful and formatted text to the lib directory.'
       command 'comp', 'Generate a bash completions script or function.'
       command 'config', 'Add standard functions for handling INI files to the lib directory.'
-      command 'lib',
-        'Create the additional lib directory for additional user scripts. ' \
-        'All *.sh scripts in this folder will be included in the final bash script.'
+      command 'lib', 'Create the additional lib directory for additional user scripts. All *.sh scripts in this ' \
+        'folder will be included in the final bash script.'
 
-      command 'settings',
-        'Copy a sample settings.yml file to your project, ' \
-        'allowing you to customize some bashly options.'
+      command 'settings', 'Copy a sample settings.yml file to your project, allowing you to customize some ' \
+        'bashly options.'
 
-      command 'strings',
-        'Copy an additional configuration file to your project, ' \
-        'allowing you to customize all the tips and error strings.'
+      command 'strings', 'Copy an additional configuration file to your project, allowing you to customize all the ' \
+        'tips and error strings.'
 
       command 'test', 'Add approval testing.'
       command 'validations', 'Add argument validation functions to the lib directory.'
@@ -54,11 +48,9 @@ module Bashly
       example 'bashly add comp function'
       example 'bashly add comp script completions.bash'
 
-      environment 'BASHLY_SOURCE_DIR',
-        'The path containing the bashly configuration and source files [default: src]'
-      
-      environment 'BASHLY_LIB_DIR',
-        'The path to use for creating the library files, relative to the source dir [default: lib]'
+      environment 'BASHLY_SOURCE_DIR', 'The path containing the bashly configuration and source files [default: src]'
+      environment 'BASHLY_LIB_DIR', 'The path to use for creating the library files, relative to the source dir ' \
+        '[default: lib]'
 
       attr_reader :skip_src_check
 
