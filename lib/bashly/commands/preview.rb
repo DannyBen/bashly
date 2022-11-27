@@ -6,7 +6,8 @@ module Bashly
       usage 'bashly preview'
       usage 'bashly preview (-h|--help)'
 
-      environment 'BASHLY_SOURCE_DIR', 'The path containing the bashly configuration and source files [default: src]'
+      environment 'BASHLY_SOURCE_DIR',
+        'The path containing the bashly configuration and source files [default: src]'
 
       def run
         with_valid_config do

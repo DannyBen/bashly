@@ -14,32 +14,27 @@ AllCops:
 # The `ConfigValidator` class is a DSL, give it some complexity leeway
 Metrics/AbcSize:
   Exclude:
-  - lib/bashly/config_validator.rb
+    - lib/bashly/config_validator.rb
 
 # (same as previous rule)
 Metrics/CyclomaticComplexity:
   Exclude:
-  - lib/bashly/config_validator.rb
+    - lib/bashly/config_validator.rb
 
 # (same as previous rule)
 Metrics/PerceivedComplexity:
   Exclude:
-  - lib/bashly/config_validator.rb
+    - lib/bashly/config_validator.rb
 
 # (same as previous rule)
 Metrics/MethodLength:
   Exclude:
-  - lib/bashly/config_validator.rb
+    - lib/bashly/config_validator.rb
 
 # Guard clauses are inconsistent in the case of `ConfigValidator` 
 Style/GuardClause:
   Exclude:
-  - lib/bashly/config_validator.rb
-
-# Commands may include long lines
-Layout/LineLength:
-  Exclude:
-    - 'lib/bashly/commands/*'
+    - lib/bashly/config_validator.rb
 
 # Allow irregular filenames in some cases
 RSpec/FilePath:
