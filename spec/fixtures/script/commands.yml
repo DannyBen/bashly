@@ -113,7 +113,6 @@
         arg: env
         allowed: [prod, dev]
 
-
 :completions_global_flags_nested:
   name: cli
   commands:
