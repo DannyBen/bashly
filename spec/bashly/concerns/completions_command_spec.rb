@@ -59,4 +59,37 @@ describe Script::Command do
       end
     end
   end
+
+  context 'with a command that has global flags on the root command' do
+    let(:fixture) { :completions_global_flags_root }
+
+    describe '#completion_data' do
+      it 'returns a data structure that includes all command full names' do
+        expect(subject.completion_data.to_yaml)
+          .to match_approval('completions/completion_global_flags_root')
+      end
+    end
+  end
+
+  context 'with a command that has global flags on a nested command' do
+    let(:fixture) { :completions_global_flags_nested }
+
+    describe '#completion_data' do
+      it 'returns a data structure that includes all command full names' do
+        expect(subject.completion_data.to_yaml)
+          .to match_approval('completions/completion_global_flags_nested')
+      end
+    end
+  end
+
+  context 'with a command that has global flags on the root and a nested command' do
+    let(:fixture) { :completions_global_flags }
+
+    describe '#completion_data' do
+      it 'returns a data structure that includes all command full names' do
+        expect(subject.completion_data.to_yaml)
+          .to match_approval('completions/completion_global_flags')
+      end
+    end
+  end
 end

@@ -11,6 +11,6 @@ assignees: ''
 
 ### Reproduction steps
 
-### Expected behavior
-
 ### Actual behavior
+
+### Expected behavior

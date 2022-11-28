@@ -1,0 +1,15 @@
+---
+cli:
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- images
+cli images:
+- "--help"
+- "--verbose"
+- "-h"
+- ls
+cli images*ls*:
+- "--help"
+- "-h"

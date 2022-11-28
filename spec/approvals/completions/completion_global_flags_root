@@ -1,0 +1,19 @@
+---
+cli:
+- "--debug"
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- images
+cli*images*:
+- "--help"
+- "-h"
+- ls
+cli*images ls*:
+- "--env"
+- "--help"
+- "-h"
+cli*images ls*--env:
+- prod
+- dev
