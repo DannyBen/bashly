@@ -6,18 +6,14 @@ module Bashly
   module Completions
     module Flag
       def completion_data(command_full_name)
-        result = {}
         comps = allowed || completions
+        return {} unless comps
 
-        if comps
-          aliases.each do |name|
-            prefix = command_full_name
-            prefix = "#{prefix}*" unless prefix.end_with? '*'
-            result["#{prefix}#{name}"] = comps
-          end
+        aliases.to_h do |name|
+          prefix = command_full_name
+          prefix = "#{prefix}*" unless prefix.end_with? '*'
+          ["#{prefix}#{name}",  comps]
         end
-
-        result
       end
     end
 
