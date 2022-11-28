@@ -50,15 +50,6 @@ describe Script::Command do
     end
   end
 
-  describe '#all_full_names' do
-    let(:fixture) { :nested_aliases }
-
-    it 'returns an array of all full names including aliases' do
-      expect(subject.deep_commands.last.all_full_names.to_yaml)
-        .to match_approval('script/command/nested_aliases')
-    end
-  end
-
   describe '#args' do
     it 'returns an array of Argument objects' do
       expect(subject.args).to be_an Array

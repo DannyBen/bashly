@@ -34,16 +34,6 @@ module Bashly
         [name] + alt
       end
 
-      # Returns an array of all full names (including aliases and aliases of
-      # parents)
-      def all_full_names
-        if parent_command
-          parent_command.all_full_names.product(aliases).map { |a| a.join ' ' }
-        else
-          aliases
-        end
-      end
-
       # Returns an array of alternative aliases if any
       def alt
         # DEPRECATION 0.8.0

@@ -6,16 +6,14 @@ module Bashly
   module Completions
     module Flag
       def completion_data(command_full_name)
-        result = {}
         comps = allowed || completions
+        return {} unless comps
 
-        if comps
-          aliases.each do |name|
-            result["#{command_full_name}*#{name}"] = comps
-          end
+        aliases.to_h do |name|
+          prefix = command_full_name
+          prefix = "#{prefix}*" unless prefix.end_with? '*'
+          ["#{prefix}#{name}",  comps]
         end
-
-        result
       end
     end
 
@@ -23,7 +21,8 @@ module Bashly
       def completion_data(with_version: true)
         result = {}
 
-        all_full_names.each do |name|
+        completion_full_names.each do |name|
+          name = "#{name}*" if name.include? '*'
           result[name] = completion_words with_version: with_version
           flags.each do |flag|
             result.merge! flag.completion_data(name)
@@ -43,6 +42,17 @@ module Bashly
 
       def completion_function(name = nil)
         completion_generator.wrapper_function name
+      end
+
+    protected
+
+      def completion_full_names
+        if parent_command
+          glue = parent_command.global_flags? ? '*' : ' '
+          parent_command.completion_full_names.product(aliases).map { |a| a.join glue }
+        else
+          aliases
+        end
       end
 
     private

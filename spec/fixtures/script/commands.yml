@@ -98,6 +98,43 @@
     arg: name
     allowed: [get, post]
 
+:completions_global_flags:
+  name: cli
+  flags:
+  - long: --debug
+  commands:
+  - name: images
+    flags:
+    - long: --verbose
+    commands:
+    - name: ls
+      flags:
+      - long: --env
+        arg: env
+        allowed: [prod, dev]
+
+:completions_global_flags_nested:
+  name: cli
+  commands:
+  - name: images
+    flags:
+    - long: --verbose
+    commands:
+    - name: ls
+
+:completions_global_flags_root:
+  name: cli
+  flags:
+  - long: --debug
+  commands:
+  - name: images
+    commands:
+    - name: ls
+      flags:
+      - long: --env
+        arg: env
+        allowed: [prod, dev]
+
 :custom_filename:
   name: run
   filename: ops/run_command.sh
