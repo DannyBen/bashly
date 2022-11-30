@@ -1,6 +1,18 @@
 Change Log
 ========================================
 
+Untagged - Latest
+----------------------------------------
+
+- Refactor with rentactop ruleset
+- Fix multiple global flags
+- Fix bash completions for commands with global flags
+- Allow command.dependencies to be a hash for custom 'how to install' messages
+- Normalize examples to include src/*.sh artifacts
+- Update approvals.bash (bashly add test) to v0.3.2
+- Add help command library (bashly add help)
+
+
 v0.8.10 - 2022-11-01
 ----------------------------------------
 
