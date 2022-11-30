@@ -1,9 +1,22 @@
++ bashly add help
+created src/help_command.sh
+
+Add this as a command to your bashly.yml:
+
+  commands:
+    - name: help
+      help: Show help about a command
+      args:
+      - name: command
+        help: Help subject
+
+
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
+created src/initialize.sh
 skipped src/help_command.sh (exists)
-skipped src/download_command.sh (exists)
-skipped src/upload_command.sh (exists)
+created src/download_command.sh
+created src/upload_command.sh
 created ./cli
 run ./cli --help to test your bash script
 + ./cli

@@ -1,6 +1,6 @@
 module Bashly
   module Libraries
-    class CompletionsScript < Completions
+    class CompletionsScript < Base
       def files
         [
           {

@@ -1,6 +1,6 @@
 module Bashly
   module Libraries
-    class CompletionsYAML < Completions
+    class CompletionsYAML < Base
       def files
         [
           {

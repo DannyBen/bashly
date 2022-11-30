@@ -33,8 +33,7 @@ describe Commands::Add do
 
   context 'with comp command' do
     before do
-      reset_tmp_dir create_src: true
-      expect { CLI.runner.run %w[init] }.to output_approval('cli/add/init')
+      reset_tmp_dir init: true
     end
 
     context 'with yaml subcommand' do
@@ -75,6 +74,19 @@ describe Commands::Add do
     it 'copies the config.sh lib file to the user space' do
       expect { subject.execute %w[add config] }.to output_approval('cli/add/config')
       expect(File).to exist(lib_file)
+    end
+  end
+
+  context 'with help command' do
+    let(:help_command_file) { "#{source_dir}/help_command.sh" }
+
+    before do
+      reset_tmp_dir init: true
+    end
+
+    it 'copies the help_command.sh lib file to the user space' do
+      expect { subject.execute %w[add help] }.to output_approval('cli/add/help_command')
+      expect(File).to exist(help_command_file)
     end
   end
 

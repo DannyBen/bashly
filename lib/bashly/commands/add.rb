@@ -6,6 +6,7 @@ module Bashly
       usage 'bashly add colors [--force]'
       usage 'bashly add comp FORMAT [OUTPUT --force]'
       usage 'bashly add config [--force]'
+      usage 'bashly add help [--force]'
       usage 'bashly add lib [--force]'
       usage 'bashly add settings [--force]'
       usage 'bashly add strings [--force]'
@@ -32,6 +33,7 @@ module Bashly
       command 'colors', 'Add standard functions for printing colorful and formatted text to the lib directory.'
       command 'comp', 'Generate a bash completions script or function.'
       command 'config', 'Add standard functions for handling INI files to the lib directory.'
+      command 'help', 'Add a help command, in addition to the standard --help flag.'
       command 'lib', 'Create the additional lib directory for additional user scripts. All *.sh scripts in this ' \
         'folder will be included in the final bash script.'
 
@@ -74,6 +76,10 @@ module Bashly
         add_lib 'config'
       end
 
+      def lib_command
+        add_lib 'lib'
+      end
+
       def settings_command
         @skip_src_check = true
         add_lib 'settings'
@@ -83,20 +89,20 @@ module Bashly
         add_lib 'strings'
       end
 
-      def lib_command
-        add_lib 'lib'
-      end
-
       def test_command
         add_lib 'test'
       end
 
-      def yaml_command
-        add_lib 'yaml'
+      def help_command
+        add_lib 'help'
       end
 
       def validations_command
         add_lib 'validations'
+      end
+
+      def yaml_command
+        add_lib 'yaml'
       end
 
     private

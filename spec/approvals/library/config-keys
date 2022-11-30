@@ -4,6 +4,7 @@
 - completions_script
 - completions_yaml
 - config
+- help
 - lib
 - settings
 - strings
