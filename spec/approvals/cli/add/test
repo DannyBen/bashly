@@ -3,7 +3,7 @@ created spec/tmp/test/approve
 
 Edit your tests in test/approve and then run:
 
-  $ ./test/approve"
+  $ test/approve
 
 Docs: https://github.com/DannyBen/approvals.bash
 

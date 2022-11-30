@@ -8,13 +8,20 @@ PATH="$PATH:../"
 # Update me
 cli=download
 
-# Tests
-describe "root command"
-  approve "$cli"
-  approve "$cli --help"
+# Tests (context and describe are optional)
+context "when DEBUG is on"
+  export DEBUG=1
 
-describe "some other command"
-  approve "$cli other"
-  approve "$cli other --help"
+  describe "root command"
+    # for commands that fail (like without parameters), we add || 0
+    approve "$cli" || 0
+    approve "$cli --help"
+
+context "when DEBUG is off"
+  unset DEBUG
+
+  describe "some other command"
+    approve "$cli other" || 0
+    approve "$cli other --help"
 
 # ...more tests...
