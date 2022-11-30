@@ -14,16 +14,14 @@ describe Commands::Add do
 
   context 'without arguments' do
     it 'shows long usage' do
-      expect { subject.execute %w[add] }.to output_approval('cli/generate/usage')
+      expect { subject.execute %w[add] }.to output_approval('cli/add/usage')
     end
   end
 
   context 'with colors command' do
     let(:lib_file) { "#{source_dir}/lib/colors.sh" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the colors.sh lib file to the user space' do
       expect { subject.execute %w[add colors] }.to output_approval('cli/add/colors')
@@ -32,9 +30,7 @@ describe Commands::Add do
   end
 
   context 'with comp command' do
-    before do
-      reset_tmp_dir init: true
-    end
+    before { reset_tmp_dir init: true }
 
     context 'with yaml subcommand' do
       it 'creates completions.yml' do
@@ -67,9 +63,7 @@ describe Commands::Add do
   context 'with config command' do
     let(:lib_file) { "#{source_dir}/lib/config.sh" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the config.sh lib file to the user space' do
       expect { subject.execute %w[add config] }.to output_approval('cli/add/config')
@@ -80,9 +74,7 @@ describe Commands::Add do
   context 'with help command' do
     let(:help_command_file) { "#{source_dir}/help_command.sh" }
 
-    before do
-      reset_tmp_dir init: true
-    end
+    before { reset_tmp_dir init: true }
 
     it 'copies the help_command.sh lib file to the user space' do
       expect { subject.execute %w[add help] }.to output_approval('cli/add/help_command')
@@ -93,9 +85,7 @@ describe Commands::Add do
   context 'with lib command' do
     let(:lib_file) { "#{source_dir}/lib/sample_function.sh" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies a sample function to the user space under lib directory' do
       expect { subject.execute %w[add lib] }.to output_approval('cli/add/lib')
@@ -107,9 +97,7 @@ describe Commands::Add do
     let(:settings_file) { "#{target_dir}/settings.yml" }
     let(:template_file) { 'lib/bashly/templates/settings.yml' }
 
-    before do
-      reset_tmp_dir
-    end
+    before { reset_tmp_dir }
 
     it 'copies the settings file to the current directory' do
       expect do
@@ -136,9 +124,7 @@ describe Commands::Add do
   context 'with strings command' do
     let(:strings_file) { "#{source_dir}/bashly-strings.yml" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the strings configuration to the user space' do
       expect { subject.execute %w[add strings] }.to output_approval('cli/add/strings')
@@ -146,9 +132,7 @@ describe Commands::Add do
     end
 
     context 'when the source directory does not exist' do
-      before do
-        reset_tmp_dir
-      end
+      before { reset_tmp_dir }
 
       it 'raises an error' do
         expect { subject.execute %w[add strings] }.to raise_error(InitError, /does not exist/)
@@ -166,9 +150,7 @@ describe Commands::Add do
   context 'with test command' do
     let(:lib_file) { "#{target_dir}/test/approvals.bash" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the test folder to the user space' do
       expect { subject.execute %w[add test] }.to output_approval('cli/add/test')
@@ -179,9 +161,7 @@ describe Commands::Add do
   context 'with validations command' do
     let(:lib_file) { "#{source_dir}/lib/validations/validate_integer.sh" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the validation lib folder to the user space' do
       expect { subject.execute %w[add validations] }.to output_approval('cli/add/validations')
@@ -192,9 +172,7 @@ describe Commands::Add do
   context 'with yaml command' do
     let(:lib_file) { "#{source_dir}/lib/yaml.sh" }
 
-    before do
-      reset_tmp_dir create_src: true
-    end
+    before { reset_tmp_dir create_src: true }
 
     it 'copies the yaml.sh lib file to the user space' do
       expect { subject.execute %w[add yaml] }.to output_approval('cli/add/yaml')
