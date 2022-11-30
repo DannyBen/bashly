@@ -37,7 +37,7 @@ test:
   post_install_message: |
     Edit your tests in !txtgrn!test/approve!txtrst! and then run:
 
-      !txtpur!$ ./test/approve!txtrst!"
+      !txtpur!$ test/approve!txtrst!
 
     Docs: !undblu!https://github.com/DannyBen/approvals.bash
 
