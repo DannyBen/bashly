@@ -2,6 +2,7 @@ Usage:
   bashly add colors [--force]
   bashly add comp FORMAT [OUTPUT --force]
   bashly add config [--force]
+  bashly add help [--force]
   bashly add lib [--force]
   bashly add settings [--force]
   bashly add strings [--force]

@@ -4,6 +4,7 @@ Usage:
   bashly add colors [--force]
   bashly add comp FORMAT [OUTPUT --force]
   bashly add config [--force]
+  bashly add help [--force]
   bashly add lib [--force]
   bashly add settings [--force]
   bashly add strings [--force]
@@ -22,6 +23,9 @@ Commands:
 
   config
     Add standard functions for handling INI files to the lib directory.
+
+  help
+    Add a help command, in addition to the standard --help flag.
 
   lib
     Create the additional lib directory for additional user scripts. All *.sh

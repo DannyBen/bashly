@@ -15,10 +15,10 @@ long_usage=yes
 
 if [[ -z "$command" ]]; then
   # No command argument, show the global help
-  help_function=cli_usage
+  help_function=%{name}_usage
 else
   # Show the help for the requested command
-  help_function="cli_${command}_usage"
+  help_function="%{name}_${command}_usage"
 fi
 
 # Call the help function if it exists

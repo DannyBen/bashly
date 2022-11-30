@@ -1,0 +1,12 @@
+created spec/tmp/src/help_command.sh
+
+Add this as a command to your bashly.yml:
+
+  commands:
+    - name: help
+      help: Show help about a command
+      args:
+      - name: command
+        help: Help subject
+
+

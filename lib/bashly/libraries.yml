@@ -12,6 +12,8 @@ config:
     - source: "templates/lib/config.sh"
       target: "%{user_lib_dir}/config.sh"
 
+help: :Help
+
 lib:
   files:
     - source: "templates/lib/sample_function.sh"

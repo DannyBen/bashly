@@ -1,9 +1,10 @@
 module SpecMixin
-  def reset_tmp_dir(create_src: false, example: nil)
+  def reset_tmp_dir(create_src: false, init: false, example: nil)
     system 'rm -rf spec/tmp/*'
     system 'mkdir -p spec/tmp'
-    system 'mkdir -p spec/tmp/src' if create_src
+    system 'mkdir -p spec/tmp/src' if create_src || init
     cp "examples/#{example}/*" if example
+    cp 'lib/bashly/templates/bashly.yml', 'spec/tmp/src' if init
   end
 
   def load_fixture(filename)
