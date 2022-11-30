@@ -1,9 +1,13 @@
 if dependencies
   = view_marker
 
-  dependencies.each do |dependency|
+  dependencies.each do |dependency, message|
     > if ! [[ -x "$(command -v {{ dependency }})" ]]; then
     >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n" >&2
+    if message and !message.empty?
+      >   # shellcheck disable=SC2059
+      >   printf "{{ message }}\n" >&2
+    end
     >   exit 1
     > fi
   end

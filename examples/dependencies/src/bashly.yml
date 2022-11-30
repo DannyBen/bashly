@@ -16,3 +16,9 @@ commands:
 
 - name: upload
   help: Upload something
+
+  # Dependencies can also be defined as a hash of 'command: message' pairs.
+  # The message can use colors from the colors library (bashly add colors).
+  dependencies:
+    mini-docker: install with $(green gem install mini-docker)
+    docker: visit https://docker.com for more information

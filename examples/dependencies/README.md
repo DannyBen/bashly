@@ -7,6 +7,7 @@ This example was generated with:
 
 ```bash
 $ bashly init
+$ bashly add colors
 # ... now edit src/bashly.yml to match the example ...
 $ bashly generate
 ```
@@ -34,6 +35,12 @@ commands:
 
 - name: upload
   help: Upload something
+
+  # Dependencies can also be defined as a hash of 'command: message' pairs.
+  # The message can use colors from the colors library (bashly add colors).
+  dependencies:
+    mini-docker: install with $(green gem install mini-docker)
+    docker: visit https://docker.com for more information
 ```
 
 
@@ -51,10 +58,8 @@ missing dependency: shmurl
 ### `$ ./cli upload`
 
 ```shell
-# this file is located in 'src/upload_command.sh'
-# code for 'cli upload' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args: none
+missing dependency: mini-docker
+install with [32mgem install mini-docker[0m
 
 
 ```

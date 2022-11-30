@@ -8,7 +8,5 @@ run ./cli --help to test your bash script
 + ./cli download
 missing dependency: shmurl
 + ./cli upload
-# this file is located in 'src/upload_command.sh'
-# code for 'cli upload' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args: none
+missing dependency: mini-docker
+install with gem install mini-docker

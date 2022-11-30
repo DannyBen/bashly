@@ -4,29 +4,29 @@
 >   case "${1:-}" in
 
 if root_command?
-  = short_flag_exist?("-v") ? "--version )" : "--version | -v )"
-  >   version_command
-  >   exit
-  >   ;;
+  = short_flag_exist?("-v") ? "--version )" : "--version | -v )".indent(4)
+  >       version_command
+  >       exit
+  >       ;;
   > 
 end
 
-= short_flag_exist?("-h") ? "--help )" : "--help | -h )"
->   long_usage=yes
->   <%= function_name %>_usage
->   exit
->   ;;
+= short_flag_exist?("-h") ? "--help )" : "--help | -h )".indent(4)
+>       long_usage=yes
+>       <%= function_name %>_usage
+>       exit
+>       ;;
 > 
 
 if global_flags?
   flags.each do |flag|
-    = flag.render(:case).indent(2)
+    = flag.render(:case).indent(4)
   end
 end
 
->   * )
->     break
->     ;;
+>     * )
+>       break
+>       ;;
 >
 >   esac
 > done
