@@ -31,10 +31,24 @@ module Bashly
     end
 
     def assert_catch_all_hash(key, value)
-      assert_hash key, value, Script::CatchAll.option_keys
+      assert_hash key, value, keys: Script::CatchAll.option_keys
       assert_string "#{key}.label", value['label']
       assert_optional_string "#{key}.help", value['help']
       assert_boolean "#{key}.required", value['required']
+    end
+
+    def assert_dependencies(key, value)
+      return unless value
+
+      case value
+      when Array
+        assert_array key, value, of: :string
+      when Hash
+        assert_hash key, value, of: :string
+      else
+        assert [Array, Hash].include?(value.class),
+          "#{key} must be an array or a hash"
+      end
     end
 
     def assert_extensible(key, value)
@@ -51,7 +65,7 @@ module Bashly
     end
 
     def assert_arg(key, value)
-      assert_hash key, value, Script::Argument.option_keys
+      assert_hash key, value, keys: Script::Argument.option_keys
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.default", value['default']
@@ -67,7 +81,7 @@ module Bashly
     end
 
     def assert_flag(key, value)
-      assert_hash key, value, Script::Flag.option_keys
+      assert_hash key, value, keys: Script::Flag.option_keys
       assert value['short'] || value['long'], "#{key} must have at least one of long or short name"
 
       refute value['allowed'] && value['completions'], "#{key} cannot have both allowed and completions"
@@ -105,7 +119,7 @@ module Bashly
     end
 
     def assert_env_var(key, value)
-      assert_hash key, value, Script::EnvironmentVariable.option_keys
+      assert_hash key, value, keys: Script::EnvironmentVariable.option_keys
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.default", value['default']
@@ -113,7 +127,7 @@ module Bashly
     end
 
     def assert_command(key, value)
-      assert_hash key, value, Script::Command.option_keys
+      assert_hash key, value, keys: Script::Command.option_keys
 
       refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
       refute value['commands'] && value['catch_all'], "#{key} cannot have both commands and catch_all"
@@ -133,12 +147,12 @@ module Bashly
       assert_string_or_array "#{key}.alias", value['alias']
       assert_string_or_array "#{key}.examples", value['examples']
       assert_extensible "#{key}.extensible", value['extensible']
+      assert_dependencies "#{key}.dependencies", value['dependencies']
 
       assert_array "#{key}.args", value['args'], of: :arg
       assert_array "#{key}.flags", value['flags'], of: :flag
       assert_array "#{key}.commands", value['commands'], of: :command
       assert_array "#{key}.completions", value['completions'], of: :string
-      assert_array "#{key}.dependencies", value['dependencies'], of: :string
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
 

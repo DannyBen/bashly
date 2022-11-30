@@ -43,12 +43,19 @@ module Bashly
       end
     end
 
-    def assert_hash(key, value, whitelist = nil)
+    def assert_hash(key, value, keys: nil, of: nil)
       assert value.is_a?(Hash), "#{key} must be a hash"
-      return unless whitelist
 
-      invalid_keys = value.keys.map(&:to_sym) - whitelist
-      assert invalid_keys.empty?, "#{key} contains invalid options: #{invalid_keys.join ', '}"
+      if keys
+        invalid_keys = value.keys.map(&:to_sym) - keys
+        assert invalid_keys.empty?, "#{key} contains invalid options: #{invalid_keys.join ', '}"
+      end
+
+      return unless of
+
+      value.each do |k, v|
+        send "assert_#{of}".to_sym, "#{key}.#{k}", v
+      end
     end
 
     def assert_uniq(key, value, array_keys)

@@ -5,6 +5,7 @@
 /doc
 /Gemfile.lock
 /gems
+/spec/status.txt
 /spec/tmp
 /tmp
 /toc.txt

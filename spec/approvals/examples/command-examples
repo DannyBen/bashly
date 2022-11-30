@@ -56,7 +56,7 @@ Arguments:
     File to upload
 
 Examples:
-  Upload a file 
+  Upload a file
   $ cli upload profile.png -u admin -p s3cr3t
   
   Upload a file (you will be prompted to provide a password)

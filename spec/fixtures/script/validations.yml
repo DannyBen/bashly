@@ -44,6 +44,24 @@
   commands:
   - name: config
 
+:command_dependencies_invalid:
+  name: invalid
+  dependencies: 1
+
+:command_dependencies_invalid:
+  name: invalid
+  dependencies: 1
+
+:command_dependencies_invalid_array:
+  name: invalid
+  dependencies: [1, 2]
+
+:command_dependencies_invalid_hash:
+  name: invalid
+  dependencies:
+    docker: 1
+    git: 2
+
 :command_expose_invalid_type:
   name: invalid
   help: expose should be boolean or 'always'

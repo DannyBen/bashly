@@ -28,7 +28,8 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
-RSpec.configure do |c|
-  c.include SpecMixin
-  c.strip_ansi_escape = true
+RSpec.configure do |config|
+  config.include SpecMixin
+  config.example_status_persistence_file_path = 'spec/status.txt'
+  config.strip_ansi_escape = true
 end
