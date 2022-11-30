@@ -1,7 +1,7 @@
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
-skipped src/container_start_command.sh (exists)
+created src/initialize.sh
+created src/container_start_command.sh
 skipped src/container_start_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script
