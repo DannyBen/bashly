@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Cleanup before testing
-rm -f "src/*.sh"
+rm -f src/*.sh
 
 set -x
 
