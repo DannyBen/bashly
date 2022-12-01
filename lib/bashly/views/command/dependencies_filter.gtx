@@ -10,5 +10,6 @@ if dependencies
     end
     >   exit 1
     > fi
+    >
   end
 end

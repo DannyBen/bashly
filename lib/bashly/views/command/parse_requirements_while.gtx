@@ -6,29 +6,29 @@
 
 unless global_flags?
   flags.each do |flag|
-    = flag.render(:case).indent 2
+    = flag.render(:case).indent(4)
   end
 end
 
 >
->   -?* )
+>     -?*)
 
 if catch_all.enabled?
-  >     other_args+=("$1")
-  >     shift
-  >     ;;
+  >       other_args+=("$1")
+  >       shift
+  >       ;;
 
 else
-  >     printf "<%= strings[:invalid_flag] %>\n" "$key" >&2
-  >     exit 1
-  >     ;;
+  >       printf "<%= strings[:invalid_flag] %>\n" "$key" >&2
+  >       exit 1
+  >       ;;
 
 end
 
 > 
->   * )
-= render(:parse_requirements_case).indent 4
->     ;;
+>     *)
+= render(:parse_requirements_case).indent(6)
+>       ;;
 > 
 >   esac
 > done

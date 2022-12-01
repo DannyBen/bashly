@@ -1,7 +1,7 @@
 = view_marker
 
 if repeatable
-  > (( args[<%= name %>]+=1 ))
+  > ((args[<%= name %>]+=1))
 else
   > args[<%= name %>]=1
 end

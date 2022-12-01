@@ -1,11 +1,11 @@
 = view_marker
 
-> "" )
+> "")
 >   {{ function_name }}_usage >&2
 >   exit 1
 >   ;;
 >
-> * )
+> *)
 
 if default_command
   >   action="{{ default_command.name }}"

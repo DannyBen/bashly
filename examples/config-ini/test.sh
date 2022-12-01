@@ -2,6 +2,7 @@
 
 set -x
 
+bashly add config --force
 bashly generate
 
 ### Try Me ###

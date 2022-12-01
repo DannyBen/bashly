@@ -14,9 +14,9 @@ print_in_color() {
   local color="$1"
   shift
   if [[ -z ${NO_COLOR+x} ]]; then
-    printf "$color%b\e[0m\n" "$*";
+    printf "$color%b\e[0m\n" "$*"
   else
-    printf "%b\n" "$*";
+    printf "%b\n" "$*"
   fi
 }
 
