@@ -1,7 +1,7 @@
 # Using the standard library (lib/config.sh) to show a value from the config
 
 key="${args[key]}"
-if config_has_key "$key" ; then 
+if config_has_key "$key"; then
   config_get "$key"
 else
   echo "No such key: $key"

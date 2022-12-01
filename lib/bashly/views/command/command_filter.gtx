@@ -4,22 +4,22 @@ if commands.any?
   > action=${1:-}
   > 
   > case $action in
-  > -* )
-  >   ;;
+  >   -*)
+  >     ;;
   > 
 
   commands.each do |command|
-    > {{ command.aliases.join " | " }} )
-    >   action="{{ command.name }}"
-    >   shift
-    >   {{ command.function_name }}_parse_requirements "$@"
-    >   shift $#
-    >   ;;    
+    >   {{ command.aliases.join " | " }})
+    >     action="{{ command.name }}"
+    >     shift
+    >     {{ command.function_name }}_parse_requirements "$@"
+    >     shift $#
+    >     ;;
     > 
 
   end
 
-  = render :command_fallback
+  = render(:command_fallback).indent(2)
   > esac
   >
 

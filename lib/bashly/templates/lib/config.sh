@@ -24,13 +24,13 @@ config_get() {
   local value=""
 
   config_init
-  
+
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       value="${BASH_REMATCH[1]}"
       break
     fi
-  done < "$CONFIG_FILE"
+  done <"$CONFIG_FILE"
 
   echo "$value"
 }
@@ -48,7 +48,7 @@ config_set() {
   local output=""
   local found_key=""
   local newline
-  
+
   while IFS= read -r line || [ -n "$line" ]; do
     newline=$line
     if [[ $line =~ $regex ]]; then
@@ -58,13 +58,13 @@ config_set() {
     elif [[ $line ]]; then
       output="$output$line\n"
     fi
-  done < "$CONFIG_FILE"
+  done <"$CONFIG_FILE"
 
   if [[ -z $found_key ]]; then
     output="$output$key = $value\n"
   fi
 
-  printf "%b\n" "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" >"$CONFIG_FILE"
 }
 
 ## Delete a key from the config.
@@ -81,9 +81,9 @@ config_del() {
     if [[ $line ]] && [[ ! $line =~ $regex ]]; then
       output="$output$line\n"
     fi
-  done < "$CONFIG_FILE"
+  done <"$CONFIG_FILE"
 
-  printf "%b\n" "$output" > "$CONFIG_FILE"
+  printf "%b\n" "$output" >"$CONFIG_FILE"
 }
 
 ## Show the config file
@@ -106,20 +106,20 @@ config_keys() {
 
   local keys=()
   local key
-  
+
   while IFS= read -r line || [ -n "$line" ]; do
     if [[ $line =~ $regex ]]; then
       key="${BASH_REMATCH[1]}"
       keys+=("$key")
     fi
-  done < "$CONFIG_FILE"
+  done <"$CONFIG_FILE"
   echo "${keys[@]}"
 }
 
 ## Returns true if the specified key exists in the config file.
 ## Usage:
 ##
-##   if config_has_key "key" ; then
+##   if config_has_key "key"; then
 ##     echo "key exists"
 ##   fi
 ##

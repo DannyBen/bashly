@@ -2,6 +2,6 @@
 config_show
 
 # Or to iterate through keys
-for key in $(config_keys) ; do
+for key in $(config_keys); do
   echo "$key === $(config_get "$key")"
 done
