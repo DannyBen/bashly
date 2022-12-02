@@ -125,12 +125,12 @@
   args:
   - name: source
 
-:commands_default_without_args:
+:commands_default:
   name: invalid
-  help: default command requires args
+  help: command.default should be a boolean or 'force'
   commands:
   - name: sub
-    default: true
+    default: yes_please
 
 :env_var_required:
   name: invalid

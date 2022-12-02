@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.commands[0].default must be a boolean, or the string 'force'>

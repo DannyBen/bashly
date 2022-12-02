@@ -37,6 +37,12 @@ module Bashly
       assert_boolean "#{key}.required", value['required']
     end
 
+    def assert_default_command(key, value)
+      return unless value
+
+      assert [true, false, nil, 'force'].include?(value), "#{key} must be a boolean, or the string 'force'"
+    end
+
     def assert_dependencies(key, value)
       return unless value
 
@@ -145,7 +151,7 @@ module Bashly
       assert_optional_string "#{key}.function", value['function']
 
       assert_boolean "#{key}.private", value['private']
-      assert_boolean "#{key}.default", value['default']
+      assert_default_command "#{key}.default", value['default']
       assert_expose "#{key}.expose", value['expose']
       assert_version "#{key}.version", value['version']
       assert_catch_all "#{key}.catch_all", value['catch_all']
@@ -169,10 +175,6 @@ module Bashly
       if value['function']
         assert value['function'].match(/^[a-z0-9_]+$/),
           "#{key}.function must contain lowercase alphanumeric characters and underscores only"
-      end
-
-      if value['default']
-        assert value['args'], "#{key}.default makes no sense without args"
       end
 
       if value['catch_all'] && value['args']

@@ -1,0 +1,53 @@
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/all_command.sh
+created src/only_command.sh
+created ./tester
+run ./tester --help to test your bash script
++ ./tester -h
+tester - Sample application that uses the forced default command option
+
+Usage:
+  tester COMMAND
+  tester [COMMAND] --help | -h
+  tester --version | -v
+
+Commands:
+  all    Run all tests (default)
+  only   Run only specific tests
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./tester
+# this file is located in 'src/all_command.sh'
+# code for 'tester all' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./tester all
+# this file is located in 'src/all_command.sh'
+# code for 'tester all' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./tester all -h
+tester all - Run all tests
+
+Usage:
+  tester all
+  tester all --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
++ ./tester only one
+# this file is located in 'src/only_command.sh'
+# code for 'tester only' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[search]} = one
