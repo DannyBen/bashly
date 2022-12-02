@@ -21,9 +21,11 @@ deep_commands.each do |command|
   >
 end
 
->     "root")
->       root_command
->       ;;
+if commands.empty?
+  >     "root")
+  >       root_command
+  >       ;;
+end
 >
 >   esac
 > }
