@@ -124,6 +124,11 @@ module Bashly
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.default", value['default']
       assert_boolean "#{key}.required", value['required']
+      assert_boolean "#{key}.private", value['private']
+
+      if value['private']
+        assert value['default'], "#{key}.private makes no sense without default"
+      end
     end
 
     def assert_command(key, value)
