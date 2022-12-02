@@ -132,12 +132,27 @@
   - name: sub
     default: true
 
-:env_var:
+:env_var_required:
   name: invalid
   help: env_var.required should be a boolean
   environment_variables:
   - name: api_key
     required: 1
+
+:env_var_private:
+  name: invalid
+  help: env_var.private should be a boolean
+  environment_variables:
+  - name: server_env
+    default: development
+    private: 1
+
+:env_var_private_without_default:
+  name: invalid
+  help: env_var.private makes no sense without default
+  environment_variables:
+  - name: server_env
+    private: true
 
 :flag_long:
   name: invalid
