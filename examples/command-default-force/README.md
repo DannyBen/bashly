@@ -24,8 +24,8 @@ commands:
 - name: all
   help: Run all tests
 
-  # By setting the `default: force`, it will be executed when the command line
-  # is not recognized, and when it is empty.
+  # By setting `default: force`, it will be executed when the command line is
+  # not recognized, and when it is empty.
   default: force
 
 - name: only

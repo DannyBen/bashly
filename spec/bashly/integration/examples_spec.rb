@@ -16,13 +16,14 @@ describe 'generated bash scripts' do
 
   test_cases = fixtures + examples
 
-  # To test one example, run: EXAMPLE=yaml bundle exec run spec examples
-  test_cases = ["examples/#{ENV['EXAMPLE']}"] if ENV['EXAMPLE']
-
+  # To only test examples containing a certain string in their path, run:
+  # EXAMPLE=yaml bundle exec run spec examples
   leeway = ENV['CI'] ? 30 : 0
 
   test_cases.each do |example|
     approval_name = example.gsub 'spec/fixtures/workspaces', 'fixtures'
+
+    next if ENV['EXAMPLE'] and !example.include? ENV['EXAMPLE']
 
     describe example do
       it 'is executed properly' do
