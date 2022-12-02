@@ -1,0 +1,19 @@
+name: tester
+help: Sample application that uses the forced default command option
+version: 0.1.0
+
+commands:
+- name: all
+  help: Run all tests
+
+  # By setting the `default: force`, it will be executed when the command line
+  # is not recognized, and when it is empty.
+  default: force
+
+- name: only
+  help: Run only specific tests
+  args:
+  - name: search
+    required: true
+    help: File pattern of tests to run
+
