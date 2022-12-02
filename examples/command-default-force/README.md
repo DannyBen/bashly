@@ -1,8 +1,7 @@
 # Default Forced Command Example
 
 Demonstrates how to set a command as the default command, that also rune when
-the it is executed without arguments, instead of showing the standard usage
-text.
+it is executed without arguments, instead of showing the standard usage text.
 
 This example was generated with:
 
@@ -84,6 +83,23 @@ args: none
 # code for 'tester all' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
+
+
+```
+
+### `$ ./tester all -h`
+
+```shell
+tester all - Run all tests
+
+Usage:
+  tester all
+  tester all --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
 
 
 ```
