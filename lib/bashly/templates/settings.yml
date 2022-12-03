@@ -30,3 +30,6 @@ compact_short_flags: true
 # - production    generate a smaller script, without file markers
 # - development   generate with file markers
 env: development
+
+# The extension to use when reading/writing partial script snippets.
+partials_extension: sh

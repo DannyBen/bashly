@@ -3,28 +3,8 @@ module Bashly
     class << self
       include AssetHelper
 
-      attr_writer :compact_short_flags, :source_dir, :target_dir,
-        :lib_dir, :strict, :tab_indent
-
-      def source_dir
-        @source_dir ||= get :source_dir
-      end
-
-      def target_dir
-        @target_dir ||= get :target_dir
-      end
-
-      def lib_dir
-        @lib_dir ||= get :lib_dir
-      end
-
-      def strict
-        @strict ||= get :strict
-      end
-
-      def tab_indent
-        @tab_indent ||= get :tab_indent
-      end
+      attr_writer :compact_short_flags, :lib_dir, :partials_extension,
+        :source_dir, :strict, :tab_indent, :target_dir
 
       def compact_short_flags
         @compact_short_flags ||= get :compact_short_flags
@@ -38,12 +18,36 @@ module Bashly
         @env = value&.to_sym
       end
 
+      def full_lib_dir
+        "#{source_dir}/#{lib_dir}"
+      end
+
+      def lib_dir
+        @lib_dir ||= get :lib_dir
+      end
+
+      def partials_extension
+        @partials_extension ||= get :partials_extension
+      end
+
       def production?
         env == :production
       end
 
-      def full_lib_dir
-        "#{source_dir}/#{lib_dir}"
+      def source_dir
+        @source_dir ||= get :source_dir
+      end
+
+      def strict
+        @strict ||= get :strict
+      end
+
+      def tab_indent
+        @tab_indent ||= get :tab_indent
+      end
+
+      def target_dir
+        @target_dir ||= get :target_dir
       end
 
     private

@@ -156,7 +156,7 @@ module Bashly
       # Returns the bash filename that is expected to hold the user code
       # for this command
       def filename
-        options['filename'] || "#{action_name.to_underscore}_command.sh"
+        options['filename'] || "#{action_name.to_underscore}_command.#{Settings.partials_extension}"
       end
 
       # Returns an array of Flags
@@ -281,7 +281,7 @@ module Bashly
       # This is meant to provide the user with the ability to add custom
       # functions
       def user_lib
-        @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.sh"].sort
+        @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.#{Settings.partials_extension}"].sort
       end
 
       # Returns an array of all the args with a whitelist

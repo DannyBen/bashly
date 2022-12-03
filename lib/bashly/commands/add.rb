@@ -34,8 +34,11 @@ module Bashly
       command 'comp', 'Generate a bash completions script or function.'
       command 'config', 'Add standard functions for handling INI files to the lib directory.'
       command 'help', 'Add a help command, in addition to the standard --help flag.'
-      command 'lib', 'Create the additional lib directory for additional user scripts. All *.sh scripts in this ' \
-        'folder will be included in the final bash script.'
+      command 'lib', <<~USAGE
+        Create the lib directory for any additional user scripts.
+        All *.sh scripts in this directory will be included in the final bash script.
+        Note that if you configured a different partials_extension, then the extensions of the files in this directory need to match.
+      USAGE
 
       command 'settings', 'Copy a sample settings.yml file to your project, allowing you to customize some ' \
         'bashly options.'

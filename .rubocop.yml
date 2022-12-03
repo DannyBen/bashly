@@ -9,7 +9,9 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 2.7
-  SuggestExtensions: false
+  Exclude:
+    - debug.rb
+    - dev/**/*
 
 # The `ConfigValidator` class is a DSL, let it be
 Metrics/AbcSize:              { Exclude: [lib/bashly/config_validator.rb] }

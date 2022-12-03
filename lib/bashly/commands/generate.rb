@@ -130,7 +130,8 @@ module Bashly
       def create_user_files
         quiet_say "creating user files in !txtgrn!#{Settings.source_dir}"
 
-        create_file "#{Settings.source_dir}/initialize.sh", command.render(:default_initialize_script)
+        create_file "#{Settings.source_dir}/initialize.#{Settings.partials_extension}",
+          command.render(:default_initialize_script)
 
         if command.commands.empty?
           create_root_command_file

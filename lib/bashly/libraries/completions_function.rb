@@ -4,7 +4,7 @@ module Bashly
       def files
         [
           {
-            path:    "#{Settings.full_lib_dir}/#{function_name}.sh",
+            path:    "#{Settings.full_lib_dir}/#{function_name}.#{Settings.partials_extension}",
             content: completions_function_code(function_name),
           },
         ]
