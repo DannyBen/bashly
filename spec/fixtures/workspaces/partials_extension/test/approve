@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run this from the root directory
+
+cd ./test || exit
+source approvals.bash
+
+# Update me
+cli=./download
+
+# Tests (context, describe and indentation are optional)
+context "when DEBUG is on"
+  export DEBUG=1
+
+  describe "root command"
+    approve "$cli"
+    approve "$cli --help"
+
+context "when DEBUG is off"
+  unset DEBUG
+
+  describe "some other command"
+    approve "$cli other"
+    approve "$cli other --help"
+
+# ...more tests...
