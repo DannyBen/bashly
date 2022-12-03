@@ -37,7 +37,7 @@ module Bashly
       command 'lib', <<~USAGE
         Create the lib directory for any additional user scripts.
         All *.sh scripts in this directory will be included in the final bash script.
-        Note that if you configured a differetc partials_extension, then the extensions of the files in this directory need to match.
+        Note that if you configured a different partials_extension, then the extensions of the files in this directory need to match.
       USAGE
 
       command 'settings', 'Copy a sample settings.yml file to your project, allowing you to customize some ' \
