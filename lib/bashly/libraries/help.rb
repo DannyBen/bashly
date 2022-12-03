@@ -6,7 +6,7 @@ module Bashly
       def files
         [
           {
-            path:    "#{Settings.source_dir}/help_command.sh",
+            path:    "#{Settings.source_dir}/help_command.#{Settings.partials_extension}",
             content: help_command,
           },
         ]

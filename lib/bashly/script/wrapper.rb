@@ -49,7 +49,7 @@ module Bashly
       end
 
       def custom_header_path
-        @custom_header_path ||= "#{Settings.source_dir}/header.sh"
+        @custom_header_path ||= "#{Settings.source_dir}/header.#{Settings.partials_extension}"
       end
     end
   end
