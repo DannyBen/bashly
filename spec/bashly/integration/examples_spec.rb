@@ -23,7 +23,7 @@ describe 'generated bash scripts' do
   test_cases.each do |example|
     approval_name = example.gsub 'spec/fixtures/workspaces', 'fixtures'
 
-    next if ENV['EXAMPLE'] and !example.include? ENV['EXAMPLE']
+    next if ENV['EXAMPLE'] && !example.include?(ENV['EXAMPLE'])
 
     describe example do
       it 'is executed properly' do
