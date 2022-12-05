@@ -19,6 +19,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Install OS dependencies
+      run: sudo apt-get -y install libyaml-dev
+
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with: 
