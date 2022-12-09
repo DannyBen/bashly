@@ -5,8 +5,7 @@ if dependencies
     > if ! command -v {{ dependency }} >/dev/null 2>&1; then
     >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n" >&2
     if message and !message.empty?
-      >   # shellcheck disable=SC2059
-      >   printf "{{ message }}\n" >&2
+      >   printf "%s\n" "{{ message }}" >&2
     end
     >   exit 1
     > fi
