@@ -1,0 +1,7 @@
+name: cli
+help: all arguments must be integers
+
+args:
+- name: number
+  repeatable: true
+  validate: integer

@@ -1,0 +1,29 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./cli 1
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[number]} = "1"
++ ./cli 1 2
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[number]} = "1" "2"
++ ./cli 1.1
+validation error in NUMBER:
+must be an integer
++ ./cli 1.1 2
+validation error in NUMBER:
+must be an integer
++ ./cli 1 2.2
+validation error in NUMBER:
+must be an integer

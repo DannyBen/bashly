@@ -2,9 +2,8 @@
 
 condition = "if"
 args.each do |arg|
+  = arg.render(:validations)
   > {{ condition }} [[ -z ${args[{{ arg.name }}]+x} ]]; then
-  = arg.render(:validations).indent 2
-
   if arg.repeatable
     >   args[{{ arg.name }}]="\"$1\""
     >   shift
