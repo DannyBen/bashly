@@ -32,6 +32,20 @@ action :shellcheck do
   end
 end
 
+help   "Run shfmt checks on all examples"
+action :shfmt do
+  Example.executables.each do |example|
+    if File.exist? example
+      success = system "shfmt -d -i 2 -ci #{example}"
+      color = success ? 'txtgrn' : 'txtred'
+      say "- shfmt !#{color}!#{example}"
+      exit 1 unless success
+    else
+      say "- skip       !txtcyn!#{example}"
+    end
+  end
+end
+
 help   "Generate changelog and append old changelog"
 action :changelog do
   system "git changelog --save"
