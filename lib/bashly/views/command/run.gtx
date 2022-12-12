@@ -11,7 +11,7 @@
 
 deep_commands.each do |command|
   >     "{{ command.action_name }}")
-  >       if [[ ${args[--help]:-} ]]; then
+  >       if [[ ${args['--help']:-} ]]; then
   >         long_usage=yes
   >         {{ command.function_name }}_usage
   >       else

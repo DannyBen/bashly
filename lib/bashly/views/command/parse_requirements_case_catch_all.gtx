@@ -3,9 +3,9 @@
 if args.any?
   condition = "if"
   args.each do |arg|
-    > {{ condition }} [[ -z ${args[{{ arg.name }}]+x} ]]; then
+    > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
     =   arg.render(:validations).indent 2
-    >   args[{{ arg.name }}]=$1
+    >   args['{{ arg.name }}']=$1
     >   shift
     
     condition = "elif"
