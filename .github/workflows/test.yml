@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env: 
-      LC_ALL: en_US.UTF-8 # consistent sort order
+      # For consistent sort order
+      LC_ALL: en_US.UTF-8 
 
     strategy:
       matrix: { ruby: ['2.7', '3.0', '3.1', 'head'] }
@@ -19,8 +20,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
       run: sudo apt-get -y install libyaml-dev
+
+    # Rush needed for easy installation of latest shfmt
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Install shfmt
+      run: rush snatch dannyben/shfmt
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
@@ -33,3 +42,6 @@ jobs:
 
     - name: Run shellcheck tests
       run: bundle exec run shellcheck
+
+    - name: Run shfmt tests
+      run: bundle exec run shfmt

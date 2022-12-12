@@ -27,7 +27,6 @@ usually handled by a framework in any other programming language.
 It is available both as a [ruby gem](https://rubygems.org/gems/bashly) and as
 a [docker image](https://hub.docker.com/r/dannyben/bashly).
 
-
 ## Documentation
 
 - [Bashly Homepage][docs]
@@ -49,6 +48,7 @@ a [docker image](https://hub.docker.com/r/dannyben/bashly).
 Bashly is responsible for:
 
 - Generating a **single, standalone bash script**.
+- Generating a **human readable, shellcheck-compliant and shfmt-compliant script**.
 - Generating **usage texts** and help screens, showing your tool's arguments, flags and commands (works for sub-commands also).
 - Parsing the user's command line and extracting:
   - Optional or required **positional arguments**.
@@ -72,14 +72,11 @@ to contribute, feel free to [open an issue][issues] or
 
 Visit the *[How to contribute][contributing]* page for more information.
 
-
 ## Stargazers and Forkers
 
 [![Stargazers repo roster for @DannyBen/bashly](https://reporoster.com/stars/DannyBen/bashly)](https://github.com/DannyBen/bashly/stargazers)
 
 [![Forkers repo roster for @DannyBen/bashly](https://reporoster.com/forks/DannyBen/bashly)](https://github.com/DannyBen/bashly/network/members)
-
-
 
 [issues]: https://github.com/DannyBen/bashly/issues
 [discussions]: https://github.com/DannyBen/bashly/discussions

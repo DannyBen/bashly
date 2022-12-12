@@ -4,14 +4,14 @@
 >   case "${1:-}" in
 
 if root_command?
-  = short_flag_exist?("-v") ? "--version)" : "--version | -v)".indent(4)
+  = short_flag_exist?("-v") ? "--version)".indent(4) : "--version | -v)".indent(4)
   >       version_command
   >       exit
   >       ;;
   > 
 end
 
-= short_flag_exist?("-h") ? "--help)" : "--help | -h)".indent(4)
+= short_flag_exist?("-h") ? "--help)".indent(4) : "--help | -h)".indent(4)
 >       long_usage=yes
 >       <%= function_name %>_usage
 >       exit

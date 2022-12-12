@@ -1,5 +1,5 @@
 message1() {
-  cat << EOF
+  cat <<EOF
 this is a
   multiline
     heredoc text
