@@ -24,13 +24,6 @@ jobs:
     - name: Install OS dependencies
       run: sudo apt-get -y install libyaml-dev
 
-    # Rush needed for easy installation of latest shfmt
-    - name: Install rush
-      run: curl -Ls http://get.dannyb.co/rush/setup | bash
-
-    - name: Install shfmt
-      run: rush snatch dannyben shfmt
-
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with: 
@@ -39,6 +32,22 @@ jobs:
 
     - name: Run tests
       run: bundle exec rspec
+
+  static_analysis:
+    name: Static analysis of Example files
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Rush needed for easy installation of latest shfmt
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Install shfmt
+      run: rush snatch dannyben shfmt
 
     - name: Run shellcheck tests
       run: bundle exec run shellcheck
