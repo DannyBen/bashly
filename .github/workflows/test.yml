@@ -29,7 +29,7 @@ jobs:
       run: curl -Ls http://get.dannyb.co/rush/setup | bash
 
     - name: Install shfmt
-      run: rush snatch dannyben/shfmt
+      run: rush snatch dannyben shfmt
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
