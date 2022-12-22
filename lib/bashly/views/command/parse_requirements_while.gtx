@@ -11,6 +11,12 @@ unless global_flags?
 end
 
 >
+>     --)
+>       shift
+>       other_args+=("$@")
+>       break
+>       ;;
+>
 >     -?*)
 
 if catch_all.enabled?

@@ -12,3 +12,4 @@ bashly generate
 ./download -h
 ./download something
 ./download something with --additional args
+./download something --debug -- also pass --debug to catch_all
