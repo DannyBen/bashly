@@ -27,6 +27,10 @@ args:
 - name: message
   required: true
   help: Message
+
+flags:
+- long: --debug
+  short: -d
 ```
 
 
@@ -37,7 +41,7 @@ args:
 
 ```shell
 missing required argument: MESSAGE
-usage: download MESSAGE [...]
+usage: download MESSAGE [OPTIONS] [...]
 
 
 ```
@@ -48,7 +52,7 @@ usage: download MESSAGE [...]
 download - Catch All Example
 
 Usage:
-  download MESSAGE [...]
+  download MESSAGE [OPTIONS] [...]
   download --help | -h
   download --version | -v
 
@@ -58,6 +62,9 @@ Options:
 
   --version, -v
     Show version number
+
+  --debug, -d
+
 
 Arguments:
   MESSAGE
@@ -91,6 +98,26 @@ other_args:
 - ${other_args[0]} = with
 - ${other_args[1]} = --additional
 - ${other_args[2]} = args
+
+
+```
+
+### `$ ./download something --debug -- also pass --debug to catch_all`
+
+```shell
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--debug]} = 1
+- ${args[message]} = something
+
+other_args:
+- ${other_args[*]} = also pass --debug to catch_all
+- ${other_args[0]} = also
+- ${other_args[1]} = pass
+- ${other_args[2]} = --debug
+- ${other_args[3]} = to
+- ${other_args[4]} = catch_all
 
 
 ```

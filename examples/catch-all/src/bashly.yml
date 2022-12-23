@@ -10,3 +10,6 @@ args:
   required: true
   help: Message
 
+flags:
+- long: --debug
+  short: -d
