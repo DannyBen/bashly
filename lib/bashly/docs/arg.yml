@@ -1,0 +1,94 @@
+arg:
+  help: Define positional arguments.
+  url: https://bashly.dannyb.co/configuration/argument/
+  example: |-
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+
+    - name: role
+      help: User role.
+      default: admin
+      allowed:
+      - admin
+      - guest
+
+arg.allowed:
+  help: Specify a list of allowed values. Can be used in conjunction with `default` and `required`.
+  url: https://bashly.dannyb.co/configuration/argument/#allowed
+  example: |-
+    args:
+    - name: region
+      help: Region to connect to
+      
+      # allowed + required
+      allowed: [eu, us]
+      required: true
+
+    - name: environment
+      help: Environment to connect to
+      
+      # allowed + default
+      allowed: [stage, production, development]
+      default: development
+
+arg.default:
+  help: Specify the value to apply when not provided by the user.
+  url: https://bashly.dannyb.co/configuration/argument/#default
+  example: |-
+    args:
+    - name: images
+      help: Image files to convert.
+      default: "*.jpg"
+
+arg.help:
+  help: Specify the help message for this argument.
+  url: https://bashly.dannyb.co/configuration/argument/#help
+  example: |-
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+
+arg.name:
+  help: Specify the lowercase name of the argument.
+  url: https://bashly.dannyb.co/configuration/argument/#name
+  example: |-
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+
+arg.repeatable:
+  help: |-
+    Specify that this argument can be provided multiple times.
+
+    The argument below will be received as a space-delimited string which needs to be converted to an array with:
+    `eval "data=(${args[file]})"`
+
+  url: https://bashly.dannyb.co/configuration/argument/#repeatable
+  example: |-
+    args:
+    - name: file
+      help: One or more files to process
+      required: true
+      repeatable: true
+
+arg.required:
+  help: Specify that this argument is required.
+  url: https://bashly.dannyb.co/configuration/argument/#required
+  example: |-
+    args:
+    - name: region
+      help: Region to connect to
+      required: true
+
+arg.validate:
+  help: Apply custom validation functions.
+
+  url: https://bashly.dannyb.co/configuration/argument/#validate
+  example: |-
+    args:
+    - name: path
+      validate: file_exists

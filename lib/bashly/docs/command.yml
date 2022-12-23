@@ -1,0 +1,204 @@
+command:
+  help: Define the root command, or any sub-command.
+  url: https://bashly.dannyb.co/configuration/command/
+  example: |-
+    name: rush
+    help: Personal package manager
+    version: 0.6.5
+
+    commands:
+    - name: add
+      alias: a
+      help: Register a local repository
+      args:
+      - name: repo
+        required: true
+        help: Repository name.
+
+command.alias:
+  help: Specify one or more aliases for this sub-command.
+  url: https://bashly.dannyb.co/configuration/command/#alias
+  example: |-
+    # Define a single alias
+    command:
+      name: download
+      alias: d
+
+    # Define multiple aliases
+    command:
+      name: download
+      alias: [d, pull]
+
+    # Run this commnad with anything that starts with 's'.
+    command:
+      name: server
+      alias: s*
+
+command.args:
+  help: Define a list of positional arguments. See `arg` for reference.
+  url: https://bashly.dannyb.co/configuration/command/#args
+  example: |-
+    args:
+    - name: repo
+      required: true
+      help: Repository name.
+
+command.catch_all:
+  help: Specify that this command should allow for additional arbitrary arguments or flags.
+  url: https://bashly.dannyb.co/configuration/command/#catch_all
+  example: |-
+    commands:
+    - name: download
+      help: Download one or more URLs
+      
+      # Set to true to simply enable this option
+      catch_all: true
+
+    - name: upload
+      help: Upload one or more files
+
+      # Use this extended syntax in order to also provide a usage label
+      # for these arguemnts, as well as specifying that at least one is
+      # required.
+      catch_all:
+        label: Files
+        help: Files to upload
+        required: true
+
+command.commands:
+  help: Define a list of sub-commands. See `command` for reference.
+  url: https://bashly.dannyb.co/configuration/command/#commands
+  example: |-
+    commands:
+    - name: add
+      alias: a
+      help: Register a local repository
+
+command.completions:
+  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add comp`.
+  url: https://bashly.dannyb.co/configuration/command/#completions
+  example: |-
+    commands:
+    - name: view
+      help: View a directory, system user or a git branch
+      completions:
+      - <directory>
+      - <user>
+      - $(git branch 2> /dev/null)
+
+command.default:
+  help: Specify that this sub-command will be executed implicitely.
+  url: https://bashly.dannyb.co/configuration/command/#default
+  example: |-
+    # This command will execute when the command line is not
+    # recognized.
+    commands:
+    - name: upload
+      help: Upload a file
+      default: true
+
+    # This command will execute when the command line is not
+    # recognized, or when it is empty.
+    commands:
+    - name: all
+      help: Run all tests
+      default: force
+
+command.dependencies:
+  help: Specify a list of required external commands that are needed to run this command.
+  url: https://bashly.dannyb.co/configuration/command/#dependencies
+  example: |-
+    # Array syntax
+    dependencies:
+    - docker
+    - curl
+
+    # Hash syntax, to provide additional help message
+    dependencies:
+      docker: see https://docker.com for installation instructions
+      git: "install by running: sudo apt install git"
+  
+command.environment_variables:
+  help: Define a list of environment variables. See `environment_variable` for reference.
+  url: https://bashly.dannyb.co/configuration/command/#environment_variables
+  example: |-
+    environment_variables:
+    - name: config_path
+      help: Location of the config file
+      default: ~/config.ini
+    - name: api_key
+      help: Your API key
+      required: true
+
+command.examples:
+  help: Define one or more example messages. 
+  url: https://bashly.dannyb.co/configuration/command/#examples
+  example: |-
+    # Use an array of examples for simple one-liners.
+    examples:
+    - cli download example.com
+    - cli download example.com ./output -f
+
+    # Use a multiline string when you need more control.
+    # Note the use of the '|-' marker that tells YAML to use the
+    # string as is, including the newlines it contains.
+    examples: |-
+      Upload a file
+      $ cli upload profile.png -u admin -p s3cr3t
+
+      Upload a file (you will be prompted to provide a password)
+      $ cli upload profile.png --user admin
+
+command.flags:
+  help: Define a list of option flags. See `flag` for reference.
+  url: https://bashly.dannyb.co/configuration/command/#flags
+  example: |-
+    flags:
+    - long: --purge
+      short: -p
+      help: Also remove the local directory.
+
+command.footer:
+  help: Specify a message to show at the bottom of the help text.
+  url: https://bashly.dannyb.co/configuration/command/#footer
+  example: |-
+    footer: For further help visit https://my.docs-site.com
+
+command.group:
+  help: Specify the group that this command belongs to.
+  url: https://bashly.dannyb.co/configuration/command/#group
+  example: |-
+    command:
+      name: start
+      help: Start the server
+      group: Server
+
+command.help:
+  help: Specify the help text to show when showing uwags.
+  url: https://bashly.dannyb.co/configuration/command/#help
+  example: |-
+    name: docker
+    help: Runtime for containers
+
+    commands:
+    - name: images
+      help: Manage images
+
+command.name:
+  help: Specify the name of the command. This option is required.
+  url: https://bashly.dannyb.co/configuration/command/#name
+  example: |-
+    name: docker
+    help: Runtime for containers
+
+    commands:
+    - name: images
+      help: Manage images
+
+command.version:
+  help: Specify the version to show when running with `--version`.
+  url: https://bashly.dannyb.co/configuration/command/#version
+  example: |-
+    name: rush
+    help: Personal package manager
+    version: 0.6.5

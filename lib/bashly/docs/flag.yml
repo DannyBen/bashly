@@ -1,0 +1,163 @@
+flag:
+  help: Define option flags.
+  url: https://bashly.dannyb.co/configuration/flag/
+  example: |-
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+
+    - long: --user
+      short: -u
+      arg: name
+      help: Repository user name
+      required: true
+
+flag.allowed:
+  help: Specify a list of allowed values. Can be used in conjunction with `default` and `required`, and must be accompanied by `arg`.
+  url: https://bashly.dannyb.co/configuration/flag/#allowed
+  example: |-
+    flags:
+    - long: --user
+      short: -u
+      arg: name
+      help: User name
+      
+      # allowed + required
+      allowed: [user, admin]
+      required: true
+
+    - long: --protocol
+      short: -p
+      arg: type
+      help: Protocol to connect with
+      
+      # allowed + default
+      allowed: [ftp, ssh, http]
+      default: ssh
+
+flag.arg:
+  help: Specify the name of the argument for this flag, in case it requires any.
+  url: https://bashly.dannyb.co/configuration/flag/#arg
+  example: |-
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+
+flag.completions:
+  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add comp`. Must be accompanied by `arg`.
+  url: https://bashly.dannyb.co/configuration/flag/#completions
+  example: |-
+    flags:
+    - long: --user
+      arg: username
+      completions:
+      - <user>
+    
+    # Anything in the 'allowed' option is automatically added as a completion.
+    - long: --protocol
+      arg: protocol
+      allowed:
+      - ssh
+      - telnet
+
+flag.conflicts:
+  help: Specify that this flag is mutually exclusive with one or more other flags. Use the long name of these conflicting flags.
+  url: https://bashly.dannyb.co/configuration/flag/#conflicts
+  example: |-
+    flags:
+    - long: --cache
+      help: Enable cache
+      
+      # Running --cache with --no-cache is not permitted
+      conflicts: [--no-cache]
+    
+    - long: --no-cache
+      help: Diisable cache
+      
+      # Running --no-cache with --cache or with --fast is not permitted
+      conflicts: [--cache, --fast]
+    
+    - long: --fast
+      help: Run faster
+      
+      # Make sure to add the conflicting flags on both sides of the conflict
+      conflicts: [--no-cache]
+
+flag.default:
+  help: Specify the value to apply when not provided by the user.
+  url: https://bashly.dannyb.co/configuration/flag/#default
+  example: |-
+    flags:
+    - long: --environment
+      arg: name
+      help: Set environment name
+      default: production
+
+flag.help:
+  help: Specify the help message for this flag.
+  url: https://bashly.dannyb.co/configuration/flag/#help
+  example: |-
+    flags:
+    - long: --cache
+      help: Enable cache
+
+flag.long:
+  help: Specify the long form of the flag, including the -- prefix. Either `long` or `short` is required.
+  url: https://bashly.dannyb.co/configuration/flag/#long
+  example: |-
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+
+flag.repeatable:
+  help: |-
+    Specify that this flag can be provided multiple times. When used on a flag with an argument, it will be received as a space-delimited string, which needs to be converted to an array with:
+    `eval "data=(${args[--data]})"`
+
+  url: https://bashly.dannyb.co/configuration/flag/#repeatable
+  example: |-
+    flags:
+    - long: --data
+      short: -d
+      arg: data
+      help: Provide data values
+      required: true
+      repeatable: true
+
+    - long: --verbose
+      short: -v
+      help: Set verbosity level
+      repeatable: true
+
+flag.required:
+  help: Specify that this flag is required.
+  url: https://bashly.dannyb.co/configuration/flag/#required
+  example: |-
+    args:
+    - long: --user
+      arg: name
+      help: Repository user name
+      required: true
+
+flag.short:
+  help: Specify the short form of the flag, including the - prefix. Either `long` or `short` is required.
+  url: https://bashly.dannyb.co/configuration/flag/#short
+  example: |-
+    - long: --user
+      short: -u
+      arg: name
+      help: Repository user name
+
+flag.validate:
+  help: Apply custom validation functions. Must be accompanied by `arg`.
+
+  url: https://bashly.dannyb.co/configuration/flag/#validate
+  example: |-
+   flags:
+   - long: --config
+     arg: path
+     help: Load configuration from a file
+     validate: file_exists
