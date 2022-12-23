@@ -1,0 +1,731 @@
+arg
+
+  Define positional arguments.
+
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+    
+    - name: role
+      help: User role.
+      default: admin
+      allowed:
+      - admin
+      - guest
+
+  See https://bashly.dannyb.co/configuration/argument/
+
+arg.allowed
+
+  Specify a list of allowed values. Can be used in conjunction with default
+  and required.
+
+    args:
+    - name: region
+      help: Region to connect to
+      
+      # allowed + required
+      allowed: [eu, us]
+      required: true
+    
+    - name: environment
+      help: Environment to connect to
+      
+      # allowed + default
+      allowed: [stage, production, development]
+      default: development
+
+  See https://bashly.dannyb.co/configuration/argument/#allowed
+
+arg.default
+
+  Specify the value to apply when not provided by the user.
+
+    args:
+    - name: images
+      help: Image files to convert.
+      default: "*.jpg"
+
+  See https://bashly.dannyb.co/configuration/argument/#default
+
+arg.help
+
+  Specify the help message for this argument.
+
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+
+  See https://bashly.dannyb.co/configuration/argument/#help
+
+arg.name
+
+  Specify the lowercase name of the argument.
+
+    args:
+    - name: user
+      help: AWS Username.
+      required: true
+
+  See https://bashly.dannyb.co/configuration/argument/#name
+
+arg.repeatable
+
+  Specify that this argument can be provided multiple times.
+  
+  The argument below will be received as a space-delimited string which needs to
+  be converted to an array with:
+  eval "data=(${args[file]})"
+
+    args:
+    - name: file
+      help: One or more files to process
+      required: true
+      repeatable: true
+
+  See https://bashly.dannyb.co/configuration/argument/#repeatable
+
+arg.required
+
+  Specify that this argument is required.
+
+    args:
+    - name: region
+      help: Region to connect to
+      required: true
+
+  See https://bashly.dannyb.co/configuration/argument/#required
+
+arg.validate
+
+  Apply custom validation functions.
+
+    args:
+    - name: path
+      validate: file_exists
+
+  See https://bashly.dannyb.co/configuration/argument/#validate
+
+command
+
+  Define the root command, or any sub-command.
+
+    name: rush
+    help: Personal package manager
+    version: 0.6.5
+    
+    commands:
+    - name: add
+      alias: a
+      help: Register a local repository
+      args:
+      - name: repo
+        required: true
+        help: Repository name.
+
+  See https://bashly.dannyb.co/configuration/command/
+
+command.alias
+
+  Specify one or more aliases for this sub-command.
+
+    # Define a single alias
+    command:
+      name: download
+      alias: d
+    
+    # Define multiple aliases
+    command:
+      name: download
+      alias: [d, pull]
+    
+    # Run this command with anything that starts with 's'.
+    command:
+      name: server
+      alias: s*
+
+  See https://bashly.dannyb.co/configuration/command/#alias
+
+command.args
+
+  Define a list of positional arguments. See arg for reference.
+
+    args:
+    - name: repo
+      required: true
+      help: Repository name.
+
+  See https://bashly.dannyb.co/configuration/command/#args
+
+command.catch_all
+
+  Specify that this command should allow for additional arbitrary arguments or
+  flags.
+
+    commands:
+    - name: download
+      help: Download one or more URLs
+      
+      # Set to 'true' to simply enable this option
+      catch_all: true
+    
+    - name: upload
+      help: Upload one or more files
+    
+      # Use this extended syntax in order to also provide a usage label
+      # for these arguments, as well as specifying that at least one is
+      # required.
+      catch_all:
+        label: Files
+        help: Files to upload
+        required: true
+
+  See https://bashly.dannyb.co/configuration/command/#catch_all
+
+command.commands
+
+  Define a list of sub-commands. See command for reference.
+
+    commands:
+    - name: add
+      alias: a
+      help: Register a local repository
+
+  See https://bashly.dannyb.co/configuration/command/#commands
+
+command.completions
+
+  Specify a list of additional completion suggestions when used in conjunction
+  with bashly add comp.
+
+    commands:
+    - name: view
+      help: View a directory, system user or a git branch
+      completions:
+      - <directory>
+      - <user>
+      - $(git branch 2> /dev/null)
+
+  See https://bashly.dannyb.co/configuration/command/#completions
+
+command.default
+
+  Specify that this sub-command will be executed implicitly.
+
+    # This command will execute when the command line is not
+    # recognized.
+    commands:
+    - name: upload
+      help: Upload a file
+      default: true
+    
+    # This command will execute when the command line is not
+    # recognized, or when it is empty.
+    commands:
+    - name: all
+      help: Run all tests
+      default: force
+
+  See https://bashly.dannyb.co/configuration/command/#default
+
+command.dependencies
+
+  Specify a list of required external commands that are needed to run this
+  command.
+
+    # Array syntax
+    dependencies:
+    - docker
+    - curl
+    
+    # Hash syntax, to provide additional help message
+    dependencies:
+      docker: see https://docker.com for installation instructions
+      git: "install by running: sudo apt install git"
+
+  See https://bashly.dannyb.co/configuration/command/#dependencies
+
+command.environment_variables
+
+  Define a list of environment variables. See environment_variable for
+  reference.
+
+    environment_variables:
+    - name: config_path
+      help: Location of the config file
+      default: ~/config.ini
+    - name: api_key
+      help: Your API key
+      required: true
+
+  See https://bashly.dannyb.co/configuration/command/#environment_variables
+
+command.examples
+
+  Define one or more example messages.
+
+    # Use an array of examples for simple one-liners.
+    examples:
+    - cli download example.com
+    - cli download example.com ./output -f
+    
+    # Use a multi-line string when you need more control.
+    # Note the use of the '|-' marker that tells YAML to use the
+    # string as is, including the newlines it contains.
+    examples: |-
+      Upload a file
+      $ cli upload profile.png -u admin -p s3cr3t
+    
+      Upload a file (you will be prompted to provide a password)
+      $ cli upload profile.png --user admin
+
+  See https://bashly.dannyb.co/configuration/command/#examples
+
+command.expose
+
+  Specify that the sub-commands of this command should be visible when showing
+  the usage of its parent.
+
+    name: cli
+    commands:
+    - name: config
+      help: Config management commands
+    
+      # Set to 'true' to show both 'config edit' and 'config show' when
+      # running 'cli --help'
+      expose: true
+      commands:
+      - name: edit
+        help: Edit config file
+      - name: show
+        help: Show config file
+    
+    - name: server
+      help: Server management commands
+      
+      # Set to 'always' to also show the usage of the sub-commands when
+      # running 'cli' without arguments.
+      expose: always
+    
+      commands:
+      - name: start
+        help: Start the server
+      - name: stop
+        help: Stop the server
+
+  See https://bashly.dannyb.co/configuration/command/#expose
+
+command.extensible
+
+  Specify that this command can be extended by external means.
+
+    name: mygit
+    help: Wrapper for git
+    version: 0.1.0
+    
+    # Set to 'true' to allow extending it by creating executables in the
+    # path named 'mygit-*'.
+    extensible: true
+    
+    # Set to another executable name to delegate all unknown commands
+    # to it.
+    extensible: git
+
+  See https://bashly.dannyb.co/configuration/command/#extensible
+
+command.filename
+
+  Specify the path (relative to src) to the partial source code file.
+
+    commands:
+    - name: connect
+      help: Connect to server
+      filename: admin_commands/list.sh
+
+  See https://bashly.dannyb.co/configuration/command/#filename
+
+command.filters
+
+  Specify a list of custom filter functions that will prevent the command from
+  running unless certain conditions are met.
+
+    commands:
+    - name: container
+      help: Perform actions on a docker container
+    
+      # When the command is executed, your script will look for a function
+      # named 'filter_docker_running' and execute it. If it prints a string,
+      # it will be considered an error and the command execution will be
+      # halted.
+      filters:
+      - docker_running
+    
+    # Example function (put somewhere in src/lib)
+    filter_docker_running() {
+      docker info >/dev/null 2>&1 || echo "Docker must be running"
+    }
+
+  See https://bashly.dannyb.co/configuration/command/#filters
+
+command.flags
+
+  Define a list of option flags. See flag for reference.
+
+    flags:
+    - long: --purge
+      short: -p
+      help: Also remove the local directory.
+
+  See https://bashly.dannyb.co/configuration/command/#flags
+
+command.footer
+
+  Specify a message to show at the bottom of the help text.
+
+    footer: For further help visit https://my.docs-site.com
+
+  See https://bashly.dannyb.co/configuration/command/#footer
+
+command.function
+
+  Specify a different base function name for this command.
+
+    commands:
+    - name: container-start
+      help: Start a new container (deprecated)
+    
+      # Override the name of the internal functions bashly uses. This is
+      # needed in this case since the command 'container-start' and the
+      # nested command 'container start' will have the same underlying
+      # function name otherwise.
+      function: deprecated_container_start
+      footer: This command is deprecated, use 'container start' instead
+    
+    - name: container
+      help: Container commands
+      commands:
+      - name: start
+        help: Start a new container
+
+  See https://bashly.dannyb.co/configuration/command/#function
+
+command.group
+
+  Specify the group that this command belongs to.
+
+    command:
+      name: start
+      help: Start the server
+      group: Server
+
+  See https://bashly.dannyb.co/configuration/command/#group
+
+command.help
+
+  Specify the help text to show when displaying usage.
+
+    name: docker
+    help: Runtime for containers
+    
+    commands:
+    - name: images
+      help: Manage images
+
+  See https://bashly.dannyb.co/configuration/command/#help
+
+command.name
+
+  Specify the name of the command. This option is required.
+
+    name: docker
+    help: Runtime for containers
+    
+    commands:
+    - name: images
+      help: Manage images
+
+  See https://bashly.dannyb.co/configuration/command/#name
+
+command.private
+
+  Specify that this command should not be displayed in the help text.
+
+    commands:
+    - name: completions
+      help: Send bash completions
+      private: true
+
+  See https://bashly.dannyb.co/configuration/command/#private
+
+command.version
+
+  Specify the version to show when running with --version.
+
+    name: rush
+    help: Personal package manager
+    version: 0.6.5
+
+  See https://bashly.dannyb.co/configuration/command/#version
+
+environment_variable
+
+  Define environment variables that will be in use in your script.
+
+    environment_variables:
+    - name: config_path
+      help: Location of the config file
+      default: ~/config.ini
+    - name: api_key
+      help: Your API key
+      required: true
+
+  See https://bashly.dannyb.co/configuration/environment-variable/
+
+environment_variable.default
+
+  Specify the value to apply when not provided by the user.
+
+    environment_variables:
+    - name: config_path
+      help: Location of the config file
+      default: ~/config.ini
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#default
+
+environment_variable.help
+
+  Specify the help message for name for this variable.
+
+    environment_variables:
+    - name: api_key
+      help: Your API key
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#help
+
+environment_variable.name
+
+  Specify the lowercase name of the variable.
+
+    environment_variables:
+    - name: api_key
+      help: Your API key
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#name
+
+environment_variable.private
+
+  Specify that this environment variable should not be advertised in the usage
+  text. Only makes sense when accompanied by default.
+
+    environment_variables:
+    - name: editor
+      help: Editor to use
+      default: vim
+      private: true
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#private
+
+environment_variable.required
+
+  Specify that this variable is required.
+
+    - name: api_key
+      help: Your API key
+      required: true
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#required
+
+flag
+
+  Define option flags.
+
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+    
+    - long: --user
+      short: -u
+      arg: name
+      help: Repository user name
+      required: true
+
+  See https://bashly.dannyb.co/configuration/flag/
+
+flag.allowed
+
+  Specify a list of allowed values. Can be used in conjunction with default
+  and required, and must be accompanied by arg.
+
+    flags:
+    - long: --user
+      short: -u
+      arg: name
+      help: User name
+      
+      # allowed + required
+      allowed: [user, admin]
+      required: true
+    
+    - long: --protocol
+      short: -p
+      arg: type
+      help: Protocol to connect with
+      
+      # allowed + default
+      allowed: [ftp, ssh, http]
+      default: ssh
+
+  See https://bashly.dannyb.co/configuration/flag/#allowed
+
+flag.arg
+
+  Specify the name of the argument for this flag, in case it requires any.
+
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+
+  See https://bashly.dannyb.co/configuration/flag/#arg
+
+flag.completions
+
+  Specify a list of additional completion suggestions when used in conjunction
+  with bashly add comp. Must be accompanied by arg.
+
+    flags:
+    - long: --user
+      arg: username
+      completions:
+      - <user>
+    
+    # Anything in the 'allowed' option is automatically added as a completion.
+    - long: --protocol
+      arg: protocol
+      allowed:
+      - ssh
+      - telnet
+
+  See https://bashly.dannyb.co/configuration/flag/#completions
+
+flag.conflicts
+
+  Specify that this flag is mutually exclusive with one or more other flags. Use
+  the long name of these conflicting flags.
+
+    flags:
+    - long: --cache
+      help: Enable cache
+      
+      # Running --cache with --no-cache is not permitted
+      conflicts: [--no-cache]
+    
+    - long: --no-cache
+      help: Diisable cache
+      
+      # Running --no-cache with --cache or with --fast is not permitted
+      conflicts: [--cache, --fast]
+    
+    - long: --fast
+      help: Run faster
+      
+      # Make sure to add the conflicting flags on both sides of the conflict
+      conflicts: [--no-cache]
+
+  See https://bashly.dannyb.co/configuration/flag/#conflicts
+
+flag.default
+
+  Specify the value to apply when not provided by the user.
+
+    flags:
+    - long: --environment
+      arg: name
+      help: Set environment name
+      default: production
+
+  See https://bashly.dannyb.co/configuration/flag/#default
+
+flag.help
+
+  Specify the help message for this flag.
+
+    flags:
+    - long: --cache
+      help: Enable cache
+
+  See https://bashly.dannyb.co/configuration/flag/#help
+
+flag.long
+
+  Specify the long form of the flag, including the -- prefix. Either long or
+  short is required.
+
+    flags:
+    - long: --ssh
+      short: -s
+      help: Clone using SSH
+
+  See https://bashly.dannyb.co/configuration/flag/#long
+
+flag.repeatable
+
+  Specify that this flag can be provided multiple times. When used on a flag
+  with an argument, it will be received as a space-delimited string, which needs
+  to be converted to an array with:
+  eval "data=(${args[--data]})"
+
+    flags:
+    - long: --data
+      short: -d
+      arg: data
+      help: Provide data values
+      required: true
+      repeatable: true
+    
+    - long: --verbose
+      short: -v
+      help: Set verbosity level
+      repeatable: true
+
+  See https://bashly.dannyb.co/configuration/flag/#repeatable
+
+flag.required
+
+  Specify that this flag is required.
+
+    args:
+    - long: --user
+      arg: name
+      help: Repository user name
+      required: true
+
+  See https://bashly.dannyb.co/configuration/flag/#required
+
+flag.short
+
+  Specify the short form of the flag, including the - prefix. Either long or
+  short is required.
+
+    - long: --user
+      short: -u
+      arg: name
+      help: Repository user name
+
+  See https://bashly.dannyb.co/configuration/flag/#short
+
+flag.validate
+
+  Apply custom validation functions. Must be accompanied by arg.
+
+    flags:
+    - long: --config
+      arg: path
+      help: Load configuration from a file
+      validate: file_exists
+
+  See https://bashly.dannyb.co/configuration/flag/#validate
+

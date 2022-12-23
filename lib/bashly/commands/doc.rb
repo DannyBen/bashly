@@ -7,11 +7,12 @@ module Bashly
       usage 'bashly doc [SEARCH] [--index]'
       usage 'bashly doc (-h|--help)'
 
-      option "-i --index", "Show option keys only"
+      option '-i --index', 'Show option keys only'
       param 'SEARCH', 'Search for options that match this text'
 
       example 'bashly doc command'
       example 'bashly doc command.flags'
+      example 'bashly doc flag. -i'
       example 'bashly doc catch_all'
 
       def run
@@ -46,7 +47,7 @@ module Bashly
       def show_example(example)
         example = word_wrap "    #{example}"
         example.gsub!(/^(\s*- )?(\s*\w+):/, '\1!txtblu!\2!txtrst!:')
-        example.gsub!(/^(\s*\- )/, '!txtylw!\1!txtrst!')
+        example.gsub!(/^(\s*- )/, '!txtylw!\1!txtrst!')
         example.gsub!(/^(\s*#.+)/, '!txtpur!\1!txtrst!')
         say example
         say ''
@@ -61,15 +62,14 @@ module Bashly
 
       def data
         return raw_data unless args['SEARCH']
-        
-        result = raw_data.select { |k, v| k. == args['SEARCH'] }
+
+        result = raw_data.select { |k, _v| k.== args['SEARCH'] }
         return result if result.any?
 
-        result = raw_data.select { |k, v| k.include? args['SEARCH'] }
+        result = raw_data.select { |k, _v| k.include? args['SEARCH'] }
         return result if result.any?
 
-        say! "!txtred!No match"
-        exit 1
+        raise Error, "No match"
       end
 
       def raw_data
@@ -83,7 +83,7 @@ module Bashly
       end
 
       def docs_dir
-        @docs_dir ||= File.expand_path "../docs", __dir__
+        @docs_dir ||= File.expand_path '../docs', __dir__
       end
     end
   end

@@ -29,7 +29,7 @@ command.alias:
       name: download
       alias: [d, pull]
 
-    # Run this commnad with anything that starts with 's'.
+    # Run this command with anything that starts with 's'.
     command:
       name: server
       alias: s*
@@ -58,7 +58,7 @@ command.catch_all:
       help: Upload one or more files
 
       # Use this extended syntax in order to also provide a usage label
-      # for these arguemnts, as well as specifying that at least one is
+      # for these arguments, as well as specifying that at least one is
       # required.
       catch_all:
         label: Files
@@ -87,7 +87,7 @@ command.completions:
       - $(git branch 2> /dev/null)
 
 command.default:
-  help: Specify that this sub-command will be executed implicitely.
+  help: Specify that this sub-command will be executed implicitly.
   url: https://bashly.dannyb.co/configuration/command/#default
   example: |-
     # This command will execute when the command line is not
@@ -139,7 +139,7 @@ command.examples:
     - cli download example.com
     - cli download example.com ./output -f
 
-    # Use a multiline string when you need more control.
+    # Use a multi-line string when you need more control.
     # Note the use of the '|-' marker that tells YAML to use the
     # string as is, including the newlines it contains.
     examples: |-
@@ -271,7 +271,7 @@ command.group:
       group: Server
 
 command.help:
-  help: Specify the help text to show when showing uwags.
+  help: Specify the help text to show when displaying usage.
   url: https://bashly.dannyb.co/configuration/command/#help
   example: |-
     name: docker
