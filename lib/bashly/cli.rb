@@ -14,6 +14,7 @@ module Bashly
       runner.route 'validate',  to: Commands::Validate
       runner.route 'generate',  to: Commands::Generate
       runner.route 'add',       to: Commands::Add
+      runner.route 'doc',       to: Commands::Doc
 
       runner
     end

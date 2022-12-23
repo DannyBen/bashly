@@ -1,0 +1,14 @@
+environment_variable
+
+  Define environment variables that will be in use in your script.
+
+    environment_variables:
+    - name: config_path
+      help: Location of the config file
+      default: ~/config.ini
+    - name: api_key
+      help: Your API key
+      required: true
+
+  See https://bashly.dannyb.co/configuration/environment-variable/
+

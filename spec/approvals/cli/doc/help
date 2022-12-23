@@ -1,0 +1,25 @@
+Show bashly reference documentation
+
+This command displays bite-sized help for all the bashly configuration options
+in the terminal.
+
+Usage:
+  bashly doc [SEARCH] [--index]
+  bashly doc (-h|--help)
+
+Options:
+  -i --index
+    Show option keys only
+
+  -h --help
+    Show this help
+
+Parameters:
+  SEARCH
+    Search for options that match this text
+
+Examples:
+  bashly doc command
+  bashly doc command.flags
+  bashly doc flag. -i
+  bashly doc catch_all
