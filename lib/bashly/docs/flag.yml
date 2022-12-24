@@ -74,7 +74,7 @@ flag.conflicts:
       conflicts: [--no-cache]
     
     - long: --no-cache
-      help: Diisable cache
+      help: Disable cache
       
       # Running --no-cache with --cache or with --fast is not permitted
       conflicts: [--cache, --fast]
