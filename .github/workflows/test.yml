@@ -30,6 +30,10 @@ jobs:
         ruby-version: '${{ matrix.ruby }}'
         bundler-cache: true
 
+    # ref: https://github.com/ruby/setup-ruby/issues/420
+    - name: Update rubygems
+      run: gem update --system
+
     - name: Run tests
       run: bundle exec rspec
 
