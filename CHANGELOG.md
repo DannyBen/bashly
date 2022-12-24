@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v0.9.3 - 2022-12-24
+----------------------------------------
+
+- Add support for double dash as an argument parsing terminator
+- Add bashly doc command to show reference in the terminal
+
+
 v0.9.2 - 2022-12-16
 ----------------------------------------
 
