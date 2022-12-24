@@ -29,7 +29,6 @@ jobs:
       with: 
         ruby-version: '${{ matrix.ruby }}'
         bundler-cache: true
-        rubygems: latest
 
     - name: Run tests
       run: bundle exec rspec
