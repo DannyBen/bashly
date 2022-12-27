@@ -1,3 +1,5 @@
+require 'lp'
+
 module Bashly
   module Commands
     class Validate < Base
