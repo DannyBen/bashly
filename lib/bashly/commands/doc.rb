@@ -69,7 +69,7 @@ module Bashly
         result = raw_data.select { |k, _v| k.include? args['SEARCH'] }
         return result if result.any?
 
-        raise Error, "No match"
+        raise Error, 'No match'
       end
 
       def raw_data
