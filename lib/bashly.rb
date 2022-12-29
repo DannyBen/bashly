@@ -6,7 +6,6 @@ if ENV['BYEBUG']
 end
 
 requires 'bashly/concerns'
-
 requires 'bashly/extensions'
 requires 'bashly/settings'
 requires 'bashly/exceptions'
