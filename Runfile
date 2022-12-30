@@ -59,6 +59,9 @@ end
 
 help   "Append the content of bashly.yml to all example READMEs"
 action :examples do
+  # Disable color output (for the color examples)
+  ENV['NO_COLOR']='1'
+  
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|

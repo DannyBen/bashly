@@ -1,6 +1,6 @@
 = view_marker
 
-> printf "{{ strings[:arguments] }}\n"
+> printf "%s\n" "{{ strings[:arguments].color(:caption) }}"
 
 if args.any?
   >

@@ -1,0 +1,73 @@
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/download_command.sh (exists)
+skipped src/upload_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli - Sample application
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  download   Download a file
+  upload     Upload a file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Environment Variables:
+  API_KEY
+    Set your API key
+
++ ./cli download -h
+cli download - Download a file
+
+Alias: d
+
+Usage:
+  cli download SOURCE [TARGET] [OPTIONS]
+  cli download --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+  --force, -f
+    Overwrite existing files
+
+Arguments:
+  SOURCE
+    URL to download from
+
+  TARGET
+    Target filename (default: same as source)
+
+Environment Variables:
+  DEFAULT_TARGET_LOCATION
+    Set the default location to download to
+
+Examples:
+  cli download example.com
+  cli download example.com ./output -f
+

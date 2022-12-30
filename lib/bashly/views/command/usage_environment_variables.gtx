@@ -1,6 +1,6 @@
 = view_marker
 
-> printf "{{ strings[:environment_variables] }}\n"
+> printf "%s\n" "{{ strings[:environment_variables].color(:caption) }}"
 > 
 
 environment_variables.reject(&:private).each do |env_var|

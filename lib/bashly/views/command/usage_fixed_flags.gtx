@@ -1,11 +1,20 @@
 = view_marker
 
-= short_flag_exist?("-h") ? 'echo "  --help"' : 'echo "  --help, -h"'
+if short_flag_exist?("-h")
+  > printf "  %s\n" "{{ '--help'.color(:flag) }}"
+else
+  > printf "  %s\n" "{{ '--help, -h'.color(:flag) }}"
+end
+
 > printf "    {{ strings[:help_flag_text] }}\n"
 > echo
 
 if root_command?
-  = short_flag_exist?("-v") ? 'echo "  --version"' : 'echo "  --version, -v"'
+  if short_flag_exist?("-v")
+    > printf "  %s\n" "{{ '--version'.color(:flag) }}"
+  else
+    > printf "  %s\n" "{{ '--version, -v'.color(:flag) }}"
+  end
   > printf "    {{ strings[:version_flag_text] }}\n"
   > echo
 end

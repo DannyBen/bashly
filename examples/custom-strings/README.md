@@ -46,10 +46,10 @@ flags:
 
 ```yaml
 # Usage captions
-usage: "== Usage ==\\n"
-options: "== Options ==\\n"
-arguments: "== Arguments ==\\n"
-commands: "== Commands ==\\n"
+usage: "== Usage =="
+options: "== Options =="
+arguments: "== Arguments =="
+commands: "== Commands =="
 
 # Fixed flags help text
 help_flag_text: Show this helpful help
@@ -87,7 +87,7 @@ download - Sample minimal application with custom strings
   download --version | -v
 
 == Options ==
-
+  
   --help, -h
     Show this helpful help
 
@@ -98,7 +98,7 @@ download - Sample minimal application with custom strings
     Target directory
 
 == Arguments ==
-
+    
   SOURCE
     URL to download from
 

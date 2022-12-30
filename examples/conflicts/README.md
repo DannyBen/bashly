@@ -59,7 +59,7 @@ Options:
     Enable cache
 
   --no-cache
-    Diisable cache
+    Disable cache
 
   --fast
     Run faster
