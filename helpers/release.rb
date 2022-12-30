@@ -57,11 +57,15 @@ action :release do |args|
     checklist.url_exist? "https://github.com/DannyBen/bashly/releases/tag/v#{version}"
   end
 
-  checklist.run "local retype" do
+  checklist.run "local retype is on master and clean" do
+    `git -C /vagrant/sites/bashly status`.match /On branch master.*nothing to commit/m
+  end
+
+  checklist.run "local retype version" do
     YAML.load_file('/vagrant/sites/bashly/retype.yml')['branding']['label'] == "v#{version}"
   end
 
-  checklist.run "remote retype" do
+  checklist.run "remote retype version" do
     `curl -Ss https://raw.githubusercontent.com/DannyBen/bashly-book/master/retype.yml`.include? "label: v#{version}"
   end
 
