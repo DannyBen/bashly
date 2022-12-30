@@ -4,7 +4,7 @@ module Bashly
       include AssetHelper
 
       attr_writer :compact_short_flags, :lib_dir, :partials_extension,
-        :source_dir, :strict, :tab_indent, :target_dir
+        :source_dir, :strict, :tab_indent, :target_dir, :usage_colors
 
       def compact_short_flags
         @compact_short_flags ||= get :compact_short_flags
@@ -48,6 +48,10 @@ module Bashly
 
       def target_dir
         @target_dir ||= get :target_dir
+      end
+
+      def usage_colors
+        @usage_colors ||= get :usage_colors
       end
 
     private

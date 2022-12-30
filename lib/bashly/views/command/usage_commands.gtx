@@ -3,13 +3,13 @@
 maxlen = command_help_data.values.map(&:keys).flatten.map(&:size).max
 
 command_help_data.each do |group, commands|
-  > printf "{{ group }}\n"
+  > printf "%s\n" "{{ group.color(:caption) }}"
 
   commands.each do |command, info|
     if info[:help_only]
-      > [[ -n $long_usage ]] && echo "  {{ command.ljust maxlen }}   {{ info[:summary] }}"
+      > [[ -n $long_usage ]] && printf "  %s   {{ info[:summary] }}\n" "{{ command.ljust(maxlen).color(:command) }}"
     else
-      > echo "  {{ command.ljust maxlen }}   {{ info[:summary] }}"
+      > printf "  %s   {{ info[:summary] }}\n" "{{ command.ljust(maxlen).color(:command) }}"
     end
   end
 

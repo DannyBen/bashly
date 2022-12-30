@@ -37,4 +37,12 @@ class String
       "\t" * (::Regexp.last_match(1).size / tabstop)
     end
   end
+
+  def color(marker)
+    color = Bashly::Settings.usage_colors.dig marker.to_s
+    return self unless color
+
+    text, spaces = match(/(.*?)(\s*)$/).captures
+    %[$(#{color} "#{text}")#{spaces}]
+  end
 end

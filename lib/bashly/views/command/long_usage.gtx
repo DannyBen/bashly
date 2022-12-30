@@ -1,7 +1,7 @@
 = view_marker
 
 > if [[ -n $long_usage ]]; then
->   printf "{{ strings[:options] }}\n"
+>   printf "%s\n" "{{ strings[:options].color(:caption) }}"
 >
 = render(:usage_fixed_flags).indent 2
 = render(:usage_flags).indent 2 if flags.any?
