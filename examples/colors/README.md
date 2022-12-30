@@ -56,11 +56,11 @@ echo
 ### `$ ./colorly`
 
 ```shell
-[4mMessage Recevied:[0m
+Message Recevied:
 
-  => [1;32mhello colors[0m
-  ==> [1;31mhello colors[0m
-  ===> [1;34mhello colors[0m
+  => hello colors
+  ==> hello colors
+  ===> hello colors
 
 
 

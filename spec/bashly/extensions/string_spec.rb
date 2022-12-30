@@ -132,4 +132,31 @@ describe String do
       end
     end
   end
+
+  describe '#color' do
+    subject { 'color me' }
+
+    context 'with no matching marker in the settings' do
+      it 'returns the string as is' do
+        expect(subject.color :no_such_marker).to eq subject
+      end
+    end
+
+    context 'with a matching marker in the settings' do
+      before { Settings.usage_colors = { 'some_marker' => 'some_color' } }
+      after { Settings.usage_colors = {} }
+
+      it 'returns the string wrapped in the requested function' do
+        expect(subject.color :some_marker).to eq %[$(some_color "#{subject}")]
+      end
+
+      context 'when the string ends with spaces (for indentation)' do
+        subject { 'color me   ' }
+
+        it 'appends the spaces outside the function' do
+          expect(subject.color :some_marker).to eq %[$(some_color "color me")   ]
+        end
+      end
+    end
+  end
 end

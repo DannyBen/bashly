@@ -39,6 +39,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 
 ## Customization
 
+- [colors-usage](colors-usage#readme) - adding colors to the usage text
 - [command-groups](command-groups#readme) - grouping sub-commands in logical sections
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
 - [custom-includes](custom-includes#readme) - adding and organizing your custom functions

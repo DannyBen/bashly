@@ -39,7 +39,7 @@ class String
   end
 
   def color(marker)
-    color = Bashly::Settings.usage_colors.dig marker.to_s
+    color = Bashly::Settings.usage_colors[marker.to_s]
     return self unless color
 
     text, spaces = match(/(.*?)(\s*)$/).captures

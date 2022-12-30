@@ -59,7 +59,7 @@ missing dependency: shmurl
 
 ```shell
 missing dependency: mini-docker
-install with [32mgem install mini-docker[0m
+install with gem install mini-docker
 
 
 ```
