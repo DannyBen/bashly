@@ -95,7 +95,9 @@ usage_colors:
   arg: blue
   flag: magenta
   environment_variable: cyan
+
 ```
+
 
 ## Generated script output
 
@@ -112,6 +114,9 @@ Usage:
 Commands:
   download   Download a file
   upload     Upload a file
+
+
+
 ```
 
 ### `$ ./cli -h`
@@ -138,6 +143,9 @@ Options:
 Environment Variables:
   API_KEY
     Set your API key
+
+
+
 ```
 
 ### `$ ./cli download -h`
@@ -172,4 +180,10 @@ Environment Variables:
 Examples:
   cli download example.com
   cli download example.com ./output -f
+
+
+
 ```
+
+
+

@@ -46,10 +46,10 @@ flags:
 
 ```yaml
 # Usage captions
-usage: "== Usage ==\n"
-options: "== Options ==\n"
-arguments: "== Arguments ==\n"
-commands: "== Commands ==\n"
+usage: "== Usage =="
+options: "== Options =="
+arguments: "== Arguments =="
+commands: "== Commands =="
 
 # Fixed flags help text
 help_flag_text: Show this helpful help
