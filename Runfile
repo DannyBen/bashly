@@ -3,6 +3,7 @@ require "byebug"
 require "colsole"
 require_relative 'lib/bashly'
 require_relative 'helpers/example'
+require_relative 'helpers/checklist'
 include Colsole
 
 title   "Bashly Developer Toolbelt"
@@ -70,4 +71,5 @@ action :examples do
   end
 end
 
+require_relative 'helpers/release'
 require './debug.rb' if File.exist? 'debug.rb'
