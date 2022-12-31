@@ -33,7 +33,7 @@ action :release do |args|
   end
 
   checklist.run "local gem is built" do
-    File.exist? "gems/bashly-#{version}"
+    File.exist? "gems/bashly-#{version}.gem"
   end
 
   checklist.run "published gem version" do
