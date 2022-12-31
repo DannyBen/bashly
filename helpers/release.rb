@@ -54,7 +54,7 @@ action :release do |args|
   end
 
   checklist.run "github release" do
-    `curl -SsI https://github.com/DannyBen/bashly/releases/latest`.include? "location: https://github.com/.*/v#{version}"
+    `curl -SsI https://github.com/DannyBen/bashly/releases/latest`.match "location: https://github.com/.*/v#{version}"
   end
 
   checklist.run "local retype is on master and clean" do
