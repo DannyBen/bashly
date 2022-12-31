@@ -32,8 +32,8 @@ action :release do |args|
     checklist.url_exist? "https://github.com/DannyBen/bashly/tree/v#{version}"
   end
 
-  checklist.run "local gem version" do
-    `bundle exec bashly --version`.strip == version
+  checklist.run "local gem is built" do
+    File.exist? "gems/bashly-#{version}"
   end
 
   checklist.run "published gem version" do
