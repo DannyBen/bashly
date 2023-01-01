@@ -20,8 +20,14 @@ Metrics/PerceivedComplexity:  { Exclude: [lib/bashly/config_validator.rb] }
 Metrics/MethodLength:         { Exclude: [lib/bashly/config_validator.rb] }
 Style/GuardClause:            { Exclude: [lib/bashly/config_validator.rb] }
 
+# Allow longer blocks
+Metrics/BlockLength:
+  Exclude:
+    - helpers/release.rb
+
 # Allow irregular filenames in some cases
 RSpec/FilePath:
   Exclude:
     - 'spec/bashly/concerns/completions_command_spec.rb'
     - 'spec/bashly/concerns/completions_flag_spec.rb'
+
