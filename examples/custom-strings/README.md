@@ -81,13 +81,11 @@ usage: download SOURCE [OPTIONS]
 download - Sample minimal application with custom strings
 
 == Usage ==
-
   download SOURCE [OPTIONS]
   download --help | -h
   download --version | -v
 
 == Options ==
-  
   --help, -h
     Show this helpful help
 
@@ -98,7 +96,6 @@ download - Sample minimal application with custom strings
     Target directory
 
 == Arguments ==
-    
   SOURCE
     URL to download from
 

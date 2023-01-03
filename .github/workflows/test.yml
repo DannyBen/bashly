@@ -59,8 +59,9 @@ jobs:
         ruby-version: '3.1'
         bundler-cache: true
 
+    - name: Generate all subjects
+      run: bundle exec run examples regen
     - name: Run shellcheck tests
       run: bundle exec run shellcheck
-
     - name: Run shfmt tests
       run: bundle exec run shfmt

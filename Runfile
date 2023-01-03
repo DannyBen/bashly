@@ -70,9 +70,22 @@ action :changelog do
   File.write "CHANGELOG.md", File.read("CHANGELOG.md").gsub('repeatableflags', 'repeatable flags')
 end
 
+command :examples
+
+help   "Regenerate example scripts"
+action :regen do
+  # Patch the PATH to allow the extensible example to run properly
+  ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
+  Example.all.each do |example|
+    say example.dir
+    Dir.chdir example.dir do
+      system 'bash test.sh >/dev/null 2>&1'
+    end
+  end
+end
+
 help   "Append the content of bashly.yml to all example READMEs"
-action :examples do
-  # Disable color output (for the color examples)
+action :readme do
   ENV['NO_COLOR']='1'
   
   # Patch the PATH to allow the extensible example to run properly
@@ -82,6 +95,8 @@ action :examples do
     example.regenerate_readme
   end
 end
+
+endcommand
 
 require_relative 'helpers/release'
 require './debug.rb' if File.exist? 'debug.rb'
