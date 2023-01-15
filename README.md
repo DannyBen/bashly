@@ -13,7 +13,7 @@ Create feature-rich bash scripts using simple YAML configuration
 
 ---
 
-![demo](demo/cast.svg)
+![demo](demo/cast.gif)
 
 </div>
 

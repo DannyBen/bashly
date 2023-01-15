@@ -1,10 +1,9 @@
 ; --------------------------------------------------
 ; This script generates the demo svg
+; NOTE: This should be executed in the demo folder
 ; --------------------------------------------------
 #SingleInstance Force
 SetkeyDelay 0, 50
-
-; NOTE: This should be executed in the demo folder
 
 Outfile := "cast.svg"
 Template := "window_frame"
@@ -19,6 +18,8 @@ Type(Command, Delay=2000) {
 }
 
 F12::
+  Type("{#} Press F11 to abort at any time")
+  Type("cd ./demo")
   Type("rm -rf myapp")
   ; Type("termtosvg " Outfile " -t " Template)
   Type("rm cast.json {;} asciinema rec cast.json")
@@ -29,7 +30,7 @@ F12::
   Type("{#} Create a sample Bashly configuration file", 500)
   Type("bashly init")
   Type("vi src/bashly.yml", 4000)
-  Type(":q!", 500)
+  Type(":exit", 500)
 
   Type("{#} Generate the bash script", 500)
   Type("bashly generate")
@@ -53,13 +54,16 @@ F12::
   ; Type("./cli download the-internet")
 
   Type("exit")
-  Type("cat cast.json | svg-term --out cast.svg --window")
+  Type("agg --font-size 20 cast.json cast.gif")
+  Sleep 400
+  Type("cd ..")
+  Type("{#} Done")
 Return
 
 ^F12::
   Reload
 return
 
-^x::
+F11::
   ExitApp
 return
