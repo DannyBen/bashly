@@ -37,11 +37,11 @@ test:
       target: "%{user_target_dir}/test/approve"
 
   post_install_message: |
-    Edit your tests in !txtgrn!test/approve!txtrst! and then run:
+    Edit your tests in g`test/approve` and then run:
 
-      !txtpur!$ test/approve!txtrst!
+      m`$ test/approve`
 
-    Docs: !undblu!https://github.com/DannyBen/approvals.bash
+    Docs: bu`https://github.com/DannyBen/approvals.bash`
 
 validations:
   files:

@@ -25,9 +25,9 @@ module ComposeRefinements
       loaded = YAML.properly_load_file path
       return loaded if loaded.is_a?(Array) || loaded.is_a?(Hash)
 
-      raise Bashly::ConfigurationError, "Cannot find a valid YAML in !txtgrn!#{path}"
+      raise Bashly::ConfigurationError, "Cannot find a valid YAML in g`#{path}`"
     rescue Errno::ENOENT
-      raise Bashly::ConfigurationError, "Cannot find import file !txtgrn!#{path}"
+      raise Bashly::ConfigurationError, "Cannot find import file g`#{path}`"
     end
   end
 

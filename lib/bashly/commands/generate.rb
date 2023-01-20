@@ -52,25 +52,25 @@ module Bashly
     private
 
       def watch
-        quiet_say "!txtgrn!watching!txtrst! #{Settings.source_dir}\n"
+        quiet_say "g`watching` #{Settings.source_dir}\n"
 
         Filewatcher.new([Settings.source_dir]).watch do
           reset
           generate
 
         rescue Bashly::ConfigurationError => e
-          say! "!undred!#{e.class}!txtrst!\n#{e.message}"
+          say! "rib` #{e.class} `\n#{e.message}"
 
         ensure
-          quiet_say "!txtgrn!waiting\n"
+          quiet_say "g`waiting`\n"
         end
       end
 
       def generate
         with_valid_config do
-          quiet_say 'creating !txtgrn!production!txtrst! version' if Settings.production?
+          quiet_say 'creating g`production` version' if Settings.production?
           generate_all_files
-          quiet_say "run !txtpur!#{master_script_path} --help!txtrst! to test your bash script" unless watching
+          quiet_say "run m`#{master_script_path} --help` to test your bash script" unless watching
         end
       end
 
@@ -110,7 +110,7 @@ module Bashly
         if Library.exist? library_name
           upgrade! existing_file, library_name, *args
         else
-          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, " \
+          quiet_say "r`warning` not upgrading c`#{existing_file}`, " \
             "unknown library '#{library_name}'"
         end
       end
@@ -121,14 +121,14 @@ module Bashly
 
         if file
           File.deep_write file[:path], file[:content]
-          quiet_say "!txtcyn!updated!txtrst! #{file[:path]}"
+          quiet_say "c`updated` #{file[:path]}"
         else
-          quiet_say "!txtred!warning!txtrst! not upgrading !txtcyn!#{existing_file}!txtrst!, path mismatch"
+          quiet_say "r`warning` not upgrading c`#{existing_file}`, path mismatch"
         end
       end
 
       def create_user_files
-        quiet_say "creating user files in !txtgrn!#{Settings.source_dir}"
+        quiet_say "creating user files in g`#{Settings.source_dir}`"
 
         create_file "#{Settings.source_dir}/initialize.#{Settings.partials_extension}",
           command.render(:default_initialize_script)
@@ -156,17 +156,17 @@ module Bashly
 
       def create_file(file, content)
         if File.exist?(file) && !args['--force']
-          quiet_say "!txtblu!skipped!txtrst! #{file} (exists)"
+          quiet_say "b`skipped` #{file} (exists)"
         else
           File.deep_write file, content
-          quiet_say "!txtgrn!created!txtrst! #{file}"
+          quiet_say "g`created` #{file}"
         end
       end
 
       def create_master_script
         File.write master_script_path, script.code(tab_indent: Settings.tab_indent)
         FileUtils.chmod '+x', master_script_path
-        quiet_say "!txtgrn!created!txtrst! #{master_script_path}"
+        quiet_say "g`created` #{master_script_path}"
       end
 
       def script

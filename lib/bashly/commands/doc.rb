@@ -35,27 +35,27 @@ module Bashly
       end
 
       def show_key(key)
-        say "!txtgrn!#{key}"
+        say "g`#{key}`"
         say ''
       end
 
       def show_url(url)
-        say "  See !undblu!#{url}"
+        say "  See bu`#{url}`"
         say ''
       end
 
       def show_example(example)
         example = word_wrap "    #{example}"
-        example.gsub!(/^(\s*- )?(\s*\w+):/, '\1!txtblu!\2!txtrst!:')
-        example.gsub!(/^(\s*- )/, '!txtylw!\1!txtrst!')
-        example.gsub!(/^(\s*#.+)/, '!txtpur!\1!txtrst!')
+        example.gsub!(/^(\s*- )?(\s*\w+):/, '\1b`\2`:')
+        example.gsub!(/^(\s*- )/, 'y`\1`')
+        example.gsub!(/^(\s*#.+)/, 'm`\1`')
         say example
         say ''
       end
 
       def show_help(help)
         help = word_wrap "  #{help}"
-        help.gsub!(/`([^`]+)`/, '!txtgrn!\1!txtrst!')
+        help.gsub!(/`([^`]+)`/, 'g`\1`')
         say help
         say ''
       end
@@ -63,7 +63,7 @@ module Bashly
       def data
         return raw_data unless args['SEARCH']
 
-        result = raw_data.select { |k, _v| k.== args['SEARCH'] }
+        result = raw_data.select { |k, _v| k == args['SEARCH'] }
         return result if result.any?
 
         result = raw_data.select { |k, _v| k.include? args['SEARCH'] }

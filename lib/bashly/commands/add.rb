@@ -124,18 +124,18 @@ module Bashly
       def safe_write(path, content)
         if !skip_src_check && !Dir.exist?(Settings.source_dir)
           raise InitError, <<~ERROR
-            Directory !txtgrn!#{Settings.source_dir}!txtrst! does not exist
-            Run !txtpur!bashly init!txtrst! first
+            Directory g`#{Settings.source_dir}` does not exist
+            Run m`bashly init` first
           ERROR
         end
 
         if File.exist?(path) && !args['--force']
-          say "!txtblu!skipped!txtrst! #{path} (exists)"
+          say "b`skipped` #{path} (exists)"
           false
 
         else
           File.deep_write path, content
-          say "!txtgrn!created!txtrst! #{path}"
+          say "g`created` #{path}"
           true
 
         end

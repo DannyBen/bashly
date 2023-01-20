@@ -12,7 +12,7 @@ module Bashly
 
       def post_install_message
         <<~MESSAGE
-          This file can be converted to a completions script using the !txtgrn!completely!txtrst! gem.
+          This file can be converted to a completions script using the g`completely` gem.
         MESSAGE
       end
 

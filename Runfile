@@ -25,11 +25,11 @@ action :shellcheck do
   Example.executables.each do |example|
     if File.exist? example
       success = system "shellcheck #{example}"
-      color = success ? 'txtgrn' : 'txtred'
-      say "- shellcheck !#{color}!#{example}"
+      color = success ? 'g' : 'r'
+      say "- shellcheck #{color}`#{example}`"
       exit 1 unless success
     else
-      say "- skip       !txtcyn!#{example}"
+      say "- skip       c`#{example}`"
       allowed_skips -= 1
       if allowed_skips < 0
         say "- aborted: too many skips"
@@ -44,7 +44,7 @@ action :shfmt do
   allowed_skips = 2
   Example.executables.each do |example|
     if example == 'examples/heredoc/cli' || !File.exist?(example)
-      say "- skip  !txtcyn!#{example}"
+      say "- skip  c`#{example}`"
       allowed_skips -= 1
       if allowed_skips < 0
         say "- aborted: too many skips"
@@ -54,8 +54,8 @@ action :shfmt do
     end
 
     success = system "shfmt -d -i 2 -ci #{example}"
-    color = success ? 'txtgrn' : 'txtred'
-    say "- shfmt !#{color}!#{example}"
+    color = success ? 'g' : 'r'
+    say "- shfmt #{color}`#{example}`"
     exit 1 unless success
   end
 end

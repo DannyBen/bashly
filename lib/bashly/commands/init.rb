@@ -13,13 +13,13 @@ module Bashly
 
       def run
         if Dir.exist?(target_dir) && !Dir.empty?(target_dir)
-          raise InitError, "Directory !txtgrn!#{target_dir}!txtrst! already exists and is not empty"
+          raise InitError, "Directory g`#{target_dir}` already exists and is not empty"
         end
 
         FileUtils.mkdir_p target_dir
         File.write "#{target_dir}/bashly.yml", yaml_content
-        say "!txtgrn!created!txtrst! #{target_dir}/bashly.yml"
-        say 'run !txtpur!bashly generate!txtrst! to create the bash script'
+        say "g`created` #{target_dir}/bashly.yml"
+        say 'run m`bashly generate` to create the bash script'
       end
 
     private

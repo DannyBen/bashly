@@ -22,9 +22,9 @@ module Bashly
         show_deprecations
         deprecations = config_validator.deprecations
         if deprecations.empty?
-          say '!txtgrn!OK'
+          say 'g`OK`'
         else
-          say "!txtred!WARNING!txtrst! Found #{deprecations.count} deprecations"
+          say "r`WARNING` Found #{deprecations.count} deprecations"
         end
       end
     end

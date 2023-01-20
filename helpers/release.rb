@@ -5,7 +5,7 @@ action :release do |args|
 
   checklist = Checklist.new
 
-  say "Checklist for version !txtgrn!#{version}!txtrst!"
+  say "Checklist for version g`#{version}`"
 
   checklist.run 'git on master and clean' do
     `git status`.match(/On branch master.*nothing to commit/m)
@@ -68,6 +68,6 @@ action :release do |args|
     `curl -Ss https://raw.githubusercontent.com/DannyBen/bashly-book/master/retype.yml`.include? "label: v#{version}"
   end
 
-  color = checklist.failed.zero? ? '!bldgrn!' : '!bldred!'
-  say "       #{color}Done with #{checklist.failed} failed tasks"
+  color = checklist.failed.zero? ? 'gb' : 'rb'
+  say "       #{color}`Done with #{checklist.failed} failed tasks`"
 end
