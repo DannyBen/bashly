@@ -12,6 +12,6 @@ rescue Bashly::Interrupt
   exit 1
 rescue => e
   puts e.backtrace.reverse if ENV['DEBUG']
-  say! "!undred!#{e.class}!txtrst!\n#{e.message}"
+  say! "rib` #{e.class} `\n#{e.message}"
   exit 1
 end

@@ -14,7 +14,7 @@ module Bashly
         <<~MESSAGE
           In order to enable completions, run:
 
-            !txtpur!$ source #{target_path}
+            m`$ source #{target_path}`
         MESSAGE
       end
 

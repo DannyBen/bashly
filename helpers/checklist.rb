@@ -12,7 +12,7 @@ class Checklist
   end
 
   def run(text)
-    say "!txtblu![....]!txtrst! #{text}  "
+    say "b`[....]` #{text}  "
     if failed >= limit
       say ''
       return
@@ -20,9 +20,9 @@ class Checklist
 
     ok = yield
     if ok
-      resay "!txtgrn![PASS]!txtrst! #{text}"
+      say "g`[PASS]` #{text}", replace: true
     else
-      resay "!txtred![FAIL]!txtrst! #{text}"
+      say "r`[FAIL]` #{text}", replace: true
       @failed += 1
     end
   end

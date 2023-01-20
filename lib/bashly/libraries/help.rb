@@ -16,12 +16,12 @@ module Bashly
         <<~MESSAGE
           Add this as a command to your bashly.yml:
 
-            !txtgrn!commands:
-              !txtgrn!- name: !txtpur!help
-              !txtgrn!  help: !txtpur!Show help about a command
-              !txtgrn!  args:
-                !txtgrn!- name: !txtpur!command
-                !txtgrn!  help: !txtpur!Help subject
+            g`commands`:
+              g`- name`: m`help`
+              g`  help`: m`Show help about a command`
+              g`  args`:
+                g`- name`: m`command`
+                g`  help`: m`Help subject`
 
         MESSAGE
       end

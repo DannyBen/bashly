@@ -1,2 +1,2 @@
-Errno::ENOENT
+ Errno::ENOENT 
 No such file or directory @ rb_sysopen - src/bashly.yml

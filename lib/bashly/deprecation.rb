@@ -9,11 +9,11 @@ module Bashly
     end
 
     def message
-      result = ['Deprecation Warning:', "!txtred!#{old}!txtrst! is deprecated"]
-      result.push "use !txtgrn!#{replacement}!txtrst! instead" if replacement
-      result.push "see !undblu!#{reference}!txtrst!" if reference
+      result = ['Deprecation Warning:', "r`#{old}` is deprecated"]
+      result.push "use g`#{replacement}` instead" if replacement
+      result.push "see bu`#{reference}`" if reference
 
-      result.map { |line| "!txtred!▐!txtrst! #{line}" }.join("\n")
+      result.map { |line| "r`▐` #{line}" }.join("\n")
     end
 
     def to_h

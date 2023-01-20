@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: Cannot find a valid YAML in !txtgrn!examples/minimal/src/root_command.sh>
+#<Bashly::ConfigurationError: Cannot find a valid YAML in g`examples/minimal/src/root_command.sh`>

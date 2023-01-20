@@ -12,11 +12,11 @@ module Bashly
 
       def post_install_message
         <<~MESSAGE
-          In order to enable completions in your script, create a command or a flag (for example: !txtgrn!#{command.name} completions!txtrst! or !txtgrn!#{command.name} --completions!txtrst!) that calls the !txtgrn!#{function_name}!txtrst! function.
+          In order to enable completions in your script, create a command or a flag (for example: g`#{command.name} completions` or g`#{command.name} --completions`) that calls the g`#{function_name}` function.
 
           Your users can then run something like this to enable completions:
 
-            !txtpur!$ eval "$(#{command.name} completions)"
+            m`$ eval "$(#{command.name} completions)"`
         MESSAGE
       end
 
