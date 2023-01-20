@@ -63,7 +63,7 @@ module Bashly
       def data
         return raw_data unless args['SEARCH']
 
-        result = raw_data.select { |k, _v| k.== args['SEARCH'] }
+        result = raw_data.select { |k, _v| k == args['SEARCH'] }
         return result if result.any?
 
         result = raw_data.select { |k, _v| k.include? args['SEARCH'] }
