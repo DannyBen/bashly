@@ -9,4 +9,4 @@
 /spec/tmp
 /tmp
 /toc.txt
-debug.rb
+/helpers/debug.runfile

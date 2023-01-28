@@ -10,6 +10,7 @@ version Bashly::VERSION
 import_gem 'runfile-tasks/gem', gemname: 'bashly'
 import_gem 'runfile-tasks/docker', image: 'dannyben/bashly', version: Bashly::VERSION
 import 'helpers/examples'
+import 'helpers/debug'
 import 'helpers/release'
 
 help   "Run shellcheck on all examples"
