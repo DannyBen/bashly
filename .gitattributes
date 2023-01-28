@@ -1,2 +1,3 @@
-Runfile linguist-language=Ruby
+runfile linguist-language=Ruby
+*.runfile linguist-language=Ruby
 *.gtx linguist-language=Ruby
