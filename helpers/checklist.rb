@@ -1,5 +1,7 @@
 # A helper class used in Runfile for running through a release checklist
 class Checklist
+  include Colsole
+
   attr_accessor :failed, :limit
 
   def initialize(limit: 3)

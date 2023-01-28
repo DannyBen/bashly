@@ -1,6 +1,7 @@
-help 'Run release checklist'
-usage  'release VERSION'
-action :release do |args|
+title 'Run release checklist'
+
+usage  'VERSION'
+action do |args|
   version = args['VERSION']
 
   checklist = Checklist.new
