@@ -1,5 +1,5 @@
 require "byebug"
-require_relative 'lib/bashly'
+require 'bashly'
 require_relative 'helpers/example'
 require_relative 'helpers/checklist'
 
