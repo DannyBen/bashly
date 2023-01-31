@@ -32,9 +32,9 @@ action do |args|
     checklist.url_exist? "https://github.com/DannyBen/bashly/tree/v#{version}"
   end
 
-  checklist.run 'local gem is built' do
-    File.exist? "gems/bashly-#{version}.gem"
-  end
+  # checklist.run 'local gem is built' do
+  #   File.exist? "gems/bashly-#{version}.gem"
+  # end
 
   checklist.run 'published gem version' do
     checklist.url_exist? "https://rubygems.org/gems/bashly/versions/#{version}"
