@@ -108,14 +108,14 @@ Commands:
   ps          List containers
 
 Options:
+  --debug, -d
+    Enable debug mode
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
-
-  --debug, -d
-    Enable debug mode
 
 
 

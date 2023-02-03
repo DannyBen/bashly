@@ -16,12 +16,6 @@ Commands:
   show   
 
 Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
   --alpha, -a
     Alpha
 
@@ -31,6 +25,12 @@ Options:
   --charlie, -c NAME (required)
     Charlie
     Allowed: chaplin
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
 
 + ./flags show
 missing required flag: --charlie, -c NAME

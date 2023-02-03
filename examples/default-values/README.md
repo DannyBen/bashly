@@ -69,15 +69,15 @@ Usage:
   convert --version | -v
 
 Options:
+  --format, -f FORMAT
+    Format to convert to
+    Default: png
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
-
-  --format, -f FORMAT
-    Format to convert to
-    Default: png
 
 Arguments:
   SOURCE

@@ -79,16 +79,16 @@ Usage:
   cli --version | -v
 
 Options:
+  --format, -f FORMAT
+    Specify file format
+    Allowed: csv, json
+    Default: json
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
-
-  --format, -f FORMAT
-    Specify file format
-    Allowed: csv, json
-    Default: json
 
 Arguments:
   FILE...
