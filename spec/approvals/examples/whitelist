@@ -16,12 +16,6 @@ Usage:
   login --version | -v
 
 Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
   --user, -u NAME (required)
     User name
     Allowed: user, admin
@@ -30,6 +24,12 @@ Options:
     Protocol to connect with
     Allowed: ftp, ssh, http
     Default: ssh
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
 
 Arguments:
   REGION

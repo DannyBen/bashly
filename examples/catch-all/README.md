@@ -57,14 +57,14 @@ Usage:
   download --version | -v
 
 Options:
+  --debug, -d
+
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
-
-  --debug, -d
-
 
 Arguments:
   MESSAGE

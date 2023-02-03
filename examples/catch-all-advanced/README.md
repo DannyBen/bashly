@@ -94,11 +94,11 @@ Usage:
   cli download --help | -h
 
 Options:
-  --help, -h
-    Show this help
-
   --force, -f
     Overwrite existing files
+
+  --help, -h
+    Show this help
 
 Arguments:
   SOURCE

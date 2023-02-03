@@ -60,17 +60,17 @@ Usage:
   cli --version
 
 Options:
-  --help
-    Show this help
-
-  --version
-    Show version number
-
   --verbose, -v
     Show verbose output
 
   --host, -h HOST
     Host address
+
+  --help
+    Show this help
+
+  --version
+    Show version number
 
 
 

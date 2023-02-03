@@ -129,14 +129,14 @@ Usage:
   git commit --help | -h
 
 Options:
-  --help, -h
-    Show this help
-
   --message, -m MESSAGE
     Commit message
 
   --all, -a
     Automatically stage files
+
+  --help, -h
+    Show this help
 
 
 

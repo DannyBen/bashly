@@ -74,14 +74,14 @@ Usage:
   multi multiline --help | -h
 
 Options:
-  --help, -h
-    Show this help
-
   --long
     Long flag with long text.
     
     Finally, this will be the last multiline string we type (hopefully), but
     once we are done with this, we will be done with all.
+
+  --help, -h
+    Show this help
 
 Arguments:
   MY_ARG

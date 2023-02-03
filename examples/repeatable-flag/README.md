@@ -84,17 +84,17 @@ Usage:
   download --version
 
 Options:
-  --help, -h
-    Show this help
-
-  --version
-    Show version number
-
   --data, -d DATA (required) (repeatable)
     Provide data values
 
   --verbose, -v (repeatable)
     Set verbosity level
+
+  --help, -h
+    Show this help
+
+  --version
+    Show version number
 
 Examples:
   download -d one -d "two three" -vvv

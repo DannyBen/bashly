@@ -88,14 +88,14 @@ Usage:
   cli download --help | -h
 
 Options:
-  --help, -h
-    Show this help
-
   --force, -f
     Overwrite existing files
 
   --debug, -d
     Show debug information
+
+  --help, -h
+    Show this help
 
 
 
@@ -111,9 +111,6 @@ Usage:
   cli upload --help | -h
 
 Options:
-  --help, -h
-    Show this help
-
   --force, -f
     Overwrite existing files
 
@@ -122,6 +119,9 @@ Options:
 
   --password, -p PASSWORD
     Password to use for logging in
+
+  --help, -h
+    Show this help
 
 
 

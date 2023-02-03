@@ -49,12 +49,6 @@ Usage:
   download --version | -v
 
 Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
   --cache
     Enable cache
 
@@ -63,6 +57,12 @@ Options:
 
   --fast
     Run faster
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
 
 
 

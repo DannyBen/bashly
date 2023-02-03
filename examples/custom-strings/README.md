@@ -86,14 +86,14 @@ download - Sample minimal application with custom strings
   download --version | -v
 
 == Options ==
+  --out, -o DIR (required)
+    Target directory
+
   --help, -h
     Show this helpful help
 
   --version, -v
     Show version number
-
-  --out, -o DIR (required)
-    Target directory
 
 == Arguments ==
   SOURCE

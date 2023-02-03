@@ -59,14 +59,14 @@ Usage:
   download --version | -v
 
 Options:
+  --force, -f
+    Overwrite existing files
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
-
-  --force, -f
-    Overwrite existing files
 
 Arguments:
   SOURCE
