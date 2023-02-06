@@ -112,6 +112,16 @@ flag.long:
       short: -s
       help: Clone using SSH
 
+flag.private:
+  help: Specify that this flag should not be displayed in the help text.
+  url: https://bashly.dannyb.co/configuration/flag/#private
+  example: |-
+    flags:
+    - long: --legacy
+      short: -l
+      help: Run using the legacy mode
+      private: true
+
 flag.repeatable:
   help: |-
     Specify that this flag can be provided multiple times. When used on a flag with an argument, it will be received as a space-delimited string, which needs to be converted to an array with:
