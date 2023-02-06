@@ -22,7 +22,7 @@ module Bashly
       end
 
       def config
-        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
+        @config ||= Config.new Settings.config_path
       end
     end
   end

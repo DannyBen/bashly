@@ -3,11 +3,24 @@ module Bashly
     class << self
       include AssetHelper
 
-      attr_writer :compact_short_flags, :lib_dir, :partials_extension,
-        :source_dir, :strict, :tab_indent, :target_dir, :usage_colors
+      attr_writer(
+        :compact_short_flags,
+        :config_path,
+        :lib_dir,
+        :partials_extension,
+        :source_dir,
+        :strict,
+        :tab_indent,
+        :target_dir,
+        :usage_colors,
+      )
 
       def compact_short_flags
         @compact_short_flags ||= get :compact_short_flags
+      end
+
+      def config_path
+        @config_path ||= get(:config_path) % { source_dir: source_dir }
       end
 
       def env

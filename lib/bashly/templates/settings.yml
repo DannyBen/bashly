@@ -6,8 +6,11 @@
 # - "0", "false" or "no" to represent false
 # - "1", "true" or "yes" to represent true
 
-# The path containing the bashly configuration and source files
+# The path containing the bashly source files
 source_dir: src
+
+# Tha path to bashly.yml
+config_path: "%{source_dir}/bashly.yml"
 
 # The path to use for creating the bash script
 target_dir: .
