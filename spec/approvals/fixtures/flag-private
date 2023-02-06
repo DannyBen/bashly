@@ -1,0 +1,34 @@
++ bundle exec bashly generate
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--log]} = 3
++ ./cli --help
+cli
+
+Usage:
+  cli [OPTIONS]
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --force, -f
+    Overwrite existing files
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli --log 5
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--log]} = 5
