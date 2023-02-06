@@ -1,0 +1,8 @@
+name: cli
+version: 0.1.0
+
+environment_variables:
+  - name: example
+    default: value
+    private: true
+    help: A help message for EXAMPLE

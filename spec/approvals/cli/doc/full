@@ -517,7 +517,7 @@ environment_variable.name
 environment_variable.private
 
   Specify that this environment variable should not be advertised in the usage
-  text. Only makes sense when accompanied by default.
+  text.
 
     environment_variables:
     - name: editor
