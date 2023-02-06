@@ -217,6 +217,11 @@ module Bashly
         commands.reject(&:private)
       end
 
+      # Returns only flags that are not private
+      def public_flags
+        flags.reject(&:private)
+      end
+
       # Returns true if one of the args is repeatable
       def repeatable_arg_exist?
         args.select(&:repeatable).any?

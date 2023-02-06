@@ -1,0 +1,12 @@
+name: cli
+
+flags:
+- long: --log
+  short: -l
+  arg: level
+  help: Log level
+  private: true
+  default: '3'
+- long: --force
+  short: -f
+  help: Overwrite existing files
