@@ -3,7 +3,7 @@
 > if [[ -n $long_usage ]]; then
 >   printf "%s\n" "{{ strings[:options].color(:caption) }}"
 >
-= render(:usage_flags).indent 2 if flags.any?
+= render(:usage_flags).indent 2 if public_flags.any?
 = render(:usage_fixed_flags).indent 2
 = render(:usage_args).indent 2 if args.any? or catch_all.help
 = render(:usage_environment_variables).indent 2 if public_environment_variables.any?

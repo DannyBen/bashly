@@ -1,6 +1,6 @@
 = view_marker
 
-flags.each do |flag|
+public_flags.each do |flag|
   = flag.render :usage
 end
 

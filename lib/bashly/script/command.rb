@@ -220,6 +220,10 @@ module Bashly
       # Returns only environment variables that are not private
       def public_environment_variables
         environment_variables.reject(&:private)
+
+      # Returns only flags that are not private
+      def public_flags
+        flags.reject(&:private)
       end
 
       # Returns true if one of the args is repeatable
