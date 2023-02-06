@@ -671,6 +671,18 @@ flag.long
 
   See https://bashly.dannyb.co/configuration/flag/#long
 
+flag.private
+
+  Specify that this flag should not be displayed in the help text.
+
+    flags:
+    - long: --legacy
+      short: -l
+      help: Run using the legacy mode
+      private: true
+
+  See https://bashly.dannyb.co/configuration/flag/#private
+
 flag.repeatable
 
   Specify that this flag can be provided multiple times. When used on a flag

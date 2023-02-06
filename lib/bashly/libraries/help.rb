@@ -29,7 +29,7 @@ module Bashly
     private
 
       def help_command
-        asset_content('templates/help/help_command.sh') % { name: command.name }
+        asset_content('templates/lib/help_command.sh') % { name: command.name }
       end
     end
   end
