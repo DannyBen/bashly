@@ -5,6 +5,9 @@
 # When setting environment variables, you can use:
 # - "0", "false" or "no" to represent false
 # - "1", "true" or "yes" to represent true
+#
+# If you wish to change the path to this file, set the environment variable
+# BASHLY_SETTINGS_PATH.
 
 # The path containing the bashly source files
 source_dir: src
