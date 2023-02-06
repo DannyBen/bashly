@@ -12,7 +12,3 @@ Options:
 
   -h --help
     Show this help
-
-Environment Variables:
-  BASHLY_SOURCE_DIR
-    The path containing the bashly configuration and source files [default: src]

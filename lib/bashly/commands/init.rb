@@ -9,8 +9,6 @@ module Bashly
 
       option '-m --minimal', 'Use a minimal configuration file (without commands)'
 
-      environment 'BASHLY_SOURCE_DIR', 'The path to use for creating the configuration file [default: src]'
-
       def run
         if Dir.exist?(target_dir) && !Dir.empty?(target_dir)
           raise InitError, "Directory g`#{target_dir}` already exists and is not empty"

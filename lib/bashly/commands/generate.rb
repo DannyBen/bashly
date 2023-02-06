@@ -13,26 +13,11 @@ module Bashly
       option '-u --upgrade', 'Upgrade all added library functions'
       option '-w --watch', 'Watch the source directory for changes and regenerate on change'
       option '-r --wrap FUNCTION', 'Wrap the entire script in a function so it can also be sourced'
-      option '-e --env ENV', 'Force the generation environment (see BASHLY_ENV)'
-
-      environment 'BASHLY_SOURCE_DIR', 'The path containing the bashly configuration and source ' \
-        'files [default: src]'
-
-      environment 'BASHLY_TARGET_DIR', 'The path to use for creating the bash script [default: .]'
-      environment 'BASHLY_LIB_DIR',
-        'The path to use for upgrading library files, relative to the source dir [default: lib]'
-
-      environment 'BASHLY_STRICT', 'When not empty, enable bash strict mode (set -euo pipefail)'
-      environment 'BASHLY_TAB_INDENT',
-        'When not empty, the generated script will use tab indentation instead of spaces ' \
-          '(every 2 leading spaces will be converted to a tab character)'
-
-      environment 'BASHLY_ENV', <<~HELP
-        Set to 'production' or 'development':
+      option '-e --env ENV', <<~HELP
+        Force the generation environment:
+        
         - production    generate a smaller script, without file markers
         - development   generate with file markers
-
-        Can be overridden with --env [default: development]
       HELP
 
       example 'bashly generate --force'
