@@ -3,7 +3,7 @@
 > printf "%s\n" "{{ strings[:environment_variables].color(:caption) }}"
 > 
 
-environment_variables.reject(&:private).each do |env_var|
+public_environment_variables.each do |env_var|
   = env_var.render :usage
 end
 

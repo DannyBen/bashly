@@ -217,6 +217,11 @@ module Bashly
         commands.reject(&:private)
       end
 
+      # Returns only environment variables that are not private
+      def public_environment_variables
+        environment_variables.reject(&:private)
+      end
+
       # Returns true if one of the args is repeatable
       def repeatable_arg_exist?
         args.select(&:repeatable).any?

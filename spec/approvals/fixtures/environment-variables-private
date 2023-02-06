@@ -1,0 +1,20 @@
+creating user files in src
+created src/initialize.sh
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli --help
+cli
+
+Usage:
+  cli
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
