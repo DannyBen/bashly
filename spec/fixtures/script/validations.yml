@@ -147,13 +147,6 @@
     default: development
     private: 1
 
-:env_var_private_without_default:
-  name: invalid
-  help: env_var.private makes no sense without default
-  environment_variables:
-  - name: server_env
-    private: true
-
 :flag_long:
   name: invalid
   help: the long flag is not in the form of --force
