@@ -7,7 +7,7 @@ module Bashly
       include AssetHelper
 
       def config
-        @config ||= Config.new "#{Settings.source_dir}/bashly.yml"
+        @config ||= Config.new Settings.config_path
       end
 
       def config_validator
