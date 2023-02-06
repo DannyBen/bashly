@@ -1,0 +1,1 @@
+Tests custom paths for settings.yml and bashly.yml

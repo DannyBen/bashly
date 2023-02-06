@@ -87,7 +87,11 @@ module Bashly
       end
 
       def user_settings
-        @user_settings ||= File.exist?('settings.yml') ? Config.new('settings.yml') : {}
+        @user_settings ||= File.exist?(user_settings_path) ? Config.new(user_settings_path) : {}
+      end
+      
+      def user_settings_path
+        ENV['BASHLY_SETTINGS_PATH'] || 'settings.yml'
       end
 
       def defsult_settings
