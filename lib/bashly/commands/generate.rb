@@ -15,7 +15,7 @@ module Bashly
       option '-r --wrap FUNCTION', 'Wrap the entire script in a function so it can also be sourced'
       option '-e --env ENV', <<~HELP
         Force the generation environment:
-        
+
         - production    generate a smaller script, without file markers
         - development   generate with file markers
       HELP

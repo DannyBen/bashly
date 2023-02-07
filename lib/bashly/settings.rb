@@ -12,7 +12,7 @@ module Bashly
         :strict,
         :tab_indent,
         :target_dir,
-        :usage_colors,
+        :usage_colors
       )
 
       def compact_short_flags
@@ -89,7 +89,7 @@ module Bashly
       def user_settings
         @user_settings ||= File.exist?(user_settings_path) ? Config.new(user_settings_path) : {}
       end
-      
+
       def user_settings_path
         ENV['BASHLY_SETTINGS_PATH'] || 'settings.yml'
       end
