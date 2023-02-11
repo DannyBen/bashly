@@ -30,7 +30,7 @@ body:
   - type: textarea
     id: config
     attributes:
-      label: Contents of `bashly.yml`
+      label: Contents of bashly.yml
       description: If relevant, paste the contents of the smallest `bashly.yml` needed to reproduce the problem.
       render: yaml
   
