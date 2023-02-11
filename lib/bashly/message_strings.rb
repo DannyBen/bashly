@@ -13,7 +13,7 @@ module Bashly
   private
 
     def values!
-      defaults = YAML.properly_load_file asset('templates/strings.yml')
+      defaults = YAML.properly_load_file asset('libraries/strings/strings.yml')
       defaults.merge project_strings
     end
 

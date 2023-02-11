@@ -107,12 +107,16 @@ module Bashly
     private
 
       def add_lib(name, *args)
-        library = Bashly::Library.new name, *args
+        source = Bashly::LibrarySource.new
+        library = source.libraries[name.to_sym]
+        library.args = args
+
         files_created = 0
         library.files.each do |file|
           created = safe_write file[:path], file[:content]
           files_created += 1 if created
         end
+        
         message = library.post_install_message
         say "\n#{message}" if message && files_created.positive?
       end

@@ -1,39 +1,39 @@
 colors:
   files:
-    - source: "templates/lib/colors.sh"
+    - source: "colors/colors.sh"
       target: "%{user_lib_dir}/colors.%{user_ext}"
 
-completions: :CompletionsFunction
-completions_script: :CompletionsScript
-completions_yaml: :CompletionsYAML
+completions: Bashly::Libraries::CompletionsFunction
+completions_script: Bashly::Libraries::CompletionsScript
+completions_yaml: Bashly::Libraries::CompletionsYAML
 
 config:
   files:
-    - source: "templates/lib/config.sh"
+    - source: "config/config.sh"
       target: "%{user_lib_dir}/config.%{user_ext}"
 
-help: :Help
+help: Bashly::Libraries::Help
 
 lib:
   files:
-    - source: "templates/lib/sample_function.sh"
+    - source: "lib/sample_function.sh"
       target: "%{user_lib_dir}/sample_function.%{user_ext}"
 
 settings:
   files:
-    - source: "templates/settings.yml"
+    - source: "settings/settings.yml"
       target: "settings.yml"
 
 strings:
   files:
-    - source: "templates/strings.yml"
+    - source: "strings/strings.yml"
       target: "%{user_source_dir}/bashly-strings.yml"
 
 test:
   files:
-    - source: "templates/test/approvals.bash"
+    - source: "test/approvals.bash"
       target: "%{user_target_dir}/test/approvals.bash"
-    - source: "templates/test/approve"
+    - source: "test/approve"
       target: "%{user_target_dir}/test/approve"
 
   post_install_message: |
@@ -45,16 +45,16 @@ test:
 
 validations:
   files:
-    - source: "templates/lib/validations/validate_dir_exists.sh"
+    - source: "validations/validate_dir_exists.sh"
       target: "%{user_lib_dir}/validations/validate_dir_exists.%{user_ext}"
-    - source: "templates/lib/validations/validate_file_exists.sh"
+    - source: "validations/validate_file_exists.sh"
       target: "%{user_lib_dir}/validations/validate_file_exists.%{user_ext}"
-    - source: "templates/lib/validations/validate_integer.sh"
+    - source: "validations/validate_integer.sh"
       target: "%{user_lib_dir}/validations/validate_integer.%{user_ext}"
-    - source: "templates/lib/validations/validate_not_empty.sh"
+    - source: "validations/validate_not_empty.sh"
       target: "%{user_lib_dir}/validations/validate_not_empty.%{user_ext}"
 
 yaml:
   files:
-    - source: "templates/lib/yaml.sh"
+    - source: "yaml/yaml.sh"
       target: "%{user_lib_dir}/yaml.%{user_ext}"

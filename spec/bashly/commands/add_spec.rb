@@ -95,7 +95,7 @@ describe Commands::Add do
 
   context 'with settings command' do
     let(:settings_file) { "#{target_dir}/settings.yml" }
-    let(:template_file) { 'lib/bashly/templates/settings.yml' }
+    let(:template_file) { 'lib/bashly/libraries/settings/settings.yml' }
 
     before { reset_tmp_dir }
 
