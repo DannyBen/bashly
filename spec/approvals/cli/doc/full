@@ -198,7 +198,7 @@ command.commands
 command.completions
 
   Specify a list of additional completion suggestions when used in conjunction
-  with bashly add comp.
+  with bashly add completions.
 
     commands:
     - name: view
@@ -594,7 +594,7 @@ flag.arg
 flag.completions
 
   Specify a list of additional completion suggestions when used in conjunction
-  with bashly add comp. Must be accompanied by arg.
+  with bashly add completions. Must be accompanied by arg.
 
     flags:
     - long: --user

@@ -1,0 +1,42 @@
+bashly add colors
+  Add standard functions for printing colorful and formatted text to the lib
+  directory.
+
+bashly add completions [PATH]
+  Generate a bash completions function.
+
+bashly add completions_script [PATH]
+  Generate a standalone bash completions script.
+
+bashly add completions_yaml [PATH]
+  Generate a completions YAML configuration for Completely.
+
+bashly add config
+  Add standard functions for handling INI files to the lib directory.
+
+bashly add help
+  Add a help command, in addition to the standard --help flag.
+
+bashly add lib
+  Create the lib directory for any additional user scripts.
+  All *.sh scripts in this directory will be included in the final bash script.
+  Note that if you configured a different partials_extension, then the
+  extensions of the files in this directory need to match.
+
+bashly add settings
+  Copy a sample settings.yml file to your project, allowing you to customize
+  some bashly options.
+
+bashly add strings
+  Copy an additional configuration file to your project, allowing you to
+  customize all the tips and error strings.
+
+bashly add test
+  Add approval testing.
+
+bashly add validations
+  Add argument validation functions to the lib directory.
+
+bashly add yaml
+  Add standard functions for reading YAML files.
+

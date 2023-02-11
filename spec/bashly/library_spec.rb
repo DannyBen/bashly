@@ -1,28 +1,10 @@
 require 'spec_helper'
 
 describe Library do
-  subject { described_class.new name, args }
+  subject { LibrarySource.new.libraries[name] }
 
-  let(:name) { 'colors' }
-  let(:args) { nil }
-  let(:lib_dir) { 'lib/bashly/templates/lib' }
-
-  describe '::exist?' do
-    it 'returns true if the provided library name exists' do
-      expect(described_class).to exist 'colors'
-    end
-
-    it 'returns false if the provided library name does not exist' do
-      expect(described_class).not_to exist 'crypto_mining'
-    end
-  end
-
-  describe '::config' do
-    it 'returns the entire libraries configuration data' do
-      expect(described_class.config).to be_a Hash
-      expect(described_class.config.keys.to_yaml).to match_approval('library/config-keys')
-    end
-  end
+  let(:name) { :colors }
+  let(:lib_dir) { 'lib/bashly/libraries/colors' }
 
   describe '#files' do
     it 'returns an array of hashes' do
@@ -38,7 +20,7 @@ describe Library do
     end
 
     context 'when the library has a custom handler' do
-      let(:name) { 'completions' }
+      let(:name) { :completions }
 
       before { reset_tmp_dir example: 'minimal' }
 
@@ -58,8 +40,8 @@ describe Library do
     end
 
     context 'when the library has a configured message' do
-      before { described_class.config['colors']['post_install_message'] = 'the message' }
-      after { described_class.config['colors'].delete 'post_install_message' }
+      before { subject.config['post_install_message'] = 'the message' }
+      after { subject.config.delete 'post_install_message' }
 
       it 'returns the message' do
         expect(subject.post_install_message).to eq 'the message'
@@ -67,13 +49,21 @@ describe Library do
     end
 
     context 'when the library has a custom handler' do
-      let(:name) { 'completions_yaml' }
+      let(:name) { :completions_yaml }
 
       before { reset_tmp_dir example: 'minimal' }
 
       it 'returns the message form the handler' do
         expect(subject.post_install_message).to include 'completely'
       end
+    end
+  end
+
+  describe '#find_file' do
+    let(:path) { "#{Settings.target_dir}/src/lib/colors.sh" }
+
+    it 'returns a file from the library' do
+      expect(subject.find_file path).to be_a Hash
     end
   end
 end

@@ -1,76 +1,16 @@
 Add extra features and customization to your script
 
 Usage:
-  bashly add colors [--force]
-  bashly add comp FORMAT [OUTPUT --force]
-  bashly add config [--force]
-  bashly add help [--force]
-  bashly add lib [--force]
-  bashly add settings [--force]
-  bashly add strings [--force]
-  bashly add test [--force]
-  bashly add validations [--force]
-  bashly add yaml [--force]
+  bashly add LIBRARY [ARGS...] [--force]
+  bashly add --list
   bashly add (-h|--help)
-
-Commands:
-  colors
-    Add standard functions for printing colorful and formatted text to the lib
-    directory.
-
-  comp
-    Generate a bash completions script or function.
-
-  config
-    Add standard functions for handling INI files to the lib directory.
-
-  help
-    Add a help command, in addition to the standard --help flag.
-
-  lib
-    Create the lib directory for any additional user scripts.
-    All *.sh scripts in this directory will be included in the final bash
-    script.
-    Note that if you configured a different partials_extension, then the
-    extensions of the files in this directory need to match.
-
-  settings
-    Copy a sample settings.yml file to your project, allowing you to customize
-    some bashly options.
-
-  strings
-    Copy an additional configuration file to your project, allowing you to
-    customize all the tips and error strings.
-
-  test
-    Add approval testing.
-
-  validations
-    Add argument validation functions to the lib directory.
-
-  yaml
-    Add standard functions for reading YAML files to the lib directory.
 
 Options:
   -f --force
     Overwrite existing files
 
+  -l --list
+    Show available libraries
+
   -h --help
     Show this help
-
-Parameters:
-  FORMAT
-    Output format, can be one of:
-      function : generate a function file to be included in your script.
-      script   : generate a standalone bash completions script.
-      yaml     : generate a yaml compatible with completely.
-
-  OUTPUT
-    For the 'comp function' command: Name of the generated function.
-    For the 'comp script' or 'comp yaml' commands: path to output file.
-    In all cases, this is optional and will have sensible defaults.
-
-Examples:
-  bashly add strings --force
-  bashly add comp function
-  bashly add comp script completions.bash

@@ -46,7 +46,7 @@ flag.arg:
       help: Clone using SSH
 
 flag.completions:
-  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add comp`. Must be accompanied by `arg`.
+  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add completions`. Must be accompanied by `arg`.
   url: https://bashly.dannyb.co/configuration/flag/#completions
   example: |-
     flags:

@@ -99,7 +99,7 @@ module Bashly
       end
 
       def default_settings_path
-        asset 'templates/settings.yml'
+        asset 'libraries/settings/settings.yml'
       end
     end
   end

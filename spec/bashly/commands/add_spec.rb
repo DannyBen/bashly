@@ -13,8 +13,21 @@ describe Commands::Add do
   end
 
   context 'without arguments' do
-    it 'shows long usage' do
+    it 'shows short usage' do
       expect { subject.execute %w[add] }.to output_approval('cli/add/usage')
+    end
+  end
+
+  context 'with an unrecognized library' do
+    it 'raises an error' do
+      expect { subject.execute %w[add no-such-lib] }.to raise_approval('cli/add/no-lib-error')
+        .diff(5)
+    end
+  end
+
+  context 'with --list' do
+    it 'shows list of available libraries' do
+      expect { subject.execute %w[add --list] }.to output_approval('cli/add/list')
     end
   end
 
@@ -29,34 +42,26 @@ describe Commands::Add do
     end
   end
 
-  context 'with comp command' do
+  context 'with completions command' do
     before { reset_tmp_dir init: true }
 
-    context 'with yaml subcommand' do
-      it 'creates completions.yml' do
-        expect { subject.execute %w[add comp yaml] }.to output_approval('cli/add/comp-yaml')
-        expect(File.read("#{target_dir}/completions.yml")).to match_approval('cli/add/comp-yaml-file')
-      end
+    it 'creates lib/send_completions.sh' do
+      expect { subject.execute %w[add completions] }.to output_approval('cli/add/comp-function')
+      expect(File.read("#{source_dir}/lib/send_completions.sh")).to match_approval('cli/add/comp-function-file')
     end
+  end
 
-    context 'with script subcommand' do
-      it 'creates completions.bash' do
-        expect { subject.execute %w[add comp script] }.to output_approval('cli/add/comp-script')
-        expect(File.read("#{target_dir}/completions.bash")).to match_approval('cli/add/comp-script-file')
-      end
+  context 'with completions_script command' do
+    it 'creates completions.bash' do
+      expect { subject.execute %w[add completions_script] }.to output_approval('cli/add/comp-script')
+      expect(File.read("#{target_dir}/completions.bash")).to match_approval('cli/add/comp-script-file')
     end
+  end
 
-    context 'with function subcommand' do
-      it 'creates lib/send_completions.sh' do
-        expect { subject.execute %w[add comp function] }.to output_approval('cli/add/comp-function')
-        expect(File.read("#{source_dir}/lib/send_completions.sh")).to match_approval('cli/add/comp-function-file')
-      end
-    end
-
-    context 'with an unrecognized subcommand' do
-      it 'raises an error' do
-        expect { subject.execute %w[add comp no-such-format] }.to raise_approval('cli/add/comp-error')
-      end
+  context 'with completions_yaml command' do
+    it 'creates completions.yml' do
+      expect { subject.execute %w[add completions_yaml] }.to output_approval('cli/add/comp-yaml')
+      expect(File.read("#{target_dir}/completions.yml")).to match_approval('cli/add/comp-yaml-file')
     end
   end
 
@@ -95,7 +100,7 @@ describe Commands::Add do
 
   context 'with settings command' do
     let(:settings_file) { "#{target_dir}/settings.yml" }
-    let(:template_file) { 'lib/bashly/templates/settings.yml' }
+    let(:template_file) { 'lib/bashly/libraries/settings/settings.yml' }
 
     before { reset_tmp_dir }
 
