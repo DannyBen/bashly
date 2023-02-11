@@ -25,6 +25,8 @@ module Bashly
         else
           add_lib args['LIBRARY']
         end
+
+        lib_source.cleanup if lib_source.git?
       end
 
     private
@@ -41,8 +43,7 @@ module Bashly
         lib_source.config.each do |key, config|
           usage = key
           usage += " #{config['usage']}" if config['usage']
-          usage = "--source #{source} #{usage}" if source
-          say "g`bashly add #{usage}`"
+          say "g`#{usage}`"
           say word_wrap("  #{config['help']}")
           say ''
         end
