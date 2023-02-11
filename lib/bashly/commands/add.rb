@@ -9,7 +9,7 @@ module Bashly
 
       option '-s --source NAME', <<~USAGE
         Specify a different libraries source. NAME can be:
-        
+
         * Path to a local libraries directory
         * Github repository, in the form of 'github:user/repo'
         * Remote git repository, in the form of 'git:clone_url.git'
