@@ -1,6 +1,5 @@
 module Bashly
   class Library
-    include AssetHelper
     attr_reader :path, :config
     attr_accessor :args
 

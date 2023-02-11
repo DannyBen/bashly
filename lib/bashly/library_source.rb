@@ -7,11 +7,7 @@ module Bashly
     end
 
     def config
-      @config ||= YAML.properly_load_file config_path
-    end
-
-    def config_path
-      @config_path ||= "#{path}/libraries.yml"
+      @config ||= YAML.properly_load_file("#{path}/libraries.yml")
     end
 
     def libraries
