@@ -11,8 +11,9 @@ module Bashly
         Specify a different libraries source. NAME can be:
 
         * Path to a local libraries directory
-        * Github repository, in the form of 'github:user/repo'
-        * Remote git repository, in the form of 'git:clone_url.git'
+        * GitHub (HTTPS) repository:  github:user/repo[//path@ref]
+        * GitHub (SSH) repository:    github-ssh:user/repo[//path@ref]
+        * Remote git repository:      git:repo-url.git[//path@ref]
       USAGE
       option '-f --force', 'Overwrite existing files'
       option '-l --list', 'Show available libraries'

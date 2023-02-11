@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Bashly
   class LibrarySource
     attr_reader :uri
@@ -46,7 +48,7 @@ module Bashly
     def git_clone
       dir = Dir.mktmpdir 'bashly-libs-'
       safe_run "git clone --depth 1 #{git_specs[:url]} #{dir}"
-      safe_run "git checkout #{git_specs[:ref]}" if git_specs[:ref]
+      safe_run %[git -C "#{dir}" checkout #{git_specs[:ref]}] if git_specs[:ref]
 
       "#{dir}#{git_specs[:path]}"
     end
@@ -67,7 +69,7 @@ module Bashly
     end
 
     def safe_run(cmd)
-      raise "Failed running command:\nm`#{cmd}`" unless system cmd
+      raise "Failed running command:\nm`#{cmd}`" unless system "#{cmd} > /dev/null 2>&1"
     end
 
     def transform_github_uri
