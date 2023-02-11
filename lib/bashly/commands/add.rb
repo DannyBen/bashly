@@ -3,113 +3,45 @@ module Bashly
     class Add < Base
       help 'Add extra features and customization to your script'
 
-      usage 'bashly add colors [--force]'
-      usage 'bashly add comp FORMAT [OUTPUT --force]'
-      usage 'bashly add config [--force]'
-      usage 'bashly add help [--force]'
-      usage 'bashly add lib [--force]'
-      usage 'bashly add settings [--force]'
-      usage 'bashly add strings [--force]'
-      usage 'bashly add test [--force]'
-      usage 'bashly add validations [--force]'
-      usage 'bashly add yaml [--force]'
+      usage 'bashly add LIBRARY [ARGS...] [--force]'
+      usage 'bashly add --list'
       usage 'bashly add (-h|--help)'
 
       option '-f --force', 'Overwrite existing files'
-
-      param 'FORMAT', <<~USAGE
-        Output format, can be one of:
-          function : generate a function file to be included in your script.
-          script   : generate a standalone bash completions script.
-          yaml     : generate a yaml compatible with completely.
-      USAGE
-
-      param 'OUTPUT', <<~USAGE
-        For the 'comp function' command: Name of the generated function.
-        For the 'comp script' or 'comp yaml' commands: path to output file.
-        In all cases, this is optional and will have sensible defaults.
-      USAGE
-
-      command 'colors', 'Add standard functions for printing colorful and formatted text to the lib directory.'
-      command 'comp', 'Generate a bash completions script or function.'
-      command 'config', 'Add standard functions for handling INI files to the lib directory.'
-      command 'help', 'Add a help command, in addition to the standard --help flag.'
-      command 'lib', <<~USAGE
-        Create the lib directory for any additional user scripts.
-        All *.sh scripts in this directory will be included in the final bash script.
-        Note that if you configured a different partials_extension, then the extensions of the files in this directory need to match.
-      USAGE
-
-      command 'settings', 'Copy a sample settings.yml file to your project, allowing you to customize some ' \
-        'bashly options.'
-
-      command 'strings', 'Copy an additional configuration file to your project, allowing you to customize all the ' \
-        'tips and error strings.'
-
-      command 'test', 'Add approval testing.'
-      command 'validations', 'Add argument validation functions to the lib directory.'
-      command 'yaml', 'Add standard functions for reading YAML files to the lib directory.'
-      example 'bashly add strings --force'
-      example 'bashly add comp function'
-      example 'bashly add comp script completions.bash'
+      option '-l --list', 'Show available libraries'
 
       attr_reader :skip_src_check
 
-      def colors_command
-        add_lib 'colors'
+      def run
+        if args['--list']
+          show_list
+        else
+          add_lib args['LIBRARY']
+        end
+      end
+      
+    private
+
+      def lib_source
+        @lib_source ||= Bashly::LibrarySource.new
       end
 
-      def comp_command
-        format = args['FORMAT']
-        output = args['OUTPUT']
-
-        case format
-        when 'script'   then add_lib 'completions_script', output
-        when 'function' then add_lib 'completions', output
-        when 'yaml'     then add_lib 'completions_yaml', output
-        else            raise Error, "Unrecognized format: #{format}"
+      def show_list
+        lib_source.config.each do |key, config|
+          usage = key
+          usage += " #{config['usage']}" if config['usage']
+          say "g`bashly add #{usage}`"
+          say word_wrap("  #{config['help']}")
+          say ''
         end
       end
 
-      def config_command
-        add_lib 'config'
-      end
+      def add_lib(name)
+        library = lib_source.libraries[name.to_sym]
+        raise "Unknown library: g`#{name}`\nRun m`bashly add --list` to see available libraries" unless library
 
-      def lib_command
-        add_lib 'lib'
-      end
-
-      def settings_command
-        @skip_src_check = true
-        add_lib 'settings'
-      end
-
-      def strings_command
-        add_lib 'strings'
-      end
-
-      def test_command
-        add_lib 'test'
-      end
-
-      def help_command
-        add_lib 'help'
-      end
-
-      def validations_command
-        add_lib 'validations'
-      end
-
-      def yaml_command
-        add_lib 'yaml'
-      end
-
-    private
-
-      def add_lib(name, *args)
-        source = Bashly::LibrarySource.new
-        library = source.libraries[name.to_sym]
-        library.args = args
+        library.args = args['ARGS']
+        @skip_src_check = lib_source.config.dig name, 'skip_src_check'
 
         files_created = 0
         library.files.each do |file|

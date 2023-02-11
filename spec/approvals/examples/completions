@@ -1,4 +1,4 @@
-+ bashly add comp function --force
++ bashly add completions --force
 created src/lib/send_completions.sh
 
 In order to enable completions in your script, create a command or a flag (for example: cli completions or cli --completions) that calls the send_completions function.

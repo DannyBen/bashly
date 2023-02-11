@@ -75,7 +75,7 @@ command.commands:
       help: Register a local repository
 
 command.completions:
-  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add comp`.
+  help: Specify a list of additional completion suggestions when used in conjunction with `bashly add completions`.
   url: https://bashly.dannyb.co/configuration/command/#completions
   example: |-
     commands:

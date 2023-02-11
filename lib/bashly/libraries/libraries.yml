@@ -1,35 +1,58 @@
 colors:
+  help: Add standard functions for printing colorful and formatted text to the lib directory.
   files:
     - source: "colors/colors.sh"
       target: "%{user_lib_dir}/colors.%{user_ext}"
 
-completions: Bashly::Libraries::CompletionsFunction
-completions_script: Bashly::Libraries::CompletionsScript
-completions_yaml: Bashly::Libraries::CompletionsYAML
+completions: 
+  help: Generate a bash completions function.
+  usage: '[PATH]'
+  handler: Bashly::Libraries::CompletionsFunction
+
+completions_script:
+  help: Generate a standalone bash completions script.
+  usage: '[PATH]'
+  handler: Bashly::Libraries::CompletionsScript
+
+completions_yaml:
+  help: Generate a completions YAML configuration for Completely.
+  usage: '[PATH]'
+  handler: Bashly::Libraries::CompletionsYAML
 
 config:
+  help: Add standard functions for handling INI files to the lib directory.
   files:
     - source: "config/config.sh"
       target: "%{user_lib_dir}/config.%{user_ext}"
 
-help: Bashly::Libraries::Help
+help:
+  help: Add a help command, in addition to the standard --help flag.
+  handler: Bashly::Libraries::Help
 
 lib:
+  help: |-
+    Create the lib directory for any additional user scripts.
+    All *.sh scripts in this directory will be included in the final bash script.
+    Note that if you configured a different partials_extension, then the extensions of the files in this directory need to match.
   files:
     - source: "lib/sample_function.sh"
       target: "%{user_lib_dir}/sample_function.%{user_ext}"
 
 settings:
+  help: Copy a sample settings.yml file to your project, allowing you to customize some bashly options.
+  skip_src_check: true
   files:
     - source: "settings/settings.yml"
       target: "settings.yml"
 
 strings:
+  help: Copy an additional configuration file to your project, allowing you to customize all the tips and error strings.
   files:
     - source: "strings/strings.yml"
       target: "%{user_source_dir}/bashly-strings.yml"
 
 test:
+  help: Add approval testing.
   files:
     - source: "test/approvals.bash"
       target: "%{user_target_dir}/test/approvals.bash"
@@ -44,6 +67,7 @@ test:
     Docs: bu`https://github.com/DannyBen/approvals.bash`
 
 validations:
+  help: Add argument validation functions to the lib directory.
   files:
     - source: "validations/validate_dir_exists.sh"
       target: "%{user_lib_dir}/validations/validate_dir_exists.%{user_ext}"
@@ -55,6 +79,7 @@ validations:
       target: "%{user_lib_dir}/validations/validate_not_empty.%{user_ext}"
 
 yaml:
+  help: Add standard functions for reading YAML files.
   files:
     - source: "yaml/yaml.sh"
       target: "%{user_lib_dir}/yaml.%{user_ext}"

@@ -37,9 +37,9 @@ module Bashly
   private
 
     def custom_handler
-      return nil unless config.is_a? String
+      return nil unless config['handler']
 
-      @custom_handler ||= Module.const_get(config).new(*args)
+      @custom_handler ||= Module.const_get(config['handler']).new(*args)
     end
 
     def target_file_args

@@ -7,7 +7,7 @@ This example was generated with:
 ```bash
 $ bashly init
 # ... now edit src/bashly.yml to match the example ...
-$ bashly add comp function
+$ bashly add completions
 $ bashly generate
 # ... now edit src/completions_command.sh ...
 $ bashly generate
@@ -112,7 +112,7 @@ commands:
 ```bash
 # Call the `send_completions` function which was added by running:
 #
-#   $ bashly add comp function
+#   $ bashly add completions
 #
 # Users can now enable bash completion for this script by running:
 #

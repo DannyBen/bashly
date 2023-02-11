@@ -12,7 +12,7 @@ created ./cli
 run ./cli --help to test your bash script
 + bundle exec bashly add colors
 created src/lib/colors.bash
-+ bundle exec bashly add comp function
++ bundle exec bashly add completions
 created src/lib/send_completions.bash
 
 In order to enable completions in your script, create a command or a flag (for example: cli completions or cli --completions) that calls the send_completions function.

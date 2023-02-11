@@ -16,4 +16,4 @@ bundle exec bashly add colors
 bundle exec bashly generate
 ./cli
 bundle exec bashly generate --upgrade
-bundle exec bashly add comp function
+bundle exec bashly add completions
