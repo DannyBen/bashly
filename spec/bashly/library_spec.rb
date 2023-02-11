@@ -61,7 +61,7 @@ describe Library do
 
   describe '#find_file' do
     let(:path) { "#{Settings.target_dir}/src/lib/colors.sh" }
-    
+
     it 'returns a file from the library' do
       expect(subject.find_file path).to be_a Hash
     end

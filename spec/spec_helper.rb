@@ -11,7 +11,8 @@ unless ENV['NOCOV']
     result = SimpleCov.result
     if result.total_branches&.positive?
       covered_branches_percent = 100.0 * result.covered_branches / result.total_branches
-      puts "Branch coverage: #{result.covered_branches} / #{result.total_branches} branches (#{covered_branches_percent.round(2)}%) covered."
+      puts "Branch coverage: #{result.covered_branches} / #{result.total_branches} branches " \
+        "(#{covered_branches_percent.round(2)}%) covered."
     end
   end
 end

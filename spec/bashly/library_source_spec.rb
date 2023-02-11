@@ -21,7 +21,7 @@ describe LibrarySource do
     end
 
     it 'returns Library objects as values' do
-      expect(subject.libraries.values.map { |a| a.class }.uniq ).to eq [Library]
+      expect(subject.libraries.values.map(&:class).uniq).to eq [Library]
     end
   end
 end

@@ -19,7 +19,7 @@ module Bashly
           add_lib args['LIBRARY']
         end
       end
-      
+
     private
 
       def lib_source

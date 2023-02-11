@@ -21,6 +21,7 @@ describe Commands::Add do
   context 'with an unrecognized library' do
     it 'raises an error' do
       expect { subject.execute %w[add no-such-lib] }.to raise_approval('cli/add/no-lib-error')
+        .diff(5)
     end
   end
 
