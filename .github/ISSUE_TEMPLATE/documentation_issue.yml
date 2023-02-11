@@ -1,0 +1,18 @@
+---
+name: Documentation Issue
+description: Report an issue with the documentation or with the examples
+title: Issue title
+labels: documentation
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
+

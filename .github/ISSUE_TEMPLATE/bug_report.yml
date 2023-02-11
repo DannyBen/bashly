@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 description: Report a bug
-title: 'Issue title'
+title: Issue title
 labels: bug
 body:
   - type: dropdown

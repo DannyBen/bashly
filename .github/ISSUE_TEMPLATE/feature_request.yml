@@ -1,0 +1,12 @@
+---
+name: Feature Request
+description: Suggest a feature
+title: Issue title
+labels: enhancement
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
