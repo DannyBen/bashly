@@ -1,7 +1,6 @@
 require "byebug"
 require 'bashly'
 require_relative 'helpers/example'
-require_relative 'helpers/checklist'
 
 title   "Bashly Developer Toolbelt"
 summary "Runfile tasks for building the Bashly gem"
@@ -11,7 +10,6 @@ import_gem 'runfile-tasks/gem', gemname: 'bashly'
 import_gem 'runfile-tasks/docker', image: 'dannyben/bashly', version: Bashly::VERSION
 import 'helpers/examples'
 import 'helpers/debug'
-import 'helpers/release'
 
 help   "Run shellcheck on all examples"
 action :shellcheck do
