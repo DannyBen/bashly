@@ -1,11 +1,18 @@
 Add extra features and customization to your script
 
 Usage:
-  bashly add LIBRARY [ARGS...] [--force]
-  bashly add --list
+  bashly add [--source NAME] LIBRARY [ARGS...] [--force]
+  bashly add [--source NAME] --list
   bashly add (-h|--help)
 
 Options:
+  -s --source NAME
+    Specify a different libraries source. NAME can be:
+    
+    * Path to a local libraries directory
+    * Github repository, in the form of 'github:user/repo'
+    * Remote git repository, in the form of 'git:clone_url.git'
+
   -f --force
     Overwrite existing files
 

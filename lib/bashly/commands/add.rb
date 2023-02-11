@@ -3,10 +3,17 @@ module Bashly
     class Add < Base
       help 'Add extra features and customization to your script'
 
-      usage 'bashly add LIBRARY [ARGS...] [--force]'
-      usage 'bashly add --list'
+      usage 'bashly add [--source NAME] LIBRARY [ARGS...] [--force]'
+      usage 'bashly add [--source NAME] --list'
       usage 'bashly add (-h|--help)'
 
+      option '-s --source NAME', <<~USAGE
+        Specify a different libraries source. NAME can be:
+        
+        * Path to a local libraries directory
+        * Github repository, in the form of 'github:user/repo'
+        * Remote git repository, in the form of 'git:clone_url.git'
+      USAGE
       option '-f --force', 'Overwrite existing files'
       option '-l --list', 'Show available libraries'
 
@@ -22,14 +29,19 @@ module Bashly
 
     private
 
+      def source
+        args['--source']
+      end
+
       def lib_source
-        @lib_source ||= Bashly::LibrarySource.new
+        @lib_source ||= Bashly::LibrarySource.new source
       end
 
       def show_list
         lib_source.config.each do |key, config|
           usage = key
           usage += " #{config['usage']}" if config['usage']
+          usage = "--source #{source} #{usage}" if source
           say "g`bashly add #{usage}`"
           say word_wrap("  #{config['help']}")
           say ''
