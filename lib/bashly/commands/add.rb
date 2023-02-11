@@ -116,7 +116,7 @@ module Bashly
           created = safe_write file[:path], file[:content]
           files_created += 1 if created
         end
-        
+
         message = library.post_install_message
         say "\n#{message}" if message && files_created.positive?
       end

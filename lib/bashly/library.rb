@@ -17,7 +17,7 @@ module Bashly
         config['files'].map do |file|
           {
             path:    file['target'] % target_file_args,
-            content: File.read("#{path}/#{file['source']}")
+            content: File.read("#{path}/#{file['source']}"),
           }
         end
       end
