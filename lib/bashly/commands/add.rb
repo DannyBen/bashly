@@ -21,6 +21,8 @@ module Bashly
       attr_reader :skip_src_check
 
       def run
+        say "Performing git operations, this may take a while...\n" if lib_source.git?
+
         if args['--list']
           show_list
         else

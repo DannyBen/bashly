@@ -200,4 +200,13 @@ describe Commands::Add do
         .to output_approval('cli/add/from-extenal-path')
     end
   end
+
+  context 'with a library from github' do
+    before { reset_tmp_dir create_src: true }
+
+    it 'properly installs the library' do
+      expect { subject.execute %w[add --source github:dannyben/bashly//spec/fixtures/libraries database] }
+        .to output_approval('cli/add/from-github')
+    end
+  end
 end
