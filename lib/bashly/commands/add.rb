@@ -11,8 +11,9 @@ module Bashly
         Specify a different libraries source. NAME can be:
 
         * Path to a local libraries directory
-        * Github repository, in the form of 'github:user/repo'
-        * Remote git repository, in the form of 'git:clone_url.git'
+        * GitHub (HTTPS) repository:  github:user/repo[//path@ref]
+        * GitHub (SSH) repository:    github-ssh:user/repo[//path@ref]
+        * Remote git repository:      git:repo-url.git[//path@ref]
       USAGE
       option '-f --force', 'Overwrite existing files'
       option '-l --list', 'Show available libraries'
@@ -25,6 +26,8 @@ module Bashly
         else
           add_lib args['LIBRARY']
         end
+
+        lib_source.cleanup if lib_source.git?
       end
 
     private
@@ -41,8 +44,7 @@ module Bashly
         lib_source.config.each do |key, config|
           usage = key
           usage += " #{config['usage']}" if config['usage']
-          usage = "--source #{source} #{usage}" if source
-          say "g`bashly add #{usage}`"
+          say "g`#{usage}`"
           say word_wrap("  #{config['help']}")
           say ''
         end
