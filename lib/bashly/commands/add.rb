@@ -43,6 +43,10 @@ module Bashly
         library.args = args['ARGS']
         @skip_src_check = lib_source.config.dig name, 'skip_src_check'
 
+        add_library_files library
+      end
+
+      def add_library_files(library)
         files_created = 0
         library.files.each do |file|
           created = safe_write file[:path], file[:content]
