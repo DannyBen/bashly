@@ -4,10 +4,15 @@ module Bashly
 
     def initialize(path = nil)
       @path = path || File.expand_path('libraries', __dir__)
+      raise "Cannot find #{config_path}" unless File.exist? config_path
     end
 
     def config
-      @config ||= YAML.properly_load_file("#{path}/libraries.yml")
+      @config ||= YAML.properly_load_file config_path
+    end
+
+    def config_path
+      @config_path ||= "#{path}/libraries.yml"
     end
 
     def libraries

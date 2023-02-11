@@ -6,6 +6,17 @@ describe LibrarySource do
       expect(subject.config).to be_a Hash
       expect(subject.config.keys.first).to eq 'colors'
     end
+
+    context 'with an external path' do
+      subject { described_class.new path }
+
+      let(:path) { 'spec/fixtures/libraries' }
+
+      it 'reads the config from the specified path' do
+        expect(subject.config).to be_a Hash
+        expect(subject.config.keys).to eq ['database']
+      end
+    end
   end
 
   describe '#libraries' do

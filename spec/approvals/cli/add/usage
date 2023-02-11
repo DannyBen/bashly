@@ -1,4 +1,4 @@
 Usage:
-  bashly add LIBRARY [ARGS...] [--force]
-  bashly add --list
+  bashly add [--source NAME] LIBRARY [ARGS...] [--force]
+  bashly add [--source NAME] --list
   bashly add (-h|--help)

@@ -1,0 +1,3 @@
+bashly add --source spec/fixtures/libraries database
+  Add database utilities
+

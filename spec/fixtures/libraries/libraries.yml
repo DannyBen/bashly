@@ -1,0 +1,5 @@
+database:
+  help: Add database utilities
+  files:
+    - source: "database/database.sh"
+      target: "%{user_lib_dir}/database.%{user_ext}"

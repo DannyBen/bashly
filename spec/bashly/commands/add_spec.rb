@@ -29,6 +29,13 @@ describe Commands::Add do
     it 'shows list of available libraries' do
       expect { subject.execute %w[add --list] }.to output_approval('cli/add/list')
     end
+
+    context 'with --source path' do
+      it 'shows the list from the specified path' do
+        expect { subject.execute %w[add --source spec/fixtures/libraries --list] }
+          .to output_approval('cli/add/list-path')
+      end
+    end
   end
 
   context 'with colors command' do
@@ -182,6 +189,15 @@ describe Commands::Add do
     it 'copies the yaml.sh lib file to the user space' do
       expect { subject.execute %w[add yaml] }.to output_approval('cli/add/yaml')
       expect(File).to exist(lib_file)
+    end
+  end
+
+  context 'with a library from an external --source path' do
+    before { reset_tmp_dir create_src: true }
+
+    it 'properly installs the library' do
+      expect { subject.execute %w[add --source spec/fixtures/libraries database] }
+        .to output_approval('cli/add/from-extenal-path')
     end
   end
 end
