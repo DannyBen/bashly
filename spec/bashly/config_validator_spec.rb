@@ -14,21 +14,5 @@ describe ConfigValidator do
         end
       end
     end
-
-    context 'when deprecated options are in use' do
-      fixtures = load_fixture 'script/deprecations'
-
-      fixtures.each do |fixture, options|
-        context "with :#{fixture}" do
-          let(:options) { options }
-
-          it 'stores deprecations' do
-            subject.validate
-            deprecations = subject.deprecations.map(&:to_h).to_yaml
-            expect(deprecations).to match_approval("script/deprecations/#{fixture}")
-          end
-        end
-      end
-    end
   end
 end

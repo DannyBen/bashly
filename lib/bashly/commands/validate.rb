@@ -17,13 +17,7 @@ module Bashly
           puts '---'
         end
         validate_config
-        show_deprecations
-        deprecations = config_validator.deprecations
-        if deprecations.empty?
-          say 'g`OK`'
-        else
-          say "r`WARNING` Found #{deprecations.count} deprecations"
-        end
+        say 'g`OK`'
       end
     end
   end

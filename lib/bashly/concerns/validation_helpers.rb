@@ -2,10 +2,6 @@ module Bashly
   # This is a `ConfigValidator` concern responsible for providing basic
   # assertion methods.
   module ValidationHelpers
-    def deprecations
-      @deprecations ||= []
-    end
-
   protected
 
     def assert(valid, message)
@@ -14,10 +10,6 @@ module Bashly
 
     def refute(invalid, message)
       assert !invalid, message
-    end
-
-    def deprecate(key, **options)
-      deprecations.push Deprecation.new(key, **options)
     end
 
     def assert_string(key, value)
