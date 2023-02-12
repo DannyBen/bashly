@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.name must only contain lowercase alphanumeric characters, hyphens and underscores>
