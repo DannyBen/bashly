@@ -110,6 +110,15 @@ describe LibrarySource do
     it 'returns Library objects as values' do
       expect(subject.libraries.values.map(&:class).uniq).to eq [Library]
     end
+
+    context 'with a custom source' do
+      let(:uri) { 'spec/fixtures/libraries' }
+
+      it 'replaces [@bashly-upgrade] marker with a proper upgrade string' do
+        expect(subject.libraries[:database].files.first[:content])
+          .to start_with '## [@bashly-upgrade spec/fixtures/libraries;database]'
+      end
+    end
   end
 
   describe '#cleanup' do

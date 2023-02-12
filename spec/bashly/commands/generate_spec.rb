@@ -200,6 +200,19 @@ describe Commands::Generate do
         expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade-unknown-lib')
       end
     end
+
+    context 'when upgrading a library from an external source' do
+      before do
+        reset_tmp_dir
+        cp 'spec/fixtures/workspaces/lib-custom-source/*'
+        system "ln -fs #{Dir.pwd}/spec/fixtures/libraries /tmp/bashly-tmp-source"
+      end
+
+      it 'upgrades the library' do
+        expect { subject.execute %w[generate -u] }.to output_approval('cli/generate/upgrade-custom-source')
+        expect(File.read 'spec/tmp/src/lib/database.sh').to include('dummy')
+      end
+    end
   end
 
   context 'with --watch' do
