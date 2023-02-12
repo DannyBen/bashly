@@ -102,7 +102,8 @@ describe Commands::Generate do
       expect { subject.execute %w[generate --wrap function] }.to output_approval('cli/generate/wrap-function')
       expect(File).to exist(cli_script)
       lines = File.readlines cli_script
-      expect(lines[0..10].join).to match_approval('cli/generate/wrap-script').except(/\d+\.\d+\.\d+/)
+      expect(lines[0..10].join).to match_approval('cli/generate/wrap-script')
+        .except(/\d+\.\d+\.\d+(\.rc\d)?/)
     end
   end
 

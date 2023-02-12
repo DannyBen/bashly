@@ -11,7 +11,8 @@ describe Script::Wrapper do
     context 'without function name' do
       it 'returns the complete script' do
         lines = subject.code.split "\n"
-        expect(lines[0..13].join("\n")).to match_approval('script/wrapper/code').except(/\d+\.\d+\.\d+/)
+        expect(lines[0..13].join("\n")).to match_approval('script/wrapper/code')
+          .except(/\d+\.\d+\.\d+(\.rc\d)?/)
         expect(lines[-1]).to eq 'run "$@"'
       end
     end
@@ -21,7 +22,8 @@ describe Script::Wrapper do
 
       it 'returns the complete script wrapped in a function without a bash3 bouncer' do
         lines = subject.code.split "\n"
-        expect(lines[0..13].join("\n")).to match_approval('script/wrapper/code-wrapped').except(/\d+\.\d+\.\d+/)
+        expect(lines[0..13].join("\n")).to match_approval('script/wrapper/code-wrapped')
+          .except(/\d+\.\d+\.\d+(\.rc\d)?/)
         expect(lines[-1]).to eq '(return 0 2>/dev/null) || my_super_function "$@"'
       end
     end
