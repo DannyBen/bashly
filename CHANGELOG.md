@@ -1,6 +1,24 @@
 Change Log
 ========================================
 
+v1.0.0.rc1 - 2023-02-12
+----------------------------------------
+
+- Show --help and --version last in Options list
+- Fix environment variables caption to not show if all are private
+- Remove env var validation rule for private + default
+- Add support for private flags
+- Allow configuring the path to bashly.yml
+- Allow customizing the path to settings.yml
+- Remove environment variables from all --help messages
+- Refactor libraries
+- Refactor 'bashly add libraries' command
+- Add support for adding libraries from a custom directory
+- Add support for git-sourced libraries
+- Add auto upgrade support to custom library sources
+- Remove deprecated command.short
+
+
 v0.9.5 - 2023-01-31
 ----------------------------------------
 
