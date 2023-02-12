@@ -109,6 +109,14 @@
   help: command.function must match /[a-z0-9_]+/
   function: myCamelCaseFunction
 
+:command_name_uppercase:
+  name: INVALID
+  help: command.name must match /[a-z0-9_\-]+/
+
+:command_name_hyphen:
+  name: -invalid
+  help: command.name must not start with a hyphen
+
 :command_version:
   name: invalid
   help: version should be a string or a number
