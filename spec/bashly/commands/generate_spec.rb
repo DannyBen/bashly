@@ -205,7 +205,7 @@ describe Commands::Generate do
       before do
         reset_tmp_dir
         cp 'spec/fixtures/workspaces/lib-custom-source/*'
-        system "ln -fs #{Dir.pwd}/spec/fixtures/libraries /tmp/bashly-tmp-source"
+        system "rm -rf /tmp/bashly-tmp-source ; ln -s #{Dir.pwd}/spec/fixtures/libraries /tmp/bashly-tmp-source"
       end
 
       it 'upgrades the library' do
