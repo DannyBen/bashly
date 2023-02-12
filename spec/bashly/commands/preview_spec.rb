@@ -22,16 +22,4 @@ describe Commands::Preview do
         .except(/env bash\n.*\nrun "\$@"/m, "env bash\n...\nrun \"$@\"")
     end
   end
-
-  # DEPRECATION 0.8.0
-  context 'with deprecated command.short option' do
-    before do
-      reset_tmp_dir create_src: true
-      cp 'spec/fixtures/deprecations/command-short.yml', "#{source_dir}/bashly.yml"
-    end
-
-    it 'shows deprecations messages in stderr' do
-      expect { subject.execute %w[preview] }.to output_approval('cli/deprecations/command-short-stderr').to_stderr
-    end
-  end
 end

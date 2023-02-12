@@ -193,11 +193,6 @@ module Bashly
         refute value['version'], "#{key}.version makes no sense"
         refute value['extensible'], "#{key}.extensible makes no sense"
       end
-
-      # DEPRECATION 0.8.0
-      if value['short']
-        deprecate "#{key}.short", replacement: 'alias', reference: 'https://github.com/DannyBen/bashly/pull/220'
-      end
     end
   end
 end

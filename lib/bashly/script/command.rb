@@ -11,9 +11,7 @@ module Bashly
             extensible expose filename filters flags
             footer function group help name
             private version
-            short
           ]
-          # DEPRECATION 0.8.0
         end
       end
 
@@ -36,8 +34,6 @@ module Bashly
 
       # Returns an array of alternative aliases if any
       def alt
-        # DEPRECATION 0.8.0
-        options['alias'] ||= options['short']
         return [] unless options['alias']
 
         options['alias'].is_a?(String) ? [options['alias']] : options['alias']
