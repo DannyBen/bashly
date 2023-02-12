@@ -19,7 +19,8 @@ module Bashly
 
     def libraries
       config.to_h do |name, spec|
-        [name.to_sym, Library.new(path, spec)]
+        upgrade_string = "#{uri};#{name}"
+        [name.to_sym, Library.new(path, spec, upgrade_string: upgrade_string)]
       end
     end
 

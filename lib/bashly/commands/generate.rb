@@ -82,6 +82,7 @@ module Bashly
           next unless content =~ /\[@bashly-upgrade (.+)\]/
 
           args = $1.split
+
           library_name = args.shift
           upgrade file, library_name, *args
         end
@@ -92,7 +93,13 @@ module Bashly
       end
 
       def upgrade(existing_file, library_name, *args)
-        source = Bashly::LibrarySource.new
+        if library_name.include? ';'
+          source_name, library_name = library_name.split(';')
+          source = Bashly::LibrarySource.new source_name
+        else
+          source = Bashly::LibrarySource.new
+        end
+
         library = source.libraries[library_name.to_sym]
 
         if library

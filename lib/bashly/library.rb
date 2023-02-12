@@ -1,11 +1,12 @@
 module Bashly
   class Library
-    attr_reader :path, :config
+    attr_reader :path, :config, :upgrade_string
     attr_accessor :args
 
-    def initialize(path, config)
+    def initialize(path, config, upgrade_string: nil)
       @path = path.to_s
       @config = config
+      @upgrade_string = upgrade_string
     end
 
     def files
@@ -16,7 +17,7 @@ module Bashly
         config['files'].map do |file|
           {
             path:    file['target'] % target_file_args,
-            content: File.read("#{path}/#{file['source']}"),
+            content: file_contents("#{path}/#{file['source']}"),
           }
         end
       end
@@ -40,6 +41,10 @@ module Bashly
       return nil unless config['handler']
 
       @custom_handler ||= Module.const_get(config['handler']).new(*args)
+    end
+
+    def file_contents(path)
+      File.read(path).sub('[@bashly-upgrade]', "[@bashly-upgrade #{upgrade_string}]")
     end
 
     def target_file_args
