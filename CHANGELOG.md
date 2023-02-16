@@ -1,7 +1,7 @@
 Change Log
 ========================================
 
-v1.0.0.rc1 - 2023-02-12
+v1.0.0 - 2023-02-16
 ----------------------------------------
 
 - Show --help and --version last in Options list
@@ -17,6 +17,7 @@ v1.0.0.rc1 - 2023-02-12
 - Add support for git-sourced libraries
 - Add auto upgrade support to custom library sources
 - Remove deprecated command.short
+- Add command.name validation
 
 
 v0.9.5 - 2023-01-31
