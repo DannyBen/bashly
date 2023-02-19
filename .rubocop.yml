@@ -10,7 +10,6 @@ inherit_gem:
 AllCops:
   TargetRubyVersion: 2.7
   Exclude:
-    - debug.rb
     - dev/**/*
 
 # The `ConfigValidator` class is a DSL, let it be
@@ -19,11 +18,6 @@ Metrics/CyclomaticComplexity: { Exclude: [lib/bashly/config_validator.rb] }
 Metrics/PerceivedComplexity:  { Exclude: [lib/bashly/config_validator.rb] }
 Metrics/MethodLength:         { Exclude: [lib/bashly/config_validator.rb] }
 Style/GuardClause:            { Exclude: [lib/bashly/config_validator.rb] }
-
-# Allow longer blocks
-Metrics/BlockLength:
-  Exclude:
-    - helpers/release.rb
 
 # Allow irregular filenames in some cases
 RSpec/FilePath:
