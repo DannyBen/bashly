@@ -1,5 +1,5 @@
 <div align='center'>
-<img src='logo.svg' width=280>
+<img src='support/img/bashly-logo.svg' width=280>
 
 # Bashly - Bash CLI Framework and Generator
 
@@ -13,7 +13,7 @@ Create feature-rich bash scripts using simple YAML configuration
 
 ---
 
-![demo](demo/cast.gif)
+![demo](support/demo/cast.gif)
 
 </div>
 
@@ -26,6 +26,11 @@ usually handled by a framework in any other programming language.
 
 It is available both as a [ruby gem](https://rubygems.org/gems/bashly) and as
 a [docker image](https://hub.docker.com/r/dannyben/bashly).
+
+## Bashly is Sponsored By
+
+<a target='_blank' href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=280></a>
+
 
 ## Documentation
 
@@ -64,7 +69,7 @@ Bashly is responsible for:
   - **Bash completions**.
   - and more.
 
-## Contributing / Support
+  ## Contributing / Support
 
 If you experience any issue, have a question or a suggestion, or if you wish
 to contribute, feel free to [open an issue][issues] or

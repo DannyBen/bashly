@@ -19,7 +19,7 @@ Type(Command, Delay=2000) {
 
 F12::
   Type("{#} Press F11 to abort at any time")
-  Type("cd ./demo")
+  Type("cd ./support/demo")
   Type("rm -rf myapp")
   ; Type("termtosvg " Outfile " -t " Template)
   Type("rm cast.json {;} asciinema rec cast.json")
@@ -56,7 +56,7 @@ F12::
   Type("exit")
   Type("agg --font-size 20 cast.json cast.gif")
   Sleep 400
-  Type("cd ..")
+  Type("cd ../../")
   Type("{#} Done")
 Return
 

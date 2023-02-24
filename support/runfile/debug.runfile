@@ -1,0 +1,12 @@
+action do
+  uri = "git:https://github.com/DannyBen/bashly.git//spec/fixtures/libraries@master"
+
+  matches = uri.match(%r{git:(?<url>.*\.git)//?(?<path>[^@]+)?@?(?<ref>.*)})
+
+  p matches[:url]
+  p matches[:path]
+  p matches[:ref]
+  
+
+
+end
