@@ -29,7 +29,7 @@ a [docker image](https://hub.docker.com/r/dannyben/bashly).
 
 ## Bashly is Sponsored By
 
-<a target='_blank' href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=280></a>
+<a href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=280></a>
 
 
 ## Documentation
