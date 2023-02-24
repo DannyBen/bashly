@@ -1,6 +1,6 @@
 ; --------------------------------------------------
-; This script generates the demo svg
-; NOTE: This should be executed in the demo folder
+; This script generates the demo gif
+; NOTE: This should be executed in the root folder
 ; --------------------------------------------------
 #SingleInstance Force
 SetkeyDelay 0, 50
