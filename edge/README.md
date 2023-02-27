@@ -16,7 +16,7 @@ or build your own image with [this Dockerfile](Dockerfile).
 ```bash
 git clone --depth 1 https://github.com/DannyBen/bashly.git
 cd bashly
-gem build bashly.gemspec
-gem install bashly*.gem
+gem build bashly.gemspec --output bashly.gem
+gem install bashly.gem
 cd ..
 ```
