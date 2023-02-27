@@ -157,8 +157,8 @@ module Bashly
       assert_extensible "#{key}.extensible", value['extensible']
       assert_dependencies "#{key}.dependencies", value['dependencies']
 
-      assert value['name'].match(/^[a-z0-9_-]+$/),
-        "#{key}.name must only contain lowercase alphanumeric characters, hyphens and underscores"
+      assert value['name'].match(/^[a-z0-9_\-.]+$/),
+        "#{key}.name must only contain lowercase alphanumeric characters, hyphens, dots and underscores"
 
       refute value['name'].start_with?('-'), "#{key}.name must not start with a hyphen"
 
