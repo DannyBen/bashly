@@ -18,10 +18,14 @@ config_path: "%{source_dir}/bashly.yml"
 # The path to use for creating the bash script
 target_dir: .
 
-# The path to use for upgrading library files, relative to the source dir
+# The path to use for common library files, relative to the source dir
 lib_dir: lib
 
-# When true, enable bash strict mode (set -euo pipefail)
+# Configure the bash options that will be added to the initialize function:
+# strict: true       Bash strict mode (set -euo pipefail)
+# strict: false      Only exit on errors (set -e)
+# strict: ''         Do not add any 'set' directive
+# strict: <string>   Add any other custom 'set' directive
 strict: false
 
 # When true, the generated script will use tab indentation instead of spaces
@@ -33,11 +37,11 @@ tab_indent: false
 compact_short_flags: true
 
 # Set to 'production' or 'development':
-# - production    generate a smaller script, without file markers
-# - development   generate with file markers
+# env: production    Generate a smaller script, without file markers
+# env: development   Generate with file markers
 env: development
 
-# The extension to use when reading/writing partial script snippets.
+# The extension to use when reading/writing partial script snippets
 partials_extension: sh
 
 # Display various usage elements in color by providing the name of the color
