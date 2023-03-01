@@ -30,7 +30,7 @@ include SpecMixin
 # Set up working directory for the specs
 Settings.source_dir = 'spec/tmp/src'
 Settings.target_dir = 'spec/tmp'
-Settings.strict = '1' # generate scripts with `set -euo pipefile`
+Settings.strict = true # generate scripts with `set -euo pipefail`
 Settings.env = :development
 reset_tmp_dir
 

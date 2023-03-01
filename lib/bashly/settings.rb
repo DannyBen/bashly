@@ -55,6 +55,16 @@ module Bashly
         @strict ||= get :strict
       end
 
+      def strict_string
+        if Settings.strict.is_a? String
+          Settings.strict
+        elsif Settings.strict
+          'set -euo pipefail'
+        else
+          'set -e'
+        end
+      end
+
       def tab_indent
         @tab_indent ||= get :tab_indent
       end

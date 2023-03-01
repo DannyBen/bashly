@@ -55,4 +55,34 @@ describe Settings do
       end
     end
   end
+
+  describe 'strict_string' do
+    original_value = Settings.strict
+
+    after { subject.strict = original_value }
+
+    context 'when strict is true' do
+      before { subject.strict = true }
+
+      it 'returns "set -euo pipefail"' do
+        expect(subject.strict_string).to eq 'set -euo pipefail'
+      end
+    end
+
+    context 'when strict is false' do
+      before { subject.strict = false }
+
+      it 'returns "set -e"' do
+        expect(subject.strict_string).to eq 'set -e'
+      end
+    end
+
+    context 'when strict is string' do
+      before { subject.strict = 'set -o pipefail' }
+
+      it 'returns the string as is' do
+        expect(subject.strict_string).to eq 'set -o pipefail'
+      end
+    end
+  end
 end

@@ -3,7 +3,7 @@
 > initialize() {
 >   version="<%= version %>"
 >   long_usage=''
->   {{ Settings.strict ? "set -euo pipefail" : "set -e" }}
+>   {{ Settings.strict_string }}
 > 
 
 if root_command?
