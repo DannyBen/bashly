@@ -12,7 +12,7 @@
 # The path containing the bashly source files
 source_dir: src
 
-# Tha path to bashly.yml
+# The path to bashly.yml
 config_path: "%{source_dir}/bashly.yml"
 
 # The path to use for creating the bash script
