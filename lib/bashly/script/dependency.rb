@@ -30,12 +30,12 @@ module Bashly
         @help = help&.empty? ? nil : help
       end
 
+      def multi?
+        @multi ||= commands.size > 1
+      end
+
       def name
-        @name ||= if commands.size == 1
-          commands.first
-        else
-          "#{label} (#{commands.join '/'})"
-        end
+        @name ||= multi? ? "#{label} (#{commands.join '/'})" : label
       end
     end
   end

@@ -240,10 +240,11 @@ command.dependencies
     - docker
     - curl
     
-    # Simple hash syntax, to provide additional help message
+    # Simple hash syntax, to provide additional (optional) help message
     dependencies:
       docker: see https://docker.com for installation instructions
       git: "install by running: sudo apt install git"
+      ruby:
     
     # Explicit hash syntax, to provide additional help message and
     # look for "one of" a given list of dependencies

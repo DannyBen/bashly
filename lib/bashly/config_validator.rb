@@ -64,10 +64,10 @@ module Bashly
     end
 
     def assert_dependency(key, value)
-      assert [String, Hash].include?(value.class),
-        "#{key} must be a string or a hash"
+      assert [String, Hash, NilClass].include?(value.class),
+        "#{key} must be a string, a hash or nil"
 
-      return if value.is_a? String
+      return unless value.is_a? Hash
 
       assert_hash key, value, keys: Script::Dependency.option_keys
       assert_string_or_array "#{key}.command", value['command']

@@ -1,0 +1,26 @@
+name: cli
+help: Sample application that requires alternate dependencies
+version: 0.1.0
+
+commands:
+- name: download
+  help: Download something
+
+  # This is the explicit way of defining dependencies.
+  # The generated script will be halted (with a friendly error message) if
+  # any of these programs are not installed:
+  dependencies:
+    # Abort with just the default 'missing dependency: git' message if git
+    # is not found
+    git:
+
+    # Abort with an additional help message if ruby is not found
+    ruby: visit $(blue_underlined https://www.ruby-lang.org) to install
+
+    # Abort if both curl and wget are not found, and show an additional help
+    # message.
+    # Note that in this case you will also have a `deps` hash in your
+    # bash script, with the path to the first found program.
+    http_client:
+      command: [curl, wget]
+      help: install with $(green sudo apt install curl)

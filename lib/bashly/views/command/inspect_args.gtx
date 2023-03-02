@@ -1,8 +1,8 @@
 = view_marker
 
 > inspect_args() {
->   readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
 >   if ((${#args[@]})); then
+>     readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
 >     echo args:
 >     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
 >   else
@@ -17,5 +17,13 @@
 >       echo "- \${other_args[$i]} = ${other_args[$i]}"
 >     done
 >   fi
+>
+>   if ((${#deps[@]})); then
+>     readarray -t sorted_keys < <(printf '%s\n' "${!deps[@]}" | sort)
+>     echo
+>     echo deps:
+>     for k in "${sorted_keys[@]}"; do echo "- \${deps[$k]} = ${deps[$k]}"; done
+>   fi
+>
 > }
 > 
