@@ -145,6 +145,15 @@ describe Script::Command do
     end
   end
 
+  describe '#dependencies' do
+    let(:fixture) { :dependencies }
+
+    it 'returns an array of Dependency objects' do
+      expect(subject.dependencies).to be_an Array
+      expect(subject.dependencies.first).to be_a Script::Dependency
+    end
+  end
+
   describe '#environment_cariables' do
     it 'returns an array of EnvironemntVariable objects' do
       expect(subject.environment_variables).to be_an Array

@@ -166,6 +166,24 @@
     arg: format
     default: png
 
+:dependencies:
+  name: cli
+  dependencies:
+  - curl
+  - jq
+
+:dependencies_simple_hash:
+  name: cli
+  dependencies:
+    curl: Please install curl
+
+:dependencies_full_hash:
+  name: cli
+  dependencies:
+    http_client:
+      command: [curl, wget]
+      help: Please install curl or wget
+
 :docker:
   name: docker
   help: run docker commands
