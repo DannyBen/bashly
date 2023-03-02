@@ -53,6 +53,7 @@ module Bashly
         help.empty? ? full_name : "#{full_name} - #{summary}"
       end
 
+      # Returns an object representing the catch_all configuration
       def catch_all
         @catch_all ||= CatchAll.from_config options['catch_all']
       end
@@ -133,7 +134,16 @@ module Bashly
         flags.select(&:default)
       end
 
-      # Returns an array of EnvironmentVariables
+      # Returns an array of Dependency objects
+      def dependencies
+        return [] unless options['dependencies']
+
+        @dependencies ||= options['dependencies'].map do |key, value|
+          Dependency.from_config key, value
+        end
+      end
+
+      # Returns an array of EnvironmentVariable objects
       def environment_variables
         return [] unless options['environment_variables']
 

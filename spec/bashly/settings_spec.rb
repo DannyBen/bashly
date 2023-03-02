@@ -57,7 +57,7 @@ describe Settings do
   end
 
   describe 'strict_string' do
-    original_value = Settings.strict
+    original_value = described_class.strict
 
     after { subject.strict = original_value }
 

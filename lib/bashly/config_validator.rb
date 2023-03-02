@@ -50,11 +50,28 @@ module Bashly
       when Array
         assert_array key, value, of: :string
       when Hash
-        assert_hash key, value, of: :string
+        assert_dependencies_hash key, value
       else
         assert [Array, Hash].include?(value.class),
           "#{key} must be an array or a hash"
       end
+    end
+
+    def assert_dependencies_hash(key, value)
+      value.each do |k, v|
+        assert_dependency "#{key}.#{k}", v
+      end
+    end
+
+    def assert_dependency(key, value)
+      assert [String, Hash].include?(value.class),
+        "#{key} must be a string or a hash"
+      
+      return if value.is_a? String
+
+      assert_hash key, value, keys: Script::Dependency.option_keys
+      assert_string_or_array "#{key}.command", value['command']
+      assert_optional_string "#{key}.help", value['help']
     end
 
     def assert_extensible(key, value)
