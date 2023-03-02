@@ -50,7 +50,19 @@ module Bashly
       when Array
         assert_array key, value, of: :string
       when Hash
-        assert_hash key, value, of: :string
+        assert_hash key, value
+
+        if value.any? { |_k, v| v.is_a?(Hash) }
+          value.each do |k, v|
+            subkey = "#{key}.#{k}"
+
+            assert_hash subkey, v, keys: %i[commands message]
+            assert_array "#{subkey}.commands", v['commands'], of: :string
+            assert_string "#{subkey}.message", v['message']
+          end
+        else
+          assert_hash key, value, of: :string
+        end
       else
         assert [Array, Hash].include?(value.class),
           "#{key} must be an array or a hash"

@@ -1,8 +1,22 @@
 if dependencies
   = view_marker
 
+  > local result
+  >
+
   dependencies.each do |dependency, message|
-    > if ! command -v {{ dependency }} >/dev/null 2>&1; then
+    if message.is_a? Hash
+      command = message['commands'].join(' ')
+      key = dependency
+      message = message['message']
+    else
+      command = key = dependency
+    end
+
+    > result="$(command -v {{ command }} 2>/dev/null | head -1)"
+    > if ((${#result} > 0)); then
+    >   dependencies['{{ key }}']="${result}"
+    > else
     >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n" >&2
     if message and !message.empty?
       >   printf "%s\n" "{{ message }}" >&2

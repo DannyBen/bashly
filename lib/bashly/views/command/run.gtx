@@ -2,6 +2,8 @@
 
 > run() {
 >   declare -A args=()
+>   # shellcheck dependencies=SC2034
+>   declare -A dependencies=()
 >   declare -a other_args=()
 >   declare -a input=()
 >   normalize_input "$@"
