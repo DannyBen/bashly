@@ -19,8 +19,8 @@ commands:
 
     # Abort if both curl and wget are not found, and show an additional help
     # message.
-    # Note that in this case you will also have a `deps` hash in your
-    # bash script, with the path to the first found program.
+    # Note that the path to the first found dependency will be available to
+    # your script in the `deps` associative array.
     http_client:
       command: [curl, wget]
       help: install with $(green sudo apt install curl)
