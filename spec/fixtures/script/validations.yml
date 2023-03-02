@@ -48,10 +48,6 @@
   name: invalid
   dependencies: 1
 
-:command_dependencies_invalid:
-  name: invalid
-  dependencies: 1
-
 :command_dependencies_invalid_array:
   name: invalid
   dependencies: [1, 2]
@@ -61,6 +57,25 @@
   dependencies:
     docker: 1
     git: 2
+
+:command_dependencies_invalid_hash_command:
+  name: invalid
+  dependencies:
+    docker:
+      command: 1
+
+:command_dependencies_invalid_hash_help:
+  name: invalid
+  dependencies:
+    http_client:
+      command: [curl, wget]
+      help: 1
+
+:command_dependencies_invalid_hash_keys:
+  name: invalid
+  dependencies:
+    docker:
+      invalid_key: goes here
 
 :command_expose_invalid_type:
   name: invalid

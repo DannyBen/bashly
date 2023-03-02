@@ -4,6 +4,9 @@ require 'spec_helper'
 # what they are supposed to do, and running without errors.
 # It will run several tests on all the configuration files in the examples
 # folder
+#
+# To only test examples containing a certain string in their path, run:
+# EXAMPLE=yaml bundle exec run spec examples
 
 describe 'generated bash scripts' do
   # Test public examples from the examples folder...
@@ -16,9 +19,8 @@ describe 'generated bash scripts' do
 
   test_cases = fixtures + examples
 
-  # To only test examples containing a certain string in their path, run:
-  # EXAMPLE=yaml bundle exec run spec examples
-  leeway = ENV['CI'] ? 30 : 0
+  # Allow up to a certain string distance from the approval text in CI
+  leeway = ENV['CI'] ? 40 : 0
 
   test_cases.each do |example|
     approval_name = example.gsub 'spec/fixtures/workspaces', 'fixtures'
@@ -32,10 +34,11 @@ describe 'generated bash scripts' do
           output = `bash test.sh 2>&1`
         end
 
-        # Use .diff to give CI some leeway, since its shell differs soemtimes
+        # Use .diff to give CI some leeway, since its shell differs sometimes
         # This was observed in at least these two cases:
         # - The "+ ..." shell messages driven by `set -x` have no space
         # - The order of our `inspect_args` sometimes differs
+        # - The result of the `deps` array sometimes differs
         expect(output).to match_approval(approval_name).diff(leeway)
       end
     end

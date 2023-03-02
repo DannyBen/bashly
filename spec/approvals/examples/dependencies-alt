@@ -1,0 +1,18 @@
++ bashly add colors
+created src/lib/colors.sh
++ bashly generate
+creating user files in src
+created src/initialize.sh
+created src/download_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli download
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+deps:
+- ${deps[git]} = /usr/bin/git
+- ${deps[http_client]} = /usr/bin/curl
+- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.1.3/bin/ruby

@@ -1,11 +1,13 @@
 if dependencies
   = view_marker
 
-  dependencies.each do |dependency, message|
-    > if ! command -v {{ dependency }} >/dev/null 2>&1; then
-    >   printf "{{ strings[:missing_dependency] % { dependency: dependency } }}\n" >&2
-    if message and !message.empty?
-      >   printf "%s\n" "{{ message }}" >&2
+  dependencies.each do |dependency|
+    > if command -v {{ dependency.commands.join(' ') }} >/dev/null 2>&1; then
+    >   deps['{{ dependency.label }}']="$(command -v {{ dependency.commands.join(' ') }} | head -n1)"
+    > else
+    >   printf "{{ strings[:missing_dependency] % { dependency: dependency.name } }}\n" >&2
+    if dependency.help
+      >   printf "%s\n" "{{ dependency.help }}" >&2
     end
     >   exit 1
     > fi

@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.dependencies.docker must be a string>
+#<Bashly::ConfigurationError: root.dependencies.docker must be a string, a hash or nil>

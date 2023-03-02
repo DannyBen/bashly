@@ -2,6 +2,7 @@
 
 > run() {
 >   declare -A args=()
+>   declare -A deps=()
 >   declare -a other_args=()
 >   declare -a input=()
 >   normalize_input "$@"
