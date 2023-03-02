@@ -240,10 +240,17 @@ command.dependencies
     - docker
     - curl
     
-    # Hash syntax, to provide additional help message
+    # Simple hash syntax, to provide additional help message
     dependencies:
       docker: see https://docker.com for installation instructions
       git: "install by running: sudo apt install git"
+    
+    # Explicit hash syntax, to provide additional help message and
+    # look for "one of" a given list of dependencies
+    dependencies:
+      http_client:
+        command: [curl, wget]
+        help: Run 'sudo apt install curl' or 'sudo apt install wget'
 
   See https://bashly.dannyb.co/configuration/command/#dependencies
 
