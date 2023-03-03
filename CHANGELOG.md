@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v1.0.1 - 2023-03-03
+----------------------------------------
+
+- Allow dot in command.name
+- Change settings.strict to allow any string
+- Update dependencies option to support 'any' (e.g. wget or curl)
+- Add a 'deps' associative array to the generated bash script
+
+
 v1.0.0 - 2023-02-16
 ----------------------------------------
 
