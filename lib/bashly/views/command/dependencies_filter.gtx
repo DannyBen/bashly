@@ -1,4 +1,4 @@
-if dependencies
+if dependencies.any?
   = view_marker
 
   dependencies.each do |dependency|
