@@ -18,7 +18,7 @@ module Bashly
     # Reads a file from the userspace (Settings.source_dir) and returns
     # its contents. If the file is not found, returns a string with a hint.
     def load_user_file(file, placeholder: true)
-      path = "#{Settings.source_dir}/#{file}"
+      path = user_file_path file
 
       content = if File.exist? path
         File.read(path).remove_front_matter
@@ -29,6 +29,14 @@ module Bashly
       end
 
       Settings.production? ? content : "#{view_marker path}\n#{content}"
+    end
+
+    def user_file_path(file)
+      path = "#{Settings.source_dir}/#{file}"
+      ext = ".#{Settings.partials_extension}"
+      return path if path.end_with? ext
+
+      "#{path}#{ext}"
     end
 
   private

@@ -1,0 +1,3 @@
+name: initialize
+help: Test that initialize is included when using bash extension
+version: 0.1.0
