@@ -62,6 +62,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [yaml](yaml#readme) - using the YAML reading functions
 - [completions](completions#readme) - adding bash completion functionality
 - [validations](validations#readme) - adding argument validation functions
+- [hooks](hooks#readme) - adding before/after hooks
 
 ## Other Examples
 

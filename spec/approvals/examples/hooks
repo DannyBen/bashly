@@ -1,0 +1,25 @@
++ bashly add hooks --force
+created src/before.sh
+created src/after.sh
++ bashly generate
+creating user files in src
+skipped src/initialize.sh (exists)
+skipped src/root_command.sh (exists)
+created ./hooks
+run ./hooks --help to test your bash script
++ ./hooks
+==[ Before Hook Called ]==
+args: none
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+==[ After Hook Called ]==
++ ./hooks --debug
+==[ Before Hook Called ]==
+args:
+- ${args[--debug]} = 1
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--debug]} = 1
+==[ After Hook Called ]==
