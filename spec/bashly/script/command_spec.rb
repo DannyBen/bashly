@@ -353,6 +353,26 @@ describe Script::Command do
     end
   end
 
+  describe '#user_file_exist?' do
+    before { FileUtils.mkdir_p 'spec/tmp/src' }
+
+    context 'when the file exists in the user source path' do
+      before { FileUtils.touch 'spec/tmp/src/test.sh' }
+
+      it 'returns true' do
+        expect(subject.user_file_exist?('test')).to be true
+      end
+    end
+
+    context 'when the file does not in the user source path' do
+      before { FileUtils.rm_f 'spec/tmp/src/test.sh' }
+
+      it 'returns false' do
+        expect(subject.user_file_exist?('test')).to be false
+      end
+    end
+  end
+
   describe '#required_args' do
     it 'returns an array of only the required Argument objects' do
       expect(subject.required_args.size).to eq 1

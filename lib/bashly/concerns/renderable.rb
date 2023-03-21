@@ -10,6 +10,7 @@ module Bashly
       @strings ||= MessageStrings.new
     end
 
+    # Outputs a comment that describes the view unless in production mode
     def view_marker(id = nil)
       id ||= ":#{caller_locations(1..1).first.path}"
       "# #{id}" unless Settings.production?
@@ -31,12 +32,20 @@ module Bashly
       Settings.production? ? content : "#{view_marker path}\n#{content}"
     end
 
+    # Returns a path to a file in the user's source_dir. The file argument
+    # should either be without exteneion, or with the user's configured
+    # partials_extension.
     def user_file_path(file)
       path = "#{Settings.source_dir}/#{file}"
       ext = ".#{Settings.partials_extension}"
       return path if path.end_with? ext
 
       "#{path}#{ext}"
+    end
+
+    # Returns true if the user's source file exists
+    def user_file_exist?(file)
+      File.exist? user_file_path(file)
     end
 
   private

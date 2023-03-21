@@ -1,0 +1,17 @@
+if user_file_exist?('before') || user_file_exist?('after')
+  = view_marker
+end
+
+if user_file_exist?('before')
+  > before_hook() {
+  = load_user_file("before").indent 2
+  > }
+  >
+end
+
+if user_file_exist?('after')
+  > after_hook() {
+  = load_user_file("after").indent 2
+  > }
+  >
+end
