@@ -330,10 +330,25 @@ describe Script::Command do
           .to eq "# spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
       end
     end
+  end
 
-    context 'when the provided file does not include an extension' do
-      it 'adds the partials_extension to it' do
-        expect(subject.load_user_file('test')).to eq "# spec/tmp/src/test.sh\nhello Command#load_user_file"
+  describe '#user_file_path' do
+    it 'returns the path to the user file' do
+      expect(subject.user_file_path 'test.sh').to eq 'spec/tmp/src/test.sh'
+    end
+
+    context 'when the file argument does not end with .sh extension' do
+      it 'returns the path with .sh appended' do
+        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.sh'
+      end
+    end
+
+    context 'when partials_extension is set and the argument does not end with the selected extension' do
+      before { Settings.partials_extension = 'bash' }
+      after  { Settings.partials_extension = 'sh' }
+
+      it 'returns the path with the selected extension appended' do
+        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.bash'
       end
     end
   end
