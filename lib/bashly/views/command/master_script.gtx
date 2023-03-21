@@ -8,6 +8,7 @@
 = render :user_lib if user_lib.any?
 = render :command_functions
 = render :parse_requirements
+= render :user_hooks
 = render :initialize
 = render :run
 

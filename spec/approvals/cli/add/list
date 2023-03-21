@@ -17,6 +17,10 @@ config
 help
   Add a help command, in addition to the standard --help flag.
 
+hooks
+  Add placeholders for before/after hooks which are executed before/after any
+  command.
+
 lib
   Create the lib directory for any additional user scripts.
   All *.sh scripts in this directory will be included in the final bash script.

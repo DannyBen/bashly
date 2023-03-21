@@ -1,0 +1,8 @@
+name: hooks
+help: Sample application that uses before/after hooks
+version: 0.1.0
+
+flags:
+- long: --debug
+  short: -d
+  help: Enable debug mode

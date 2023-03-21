@@ -13,9 +13,9 @@ $ bashly generate
 $ bashly generate
 ```
 
-The `bashly add colors` command, simply created the [src/lib/colors.sh]
-(src/lib/colors.sh) file, with useful color functions that will be
-automatically included in the generated script.
+The `bashly add colors` command, simply created the
+[src/lib/colors.sh](src/lib/colors.sh) file, with useful color functions that
+will be automatically included in the generated script.
 
 See the manually edited [src/root_command.sh](src/root_command.sh) for usage
 examples.

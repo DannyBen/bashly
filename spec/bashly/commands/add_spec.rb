@@ -94,6 +94,19 @@ describe Commands::Add do
     end
   end
 
+  context 'with hooks command' do
+    let(:before_hook_file) { "#{source_dir}/before.sh" }
+    let(:after_hook_file) { "#{source_dir}/after.sh" }
+
+    before { reset_tmp_dir init: true }
+
+    it 'copies before.sh and after.sh to the user space' do
+      expect { subject.execute %w[add hooks] }.to output_approval('cli/add/hooks_command')
+      expect(File).to exist(before_hook_file)
+      expect(File).to exist(after_hook_file)
+    end
+  end
+
   context 'with lib command' do
     let(:lib_file) { "#{source_dir}/lib/sample_function.sh" }
 
