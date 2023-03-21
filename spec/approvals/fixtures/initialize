@@ -1,0 +1,9 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/initialize.bash (exists)
+skipped src/root_command.bash (exists)
+created ./initialize
+run ./initialize --help to test your bash script
++ ./initialize
+initialize called
+root_command called

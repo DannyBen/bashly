@@ -330,6 +330,12 @@ describe Script::Command do
           .to eq "# spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
       end
     end
+
+    context 'when the provided file does not include an extension' do
+      it 'adds the partials_extension to it' do
+        expect(subject.load_user_file('test')).to eq "# spec/tmp/src/test.sh\nhello Command#load_user_file"
+      end
+    end
   end
 
   describe '#required_args' do

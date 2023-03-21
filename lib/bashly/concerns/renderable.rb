@@ -19,6 +19,8 @@ module Bashly
     # its contents. If the file is not found, returns a string with a hint.
     def load_user_file(file, placeholder: true)
       path = "#{Settings.source_dir}/#{file}"
+      ext = ".#{Settings.partials_extension}"
+      path += ext unless path.end_with? ext
 
       content = if File.exist? path
         File.read(path).remove_front_matter
