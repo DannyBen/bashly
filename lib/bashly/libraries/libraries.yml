@@ -29,6 +29,14 @@ help:
   help: Add a help command, in addition to the standard --help flag.
   handler: Bashly::Libraries::Help
 
+hooks:
+  help: Add placeholders for before/after hooks which are executed before/after any command.
+  files:
+    - source: "hooks/before.sh"
+      target: "%{user_source_dir}/before.%{user_ext}"
+    - source: "hooks/after.sh"
+      target: "%{user_source_dir}/after.%{user_ext}"
+
 lib:
   help: |-
     Create the lib directory for any additional user scripts.
