@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v1.0.2 - 2023-03-23
+----------------------------------------
+
+- Do not add dependencies-filter view marker when there are no dependencies
+- Fix initialize.bash not being injected
+- Add before/after hooks
+- Add 'bashly add hooks' command
+- Add hooks example
+
+
 v1.0.1 - 2023-03-03
 ----------------------------------------
 
