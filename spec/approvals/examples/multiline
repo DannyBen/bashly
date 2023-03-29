@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-created src/initialize.sh
 created src/multiline_command.sh
 created src/regular_command.sh
 created ./multi

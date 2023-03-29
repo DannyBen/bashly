@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-created src/initialize.sh
 created src/container_run_command.sh
 created src/container_stop_command.sh
 created src/image_ls_command.sh

@@ -1,5 +1,4 @@
 creating user files in src
-created src/initialize.sh
 skipped src/root_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script

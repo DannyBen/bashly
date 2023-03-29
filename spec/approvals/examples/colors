@@ -2,7 +2,6 @@
 created src/lib/colors.sh
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
 skipped src/root_command.sh (exists)
 created ./colorly
 run ./colorly --help to test your bash script

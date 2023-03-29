@@ -1,9 +1,9 @@
 + bashly add hooks --force
+created src/initialize.sh
 created src/before.sh
 created src/after.sh
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
 skipped src/root_command.sh (exists)
 created ./hooks
 run ./hooks --help to test your bash script

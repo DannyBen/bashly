@@ -32,6 +32,8 @@ help:
 hooks:
   help: Add placeholders for before/after hooks which are executed before/after any command.
   files:
+    - source: "hooks/initialize.sh"
+      target: "%{user_source_dir}/initialize.%{user_ext}"
     - source: "hooks/before.sh"
       target: "%{user_source_dir}/before.%{user_ext}"
     - source: "hooks/after.sh"

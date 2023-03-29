@@ -1,5 +1,4 @@
 creating user files in spec/tmp/src
-skipped spec/tmp/src/initialize.sh (exists)
 skipped spec/tmp/src/download_command.sh (exists)
 skipped spec/tmp/src/upload_command.sh (exists)
 created spec/tmp/cli

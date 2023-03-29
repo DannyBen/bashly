@@ -2,7 +2,6 @@
 created src/lib/config.sh
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
 skipped src/set_command.sh (exists)
 skipped src/get_command.sh (exists)
 skipped src/list_command.sh (exists)
