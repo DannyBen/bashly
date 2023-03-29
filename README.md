@@ -29,7 +29,12 @@ a [docker image](https://hub.docker.com/r/dannyben/bashly).
 
 ## Bashly is Sponsored By
 
-<a href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=280></a>
+<table>
+   <tr>
+      <td><a href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=240></a></td>
+      <td><a href="https://decisiohealth.com/"><img src='support/img/decisio-logo.png' width=240></a></td>
+   </tr>
+</table>
 
 
 ## Documentation
@@ -69,7 +74,7 @@ Bashly is responsible for:
   - **Bash completions**.
   - and more.
 
-  ## Contributing / Support
+## Contributing / Support
 
 If you experience any issue, have a question or a suggestion, or if you wish
 to contribute, feel free to [open an issue][issues] or
