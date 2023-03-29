@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-rm -f "src/initialize.sh"
-
 bashly generate
 
 ### Try Me ###
