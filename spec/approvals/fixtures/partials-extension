@@ -5,7 +5,6 @@ created src/bashly.yml
 run bashly generate to create the bash script
 + bundle exec bashly generate
 creating user files in src
-created src/initialize.bash
 created src/download_command.bash
 created src/upload_command.bash
 created ./cli
@@ -47,7 +46,6 @@ created src/lib/validations/validate_not_empty.bash
 created src/lib/yaml.bash
 + bundle exec bashly generate --upgrade
 creating user files in src
-skipped src/initialize.bash (exists)
 skipped src/download_command.bash (exists)
 skipped src/upload_command.bash (exists)
 updated src/help_command.bash

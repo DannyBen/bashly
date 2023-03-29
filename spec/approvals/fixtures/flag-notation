@@ -1,6 +1,5 @@
 + bundle exec bashly generate
 creating user files in src
-created src/initialize.sh
 created src/root_command.sh
 created ./flags
 run ./flags --help to test your bash script

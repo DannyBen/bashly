@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-created src/initialize.sh
 created src/download_command.sh
 created src/upload_command.sh
 created src/login_command.sh

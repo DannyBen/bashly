@@ -13,7 +13,6 @@ Add this as a command to your bashly.yml:
 
 + bashly generate
 creating user files in src
-created src/initialize.sh
 skipped src/help_command.sh (exists)
 created src/download_command.sh
 created src/upload_command.sh

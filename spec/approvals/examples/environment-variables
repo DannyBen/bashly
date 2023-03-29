@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
 skipped src/verify_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script

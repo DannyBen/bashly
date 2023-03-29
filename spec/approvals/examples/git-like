@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-created src/initialize.sh
 created src/status_command.sh
 created src/commit_command.sh
 created ./git

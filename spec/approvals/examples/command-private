@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-created src/initialize.sh
 skipped src/connect_command.sh (exists)
 created src/connect_ftp_command.sh
 created src/connect_ssh_command.sh

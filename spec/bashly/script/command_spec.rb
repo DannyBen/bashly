@@ -330,6 +330,13 @@ describe Script::Command do
           .to eq "# spec/tmp/src/notfound.sh\necho \"error: cannot load file\""
       end
     end
+
+    context 'when the file is not found and placeholder is false' do
+      it 'returns an empty string' do
+        expect(subject.load_user_file('notfound.sh', placeholder: false))
+          .to eq "# spec/tmp/src/notfound.sh\n"
+      end
+    end
   end
 
   describe '#user_file_path' do

@@ -1,5 +1,4 @@
 creating user files in spec/tmp/src
-created spec/tmp/src/initialize.sh
 created spec/tmp/src/root_command.sh
 created spec/tmp/download
 run spec/tmp/download --help to test your bash script

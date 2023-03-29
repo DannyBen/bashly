@@ -1,6 +1,5 @@
 + bashly generate
 creating user files in src
-skipped src/initialize.sh (exists)
 skipped src/container_command.sh (exists)
 skipped src/redis_command.sh (exists)
 created ./cli
