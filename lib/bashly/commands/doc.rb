@@ -75,7 +75,7 @@ module Bashly
       def raw_data
         @raw_data ||= begin
           result = {}
-          Dir["#{docs_dir}/*.yml"].sort.each do |path|
+          Dir["#{docs_dir}/*.yml"].each do |path|
             result.merge! YAML.load_file(path)
           end
           result

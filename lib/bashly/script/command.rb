@@ -297,7 +297,7 @@ module Bashly
       # This is meant to provide the user with the ability to add custom
       # functions
       def user_lib
-        @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.#{Settings.partials_extension}"].sort
+        @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.#{Settings.partials_extension}"]
       end
 
       # Returns an array of all the args with a whitelist
