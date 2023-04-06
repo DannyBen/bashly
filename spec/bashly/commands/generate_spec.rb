@@ -126,7 +126,7 @@ describe Commands::Generate do
   end
 
   context 'with --upgrade' do
-    let(:lib_files) { Dir['spec/tmp/src/lib/**/*.sh'].sort }
+    let(:lib_files) { Dir['spec/tmp/src/lib/**/*.sh'] }
     let(:outdated_text) { 'OUTDATED TEXT' }
 
     before do

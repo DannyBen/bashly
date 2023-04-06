@@ -89,7 +89,7 @@ module Bashly
       end
 
       def generated_files
-        Dir["#{Settings.source_dir}/**/*.*"].sort
+        Dir["#{Settings.source_dir}/**/*.*"]
       end
 
       def upgrade(existing_file, library_name, *args)
