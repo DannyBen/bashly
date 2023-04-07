@@ -12,7 +12,7 @@ if whitelisted_args.any? or whitelisted_flags.any?
       > done
 
     else
-      > if [[ ! ${args['{{ arg.name }}']} =~ ^({{ arg.allowed.join '|' }})$ ]]; then
+      > if [[ -n ${args['{{ arg.name }}']} ]] && [[ ! ${args['{{ arg.name }}']} =~ ^({{ arg.allowed.join '|' }})$ ]]; then
       >   printf "%s\n" "{{ strings[:disallowed_argument] % { name: arg.name, allowed: arg.allowed.join(', ') } }}" >&2
       >   exit 1
       > fi
@@ -31,7 +31,7 @@ if whitelisted_args.any? or whitelisted_flags.any?
       > done
     
     else
-      > if [[ ! ${args['{{ flag.name }}']} =~ ^({{ flag.allowed.join '|' }})$ ]]; then
+      > if [[ ${args['{{ flag.name }}']} ]] && [[ ! ${args['{{ flag.name }}']} =~ ^({{ flag.allowed.join '|' }})$ ]]; then
       >   printf "%s\n" "{{ strings[:disallowed_flag] % { name: flag.name, allowed: flag.allowed.join(', ') } }}" >&2
       >   exit 1
       > fi

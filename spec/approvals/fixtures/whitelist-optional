@@ -1,0 +1,43 @@
++ bundle exec bashly generate
+creating user files in src
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./cli -h
+cli - Test that whitelist can be optional and without a default value
+
+Usage:
+  cli [ACTION] [OPTIONS]
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --notify HANDLER
+    Send notification using this handler
+    Allowed: slack, webhook
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Arguments:
+  ACTION
+    Action to run on exit
+    Allowed: push, commit
+
++ ./cli invalid
+action must be one of: push, commit
++ ./cli --notify snail_mail
+--notify must be one of: slack, webhook
++ ./cli push --notify slack
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[action]} = push
+- ${args[--notify]} = slack
