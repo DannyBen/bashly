@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.flags[0] cannot have both required and default>
+#<Bashly::ConfigurationError: root.flags[0] cannot have both nub`required` and nub`default`>
