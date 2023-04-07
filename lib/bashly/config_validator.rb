@@ -100,19 +100,19 @@ module Bashly
 
       refute value['name'].match(/^-/), "#{key}.name must not start with '-'"
 
-      refute value['required'] && value['default'], "#{key} cannot have both required and default"
+      refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
 
       if value['allowed']
         assert (value['required'] || value['default']),
-          "#{key}.allowed does not make sense without either default or required"
+          "#{key}.allowed does not make sense without either nub`default` or nub`required`"
       end
     end
 
     def assert_flag(key, value)
       assert_hash key, value, keys: Script::Flag.option_keys
-      assert value['short'] || value['long'], "#{key} must have at least one of long or short name"
+      assert value['short'] || value['long'], "#{key} must have at least one of nub`long` or nub`short`"
 
-      refute value['allowed'] && value['completions'], "#{key} cannot have both allowed and completions"
+      refute value['allowed'] && value['completions'], "#{key} cannot have both nub`allowed` and nub`completions`"
 
       assert_optional_string "#{key}.long", value['long']
       assert_optional_string "#{key}.short", value['short']
@@ -132,20 +132,20 @@ module Bashly
       assert value['short'].match(/^-[a-zA-Z0-9]$/), "#{key}.short must be in the form of '-n'" if value['short']
       refute value['arg'].match(/^-/), "#{key}.arg must not start with '-'" if value['arg']
 
-      refute value['required'] && value['default'], "#{key} cannot have both required and default"
+      refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
 
       if value['default']
-        assert value['arg'], "#{key}.default does not make sense without arg"
+        assert value['arg'], "#{key}.default does not make sense without nub`arg`"
       end
 
       if value['allowed']
-        assert value['arg'], "#{key}.allowed does not make sense without arg"
+        assert value['arg'], "#{key}.allowed does not make sense without nub`arg`"
         assert (value['required'] || value['default']),
-          "#{key}.allowed does not make sense without either default or required"
+          "#{key}.allowed does not make sense without either nub`default` or nub`required`"
       end
 
       if value['completions']
-        assert value['arg'], "#{key}.completions does not make sense without arg"
+        assert value['arg'], "#{key}.completions does not make sense without nub`arg`"
       end
     end
 
@@ -161,8 +161,8 @@ module Bashly
     def assert_command(key, value)
       assert_hash key, value, keys: Script::Command.option_keys
 
-      refute value['commands'] && value['args'], "#{key} cannot have both commands and args"
-      refute value['commands'] && value['catch_all'], "#{key} cannot have both commands and catch_all"
+      refute value['commands'] && value['args'], "#{key} cannot have both nub`commands` and nub`args`"
+      refute value['commands'] && value['catch_all'], "#{key} cannot have both nub`commands` and nub`catch_all`"
 
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
@@ -209,7 +209,7 @@ module Bashly
       end
 
       if value['expose']
-        assert value['commands'], "#{key}.expose makes no sense without commands"
+        assert value['commands'], "#{key}.expose makes no sense without nub`commands`"
       end
 
       if key == 'root'

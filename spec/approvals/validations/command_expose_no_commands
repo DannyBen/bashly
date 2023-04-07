@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: root.commands[0].expose makes no sense without commands>
+#<Bashly::ConfigurationError: root.commands[0].expose makes no sense without nub`commands`>
