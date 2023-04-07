@@ -101,11 +101,6 @@ module Bashly
       refute value['name'].match(/^-/), "#{key}.name must not start with '-'"
 
       refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
-
-      if value['allowed']
-        assert (value['required'] || value['default']),
-          "#{key}.allowed does not make sense without either nub`default` or nub`required`"
-      end
     end
 
     def assert_flag(key, value)
@@ -140,8 +135,6 @@ module Bashly
 
       if value['allowed']
         assert value['arg'], "#{key}.allowed does not make sense without nub`arg`"
-        assert (value['required'] || value['default']),
-          "#{key}.allowed does not make sense without either nub`default` or nub`required`"
       end
 
       if value['completions']

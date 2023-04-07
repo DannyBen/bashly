@@ -1,0 +1,14 @@
+name: cli
+help: Test that whitelist can be optional and without a default value
+version: 0.1.0
+
+args:
+- name: action
+  help: Action to run on exit
+  allowed: [push, commit]
+
+flags:
+- long: --notify
+  arg: handler
+  help: Send notification using this handler
+  allowed: [slack, webhook]
