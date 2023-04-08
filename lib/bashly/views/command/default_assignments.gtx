@@ -6,7 +6,7 @@ if default_args.any? or default_flags.any?
   end
 
   default_flags.each do |flag|
-    > [[ -n ${args['{{ flag.long }}']:-} ]] || args['{{ flag.long }}']="{{ flag.default }}"
+    > [[ -n ${args['{{ flag.name }}']:-} ]] || args['{{ flag.name }}']="{{ flag.default }}"
   end
 
   >

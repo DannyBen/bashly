@@ -1,0 +1,12 @@
+name: cli
+
+flags:
+  - short: -f
+    arg: format
+    help: Set format
+    default: html
+
+  - short: -o
+    arg: path
+    help: Output to path
+    required: true
