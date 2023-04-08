@@ -1,6 +1,17 @@
 Change Log
 ========================================
 
+v1.0.3 - 2023-04-08
+----------------------------------------
+
+- Move 'initialize.sh' to 'bashly add hooks'
+- Drop support for ruby 2.7
+- Add validation alert when 'allowed' is provided without either a 'default' or 'required'
+- Update validation errors to highlight words that are YAML options
+- Fix arg.allowed and flag.allowed to allow setting without 'required' or 'default'
+- Fix 'default' and 'required' for flags with a short name only
+
+
 v1.0.2 - 2023-03-23
 ----------------------------------------
 
