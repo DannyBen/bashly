@@ -1,0 +1,19 @@
++ bundle exec bashly generate
+creating user files in src
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+missing required flag: -o PATH
++ ./cli -o /tmp
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[-f]} = html
+- ${args[-o]} = /tmp
++ ./cli -o /tmp -f json
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[-f]} = json
+- ${args[-o]} = /tmp
