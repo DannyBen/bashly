@@ -1,6 +1,216 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "definitions": {
+        "argument": {
+            "title": "argument",
+            "description": "A positional argument of the current script or sub-command",
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "title": "name",
+                    "description": "A name of the current positional argument",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "help": {
+                    "title": "help",
+                    "description": "A description of the current positional argument",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "AWS Username"
+                    ]
+                },
+                "default": {
+                    "title": "default",
+                    "description": "A default value of the current positional argument",
+                    "type": "string",
+                    "examples": [
+                        "*.jpg"
+                    ]
+                },
+                "required": {
+                    "title": "required",
+                    "description": "Whether the current positional argument is required",
+                    "type": "boolean",
+                    "default": true
+                },
+                "allowed": {
+                    "title": "allowed",
+                    "description": "Valid values of the current positional argument",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A valid value of the current positional argument",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "eu"
+                        ]
+                    }
+                },
+                "repeatable": {
+                    "title": "repeatable",
+                    "description": "Whether the current positional argument can be repeated",
+                    "type": "boolean",
+                    "default": false
+                },
+                "validate": {
+                    "title": "validate",
+                    "description": "A validation function of the current positional argument",
+                    "type": "string",
+                    "examples": [
+                        "file_exists",
+                        "dir_exists",
+                        "integer",
+                        "non_empty"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "flag": {
+            "title": "flag",
+            "description": "A flag of the current script or sub-command",
+            "type": "object",
+            "anyOf": [
+                {
+                    "required": [
+                        "long"
+                    ]
+                },
+                {
+                    "required": [
+                        "short"
+                    ]
+                }
+            ],
+            "properties": {
+                "long": {
+                    "title": "long",
+                    "description": "A long form of the current flag",
+                    "type": "string",
+                    "pattern": "^--",
+                    "examples": [
+                        "--ssh"
+                    ]
+                },
+                "short": {
+                    "title": "short",
+                    "description": "A short form of the current flag",
+                    "type": "string",
+                    "pattern": "^-[^-]",
+                    "examples": [
+                        "-s"
+                    ]
+                },
+                "help": {
+                    "title": "help",
+                    "description": "A description of the current flag",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "Clone using SSH"
+                    ]
+                },
+                "arg": {
+                    "title": "arg",
+                    "description": "An argument name of the current flag",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "default": {
+                    "title": "default",
+                    "description": "A default value of the current flag",
+                    "type": "string",
+                    "examples": [
+                        "*.jpg"
+                    ]
+                },
+                "required": {
+                    "title": "required",
+                    "description": "Whether the current flag is required",
+                    "type": "boolean",
+                    "default": true
+                },
+                "allowed": {
+                    "title": "allowed",
+                    "description": "Valid values of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A valid values of the current positional argument",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "user"
+                        ]
+                    }
+                },
+                "conflicts": {
+                    "title": "conflicts",
+                    "description": "Mutually exclusive flags of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A mutually exclusive flag of the current flag",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "--no-cache"
+                        ]
+                    }
+                },
+                "completions": {
+                    "title": "completions",
+                    "description": "Completions of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A completions of the current flag",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "private": {
+                    "title": "private",
+                    "description": "Whether the current flag is hidden from help",
+                    "type": "boolean",
+                    "default": false
+                },
+                "repeatable": {
+                    "title": "repeatable",
+                    "description": "Whether the current flag can be repeated",
+                    "type": "boolean",
+                    "default": false
+                },
+                "validate": {
+                    "title": "validate",
+                    "description": "A validation function of the current flag",
+                    "type": "string",
+                    "examples": [
+                        "file_exists",
+                        "dir_exists",
+                        "integer",
+                        "non_empty"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
         "name-property": {
             "title": "name",
             "description": "A name of the current script or sub-command",
@@ -516,216 +726,6 @@
                 },
                 "private": {
                     "$ref": "#/definitions/sub-command-private-property"
-                }
-            },
-            "additionalProperties": false
-        },
-        "argument": {
-            "title": "argument",
-            "description": "A positional argument of the current application",
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "name": {
-                    "title": "name",
-                    "description": "A name of the current positional argument",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "user"
-                    ]
-                },
-                "help": {
-                    "title": "help",
-                    "description": "A description of the current positional argument",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "AWS Username"
-                    ]
-                },
-                "default": {
-                    "title": "default",
-                    "description": "A default value of the current positional argument",
-                    "type": "string",
-                    "examples": [
-                        "*.jpg"
-                    ]
-                },
-                "required": {
-                    "title": "required",
-                    "description": "Whether the current positional argument is required",
-                    "type": "boolean",
-                    "default": true
-                },
-                "allowed": {
-                    "title": "allowed",
-                    "description": "Valid values of the current positional argument",
-                    "type": "array",
-                    "minLength": 1,
-                    "uniqueItems": true,
-                    "items": {
-                        "description": "A valid value of the current positional argument",
-                        "type": "string",
-                        "minLength": 1,
-                        "examples": [
-                            "eu"
-                        ]
-                    }
-                },
-                "repeatable": {
-                    "title": "repeatable",
-                    "description": "Whether the current positional argument can be repeated",
-                    "type": "boolean",
-                    "default": false
-                },
-                "validate": {
-                    "title": "validate",
-                    "description": "A validation function of the current positional argument",
-                    "type": "string",
-                    "examples": [
-                        "file_exists",
-                        "dir_exists",
-                        "integer",
-                        "non_empty"
-                    ]
-                }
-            },
-            "additionalProperties": false
-        },
-        "flag": {
-            "title": "flag",
-            "description": "A flag of the current application",
-            "type": "object",
-            "anyOf": [
-                {
-                    "required": [
-                        "long"
-                    ]
-                },
-                {
-                    "required": [
-                        "short"
-                    ]
-                }
-            ],
-            "properties": {
-                "long": {
-                    "title": "long",
-                    "description": "A long form of the current flag",
-                    "type": "string",
-                    "pattern": "^--",
-                    "examples": [
-                        "--ssh"
-                    ]
-                },
-                "short": {
-                    "title": "short",
-                    "description": "A short form of the current flag",
-                    "type": "string",
-                    "pattern": "^-[^-]",
-                    "examples": [
-                        "-s"
-                    ]
-                },
-                "help": {
-                    "title": "help",
-                    "description": "A description of the current flag",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "Clone using SSH"
-                    ]
-                },
-                "arg": {
-                    "title": "arg",
-                    "description": "An argument name of the current flag",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "user"
-                    ]
-                },
-                "default": {
-                    "title": "default",
-                    "description": "A default value of the current flag",
-                    "type": "string",
-                    "examples": [
-                        "*.jpg"
-                    ]
-                },
-                "required": {
-                    "title": "required",
-                    "description": "Whether the current flag is required",
-                    "type": "boolean",
-                    "default": true
-                },
-                "allowed": {
-                    "title": "allowed",
-                    "description": "Valid values of the current flag",
-                    "type": "array",
-                    "minLength": 1,
-                    "uniqueItems": true,
-                    "items": {
-                        "description": "A valid values of the current positional argument",
-                        "type": "string",
-                        "minLength": 1,
-                        "examples": [
-                            "user"
-                        ]
-                    }
-                },
-                "conflicts": {
-                    "title": "conflicts",
-                    "description": "Mutually exclusive flags of the current flag",
-                    "type": "array",
-                    "minLength": 1,
-                    "uniqueItems": true,
-                    "items": {
-                        "description": "A mutually exclusive flag of the current flag",
-                        "type": "string",
-                        "minLength": 1,
-                        "examples": [
-                            "--no-cache"
-                        ]
-                    }
-                },
-                "completions": {
-                    "title": "completions",
-                    "description": "Completions of the current flag",
-                    "type": "array",
-                    "minLength": 1,
-                    "uniqueItems": true,
-                    "items": {
-                        "description": "A completions of the current flag",
-                        "type": "string",
-                        "minLength": 1
-                    }
-                },
-                "private": {
-                    "title": "private",
-                    "description": "Whether the current flag is hidden from help",
-                    "type": "boolean",
-                    "default": false
-                },
-                "repeatable": {
-                    "title": "repeatable",
-                    "description": "Whether the current flag can be repeated",
-                    "type": "boolean",
-                    "default": false
-                },
-                "validate": {
-                    "title": "validate",
-                    "description": "A validation function of the current flag",
-                    "type": "string",
-                    "examples": [
-                        "file_exists",
-                        "dir_exists",
-                        "integer",
-                        "non_empty"
-                    ]
                 }
             },
             "additionalProperties": false
