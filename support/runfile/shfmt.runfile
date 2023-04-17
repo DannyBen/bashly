@@ -1,0 +1,21 @@
+summary 'Run shfmt checks on all examples'
+
+action do
+  allowed_skips = 2
+  Example.executables.each do |example|
+    if example == 'examples/heredoc/cli' || !File.exist?(example)
+      say "- skip  c`#{example}`"
+      allowed_skips -= 1
+      if allowed_skips < 0
+        say "- aborted: too many skips"
+        exit 1
+      end
+      next
+    end
+
+    success = system "shfmt -d -i 2 -ci #{example}"
+    color = success ? 'g' : 'r'
+    say "- shfmt #{color}`#{example}`"
+    exit 1 unless success
+  end
+end

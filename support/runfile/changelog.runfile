@@ -1,0 +1,10 @@
+summary 'Generate changelog and append old changelog'
+
+action do
+  system "git changelog --save"
+  # append older changelog (prior to switching to git-changelog)
+  system "cat support/.changelog.old.md >> CHANGELOG.md"
+
+  # Fix typos
+  File.write "CHANGELOG.md", File.read("CHANGELOG.md").gsub('repeatableflags', 'repeatable flags')
+end
