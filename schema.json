@@ -150,7 +150,7 @@
                     "minLength": 1,
                     "uniqueItems": true,
                     "items": {
-                        "description": "A valid values of the current positional argument",
+                        "description": "A valid value of the current positional argument",
                         "type": "string",
                         "minLength": 1,
                         "examples": [
