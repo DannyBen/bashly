@@ -355,7 +355,7 @@
             "uniqueItems": true,
             "items": {
                 "title": "environment variable",
-                "description": "An environment variables of the current application",
+                "description": "An environment variable of the current application",
                 "type": "object",
                 "required": [
                     "name"
