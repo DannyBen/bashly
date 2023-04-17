@@ -665,13 +665,19 @@
             "type": "boolean",
             "default": false
         },
+        "sub-command-import-property": {
+            "title": "import",
+            "description": "A file import for the current sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "src/download_command.sh"
+            ]
+        },
         "command-property": {
             "title": "command",
             "description": "A command of the current application",
             "type": "object",
-            "required": [
-                "name"
-            ],
             "properties": {
                 "name": {
                     "$ref": "#/definitions/name-property"
@@ -729,6 +735,9 @@
                 },
                 "private": {
                     "$ref": "#/definitions/sub-command-private-property"
+                },
+                "import": {
+                    "$ref": "#/definitions/sub-command-import-property"
                 }
             },
             "additionalProperties": false
