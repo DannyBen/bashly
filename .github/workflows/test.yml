@@ -49,8 +49,11 @@ jobs:
     - name: Connect rush repo
       run: rush clone dannyben --shallow --default
 
-    - name: Install shfmt and check-jsonschema
-      run: rush add shfmt check-jsonschema
+    - name: Install shfmt
+      run: rush get shfmt
+
+    - name: Install check-jsonschema
+      run: rush get check-jsonschema
 
     # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
