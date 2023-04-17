@@ -1,0 +1,810 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "definitions": {
+        "argument": {
+            "title": "argument",
+            "description": "A positional argument of the current script or sub-command",
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "title": "name",
+                    "description": "A name of the current positional argument",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "help": {
+                    "title": "help",
+                    "description": "A description of the current positional argument",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "AWS Username"
+                    ]
+                },
+                "default": {
+                    "title": "default",
+                    "description": "A default value of the current positional argument",
+                    "type": "string",
+                    "examples": [
+                        "*.jpg"
+                    ]
+                },
+                "required": {
+                    "title": "required",
+                    "description": "Whether the current positional argument is required",
+                    "type": "boolean",
+                    "default": true
+                },
+                "allowed": {
+                    "title": "allowed",
+                    "description": "Valid values of the current positional argument",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A valid value of the current positional argument",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "eu"
+                        ]
+                    }
+                },
+                "repeatable": {
+                    "title": "repeatable",
+                    "description": "Whether the current positional argument can be repeated",
+                    "type": "boolean",
+                    "default": false
+                },
+                "validate": {
+                    "title": "validate",
+                    "description": "A validation function of the current positional argument",
+                    "type": "string",
+                    "examples": [
+                        "file_exists",
+                        "dir_exists",
+                        "integer",
+                        "non_empty"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "flag": {
+            "title": "flag",
+            "description": "A flag of the current script or sub-command",
+            "type": "object",
+            "anyOf": [
+                {
+                    "required": [
+                        "long"
+                    ]
+                },
+                {
+                    "required": [
+                        "short"
+                    ]
+                }
+            ],
+            "properties": {
+                "long": {
+                    "title": "long",
+                    "description": "A long form of the current flag",
+                    "type": "string",
+                    "pattern": "^--",
+                    "examples": [
+                        "--ssh"
+                    ]
+                },
+                "short": {
+                    "title": "short",
+                    "description": "A short form of the current flag",
+                    "type": "string",
+                    "pattern": "^-[^-]",
+                    "examples": [
+                        "-s"
+                    ]
+                },
+                "help": {
+                    "title": "help",
+                    "description": "A description of the current flag",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "Clone using SSH"
+                    ]
+                },
+                "arg": {
+                    "title": "arg",
+                    "description": "An argument name of the current flag",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "default": {
+                    "title": "default",
+                    "description": "A default value of the current flag",
+                    "type": "string",
+                    "examples": [
+                        "*.jpg"
+                    ]
+                },
+                "required": {
+                    "title": "required",
+                    "description": "Whether the current flag is required",
+                    "type": "boolean",
+                    "default": true
+                },
+                "allowed": {
+                    "title": "allowed",
+                    "description": "Valid values of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A valid value of the current positional argument",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "user"
+                        ]
+                    }
+                },
+                "conflicts": {
+                    "title": "conflicts",
+                    "description": "Mutually exclusive flags of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A mutually exclusive flag of the current flag",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "--no-cache"
+                        ]
+                    }
+                },
+                "completions": {
+                    "title": "completions",
+                    "description": "Completions of the current flag",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A completion of the current flag",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "private": {
+                    "title": "private",
+                    "description": "Whether the current flag is hidden from help",
+                    "type": "boolean",
+                    "default": false
+                },
+                "repeatable": {
+                    "title": "repeatable",
+                    "description": "Whether the current flag can be repeated",
+                    "type": "boolean",
+                    "default": false
+                },
+                "validate": {
+                    "title": "validate",
+                    "description": "A validation function of the current flag",
+                    "type": "string",
+                    "examples": [
+                        "file_exists",
+                        "dir_exists",
+                        "integer",
+                        "non_empty"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "name-property": {
+            "title": "name",
+            "description": "A name of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "source"
+            ]
+        },
+        "sub-command-alias-property": {
+            "title": "alias",
+            "oneOf": [
+                {
+                    "description": "An alias of the current sub-command",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "s"
+                    ]
+                },
+                {
+                    "description": "Aliases of the current sub-command",
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "An alias of the current sub-command",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "s"
+                        ]
+                    }
+                }
+            ]
+        },
+        "help-property": {
+            "title": "help",
+            "description": "A description of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "URL to download from"
+            ]
+        },
+        "args-property": {
+            "title": "args",
+            "description": "Arguments of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/argument"
+            }
+        },
+        "flags-property": {
+            "title": "flags",
+            "description": "Flags of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/flag"
+            }
+        },
+        "commands-property": {
+            "title": "commands",
+            "description": "Subcommands of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/definitions/command-property"
+            }
+        },
+        "root-version-property": {
+            "title": "version",
+            "description": "A version of the current script",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "0.1.0"
+            ]
+        },
+        "sub-command-default-property": {
+            "title": "default",
+            "description": "Whether to use the current command as a fallback when CLI used incorrectly",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "force"
+                    ]
+                }
+            ]
+        },
+        "environment-variables-name-property": {
+            "title": "name",
+            "description": "A name of the current environment variable",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "config_path"
+            ]
+        },
+        "environment-variables-help-property": {
+            "title": "help",
+            "description": "A description of the current environment variable",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Location of the config file"
+            ]
+        },
+        "environment-variables-default-property": {
+            "title": "default",
+            "description": "A default value of the current environment variable",
+            "type": "string",
+            "examples": [
+                "~/config.ini"
+            ]
+        },
+        "environment-variables-private-property": {
+            "title": "private",
+            "description": "Whether the current environment variable is hidden from help",
+            "type": "boolean",
+            "default": false
+        },
+        "environment-variables-required-property": {
+            "title": "required",
+            "description": "Whether the current environment variable is required",
+            "type": "boolean",
+            "default": true
+        },
+        "environment-variables-property": {
+            "title": "environment variables",
+            "description": "Environment variables of the current application",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "environment variable",
+                "description": "An environment variable of the current application",
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "$ref": "#/definitions/environment-variables-name-property"
+                    },
+                    "help": {
+                        "$ref": "#/definitions/environment-variables-help-property"
+                    },
+                    "default": {
+                        "$ref": "#/definitions/environment-variables-default-property"
+                    },
+                    "private": {
+                        "$ref": "#/definitions/environment-variables-private-property"
+                    },
+                    "required": {
+                        "$ref": "#/definitions/environment-variables-required-property"
+                    }
+                },
+                "if": {
+                    "properties": {
+                        "required": {
+                            "const": false
+                        }
+                    }
+                },
+                "then": {
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/environment-variables-name-property"
+                        },
+                        "help": {
+                            "$ref": "#/definitions/environment-variables-help-property"
+                        },
+                        "default": {
+                            "$ref": "#/definitions/environment-variables-default-property"
+                        },
+                        "private": {
+                            "$ref": "#/definitions/environment-variables-private-property"
+                        },
+                        "required": {
+                            "$ref": "#/definitions/environment-variables-required-property"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "else": {
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/environment-variables-name-property"
+                        },
+                        "help": {
+                            "$ref": "#/definitions/environment-variables-help-property"
+                        },
+                        "private": {
+                            "$ref": "#/definitions/environment-variables-private-property"
+                        },
+                        "required": {
+                            "$ref": "#/definitions/environment-variables-required-property"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            }
+        },
+        "examples-property": {
+            "title": "examples",
+            "oneOf": [
+                {
+                    "description": "An example of the current script or sub-command",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "cli upload profile.png -u admin -p s3cr3t"
+                    ]
+                },
+                {
+                    "description": "Examples of the current script or sub-command",
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "An example of the current script or sub-command",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "cli upload profile.png -u admin -p s3cr3t"
+                        ]
+                    }
+                }
+            ]
+        },
+        "footer-property": {
+            "title": "footer",
+            "description": "A description footer for the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "This will appear at the end of the --help message"
+            ]
+        },
+        "sub-command-group-property": {
+            "title": "group",
+            "description": "A group of the current sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "File"
+            ]
+        },
+        "catch-all-property": {
+            "title": "catch-all",
+            "description": "Whether to allow additional arguments or flags for the current command",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "Additional arguments or flags for AWS CLI"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "label": {
+                            "description": "A label for the current argument or flag",
+                            "type": "string",
+                            "minLength": 1,
+                            "examples": [
+                                "AWS Params"
+                            ]
+                        },
+                        "help": {
+                            "description": "A description for the current argument or flag",
+                            "type": "string",
+                            "minLength": 1,
+                            "examples": [
+                                "Additional arguments or flags for AWS CLI"
+                            ]
+                        },
+                        "required": {
+                            "description": "Whether the current argument or flag is required",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "completions-property": {
+            "title": "completions",
+            "description": "Completions of the current script or sub-command",
+            "type": "array",
+            "minLength": 1,
+            "uniqueItems": true,
+            "items": {
+                "description": "A completion of the current script or sub-command",
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "dependencies-command-property": {
+            "title": "command",
+            "description": "Dependencies of the current script or sub-command",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "description": "A dependency of the current script or sub-command",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                    "git"
+                ]
+            }
+        },
+        "dependencies-help-property": {
+            "title": "help",
+            "description": "A help for the current dependency",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Run 'sudo apt install git'"
+            ]
+        },
+        "dependencies-property": {
+            "title": "dependencies",
+            "oneOf": [
+                {
+                    "description": "Dependencies of the current script or sub-command",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A dependency of the current script or sub-command",
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "description": "Dependencies of the current script or sub-command",
+                    "type": "object",
+                    "patternProperties": {
+                        ".": {
+                            "description": "A dependency of the current script or sub-command",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "command"
+                                    ],
+                                    "properties": {
+                                        "command": {
+                                            "$ref": "#/definitions/dependencies-command-property"
+                                        },
+                                        "help": {
+                                            "$ref": "#/definitions/dependencies-help-property"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "sub-command-expose-property": {
+            "title": "expose",
+            "description": "Whether to expose the current sub-command if it has sub-commands",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "always"
+                    ]
+                }
+            ]
+        },
+        "root-extensible-property": {
+            "title": "extensible",
+            "description": "Whether to delegate the current unknown command to an external executable",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "examples": [
+                        "git"
+                    ]
+                }
+            ]
+        },
+        "filename-property": {
+            "title": "filename",
+            "description": "A partial file path of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "dir_commands/list.sh"
+            ]
+        },
+        "filters-property": {
+            "title": "filters",
+            "description": "Filters of the current script or sub-command",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "description": "A filter of the current script or sub-command",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                    "docker_running"
+                ]
+            }
+        },
+        "function-property": {
+            "title": "function",
+            "description": "An internal function for the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "deprecated_container_start"
+            ]
+        },
+        "sub-command-private-property": {
+            "title": "private",
+            "description": "Whether hide the current sub-command from help",
+            "type": "boolean",
+            "default": false
+        },
+        "sub-command-import-property": {
+            "title": "import",
+            "description": "A file import for the current sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "src/download_command.sh"
+            ]
+        },
+        "command-property": {
+            "title": "command",
+            "description": "A command of the current application",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "$ref": "#/definitions/name-property"
+                },
+                "alias": {
+                    "$ref": "#/definitions/sub-command-alias-property"
+                },
+                "help": {
+                    "$ref": "#/definitions/help-property"
+                },
+                "args": {
+                    "$ref": "#/definitions/args-property"
+                },
+                "flags": {
+                    "$ref": "#/definitions/flags-property"
+                },
+                "commands": {
+                    "$ref": "#/definitions/commands-property"
+                },
+                "default": {
+                    "$ref": "#/definitions/sub-command-default-property"
+                },
+                "environment_variables": {
+                    "$ref": "#/definitions/environment-variables-property"
+                },
+                "examples": {
+                    "$ref": "#/definitions/examples-property"
+                },
+                "footer": {
+                    "$ref": "#/definitions/footer-property"
+                },
+                "group": {
+                    "$ref": "#/definitions/sub-command-group-property"
+                },
+                "catch_all": {
+                    "$ref": "#/definitions/catch-all-property"
+                },
+                "completions": {
+                    "$ref": "#/definitions/completions-property"
+                },
+                "dependencies": {
+                    "$ref": "#/definitions/dependencies-property"
+                },
+                "expose": {
+                    "$ref": "#/definitions/sub-command-expose-property"
+                },
+                "filename": {
+                    "$ref": "#/definitions/filename-property"
+                },
+                "filters": {
+                    "$ref": "#/definitions/filters-property"
+                },
+                "function": {
+                    "$ref": "#/definitions/function-property"
+                },
+                "private": {
+                    "$ref": "#/definitions/sub-command-private-property"
+                },
+                "import": {
+                    "$ref": "#/definitions/sub-command-import-property"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "title": "cli",
+    "description": "A CLI of the current application",
+    "type": "object",
+    "properties": {
+        "name": {
+            "$ref": "#/definitions/name-property"
+        },
+        "help": {
+            "$ref": "#/definitions/help-property"
+        },
+        "args": {
+            "$ref": "#/definitions/args-property"
+        },
+        "flags": {
+            "$ref": "#/definitions/flags-property"
+        },
+        "commands": {
+            "$ref": "#/definitions/commands-property"
+        },
+        "version": {
+            "$ref": "#/definitions/root-version-property"
+        },
+        "environment_variables": {
+            "$ref": "#/definitions/environment-variables-property"
+        },
+        "examples": {
+            "$ref": "#/definitions/examples-property"
+        },
+        "footer": {
+            "$ref": "#/definitions/footer-property"
+        },
+        "catch_all": {
+            "$ref": "#/definitions/catch-all-property"
+        },
+        "completions": {
+            "$ref": "#/definitions/completions-property"
+        },
+        "dependencies": {
+            "$ref": "#/definitions/dependencies-property"
+        },
+        "extensible": {
+            "$ref": "#/definitions/root-extensible-property"
+        },
+        "filename": {
+            "$ref": "#/definitions/filename-property"
+        },
+        "filters": {
+            "$ref": "#/definitions/filters-property"
+        },
+        "function": {
+            "$ref": "#/definitions/function-property"
+        }
+    },
+    "additionalProperties": false
+}
