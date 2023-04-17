@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "cli",
+    "description": "A CLI of the current application",
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "name",
+            "description": "A name of the current application",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "download"
+            ]
+        },
+        "help": {
+            "title": "help",
+            "description": "A description of the current application",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Sample minimal application without commands"
+            ]
+        },
+        "version": {
+            "title": "version",
+            "description": "A version of the current application",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "0.1.0"
+            ]
+        }
+    },
+    "additionalProperties": false
+}
