@@ -1,3 +1,5 @@
+require 'yaml'
+
 # A helper class used in Runfile to generate example README files
 class Example
   class << self
@@ -21,7 +23,7 @@ class Example
   end
 
   def config
-    @config ||= YAML.properly_load_file yaml_path
+    @config ||= YAML.unsafe_load_file yaml_path
   end
 
   def yaml

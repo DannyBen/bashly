@@ -1,0 +1,12 @@
+summary 'Run json-schema checks on all examples'
+
+action do
+  Example.all.each do |example|
+    file = example.yaml_path
+    command = "check-jsonschema --schemafile schema.json #{file}"
+    success = system command
+    color = success ? 'g' : 'r'
+    say "- check-jsonschema #{color}`#{example.dir}`"
+    exit 1 unless success
+  end
+end

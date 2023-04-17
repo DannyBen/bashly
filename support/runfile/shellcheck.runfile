@@ -1,0 +1,20 @@
+summary 'Run shellcheck on all examples'
+
+action do
+  allowed_skips = 1
+  Example.executables.each do |example|
+    if File.exist? example
+      success = system "shellcheck #{example}"
+      color = success ? 'g' : 'r'
+      say "- shellcheck #{color}`#{example}`"
+      exit 1 unless success
+    else
+      say "- skip       c`#{example}`"
+      allowed_skips -= 1
+      if allowed_skips < 0
+        say "- aborted: too many skips"
+        exit 1
+      end
+    end
+  end
+end

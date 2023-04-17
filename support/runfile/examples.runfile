@@ -1,6 +1,5 @@
-title   "Example Helpers"
+summary 'Regenerate example scripts'
 
-help   "Regenerate example scripts"
 action :regen do
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"

@@ -1,75 +1,10 @@
-require "byebug"
-require 'bashly'
+require 'byebug'
+require 'bashly/version'
 require_relative 'support/runfile/example'
 
-title   "Bashly Developer Toolbelt"
-summary "Runfile tasks for building the Bashly gem"
-version Bashly::VERSION
+title   'Bashly Developer Toolbelt'
+summary 'Runfile tasks for building the Bashly gem'
 
-import_gem 'runfile-tasks/gem', gemname: 'bashly'
+import_gem 'runfile-tasks/gem'
 import_gem 'runfile-tasks/docker', image: 'dannyben/bashly', version: Bashly::VERSION
-import 'support/runfile/examples'
-import 'support/runfile/debug'
-
-help   "Run shellcheck on all examples"
-action :shellcheck do
-  allowed_skips = 1
-  Example.executables.each do |example|
-    if File.exist? example
-      success = system "shellcheck #{example}"
-      color = success ? 'g' : 'r'
-      say "- shellcheck #{color}`#{example}`"
-      exit 1 unless success
-    else
-      say "- skip       c`#{example}`"
-      allowed_skips -= 1
-      if allowed_skips < 0
-        say "- aborted: too many skips"
-        exit 1
-      end
-    end
-  end
-end
-
-help   "Run shfmt checks on all examples"
-action :shfmt do
-  allowed_skips = 2
-  Example.executables.each do |example|
-    if example == 'examples/heredoc/cli' || !File.exist?(example)
-      say "- skip  c`#{example}`"
-      allowed_skips -= 1
-      if allowed_skips < 0
-        say "- aborted: too many skips"
-        exit 1
-      end
-      next
-    end
-
-    success = system "shfmt -d -i 2 -ci #{example}"
-    color = success ? 'g' : 'r'
-    say "- shfmt #{color}`#{example}`"
-    exit 1 unless success
-  end
-end
-
-help   "Run json-schema checks on all examples"
-action :schema do
-  Example.all.each do |example|
-    file = example.yaml_path
-    command = "check-jsonschema --schemafile schema.json #{file}"
-    success = system command
-    color = success ? 'g' : 'r'
-    say "- check-jsonschema #{color}`#{example.dir}`"
-    exit 1 unless success
-  end
-end
-
-help   "Generate changelog and append old changelog"
-action :changelog do
-  system "git changelog --save"
-  # append older changelog (prior to switching to git-changelog)
-  system "cat support/.changelog.old.md >> CHANGELOG.md"
-
-  # Fix typos
-  File.write "CHANGELOG.md", File.read("CHANGELOG.md").gsub('repeatableflags', 'repeatable flags')
-end
+import 'support/runfile/*'
