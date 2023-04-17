@@ -558,8 +558,15 @@
                     "uniqueItems": true,
                     "items": {
                         "description": "A dependency of the current script or sub-command",
-                        "type": "string",
-                        "minLength": 1
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     }
                 },
                 {
@@ -572,6 +579,9 @@
                                 {
                                     "type": "string",
                                     "minLength": 1
+                                },
+                                {
+                                    "type": "null"
                                 },
                                 {
                                     "type": "object",
