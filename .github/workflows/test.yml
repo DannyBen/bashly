@@ -46,8 +46,11 @@ jobs:
     - name: Install rush
       run: curl -Ls http://get.dannyb.co/rush/setup | bash
 
-    - name: Install shfmt
-      run: rush snatch dannyben shfmt
+    - name: Connect rush repo
+      run: rush clone dannyben --shallow --default
+
+    - name: Install shfmt and check-jsonschema
+      run: rush add shfmt check-jsonschema
 
     # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
@@ -65,3 +68,5 @@ jobs:
       run: bundle exec run shellcheck
     - name: Run shfmt tests
       run: bundle exec run shfmt
+    - name: Run schema tests
+      run: bundle exec run schema
