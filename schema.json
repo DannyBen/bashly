@@ -1,7 +1,458 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "definitions": {
-        "command": {
+        "name-property": {
+            "title": "name",
+            "description": "A name of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "source"
+            ]
+        },
+        "sub-command-alias-property": {
+            "title": "alias",
+            "oneOf": [
+                {
+                    "description": "An alias of the current sub-command",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "s"
+                    ]
+                },
+                {
+                    "description": "Aliases of the current sub-command",
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "An alias of the current sub-command",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "s"
+                        ]
+                    }
+                }
+            ]
+        },
+        "help-property": {
+            "title": "help",
+            "description": "A description of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "URL to download from"
+            ]
+        },
+        "args-property": {
+            "title": "args",
+            "description": "Arguments of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/argument"
+            }
+        },
+        "flags-property": {
+            "title": "flags",
+            "description": "Flags of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/flag"
+            }
+        },
+        "commands-property": {
+            "title": "commands",
+            "description": "Subcommands of the current script or sub-command",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/definitions/command-property"
+            }
+        },
+        "root-version-property": {
+            "title": "version",
+            "description": "A version of the current script",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "0.1.0"
+            ]
+        },
+        "sub-command-default-property": {
+            "title": "default",
+            "description": "Whether to use the current command as a fallback when CLI used incorrectly",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "force"
+                    ]
+                }
+            ]
+        },
+        "environment-variables-name-property": {
+            "title": "name",
+            "description": "A name of the current environment variable",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "config_path"
+            ]
+        },
+        "environment-variables-help-property": {
+            "title": "help",
+            "description": "A description of the current environment variable",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Location of the config file"
+            ]
+        },
+        "environment-variables-default-property": {
+            "title": "default",
+            "description": "A default value of the current environment variable",
+            "type": "string",
+            "examples": [
+                "~/config.ini"
+            ]
+        },
+        "environment-variables-private-property": {
+            "title": "private",
+            "description": "Whether the current environment variable is hidden from help",
+            "type": "boolean",
+            "default": false
+        },
+        "environment-variables-required-property": {
+            "title": "required",
+            "description": "Whether the current environment variable is required",
+            "type": "boolean",
+            "default": true
+        },
+        "environment-variables-property": {
+            "title": "environment variables",
+            "description": "Environment variables of the current application",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "environment variable",
+                "description": "An environment variables of the current application",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/definitions/environment-variables-name-property"
+                    },
+                    "help": {
+                        "$ref": "#/definitions/environment-variables-help-property"
+                    },
+                    "default": {
+                        "$ref": "#/definitions/environment-variables-default-property"
+                    },
+                    "private": {
+                        "$ref": "#/definitions/environment-variables-private-property"
+                    },
+                    "required": {
+                        "$ref": "#/definitions/environment-variables-required-property"
+                    }
+                },
+                "if": {
+                    "properties": {
+                        "required": {
+                            "const": false
+                        }
+                    }
+                },
+                "then": {
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/environment-variables-name-property"
+                        },
+                        "help": {
+                            "$ref": "#/definitions/environment-variables-help-property"
+                        },
+                        "default": {
+                            "$ref": "#/definitions/environment-variables-default-property"
+                        },
+                        "private": {
+                            "$ref": "#/definitions/environment-variables-private-property"
+                        },
+                        "required": {
+                            "$ref": "#/definitions/environment-variables-required-property"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "else": {
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/environment-variables-name-property"
+                        },
+                        "help": {
+                            "$ref": "#/definitions/environment-variables-help-property"
+                        },
+                        "private": {
+                            "$ref": "#/definitions/environment-variables-private-property"
+                        },
+                        "required": {
+                            "$ref": "#/definitions/environment-variables-required-property"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            }
+        },
+        "examples-property": {
+            "title": "examples",
+            "oneOf": [
+                {
+                    "description": "An example of the current script or sub-command",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "cli upload profile.png -u admin -p s3cr3t"
+                    ]
+                },
+                {
+                    "description": "Examples of the current script or sub-command",
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "An example of the current script or sub-command",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                            "cli upload profile.png -u admin -p s3cr3t"
+                        ]
+                    }
+                }
+            ]
+        },
+        "footer-property": {
+            "title": "footer",
+            "description": "A description footer for the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "This will appear at the end of the --help message"
+            ]
+        },
+        "sub-command-group-property": {
+            "title": "group",
+            "description": "A group of the current sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "File"
+            ]
+        },
+        "catch-all-property": {
+            "title": "catch-all",
+            "description": "Whether to allow additional arguments or flags for the current command",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "Additional arguments or flags for AWS CLI"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "label": {
+                            "description": "A label for the current argument or flag",
+                            "type": "string",
+                            "minLength": 1,
+                            "examples": [
+                                "AWS Params"
+                            ]
+                        },
+                        "help": {
+                            "description": "A description for the current argument or flag",
+                            "type": "string",
+                            "minLength": 1,
+                            "examples": [
+                                "Additional arguments or flags for AWS CLI"
+                            ]
+                        },
+                        "required": {
+                            "description": "Whether the current argument or flag is required",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "completions-property": {
+            "title": "completions",
+            "description": "Completions of the current script or sub-command",
+            "type": "array",
+            "minLength": 1,
+            "uniqueItems": true,
+            "items": {
+                "description": "A completion of the current script or sub-command",
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "dependencies-command-property": {
+            "title": "command",
+            "description": "Dependencies of the current script or sub-command",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "description": "A dependency of the current script or sub-command",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                    "git"
+                ]
+            }
+        },
+        "dependencies-help-property": {
+            "title": "help",
+            "description": "A help for the current dependency",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Run 'sudo apt install git'"
+            ]
+        },
+        "dependencies-property": {
+            "title": "dependencies",
+            "oneOf": [
+                {
+                    "description": "Dependencies of the current script or sub-command",
+                    "type": "array",
+                    "minLength": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "description": "A dependency of the current script or sub-command",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                {
+                    "description": "Dependencies of the current script or sub-command",
+                    "type": "object",
+                    "patternProperties": {
+                        ".": {
+                            "description": "A dependency of the current script or sub-command",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "command"
+                                    ],
+                                    "properties": {
+                                        "command": {
+                                            "$ref": "#/definitions/dependencies-command-property"
+                                        },
+                                        "help": {
+                                            "$ref": "#/definitions/dependencies-help-property"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "sub-command-expose-property": {
+            "title": "expose",
+            "description": "Whether to expose the current sub-command if it has sub-commands",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "always"
+                    ]
+                }
+            ]
+        },
+        "root-extensible-property": {
+            "title": "extensible",
+            "description": "Whether to delegate the current unknown command to an external executable",
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "type": "string",
+                    "examples": [
+                        "git"
+                    ]
+                }
+            ]
+        },
+        "filename-property": {
+            "title": "filename",
+            "description": "A partial file path of the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "dir_commands/list.sh"
+            ]
+        },
+        "filters-property": {
+            "title": "filters",
+            "description": "Filters of the current script or sub-command",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "description": "A filter of the current script or sub-command",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                    "docker_running"
+                ]
+            }
+        },
+        "function-property": {
+            "title": "function",
+            "description": "An internal function for the current script or sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "deprecated_container_start"
+            ]
+        },
+        "sub-command-private-property": {
+            "title": "private",
+            "description": "Whether hide the current sub-command from help",
+            "type": "boolean",
+            "default": false
+        },
+        "command-property": {
             "title": "command",
             "description": "A command of the current application",
             "type": "object",
@@ -10,119 +461,61 @@
             ],
             "properties": {
                 "name": {
-                    "title": "name",
-                    "description": "A name of the current command",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "source"
-                    ]
+                    "$ref": "#/definitions/name-property"
                 },
                 "alias": {
-                    "title": "alias",
-                    "description": "An alias of the current command",
-                    "oneOf": [
-                        {
-                            "type": "string",
-                            "minLength": 1,
-                            "examples": [
-                                "s"
-                            ]
-                        },
-                        {
-                            "type": "array",
-                            "minItems": 1,
-                            "uniqueItems": true,
-                            "items": {
-                                "type": "string",
-                                "minLength": 1,
-                                "examples": [
-                                    "s"
-                                ]
-                            }
-                        }
-                    ]
+                    "$ref": "#/definitions/sub-command-alias-property"
                 },
                 "help": {
-                    "title": "help",
-                    "description": "A description of the current command",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "URL to download from"
-                    ]
+                    "$ref": "#/definitions/help-property"
                 },
                 "args": {
-                    "title": "args",
-                    "description": "Arguments of the current command",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                        "$ref": "#/definitions/argument"
-                    }
+                    "$ref": "#/definitions/args-property"
                 },
                 "flags": {
-                    "title": "flags",
-                    "description": "Flags of the current command",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                        "$ref": "#/definitions/flag"
-                    }
+                    "$ref": "#/definitions/flags-property"
                 },
                 "commands": {
-                    "title": "commands",
-                    "description": "Subcommands of the current command",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "$ref": "#/definitions/command"
-                    }
+                    "$ref": "#/definitions/commands-property"
                 },
                 "default": {
-                    "title": "default",
-                    "description": "Whether to use the current command as a fallback when CLI used incorrectly",
-                    "type": "boolean",
-                    "default": false
+                    "$ref": "#/definitions/sub-command-default-property"
                 },
                 "environment_variables": {
-                    "$ref": "#/definitions/environment_variables"
+                    "$ref": "#/definitions/environment-variables-property"
                 },
                 "examples": {
-                    "title": "examples",
-                    "description": "An example of the current command",
-                    "oneOf": [
-                        {
-                            "type": "string",
-                            "minLength": 1,
-                            "examples": [
-                                "cli upload profile.png -u admin -p s3cr3t"
-                            ]
-                        },
-                        {
-                            "type": "array",
-                            "minItems": 1,
-                            "uniqueItems": true,
-                            "items": {
-                                "type": "string",
-                                "minLength": 1,
-                                "examples": [
-                                    "cli upload profile.png -u admin -p s3cr3t"
-                                ]
-                            }
-                        }
-                    ]
+                    "$ref": "#/definitions/examples-property"
+                },
+                "footer": {
+                    "$ref": "#/definitions/footer-property"
                 },
                 "group": {
-                    "title": "group",
-                    "description": "A group of the current command",
-                    "type": "string",
-                    "minLength": 1,
-                    "examples": [
-                        "File"
-                    ]
+                    "$ref": "#/definitions/sub-command-group-property"
+                },
+                "catch_all": {
+                    "$ref": "#/definitions/catch-all-property"
+                },
+                "completions": {
+                    "$ref": "#/definitions/completions-property"
+                },
+                "dependencies": {
+                    "$ref": "#/definitions/dependencies-property"
+                },
+                "expose": {
+                    "$ref": "#/definitions/sub-command-expose-property"
+                },
+                "filename": {
+                    "$ref": "#/definitions/filename-property"
+                },
+                "filters": {
+                    "$ref": "#/definitions/filters-property"
+                },
+                "function": {
+                    "$ref": "#/definitions/function-property"
+                },
+                "private": {
+                    "$ref": "#/definitions/sub-command-private-property"
                 }
             },
             "additionalProperties": false
@@ -336,116 +729,6 @@
                 }
             },
             "additionalProperties": false
-        },
-        "environment-variable-name-property": {
-            "title": "name",
-            "description": "A name of the current environment variable",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "config_path"
-            ]
-        },
-        "environment-variable-help-property": {
-            "title": "help",
-            "description": "A description of the current environment variable",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "Location of the config file"
-            ]
-        },
-        "environment-variable-default-property": {
-            "title": "default",
-            "description": "A default value of the current environment variable",
-            "type": "string",
-            "examples": [
-                "~/config.ini"
-            ]
-        },
-        "environment-variable-private-property": {
-            "title": "private",
-            "description": "Whether the current environment variable is hidden from help",
-            "type": "boolean",
-            "default": false
-        },
-        "environment-variable-required-property": {
-            "title": "required",
-            "description": "Whether the current environment variable is required",
-            "type": "boolean",
-            "default": true
-        },
-        "environment_variables": {
-            "title": "environment variables",
-            "description": "Environment variables of the current application",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "title": "environment variable",
-                "description": "An environment variables of the current application",
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "$ref": "#/definitions/environment-variable-name-property"
-                    },
-                    "help": {
-                        "$ref": "#/definitions/environment-variable-help-property"
-                    },
-                    "default": {
-                        "$ref": "#/definitions/environment-variable-default-property"
-                    },
-                    "private": {
-                        "$ref": "#/definitions/environment-variable-private-property"
-                    },
-                    "required": {
-                        "$ref": "#/definitions/environment-variable-required-property"
-                    }
-                },
-                "if": {
-                    "properties": {
-                        "required": {
-                            "const": false
-                        }
-                    }
-                },
-                "then": {
-                    "properties": {
-                        "name": {
-                            "$ref": "#/definitions/environment-variable-name-property"
-                        },
-                        "help": {
-                            "$ref": "#/definitions/environment-variable-help-property"
-                        },
-                        "default": {
-                            "$ref": "#/definitions/environment-variable-default-property"
-                        },
-                        "private": {
-                            "$ref": "#/definitions/environment-variable-private-property"
-                        },
-                        "required": {
-                            "$ref": "#/definitions/environment-variable-required-property"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "else": {
-                    "properties": {
-                        "name": {
-                            "$ref": "#/definitions/environment-variable-name-property"
-                        },
-                        "help": {
-                            "$ref": "#/definitions/environment-variable-help-property"
-                        },
-                        "private": {
-                            "$ref": "#/definitions/environment-variable-private-property"
-                        },
-                        "required": {
-                            "$ref": "#/definitions/environment-variable-required-property"
-                        }
-                    },
-                    "additionalProperties": false
-                }
-            }
         }
     },
     "title": "cli",
@@ -453,52 +736,52 @@
     "type": "object",
     "properties": {
         "name": {
-            "title": "name",
-            "description": "A name of the current application",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "download"
-            ]
+            "$ref": "#/definitions/name-property"
         },
         "help": {
-            "title": "help",
-            "description": "A description of the current application",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "Sample minimal application without commands"
-            ]
+            "$ref": "#/definitions/help-property"
         },
-        "version": {
-            "title": "version",
-            "description": "A version of the current application",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "0.1.0"
-            ]
+        "args": {
+            "$ref": "#/definitions/args-property"
+        },
+        "flags": {
+            "$ref": "#/definitions/flags-property"
         },
         "commands": {
-            "title": "commands",
-            "description": "Commands of the current application",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "$ref": "#/definitions/command"
-            }
+            "$ref": "#/definitions/commands-property"
+        },
+        "version": {
+            "$ref": "#/definitions/root-version-property"
         },
         "environment_variables": {
-            "$ref": "#/definitions/environment_variables"
+            "$ref": "#/definitions/environment-variables-property"
+        },
+        "examples": {
+            "$ref": "#/definitions/examples-property"
         },
         "footer": {
-            "title": "footer",
-            "description": "A description footer for the current application",
-            "type": "string",
-            "minLength": 1,
-            "examples": [
-                "This will appear at the end of the --help message"
-            ]
+            "$ref": "#/definitions/footer-property"
+        },
+        "catch_all": {
+            "$ref": "#/definitions/catch-all-property"
+        },
+        "completions": {
+            "$ref": "#/definitions/completions-property"
+        },
+        "dependencies": {
+            "$ref": "#/definitions/dependencies-property"
+        },
+        "extensible": {
+            "$ref": "#/definitions/root-extensible-property"
+        },
+        "filename": {
+            "$ref": "#/definitions/filename-property"
+        },
+        "filters": {
+            "$ref": "#/definitions/filters-property"
+        },
+        "function": {
+            "$ref": "#/definitions/function-property"
         }
     },
     "additionalProperties": false
