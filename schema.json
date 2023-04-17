@@ -180,7 +180,7 @@
                     "minLength": 1,
                     "uniqueItems": true,
                     "items": {
-                        "description": "A completions of the current flag",
+                        "description": "A completion of the current flag",
                         "type": "string",
                         "minLength": 1
                     }
