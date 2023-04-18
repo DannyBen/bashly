@@ -1,0 +1,144 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "definitions": {
+        "color": {
+            "type": "string",
+            "enum": [
+                "red",
+                "green",
+                "yellow",
+                "blue",
+                "magenta",
+                "cyan",
+                "bold",
+                "underlined",
+                "red_bold",
+                "green_bold",
+                "yellow_bold",
+                "blue_bold",
+                "magenta_bold",
+                "cyan_bold",
+                "red_underlined",
+                "green_underlined",
+                "yellow_underlined",
+                "blue_underlined",
+                "magenta_underlined",
+                "cyan_underlined",
+                "~"
+            ],
+            "default": "~"
+        }
+    },
+    "title": "settings",
+    "description": "Settings of the current application",
+    "type": "object",
+    "properties": {
+        "source_dir": {
+            "title": "source dir",
+            "description": "A directory with source files of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "src"
+        },
+        "config_path": {
+            "title": "config path",
+            "description": "A path to bashly.yml of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{source_dir}/bashly.yml"
+        },
+        "target_dir": {
+            "title": "target dir",
+            "description": "A directory of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "."
+        },
+        "lib_dir": {
+            "title": "lib dir",
+            "description": "A directory to common library files of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "lib"
+        },
+        "strict": {
+            "title": "strict",
+            "description": "Bash initialiation options of the current script",
+            "oneOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "string",
+                    "examples": [
+                        "set -o pipefail"
+                    ]
+                }
+            ],
+            "default": false
+        },
+        "tab_indent": {
+            "title": "tab indent",
+            "description": "Whether to use tabs in the the current script",
+            "type": "boolean",
+            "default": false
+        },
+        "compact_short_flags": {
+            "title": "compact short flags",
+            "description": "Whether to expand short flags of the current script",
+            "type": "boolean",
+            "default": true
+        },
+        "env": {
+            "title": "env",
+            "description": "Whether to include development related comments in the current script",
+            "type": "string",
+            "enum": [
+                "development",
+                "production"
+            ],
+            "default": "development"
+        },
+        "partials_extension": {
+            "title": "partials extension",
+            "description": "A partial snippet extension of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "sh"
+        },
+        "usage_colors": {
+            "title": "usage colors",
+            "description": "Usage colors of the current script",
+            "type": "object",
+            "properties": {
+                "caption": {
+                    "title": "caption",
+                    "description": "A caption color of the current script",
+                    "$ref": "#/definitions/color"
+                },
+                "command": {
+                    "title": "command",
+                    "description": "A command color of the current script",
+                    "$ref": "#/definitions/color"
+                },
+                "arg": {
+                    "title": "arg",
+                    "description": "An argument color of the current script",
+                    "$ref": "#/definitions/color"
+                },
+                "flag": {
+                    "title": "flag",
+                    "description": "A flag color of the current script",
+                    "$ref": "#/definitions/color"
+                },
+                "environment_variable": {
+                    "title": "environment variable",
+                    "description": "An environment variable color of the current script",
+                    "$ref": "#/definitions/color"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
