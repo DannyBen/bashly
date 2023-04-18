@@ -36,6 +36,21 @@ describe Settings do
       end
     end
 
+    context 'when BASHLY_SETTINGS_PATH is set' do
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/my-settings.yml', 'source_dir: from-var'
+        ENV['BASHLY_SETTINGS_PATH'] = 'spec/tmp/my-settings.yml'
+        subject.source_dir = nil
+      end
+
+      after { ENV['BASHLY_SETTINGS_PATH'] = nil }
+
+      it 'returns the value from the settings file' do
+        expect(subject.source_dir).to eq 'from-var'
+      end
+    end
+
     context 'when its corresponding env var is set' do
       original_value = ENV['BASHLY_TAB_INDENT']
 
