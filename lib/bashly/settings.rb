@@ -56,9 +56,9 @@ module Bashly
       end
 
       def strict_string
-        if Settings.strict.is_a? String
-          Settings.strict
-        elsif Settings.strict
+        if strict.is_a? String
+          strict
+        elsif strict
           'set -euo pipefail'
         else
           'set -e'
@@ -101,7 +101,13 @@ module Bashly
       end
 
       def user_settings_path
-        ENV['BASHLY_SETTINGS_PATH'] || 'settings.yml'
+        @user_settings_path ||= if ENV['BASHLY_SETTINGS_PATH']
+          ENV['BASHLY_SETTINGS_PATH']
+        elsif File.exist? 'bashly-settings.yml'
+          'bashly-settings.yml'
+        else
+          'settings.yml'
+        end
       end
 
       def defsult_settings

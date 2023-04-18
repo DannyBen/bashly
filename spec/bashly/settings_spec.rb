@@ -1,11 +1,54 @@
 require 'spec_helper'
 
 describe Settings do
-  subject { described_class }
+  subject { BaselineSettings.clone }
 
   describe 'standard value' do
     it 'returns a predefined default value' do
       expect(subject.tab_indent).to be false
+    end
+
+    context 'when settings.yml exists' do
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/settings.yml', 'source_dir: somedir'
+        subject.source_dir = nil
+      end
+
+      it 'returns the value from the settings file' do
+        Dir.chdir 'spec/tmp' do
+          expect(subject.source_dir).to eq 'somedir'
+        end
+      end
+    end
+
+    context 'when bashly-settings.yml exists' do
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/bashly-settings.yml', 'source_dir: somedir'
+        subject.source_dir = nil
+      end
+
+      it 'returns the value from the settings file' do
+        Dir.chdir 'spec/tmp' do
+          expect(subject.source_dir).to eq 'somedir'
+        end
+      end
+    end
+
+    context 'when BASHLY_SETTINGS_PATH is set' do
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/my-settings.yml', 'source_dir: from-var'
+        ENV['BASHLY_SETTINGS_PATH'] = 'spec/tmp/my-settings.yml'
+        subject.source_dir = nil
+      end
+
+      after { ENV['BASHLY_SETTINGS_PATH'] = nil }
+
+      it 'returns the value from the settings file' do
+        expect(subject.source_dir).to eq 'from-var'
+      end
     end
 
     context 'when its corresponding env var is set' do
@@ -57,10 +100,6 @@ describe Settings do
   end
 
   describe 'strict_string' do
-    original_value = described_class.strict
-
-    after { subject.strict = original_value }
-
     context 'when strict is true' do
       before { subject.strict = true }
 

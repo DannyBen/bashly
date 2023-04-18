@@ -34,6 +34,10 @@ Settings.strict = true # generate scripts with `set -euo pipefail`
 Settings.env = :development
 reset_tmp_dir
 
+# This is used in the Settings spec, to ensure we are working with an
+# eigenclass that has a known state
+BaselineSettings = Settings.clone
+
 # Consistent Colsole output (for rspec_fixtures)
 ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
