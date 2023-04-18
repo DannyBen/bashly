@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Settings do
-  subject { described_class }
+  subject { BaselineSettings.clone }
 
   describe 'standard value' do
     it 'returns a predefined default value' do
@@ -9,15 +9,11 @@ describe Settings do
     end
 
     context 'when settings.yml exists' do
-      original_value = described_class.source_dir
-
       before do
         reset_tmp_dir
         File.write 'spec/tmp/settings.yml', 'source_dir: somedir'
         subject.source_dir = nil
       end
-
-      after { described_class.source_dir = original_value }
 
       it 'returns the value from the settings file' do
         Dir.chdir 'spec/tmp' do
@@ -27,15 +23,11 @@ describe Settings do
     end
 
     context 'when bashly-settings.yml exists' do
-      original_value = described_class.source_dir
-
       before do
         reset_tmp_dir
         File.write 'spec/tmp/bashly-settings.yml', 'source_dir: somedir'
         subject.source_dir = nil
       end
-
-      after { described_class.source_dir = original_value }
 
       it 'returns the value from the settings file' do
         Dir.chdir 'spec/tmp' do
@@ -93,10 +85,6 @@ describe Settings do
   end
 
   describe 'strict_string' do
-    original_value = described_class.strict
-
-    after { subject.strict = original_value }
-
     context 'when strict is true' do
       before { subject.strict = true }
 

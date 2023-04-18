@@ -56,9 +56,9 @@ module Bashly
       end
 
       def strict_string
-        if Settings.strict.is_a? String
-          Settings.strict
-        elsif Settings.strict
+        if strict.is_a? String
+          strict
+        elsif strict
           'set -euo pipefail'
         else
           'set -e'
