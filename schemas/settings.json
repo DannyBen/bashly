@@ -23,10 +23,8 @@
                 "yellow_underlined",
                 "blue_underlined",
                 "magenta_underlined",
-                "cyan_underlined",
-                "~"
-            ],
-            "default": "~"
+                "cyan_underlined"
+            ]
         }
     },
     "title": "settings",
