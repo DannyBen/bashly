@@ -8,6 +8,42 @@ describe Settings do
       expect(subject.tab_indent).to be false
     end
 
+    context 'when settings.yml exists' do
+      original_value = described_class.source_dir
+
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/settings.yml', 'source_dir: somedir'
+        subject.source_dir = nil
+      end
+
+      after { described_class.source_dir = original_value }
+
+      it 'returns the value from the settings file' do
+        Dir.chdir 'spec/tmp' do
+          expect(subject.source_dir).to eq 'somedir'
+        end
+      end
+    end
+
+    context 'when bashly-settings.yml exists' do
+      original_value = described_class.source_dir
+
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/bashly-settings.yml', 'source_dir: somedir'
+        subject.source_dir = nil
+      end
+
+      after { described_class.source_dir = original_value }
+
+      it 'returns the value from the settings file' do
+        Dir.chdir 'spec/tmp' do
+          expect(subject.source_dir).to eq 'somedir'
+        end
+      end
+    end
+
     context 'when its corresponding env var is set' do
       original_value = ENV['BASHLY_TAB_INDENT']
 
