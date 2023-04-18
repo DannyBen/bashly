@@ -19,3 +19,12 @@ action :settings do
   success = system command
   exit 1 unless success
 end
+
+help   'Test the strings schema against the default strings template'
+action :strings do
+  file = 'lib/bashly/libraries/strings/strings.yml'
+  command = "check-jsonschema --schemafile schemas/strings.json #{file}"
+  say "\n$ check-jsonschema bb`#{file}`"
+  success = system command
+  exit 1 unless success
+end
