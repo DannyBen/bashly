@@ -2,28 +2,35 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "definitions": {
         "color": {
-            "type": "string",
-            "examples": [
-                "red",
-                "green",
-                "yellow",
-                "blue",
-                "magenta",
-                "cyan",
-                "bold",
-                "underlined",
-                "red_bold",
-                "green_bold",
-                "yellow_bold",
-                "blue_bold",
-                "magenta_bold",
-                "cyan_bold",
-                "red_underlined",
-                "green_underlined",
-                "yellow_underlined",
-                "blue_underlined",
-                "magenta_underlined",
-                "cyan_underlined"
+            "oneOf": [
+                {
+                    "type": "string",
+                    "examples": [
+                        "red",
+                        "green",
+                        "yellow",
+                        "blue",
+                        "magenta",
+                        "cyan",
+                        "bold",
+                        "underlined",
+                        "red_bold",
+                        "green_bold",
+                        "yellow_bold",
+                        "blue_bold",
+                        "magenta_bold",
+                        "cyan_bold",
+                        "red_underlined",
+                        "green_underlined",
+                        "yellow_underlined",
+                        "blue_underlined",
+                        "magenta_underlined",
+                        "cyan_underlined"
+                    ]
+                },
+                {
+                    "type": "null"
+                }
             ]
         }
     },
