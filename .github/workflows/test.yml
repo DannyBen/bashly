@@ -71,5 +71,7 @@ jobs:
       run: bundle exec run shellcheck
     - name: Run shfmt tests
       run: bundle exec run shfmt
-    - name: Run schema tests
-      run: bundle exec run schema
+    - name: Run bashly schema tests
+      run: bundle exec run schema examples
+    - name: Run settings schema tests
+      run: bundle exec run schema settings

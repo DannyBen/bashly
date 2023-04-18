@@ -1,12 +1,21 @@
 summary 'Run json-schema checks on all examples'
 
-action do
+help   'Test the bashly schema against all examples'
+action :examples do
   Example.all.each do |example|
     file = example.yaml_path
     command = "check-jsonschema --schemafile schemas/bashly.json #{file}"
+    say "\n$ check-jsonschema bb`#{example.dir}`"
     success = system command
-    color = success ? 'g' : 'r'
-    say "- check-jsonschema #{color}`#{example.dir}`"
     exit 1 unless success
   end
+end
+
+help   'Test the settings schema against the default settings template'
+action :settings do
+  file = 'lib/bashly/libraries/settings/settings.yml'
+  command = "check-jsonschema --schemafile schemas/settings.json #{file}"
+  say "\n$ check-jsonschema bb`#{file}`"
+  success = system command
+  exit 1 unless success
 end
