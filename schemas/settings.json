@@ -3,7 +3,7 @@
     "definitions": {
         "color": {
             "type": "string",
-            "enum": [
+            "examples": [
                 "red",
                 "green",
                 "yellow",
