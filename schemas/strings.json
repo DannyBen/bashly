@@ -1,0 +1,205 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "strings",
+    "description": "Strings of the current application",
+    "type": "object",
+    "properties": {
+        "usage": {
+            "title": "usage",
+            "description": "A usage caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Usage:"
+        },
+        "options": {
+            "title": "options",
+            "description": "An option caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Options:"
+        },
+        "arguments": {
+            "title": "arguments",
+            "description": "An argument caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Arguments:"
+        },
+        "commands": {
+            "title": "commands",
+            "description": "A command caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Commands:"
+        },
+        "examples": {
+            "title": "examples",
+            "description": "An example caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Examples:"
+        },
+        "environment_variables": {
+            "title": "environment variables",
+            "description": "An environment variable caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Environment Variables:"
+        },
+        "group": {
+            "title": "group",
+            "description": "A group caption of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{group} Commands:"
+        },
+        "command_alias": {
+            "title": "command alias",
+            "description": "An alias helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Alias: %{alias}"
+        },
+        "default_command_summary": {
+            "title": "default command summary",
+            "description": "A default command summary helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{summary} (default)"
+        },
+        "required": {
+            "title": "required",
+            "description": "A required helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "(required)"
+        },
+        "repeatable": {
+            "title": "repeatable",
+            "description": "A repeatable helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "(repeatable)"
+        },
+        "default": {
+            "title": "default",
+            "description": "A default helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Default: %{value}"
+        },
+        "allowed": {
+            "title": "allowed",
+            "description": "An allowed helper of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Allowed: %{values}"
+        },
+        "help_flag_text": {
+            "title": "help flag text",
+            "description": "A help flag of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Show this help"
+        },
+        "version_flag_text": {
+            "title": "version flag text",
+            "description": "A version flag of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "Show version number"
+        },
+        "flag_requires_an_argument": {
+            "title": "flag requires an argument",
+            "description": "A missing flag argument error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} requires an argument: %{usage}"
+        },
+        "invalid_argument": {
+            "title": "invalid argument",
+            "description": "An invalid argument error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "invalid argument: %s"
+        },
+        "invalid_flag": {
+            "title": "invalid flag",
+            "description": "An invalid option error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "invalid option: %s"
+        },
+        "invalid_command": {
+            "title": "invalid command",
+            "description": "An invalid command error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "invalid command: %s"
+        },
+        "conflicting_flags": {
+            "title": "conflicting flags",
+            "description": "A conflicting options error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "conflicting options: %s cannot be used with %s"
+        },
+        "missing_required_argument": {
+            "title": "missing required argument",
+            "description": "A missing required argument error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "missing required argument: %{arg}\\nusage: %{usage}"
+        },
+        "missing_required_flag": {
+            "title": "missing required flag",
+            "description": "A missing required flag error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "missing required flag: %{usage}"
+        },
+        "missing_required_environment_variable": {
+            "title": "missing required environment variable",
+            "description": "A missing required environment variable error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "missing required environment variable: %{var}"
+        },
+        "missing_dependency": {
+            "title": "missing dependency",
+            "description": "A missing dependency error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "missing dependency: %{dependency}"
+        },
+        "disallowed_flag": {
+            "title": "disallowed flag",
+            "description": "A forbidden flag error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} must be one of: %{allowed}"
+        },
+        "disallowed_argument": {
+            "title": "disallowed argument",
+            "description": "A forbidden argument error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} must be one of: %{allowed}"
+        },
+        "unsupported_bash_version": {
+            "title": "unsupported bash version",
+            "description": "An unsupported Bash version error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "bash version 4 or higher is required"
+        },
+        "validation_error": {
+            "title": "validation error",
+            "description": "A validation error of the current script",
+            "type": "string",
+            "minLength": 1,
+            "default": "validation error in %s:\\n%s"
+        }
+    },
+    "additionalProperties": false
+}
