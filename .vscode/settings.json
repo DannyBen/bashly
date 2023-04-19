@@ -1,0 +1,7 @@
+{
+    "yaml.schemas": {
+        "schemas/bashly.json": "examples/*/src/bashly.yml",
+        "schemas/strings.json": "examples/*/src/bashly-strings.yml",
+        "schemas/settings.json": "examples/*/settings.yml"
+    }
+}
