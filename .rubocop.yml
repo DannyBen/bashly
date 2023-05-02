@@ -19,6 +19,9 @@ Metrics/PerceivedComplexity:  { Exclude: [lib/bashly/config_validator.rb] }
 Metrics/MethodLength:         { Exclude: [lib/bashly/config_validator.rb] }
 Style/GuardClause:            { Exclude: [lib/bashly/config_validator.rb] }
 
+# FIXME: The `Command` class is too long
+Metrics/ClassLength: { Exclude: [lib/bashly/script/command.rb] }
+
 # Allow irregular filenames in some cases
 RSpec/FilePath:
   Exclude:

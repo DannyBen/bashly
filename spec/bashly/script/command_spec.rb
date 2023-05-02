@@ -339,6 +339,23 @@ describe Script::Command do
     end
   end
 
+  describe '#public_commands' do
+    let(:fixture) { :private_commands }
+
+    it 'returns an array of Command objects excluding private commands' do
+      expect(subject.public_commands.count).to eq 1
+      expect(subject.public_commands.first.name).to eq 'connect'
+    end
+  end
+
+  describe '#public_commands_aliases' do
+    let(:fixture) { :private_commands }
+
+    it 'returns an array of command aliases of public subcommands' do
+      expect(subject.public_command_aliases).to eq %w[connect c]
+    end
+  end
+
   describe '#user_file_path' do
     it 'returns the path to the user file' do
       expect(subject.user_file_path 'test.sh').to eq 'spec/tmp/src/test.sh'

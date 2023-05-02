@@ -1,0 +1,24 @@
++ bundle exec bashly add completions_yaml --force
+created ./completions.yml
+
+This file can be converted to a completions script using the completely gem.
+
++ cat completions.yml
+---
+private:
+- "--help"
+- "--version"
+- "-h"
+- "-v"
+- c
+- connect
+private connect:
+- "--force"
+- "--help"
+- "-f"
+- "-h"
+private c:
+- "--force"
+- "--help"
+- "-f"
+- "-h"

@@ -223,6 +223,11 @@ module Bashly
         commands.reject(&:private)
       end
 
+      # Returns a full list of the public Command names and aliases combined
+      def public_command_aliases
+        public_commands.map(&:aliases).flatten
+      end
+
       # Returns only environment variables that are not private
       def public_environment_variables
         environment_variables.reject(&:private)
