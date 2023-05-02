@@ -9,7 +9,6 @@ module Bashly
         comps = allowed || completions
         return {} unless comps
 
-
         aliases.to_h do |name|
           prefix = command_full_name
           prefix = "#{prefix}*" unless prefix.end_with? '*'
