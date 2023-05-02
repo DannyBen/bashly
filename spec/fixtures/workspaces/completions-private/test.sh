@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-rm -f ./completions.yml
-
 set -x
-bundle exec bashly add completions_yaml
+bundle exec bashly add completions_yaml --force
 cat completions.yml

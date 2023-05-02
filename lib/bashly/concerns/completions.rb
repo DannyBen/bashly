@@ -9,6 +9,7 @@ module Bashly
         comps = allowed || completions
         return {} unless comps
 
+
         aliases.to_h do |name|
           prefix = command_full_name
           prefix = "#{prefix}*" unless prefix.end_with? '*'
@@ -62,7 +63,7 @@ module Bashly
       end
 
       def completion_flag_names
-        flags.map(&:name) + flags.map(&:short)
+        public_flags.map(&:name) + public_flags.map(&:short)
       end
 
       def completion_allowed_args

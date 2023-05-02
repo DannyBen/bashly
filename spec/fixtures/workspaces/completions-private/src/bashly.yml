@@ -5,6 +5,15 @@ commands:
 - name: connect
   alias: c
   help: Connect to the metaverse
+  flags:
+    - long: --force
+      short: -f
+    # Private flag below - should not be present in completions
+    - long: --hidden-flag
+      short: -d
+      private: true
+
+# Private commands below - should not be present in completions
 - name: connect-ftp
   help: Connect via FTP
   alias: cf
