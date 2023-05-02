@@ -378,6 +378,19 @@
             short: -c
             allowed: [green, red]
 
+:private_commands:
+  name: private
+  help: Test private commands
+  commands:
+  - name: connect
+    alias: c
+  - name: connect-ftp
+    alias: cf
+    private: true
+  - name: connect-ssh
+    alias: cf
+    private: true
+
 :repeatable_arg:
   name: get
   args:
