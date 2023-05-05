@@ -1,6 +1,14 @@
 Change Log
 ========================================
 
+v1.0.4 - 2023-05-02
+----------------------------------------
+
+- Allow using `bashly-settings.yml` instead of `settings.yml`
+- Fix completions library to not show private commands
+- Fix completions library to not show private flags
+
+
 v1.0.3 - 2023-04-08
 ----------------------------------------
 
