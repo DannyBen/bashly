@@ -33,7 +33,7 @@ module Bashly
       end
 
       def autocomplete
-        @autocomplete ||= %w[--help] + runner.commands.keys
+        @autocomplete ||= %w[help version] + runner.commands.keys
       end
     end
   end
