@@ -13,12 +13,13 @@ module Bashly
       end
 
     private
+
       def terminal
         @terminal ||= begin
           terminal = MisterBin::Terminal.new runner, {
             autocomplete: autocomplete,
             show_usage:   true,
-            prompt:       "\n\e[33m\e[1mbashly\e[0m > "
+            prompt:       "\n\e[33m\e[1mbashly\e[0m > ",
           }
 
           terminal.on('help') { runner.run %w[--help] }
