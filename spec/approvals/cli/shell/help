@@ -1,0 +1,11 @@
+Start an interactive bashly shell
+
+Start an interactive shell where you can run bashly commands
+
+Usage:
+  bashly shell
+  bashly shell (-h|--help)
+
+Options:
+  -h --help
+    Show this help

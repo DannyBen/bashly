@@ -1,8 +1,5 @@
 Show bashly reference documentation
 
-This command displays bite-sized help for all the bashly configuration options
-in the terminal.
-
 Usage:
   bashly doc [SEARCH] [--index]
   bashly doc (-h|--help)

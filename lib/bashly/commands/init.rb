@@ -2,7 +2,7 @@ module Bashly
   module Commands
     class Init < Base
       summary 'Initialize a new workspace'
-      help 'This command will create the source folder, and place a template configuration file in it.'
+      help 'Create the bashly source folder, and place a template configuration file in it'
 
       usage 'bashly init [--minimal]'
       usage 'bashly init (-h|--help)'

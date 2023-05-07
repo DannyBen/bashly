@@ -15,6 +15,7 @@ module Bashly
       runner.route 'generate',  to: Commands::Generate
       runner.route 'add',       to: Commands::Add
       runner.route 'doc',       to: Commands::Doc
+      runner.route 'shell',     to: Commands::Shell unless ENV['BASHLY_SHELL']
 
       runner
     end
