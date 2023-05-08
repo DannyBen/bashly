@@ -2,7 +2,6 @@ module Bashly
   module Commands
     class Doc < Base
       summary 'Show bashly reference documentation'
-      help 'This command displays bite-sized help for all the bashly configuration options in the terminal.'
 
       usage 'bashly doc [SEARCH] [--index]'
       usage 'bashly doc (-h|--help)'

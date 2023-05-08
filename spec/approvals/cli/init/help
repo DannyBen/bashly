@@ -1,7 +1,6 @@
 Initialize a new workspace
 
-This command will create the source folder, and place a template configuration
-file in it.
+Create the bashly source folder, and place a template configuration file in it
 
 Usage:
   bashly init [--minimal]
