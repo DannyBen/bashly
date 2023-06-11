@@ -240,7 +240,7 @@ module Bashly
 
       # Returns true if one of the args is repeatable
       def repeatable_arg_exist?
-        args.select(&:repeatable).any?
+        args.any?(&:repeatable)
       end
 
       # Returns an array of all the required Arguments
@@ -265,7 +265,7 @@ module Bashly
 
       # Returns true if one of the flags matches the provided short code
       def short_flag_exist?(flag)
-        flags.select { |f| f.short == flag }.any?
+        flags.any? { |f| f.short == flag }
       end
 
       # Returns the summary string
