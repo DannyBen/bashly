@@ -29,7 +29,7 @@ module Bashly
         command = "sudo #{command}" unless root_user?
         system command
 
-        say 'Restart your session for the changes to take effect.'
+        say 'Restart your session for the changes to take effect'
       end
 
       def show_completions
