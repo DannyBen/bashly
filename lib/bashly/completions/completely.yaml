@@ -139,6 +139,7 @@ bashly doc: &doc
 - flag.required
 - flag.short
 - flag.validate
+
 bashly completions: &completions
 - --help
 - -h
@@ -146,6 +147,7 @@ bashly completions: &completions
 - -i
 
 bashly c: *completions
+
 bashly shell: &shell
 - --help
 - -h
