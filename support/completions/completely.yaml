@@ -1,0 +1,145 @@
+bashly:
+- --help
+- -h
+- --version
+- -v
+- init
+- preview
+- validate
+- generate
+- add
+- doc
+- shell
+
+bashly init: &init
+- --help
+- -h
+- --minimal
+- -m
+
+bashly i: *init
+
+bashly preview: &preview
+- --help
+- -h
+
+bashly p: *preview
+
+bashly validate: &validate
+- --help
+- -h
+- --verbose
+- -v
+
+bashly v: *validate
+
+bashly generate: &generate
+- --help
+- -h
+- --env
+- --force
+- --quiet
+- --upgrade
+- --watch
+- --wrap
+- -e
+- -f
+- -q
+- -r
+- -u
+- -w
+
+bashly g: *generate
+
+bashly generate*--env: &env
+- development
+- production
+
+bashly generate*-e: *env
+bashly g*--env: *env
+bashly g*-e: *env
+
+bashly add: &add
+- --help
+- -h
+- --force
+- --list
+- --source
+- -f
+- -l
+- -s
+- colors
+- completions
+- completions_script
+- completions_yaml
+- config
+- help
+- hooks
+- lib
+- settings
+- strings
+- test
+- validations
+- yaml
+
+bashly a: *add
+
+bashly doc: &doc
+- --help
+- -h
+- --index
+- -i
+- arg
+- arg.allowed
+- arg.default
+- arg.help
+- arg.name
+- arg.repeatable
+- arg.required
+- arg.validate
+- command
+- command.alias
+- command.args
+- command.catch_all
+- command.commands
+- command.completions
+- command.default
+- command.dependencies
+- command.environment_variables
+- command.examples
+- command.expose
+- command.extensible
+- command.filename
+- command.filters
+- command.flags
+- command.footer
+- command.function
+- command.group
+- command.help
+- command.name
+- command.private
+- command.version
+- environment_variable
+- environment_variable.default
+- environment_variable.help
+- environment_variable.name
+- environment_variable.private
+- environment_variable.required
+- flag
+- flag.allowed
+- flag.arg
+- flag.completions
+- flag.conflicts
+- flag.default
+- flag.help
+- flag.long
+- flag.private
+- flag.repeatable
+- flag.required
+- flag.short
+- flag.validate
+bashly shell: &shell
+- --help
+- -h
+
+bashly s: *shell
