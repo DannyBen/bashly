@@ -20,12 +20,12 @@ module Bashly
     private
 
       def install_completions
-        raise Error, "Cannot find completions directory" unless compdir
+        raise Error, 'Cannot find completions directory' unless compdir
 
         target = "#{compdir}/bashly"
 
         say "Installing completions to m`#{target}`"
-        command = %Q[cp "#{completions_path}" "#{target}"]
+        command = %[cp "#{completions_path}" "#{target}"]
         command = "sudo #{command}" unless root_user?
         system command
 
@@ -45,21 +45,24 @@ module Bashly
       end
 
       def compdir
-        @compdir ||= begin
-          candidates = [
-            '/usr/share/bash-completion/completions',
-            '/usr/local/etc/bash_completion.d'
-          ]
-        
-          candidates.each { |dir| return dir if Dir.exist? dir }
-          nil
-        end
+        @compdir ||= compdir!
+      end
+
+      def compdir!
+        compdir_candidates.each { |dir| return dir if Dir.exist? dir }
+        nil
+      end
+
+      def compdir_candidates
+        @compdir_candidates ||= [
+          '/usr/share/bash-completion/completions',
+          '/usr/local/etc/bash_completion.d',
+        ]
       end
 
       def root_user?
-        Process.uid == 0
+        Process.uid.zero?
       end
     end
-
   end
 end

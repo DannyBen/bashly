@@ -1,0 +1,15 @@
+Install bash completions for bashly itself
+
+Display the bash completions script or install it directly to your bash
+completions directory
+
+Usage:
+  bashly completions [--install]
+  bashly completions (-h|--help)
+
+Options:
+  -i --install
+    Install the completions script to your bash completions directory
+
+  -h --help
+    Show this help

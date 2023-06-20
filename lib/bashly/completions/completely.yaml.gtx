@@ -61,7 +61,6 @@ end
 libs.each do |lib|
   = "- #{lib}"
 end
-
 > 
 > bashly a: *add
 > 
@@ -72,14 +71,14 @@ end
 docs.each do |doc|
   = "- #{doc}"
 end
-
+>
 > bashly completions: &completions
 = help_flags
 > - --install
 > - -i
 > 
 > bashly c: *completions
-
+>
 > bashly shell: &shell
 = help_flags
 > 
