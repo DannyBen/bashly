@@ -36,6 +36,10 @@ _bashly_completions() {
       while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "development production")" -- "$cur" )
       ;;
 
+    'completions'*)
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --install -i")" -- "$cur" )
+      ;;
+
     'validate'*)
       while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --verbose -v")" -- "$cur" )
       ;;
@@ -92,12 +96,16 @@ _bashly_completions() {
       while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --force --list --source -f -l -s colors completions completions_script completions_yaml config help hooks lib settings strings test validations yaml")" -- "$cur" )
       ;;
 
+    'c'*)
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --install -i")" -- "$cur" )
+      ;;
+
     's'*)
       while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h")" -- "$cur" )
       ;;
 
     *)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --version -v init preview validate generate add doc shell")" -- "$cur" )
+      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_bashly_completions_filter "--help -h --version -v init preview validate generate add doc completions shell")" -- "$cur" )
       ;;
 
   esac

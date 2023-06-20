@@ -3,8 +3,8 @@ require 'bashly'
 summary 'Generate bash completions for bashly itself'
 
 action do
-  completely_yaml_oath = 'support/completions/completely.yaml'
-  completions_script_path = 'support/completions/bashly-completions.bash'
+  completely_yaml_oath = 'lib/bashly/completions/completely.yaml'
+  completions_script_path = 'lib/bashly/completions/bashly-completions.bash'
   gtx_path = "#{completely_yaml_oath}.gtx"
   template = File.read gtx_path
 

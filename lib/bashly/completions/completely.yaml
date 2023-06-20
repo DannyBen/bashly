@@ -9,6 +9,7 @@ bashly:
 - generate
 - add
 - doc
+- completions
 - shell
 
 bashly init: &init
@@ -138,6 +139,13 @@ bashly doc: &doc
 - flag.required
 - flag.short
 - flag.validate
+bashly completions: &completions
+- --help
+- -h
+- --install
+- -i
+
+bashly c: *completions
 bashly shell: &shell
 - --help
 - -h

@@ -73,6 +73,13 @@ docs.each do |doc|
   = "- #{doc}"
 end
 
+> bashly completions: &completions
+= help_flags
+> - --install
+> - -i
+> 
+> bashly c: *completions
+
 > bashly shell: &shell
 = help_flags
 > 
