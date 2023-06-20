@@ -1,0 +1,56 @@
+require 'bashly'
+
+summary 'Generate bash completions for bashly itself'
+
+action do
+  completely_yaml_oath = 'lib/bashly/completions/completely.yaml'
+  completions_script_path = 'lib/bashly/completions/bashly-completions.bash'
+  gtx_path = "#{completely_yaml_oath}.gtx"
+  template = File.read gtx_path
+
+  say "Reading GTX template from m`#{gtx_path}`"
+  gtx = GTX.new template, filename: gtx_path
+  completely_yaml = gtx.parse binding
+
+  say "Writing completely configuration to m`#{completely_yaml_oath}`"
+  File.write completely_yaml_oath, completely_yaml
+
+  say "Saving completions script to m`#{completions_script_path}`"
+  completions = Completely::Completions.load completely_yaml_oath
+  File.write completions_script_path, completions.script
+
+  if compdir
+    say "Copying completions script to m`#{compdir}`"
+    system %Q[sudo cp "#{completions_script_path}" "#{compdir}/bashly"]
+  else
+    say 'r`Cannot find completions directory, not copying'
+  end
+
+  say 'Done (you may need to restart your session)'
+end
+
+helpers do
+  def help_flags = "- --help\n- -h"
+  
+  def libs = Bashly::LibrarySource.new.config.keys
+
+  def commands = Bashly::CLI.runner.commands.keys
+  
+  def docs
+    Dir['lib/bashly/docs/*.yml'].each_with_object({}) do |path, hash|
+      hash.merge!(YAML.load_file(path))
+    end.keys
+  end
+
+  def compdir
+    @compdir ||= begin
+      candidates = [
+        '/usr/share/bash-completion/completions',
+        '/usr/local/etc/bash_completion.d'
+      ]
+    
+      candidates.each { |dir| return dir if Dir.exist? dir }
+      nil
+    end
+  end
+end

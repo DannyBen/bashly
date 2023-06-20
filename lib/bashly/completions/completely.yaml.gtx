@@ -1,0 +1,85 @@
+> bashly:
+= help_flags
+> - --version
+> - -v
+commands.each do |command|
+  = "- #{command}"
+end
+> 
+> bashly init: &init
+= help_flags
+> - --minimal
+> - -m
+> 
+> bashly i: *init
+> 
+> bashly preview: &preview
+= help_flags
+> 
+> bashly p: *preview
+> 
+> bashly validate: &validate
+= help_flags
+> - --verbose
+> - -v
+> 
+> bashly v: *validate
+> 
+> bashly generate: &generate
+= help_flags
+> - --env
+> - --force
+> - --quiet
+> - --upgrade
+> - --watch
+> - --wrap
+> - -e
+> - -f
+> - -q
+> - -r
+> - -u
+> - -w
+> 
+> bashly g: *generate
+> 
+> bashly generate*--env: &env
+> - development
+> - production
+> 
+> bashly generate*-e: *env
+> bashly g*--env: *env
+> bashly g*-e: *env
+> 
+> bashly add: &add
+= help_flags
+> - --force
+> - --list
+> - --source
+> - -f
+> - -l
+> - -s
+libs.each do |lib|
+  = "- #{lib}"
+end
+> 
+> bashly a: *add
+> 
+> bashly doc: &doc
+= help_flags
+> - --index
+> - -i
+docs.each do |doc|
+  = "- #{doc}"
+end
+>
+> bashly completions: &completions
+= help_flags
+> - --install
+> - -i
+> 
+> bashly c: *completions
+>
+> bashly shell: &shell
+= help_flags
+> 
+> bashly s: *shell
