@@ -21,7 +21,7 @@ describe Commands::Completions do
   context 'with --install' do
     it 'installs the completions script to the completions directory' do
       allow(subject).to receive(:compdir_candidates).and_return ['/tmp']
-      expect(subject).to receive(:system).with(%Q[sudo cp "#{completions_path}" "/tmp/bashly"])
+      expect(subject).to receive(:system).with(%[sudo cp "#{completions_path}" "/tmp/bashly"])
       expect { subject.execute %w[completions --install] }.to output_approval('cli/completions/install')
     end
 
@@ -36,7 +36,7 @@ describe Commands::Completions do
       it 'installs the completions script to the completions directory without sudo' do
         allow(subject).to receive(:compdir_candidates).and_return ['/tmp']
         allow(subject).to receive(:root_user?).and_return true
-        expect(subject).to receive(:system).with(%Q[cp "#{completions_path}" "/tmp/bashly"])
+        expect(subject).to receive(:system).with(%[cp "#{completions_path}" "/tmp/bashly"])
         expect { subject.execute %w[completions --install] }.to output_approval('cli/completions/install-root')
       end
     end
