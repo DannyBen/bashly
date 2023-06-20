@@ -3,20 +3,20 @@ require 'bashly'
 summary 'Generate bash completions for bashly itself'
 
 action do
-  completely_yaml_oath = 'lib/bashly/completions/completely.yaml'
+  completely_yaml_path = 'lib/bashly/completions/completely.yaml'
   completions_script_path = 'lib/bashly/completions/bashly-completions.bash'
-  gtx_path = "#{completely_yaml_oath}.gtx"
+  gtx_path = "#{completely_yaml_path}.gtx"
   template = File.read gtx_path
 
   say "Reading GTX template from m`#{gtx_path}`"
   gtx = GTX.new template, filename: gtx_path
   completely_yaml = gtx.parse binding
 
-  say "Writing completely configuration to m`#{completely_yaml_oath}`"
-  File.write completely_yaml_oath, completely_yaml
+  say "Writing completely configuration to m`#{completely_yaml_path}`"
+  File.write completely_yaml_path, completely_yaml
 
   say "Saving completions script to m`#{completions_script_path}`"
-  completions = Completely::Completions.load completely_yaml_oath
+  completions = Completely::Completions.load completely_yaml_path
   File.write completions_script_path, completions.script
 
   if compdir
