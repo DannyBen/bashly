@@ -1,15 +1,17 @@
 # Completions for bashly executable
 
-This directory contains support file for generating bash completions.
+This directory contains templates for generating bash completions.
 
 ## For developers
 
 From the root directory of the repository, run `run completions`. This will:
 
 1. Read the `completely.yaml.gtx` template
-2. Write the `completely.yaml` file
+2. Write the `completely.yaml` file (to allow testing with completely)
 3. Generate the `bashly-completions.bash` file
 4. Copy it to the completions directory with `sudo`
+
+Note that for production use, only the `bashly-completions.bash` is used.
 
 ## For users
 
