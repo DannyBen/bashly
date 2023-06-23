@@ -3,41 +3,55 @@ require 'spec_helper'
 describe Commands::Completions do
   subject { described_class.new }
 
+  let(:leeway) { RUBY_VERSION < '3.2.0' ? 0 : 5 }
   let(:completions_path) { File.expand_path 'lib/bashly/completions/bashly-completions.bash' }
   let(:completions_script) { File.read completions_path }
+  let :mock_installer do
+    instance_double Completely::Installer,
+      install:        true,
+      target_path:    'some-target-path',
+      script_path:    'some-script-path',
+      command_string: 'cp source target'
+  end
+
+  describe '#installer' do
+    it 'returns a properly configured Completely::Installer instance' do
+      expect(subject.installer).to be_a Completely::Installer
+      expect(subject.installer.program).to eq 'bashly'
+      expect(subject.installer.script_path).to end_with '/bashly-completions.bash'
+    end
+  end
 
   context 'with --help' do
     it 'shows long usage' do
-      expect { subject.execute %w[completions --help] }.to output_approval('cli/completions/help')
+      expect { subject.execute %w[completions --help] }
+        .to output_approval('cli/completions/help')
     end
   end
 
   context 'without arguments' do
     it 'shows the completions script' do
-      expect { subject.execute %w[completions] }.to output(completions_script).to_stdout
+      expect { subject.execute %w[completions] }
+        .to output(completions_script).to_stdout
     end
   end
 
   context 'with --install' do
     it 'installs the completions script to the completions directory' do
-      allow(subject).to receive(:compdir_candidates).and_return ['/tmp']
-      expect(subject).to receive(:system).with(%[sudo cp "#{completions_path}" "/tmp/bashly"])
-      expect { subject.execute %w[completions --install] }.to output_approval('cli/completions/install')
+      allow(subject).to receive(:installer).and_return mock_installer
+
+      expect { subject.execute %w[completions --install] }
+        .to output_approval('cli/completions/install')
     end
 
-    context 'when the completions directory is not found' do
+    context 'when the installer fails' do
       it 'raises an error' do
-        allow(Dir).to receive(:exist?).twice.and_return(false)
-        expect { subject.execute %w[completions --install] }.to raise_approval('cli/completions/install-error')
-      end
-    end
+        allow(subject).to receive(:installer).and_return mock_installer
+        allow(mock_installer).to receive(:install).and_return(false)
 
-    context 'when running as root' do
-      it 'installs the completions script to the completions directory without sudo' do
-        allow(subject).to receive(:compdir_candidates).and_return ['/tmp']
-        allow(subject).to receive(:root_user?).and_return true
-        expect(subject).to receive(:system).with(%[cp "#{completions_path}" "/tmp/bashly"])
-        expect { subject.execute %w[completions --install] }.to output_approval('cli/completions/install-root')
+        expect { subject.execute %w[completions --install] }
+          .to raise_approval('cli/completions/install-error')
+          .diff(leeway)
       end
     end
   end

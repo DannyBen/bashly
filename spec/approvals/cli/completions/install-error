@@ -1,1 +1,2 @@
-#<Bashly::Error: Cannot find completions directory>
+#<Bashly::Error: Failed running command:
+nb`cp source target`>
