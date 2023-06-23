@@ -13,55 +13,32 @@ module Bashly
         if args['--install']
           install_completions
         else
-          show_completions
+          puts script
         end
+      end
+
+      def installer
+        @installer ||= Completely::Installer.new program: 'bashly', script_path: script_path
       end
 
     private
 
       def install_completions
-        raise Error, 'Cannot find completions directory' unless compdir
+        success = installer.install force: true
+        raise Error, "Failed running command:\nnb`#{installer.command_string}`" unless success
 
-        target = "#{compdir}/bashly"
-
-        say "Installing completions to m`#{target}`"
-        command = %[cp "#{completions_path}" "#{target}"]
-        command = "sudo #{command}" unless root_user?
-        system command
-
+        say 'Completions installed.'
+        say "Source: m`#{installer.script_path}`"
+        say "Target: m`#{installer.target_path}`"
         say 'Restart your session for the changes to take effect'
       end
 
-      def show_completions
-        puts completions_script
+      def script_path
+        @script_path ||= asset('completions/bashly-completions.bash')
       end
 
-      def completions_path
-        @completions_path ||= asset('completions/bashly-completions.bash')
-      end
-
-      def completions_script
-        @completions_script ||= asset_content('completions/bashly-completions.bash')
-      end
-
-      def compdir
-        @compdir ||= compdir!
-      end
-
-      def compdir!
-        compdir_candidates.each { |dir| return dir if Dir.exist? dir }
-        nil
-      end
-
-      def compdir_candidates
-        @compdir_candidates ||= [
-          '/usr/share/bash-completion/completions',
-          '/usr/local/etc/bash_completion.d',
-        ]
-      end
-
-      def root_user?
-        Process.uid.zero?
+      def script
+        @script ||= asset_content('completions/bashly-completions.bash')
       end
     end
   end
