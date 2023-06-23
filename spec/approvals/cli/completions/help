@@ -4,12 +4,15 @@ Display the bash completions script or install it directly to your bash
 completions directory
 
 Usage:
-  bashly completions [--install]
+  bashly completions [--install --uninstall]
   bashly completions (-h|--help)
 
 Options:
   -i --install
     Install the completions script to your bash completions directory
+
+  -u --uninstall
+    Uninstall the completions script from your bash completions directory
 
   -h --help
     Show this help

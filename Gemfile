@@ -7,5 +7,6 @@ gem 'rspec_approvals'
 gem 'runfile', '~> 1.0', require: false
 gem 'runfile-tasks', '~> 1.0', require: false
 gem 'simplecov'
+gem 'completely'
 
 gemspec
