@@ -8,10 +8,12 @@ describe Commands::Completions do
   let(:completions_script) { File.read completions_path }
   let :mock_installer do
     instance_double Completely::Installer,
-      install:        true,
-      target_path:    'some-target-path',
-      script_path:    'some-script-path',
-      command_string: 'cp source target'
+      install:                  true,
+      uninstall:                true,
+      target_path:              'some-target-path',
+      script_path:              'some-script-path',
+      install_command_string:   'cp source target',
+      uninstall_command_string: 'rm -f some files'
   end
 
   describe '#installer' do
@@ -51,6 +53,26 @@ describe Commands::Completions do
 
         expect { subject.execute %w[completions --install] }
           .to raise_approval('cli/completions/install-error')
+          .diff(leeway)
+      end
+    end
+  end
+
+  context 'with --uninstall' do
+    it 'uninstalls the completions script from all completions directories' do
+      allow(subject).to receive(:installer).and_return mock_installer
+
+      expect { subject.execute %w[completions --uninstall] }
+        .to output_approval('cli/completions/uninstall')
+    end
+
+    context 'when the installer fails' do
+      it 'raises an error' do
+        allow(subject).to receive(:installer).and_return mock_installer
+        allow(mock_installer).to receive(:uninstall).and_return(false)
+
+        expect { subject.execute %w[completions --uninstall] }
+          .to raise_approval('cli/completions/uninstall-error')
           .diff(leeway)
       end
     end
