@@ -19,7 +19,7 @@ module Bashly
           terminal = MisterBin::Terminal.new runner, {
             autocomplete: autocomplete,
             show_usage:   true,
-            prompt:       "\n\e[33m\e[1mbashly\e[0m > ",
+            prompt:       "\n$> bashly ",
           }
 
           terminal.on('help') { runner.run %w[--help] }
