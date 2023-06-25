@@ -42,10 +42,8 @@ module Bashly
         Filewatcher.new([Settings.source_dir]).watch do
           reset
           generate
-
         rescue Bashly::ConfigurationError => e
           say! "rib` #{e.class} `\n#{e.message}"
-
         ensure
           quiet_say "g`waiting`\n"
         end
