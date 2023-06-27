@@ -1,6 +1,17 @@
 Change Log
 ========================================
 
+v1.0.6 - 2023-06-27
+----------------------------------------
+
+- Add completions for bashly itself
+- Add `bashly completions --install` command
+- Upgrade completely version to 0.6.0
+- Add `bashly completions --uininstall` command
+- Upgrade completely version to 0.6.1
+- Remove colors from `bashly shell` prompt
+
+
 v1.0.5 - 2023-06-02
 ----------------------------------------
 
