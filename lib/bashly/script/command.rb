@@ -159,10 +159,10 @@ module Bashly
         options['examples'].is_a?(Array) ? options['examples'] : [options['examples']]
       end
 
-      # Returns the bash filename that is expected to hold the user code
-      # for this command
+      # Returns the filename that is expected to hold the user code for this
+      # command
       def filename
-        options['filename'] || "#{action_name.to_underscore}_command.#{Settings.partials_extension}"
+        options['filename'] || implicit_filename
       end
 
       # Returns an array of Flags
@@ -313,6 +313,18 @@ module Bashly
       # Returns an array of all the flags with a whitelist arg
       def whitelisted_flags
         flags.select(&:allowed)
+      end
+
+    private
+
+      # Returns either a flat filename (docker_status_command.sh) or a nested
+      # path (commands/docker/status.sh)
+      def implicit_filename
+        if Settings.commands_dir
+          "#{Settings.commands_dir}/#{action_name.to_path}.#{Settings.partials_extension}"
+        else
+          "#{action_name.to_underscore}_command.#{Settings.partials_extension}"
+        end
       end
     end
   end

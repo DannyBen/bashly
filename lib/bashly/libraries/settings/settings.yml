@@ -18,8 +18,14 @@ config_path: "%{source_dir}/bashly.yml"
 # The path to use for creating the bash script
 target_dir: .
 
-# The path to use for common library files, relative to the source dir
+# The path to use for common library files, relative to source_dir
 lib_dir: lib
+
+# The path to use for command files, relative to source_dir
+# When set to nil (~), command files will be placed directly under source_dir
+# When set to any other string, command files will be placed under this
+# directory, and each command will get its own subdirectory
+commands_dir: ~
 
 # Configure the bash options that will be added to the initialize function:
 # strict: true       Bash strict mode (set -euo pipefail)

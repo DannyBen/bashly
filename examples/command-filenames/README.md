@@ -1,10 +1,12 @@
 # Command Filenames Example
 
-Demonstrates how to specify custom filenames for command source files.
-This is useful for scripts with many commands, in case you wish to organize
-your source files in sub-folders.
+Demonstrates how to specify a custom filename for individual command source
+files.
 
-Note that the specified path is relative to the `sec` folder.
+Note that the specified path is relative to the `src` folder.
+
+If you wish to have all your command files organized in sub-directories, use
+the [Command Paths Example](/examples/command-paths#readme) instead.
 
 This example was generated with:
 

@@ -217,6 +217,17 @@ describe Script::Command do
         expect(subject.filename).to eq 'ops/run_command.sh'
       end
     end
+
+    context 'when settings.commands_dir is set' do
+      let(:fixture) { :docker_container_run }
+
+      before { Settings.commands_dir = 'commands' }
+      after  { Settings.commands_dir = nil }
+
+      it 'returns the nested path of the action name' do
+        expect(subject.filename).to eq 'commands/container/run.sh'
+      end
+    end
   end
 
   describe '#filters' do

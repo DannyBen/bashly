@@ -65,6 +65,19 @@ describe String do
     end
   end
 
+  describe '#to_path' do
+    subject { 'Some Simple String' }
+
+    it 'does not mutate the source' do
+      subject.to_path
+      expect(subject).to eq 'Some Simple String'
+    end
+
+    it 'returns it with spaces replaced as / and downcased' do
+      expect(subject.to_path).to eq 'some/simple/string'
+    end
+  end
+
   describe '#lint' do
     context 'with a string that contains multiple consecutive newlines' do
       subject { "one\n  two\n  \n    three\n \n \nfour\n\n\n\n" }
