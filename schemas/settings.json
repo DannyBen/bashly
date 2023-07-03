@@ -35,53 +35,53 @@
         }
     },
     "title": "settings",
-    "description": "Settings of the current application",
+    "description": "Settings of the current application\nhttps://bashly.dannyb.co/usage/settings/#settings",
     "type": "object",
     "properties": {
         "source_dir": {
             "title": "source dir",
-            "description": "A directory with source files of the current script",
+            "description": "A directory with source files of the current script\nhttps://bashly.dannyb.co/usage/settings/#source_dir",
             "type": "string",
             "minLength": 1,
             "default": "src"
         },
         "config_path": {
             "title": "config path",
-            "description": "A path to bashly.yml of the current script",
+            "description": "A path to bashly.yml of the current script\nhttps://bashly.dannyb.co/usage/settings/#config_path",
             "type": "string",
             "minLength": 1,
             "default": "%{source_dir}/bashly.yml"
         },
         "target_dir": {
             "title": "target dir",
-            "description": "A directory of the current script",
+            "description": "A directory of the current script\nhttps://bashly.dannyb.co/usage/settings/#target_dir",
             "type": "string",
             "minLength": 1,
             "default": "."
         },
         "lib_dir": {
             "title": "lib dir",
-            "description": "A directory to common library files of the current script",
+            "description": "A directory to common library files of the current script\nhttps://bashly.dannyb.co/usage/settings/#lib_dir",
             "type": "string",
             "minLength": 1,
             "default": "lib"
         },
         "commands_dir": {
             "title": "commands dir",
-            "description": "A directory to nested command files of the current script",
+            "description": "A directory to nested command files of the current script\nhttps://bashly.dannyb.co/usage/settings/#commands_dir",
             "oneOf": [
-                {
-                    "type": "null"
-                },
                 {
                     "type": "string",
                     "minLength": 1
+                },
+                {
+                    "type": "null"
                 }
             ]
         },
         "strict": {
             "title": "strict",
-            "description": "Bash initialization options of the current script",
+            "description": "Bash initialiation options of the current script\nhttps://bashly.dannyb.co/usage/settings/#strict",
             "oneOf": [
                 {
                     "type": "boolean"
@@ -97,19 +97,19 @@
         },
         "tab_indent": {
             "title": "tab indent",
-            "description": "Whether to use tabs in the the current script",
+            "description": "Whether to use tabs in the the current script\nhttps://bashly.dannyb.co/usage/settings/#tab_indent",
             "type": "boolean",
             "default": false
         },
         "compact_short_flags": {
             "title": "compact short flags",
-            "description": "Whether to expand short flags of the current script",
+            "description": "Whether to expand short flags of the current script\nhttps://bashly.dannyb.co/usage/settings/#compact_short_flags",
             "type": "boolean",
             "default": true
         },
         "env": {
             "title": "env",
-            "description": "Whether to include development related comments in the current script",
+            "description": "Whether to include development related comments in the current script\nhttps://bashly.dannyb.co/usage/settings/#env",
             "type": "string",
             "enum": [
                 "development",
@@ -119,39 +119,39 @@
         },
         "partials_extension": {
             "title": "partials extension",
-            "description": "A partial snippet extension of the current script",
+            "description": "A partial snippet extension of the current script\nhttps://bashly.dannyb.co/usage/settings/#partials_extension",
             "type": "string",
             "minLength": 1,
             "default": "sh"
         },
         "usage_colors": {
             "title": "usage colors",
-            "description": "Usage colors of the current script",
+            "description": "Usage colors of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
             "type": "object",
             "properties": {
                 "caption": {
                     "title": "caption",
-                    "description": "A caption color of the current script",
+                    "description": "A caption color of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
                     "$ref": "#/definitions/color"
                 },
                 "command": {
                     "title": "command",
-                    "description": "A command color of the current script",
+                    "description": "A command color of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
                     "$ref": "#/definitions/color"
                 },
                 "arg": {
                     "title": "arg",
-                    "description": "An argument color of the current script",
+                    "description": "An argument color of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
                     "$ref": "#/definitions/color"
                 },
                 "flag": {
                     "title": "flag",
-                    "description": "A flag color of the current script",
+                    "description": "A flag color of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
                     "$ref": "#/definitions/color"
                 },
                 "environment_variable": {
                     "title": "environment variable",
-                    "description": "An environment variable color of the current script",
+                    "description": "An environment variable color of the current script\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
                     "$ref": "#/definitions/color"
                 }
             },
