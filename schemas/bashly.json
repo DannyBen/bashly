@@ -524,7 +524,11 @@
             "items": {
                 "description": "A completion of the current script or sub-command",
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "examples": [
+                    "<user>",
+                    "<directory>"
+                ]
             }
         },
         "dependencies-command-property": {
