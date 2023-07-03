@@ -218,7 +218,7 @@ describe Script::Command do
       end
     end
 
-    context 'when settings.command_dir is set' do
+    context 'when settings.commands_dir is set' do
       let(:fixture) { :docker_container_run }
 
       before { Settings.commands_dir = 'commands' }

@@ -12,9 +12,9 @@ class String
   def to_underscore
     gsub(/(.)([A-Z])/, '\1_\2').gsub(/[- ]/, '_').downcase
   end
-  
+
   def to_path
-    gsub(/ /, '/').downcase
+    tr(' ', '/').downcase
   end
 
   def wrap(length = 80)
