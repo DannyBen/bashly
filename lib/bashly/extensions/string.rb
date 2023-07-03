@@ -13,6 +13,10 @@ class String
     gsub(/(.)([A-Z])/, '\1_\2').gsub(/[- ]/, '_').downcase
   end
 
+  def to_path
+    tr(' ', '/').downcase
+  end
+
   def wrap(length = 80)
     strip!
     split("\n").collect! do |line|

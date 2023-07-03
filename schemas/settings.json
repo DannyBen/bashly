@@ -66,6 +66,19 @@
             "minLength": 1,
             "default": "lib"
         },
+        "commands_dir": {
+            "title": "commands dir",
+            "description": "A directory to nested command files of the current script\nhttps://bashly.dannyb.co/usage/settings/#commands_dir",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "minLength": 1
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
         "strict": {
             "title": "strict",
             "description": "Bash initialiation options of the current script\nhttps://bashly.dannyb.co/usage/settings/#strict",
