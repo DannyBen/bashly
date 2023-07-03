@@ -32,7 +32,6 @@ a [docker image](https://hub.docker.com/r/dannyben/bashly).
 <table>
    <tr>
       <td><a href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=240></a></td>
-      <td><a href="https://decisiohealth.com/"><img src='support/img/decisio-logo.png' width=240></a></td>
    </tr>
 </table>
 
@@ -82,11 +81,6 @@ to contribute, feel free to [open an issue][issues] or
 
 Visit the *[How to contribute][contributing]* page for more information.
 
-## Stargazers and Forkers
-
-[![Stargazers repo roster for @DannyBen/bashly](https://reporoster.com/stars/DannyBen/bashly)](https://github.com/DannyBen/bashly/stargazers)
-
-[![Forkers repo roster for @DannyBen/bashly](https://reporoster.com/forks/DannyBen/bashly)](https://github.com/DannyBen/bashly/network/members)
 
 [issues]: https://github.com/DannyBen/bashly/issues
 [discussions]: https://github.com/DannyBen/bashly/discussions
