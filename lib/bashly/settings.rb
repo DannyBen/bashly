@@ -4,6 +4,7 @@ module Bashly
       include AssetHelper
 
       attr_writer(
+        :commands_dir,
         :compact_short_flags,
         :config_path,
         :lib_dir,
@@ -14,6 +15,10 @@ module Bashly
         :target_dir,
         :usage_colors
       )
+
+      def commands_dir
+        @commands_dir ||= get :commands_dir
+      end
 
       def compact_short_flags
         @compact_short_flags ||= get :compact_short_flags
