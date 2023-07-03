@@ -14,7 +14,8 @@ This example was generated with:
 ```bash
 $ bashly init
 $ bashly add settings
-# ... now edit src/settings.yml to match the example ...
+# ... now edit settings.yml to match the example ...
+# ... now edit src/bashly.yml to match the example ...
 $ bashly generate
 ```
 
@@ -25,57 +26,51 @@ $ bashly generate
 ## `bashly.yml`
 
 ```yaml
-name: cli
-help: Sample application
+name: docker
+help: Docker example with nested command filenames
 version: 0.1.0
 
-environment_variables:
-- name: api_key
-  help: Set your API key
+flags:
+- long: --debug
+  short: -d
+  help: Enable debug mode
 
 commands:
-- name: download
-  alias: d
-  help: Download a file
+- name: container
+  alias: c*
+  help: Container commands
 
-  args:
-  - name: source
-    required: true
-    help: URL to download from
-  - name: target
-    help: "Target filename (default: same as source)"
+  commands:
+  - name: run
+    help: Run a container
+    args:
+    - name: image
+      help: Image name
+      required: true
+
+  - name: stop
+    help: Stop a container
+    args:
+    - name: container
+      help: Container name
+      required: true
+
+- name: image
+  alias: i*
+  help: Image commands
+
+  commands:
+  - name: ls
+    alias: l
+    help: Show all images
+
+- name: ps
+  help: List containers
 
   flags:
-  - long: --force
-    short: -f
-    help: Overwrite existing files
-
-  examples:
-  - cli download example.com
-  - cli download example.com ./output -f
-
-  environment_variables:
-  - name: default_target_location
-    help: Set the default location to download to
-
-- name: upload
-  alias: u
-  help: Upload a file
-  args:
-  - name: source
-    required: true
-    help: File to upload
-
-  flags:
-  - long: --user
-    short: -u
-    arg: user
-    help: Username to use for logging in
-    required: true
-  - long: --password
-    short: -p
-    arg: password
-    help: Password to use for logging in
+  - long: --all
+    short: -a
+    help: Show all containers
 ```
 
 ## `settings.yml`
@@ -94,61 +89,58 @@ commands_dir: commands
 
 ## Generated script output
 
-### `$ ./cli`
+### `$ ./docker`
 
 ```shell
-cli - Sample application
+docker - Docker example with nested command filenames
 
 Usage:
-  cli COMMAND
-  cli [COMMAND] --help | -h
-  cli --version | -v
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
+  docker --version | -v
 
 Commands:
-  download   Download a file
-  upload     Upload a file
+  container   Container commands
+  image       Image commands
+  ps          List containers
 
 
 
 ```
 
-### `$ ./cli -h`
+### `$ ./docker -h`
 
 ```shell
-cli - Sample application
+docker - Docker example with nested command filenames
 
 Usage:
-  cli COMMAND
-  cli [COMMAND] --help | -h
-  cli --version | -v
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
+  docker --version | -v
 
 Commands:
-  download   Download a file
-  upload     Upload a file
+  container   Container commands
+  image       Image commands
+  ps          List containers
 
 Options:
+  --debug, -d
+    Enable debug mode
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
 
-Environment Variables:
-  API_KEY
-    Set your API key
-
 
 
 ```
 
-### `$ ./cli download something`
+### `$ ./docker download something`
 
 ```shell
-# this file is located in 'src/commands/download.sh'
-# code for 'cli download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args:
-- ${args[source]} = something
+invalid command: download
 
 
 ```
@@ -159,8 +151,9 @@ args:
 src/bashly.yml
 
 src/commands:
-download.sh
-upload.sh
+container
+image
+ps.sh
 
 
 ```

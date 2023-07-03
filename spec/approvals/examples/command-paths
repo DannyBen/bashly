@@ -1,53 +1,66 @@
 + bashly generate
 creating user files in src
-created src/commands/download.sh
-created src/commands/upload.sh
-created ./cli
-run ./cli --help to test your bash script
-+ ./cli
-cli - Sample application
+created src/commands/container/run.sh
+created src/commands/container/stop.sh
+created src/commands/image/ls.sh
+created src/commands/ps.sh
+created ./docker
+run ./docker --help to test your bash script
++ ./docker
+docker - Docker example with nested command filenames
 
 Usage:
-  cli COMMAND
-  cli [COMMAND] --help | -h
-  cli --version | -v
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
+  docker --version | -v
 
 Commands:
-  download   Download a file
-  upload     Upload a file
+  container   Container commands
+  image       Image commands
+  ps          List containers
 
-+ ./cli -h
-cli - Sample application
++ ./docker -h
+docker - Docker example with nested command filenames
 
 Usage:
-  cli COMMAND
-  cli [COMMAND] --help | -h
-  cli --version | -v
+  docker [OPTIONS] COMMAND
+  docker [COMMAND] --help | -h
+  docker --version | -v
 
 Commands:
-  download   Download a file
-  upload     Upload a file
+  container   Container commands
+  image       Image commands
+  ps          List containers
 
 Options:
+  --debug, -d
+    Enable debug mode
+
   --help, -h
     Show this help
 
   --version, -v
     Show version number
 
-Environment Variables:
-  API_KEY
-    Set your API key
-
-+ ./cli download something
-# this file is located in 'src/commands/download.sh'
-# code for 'cli download' goes here
++ ./docker container run alpine
+# this file is located in 'src/commands/container/run.sh'
+# code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[source]} = something
-+ ls -1 src/bashly.yml src/commands
-src/bashly.yml
+- ${args[image]} = alpine
++ ls -R src
+src:
+bashly.yml
+commands
 
 src/commands:
-download.sh
-upload.sh
+container
+image
+ps.sh
+
+src/commands/container:
+run.sh
+stop.sh
+
+src/commands/image:
+ls.sh

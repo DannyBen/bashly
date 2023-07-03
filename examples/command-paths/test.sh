@@ -8,7 +8,7 @@ bashly generate
 
 ### Try Me ###
 
-./cli
-./cli -h
-./cli download something
-ls -1 src/*
+./docker
+./docker -h
+./docker container run alpine
+ls -R src
