@@ -526,8 +526,30 @@
                 "type": "string",
                 "minLength": 1,
                 "examples": [
+                    "<alias>",
+                    "<arrayvar>",
+                    "<binding>",
+                    "<builtin>",
+                    "<command>",
+                    "<directory>",
+                    "<disabled>",
+                    "<enabled>",
+                    "<export>",
+                    "<file>",
+                    "<function>",
+                    "<group>",
+                    "<helptopic>",
+                    "<hostname>",
+                    "<job>",
+                    "<keyword>",
+                    "<running>",
+                    "<service>",
+                    "<setopt>",
+                    "<shopt>",
+                    "<signal>",
+                    "<stopped>",
                     "<user>",
-                    "<directory>"
+                    "<variable>"
                 ]
             }
         },
