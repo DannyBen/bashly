@@ -22,7 +22,7 @@ module ComposeRefinements
     end
 
     def safe_load_yaml(path)
-      loaded = YAML.properly_load_file path
+      loaded = YAML.load_file path
       return loaded if loaded.is_a?(Array) || loaded.is_a?(Hash)
 
       raise Bashly::ConfigurationError, "Cannot find a valid YAML in g`#{path}`"

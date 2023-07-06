@@ -9,7 +9,7 @@ module SpecMixin
 
   def load_fixture(filename)
     @loaded_fixtures ||= {}
-    @loaded_fixtures[filename] ||= YAML.properly_load_file "spec/fixtures/#{filename}.yml"
+    @loaded_fixtures[filename] ||= YAML.load_file "spec/fixtures/#{filename}.yml"
   end
 
   def cp(source, target = 'spec/tmp/')

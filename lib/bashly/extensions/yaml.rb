@@ -1,10 +1,8 @@
 module YAML
-  # This awkward patch is due to https://bugs.ruby-lang.org/issues/17866
-  def self.properly_load_file(path)
-    YAML.load_file path, aliases: true
-  rescue ArgumentError
-    # :nocov:
-    YAML.load_file path
-    # :nocov:
+  # We trust our loaded YAMLs
+  # This patch is due to https://bugs.ruby-lang.org/issues/17866
+  # StackOverflow: https://stackoverflow.com/questions/71191685/visit-psych-nodes-alias-unknown-alias-default-psychbadalias/71192990#71192990
+  class << self
+    alias load unsafe_load
   end
 end

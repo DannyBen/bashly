@@ -14,7 +14,7 @@ module Bashly
     end
 
     def config
-      @config ||= YAML.properly_load_file config_path
+      @config ||= YAML.load_file config_path
     end
 
     def libraries
