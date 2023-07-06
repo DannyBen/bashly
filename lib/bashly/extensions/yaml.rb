@@ -3,6 +3,6 @@ module YAML
   # This patch is due to https://bugs.ruby-lang.org/issues/17866
   # StackOverflow: https://stackoverflow.com/questions/71191685/visit-psych-nodes-alias-unknown-alias-default-psychbadalias/71192990#71192990
   class << self
-    alias_method :load, :unsafe_load
+    alias load unsafe_load
   end
 end
