@@ -10,7 +10,7 @@ module Bashly
 
     def self.new(config)
       if config.is_a? String
-        YAML.properly_load_file(config).compose
+        YAML.load_file(config).compose
       else
         config
       end
