@@ -31,5 +31,13 @@ describe Config do
         expect(subject['commands'].first['loaded']).to eq 'yes indeed'
       end
     end
+
+    context 'when the loaded YAML contains ERB and import directives' do
+      let(:config) { 'spec/fixtures/erb/with_imports.yml' }
+
+      it 'evaluates ERB and imports' do
+        expect(subject.to_yaml).to match_approval('config/erb')
+      end
+    end
   end
 end
