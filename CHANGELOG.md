@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v1.0.7 - 2023-07-07
+----------------------------------------
+
+- Add suport for auto-organizing command files in subfolders
+- Pre-process config files using ERB
+
+
 v1.0.6 - 2023-06-27
 ----------------------------------------
 
