@@ -1,0 +1,3 @@
+file: import_two.yml
+more_imports:
+  - import: spec/fixtures/erb/last_file.yml

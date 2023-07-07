@@ -1,0 +1,6 @@
+commands:
+  pi: <%= Math::PI.round 2 %>
+  list:
+    <% 3.times do |i| %>
+    - Item <%= i + 1 %>
+    <% end %>

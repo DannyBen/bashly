@@ -1,0 +1,7 @@
+commands:
+  before: ok
+  list:
+    <% Dir['spec/fixtures/erb/import_*.yml'].each do |path| %>
+    - import: <%= path %>
+    <% end %>
+  after: ok

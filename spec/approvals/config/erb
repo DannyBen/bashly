@@ -1,0 +1,10 @@
+---
+commands:
+  before: ok
+  list:
+  - file: import_one.yml
+    erb: CHOP
+  - file: import_two.yml
+    more_imports:
+    - file: last_file.yml
+  after: ok
