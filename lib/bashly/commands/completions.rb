@@ -4,7 +4,7 @@ module Bashly
       summary 'Install bash completions for bashly itself'
       help 'Display the bash completions script or install it directly to your bash completions directory'
 
-      usage 'bashly completions [--install --uninstall]'
+      usage 'bashly completions [--install|--uninstall]'
       usage 'bashly completions (-h|--help)'
 
       option '-i --install', 'Install the completions script to your bash completions directory'

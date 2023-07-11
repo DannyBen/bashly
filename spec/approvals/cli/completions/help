@@ -4,7 +4,7 @@ Display the bash completions script or install it directly to your bash
 completions directory
 
 Usage:
-  bashly completions [--install --uninstall]
+  bashly completions [--install|--uninstall]
   bashly completions (-h|--help)
 
 Options:
