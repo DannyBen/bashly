@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Settings do
   subject { BaselineSettings.clone }
 

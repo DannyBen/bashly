@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Wrapper do
   subject { described_class.new command }
 

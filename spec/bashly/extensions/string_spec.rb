@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe String do
   describe '#sanitize_for_print' do
     subject { %[this is\na "new line"] }

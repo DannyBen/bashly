@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Commands::Doc do
   subject { described_class.new }
 

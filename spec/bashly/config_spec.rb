@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Config do
   subject { described_class.new config }
 

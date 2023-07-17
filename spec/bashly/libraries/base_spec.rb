@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Libraries::Base do
   describe '#files' do
     it 'raises a NotImplementedError' do

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'bin/bashly' do
   subject { CLI.runner }
 

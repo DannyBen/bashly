@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ConfigValidator do
   fixtures = load_fixture 'script/validations'
   subject { described_class.new options }

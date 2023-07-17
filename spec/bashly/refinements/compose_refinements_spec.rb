@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ComposeRefinements do
   using described_class
 

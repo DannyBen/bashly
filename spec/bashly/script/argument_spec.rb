@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Argument do
   subject do
     options = load_fixture('script/arguments')[fixture]

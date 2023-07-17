@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::CatchAll do
   subject do
     options = load_fixture('script/commands')[fixture]

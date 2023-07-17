@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Flag do
   fixtures = load_fixture 'script/flags'
 

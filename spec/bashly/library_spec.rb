@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Library do
   subject { LibrarySource.new.libraries[name] }
 

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe YAML do
   describe '::load_erb_file' do
     let(:path) { 'spec/fixtures/erb/simple.yml' }

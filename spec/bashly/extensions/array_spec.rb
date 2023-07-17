@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Array do
   describe '#indent' do
     subject { ['root:', '  indented:'] }

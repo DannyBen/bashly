@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Command do
   subject do
     result = described_class.new fixtures[fixture]

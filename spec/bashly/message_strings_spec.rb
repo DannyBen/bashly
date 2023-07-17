@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe MessageStrings do
   describe '[]' do
     it 'returns a default string for use in the generated bash' do

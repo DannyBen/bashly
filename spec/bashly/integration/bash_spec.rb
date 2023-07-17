@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'bash' do
   context 'when bash version is < 4' do
     before { system 'docker pull bash:3 >/dev/null' }

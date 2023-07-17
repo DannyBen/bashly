@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Base do
   subject { described_class.new options }
 

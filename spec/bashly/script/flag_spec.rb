@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Script::Flag do
   subject do
     options = load_fixture('script/flags')[fixture]

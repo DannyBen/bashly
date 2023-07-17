@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe File do
   describe '::deep_write' do
     it 'creates parent directories and writes a file' do

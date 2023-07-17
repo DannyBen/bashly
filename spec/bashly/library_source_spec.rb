@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe LibrarySource do
   subject { described_class.new uri }
 

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Libraries::CompletionsScript do
   subject { described_class.new(*args) }
 
