@@ -13,7 +13,7 @@
 ##
 config_init() {
   CONFIG_FILE=${CONFIG_FILE:=config.ini}
-  [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
+  [[ -f "$( dirname -- "$0"; )/$CONFIG_FILE" ]] || touch "$( dirname -- "$0"; )/$CONFIG_FILE"
 }
 
 ## Get a value from the config.
@@ -30,7 +30,7 @@ config_get() {
       value="${BASH_REMATCH[1]}"
       break
     fi
-  done <"$CONFIG_FILE"
+  done <"$( dirname -- "$0"; )/$CONFIG_FILE"
 
   echo "$value"
 }
@@ -58,13 +58,13 @@ config_set() {
     elif [[ $line ]]; then
       output="$output$line\n"
     fi
-  done <"$CONFIG_FILE"
+  done <"$( dirname -- "$0"; )/$CONFIG_FILE"
 
   if [[ -z $found_key ]]; then
     output="$output$key = $value\n"
   fi
 
-  printf "%b\n" "$output" >"$CONFIG_FILE"
+  printf "%b\n" "$output" >"$( dirname -- "$0"; )/$CONFIG_FILE"
 }
 
 ## Delete a key from the config.
@@ -81,15 +81,15 @@ config_del() {
     if [[ $line ]] && [[ ! $line =~ $regex ]]; then
       output="$output$line\n"
     fi
-  done <"$CONFIG_FILE"
+  done <"$( dirname -- "$0"; )/$CONFIG_FILE"
 
-  printf "%b\n" "$output" >"$CONFIG_FILE"
+  printf "%b\n" "$output" >"$( dirname -- "$0"; )/$CONFIG_FILE"
 }
 
 ## Show the config file
 config_show() {
   config_init
-  cat "$CONFIG_FILE"
+  cat "$( dirname -- "$0"; )/$CONFIG_FILE"
 }
 
 ## Return an array of the keys in the config file.
@@ -112,7 +112,7 @@ config_keys() {
       key="${BASH_REMATCH[1]}"
       keys+=("$key")
     fi
-  done <"$CONFIG_FILE"
+  done <"$( dirname -- "$0"; )/$CONFIG_FILE"
   echo "${keys[@]}"
 }
 
