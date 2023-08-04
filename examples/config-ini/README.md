@@ -119,10 +119,10 @@ fi
 config_load config.ini
 config_show
 
-# Or to iterate through keys manually
-for key in "${!config[@]}"; do 
-  echo "$key = ${config[$key]}"
-done
+## Or to iterate through keys manually
+# for key in $(config_keys); do 
+#   echo "$key = ${config[$key]}"
+# done
 ```
 
 ## `src/set_command.sh`
@@ -135,8 +135,8 @@ key="${args[key]}"
 value="${args[value]}"
 
 config["$key"]="$value"
-config_show
 config_save saved.ini
+cat saved.ini
 
 ```
 
@@ -170,15 +170,19 @@ Options:
 
 ```
 
-### `$ ./configly set hello world`
+### `$ ./configly set hello WORLD`
 
 ```shell
 bashly = works
-hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.email = value for user.email
-user.name = value for user.name
+hello = WORLD
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = value for user.name
 
 
 ```
@@ -188,10 +192,14 @@ user.name = value for user.name
 ```shell
 bashly = works
 hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.email = value for user.email
-user.name = Megatron
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = Megatron
 
 
 ```
@@ -225,9 +233,13 @@ No such key: invalid_key
 ```shell
 bashly = works
 hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.name = value for user.name
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+name = value for user.name
 
 
 ```
@@ -241,12 +253,6 @@ options.name = value for options.name
 options.path = value for options.path
 user.email = value for user.email
 user.name = value for user.name
-bashly = works
-hello = world
-options.path = value for options.path
-user.name = value for user.name
-options.name = value for options.name
-user.email = value for user.email
 
 
 ```
