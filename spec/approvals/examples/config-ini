@@ -29,20 +29,28 @@ Options:
   --version, -v
     Show version number
 
-+ ./configly set hello world
++ ./configly set hello WORLD
 bashly = works
-hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.email = value for user.email
-user.name = value for user.name
+hello = WORLD
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = value for user.name
 + ./configly set user.name Megatron
 bashly = works
 hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.email = value for user.email
-user.name = Megatron
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = Megatron
 + ./configly get hello
 hello = world
 + ./configly get user.name
@@ -52,9 +60,13 @@ No such key: invalid_key
 + ./configly del user.email
 bashly = works
 hello = world
-options.name = value for options.name
-options.path = value for options.path
-user.name = value for user.name
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+name = value for user.name
 + ./configly list
 bashly = works
 hello = world
@@ -62,9 +74,3 @@ options.name = value for options.name
 options.path = value for options.path
 user.email = value for user.email
 user.name = value for user.name
-bashly = works
-hello = world
-options.path = value for options.path
-user.name = value for user.name
-options.name = value for options.name
-user.email = value for user.email

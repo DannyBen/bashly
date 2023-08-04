@@ -16,7 +16,7 @@ config_load() {
   local section_regex="^\[(.+)\]"
   local key_regex="^([^ =]+) *= *(.*) *$"
   local comment_regex="^;"
-  
+
   while IFS= read -r line; do
     if [[ $line =~ $comment_regex ]]; then
       continue
@@ -30,33 +30,25 @@ config_load() {
   done < "$config_file"
 }
 
-## Show all loaded key-value pairs
-config_show() {
-  sorted_keys=($(echo "${!config[@]}" | tr ' ' '\n' | sort))
-
-  for key in "${sorted_keys[@]}"; do 
-    echo "$key = ${config[$key]}"
-  done
-}
-
 ## Save the array back to a file
 config_save() {
   local filename="$1"
   local current_section=""
+  local has_free_keys=false
 
   rm -f "$filename"
 
-  free_keys=($(echo "${!config[@]}" | tr ' ' '\n' | grep -v '\.' | sort))
-  sectioned_keys=($(echo "${!config[@]}" | tr ' ' '\n' | grep '\.' | sort))
-
-  for key in "${free_keys[@]}"; do
+  for key in $(config_keys); do
+    [[ $key == *.* ]] && continue
+    has_free_keys=true
     value="${config[$key]}"
     echo "$key = $value" >> "$filename"
   done
 
-  [[ $free_keys ]] && echo >> "$filename"
+  [[ "${has_free_keys}" == "true" ]] && echo >> "$filename"
 
-  for key in "${sectioned_keys[@]}"; do
+  for key in $(config_keys); do
+    [[ $key == *.* ]] || continue
     value="${config[$key]}"
     IFS="." read -r section_name key_name <<< "$key"
 
@@ -68,4 +60,17 @@ config_save() {
     
     echo "$key_name = $value" >> "$filename"
   done
+}
+
+## Show all loaded key-value pairs
+config_show() {
+  for key in $(config_keys); do 
+    echo "$key = ${config[$key]}"
+  done
+}
+
+## Return a newline delimited, sorted list of keys
+config_keys() {
+  local keys=("${!config[@]}")
+  for a in "${keys[@]}"; do echo "$a"; done |sort
 }

@@ -2,8 +2,8 @@
 config_load config.ini
 
 key="${args[key]}"
-unset config["$key"]
+unset "config[$key]"
 
-config_show
 config_save saved.ini
+cat saved.ini
 

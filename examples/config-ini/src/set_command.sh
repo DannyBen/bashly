@@ -5,5 +5,5 @@ key="${args[key]}"
 value="${args[value]}"
 
 config["$key"]="$value"
-config_show
 config_save saved.ini
+cat saved.ini
