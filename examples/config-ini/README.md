@@ -13,7 +13,9 @@ $ bashly generate
 $ bashly generate
 ```
 
-Running the `bashly add config` command simply added the [src/lib/config.sh](src/lib/config.sh) file, which includes functions for reading and writing values from an INI file.
+Running the `bashly add config` command simply added the
+[src/lib/config.sh](src/lib/config.sh) file, which includes functions for
+reading and writing values from an INI file.
 
 See the files in the [src](src) folder for usage examples.
 
@@ -29,6 +31,23 @@ help: Sample application that uses the config functions
 version: 0.1.0
 
 commands:
+- name: list
+  alias: l
+  help: Show the entire config file
+
+- name: get
+  alias: g
+  help: Read a value from the config file
+
+  args:
+  - name: key
+    required: true
+    help: Config key
+
+  examples:
+  - configly get hello
+  - configly get user.name
+
 - name: set
   alias: s
   help: Save a value in the config file
@@ -43,10 +62,11 @@ commands:
 
   examples:
   - configly set hello world
+  - configly set user.email me@example.com
 
-- name: get
-  alias: g
-  help: Read a value from the config file
+- name: del
+  alias: d
+  help: Remove a value from the config file
 
   args:
   - name: key
@@ -54,20 +74,24 @@ commands:
     help: Config key
 
   examples:
-  - configly set hello
-
-- name: list
-  alias: l
-  help: Show the entire config file
+  - configly del hello
+  - configly del user.name
 ```
 
 ## `config.ini`
 
 ```ini
-; comments are allowed
+; comments are allowed, sections are optional
 hello = world
 bashly = works
 
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+name = value for user.name
+email = value for user.email
 
 ```
 
@@ -75,18 +99,16 @@ bashly = works
 
 ```bash
 # Using the standard library (lib/config.sh) to show a value from the config
+config_load config.ini
 
 key="${args[key]}"
-if config_has_key "$key"; then
-  config_get "$key"
+value=${config[$key]}
+
+if [[ "$value" ]]; then
+  echo "$key = $value"
 else
   echo "No such key: $key"
 fi
-
-# Example of how to assign the config value to a variable:
-# result=$(config_get "${args[key]}")
-# echo $result
-
 
 ```
 
@@ -94,21 +116,27 @@ fi
 
 ```bash
 # Using the standard library (lib/config.sh) to show the entire config file
+config_load config.ini
 config_show
 
-# Or to iterate through keys
-for key in $(config_keys); do
-  echo "$key === $(config_get "$key")"
+# Or to iterate through keys manually
+for key in "${!config[@]}"; do 
+  echo "$key = ${config[$key]}"
 done
-
 ```
 
 ## `src/set_command.sh`
 
 ```bash
 # Using the standard library (lib/config.sh) to store a value to the config
-config_set "${args[key]}" "${args[value]}"
-echo "saved: ${args[key]} = ${args[value]}"
+config_load config.ini
+
+key="${args[key]}"
+value="${args[value]}"
+
+config["$key"]="$value"
+config_show
+config_save saved.ini
 
 ```
 
@@ -126,9 +154,10 @@ Usage:
   configly --version | -v
 
 Commands:
-  set    Save a value in the config file
-  get    Read a value from the config file
   list   Show the entire config file
+  get    Read a value from the config file
+  set    Save a value in the config file
+  del    Remove a value from the config file
 
 Options:
   --help, -h
@@ -144,15 +173,25 @@ Options:
 ### `$ ./configly set hello world`
 
 ```shell
-saved: hello = world
+bashly = works
+hello = world
+options.name = value for options.name
+options.path = value for options.path
+user.email = value for user.email
+user.name = value for user.name
 
 
 ```
 
-### `$ ./configly set bashly works`
+### `$ ./configly set user.name Megatron`
 
 ```shell
-saved: bashly = works
+bashly = works
+hello = world
+options.name = value for options.name
+options.path = value for options.path
+user.email = value for user.email
+user.name = Megatron
 
 
 ```
@@ -160,7 +199,15 @@ saved: bashly = works
 ### `$ ./configly get hello`
 
 ```shell
-world
+hello = world
+
+
+```
+
+### `$ ./configly get user.name`
+
+```shell
+user.name = value for user.name
 
 
 ```
@@ -173,15 +220,33 @@ No such key: invalid_key
 
 ```
 
+### `$ ./configly del user.email`
+
+```shell
+bashly = works
+hello = world
+options.name = value for options.name
+options.path = value for options.path
+user.name = value for user.name
+
+
+```
+
 ### `$ ./configly list`
 
 ```shell
-; comments are allowed
-hello = world
 bashly = works
-
-hello === world
-bashly === works
+hello = world
+options.name = value for options.name
+options.path = value for options.path
+user.email = value for user.email
+user.name = value for user.name
+bashly = works
+hello = world
+options.path = value for options.path
+user.name = value for user.name
+options.name = value for options.name
+user.email = value for user.email
 
 
 ```

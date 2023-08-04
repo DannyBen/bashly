@@ -1,128 +1,71 @@
-## Config functions [@bashly-upgrade config]
+## Config (INI) functions [@bashly-upgrade config]
 ## This file is a part of Bashly standard library
 ##
 ## Usage:
-## - In your script, set the CONFIG_FILE variable. For rxample:
-##   CONFIG_FILE=settings.ini.
-##   If it is unset, it will default to 'config.ini'.
-## - Use any of the functions below to access the config file.
+## - In your script, call `config_load path/to/config.ini`.
+## - A global associative array named `config` will become available to you,
+##   and can be accessed like `${config[section1.key1]}`
 ##
-## Create a new config file.
-## There is normally no need to use this function, it is used by other
-## functions as needed.
-##
-config_init() {
-  CONFIG_FILE=${CONFIG_FILE:=config.ini}
-  [[ -f "$CONFIG_FILE" ]] || touch "$CONFIG_FILE"
-}
+config_load() {
+  declare -gA config
 
-## Get a value from the config.
-## Usage: result=$(config_get hello)
-config_get() {
-  local key=$1
-  local regex="^$key *= *(.+)$"
+  local config_file="$1"
+  local section=""
+  local key=""
   local value=""
-
-  config_init
-
-  while IFS= read -r line || [ -n "$line" ]; do
-    if [[ $line =~ $regex ]]; then
-      value="${BASH_REMATCH[1]}"
-      break
-    fi
-  done <"$CONFIG_FILE"
-
-  echo "$value"
-}
-
-## Add or update a key=value pair in the config.
-## Usage: config_set key value
-config_set() {
-  local key=$1
-  shift
-  local value="$*"
-
-  config_init
-
-  local regex="^($key) *= *.+$"
-  local output=""
-  local found_key=""
-  local newline
-
-  while IFS= read -r line || [ -n "$line" ]; do
-    newline=$line
-    if [[ $line =~ $regex ]]; then
-      found_key="${BASH_REMATCH[1]}"
-      newline="$key = $value"
-      output="$output$newline\n"
-    elif [[ $line ]]; then
-      output="$output$line\n"
-    fi
-  done <"$CONFIG_FILE"
-
-  if [[ -z $found_key ]]; then
-    output="$output$key = $value\n"
-  fi
-
-  printf "%b\n" "$output" >"$CONFIG_FILE"
-}
-
-## Delete a key from the config.
-## Usage: config_del key
-config_del() {
-  local key=$1
-
-  local regex="^($key) *="
-  local output=""
-
-  config_init
-
-  while IFS= read -r line || [ -n "$line" ]; do
-    if [[ $line ]] && [[ ! $line =~ $regex ]]; then
-      output="$output$line\n"
-    fi
-  done <"$CONFIG_FILE"
-
-  printf "%b\n" "$output" >"$CONFIG_FILE"
-}
-
-## Show the config file
-config_show() {
-  config_init
-  cat "$CONFIG_FILE"
-}
-
-## Return an array of the keys in the config file.
-## Usage:
-##
-##   for k in $(config_keys); do
-##     echo "- $k = $(config_get "$k")";
-##   done
-##
-config_keys() {
-  local regex="^([a-zA-Z0-9_\-\/\.]+) *="
-
-  config_init
-
-  local keys=()
-  local key
-
-  while IFS= read -r line || [ -n "$line" ]; do
-    if [[ $line =~ $regex ]]; then
+  local section_regex="^\[(.+)\]"
+  local key_regex="^([^ =]+) *= *(.*) *$"
+  local comment_regex="^;"
+  
+  while IFS= read -r line; do
+    if [[ $line =~ $comment_regex ]]; then
+      continue
+    elif [[ $line =~ $section_regex ]]; then
+      section="${BASH_REMATCH[1]}."
+    elif [[ $line =~ $key_regex ]]; then
       key="${BASH_REMATCH[1]}"
-      keys+=("$key")
+      value="${BASH_REMATCH[2]}"
+      config["${section}${key}"]="$value"
     fi
-  done <"$CONFIG_FILE"
-  echo "${keys[@]}"
+  done < "$config_file"
 }
 
-## Returns true if the specified key exists in the config file.
-## Usage:
-##
-##   if config_has_key "key"; then
-##     echo "key exists"
-##   fi
-##
-config_has_key() {
-  [[ $(config_get "$1") ]]
+## Show all loaded key-value pairs
+config_show() {
+  sorted_keys=($(echo "${!config[@]}" | tr ' ' '\n' | sort))
+
+  for key in "${sorted_keys[@]}"; do 
+    echo "$key = ${config[$key]}"
+  done
+}
+
+## Save the array back to a file
+config_save() {
+  local filename="$1"
+  local current_section=""
+
+  rm -f "$filename"
+
+  free_keys=($(echo "${!config[@]}" | tr ' ' '\n' | grep -v '\.' | sort))
+  sectioned_keys=($(echo "${!config[@]}" | tr ' ' '\n' | grep '\.' | sort))
+
+  for key in "${free_keys[@]}"; do
+    value="${config[$key]}"
+    echo "$key = $value" >> "$filename"
+  done
+
+  [[ $free_keys ]] && echo >> "$filename"
+
+  for key in "${sectioned_keys[@]}"; do
+    value="${config[$key]}"
+    IFS="." read -r section_name key_name <<< "$key"
+
+    if [[ "$current_section" != "$section_name" ]]; then
+      [[ $current_section ]] && echo >> "$filename"
+      echo "[$section_name]" >> "$filename"
+      current_section="$section_name"
+    fi
+    
+    echo "$key_name = $value" >> "$filename"
+  done
 }

@@ -137,23 +137,36 @@ Options:
 
 ```
 
-### `$ ./docker download something`
+### `$ ./docker container run alpine`
 
 ```shell
-invalid command: download
+# this file is located in 'src/commands/container/run.sh'
+# code for 'docker container run' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[image]} = alpine
 
 
 ```
 
-### `$ ls -1 src/*`
+### `$ ls -R src`
 
 ```shell
-src/bashly.yml
+src:
+bashly.yml
+commands
 
 src/commands:
 container
 image
 ps.sh
+
+src/commands/container:
+run.sh
+stop.sh
+
+src/commands/image:
+ls.sh
 
 
 ```
