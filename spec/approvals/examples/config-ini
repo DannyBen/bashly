@@ -2,9 +2,10 @@
 created src/lib/config.sh
 + bashly generate
 creating user files in src
-skipped src/set_command.sh (exists)
-skipped src/get_command.sh (exists)
 skipped src/list_command.sh (exists)
+skipped src/get_command.sh (exists)
+skipped src/set_command.sh (exists)
+skipped src/del_command.sh (exists)
 created ./configly
 run ./configly --help to test your bash script
 + ./configly -h
@@ -16,9 +17,10 @@ Usage:
   configly --version | -v
 
 Commands:
-  set    Save a value in the config file
-  get    Read a value from the config file
   list   Show the entire config file
+  get    Read a value from the config file
+  set    Save a value in the config file
+  del    Remove a value from the config file
 
 Options:
   --help, -h
@@ -27,18 +29,48 @@ Options:
   --version, -v
     Show version number
 
-+ ./configly set hello world
-saved: hello = world
-+ ./configly set bashly works
-saved: bashly = works
++ ./configly set hello WORLD
+bashly = works
+hello = WORLD
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = value for user.name
++ ./configly set user.name Megatron
+bashly = works
+hello = world
+
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+email = value for user.email
+name = Megatron
 + ./configly get hello
-world
+hello = world
++ ./configly get user.name
+user.name = value for user.name
 + ./configly get invalid_key
 No such key: invalid_key
-+ ./configly list
-; comments are allowed
-hello = world
++ ./configly del user.email
 bashly = works
+hello = world
 
-hello === world
-bashly === works
+[options]
+name = value for options.name
+path = value for options.path
+
+[user]
+name = value for user.name
++ ./configly list
+bashly = works
+hello = world
+options.name = value for options.name
+options.path = value for options.path
+user.email = value for user.email
+user.name = value for user.name
