@@ -12,7 +12,8 @@ completions_yaml [PATH]
   Generate a completions YAML configuration for Completely.
 
 config
-  Add standard functions for handling INI files to the lib directory.
+  Add standard functions for handling key=value configuration files to the lib
+  directory.
 
 help
   Add a help command, in addition to the standard --help flag.
@@ -20,6 +21,9 @@ help
 hooks
   Add placeholders for initialize/before/after hooks which are executed on
   script initialization, and before/after any command.
+
+ini
+  Add standard functions for reading/writing INI files to the lib directory.
 
 lib
   Create the lib directory for any additional user scripts.
