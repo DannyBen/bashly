@@ -1,0 +1,44 @@
++ bashly add config --force
+created src/lib/config.sh
++ bashly generate
+creating user files in src
+skipped src/set_command.sh (exists)
+skipped src/get_command.sh (exists)
+skipped src/list_command.sh (exists)
+created ./configly
+run ./configly --help to test your bash script
++ ./configly -h
+configly - Sample application that uses the config functions
+
+Usage:
+  configly COMMAND
+  configly [COMMAND] --help | -h
+  configly --version | -v
+
+Commands:
+  set    Save a value in the config file
+  get    Read a value from the config file
+  list   Show the entire config file
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./configly set hello world
+saved: hello = world
++ ./configly set bashly works
+saved: bashly = works
++ ./configly get hello
+world
++ ./configly get invalid_key
+No such key: invalid_key
++ ./configly list
+; comments are allowed
+hello = world
+bashly = works
+
+hello === world
+bashly === works
