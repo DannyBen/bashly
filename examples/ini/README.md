@@ -98,11 +98,11 @@ email = value for user.email
 ## `src/get_command.sh`
 
 ```bash
-# Using the standard library (lib/config.sh) to show a value from the config
-config_load config.ini
+# Using the standard library (lib/ini.sh) to show a value from the config
+ini_load config.ini
 
 key="${args[key]}"
-value=${config[$key]}
+value=${ini[$key]}
 
 if [[ "$value" ]]; then
   echo "$key = $value"
@@ -115,28 +115,43 @@ fi
 ## `src/list_command.sh`
 
 ```bash
-# Using the standard library (lib/config.sh) to show the entire config file
-config_load config.ini
-config_show
+# Using the standard library (lib/ini.sh) to show the entire config file
+ini_load config.ini
+ini_show
 
-## Or to iterate through keys manually
-# for key in $(config_keys); do 
-#   echo "$key = ${config[$key]}"
+## Or iterate through keys manually
+# for key in $(ini_keys); do 
+#   echo "$key = ${ini[$key]}"
 # done
 ```
 
 ## `src/set_command.sh`
 
 ```bash
-# Using the standard library (lib/config.sh) to store a value to the config
-config_load config.ini
+# Using the standard library (lib/ini.sh) to store a value to the config
+ini_load config.ini
 
 key="${args[key]}"
 value="${args[value]}"
 
-config["$key"]="$value"
-config_save saved.ini
+ini["$key"]="$value"
+ini_save saved.ini
 cat saved.ini
+
+```
+
+## `src/del_command.sh`
+
+```bash
+# Using the standard library (lib/ini.sh) to delete a value from the config
+ini_load config.ini
+
+key="${args[key]}"
+unset "ini[$key]"
+
+ini_save saved.ini
+cat saved.ini
+
 
 ```
 
