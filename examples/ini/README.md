@@ -7,19 +7,19 @@ This example was generated with:
 ```bash
 $ bashly init
 # ... now edit src/bashly.yml to match the example ...
-$ bashly add config
+$ bashly add ini
 $ bashly generate
 # ... now edit all files in the src folder ...
 $ bashly generate
 ```
 
-Running the `bashly add config` command simply added the
-[src/lib/config.sh](src/lib/config.sh) file, which includes functions for
+Running the `bashly add ini` command simply added the
+[src/lib/ini.sh](src/lib/ini.sh) file, which includes functions for
 reading and writing values from an INI file.
 
 See the files in the [src](src) folder for usage examples.
 
-<!-- include: config.ini src/get_command.sh src/list_command.sh src/set_command.sh -->
+<!-- include: config.ini src/get_command.sh src/list_command.sh src/set_command.sh src/del_command.sh -->
 
 -----
 
