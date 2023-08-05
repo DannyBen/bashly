@@ -7,7 +7,10 @@ else
   echo "No such key: $key"
 fi
 
-# Example of how to assign the config value to a variable:
-# result=$(config_get "${args[key]}")
-# echo $result
+# Or, assign a default value if value not found
+config_get "$key" "the default value"
+
+# Or, assign the result to a variable
+result=$(config_get "$key")
+echo $result
 

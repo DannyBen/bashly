@@ -17,11 +17,11 @@ config_init() {
 }
 
 ## Get a value from the config.
-## Usage: result=$(config_get hello)
+## Usage: result=$(config_get key) -or- result=$(config_get key "default value")
 config_get() {
   local key=$1
+  local value=$2
   local regex="^$key *= *(.+)$"
-  local value=""
 
   config_init
 

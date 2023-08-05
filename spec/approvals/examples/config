@@ -33,8 +33,12 @@ saved: hello = world
 saved: bashly = works
 + ./configly get hello
 world
+world
+world
 + ./configly get invalid_key
 No such key: invalid_key
+the default value
+
 + ./configly list
 ; comments are allowed
 hello = world
