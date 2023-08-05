@@ -12,5 +12,5 @@ config_get "$key" "the default value"
 
 # Or, assign the result to a variable
 result=$(config_get "$key")
-echo $result
+echo "$result"
 
