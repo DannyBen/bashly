@@ -20,10 +20,12 @@ completions_yaml:
   handler: Bashly::Libraries::CompletionsYAML
 
 config:
-  help: Add standard functions for handling key=value configuration files to the lib directory.
+  help: Add functions for handling INI configuration files to the lib directory.
   files:
     - source: "config/config.sh"
       target: "%{user_lib_dir}/config.%{user_ext}"
+    - source: "ini/ini.sh"
+      target: "%{user_lib_dir}/ini.%{user_ext}"
 
 help:
   help: Add a help command, in addition to the standard --help flag.
@@ -40,7 +42,7 @@ hooks:
       target: "%{user_source_dir}/after.%{user_ext}"
 
 ini:
-  help: Add standard functions for reading/writing INI files to the lib directory.
+  help: Add low level functions for reading/writing INI files to the lib directory.
   files:
     - source: "ini/ini.sh"
       target: "%{user_lib_dir}/ini.%{user_ext}"

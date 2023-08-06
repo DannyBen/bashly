@@ -1,12 +1,4 @@
-+ bashly add config --force
-created src/lib/config.sh
-+ bashly generate
-creating user files in src
-skipped src/set_command.sh (exists)
-skipped src/get_command.sh (exists)
-skipped src/list_command.sh (exists)
-created ./configly
-run ./configly --help to test your bash script
++ rm -f config.ini
 + ./configly -h
 configly - Sample application that uses the config functions
 
@@ -18,7 +10,8 @@ Usage:
 Commands:
   set    Save a value in the config file
   get    Read a value from the config file
-  list   Show the entire config file
+  del    Delete a value from the config file
+  list   Show all values
 
 Options:
   --help, -h
@@ -27,22 +20,40 @@ Options:
   --version, -v
     Show version number
 
-+ ./configly set hello world
-saved: hello = world
-+ ./configly set bashly works
-saved: bashly = works
-+ ./configly get hello
-world
-world
-world
++ ./configly set theme dark
+theme = dark
++ ./configly set user.name Operations
+theme = dark
+user.name = Operations
++ ./configly set user.email paul@section.one
+theme = dark
+user.email = paul@section.one
+user.name = Operations
++ ./configly set user.password s3cr3t
+theme = dark
+user.email = paul@section.one
+user.name = Operations
+user.password = s3cr3t
++ ./configly get theme
+dark
+dark
+dark
++ ./configly get user.name
+Operations
+Operations
+Operations
 + ./configly get invalid_key
 No such key: invalid_key
 the default value
 
++ ./configly del user.password
+theme = dark
+user.email = paul@section.one
+user.name = Operations
 + ./configly list
-; comments are allowed
-hello = world
-bashly = works
-
-hello === world
-bashly === works
+theme = dark
+user.email = paul@section.one
+user.name = Operations
+theme === dark
+user.email === paul@section.one
+user.name === Operations

@@ -22,6 +22,7 @@ Your users can then run something like this to enable completions:
 
 + bundle exec bashly add config
 created src/lib/config.bash
+created src/lib/ini.bash
 + bundle exec bashly add help
 created src/help_command.bash
 
@@ -51,6 +52,7 @@ skipped src/upload_command.bash (exists)
 updated src/help_command.bash
 updated src/lib/colors.bash
 updated src/lib/config.bash
+updated src/lib/ini.bash
 updated src/lib/send_completions.bash
 updated src/lib/validations/validate_dir_exists.bash
 updated src/lib/validations/validate_file_exists.bash
