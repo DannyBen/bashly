@@ -7,8 +7,6 @@
 ## - A global associative array named `ini` will become available to you,
 ## - When updating any of the associative array's values, call
 ##   `ini_save path/to/config.ini` to save the data.
-## - If a global variable named INI_FILE exists, you can omit the filename
-##   in `ini_load` and `ini_save`.
 ## - INI sections are optional.
 ##
 ## Get a value:
@@ -26,13 +24,13 @@
 ##
 ##   unset ini[section1.key1]
 ##   ini_save path/to/config.ini
+##
 
 ## Load an INI file and populate the associative array `ini`.
-# shellcheck disable=SC2120
 ini_load() {
   declare -gA ini
 
-  local ini_file="${1:-$INI_FILE}"
+  local ini_file="$1"
 
   local section=""
   local key=""
@@ -40,8 +38,6 @@ ini_load() {
   local section_regex="^\[(.+)\]"
   local key_regex="^([^ =]+) *= *(.*) *$"
   local comment_regex="^;"
-
-  [[ -f "$ini_file" ]] || touch "$ini_file"
 
   while IFS= read -r line; do
     if [[ $line =~ $comment_regex ]]; then
@@ -57,11 +53,10 @@ ini_load() {
 }
 
 ## Save the associative array `ini` back to a file
-# shellcheck disable=SC2120
 ini_save() {
   declare -gA ini
 
-  local ini_file="${1:-$INI_FILE}"
+  local ini_file="$1"
 
   local current_section=""
   local has_free_keys=false
@@ -96,12 +91,17 @@ ini_save() {
 ini_show() {
   declare -gA ini
 
-  for key in $(ini_keys); do 
+  for key in $(ini_keys); do
     echo "$key = ${ini[$key]}"
   done
 }
 
-## Get a newline delimited, sorted list of keys
+## Get an array of all keys:
+##
+##   for key in $(ini_keys); do
+##     echo "- $key = ${ini[$key]}";
+##   done
+##
 ini_keys() {
   declare -gA ini
 

@@ -58,8 +58,8 @@ Each of these examples demonstrates one aspect or feature of bashly.
 
 ## Bashly library features
 
-- [config](config#readme) - using the config functions
-- [ini](ini#readme) - using the INI handling functions
+- [config](config#readme) - using the config library for easy access to INI files
+- [ini](ini#readme) - using the ini library for direct, low level access to INI files
 - [yaml](yaml#readme) - using the YAML reading functions
 - [colors](colors#readme) - using the color print feature
 - [completions](completions#readme) - adding bash completion functionality
