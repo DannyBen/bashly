@@ -1,3 +1,14 @@
++ bashly add config --force
+created src/lib/config.sh
+created src/lib/ini.sh
++ bashly generate
+creating user files in src
+skipped src/set_command.sh (exists)
+skipped src/get_command.sh (exists)
+skipped src/del_command.sh (exists)
+skipped src/list_command.sh (exists)
+created ./configly
+run ./configly --help to test your bash script
 + rm -f config.ini
 + ./configly -h
 configly - Sample application that uses the config functions

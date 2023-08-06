@@ -2,8 +2,8 @@
 
 set -x
 
-# bundle exec bashly add config --force
-# bundle exec bashly generate
+bashly add config --force
+bashly generate
 rm -f config.ini
 
 ### Try Me ###
