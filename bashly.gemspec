@@ -15,13 +15,17 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 3.0'
 
-  s.add_runtime_dependency 'colsole', '>= 0.8.1', '< 2'
-  s.add_runtime_dependency 'completely', '~> 0.6.1'
-  s.add_runtime_dependency 'filewatcher', '~> 2.0'
-  s.add_runtime_dependency 'gtx', '~> 0.1'
-  s.add_runtime_dependency 'lp', '~> 0.2'
-  s.add_runtime_dependency 'mister_bin', '~> 0.7'
-  s.add_runtime_dependency 'requires', '~> 1.0'
+  s.add_dependency 'colsole', '>= 0.8.1', '< 2'
+  s.add_dependency 'completely', '~> 0.6.1'
+  s.add_dependency 'filewatcher', '~> 2.0'
+  s.add_dependency 'gtx', '~> 0.1'
+  s.add_dependency 'lp', '~> 0.2'
+  s.add_dependency 'mister_bin', '~> 0.7'
+  s.add_dependency 'requires', '~> 1.0'
+
+  # Ruby 3.0 comes with Psych 3.3.0, which does not have the `unsafe_load`
+  # ref: https://github.com/ruby/psych/commit/cb50aa8d3fb8be01897becff77b4922b12a0ab4c
+  s.add_dependency 'psych', '>= 3.3.2', '< 7'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/bashly/issues',
