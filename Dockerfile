@@ -3,6 +3,6 @@ FROM dannyben/alpine-ruby
 ENV PS1 "\n\n>> bashly \W \$ "
 WORKDIR /app
 
-RUN gem install bashly --version 1.0.7
+RUN gem install bashly --version 1.0.8
 
 ENTRYPOINT ["bashly"]
