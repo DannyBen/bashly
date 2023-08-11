@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v1.0.8 - 2023-08-11
+----------------------------------------
+
+- Add ini library for handling INI files with sections
+- Config Library: Add ability to set default value in `config_get`
+- Config Library: Refactor to allow sections and use the low level INI library
+- Gemspec: Add Psych dependency
+
+
 v1.0.7 - 2023-07-07
 ----------------------------------------
 

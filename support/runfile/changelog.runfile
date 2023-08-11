@@ -2,9 +2,21 @@ summary 'Generate changelog and append old changelog'
 
 action do
   system "git changelog --save"
-  # append older changelog (prior to switching to git-changelog)
+
+  # Append older changelog (prior to switching to git-changelog)
   system "cat support/.changelog.old.md >> CHANGELOG.md"
 
-  # Fix typos
-  File.write "CHANGELOG.md", File.read("CHANGELOG.md").gsub('repeatableflags', 'repeatable flags')
+  # Modify some entries
+  log = File.read "CHANGELOG.md"
+  log.gsub! 'repeatableflags', 'repeatable flags'
+
+  remove = [
+    "- Breaking: Rewrite config (INI) library to provide an associative array\n",
+    "- Revert config library changes\n"
+  ]
+
+  remove.each { |line| log.gsub! line, '' }
+
+  # Write fixed log
+  File.write "CHANGELOG.md", log
 end
