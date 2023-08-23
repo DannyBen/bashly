@@ -59,7 +59,11 @@ module Bashly
     end
 
     def base_views_path
-      @base_views_path ||= File.expand_path '../views/', __dir__
+      ENV['BASHLY_VIEWS_PATH'] ||= @base_views_path ||= default_base_views_path
+    end
+
+    def default_base_views_path
+      File.expand_path '../views/', __dir__
     end
 
     def views_subfolder
