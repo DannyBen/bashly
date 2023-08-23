@@ -16,6 +16,7 @@ module Bashly
       runner.route 'add',         to: Commands::Add
       runner.route 'doc',         to: Commands::Doc
       runner.route 'completions', to: Commands::Completions
+      runner.route 'render',      to: Commands::Render
       runner.route 'shell',       to: Commands::Shell unless ENV['BASHLY_SHELL']
 
       runner
