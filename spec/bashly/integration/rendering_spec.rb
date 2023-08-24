@@ -6,6 +6,9 @@ describe 'rendering templates' do
   target = 'spec/tmp'
   examples = %w[docker-like minimal]
 
+  # Allow up to a certain string distance from the approval text in CI
+  leeway = ENV['CI'] ? 20 : 0
+
   examples.each do |example|
     describe example do
       before do
@@ -21,6 +24,7 @@ describe 'rendering templates' do
           puts "    => #{file}"
           basename = File.basename file
           expect(File.read file).to match_approval("rendering/markdown/#{example}/#{basename}")
+            .diff(leeway)
         end
       end
     end
