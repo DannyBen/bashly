@@ -1,5 +1,3 @@
-require 'yaml'
-
 module ComposeRefinements
   refine Hash do
     def compose(keyword = 'import')

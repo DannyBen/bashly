@@ -1,5 +1,3 @@
-require 'yaml'
-
 module Bashly
   # A convenience class to use either a hash or a filename as a configuration
   # source.
