@@ -1,0 +1,31 @@
+Render the bashly data structure using cutsom templates
+
+Usage:
+  bashly render LOCATION [options]
+  bashly render (-h|--help)
+
+Options:
+  -t --template NAME
+    Template name [default: main]
+
+  -w --watch
+    Watch bashly.yml and TEMPLATES_ROOT for changes and render on change
+
+  -s --save PATH
+    Save the render output to a file
+
+  -h --help
+    Show this help
+
+Parameters:
+  LOCATION
+    An ID to an internal templates root, or a path to a custom templates root.
+    
+    Available IDs (note the leading colon):
+    - :markdown - render markdown documents for each command.
+
+Examples:
+  bashly render :markdown
+  bashly render /path/to/templates --template main
+  bashly render --watch
+  bashly render --watch --save docs/index.md
