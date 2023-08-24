@@ -42,7 +42,7 @@ module Bashly
       end
 
       def watch
-        say "g`watching` #{watchables.join ', '}\n"
+        say "g`watching`\n"
 
         Filewatcher.new(watchables).watch do
           reset

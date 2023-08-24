@@ -15,7 +15,7 @@ describe 'rendering templates' do
         Settings.config_path = "examples/#{example}/src/bashly.yml"
         reset_tmp_dir
       end
-      
+
       it 'runs properly' do
         expect { subject.execute %W[render :markdown #{target}] }
           .to output_approval("rendering/markdown/#{example}/stdout")
