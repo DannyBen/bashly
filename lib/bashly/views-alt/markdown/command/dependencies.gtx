@@ -1,0 +1,8 @@
+if dependencies.any?
+  > ## Dependencies
+  >
+  dependencies.each do |dependency|
+    > - {{ dependency.commands.join ' or ' }}
+  end
+  >
+end

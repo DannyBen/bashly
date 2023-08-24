@@ -1,0 +1,9 @@
+= render 'header'
+= render 'usage'
+= render 'examples'
+= render 'dependencies'
+= render 'environment_variables'
+= render 'commands'
+= render 'args'
+= render 'flags'
+

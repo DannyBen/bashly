@@ -9,7 +9,7 @@ module Bashly
 
       return result unless save
 
-      File.write save, result
+      File.deep_write save, result
     end
 
     def strings

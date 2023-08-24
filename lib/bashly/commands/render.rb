@@ -5,22 +5,29 @@ module Bashly
     class Render < Base
       help 'Render the bashly data structure using cutsom templates'
 
-      usage 'bashly render [options]'
+      usage 'bashly render LOCATION [options]'
       usage 'bashly render (-h|--help)'
 
-      option '-r --root PATH', 'Path to templates root [default: templates]'
+      param 'LOCATION', <<~HELP
+        An ID to an internal templates root, or a path to a custom templates root.
+
+        Available IDs (note the leading colon):
+        - :markdown - render markdown documents for each command.
+      HELP
+
       option '-t --template NAME', 'Template name [default: main]'
       option '-w --watch', 'Watch bashly.yml and TEMPLATES_ROOT for changes and render on change'
       option '-s --save PATH', 'Save the render output to a file'
 
-      example 'bashly render --root /path/to/templates --template main'
+      example 'bashly render :markdown'
+      example 'bashly render /path/to/templates --template main'
       example 'bashly render --watch'
-      example 'bashly render --watch --save docs/cli.md'
+      example 'bashly render --watch --save docs/index.md'
 
       attr_reader :watching, :root, :view, :save
 
       def run
-        @root = ENV['BASHLY_VIEWS_PATH'] = args['--root']
+        @root = ENV['BASHLY_VIEWS_PATH'] = root_path
         @view = args['--template']
         @save = args['--save']
         ENV['BASHLY_RENDER_PATH'] = @save ? File.dirname(@save) : '.'
@@ -69,6 +76,19 @@ module Bashly
 
       def watchables
         @watchables ||= [Settings.config_path, root]
+      end
+
+      def root_path
+        result = args['LOCATION']
+        
+        if result.start_with? ':'
+          id = result[1..]
+          result = asset "views-alt/#{id}"
+        end
+
+        return result if Dir.exist? result
+
+        raise "Invalid location.\nDirectory not found: #{result}"
       end
     end
   end

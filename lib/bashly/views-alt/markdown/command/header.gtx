@@ -1,0 +1,10 @@
+> # {{ full_name }}
+>
+
+if alt.any?
+  > **Alias:** {{ alt.join ', ' }}
+  >
+end
+
+> {{ help }}
+>

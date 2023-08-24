@@ -1,0 +1,11 @@
+if flags.any?
+  > ## Options
+  >
+  = "<dl>"
+  flags.each do |flag|
+    = "<dt>#{flag.usage_string extended: true}</dt>"
+    = "<dd>#{flag.help}</dd>"
+  end
+  = "</dl>"
+  >
+end

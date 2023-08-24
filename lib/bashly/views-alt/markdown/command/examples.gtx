@@ -1,0 +1,8 @@
+if examples
+  > ## Examples
+  >
+  examples.each do |example|
+    > - `{{ example }}`
+  end
+  >
+end

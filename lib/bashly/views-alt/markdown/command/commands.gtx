@@ -1,0 +1,17 @@
+if commands.any?
+  command_help_data.each do |group, commands|
+    > ## {{ group.gsub(/:$/, '') }}
+    >
+    commands.each do |subname, data|
+      > - [{{ subname }}]({{ name }} {{ subname }}) - {{ data[:summary] }}
+    end
+    >
+  end
+
+  # Additionally, generate a file for each command
+  public_commands.each do |command|
+    outfile = "#{ENV['BASHLY_RENDER_PATH']}/#{command.full_name}.md"
+    command.render 'main', save: outfile
+    say "g`saved` #{outfile}"
+  end
+end
