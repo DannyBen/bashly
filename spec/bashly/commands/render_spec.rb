@@ -1,6 +1,7 @@
 describe Commands::Render do
   subject { described_class.new }
 
+  let(:leeway) { RUBY_VERSION < '3.2.0' ? 0 : 5 }
   let(:source_dir) { Settings.source_dir }
   let(:target) { 'spec/tmp' }
 
@@ -32,6 +33,7 @@ describe Commands::Render do
     it 'raises an error' do
       expect { subject.execute %W[render no-templates-4U #{target}] }
         .to raise_approval('cli/render/source-not-found')
+        .diff(leeway)
     end
   end
 
