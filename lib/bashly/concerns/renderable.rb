@@ -2,14 +2,8 @@ require 'gtx'
 
 module Bashly
   module Renderable
-    def render(view, save: nil)
-      result = GTX.render_file view_path(view),
-        context:  binding,
-        filename: "#{views_subfolder}.#{view}"
-
-      return result unless save
-
-      File.deep_write save, result
+    def render(view)
+      GTX.render_file view_path(view), context:  binding, filename: "#{views_subfolder}.#{view}"
     end
 
     def strings

@@ -5,32 +5,28 @@ module Bashly
     class Render < Base
       help 'Render the bashly data structure using cutsom templates'
 
-      usage 'bashly render LOCATION [options]'
+      usage 'bashly render SOURCE TARGET [options]'
       usage 'bashly render (-h|--help)'
 
-      param 'LOCATION', <<~HELP
-        An ID to an internal templates root, or a path to a custom templates root.
+      param 'SOURCE', <<~HELP
+        An ID to an internal templates source, or a path to a custom templates directory.
 
         Available IDs (note the leading colon):
         - :markdown - render markdown documents for each command.
       HELP
+      
+      param 'TARGET', 'Output directory'
 
-      option '-t --template NAME', 'Template name [default: main]'
-      option '-w --watch', 'Watch bashly.yml and TEMPLATES_ROOT for changes and render on change'
-      option '-s --save PATH', 'Save the render output to a file'
+      option '-w --watch', 'Watch bashly.yml and the templates source for changes and render on change'
 
-      example 'bashly render :markdown'
-      example 'bashly render /path/to/templates --template main'
-      example 'bashly render --watch'
-      example 'bashly render --watch --save docs/index.md'
+      example 'bashly render :markdown docs --watch'
+      example 'bashly render /path/to/templates ./out_path'
 
-      attr_reader :watching, :root, :view, :save
+      attr_reader :watching, :source, :target
 
       def run
-        @root = ENV['BASHLY_VIEWS_PATH'] = root_path
-        @view = args['--template']
-        @save = args['--save']
-        ENV['BASHLY_RENDER_PATH'] = @save ? File.dirname(@save) : '.'
+        @source = ENV['BASHLY_VIEWS_PATH'] = source_path
+        @target = args['TARGET']
         @watching = args['--watch']
 
         render
@@ -38,6 +34,12 @@ module Bashly
       end
 
     private
+
+      # This method is the single DSL method for the render script
+      def save(filename, content)
+        File.deep_write filename, content
+        say "g`saved` #{filename}"
+      end
 
       def watch
         say "g`watching` #{watchables.join ', '}\n"
@@ -53,15 +55,7 @@ module Bashly
       end
 
       def render
-        with_valid_config do
-          output = command.render view
-          if save
-            File.deep_write save, output
-            say "g`saved` #{save}"
-          else
-            puts output
-          end
-        end
+        with_valid_config { instance_eval render_script }
       end
 
       def reset
@@ -75,11 +69,11 @@ module Bashly
       end
 
       def watchables
-        @watchables ||= [Settings.config_path, root]
+        @watchables ||= [Settings.config_path, source]
       end
 
-      def root_path
-        result = args['LOCATION']
+      def source_path
+        result = args['SOURCE']
 
         if result.start_with? ':'
           id = result[1..]
@@ -88,7 +82,11 @@ module Bashly
 
         return result if Dir.exist? result
 
-        raise "Invalid location.\nDirectory not found: #{result}"
+        raise "Invalid source.\nDirectory not found: #{result}"
+      end
+
+      def render_script
+        @render_script ||= File.read "#{source}/render.rb"
       end
     end
   end
