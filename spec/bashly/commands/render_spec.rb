@@ -24,7 +24,7 @@ describe Commands::Render do
     before { reset_tmp_dir init: true }
 
     it 'outputs markdown files' do
-      expect { subject.execute %W[render lib/bashly/views-alt/markdown #{target}] }
+      expect { subject.execute %W[render lib/bashly/libraries/render/markdown #{target}] }
         .to output_approval('cli/render/markdown')
     end
   end
