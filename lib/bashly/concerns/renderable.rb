@@ -4,7 +4,7 @@ module Bashly
   module Renderable
     def render(view, save: nil)
       result = GTX.render_file view_path(view),
-        context: binding,
+        context:  binding,
         filename: "#{views_subfolder}.#{view}"
 
       return result unless save

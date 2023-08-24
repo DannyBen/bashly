@@ -30,8 +30,8 @@ config_show() {
 config_get() {
   local key="$1"
   local default_value="$2"
-  
-  config_load  
+
+  config_load
   echo "${ini["$key"]:-$default_value}"
 }
 
@@ -43,7 +43,7 @@ config_set() {
   local key="$1"
   shift
   local value="$*"
-  
+
   config_load
   ini["$key"]="$value"
   config_save
@@ -55,7 +55,7 @@ config_set() {
 ##
 config_del() {
   local key="$1"
-  
+
   config_load
   unset "ini[$key]"
   config_save

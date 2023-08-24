@@ -80,7 +80,7 @@ module Bashly
 
       def root_path
         result = args['LOCATION']
-        
+
         if result.start_with? ':'
           id = result[1..]
           result = asset "views-alt/#{id}"
