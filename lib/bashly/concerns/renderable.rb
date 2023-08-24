@@ -3,7 +3,7 @@ require 'gtx'
 module Bashly
   module Renderable
     def render(view)
-      GTX.render_file view_path(view), context:  binding, filename: "#{views_subfolder}.#{view}"
+      GTX.render_file view_path(view), context: binding, filename: "#{views_subfolder}.#{view}"
     end
 
     def strings
@@ -59,11 +59,7 @@ module Bashly
     end
 
     def base_views_path
-      ENV['BASHLY_VIEWS_PATH'] ||= @base_views_path ||= default_base_views_path
-    end
-
-    def default_base_views_path
-      File.expand_path '../views/', __dir__
+      @base_views_path ||= File.expand_path '../views/', __dir__
     end
 
     def views_subfolder

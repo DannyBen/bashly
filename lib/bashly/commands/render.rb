@@ -25,7 +25,7 @@ module Bashly
       attr_reader :watching, :source, :target
 
       def run
-        @source = ENV['BASHLY_VIEWS_PATH'] = source_path
+        @source = source_path
         @target = args['TARGET']
         @watching = args['--watch']
 
