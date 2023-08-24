@@ -1,4 +1,5 @@
 require 'erb'
+require 'yaml'
 
 module YAML
   # We trust our loaded YAMLs
