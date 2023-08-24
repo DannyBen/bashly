@@ -77,7 +77,7 @@ module Bashly
 
         if result.start_with? ':'
           id = result[1..]
-          result = asset "views-alt/#{id}"
+          result = asset "libraries/render/#{id}"
         end
 
         return result if Dir.exist? result

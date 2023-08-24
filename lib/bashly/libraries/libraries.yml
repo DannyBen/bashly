@@ -56,6 +56,19 @@ lib:
     - source: "lib/sample_function.sh"
       target: "%{user_lib_dir}/sample_function.%{user_ext}"
 
+render_markdown:
+  help: Copy the markdown templates to your project, allowing you to customize the markdown documentation output.
+  skip_src_check: true
+  files:
+    - source: "render/markdown/markdown.gtx"
+      target: "templates/markdown/markdown.gtx"
+    - source: "render/markdown/render.rb"
+      target: "templates/markdown/render.rb"
+  post_install_message: |
+    Generate your markdown documentation by running:
+
+      m`$ bashly render templates/markdown docs`
+
 settings:
   help: Copy a sample settings.yml file to your project, allowing you to customize some bashly options.
   skip_src_check: true
