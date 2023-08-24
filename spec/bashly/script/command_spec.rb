@@ -323,6 +323,16 @@ describe Script::Command do
     end
   end
 
+  describe '#grouped_commands' do
+    let(:fixture) { :exposed }
+
+    it 'returns a hash with an array of Command objects per group key' do
+      expect(subject.grouped_commands.keys).to contain_exactly('Cluster Commands:', 'Commands:')
+      expect(subject.grouped_commands['Commands:'].count).to eq 4
+      expect(subject.grouped_commands['Commands:']).to all(be_a described_class)
+    end
+  end
+
   describe '#load_user_file' do
     before do
       FileUtils.mkdir_p 'spec/tmp/src'

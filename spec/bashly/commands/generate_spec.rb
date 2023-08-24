@@ -233,8 +233,6 @@ describe Commands::Generate do
     end
 
     context 'when ConfigurationError is raised during watch' do
-      let(:watcher_double) { instance_double Filewatcher, watch: nil }
-
       it 'shows the error gracefully and continues to watch' do
         allow(Filewatcher).to receive(:new).and_return(watcher_double)
         allow(watcher_double).to receive(:watch) do |&block|

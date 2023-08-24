@@ -14,7 +14,7 @@ module Bashly
         Available IDs (note the leading colon):
         - :markdown - render markdown documents for each command.
       HELP
-      
+
       param 'TARGET', 'Output directory'
 
       option '-w --watch', 'Watch bashly.yml and the templates source for changes and render on change'
