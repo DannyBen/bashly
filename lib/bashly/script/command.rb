@@ -200,6 +200,23 @@ module Bashly
         end
       end
 
+      # Returns subcommands by group
+      def grouped_commands
+        result = {}
+
+        public_commands.each do |command|
+          result[command.group_string] ||= []
+          result[command.group_string] << command
+          next unless command.expose
+
+          command.public_commands.each do |subcommand|
+            result[command.group_string] << subcommand
+          end
+        end
+
+        result
+      end
+
       # Returns a mode identifier
       def mode
         @mode ||= if global_flags?    then :global_flags

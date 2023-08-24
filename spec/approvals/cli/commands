@@ -8,6 +8,7 @@ Commands:
   add          Add extra features and customization to your script
   doc          Show bashly reference documentation
   completions  Install bash completions for bashly itself
+  render       Render the bashly data structure using cutsom templates
   shell        Start an interactive bashly shell
 
 Help: bashly COMMAND --help

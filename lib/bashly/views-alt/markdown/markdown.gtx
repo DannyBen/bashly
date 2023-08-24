@@ -1,0 +1,96 @@
+# === Header
+
+> # {{ full_name }}
+>
+
+if alt.any?
+  > **Alias:** {{ alt.join ', ' }}
+  >
+end
+
+> {{ help }}
+>
+
+# === Usage
+
+> ## Usage
+>
+> `{{ usage_string }}`
+>
+
+# === Examples
+
+if examples
+  > ## Examples
+  >
+  examples.each do |example|
+    > - `{{ example }}`
+  end
+  >
+end
+
+# === Dependencies
+
+if dependencies.any?
+  > ## Dependencies
+  >
+  dependencies.each do |dependency|
+    > - {{ dependency.commands.join ' or ' }}
+  end
+  >
+end
+
+# === Environment Variables
+
+if environment_variables.any?
+  > ## Environment Variables
+  >
+  = "<dl>"
+  environment_variables.each do |environment_variable|
+    = "  <dt>#{environment_variable.usage_string}</dt>"
+    = "  <dd>#{environment_variable.help}</dd>"
+  end
+  = "</dl>"
+  >
+end
+
+# === Commands
+
+if commands.any?
+  grouped_commands.each do |group, commands|
+    > ## {{ group.gsub(/:$/, '') }}
+    >
+    commands.each do |subcommand|
+      > - [{{ subcommand.name }}]({{ subcommand.full_name }}) - {{ subcommand.summary }}
+    end
+    >
+  end
+end
+
+# === Arguments
+
+if args.any?
+  > ## Arguments
+  >
+  = "<dl>"
+  args.each do |arg|
+    = "  <dt>#{arg.name}</dt>"
+    = "  <dd>#{arg.help}</dd>"
+  end
+  = "</dl>"
+  >
+end
+
+# === Flags
+
+if flags.any?
+  > ## Options
+  >
+  = "<dl>"
+  flags.each do |flag|
+    = "  <dt>#{flag.usage_string extended: true}</dt>"
+    = "  <dd>#{flag.help}</dd>"
+  end
+  = "</dl>"
+  >
+end
