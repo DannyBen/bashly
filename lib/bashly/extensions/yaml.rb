@@ -1,3 +1,5 @@
+require 'erb'
+
 module YAML
   # We trust our loaded YAMLs
   # This patch is due to https://bugs.ruby-lang.org/issues/17866
