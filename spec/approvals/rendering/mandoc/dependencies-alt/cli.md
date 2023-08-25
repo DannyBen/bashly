@@ -25,3 +25,8 @@ COMMANDS
 :    Download something
 
 
+SEE ALSO
+==================================================
+
+**cli-download**(1)
+

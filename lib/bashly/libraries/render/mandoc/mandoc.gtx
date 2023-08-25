@@ -1,9 +1,9 @@
 # Reference: https://linux.die.net/man/5/pandoc_markdown
 
 if version
-> % {{ full_name.tr(' ', '-') }}(1) Version {{ version }} | {{ summary }}
+> % {{ full_name.to_hyphen }}(1) Version {{ version }} | {{ summary }}
 else
-> % {{ full_name.tr(' ', '-') }}(1) | {{ summary }}
+> % {{ full_name.to_hyphen }}(1) | {{ summary }}
 end
 > % {{ ENV['AUTHORS'] }}
 > % {{ Date.today.strftime "%B %Y" }}
@@ -24,7 +24,7 @@ end
 > DESCRIPTION
 > ==================================================
 > 
-> {{ help.for_markdown }}
+> {{ help.for_manpage }}
 >
 
 if default
@@ -42,14 +42,14 @@ if extensible
 end
 >
 
-if commands.any?
+if public_commands.any?
   grouped_commands.each do |group, commands|
     > {{ group.gsub(/:$/, '').upcase }}
     > ==================================================
     >
     commands.each do |subcommand|
       > **{{ subcommand.full_name }}**(1)
-      > :    {{ subcommand.summary.for_markdown }}
+      > :    {{ subcommand.summary.for_manpage }}
       >
     end
     >
@@ -62,7 +62,7 @@ if args.any?
   > 
   args.each do |arg|
     > **{{ arg.name.upcase }}**
-    > :    {{ arg.help.for_markdown }}
+    > :{{ arg.help.for_manpage.indent(4) }}
     >
     if arg.required
       >      - *Required*
@@ -81,7 +81,10 @@ if args.any?
 
   if catch_all.label && catch_all.help
     > **{{ catch_all.label }}**
-    > :    {{ catch_all.help&.for_markdown }}
+    if catch_all.help
+      > :{{ catch_all.help.for_manpage.indent(4) }}
+      >
+    end
     >
 
     if catch_all.required?
@@ -97,7 +100,7 @@ if flags.any?
   > 
   flags.each do |flag|
     > **{{ flag.usage_string }}**
-    > :    {{ flag.help.for_markdown }}
+    > :{{ flag.help.for_manpage.indent(4) }}
     >
 
     if flag.required
@@ -125,8 +128,10 @@ if dependencies.any?
   >
   dependencies.each do |dependency|
     > **{{ dependency.commands.join ', ' }}**
-    >
-    > :{{ dependency.help&.indent(4)&.for_markdown }}
+    if dependency.help
+      > :{{ dependency.help.for_manpage.indent(4) }}
+      >
+    end
     >
   end
 end
@@ -138,7 +143,7 @@ if public_environment_variables.any?
   public_environment_variables.each do |environment_variable|
     > **{{ environment_variable.name.upcase }}**
     >
-    > :{{ environment_variable.help.indent(4).for_markdown }}
+    > :{{ environment_variable.help.for_manpage.indent(4) }}
     >
 
     if environment_variable.required
@@ -157,10 +162,16 @@ if examples
   >
   > ~~~
   examples.each do |example|
-    > {{ example.for_markdown }}
+    > {{ example.for_manpage }}
     >
   end
   > ~~~
 end
 
-
+if public_commands.any?
+  > SEE ALSO
+  > ==================================================
+  >
+  = public_commands.map { |x| "**#{x.full_name.to_hyphen}**(1)" }.join ', '
+  >
+end

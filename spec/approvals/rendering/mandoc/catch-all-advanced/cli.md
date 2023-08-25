@@ -28,3 +28,8 @@ COMMANDS
 :    Upload a file
 
 
+SEE ALSO
+==================================================
+
+**cli-download**(1), **cli-upload**(1)
+

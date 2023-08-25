@@ -23,13 +23,11 @@ DEPENDENCIES
 
 **git**
 
-:
-
 **ruby**
-
 :    visit $(blue_underlined https://www.ruby-lang.org) to install
 
-**curl, wget**
 
+**curl, wget**
 :    install with $(green sudo apt install curl)
+
 

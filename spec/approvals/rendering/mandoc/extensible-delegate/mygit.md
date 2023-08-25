@@ -29,3 +29,8 @@ COMMANDS
 :    Pull from my repository
 
 
+SEE ALSO
+==================================================
+
+**mygit-push**(1), **mygit-pull**(1)
+
