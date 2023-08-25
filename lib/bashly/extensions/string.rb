@@ -8,7 +8,7 @@ class String
   end
 
   def nl2br
-    gsub("\n", "<br>\n")
+    gsub("\n", "  \n")
   end
 
   def indent(offset)

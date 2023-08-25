@@ -22,7 +22,7 @@ describe 'rendering templates' do
         reset_tmp_dir
       end
 
-      it 'runs properly' do
+      it 'renders markdown properly' do
         expect { subject.execute %W[render :markdown #{target}] }
           .to output_approval("rendering/markdown/#{example}/stdout")
 
@@ -31,6 +31,20 @@ describe 'rendering templates' do
           basename = File.basename file
           expect(File.read file).to match_approval("rendering/markdown/#{example}/#{basename}")
             .diff(leeway)
+        end
+      end
+
+      it 'renders mandoc properly' do
+        expect { subject.execute %W[render :mandoc #{target}] }
+          .to output_approval("rendering/mandoc/#{example}/stdout")
+
+        Dir["#{target}/*.md"].each do |file|
+          puts "    => #{file}"
+          basename = File.basename file
+          expect(File.read file).to match_approval("rendering/mandoc/#{example}/#{basename}")
+            .diff(leeway)
+
+          expect(File).to exist("#{target}/#{File.basename(file, '.md')}.1")
         end
       end
     end

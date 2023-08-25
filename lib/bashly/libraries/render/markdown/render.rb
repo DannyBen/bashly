@@ -1,4 +1,4 @@
-# render script
+# render script - markdown
 
 # Load the GTX template
 template = "#{source}/markdown.gtx"

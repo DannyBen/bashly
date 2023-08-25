@@ -69,6 +69,20 @@ render_markdown:
 
       m`$ bashly render templates/markdown docs`
 
+render_mandoc:
+  help: Copy the mandoc templates to your project, allowing you to customize the man documentation output.
+  skip_src_check: true
+  files:
+    - source: "render/mandoc/mandoc.gtx"
+      target: "templates/mandoc/mandoc.gtx"
+    - source: "render/mandoc/render.rb"
+      target: "templates/mandoc/render.rb"
+  post_install_message: |
+    Note that this template requires pandoc.
+    Generate your man pages by running:
+
+      m`$ bashly render templates/mandoc docs`
+
 settings:
   help: Copy a sample settings.yml file to your project, allowing you to customize some bashly options.
   skip_src_check: true
