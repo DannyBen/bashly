@@ -20,6 +20,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Install OS dependencies
+      run: sudo apt-get -y install mandoc
+
     # Rush needed for easy installation of stuff
     - name: Install rush
       run: curl -Ls http://get.dannyb.co/rush/setup | bash
