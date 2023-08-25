@@ -1,9 +1,25 @@
 describe String do
   describe '#sanitize_for_print' do
-    subject { %[this is\na "new line"] }
+    subject { "this is\na \"new line\" with `backticks`" }
 
     it 'escapes newlines and quotes' do
-      expect(subject.sanitize_for_print).to eq 'this is\\na \"new line\"'
+      expect(subject.sanitize_for_print).to eq 'this is\\na \"new line\" with \`backticks\`'
+    end
+  end
+
+  describe '#for_markdown' do
+    subject { "line one\nline two is <tagged>\n" }
+
+    it 'replaces newline to <br> and escapes < > characters' do
+      expect(subject.for_markdown).to eq "line one<br>\nline two is \\<tagged\\><br>\n"
+    end
+  end
+
+  describe '#nl2br' do
+    subject { "line one\nline two" }
+
+    it 'replaces newline to <br>' do
+      expect(subject.for_markdown).to eq "line one<br>\nline two"
     end
   end
 
