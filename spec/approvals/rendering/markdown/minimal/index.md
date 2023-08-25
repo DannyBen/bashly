@@ -17,6 +17,7 @@ download SOURCE [TARGET] [OPTIONS]
 ```bash
 download example.com
 ```
+
 ```bash
 download example.com ./output -f
 ```

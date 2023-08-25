@@ -1,4 +1,5 @@
 require 'filewatcher'
+require 'date'  # for use by templates
 
 module Bashly
   module Commands
@@ -11,8 +12,11 @@ module Bashly
       param 'SOURCE', <<~HELP
         An ID to an internal templates source, or a path to a custom templates directory.
 
-        Available IDs (note the leading colon):
+        A leading colon (:) denotes an internal ID.
+
+        Available IDs:
         - :markdown - render markdown documents for each command.
+        - :mandoc - render man pages for each command.
       HELP
 
       param 'TARGET', 'Output directory'

@@ -43,8 +43,8 @@ if examples
     > ```bash
     > {{ example }}
     > ```
+    >
   end
-  >
 end
 
 # === Dependencies

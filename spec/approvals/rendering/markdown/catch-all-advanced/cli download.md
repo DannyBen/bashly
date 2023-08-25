@@ -17,6 +17,7 @@ cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
 ```bash
 cli download example.com
 ```
+
 ```bash
 cli download example.com ./output -f
 ```

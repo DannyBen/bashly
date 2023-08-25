@@ -1,0 +1,166 @@
+# Reference: https://linux.die.net/man/5/pandoc_markdown
+
+if version
+> % {{ full_name.tr(' ', '-') }}(1) Version {{ version }} | {{ summary }}
+else
+> % {{ full_name.tr(' ', '-') }}(1) | {{ summary }}
+end
+> % {{ ENV['AUTHORS'] }}
+> % {{ Date.today.strftime "%B %Y" }}
+>
+
+> NAME
+> ==================================================
+> 
+> **{{ full_name }}** - {{ summary }}
+>
+
+> SYNOPSIS
+> ==================================================
+> 
+> {{ usage_string.gsub(/^#{full_name}/, "**#{full_name}**") }}
+>
+
+> DESCRIPTION
+> ==================================================
+> 
+> {{ help.for_markdown }}
+>
+
+if default
+  > - *Default Command*
+end
+if alt.any?
+  > - Alias: **{{ alt.join ', ' }}**
+end
+if extensible
+  if extensible.is_a? String
+    > - Extensible: **{{ extensible }}**
+  else
+    > - *Extensible*
+  end
+end
+>
+
+if commands.any?
+  grouped_commands.each do |group, commands|
+    > {{ group.gsub(/:$/, '').upcase }}
+    > ==================================================
+    >
+    commands.each do |subcommand|
+      > **{{ subcommand.full_name }}**(1)
+      > :    {{ subcommand.summary.for_markdown }}
+      >
+    end
+    >
+  end
+end
+
+if args.any?
+  > ARGUMENTS
+  > ==================================================
+  > 
+  args.each do |arg|
+    > **{{ arg.name.upcase }}**
+    > :    {{ arg.help.for_markdown }}
+    >
+    if arg.required
+      >      - *Required*
+    end
+    if arg.repeatable
+      >      - *Repeatable*
+    end
+    if arg.default
+      >      - Default Value: **{{ arg.default }}**
+    end
+    if arg.allowed
+      >      - Allowed Values: **{{ arg.allowed.join(', ') }}**
+    end
+    >
+  end
+
+  if catch_all.label && catch_all.help
+    > **{{ catch_all.label }}**
+    > :    {{ catch_all.help&.for_markdown }}
+    >
+
+    if catch_all.required?
+      >      - *Required*
+      >
+    end
+  end
+end
+
+if flags.any?
+  > OPTIONS
+  > ==================================================
+  > 
+  flags.each do |flag|
+    > **{{ flag.usage_string }}**
+    > :    {{ flag.help.for_markdown }}
+    >
+
+    if flag.required
+      >      - *Required*
+    end
+    if flag.repeatable
+      >      - *Repeatable*
+    end
+    if flag.default
+      >      - Default Value: **{{ flag.default }}**
+    end
+    if flag.allowed
+      >      - Allowed Values: **{{ flag.allowed.join(', ') }}**
+    end
+    if flag.conflicts
+      >      - Conflicts With: **{{ flag.conflicts.join(', ') }}**
+    end
+    >
+  end
+end
+
+if dependencies.any?
+  > DEPENDENCIES
+  > ==================================================
+  >
+  dependencies.each do |dependency|
+    > **{{ dependency.commands.join ', ' }}**
+    >
+    > :{{ dependency.help&.indent(4)&.for_markdown }}
+    >
+  end
+end
+
+if public_environment_variables.any?
+  > ENVIRONMENT VARIABLES
+  > ==================================================
+  >
+  public_environment_variables.each do |environment_variable|
+    > **{{ environment_variable.name.upcase }}**
+    >
+    > :{{ environment_variable.help.indent(4).for_markdown }}
+    >
+
+    if environment_variable.required
+      >      - *Required*
+    end
+    if environment_variable.default
+      >      - Default Value: **{{ environment_variable.default }}**
+    end
+    >
+  end
+end
+
+if examples
+  > EXAMPLES
+  > ==================================================
+  >
+  > ~~~
+  examples.each do |example|
+    > {{ example.for_markdown }}
+    >
+  end
+  > ~~~
+end
+
+

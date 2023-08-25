@@ -34,6 +34,10 @@ render_markdown
   Copy the markdown templates to your project, allowing you to customize the
   markdown documentation output.
 
+render_mandoc
+  Copy the mandoc templates to your project, allowing you to customize the man
+  documentation output.
+
 settings
   Copy a sample settings.yml file to your project, allowing you to customize
   some bashly options.
