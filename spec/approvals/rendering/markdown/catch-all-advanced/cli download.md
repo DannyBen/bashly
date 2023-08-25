@@ -1,24 +1,24 @@
-# download
+# cli download
 
-Sample minimal application without commands
+Download a file
 
 | Attributes       | &nbsp;
 |------------------|-------------
-| Version:         | 0.1.0
+| Alias:           | d
 
 ## Usage
 
 ```bash
-download SOURCE [TARGET] [OPTIONS]
+cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
 ```
 
 ## Examples
 
 ```bash
-download example.com
+cli download example.com
 ```
 ```bash
-download example.com ./output -f
+cli download example.com ./output -f
 ```
 
 ## Arguments
@@ -34,6 +34,10 @@ URL to download from
 #### *TARGET*
 
 Target filename (default: same as source)
+
+#### *AWS PARAMS...*
+
+Additional arguments or flags for AWS CLI
 
 ## Options
 

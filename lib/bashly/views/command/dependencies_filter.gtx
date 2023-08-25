@@ -7,7 +7,7 @@ if dependencies.any?
     > else
     >   printf "{{ strings[:missing_dependency] % { dependency: dependency.name } }}\n" >&2
     if dependency.help
-      >   printf "%s\n" "{{ dependency.help }}" >&2
+      >   printf "%s\n" "{{ dependency.help.sanitize_for_print }}" >&2
     end
     >   exit 1
     > fi

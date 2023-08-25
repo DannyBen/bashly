@@ -1,12 +1,16 @@
 # docker image
 
-**Alias:** i*
-
 Image commands
+
+| Attributes       | &nbsp;
+|------------------|-------------
+| Alias:           | i*
 
 ## Usage
 
-`docker image COMMAND`
+```bash
+docker image COMMAND
+```
 
 ## Commands
 

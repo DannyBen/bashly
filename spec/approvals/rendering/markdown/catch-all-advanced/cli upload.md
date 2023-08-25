@@ -1,14 +1,14 @@
-# docker image ls
+# cli upload
 
-Show all images
+Upload a file
 
 | Attributes       | &nbsp;
 |------------------|-------------
-| Alias:           | l
+| Alias:           | u
 
 ## Usage
 
 ```bash
-docker image ls
+cli upload FILES...
 ```
 

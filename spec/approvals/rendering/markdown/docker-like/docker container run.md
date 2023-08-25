@@ -4,12 +4,17 @@ Run a container
 
 ## Usage
 
-`docker container run IMAGE`
+```bash
+docker container run IMAGE
+```
 
 ## Arguments
 
-<dl>
-  <dt>image</dt>
-  <dd>Image name</dd>
-</dl>
+#### *IMAGE*
+
+Image name
+
+| Attributes      | &nbsp;
+|-----------------|-------------
+| Required:       | ✓ Yes
 

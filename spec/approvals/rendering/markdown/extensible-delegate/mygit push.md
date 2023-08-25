@@ -1,14 +1,14 @@
-# docker image ls
+# mygit push
 
-Show all images
+Push to my repository
 
 | Attributes       | &nbsp;
 |------------------|-------------
-| Alias:           | l
+| Alias:           | p
 
 ## Usage
 
 ```bash
-docker image ls
+mygit push
 ```
 

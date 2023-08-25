@@ -27,7 +27,7 @@ if catch_all.enabled?
   >       ;;
 
 else
-  >       printf "<%= strings[:invalid_flag] %>\n" "$key" >&2
+  >       printf "{{ strings[:invalid_flag] }}\n" "$key" >&2
   >       exit 1
   >       ;;
 

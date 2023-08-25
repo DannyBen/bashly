@@ -1,6 +1,6 @@
-# docker image ls
+# mygit pull
 
-Show all images
+Pull from my repository
 
 | Attributes       | &nbsp;
 |------------------|-------------
@@ -9,6 +9,6 @@ Show all images
 ## Usage
 
 ```bash
-docker image ls
+mygit pull
 ```
 

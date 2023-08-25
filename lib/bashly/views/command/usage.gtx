@@ -4,7 +4,7 @@
 >   if [[ -n $long_usage ]]; then
 
 if summary == help
-  >     printf "{{ caption_string }}\n"
+  >     printf "{{ caption_string.sanitize_for_print }}\n"
   >     echo 
 else
   >     printf "{{ full_name }}\n"
@@ -14,7 +14,7 @@ else
 end
 
 >   else
->     printf "{{ caption_string }}\n"
+>     printf "{{ caption_string.sanitize_for_print }}\n"
 >     echo 
 >   fi
 > 

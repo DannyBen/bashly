@@ -2,20 +2,36 @@
 
 > # {{ full_name }}
 >
+> {{ help.for_markdown }}
+>
 
-if alt.any?
-  > **Alias:** {{ alt.join ', ' }}
+attributes = version || alt.any? || default || extensible
+
+if attributes
+  > | Attributes       | &nbsp;
+  > |------------------|-------------
+  if version
+    > | Version:         | {{ version }}
+  end
+  if alt.any?
+    > | Alias:           | {{ alt.join ', ' }}
+  end
+  if default
+    > | Default Command: | ✓ Yes
+  end
+  if extensible
+    > | Extensible:      | {{ extensible.is_a?(String) ? extensible : "✓ Yes" }}
+  end
   >
 end
-
-> {{ help }}
->
 
 # === Usage
 
 > ## Usage
 >
-> `{{ usage_string }}`
+> ```bash
+> {{ usage_string.for_markdown }}
+> ```
 >
 
 # === Examples
@@ -24,7 +40,9 @@ if examples
   > ## Examples
   >
   examples.each do |example|
-    > - `{{ example }}`
+    > ```bash
+    > {{ example }}
+    > ```
   end
   >
 end
@@ -35,23 +53,38 @@ if dependencies.any?
   > ## Dependencies
   >
   dependencies.each do |dependency|
-    > - {{ dependency.commands.join ' or ' }}
+    > #### *{{ dependency.commands.join ', ' }}*
+    >
+    > {{ dependency.help&.for_markdown }}
+    >
   end
-  >
 end
 
 # === Environment Variables
 
-if environment_variables.any?
+if public_environment_variables.any?
   > ## Environment Variables
   >
-  = "<dl>"
-  environment_variables.each do |environment_variable|
-    = "  <dt>#{environment_variable.usage_string}</dt>"
-    = "  <dd>#{environment_variable.help}</dd>"
+  public_environment_variables.each do |environment_variable|
+    attributes = environment_variable.required || environment_variable.default
+
+    > #### *{{ environment_variable.name.upcase }}*
+    >
+    > {{ environment_variable.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if environment_variable.required
+        > | Required:       | ✓ Yes
+      end
+      if environment_variable.default
+        > | Default Value:  | {{ environment_variable.default }}
+      end
+      >
+    end
   end
-  = "</dl>"
-  >
 end
 
 # === Commands
@@ -61,7 +94,7 @@ if commands.any?
     > ## {{ group.gsub(/:$/, '') }}
     >
     commands.each do |subcommand|
-      > - [{{ subcommand.name }}]({{ subcommand.full_name }}) - {{ subcommand.summary }}
+      > - [{{ subcommand.name }}]({{ subcommand.full_name }}) - {{ subcommand.summary.for_markdown }}
     end
     >
   end
@@ -72,13 +105,44 @@ end
 if args.any?
   > ## Arguments
   >
-  = "<dl>"
   args.each do |arg|
-    = "  <dt>#{arg.name}</dt>"
-    = "  <dd>#{arg.help}</dd>"
+    attributes = arg.required || arg.repeatable || arg.default || arg.allowed
+
+    > #### *{{ arg.name.upcase }}*
+    >
+    > {{ arg.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if arg.required
+        > | Required:       | ✓ Yes
+      end
+      if arg.repeatable
+        > | Repeatable:     |  ✓ Yes
+      end
+      if arg.default
+        > | Default Value:  | {{ arg.default }}
+      end
+      if arg.allowed
+        > | Allowed Values: | {{ arg.allowed.join(', ') }}
+      end
+      >
+    end
   end
-  = "</dl>"
-  >
+
+  if catch_all.label && catch_all.help
+    > #### *{{ catch_all.label }}*
+    >
+    > {{ catch_all.help&.for_markdown }}
+    >
+    if catch_all.required?
+      > | Attributes | &nbsp;
+      > |------------|-------------
+      > | Required:  | ✓ Yes
+    end
+  end
 end
 
 # === Flags
@@ -86,11 +150,33 @@ end
 if flags.any?
   > ## Options
   >
-  = "<dl>"
   flags.each do |flag|
-    = "  <dt>#{flag.usage_string extended: true}</dt>"
-    = "  <dd>#{flag.help}</dd>"
+    attributes = flag.required || flag.repeatable || flag.default || flag.allowed || flag.conflicts
+
+    > #### *{{ flag.usage_string }}*
+    >
+    > {{ flag.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if flag.required
+        > | Required:       | ✓ Yes
+      end
+      if flag.repeatable
+        > | Repeatable:     |  ✓ Yes
+      end
+      if flag.default
+        > | Default Value:  | {{ flag.default }}
+      end
+      if flag.allowed
+        > | Allowed Values: | {{ flag.allowed.join(', ') }}
+      end
+      if flag.conflicts
+        > | Conflicts With: | *{{ flag.conflicts.join(', ') }}*
+      end
+      >
+    end
   end
-  = "</dl>"
-  >
 end

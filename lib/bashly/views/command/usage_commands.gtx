@@ -7,9 +7,9 @@ command_help_data.each do |group, commands|
 
   commands.each do |command, info|
     if info[:help_only]
-      > [[ -n $long_usage ]] && printf "  %s   {{ info[:summary] }}\n" "{{ command.ljust(maxlen).color(:command) }}"
+      > [[ -n $long_usage ]] && printf "  %s   {{ info[:summary].sanitize_for_print }}\n" "{{ command.ljust(maxlen).color(:command) }}"
     else
-      > printf "  %s   {{ info[:summary] }}\n" "{{ command.ljust(maxlen).color(:command) }}"
+      > printf "  %s   {{ info[:summary].sanitize_for_print }}\n" "{{ command.ljust(maxlen).color(:command) }}"
     end
   end
 
