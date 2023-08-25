@@ -1,4 +1,14 @@
 # render script - mandoc
+#
+# You may set the environment variable PREVIEW to the full command you wich 
+# to preview while generating. For example:
+#
+#   PREVIEW="cli download" bashly render :mandoc docs --watch
+#
+# Alternatively, view any of the man pages with man:
+#
+#   man docs/cli.1
+#
 
 # Load the GTX template
 template = "#{source}/mandoc.gtx"

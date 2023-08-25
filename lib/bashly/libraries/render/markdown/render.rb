@@ -1,4 +1,11 @@
 # render script - markdown
+#
+# In order to preview your markdown files, you can use the madness markdown
+# server <https://madness.dannyb.co/>:
+#
+#   $ gem install madness
+#   $ madness server docs
+#
 
 # Load the GTX template
 template = "#{source}/markdown.gtx"
