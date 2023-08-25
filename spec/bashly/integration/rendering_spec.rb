@@ -4,7 +4,13 @@ describe 'rendering templates' do
   subject { Commands::Render.new }
 
   target = 'spec/tmp'
-  examples = %w[docker-like minimal]
+  examples = %w[
+    catch-all-advanced
+    dependencies-alt
+    docker-like
+    extensible-delegate
+    minimal
+  ]
 
   # Allow up to a certain string distance from the approval text in CI
   leeway = ENV['CI'] ? 20 : 0
