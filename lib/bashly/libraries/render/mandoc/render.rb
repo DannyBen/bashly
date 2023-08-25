@@ -11,8 +11,8 @@ save_manpage = lambda { |command|
   save mdfile, gtx.parse(command)
 
   cmd = %[pandoc -f markdown-smart -s --to man "#{mdfile}" > "#{manfile}"]
-  
-  success = system "#{cmd}"
+
+  success = system cmd
   raise "Failed running pandoc\nMake sure the following command succeeds and try again:\n\n  #{cmd}" unless success
 
   say "g`saved` #{manfile}"

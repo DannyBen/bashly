@@ -15,6 +15,14 @@ describe String do
     end
   end
 
+  describe '#for_manpage' do
+    subject { "line one\n`line two` is <tagged>\n" }
+
+    it 'doubles newlines, escapes < > characters and converts ` => **' do
+      expect(subject.for_manpage).to eq "line one\n\n**line two** is \\<tagged\\>\n\n"
+    end
+  end
+
   describe '#nl2br' do
     subject { "line one\nline two" }
 
@@ -75,6 +83,31 @@ describe String do
 
       it 'returns its snake_case version' do
         expect(subject.to_underscore).to eq 'in_any_case'
+      end
+    end
+  end
+
+  describe '#to_hyphen' do
+    subject { 'Some String' }
+
+    it 'does not mutate the source' do
+      subject.to_hyphen
+      expect(subject).to eq 'Some String'
+    end
+
+    context 'with CamelCased argument' do
+      subject { 'NotCamelCase' }
+
+      it 'returns its hyphen case version' do
+        expect(subject.to_hyphen).to eq 'not-camel-case'
+      end
+    end
+
+    context 'with any string with spaces and hyphens' do
+      subject { 'In Any-case' }
+
+      it 'returns its snake_case version' do
+        expect(subject.to_hyphen).to eq 'in-any-case'
       end
     end
   end
