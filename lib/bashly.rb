@@ -18,42 +18,42 @@ module Bashly
   autoload :MessageStrings, 'bashly/message_strings'
   autoload :VERSION, 'bashly/version'
 
-  autoload :AssetHelper, "bashly/concerns/asset_helper"
-  autoload :Completions, "bashly/concerns/completions"
-  autoload :ComposeRefinements, "bashly/refinements/compose_refinements"
-  autoload :Renderable, "bashly/concerns/renderable"
-  autoload :Settings, "bashly/settings"
-  autoload :ValidationHelpers, "bashly/concerns/validation_helpers"
+  autoload :AssetHelper, 'bashly/concerns/asset_helper'
+  autoload :Completions, 'bashly/concerns/completions'
+  autoload :ComposeRefinements, 'bashly/refinements/compose_refinements'
+  autoload :Renderable, 'bashly/concerns/renderable'
+  autoload :Settings, 'bashly/settings'
+  autoload :ValidationHelpers, 'bashly/concerns/validation_helpers'
 
   module Script
-    autoload :Argument, "bashly/script/argument"
-    autoload :Base, "bashly/script/base"
-    autoload :CatchAll, "bashly/script/catch_all"
-    autoload :Command, "bashly/script/command"
-    autoload :Dependency, "bashly/script/dependency"
-    autoload :EnvironmentVariable, "bashly/script/environment_variable"
-    autoload :Flag, "bashly/script/flag"
-    autoload :Wrapper, "bashly/script/wrapper"
+    autoload :Argument, 'bashly/script/argument'
+    autoload :Base, 'bashly/script/base'
+    autoload :CatchAll, 'bashly/script/catch_all'
+    autoload :Command, 'bashly/script/command'
+    autoload :Dependency, 'bashly/script/dependency'
+    autoload :EnvironmentVariable, 'bashly/script/environment_variable'
+    autoload :Flag, 'bashly/script/flag'
+    autoload :Wrapper, 'bashly/script/wrapper'
   end
 
   module Commands
-    autoload :Add, "bashly/commands/add"
-    autoload :Base, "bashly/commands/base"
-    autoload :Completions, "bashly/commands/completions"
-    autoload :Doc, "bashly/commands/doc"
-    autoload :Generate, "bashly/commands/generate"
-    autoload :Init, "bashly/commands/init"
-    autoload :Preview, "bashly/commands/preview"
-    autoload :Render, "bashly/commands/render"
-    autoload :Shell, "bashly/commands/shell"
-    autoload :Validate, "bashly/commands/validate"
+    autoload :Add, 'bashly/commands/add'
+    autoload :Base, 'bashly/commands/base'
+    autoload :Completions, 'bashly/commands/completions'
+    autoload :Doc, 'bashly/commands/doc'
+    autoload :Generate, 'bashly/commands/generate'
+    autoload :Init, 'bashly/commands/init'
+    autoload :Preview, 'bashly/commands/preview'
+    autoload :Render, 'bashly/commands/render'
+    autoload :Shell, 'bashly/commands/shell'
+    autoload :Validate, 'bashly/commands/validate'
   end
 
   module Libraries
-    autoload :Base, "bashly/libraries/base"
-    autoload :CompletionsFunction, "bashly/libraries/completions/completions_function"
-    autoload :CompletionsScript, "bashly/libraries/completions/completions_script"
-    autoload :CompletionsYAML, "bashly/libraries/completions/completions_yaml"
-    autoload :Help, "bashly/libraries/help/help"
+    autoload :Base, 'bashly/libraries/base'
+    autoload :CompletionsFunction, 'bashly/libraries/completions/completions_function'
+    autoload :CompletionsScript, 'bashly/libraries/completions/completions_script'
+    autoload :CompletionsYAML, 'bashly/libraries/completions/completions_yaml'
+    autoload :Help, 'bashly/libraries/help/help'
   end
 end

@@ -1,5 +1,5 @@
-# This spec tests that the rendering using `views-alt` templates is generating
-# the expected output.
+# This spec tests that the rendering using the libraries/render templates
+# is generating the expected output.
 describe 'rendering templates' do
   subject { Commands::Render.new }
 

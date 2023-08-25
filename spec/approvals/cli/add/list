@@ -30,6 +30,10 @@ lib
   Note that if you configured a different partials_extension, then the
   extensions of the files in this directory need to match.
 
+render_markdown
+  Copy the markdown templates to your project, allowing you to customize the
+  markdown documentation output.
+
 settings
   Copy a sample settings.yml file to your project, allowing you to customize
   some bashly options.
