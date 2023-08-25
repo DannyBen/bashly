@@ -66,6 +66,7 @@ Bashly is responsible for:
   - Standard flags (like **--help** and **--version**).
 - Preventing your script from running unless the command line is valid.
 - Providing you with a place to input your code for each of the functions your tool performs, and merging it back to the final script.
+- Providing you with the ability to render markdown or man documentation for your script.
 - Providing you with additional (optional) framework-style, standard library functions:
   - **Color output**.
   - **Config file management** (INI format).
