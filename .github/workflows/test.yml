@@ -20,6 +20,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    # Rush needed for easy installation of stuff
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Connect rush repo
+      run: rush clone dannyben --shallow --default
+
+    - name: Install pandoc
+      run: rush get pandoc
+
     # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
       run: sudo apt-get -y install libyaml-dev
