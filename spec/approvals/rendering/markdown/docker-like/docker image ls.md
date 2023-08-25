@@ -1,10 +1,14 @@
 # docker image ls
 
-**Alias:** l
-
 Show all images
+
+| Attributes       | &nbsp;
+|------------------|-------------
+| Alias:           | l
 
 ## Usage
 
-`docker image ls`
+```bash
+docker image ls
+```
 

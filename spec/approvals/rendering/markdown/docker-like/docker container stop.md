@@ -4,12 +4,17 @@ Stop a container
 
 ## Usage
 
-`docker container stop CONTAINER`
+```bash
+docker container stop CONTAINER
+```
 
 ## Arguments
 
-<dl>
-  <dt>container</dt>
-  <dd>Container name</dd>
-</dl>
+#### *CONTAINER*
+
+Container name
+
+| Attributes      | &nbsp;
+|-----------------|-------------
+| Required:       | ✓ Yes
 

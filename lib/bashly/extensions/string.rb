@@ -1,6 +1,14 @@
 class String
   def sanitize_for_print
-    gsub("\n", '\\n').gsub('"', '\"')
+    gsub("\n", '\\n').gsub('"', '\"').gsub('`', '\\\\`')
+  end
+
+  def for_markdown
+    gsub('<', '\\<').gsub('>', '\\>').nl2br
+  end
+
+  def nl2br
+    gsub("\n", "<br>\n")
   end
 
   def indent(offset)

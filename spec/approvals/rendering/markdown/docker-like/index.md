@@ -2,9 +2,15 @@
 
 Docker example
 
+| Attributes       | &nbsp;
+|------------------|-------------
+| Version:         | 0.1.0
+
 ## Usage
 
-`docker [OPTIONS] COMMAND`
+```bash
+docker [OPTIONS] COMMAND
+```
 
 ## Commands
 
@@ -14,8 +20,7 @@ Docker example
 
 ## Options
 
-<dl>
-  <dt>--debug, -d</dt>
-  <dd>Enable debug mode</dd>
-</dl>
+#### *--debug, -d*
+
+Enable debug mode
 

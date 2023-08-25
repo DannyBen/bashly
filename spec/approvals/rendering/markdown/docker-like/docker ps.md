@@ -4,12 +4,13 @@ List containers
 
 ## Usage
 
-`docker ps [OPTIONS]`
+```bash
+docker ps [OPTIONS]
+```
 
 ## Options
 
-<dl>
-  <dt>--all, -a</dt>
-  <dd>Show all containers</dd>
-</dl>
+#### *--all, -a*
+
+Show all containers
 

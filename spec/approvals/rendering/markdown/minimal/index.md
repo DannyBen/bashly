@@ -2,28 +2,42 @@
 
 Sample minimal application without commands
 
+| Attributes       | &nbsp;
+|------------------|-------------
+| Version:         | 0.1.0
+
 ## Usage
 
-`download SOURCE [TARGET] [OPTIONS]`
+```bash
+download SOURCE [TARGET] [OPTIONS]
+```
 
 ## Examples
 
-- `download example.com`
-- `download example.com ./output -f`
+```bash
+download example.com
+```
+```bash
+download example.com ./output -f
+```
 
 ## Arguments
 
-<dl>
-  <dt>source</dt>
-  <dd>URL to download from</dd>
-  <dt>target</dt>
-  <dd>Target filename (default: same as source)</dd>
-</dl>
+#### *SOURCE*
+
+URL to download from
+
+| Attributes      | &nbsp;
+|-----------------|-------------
+| Required:       | ✓ Yes
+
+#### *TARGET*
+
+Target filename (default: same as source)
 
 ## Options
 
-<dl>
-  <dt>--force, -f</dt>
-  <dd>Overwrite existing files</dd>
-</dl>
+#### *--force, -f*
+
+Overwrite existing files
 
