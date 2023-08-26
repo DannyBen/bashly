@@ -3,11 +3,11 @@
     "definitions": {
         "custom-properties": {
             "patternProperties": {
-                "^x-.": {
+                "^x_.": {
                     "title": "custom property",
                     "description": "A custom property of any type",
                     "examples": [
-                        "This command shows the status of all `images`, `containers` and `volumes`. Use with `--verbose` to see deleted containers."
+                        "Anything"
                     ]
                 }
             }

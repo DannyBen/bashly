@@ -25,6 +25,12 @@ describe Script::Base do
         expect { subject.no_such_option }.to raise_error(NoMethodError)
       end
     end
+
+    context 'when the method starts with x_ and does not exist' do
+      it 'returns nil' do
+        expect(subject.x_no_such_option).to be_nil
+      end
+    end
   end
 
   describe '#optional' do
