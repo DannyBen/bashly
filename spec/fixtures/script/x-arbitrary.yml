@@ -1,0 +1,29 @@
+name: docker
+x-string: hello
+x-hash: { key: value }
+x-array: [1, 2]
+x-int: 1
+x-float: 1.2
+x-boolean: yes
+x-nil: ~
+
+environment_variables:
+- name: rush_config
+  x-any: hello
+
+commands:
+- name: status
+  x-any: hello
+
+  args:
+  - name: repo
+    x-any: hello
+
+  flags:
+  - long: --purge
+    x-any: hello
+
+- name: images
+  commands:
+  - name: ls
+    x-any: hello

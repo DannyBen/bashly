@@ -117,10 +117,4 @@ jobs:
       run: bundle exec run examples regen
 
     - name: Run bashly schema tests
-      run: bundle exec run schema examples
-
-    - name: Run settings schema tests
-      run: bundle exec run schema settings
-
-    - name: Run strings schema tests
-      run: bundle exec run schema strings
+      run: bundle exec run schema all
