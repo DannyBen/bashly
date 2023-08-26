@@ -17,10 +17,10 @@ args:
 - name: source
   required: true
   allowed: [server1, server2]
-  repeatable: true
   help: Source to download from
 - name: target
   help: "Target filename (default: same as source)"
+  repeatable: true
 
 flags:
 - long: --force

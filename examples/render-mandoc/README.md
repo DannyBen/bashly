@@ -35,10 +35,10 @@ args:
 - name: source
   required: true
   allowed: [server1, server2]
-  repeatable: true
   help: Source to download from
 - name: target
   help: "Target filename (default: same as source)"
+  repeatable: true
 
 flags:
 - long: --force
@@ -62,32 +62,34 @@ NAME
        download - Sample application
 
 SYNOPSIS
-       download SOURCE...  [TARGET] OPTIONS
+       download SOURCE [TARGET...]  OPTIONS
 
 DESCRIPTION
        Sample application
 
 ARGUMENTS
-       SOURCE Source to download from
+   SOURCE
+       Source to download from
 
-              • Required
+       • Required
 
-              • Repeatable
+       • Allowed Values: server1, server2
 
-              • Allowed Values: server1, server2
+   TARGET
+       Target filename (default: same as source)
 
-       TARGET Target filename (default: same as source)
+       • Repeatable
 
 OPTIONS
-       --force, -f
-              Overwrite existing files
+   --force, -f
+       Overwrite existing files
 
-       --debug, -d
-              Show debug information
+   --debug, -d
+       Show debug information
 
 DEPENDENCIES
-       aws-cli
-              Download from <https://aws.amazon.com/cli/>
+   aws-cli
+       Download from <https://aws.amazon.com/cli/>
 
 ISSUE TRACKER
        Report issues at <https://github.com/lanalang/smallville>

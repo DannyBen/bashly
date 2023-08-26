@@ -1,11 +1,12 @@
 # Reference: https://linux.die.net/man/5/pandoc_markdown
 
 if version
-> % {{ full_name.to_hyphen }}(1) Version {{ version }} | {{ summary }}
+  > % {{ full_name.to_hyphen }}(1) Version {{ version }} | {{ summary }}
 else
-> % {{ full_name.to_hyphen }}(1) | {{ summary }}
+  > % {{ full_name.to_hyphen }}(1) | {{ summary }}
 end
-> % {{ x_mandoc_authors }}
+
+> % {{ x_mandoc_authors&.for_manpage }}
 > % {{ Date.today.strftime "%B %Y" }}
 >
 
@@ -48,8 +49,10 @@ if public_commands.any?
     > ==================================================
     >
     commands.each do |subcommand|
-      > **{{ subcommand.full_name }}**(1)
-      > :    {{ subcommand.summary.for_manpage }}
+      > {{ subcommand.full_name }}
+      > --------------------------------------------------
+      >
+      > {{ subcommand.summary.for_manpage }}
       >
     end
     >
@@ -61,34 +64,38 @@ if args.any?
   > ==================================================
   > 
   args.each do |arg|
-    > **{{ arg.name.upcase }}**
-    > :{{ arg.help.for_manpage.indent(4) }}
+    > {{ arg.name.upcase }}
+    > --------------------------------------------------
+    >
+    > {{ arg.help.for_manpage }}
     >
     if arg.required
-      >      - *Required*
+      > - *Required*
     end
     if arg.repeatable
-      >      - *Repeatable*
+      > - *Repeatable*
     end
     if arg.default
-      >      - Default Value: **{{ arg.default }}**
+      > - Default Value: **{{ arg.default }}**
     end
     if arg.allowed
-      >      - Allowed Values: **{{ arg.allowed.join(', ') }}**
-    end
+      > - Allowed Values: **{{ arg.allowed.join(', ') }}**
+    end    
     >
   end
 
   if catch_all.label && catch_all.help
-    > **{{ catch_all.label }}**
+    > {{ catch_all.label }}
+    > --------------------------------------------------
+    >
     if catch_all.help
-      > :{{ catch_all.help.for_manpage.indent(4) }}
+      > {{ catch_all.help.for_manpage }}
       >
     end
     >
 
     if catch_all.required?
-      >      - *Required*
+      > - *Required*
       >
     end
   end
@@ -99,24 +106,26 @@ if flags.any?
   > ==================================================
   > 
   flags.each do |flag|
-    > **{{ flag.usage_string }}**
-    > :{{ flag.help.for_manpage.indent(4) }}
+    > {{ flag.usage_string }}
+    > --------------------------------------------------
+    >
+    > {{ flag.help.for_manpage }}
     >
 
     if flag.required
-      >      - *Required*
+      > - *Required*
     end
     if flag.repeatable
-      >      - *Repeatable*
+      > - *Repeatable*
     end
     if flag.default
-      >      - Default Value: **{{ flag.default }}**
+      > - Default Value: **{{ flag.default }}**
     end
     if flag.allowed
-      >      - Allowed Values: **{{ flag.allowed.join(', ') }}**
+      > - Allowed Values: **{{ flag.allowed.join(', ') }}**
     end
     if flag.conflicts
-      >      - Conflicts With: **{{ flag.conflicts.join(', ') }}**
+      > - Conflicts With: **{{ flag.conflicts.join(', ') }}**
     end
     >
   end
@@ -127,9 +136,11 @@ if dependencies.any?
   > ==================================================
   >
   dependencies.each do |dependency|
-    > **{{ dependency.commands.join ', ' }}**
+    > {{ dependency.commands.join ', ' }}
+    > --------------------------------------------------
+    >
     if dependency.help
-      > :{{ dependency.help.for_manpage.indent(4) }}
+      > {{ dependency.help.for_manpage }}
       >
     end
     >
@@ -141,16 +152,17 @@ if public_environment_variables.any?
   > ==================================================
   >
   public_environment_variables.each do |environment_variable|
-    > **{{ environment_variable.name.upcase }}**
+    > {{ environment_variable.name.upcase }}
+    > --------------------------------------------------
     >
-    > :{{ environment_variable.help.for_manpage.indent(4) }}
+    > {{ environment_variable.help.for_manpage }}
     >
 
     if environment_variable.required
-      >      - *Required*
+      > - *Required*
     end
     if environment_variable.default
-      >      - Default Value: **{{ environment_variable.default }}**
+      > - Default Value: **{{ environment_variable.default }}**
     end
     >
   end
@@ -177,5 +189,5 @@ if public_commands.any?
   >
 end
 
-= x_mandoc_footer
+= x_mandoc_footer&.for_manpage
 >

@@ -22,11 +22,15 @@ Container commands
 COMMANDS
 ==================================================
 
-**docker container run**(1)
-:    Run a container
+docker container run
+--------------------------------------------------
 
-**docker container stop**(1)
-:    Stop a container
+Run a container
+
+docker container stop
+--------------------------------------------------
+
+Stop a container
 
 
 SEE ALSO

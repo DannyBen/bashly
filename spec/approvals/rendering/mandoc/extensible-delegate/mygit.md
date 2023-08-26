@@ -22,11 +22,15 @@ Sample application that delegates unknown commands to a different executable
 COMMANDS
 ==================================================
 
-**mygit push**(1)
-:    Push to my repository
+mygit push
+--------------------------------------------------
 
-**mygit pull**(1)
-:    Pull from my repository
+Push to my repository
+
+mygit pull
+--------------------------------------------------
+
+Pull from my repository
 
 
 SEE ALSO

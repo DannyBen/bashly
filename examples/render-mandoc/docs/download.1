@@ -21,36 +21,34 @@
 \f[B]download\f[R] - Sample application
 .SH SYNOPSIS
 .PP
-\f[B]download\f[R] SOURCE...
-[TARGET] OPTIONS
+\f[B]download\f[R] SOURCE [TARGET...]
+OPTIONS
 .SH DESCRIPTION
 .PP
 Sample application
 .SH ARGUMENTS
-.TP
-\f[B]SOURCE\f[R]
+.SS SOURCE
+.PP
 Source to download from
-.RS
 .IP \[bu] 2
 \f[I]Required\f[R]
 .IP \[bu] 2
-\f[I]Repeatable\f[R]
-.IP \[bu] 2
 Allowed Values: \f[B]server1, server2\f[R]
-.RE
-.TP
-\f[B]TARGET\f[R]
+.SS TARGET
+.PP
 Target filename (default: same as source)
+.IP \[bu] 2
+\f[I]Repeatable\f[R]
 .SH OPTIONS
-.TP
-\f[B]--force, -f\f[R]
+.SS --force, -f
+.PP
 Overwrite existing files
-.TP
-\f[B]--debug, -d\f[R]
+.SS --debug, -d
+.PP
 Show debug information
 .SH DEPENDENCIES
-.TP
-\f[B]aws-cli\f[R]
+.SS aws-cli
+.PP
 Download from <https://aws.amazon.com/cli/>
 .SH ISSUE TRACKER
 .PP

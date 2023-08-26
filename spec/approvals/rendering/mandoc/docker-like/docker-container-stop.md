@@ -21,9 +21,11 @@ Stop a container
 ARGUMENTS
 ==================================================
 
-**CONTAINER**
-:    Container name
+CONTAINER
+--------------------------------------------------
 
-     - *Required*
+Container name
+
+- *Required*
 
 

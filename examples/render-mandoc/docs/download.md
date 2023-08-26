@@ -10,7 +10,7 @@ NAME
 SYNOPSIS
 ==================================================
 
-**download** SOURCE... [TARGET] [OPTIONS]
+**download** SOURCE [TARGET...] [OPTIONS]
 
 DESCRIPTION
 ==================================================
@@ -21,35 +21,47 @@ Sample application
 ARGUMENTS
 ==================================================
 
-**SOURCE**
-:    Source to download from
+SOURCE
+--------------------------------------------------
 
-     - *Required*
-     - *Repeatable*
-     - Allowed Values: **server1, server2**
+Source to download from
 
-**TARGET**
-:    Target filename (default: same as source)
+- *Required*
+- Allowed Values: **server1, server2**
 
+TARGET
+--------------------------------------------------
+
+Target filename (default: same as source)
+
+- *Repeatable*
 
 OPTIONS
 ==================================================
 
-**--force, -f**
-:    Overwrite existing files
+--force, -f
+--------------------------------------------------
+
+Overwrite existing files
 
 
-**--debug, -d**
-:    Show debug information
+--debug, -d
+--------------------------------------------------
+
+Show debug information
 
 
 DEPENDENCIES
 ==================================================
 
-**aws-cli**
-:    Download from \<https://aws.amazon.com/cli/\>
+aws-cli
+--------------------------------------------------
+
+Download from \<https://aws.amazon.com/cli/\>
 
 
 # ISSUE TRACKER
 
-Report issues at <https://github.com/lanalang/smallville>
+
+
+Report issues at \<https://github.com/lanalang/smallville\>

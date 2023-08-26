@@ -21,21 +21,29 @@ Docker example
 COMMANDS
 ==================================================
 
-**docker container**(1)
-:    Container commands
+docker container
+--------------------------------------------------
 
-**docker image**(1)
-:    Image commands
+Container commands
 
-**docker ps**(1)
-:    List containers
+docker image
+--------------------------------------------------
+
+Image commands
+
+docker ps
+--------------------------------------------------
+
+List containers
 
 
 OPTIONS
 ==================================================
 
-**--debug, -d**
-:    Enable debug mode
+--debug, -d
+--------------------------------------------------
+
+Enable debug mode
 
 
 SEE ALSO

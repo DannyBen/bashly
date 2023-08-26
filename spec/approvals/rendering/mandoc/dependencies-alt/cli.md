@@ -21,8 +21,10 @@ Sample application that requires alternate dependencies
 COMMANDS
 ==================================================
 
-**cli download**(1)
-:    Download something
+cli download
+--------------------------------------------------
+
+Download something
 
 
 SEE ALSO

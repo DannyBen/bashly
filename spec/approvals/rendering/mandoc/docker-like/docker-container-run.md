@@ -21,9 +21,11 @@ Run a container
 ARGUMENTS
 ==================================================
 
-**IMAGE**
-:    Image name
+IMAGE
+--------------------------------------------------
 
-     - *Required*
+Image name
+
+- *Required*
 
 

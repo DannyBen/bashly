@@ -21,20 +21,26 @@ Sample minimal application without commands
 ARGUMENTS
 ==================================================
 
-**SOURCE**
-:    URL to download from
+SOURCE
+--------------------------------------------------
 
-     - *Required*
+URL to download from
 
-**TARGET**
-:    Target filename (default: same as source)
+- *Required*
+
+TARGET
+--------------------------------------------------
+
+Target filename (default: same as source)
 
 
 OPTIONS
 ==================================================
 
-**--force, -f**
-:    Overwrite existing files
+--force, -f
+--------------------------------------------------
+
+Overwrite existing files
 
 
 EXAMPLES

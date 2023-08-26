@@ -21,8 +21,10 @@ List containers
 OPTIONS
 ==================================================
 
-**--all, -a**
-:    Show all containers
+--all, -a
+--------------------------------------------------
+
+Show all containers
 
 
 

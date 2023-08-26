@@ -21,11 +21,15 @@ Sample application
 COMMANDS
 ==================================================
 
-**cli download**(1)
-:    Download a file
+cli download
+--------------------------------------------------
 
-**cli upload**(1)
-:    Upload a file
+Download a file
+
+cli upload
+--------------------------------------------------
+
+Upload a file
 
 
 SEE ALSO
