@@ -43,7 +43,7 @@ helpers do
 
   def check_arbitrary
     say "\ngub`Arbitrary`"
-    file = 'spec/fixtures/script/x-arbitrary.yml'
+    file = 'spec/fixtures/script/x_arbitrary.yml'
     schema_check file
   end
 
