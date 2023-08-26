@@ -1,11 +1,11 @@
-% download(1) Version 0.1.0 | Sample minimal application without commands
+% download(1) Version 0.1.0 | Sample application
 % Lana Lang
 % August 2023
 
 NAME
 ==================================================
 
-**download** - Sample minimal application without commands
+**download** - Sample application
 
 SYNOPSIS
 ==================================================
@@ -15,7 +15,7 @@ SYNOPSIS
 DESCRIPTION
 ==================================================
 
-Sample minimal application without commands
+Sample application
 
 
 ARGUMENTS
