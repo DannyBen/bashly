@@ -1,6 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "definitions": {
+        "custom-properties": {
+            "patternProperties": {
+                "^x-.": {
+                    "title": "custom property",
+                    "description": "A custom property of any type",
+                    "examples": [
+                        "This command shows the status of all `images`, `containers` and `volumes`. Use with `--verbose` to see deleted containers."
+                    ]
+                }
+            }
+        },
         "argument": {
             "title": "argument",
             "description": "A positional argument of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/argument/",
@@ -74,6 +85,7 @@
                     ]
                 }
             },
+            "$ref": "#/definitions/custom-properties",
             "additionalProperties": false
         },
         "flag": {
@@ -209,6 +221,7 @@
                     ]
                 }
             },
+            "$ref": "#/definitions/custom-properties",
             "additionalProperties": false
         },
         "name-property": {
@@ -405,6 +418,7 @@
                             "$ref": "#/definitions/environment-variables-required-property"
                         }
                     },
+                    "$ref": "#/definitions/custom-properties",
                     "additionalProperties": false
                 },
                 "else": {
@@ -422,6 +436,7 @@
                             "$ref": "#/definitions/environment-variables-required-property"
                         }
                     },
+                    "$ref": "#/definitions/custom-properties",
                     "additionalProperties": false
                 }
             }
@@ -779,6 +794,7 @@
                     "$ref": "#/definitions/sub-command-import-property"
                 }
             },
+            "$ref": "#/definitions/custom-properties",
             "additionalProperties": false
         }
     },
@@ -835,5 +851,6 @@
             "$ref": "#/definitions/function-property"
         }
     },
+    "$ref": "#/definitions/custom-properties",
     "additionalProperties": false
 }

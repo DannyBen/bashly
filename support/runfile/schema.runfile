@@ -1,30 +1,57 @@
 summary 'Run json-schema checks on all examples'
 
-help   'Test the bashly schema against all examples'
-action :examples do
-  Example.all.each do |example|
-    file = example.yaml_path
-    command = "check-jsonschema --schemafile schemas/bashly.json #{file}"
-    say "\n$ check-jsonschema bb`#{example.dir}`"
+help 'Run all the actions in this runfile'
+action :all do
+  check_examples
+  check_settings
+  check_strings
+  check_arbitrary
+end
+
+help 'Test the bashly schema against all examples'
+action(:examples) { check_examples }
+
+help 'Test the settings schema against the default settings template'
+action(:settings) { check_settings }
+
+help 'Test the strings schema against the default strings template'
+action(:strings) { check_strings }
+
+help 'Test the bashly schema against a bashly configuration that includes arbitrary (x-) keys'
+action(:arbitrary) { check_arbitrary }
+
+helpers do
+  def check_examples
+    say "\ngub`Examples`"
+    Example.all.each do |example|
+      file = example.yaml_path
+      schema_check file
+    end
+  end
+
+  def check_settings
+    say "\ngub`Settings`"
+    file = 'lib/bashly/libraries/settings/settings.yml'
+    schema_check file, :settings
+  end
+
+  def check_strings
+    say "\ngub`Strings`"
+    file = 'lib/bashly/libraries/strings/strings.yml'
+    schema_check file, :strings
+  end
+
+  def check_arbitrary
+    say "\ngub`Arbitrary`"
+    file = 'spec/fixtures/script/x-arbitrary.yml'
+    schema_check file
+  end
+
+  def schema_check(file, schema = 'bashly')
+    command = "check-jsonschema --schemafile schemas/#{schema}.json #{file}"
+    say "\nnb`$ check-jsonschema` [m`#{schema}`] bb`#{file}`"
     success = system command
+    
     abort 'Failed' unless success
   end
-end
-
-help   'Test the settings schema against the default settings template'
-action :settings do
-  file = 'lib/bashly/libraries/settings/settings.yml'
-  command = "check-jsonschema --schemafile schemas/settings.json #{file}"
-  say "\n$ check-jsonschema bb`#{file}`"
-  success = system command
-  abort 'Failed' unless success
-end
-
-help   'Test the strings schema against the default strings template'
-action :strings do
-  file = 'lib/bashly/libraries/strings/strings.yml'
-  command = "check-jsonschema --schemafile schemas/strings.json #{file}"
-  say "\n$ check-jsonschema bb`#{file}`"
-  success = system command
-  abort 'Failed' unless success
 end
