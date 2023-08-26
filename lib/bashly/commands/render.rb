@@ -1,5 +1,5 @@
 require 'filewatcher'
-require 'date'  # for use by templates
+require 'tty-markdown'
 
 module Bashly
   module Commands
@@ -7,29 +7,65 @@ module Bashly
       help 'Render the bashly data structure using cutsom templates'
 
       usage 'bashly render SOURCE TARGET [options]'
+      usage 'bashly render SOURCE --about'
+      usage 'bashly render --list'
       usage 'bashly render (-h|--help)'
 
       param 'SOURCE', <<~HELP
         An ID to an internal templates source, or a path to a custom templates directory.
 
-        A leading colon (:) denotes an internal ID.
-
-        Available IDs:
-        - :markdown - render markdown documents for each command.
-        - :mandoc - render man pages for each command.
+        A leading colon (:) denotes an internal ID (see `--list`).
       HELP
 
       param 'TARGET', 'Output directory'
 
       option '-w --watch', 'Watch bashly.yml and the templates source for changes and render on change'
+      option '-l --list', 'Show list of built-in templates'
+      option '-a --about', 'Show information about a given templates source'
 
+      example 'bashly render --list'
+      example 'bashly render :markdown --about'
       example 'bashly render :markdown docs --watch'
       example 'bashly render /path/to/templates ./out_path'
 
-      attr_reader :watching, :source, :target
+      attr_reader :watching, :target, :source
 
       def run
-        @source = source_path
+        if args['--list'] then show_list
+        elsif args['--about'] then show_about
+        else
+          start_render
+        end
+      end
+
+    private
+
+      def show_list
+        RenderSource.internal.each_value do |source|
+          say "g`:#{source.selector.to_s.ljust 10}`  #{source.summary}"
+        end
+      end
+
+      def show_about
+        puts TTY::Markdown.parse(render_source.readme)
+      end
+
+      def render_source
+        @render_source ||= begin
+          source = RenderSource.new selector
+          raise "Invalid render source: #{args['SOURCE']}" unless source.exist?
+
+          source
+        end
+      end
+
+      def selector
+        return args['SOURCE'] unless args['SOURCE'].start_with? ':'
+
+        args['SOURCE'][1..].to_sym
+      end
+
+      def start_render
         @target = args['TARGET']
         @watching = args['--watch']
 
@@ -37,60 +73,21 @@ module Bashly
         watch if watching
       end
 
-    private
-
-      # This method is the single DSL method for the render script
-      def save(filename, content)
-        File.deep_write filename, content
-        say "g`saved` #{filename}"
+      def render
+        render_source.render target
       end
 
       def watch
         say "g`watching`\n"
 
         Filewatcher.new(watchables).watch do
-          reset
           render
-        rescue Bashly::ConfigurationError => e
-          say! "rib` #{e.class} `\n#{e.message}"
-        ensure
           say "g`waiting`\n"
         end
       end
 
-      def render
-        with_valid_config { instance_eval render_script }
-      end
-
-      def reset
-        @config = nil
-        @config_validator = nil
-        @command = nil
-      end
-
-      def command
-        @command ||= Script::Command.new config
-      end
-
       def watchables
-        @watchables ||= [Settings.config_path, source]
-      end
-
-      def source_path
-        result = args['SOURCE']
-
-        if result.start_with? ':'
-          id = result[1..]
-          result = asset "libraries/render/#{id}"
-        end
-
-        return result if Dir.exist? result
-
-        raise "Invalid source.\nDirectory not found: #{result}"
-      end
-
-      def render_script
-        @render_script ||= File.read "#{source}/render.rb"
+        @watchables ||= [Settings.config_path, args['SOURCE']]
       end
     end
   end

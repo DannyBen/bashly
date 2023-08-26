@@ -16,6 +16,8 @@ module Bashly
   autoload :Library, 'bashly/library'
   autoload :LibrarySource, 'bashly/library_source'
   autoload :MessageStrings, 'bashly/message_strings'
+  autoload :RenderContext, 'bashly/render_context'
+  autoload :RenderSource, 'bashly/render_source'
   autoload :VERSION, 'bashly/version'
 
   autoload :AssetHelper, 'bashly/concerns/asset_helper'

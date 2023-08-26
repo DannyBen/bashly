@@ -1,0 +1,1 @@
+Render man pages for your script
