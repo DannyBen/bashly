@@ -41,6 +41,7 @@ module Bashly
       return unless keys
 
       invalid_keys = value.keys.map(&:to_sym) - keys
+      invalid_keys.reject! { |key| key.start_with? 'x-' }
       assert invalid_keys.empty?, "#{key} contains invalid options: #{invalid_keys.join ', '}"
     end
 
