@@ -21,6 +21,7 @@ help: Sample application
 version: 0.1.0
 
 # Optional, custom properties that are used by the mandoc renderer
+# Run `bashly render :mandoc --about` for more info.
 x_mandoc_authors: Lana Lang
 x_mandoc_footer: |-
   # ISSUE TRACKER
@@ -55,16 +56,16 @@ flags:
 ### `$ man docs/download.1 | col -bx`
 
 ```shell
-download(1)       Sample minimal application without commands      download(1)
+download(1)                   Sample application                   download(1)
 
 NAME
-       download - Sample minimal application without commands
+       download - Sample application
 
 SYNOPSIS
        download SOURCE...  [TARGET] OPTIONS
 
 DESCRIPTION
-       Sample minimal application without commands
+       Sample application
 
 ARGUMENTS
        SOURCE Source to download from
