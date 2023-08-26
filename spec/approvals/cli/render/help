@@ -2,11 +2,19 @@ Render the bashly data structure using cutsom templates
 
 Usage:
   bashly render SOURCE TARGET [options]
+  bashly render SOURCE --about
+  bashly render --list
   bashly render (-h|--help)
 
 Options:
   -w --watch
     Watch bashly.yml and the templates source for changes and render on change
+
+  -l --list
+    Show list of built-in templates
+
+  -a --about
+    Show information about a given templates source
 
   -h --help
     Show this help
@@ -16,15 +24,13 @@ Parameters:
     An ID to an internal templates source, or a path to a custom templates
     directory.
     
-    A leading colon (:) denotes an internal ID.
-    
-    Available IDs:
-    - :markdown - render markdown documents for each command.
-    - :mandoc - render man pages for each command.
+    A leading colon (:) denotes an internal ID (see `--list`).
 
   TARGET
     Output directory
 
 Examples:
+  bashly render --list
+  bashly render :markdown --about
   bashly render :markdown docs --watch
   bashly render /path/to/templates ./out_path

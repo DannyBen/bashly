@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gtx', '~> 0.1'
   s.add_dependency 'lp', '~> 0.2'
   s.add_dependency 'mister_bin', '~> 0.7'
+  s.add_dependency 'tty-markdown', '~> 0.7'
 
   # Ruby 3.0 comes with Psych 3.3.0, which does not have the `unsafe_load`
   # ref: https://github.com/ruby/psych/commit/cb50aa8d3fb8be01897becff77b4922b12a0ab4c

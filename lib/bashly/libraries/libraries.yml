@@ -60,6 +60,8 @@ render_markdown:
   help: Copy the markdown templates to your project, allowing you to customize the markdown documentation output.
   skip_src_check: true
   files:
+    - source: "render/markdown/README.md"
+      target: "templates/markdown/README.md"
     - source: "render/markdown/markdown.gtx"
       target: "templates/markdown/markdown.gtx"
     - source: "render/markdown/render.rb"
@@ -73,6 +75,8 @@ render_mandoc:
   help: Copy the mandoc templates to your project, allowing you to customize the man documentation output.
   skip_src_check: true
   files:
+    - source: "render/mandoc/README.md"
+      target: "templates/mandoc/README.md"
     - source: "render/mandoc/mandoc.gtx"
       target: "templates/mandoc/mandoc.gtx"
     - source: "render/mandoc/render.rb"

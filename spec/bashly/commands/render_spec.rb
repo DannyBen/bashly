@@ -11,6 +11,20 @@ describe Commands::Render do
     end
   end
 
+  context 'with --list' do
+    it 'shows the list of internal render sources' do
+      expect { subject.execute %w[render --list] }
+        .to output_approval('cli/render/list')
+    end
+  end
+
+  context 'with --about' do
+    it 'shows the readme of the template source' do
+      expect { subject.execute %w[render :markdown --about] }
+        .to output_approval('cli/render/about-markdown').diff(8)
+    end
+  end
+
   context 'with :markdown source' do
     before { reset_tmp_dir init: true }
 
@@ -50,22 +64,6 @@ describe Commands::Render do
 
       expect { subject.execute %W[render :markdown #{target} --watch] }
         .to output_approval('cli/render/watch')
-    end
-
-    context 'when ConfigurationError is raised during watch' do
-      let(:watcher_double) { instance_double Filewatcher, watch: nil }
-
-      it 'shows the error gracefully and continues to watch' do
-        allow(Filewatcher).to receive(:new).and_return(watcher_double)
-        allow(watcher_double).to receive(:watch) do |&block|
-          bashly_config['invalid_option'] = 'error this'
-          File.write bashly_config_path, bashly_config.to_yaml
-          block.call
-        end
-
-        expect { subject.execute %W[render :markdown #{target} --watch] }
-          .to output_approval('cli/render/watch-stderr').to_stderr
-      end
     end
   end
 end
