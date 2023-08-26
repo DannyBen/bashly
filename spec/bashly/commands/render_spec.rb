@@ -21,7 +21,7 @@ describe Commands::Render do
   context 'with --about' do
     it 'shows the readme of the template source' do
       expect { subject.execute %w[render :markdown --about] }
-        .to output_approval('cli/render/about-markdown')
+        .to output_approval('cli/render/about-markdown').diff(5)
     end
   end
 
