@@ -51,11 +51,6 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [command-function](command-function#readme) - configuring custom internal function names
 - [split-config](split-config#readme) - splitting your `bashly.yml` into several smaller files
 
-## Real-world-like examples
-
-- [docker-like](docker-like#readme) - a sample script with deep commands (like `docker container run`)
-- [git-like](git-like#readme) - a sample script with sub-commands similar to git
-
 ## Bashly library features
 
 - [config](config#readme) - using the config library for easy access to INI files
@@ -66,7 +61,16 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [validations](validations#readme) - adding argument validation functions
 - [hooks](hooks#readme) - adding before/after hooks
 
-## Other Examples
+## Real-world-like examples
+
+- [docker-like](docker-like#readme) - a sample script with deep commands (like `docker container run`)
+- [git-like](git-like#readme) - a sample script with sub-commands similar to git
+
+## Documentation generation
+
+- [render-mandoc](render-mandoc#readme) - auto-generate man pages for your script
+
+## Other examples
 
 - [heredoc](heredoc#readme) - using heredoc strings
 - [heredoc-alt](heredoc-alt#readme) - using heredoc strings in the lib directory

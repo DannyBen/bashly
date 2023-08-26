@@ -1,0 +1,30 @@
+name: download
+help: Sample application
+version: 0.1.0
+
+# Optional, custom properties that are used by the mandoc renderer
+x_mandoc_authors: Lana Lang
+x_mandoc_footer: |-
+  # ISSUE TRACKER
+
+  Report issues at <https://github.com/lanalang/smallville>
+
+dependencies:
+  aws-cli: Download from <https://aws.amazon.com/cli/>
+
+args:
+- name: source
+  required: true
+  allowed: [server1, server2]
+  repeatable: true
+  help: Source to download from
+- name: target
+  help: "Target filename (default: same as source)"
+
+flags:
+- long: --force
+  short: -f
+  help: Overwrite existing files
+- long: --debug
+  short: -d
+  help: Show debug information
