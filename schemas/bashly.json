@@ -75,7 +75,7 @@
                 }
             },
             "additionalProperties": false,
-            "patternProperties": { "^x-": {} }
+            "patternProperties": { "^x-.": {} }
         },
         "flag": {
             "title": "flag",
@@ -211,7 +211,7 @@
                 }
             },
             "additionalProperties": false,
-            "patternProperties": { "^x-": {} }
+            "patternProperties": { "^x-.": {} }
         },
         "name-property": {
             "title": "name",
@@ -408,7 +408,7 @@
                         }
                     },
                     "additionalProperties": false,
-                    "patternProperties": { "^x-": {} }
+                    "patternProperties": { "^x-.": {} }
                 },
                 "else": {
                     "properties": {
@@ -426,7 +426,7 @@
                         }
                     },
                     "additionalProperties": false,
-                    "patternProperties": { "^x-": {} }
+                    "patternProperties": { "^x-.": {} }
                 }
             }
         },
@@ -784,7 +784,7 @@
                 }
             },
             "additionalProperties": false,
-            "patternProperties": { "^x-": {} }
+            "patternProperties": { "^x-.": {} }
         }
     },
     "title": "cli",
@@ -841,5 +841,5 @@
         }
     },
     "additionalProperties": false,
-    "patternProperties": { "^x-": {} }
+    "patternProperties": { "^x-.": {} }
 }
