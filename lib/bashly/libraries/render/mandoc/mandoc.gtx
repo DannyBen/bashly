@@ -166,6 +166,7 @@ if examples
     >
   end
   > ~~~
+  >
 end
 
 if public_commands.any?
@@ -175,3 +176,5 @@ if public_commands.any?
   = public_commands.map { |x| "**#{x.full_name.to_hyphen}**(1)" }.join ', '
   >
 end
+
+>

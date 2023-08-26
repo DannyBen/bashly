@@ -1,6 +1,6 @@
 # This spec tests that the rendering using the libraries/render templates
 # is generating the expected output.
-describe 'rendering templates' do
+describe 'rendering mandoc' do
   subject { Commands::Render.new }
 
   target = 'spec/tmp'
@@ -22,19 +22,7 @@ describe 'rendering templates' do
         reset_tmp_dir
       end
 
-      it 'renders markdown properly' do
-        expect { subject.execute %W[render :markdown #{target}] }
-          .to output_approval("rendering/markdown/#{example}/stdout")
-
-        Dir["#{target}/*.md"].each do |file|
-          puts "    => #{file}"
-          basename = File.basename file
-          expect(File.read file).to match_approval("rendering/markdown/#{example}/#{basename}")
-            .diff(leeway)
-        end
-      end
-
-      it 'renders mandoc properly' do
+      it 'renders properly' do
         expect { subject.execute %W[render :mandoc #{target}] }
           .to output_approval("rendering/mandoc/#{example}/stdout")
 
