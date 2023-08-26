@@ -5,7 +5,7 @@ if version
 else
 > % {{ full_name.to_hyphen }}(1) | {{ summary }}
 end
-> % {{ ENV['AUTHORS'] }}
+> % {{ x_mandoc_authors }}
 > % {{ Date.today.strftime "%B %Y" }}
 >
 
@@ -177,4 +177,5 @@ if public_commands.any?
   >
 end
 
+= x_mandoc_footer
 >
