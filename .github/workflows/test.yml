@@ -116,5 +116,5 @@ jobs:
     - name: Generate all subjects
       run: bundle exec run examples regen
 
-    - name: Run bashly schema tests
+    - name: Run schema tests
       run: bundle exec run schema all
