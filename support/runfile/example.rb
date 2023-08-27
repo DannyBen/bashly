@@ -44,15 +44,21 @@ class Example
 
   def test_commands
     filename = "#{dir}/test.sh"
-    result = File.read(filename)
-      .split(/\s*### Try Me ###\s*/).last
+    content = File.read filename
+    marker = '*### Try Me ###'
+    return nil unless content.include? marker
+
+    result = content
+      .split(/\s*#{marker}\s*/).last
       .split("\n")
       .reject { |line| line.empty? or line.start_with? '#' }
-    abort "Can't find ### Try Me ### marker in #{filename}" if result.empty?
+    abort "Can't find #{marker} marker in #{filename}" if result.empty?
     result
   end
 
   def test_output
+    return nil unless test_commands
+
     result = ''
     test_commands.each do |command|
       result += "### `$ #{command}`\n\n"
@@ -86,15 +92,15 @@ class Example
 
       ## `bashly.yml`
 
-      ```yaml
+      ````yaml
       #{yaml}
-      ```
+      ````
 
       #{extra_files}
 
       ## Generated script output
 
-      #{test_output}
+      #{test_output || '*None*'}
 
     MARKDOWN
   end
@@ -104,9 +110,9 @@ class Example
     files.each do |file|
       lang = markdown_lang file
       result << "## `#{file}`\n"
-      result << "```#{lang}"
+      result << "````#{lang}"
       result << File.read("#{dir}/#{file}")
-      result << "```\n"
+      result << "````\n"
     end
 
     result.join "\n"
@@ -122,6 +128,7 @@ class Example
   def langs
     @langs ||= {
       ''      => 'bash',
+      '.md'   => 'markdown',
       '.sh'   => 'bash',
       '.ini'  => 'ini',
       '.yml'  => 'yaml',

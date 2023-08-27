@@ -2,10 +2,9 @@ name: download
 help: Sample application
 version: 0.1.0
 
-# Optional, custom properties that are used by the mandoc renderer
-# Run `bashly render :mandoc --about` for more info.
-x_mandoc_authors: Lana Lang
-x_mandoc_footer: |-
+# Optional, custom properties that are used by the markdown renderer
+# Run `bashly render :markdown --about` for more info.
+x_markdown_footer: |-
   # ISSUE TRACKER
   Report issues at <https://github.com/lanalang/smallville>
 

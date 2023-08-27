@@ -69,6 +69,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 ## Documentation generation
 
 - [render-mandoc](render-mandoc#readme) - auto-generate man pages for your script
+- [render-markdown](render-markdown#readme) - auto-generate markdown documentation for your script
 
 ## Other examples
 

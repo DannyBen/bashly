@@ -141,6 +141,7 @@ if args.any?
       > | Attributes | &nbsp;
       > |------------|-------------
       > | Required:  | ✓ Yes
+      >
     end
   end
 end
@@ -180,3 +181,6 @@ if flags.any?
     end
   end
 end
+
+= x_markdown_footer&.for_manpage
+>

@@ -12,9 +12,7 @@ will then use [pandoc](https://command-not-found.com/pandoc) to convert them.
 $ bashly render :mandoc docs
 ```
 
-## Special template features
-
-### Preview
+## Viewing the output
 
 Setting the environment variable `PREVIEW` to the full command you wish
 to preview, will prompt the renderer to show the output using the `man`
@@ -28,13 +26,27 @@ $ PREVIEW="cli download" bashly render :mandoc docs
 $ PREVIEW="cli download" bashly render :mandoc docs --watch
 ```
 
-### Footer
+In addition, you can use one of the following commands:
 
-You can add additional sections to any of the generated man pages, by
-adding a property named `x_mandoc_footer` to any of your commands in
-your `bashly.yml`.
+```bash
+# View the man page interactively
+$ man docs/cli-download.1
 
-This field should contain a markdown string, for example:
+# Print the man page to stdout
+$ man docs/cli-download.1 | col -bx
+```
+
+## Supported custom definitions
+
+Add these definitions to your `bashly.yml` to render them in your
+markdown:
+
+### Footer: `x_mandoc_footer`
+
+Add additional sections to your man pages. This field is expected
+to be in markdown format.
+
+#### Example
 
 ```yaml
 x_mandoc_footer: |-
@@ -43,13 +55,11 @@ x_mandoc_footer: |-
   Report issues at <https://github.com/lanalang/smallville>
 ```
 
-### Authors
+### Authors: `x_mandoc_authors`
 
-You can specify an authors string that will be added to the man page,
-by adding a property named `x_mandoc_authors` to any of your commands
-in your `bashly.yml`.
+Add an authors string to your man pages.
 
-For example:
+#### Example
 
 ```yaml
 x_mandoc_authors: Lana Lang
