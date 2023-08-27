@@ -147,7 +147,7 @@ interactive() {
 
     local flags='[]'
 
-    if gum confirm 'Do you want add any subcommands or flags?'; then
+    if gum confirm 'Do you want add flags?'; then
         local action
 
         while true; do
