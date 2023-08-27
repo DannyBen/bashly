@@ -26,6 +26,13 @@ describe Commands::Render do
     end
   end
 
+  context 'with --show' do
+    it 'shows the readme of the template source' do
+      expect { subject.execute %w[render :markdown --about] }
+        .to output_approval('cli/render/about-markdown').diff(markdown_leeway)
+    end
+  end
+
   context 'with :markdown source' do
     before { reset_tmp_dir init: true }
 

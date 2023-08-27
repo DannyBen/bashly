@@ -25,8 +25,9 @@ module Bashly
       @selector = selector
     end
 
-    def render(target)
-      RenderContext.new(path, target).instance_eval render_script
+    def render(target, show: nil)
+      context = RenderContext.new source: path, target: target, show: show
+      context.instance_eval render_script
     end
 
     def internal?
