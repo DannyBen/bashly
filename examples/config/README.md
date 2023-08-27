@@ -27,7 +27,7 @@ See the files in the [src](src) folder for usage examples.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: configly
 help: Sample application that uses the config functions
 version: 0.1.0
@@ -78,22 +78,22 @@ commands:
 - name: list
   alias: l
   help: Show all values
-```
+````
 
 ## `config.ini`
 
-```ini
+````ini
 theme = dark
 
 [user]
 email = paul@section.one
 name = Operations
 
-```
+````
 
 ## `src/get_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/config.sh) to show a value from the config
 
 key="${args[key]}"
@@ -111,11 +111,11 @@ result=$(config_get "$key")
 echo "$result"
 
 
-```
+````
 
 ## `src/list_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/config.sh) to show the entire config file
 config_show
 
@@ -124,34 +124,34 @@ for key in $(config_keys); do
   echo "$key === $(config_get "$key")"
 done
 
-```
+````
 
 ## `src/set_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/config.sh) to store a value to the config
 config_set "${args[key]}" "${args[value]}"
 config_show
 
-```
+````
 
 ## `src/del_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/config.sh) to delete a value from the config
 
 key="${args[key]}"
 config_del "$key"
 config_show
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./configly -h`
 
-```shell
+````shell
 configly - Sample application that uses the config functions
 
 Usage:
@@ -174,92 +174,92 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./configly set theme dark`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
 
 
-```
+````
 
 ### `$ ./configly set user.name Operations`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
 
 
-```
+````
 
 ### `$ ./configly set user.email paul@section.one`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
 
 
-```
+````
 
 ### `$ ./configly set user.password s3cr3t`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
 user.password = s3cr3t
 
 
-```
+````
 
 ### `$ ./configly get theme`
 
-```shell
+````shell
 dark
 dark
 dark
 
 
-```
+````
 
 ### `$ ./configly get user.name`
 
-```shell
+````shell
 Operations
 Operations
 Operations
 
 
-```
+````
 
 ### `$ ./configly get invalid_key`
 
-```shell
+````shell
 No such key: invalid_key
 the default value
 
 
 
-```
+````
 
 ### `$ ./configly del user.password`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
 
 
-```
+````
 
 ### `$ ./configly list`
 
-```shell
+````shell
 theme = dark
 user.email = paul@section.one
 user.name = Operations
@@ -268,7 +268,7 @@ user.email === paul@section.one
 user.name === Operations
 
 
-```
+````
 
 
 

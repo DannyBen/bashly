@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample application with a help footer
 version: 0.1.0
@@ -27,25 +27,25 @@ footer: |
 args:
 - name: source
   help: URL to download from
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Sample application with a help footer
 
 Usage:
@@ -72,7 +72,7 @@ properly escaped.
 
 
 
-```
+````
 
 
 

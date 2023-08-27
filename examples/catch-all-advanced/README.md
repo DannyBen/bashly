@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -58,15 +58,15 @@ commands:
     label: Files
     help: Files to upload
     required: true
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -80,11 +80,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -116,11 +116,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli download source`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -128,11 +128,11 @@ args:
 - ${args[source]} = source
 
 
-```
+````
 
 ### `$ ./cli download source target`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -141,11 +141,11 @@ args:
 - ${args[target]} = target
 
 
-```
+````
 
 ### `$ ./cli download source target and --additional stuff`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -160,11 +160,11 @@ other_args:
 - ${other_args[2]} = stuff
 
 
-```
+````
 
 ### `$ ./cli upload -h`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Alias: u
@@ -183,20 +183,20 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./cli upload`
 
-```shell
+````shell
 missing required argument: FILES...
 usage: cli upload FILES...
 
 
-```
+````
 
 ### `$ ./cli upload file1 "file 2" file3`
 
-```shell
+````shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -209,7 +209,7 @@ other_args:
 - ${other_args[2]} = file3
 
 
-```
+````
 
 
 

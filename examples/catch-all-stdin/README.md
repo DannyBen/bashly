@@ -17,7 +17,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -39,11 +39,11 @@ examples:
 - cli --format csv file1 file2
 - cat file1 | cli --format csv
 - cat file* | cli - --format csv
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 inspect_args
 
 # Read contents of the provided file(s)
@@ -63,14 +63,14 @@ echo "collected file contents:"
 echo "$content"
 echo
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -102,11 +102,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli file1 file2 --format csv`
 
-```shell
+````shell
 args:
 - ${args[--format]} = csv
 
@@ -122,11 +122,11 @@ file2 content
 
 
 
-```
+````
 
 ### `$ ./cli -f=csv file1 file2`
 
-```shell
+````shell
 args:
 - ${args[--format]} = csv
 
@@ -142,11 +142,11 @@ file2 content
 
 
 
-```
+````
 
 ### `$ cat file1 | ./cli --format csv`
 
-```shell
+````shell
 args:
 - ${args[--format]} = csv
 
@@ -155,11 +155,11 @@ file1 content
 
 
 
-```
+````
 
 ### `$ cat file* | ./cli -`
 
-```shell
+````shell
 args:
 - ${args[--format]} = json
 
@@ -174,7 +174,7 @@ file2 content
 
 
 
-```
+````
 
 
 

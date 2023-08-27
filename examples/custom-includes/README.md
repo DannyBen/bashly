@@ -26,7 +26,7 @@ place each of your custom functions in their own file inside the `lib` folder.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample minimal application with custom strings
 version: 0.1.0
@@ -34,21 +34,21 @@ version: 0.1.0
 args:
 - name: source
   help: URL to download from
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 # Call our custom library function
 echo "Before custom code"
 sample_function
 echo "After custom code"
 
-```
+````
 
 ## `src/lib/sample_function.sh`
 
-```bash
+````bash
 # Add any function here that is needed in more than one parts of your
 # application, or that you otherwise wish to extract from the main function
 # scripts.
@@ -63,20 +63,20 @@ sample_function() {
   echo "it works"
 }
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 Before custom code
 it works
 After custom code
 
 
-```
+````
 
 
 

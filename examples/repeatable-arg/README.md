@@ -18,7 +18,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: upcase
 help: Sample application to demonstrate the use of repeatable arguments
 version: 0.1.0
@@ -37,11 +37,11 @@ args:
 examples:
 - upcase README.md LICENSE
 - upcase *.md
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 # Convert the space delimited string to an array
 files=''
 eval "files=(${args[file]})"
@@ -58,14 +58,14 @@ done
 echo
 inspect_args
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./upcase -h`
 
-```shell
+````shell
 upcase - Sample application to demonstrate the use of repeatable arguments
 
 Usage:
@@ -90,11 +90,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./upcase file1`
 
-```shell
+````shell
 
 files:
   path: file1:
@@ -105,11 +105,11 @@ args:
 - ${args[file]} = "file1"
 
 
-```
+````
 
 ### `$ ./upcase file*`
 
-```shell
+````shell
 
 files:
   path: file1:
@@ -123,7 +123,7 @@ args:
 - ${args[file]} = "file1" "file2"
 
 
-```
+````
 
 
 

@@ -15,7 +15,7 @@ $ bashly render :mandoc docs
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample application
 version: 0.1.0
@@ -25,7 +25,6 @@ version: 0.1.0
 x_mandoc_authors: Lana Lang
 x_mandoc_footer: |-
   # ISSUE TRACKER
-
   Report issues at <https://github.com/lanalang/smallville>
 
 dependencies:
@@ -47,11 +46,60 @@ flags:
 - long: --debug
   short: -d
   help: Show debug information
-```
+````
 
 
 
-## Generated script output
+## Output
 
-*None*
+### `$ man docs/download.1 | col -bx`
+
+````shell
+download(1)                   Sample application                   download(1)
+
+NAME
+       download - Sample application
+
+SYNOPSIS
+       download SOURCE [TARGET...]  OPTIONS
+
+DESCRIPTION
+       Sample application
+
+ARGUMENTS
+   SOURCE
+       Source to download from
+
+       • Required
+
+       • Allowed Values: server1, server2
+
+   TARGET
+       Target filename (default: same as source)
+
+       • Repeatable
+
+OPTIONS
+   --force, -f
+       Overwrite existing files
+
+   --debug, -d
+       Show debug information
+
+DEPENDENCIES
+   aws-cli
+       Download from <https://aws.amazon.com/cli/>
+
+ISSUE TRACKER
+       Report issues at <https://github.com/lanalang/smallville>
+
+AUTHORS
+       Lana Lang.
+
+Version 0.1.0                     August 2023                      download(1)
+
+
+````
+
+
 

@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Example that replaces the default behavior of -v and -h
 version: 0.1.0
@@ -33,25 +33,25 @@ flags:
   short: -h
   arg: host
   help: Host address
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./cli --help`
 
-```shell
+````shell
 cli - Example that replaces the default behavior of -v and -h
 
 Usage:
@@ -74,38 +74,38 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli --version`
 
-```shell
+````shell
 0.1.0
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 --host requires an argument: --host, -h HOST
 
 
-```
+````
 
 ### `$ ./cli -v`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[--verbose]} = 1
 
 
-```
+````
 
 ### `$ ./cli -h localhost -v`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -113,7 +113,7 @@ args:
 - ${args[--verbose]} = 1
 
 
-```
+````
 
 
 

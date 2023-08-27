@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample application to demonstrate the use of conflicting flags
 version: 0.1.0
@@ -32,15 +32,15 @@ flags:
   help: Run faster
   # Make sure to add the conflicting flags in both flags
   conflicts: [--no-cache]
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Sample application to demonstrate the use of conflicting flags
 
 Usage:
@@ -66,26 +66,26 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./download --cache`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[--cache]} = 1
 
 
-```
+````
 
 ### `$ ./download --no-cache --fast`
 
-```shell
+````shell
 conflicting options: --fast cannot be used with --no-cache
 
 
-```
+````
 
 
 

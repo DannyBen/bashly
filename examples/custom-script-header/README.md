@@ -19,7 +19,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample minimal application without commands
 version: 0.1.0
@@ -39,11 +39,11 @@ flags:
 examples:
 - download example.com
 - download example.com ./output -f
-```
+````
 
 ## `src/header.sh`
 
-```bash
+````bash
 #!/usr/bin/env bash
 
 # This is a custom header that will be injected to the very top of the 
@@ -58,18 +58,18 @@ if [ "$some_condition" = true ]; then
 fi
 
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 Some condition was met, aborting
 
 
-```
+````
 
 
 

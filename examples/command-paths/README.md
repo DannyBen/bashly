@@ -25,7 +25,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: docker
 help: Docker example with nested command filenames
 version: 0.1.0
@@ -71,11 +71,11 @@ commands:
   - long: --all
     short: -a
     help: Show all containers
-```
+````
 
 ## `settings.yml`
 
-```yaml
+````yaml
 # The path to use for command files, relative to source_dir
 # When set to nil (~), command files will be placed directly under source_dir
 # When set to any other string, command files will be placed under this
@@ -84,14 +84,14 @@ commands:
 # commands_dir: ~
 commands_dir: commands
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./docker`
 
-```shell
+````shell
 docker - Docker example with nested command filenames
 
 Usage:
@@ -106,11 +106,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./docker -h`
 
-```shell
+````shell
 docker - Docker example with nested command filenames
 
 Usage:
@@ -135,11 +135,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./docker container run alpine`
 
-```shell
+````shell
 # this file is located in 'src/commands/container/run.sh'
 # code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -147,11 +147,11 @@ args:
 - ${args[image]} = alpine
 
 
-```
+````
 
 ### `$ ls -R src`
 
-```shell
+````shell
 src:
 bashly.yml
 commands
@@ -169,7 +169,7 @@ src/commands/image:
 ls.sh
 
 
-```
+````
 
 
 

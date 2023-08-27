@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -71,15 +71,15 @@ commands:
 
     Upload a file (you will be prompted to provide a password)
     $ cli upload profile.png --user admin
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -108,11 +108,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli upload -h`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Alias: u
@@ -144,7 +144,7 @@ Examples:
 
 
 
-```
+````
 
 
 

@@ -45,7 +45,7 @@ class Example
   def test_commands
     filename = "#{dir}/test.sh"
     content = File.read filename
-    marker = '*### Try Me ###'
+    marker = '### Try Me ###'
     return nil unless content.include? marker
 
     result = content
@@ -62,12 +62,12 @@ class Example
     result = ''
     test_commands.each do |command|
       result += "### `$ #{command}`\n\n"
-      result += "```shell\n"
+      result += "````shell\n"
       Dir.chdir dir do
         result += `#{command} 2>&1`
         result += "\n\n"
       end
-      result += "```\n\n"
+      result += "````\n\n"
     end
     result
   end
@@ -98,7 +98,7 @@ class Example
 
       #{extra_files}
 
-      ## Generated script output
+      ## Output
 
       #{test_output || '*None*'}
 

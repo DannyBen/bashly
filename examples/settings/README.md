@@ -18,7 +18,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -70,22 +70,22 @@ commands:
     short: -p
     arg: password
     help: Password to use for logging in
-```
+````
 
 ## `settings.yml`
 
-```yaml
+````yaml
 target_dir: out
 strict: true
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./out/cli`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -99,7 +99,7 @@ Commands:
 
 
 
-```
+````
 
 
 

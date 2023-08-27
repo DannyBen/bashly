@@ -18,7 +18,7 @@ $ bashly render :markdown docs
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample application
 version: 0.1.0
@@ -27,7 +27,6 @@ version: 0.1.0
 # Run `bashly render :markdown --about` for more info.
 x_markdown_footer: |-
   # ISSUE TRACKER
-
   Report issues at <https://github.com/lanalang/smallville>
 
 dependencies:
@@ -49,7 +48,7 @@ flags:
 - long: --debug
   short: -d
   help: Show debug information
-```
+````
 
 ## `docs/index.md`
 
@@ -105,14 +104,12 @@ Show debug information
 
 # ISSUE TRACKER
 
-
-
 Report issues at \<https://github.com/lanalang/smallville\>
 
 ````
 
 
-## Generated script output
+## Output
 
 *None*
 

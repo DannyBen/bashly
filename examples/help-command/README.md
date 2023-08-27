@@ -20,7 +20,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -82,11 +82,11 @@ commands:
     short: -p
     arg: password
     help: Password to use for logging in
-```
+````
 
 ## `src/help_command.sh`
 
-```bash
+````bash
 ## Help command [@bashly-upgrade help]
 ## This file is a part of Bashly standard library
 ##
@@ -118,14 +118,14 @@ else
   exit 1
 fi
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -140,11 +140,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -170,11 +170,11 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli help`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -200,11 +200,11 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli help download`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -237,15 +237,15 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli help no_such_command`
 
-```shell
+````shell
 No help available for this command
 
 
-```
+````
 
 
 

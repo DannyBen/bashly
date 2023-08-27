@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: convert
 help: Sample application using default arguments and flags
 version: 0.1.0
@@ -40,15 +40,15 @@ examples:
 - convert *.bmp
 - convert --format jpg
 - convert *.bmp --format jpg
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./convert`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -56,11 +56,11 @@ args:
 - ${args[source]} = *.jpg
 
 
-```
+````
 
 ### `$ ./convert -h`
 
-```shell
+````shell
 convert - Sample application using default arguments and flags
 
 Usage:
@@ -91,11 +91,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./convert *.bmp`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -103,11 +103,11 @@ args:
 - ${args[source]} = *.bmp
 
 
-```
+````
 
 ### `$ ./convert -f pdf`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -115,11 +115,11 @@ args:
 - ${args[source]} = *.jpg
 
 
-```
+````
 
 ### `$ ./convert *.pdf --format gif`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -127,7 +127,7 @@ args:
 - ${args[source]} = *.pdf
 
 
-```
+````
 
 
 

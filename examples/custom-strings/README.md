@@ -24,7 +24,7 @@ not wish to change them.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample minimal application with custom strings
 version: 0.1.0
@@ -40,11 +40,11 @@ flags:
   arg: dir
   required: true
   help: Target directory
-```
+````
 
 ## `src/bashly-strings.yml`
 
-```yaml
+````yaml
 # Usage captions
 usage: "== Usage =="
 options: "== Options =="
@@ -61,23 +61,23 @@ missing_required_argument: "Boom! a required argument is missing: %{arg}\\nusage
 missing_required_flag: "Yo! you forgot a flag: %{usage}"
 
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 Boom! a required argument is missing: SOURCE
 usage: download SOURCE [OPTIONS]
 
 
-```
+````
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Sample minimal application with custom strings
 
 == Usage ==
@@ -101,23 +101,23 @@ download - Sample minimal application with custom strings
 
 
 
-```
+````
 
 ### `$ ./download somesource`
 
-```shell
+````shell
 Yo! you forgot a flag: --out, -o DIR
 
 
-```
+````
 
 ### `$ ./download somesource -o`
 
-```shell
+````shell
 Hey! the flag --out requires an argument: --out, -o DIR
 
 
-```
+````
 
 
 

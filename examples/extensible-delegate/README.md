@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: mygit
 help: Sample application that delegates unknown commands to a different executable
 version: 0.1.0
@@ -34,15 +34,15 @@ commands:
 - name: pull
   alias: l
   help: Pull from my repository
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./mygit`
 
-```shell
+````shell
 mygit - Sample application that delegates unknown commands to a different executable
 
 Usage:
@@ -56,26 +56,26 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./mygit push`
 
-```shell
+````shell
 # this file is located in 'src/push_command.sh'
 # code for 'mygit push' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./mygit rm some-file-that-doesnt-exist`
 
-```shell
+````shell
 fatal: pathspec 'some-file-that-doesnt-exist' did not match any files
 
 
-```
+````
 
 
 
