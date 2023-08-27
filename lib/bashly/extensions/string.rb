@@ -8,7 +8,7 @@ class String
   end
 
   def for_manpage
-    gsub('<', '\\<').gsub('>', '\\>').gsub('`', '**').gsub("\n", "\n\n")
+    gsub('<', '\\<').gsub('>', '\\>').gsub('`', '**').gsub("  \n", "\n\n")
   end
 
   def nl2br

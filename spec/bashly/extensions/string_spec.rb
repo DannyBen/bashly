@@ -16,10 +16,10 @@ describe String do
   end
 
   describe '#for_manpage' do
-    subject { "line one\n`line two` is <tagged>\n" }
+    subject { "line one  \n`line two`  \nand <tagged>\n" }
 
-    it 'doubles newlines, escapes < > characters and converts ` => **' do
-      expect(subject.for_manpage).to eq "line one\n\n**line two** is \\<tagged\\>\n\n"
+    it 'doubles soft newlines, escapes < > characters and converts ` => **' do
+      expect(subject.for_manpage).to eq "line one\n\n**line two**\n\nand \\<tagged\\>\n"
     end
   end
 

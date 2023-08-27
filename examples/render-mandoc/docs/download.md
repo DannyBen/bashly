@@ -61,5 +61,4 @@ Download from \<https://aws.amazon.com/cli/\>
 
 
 # ISSUE TRACKER
-
 Report issues at \<https://github.com/lanalang/smallville\>
