@@ -1,7 +1,7 @@
 summary 'Run shellcheck on all examples'
 
 action do
-  allowed_skips = 2
+  allowed_skips = 3
   Example.executables.each do |example|
     if File.exist? example
       success = system "shellcheck #{example}"

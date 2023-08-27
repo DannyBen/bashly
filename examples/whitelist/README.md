@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: login
 help: Sample showing the use of arg and flag whitelist (allowed values)
 version: 0.1.0
@@ -49,24 +49,24 @@ flags:
   # Whitelist + default
   allowed: [ftp, ssh, http]
   default: ssh
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./login`
 
-```shell
+````shell
 missing required argument: REGION
 usage: login REGION [ENVIRONMENT] [OPTIONS]
 
 
-```
+````
 
 ### `$ ./login -h`
 
-```shell
+````shell
 login - Sample showing the use of arg and flag whitelist (allowed values)
 
 Usage:
@@ -102,35 +102,35 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./login america`
 
-```shell
+````shell
 missing required flag: --user, -u NAME
 
 
-```
+````
 
 ### `$ ./login america --user admin`
 
-```shell
+````shell
 region must be one of: eu, us
 
 
-```
+````
 
 ### `$ ./login eu --user hacker`
 
-```shell
+````shell
 --user must be one of: user, admin
 
 
-```
+````
 
 ### `$ ./login eu --user admin`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -140,19 +140,19 @@ args:
 - ${args[--user]} = admin
 
 
-```
+````
 
 ### `$ ./login us --user user --protocol icmp`
 
-```shell
+````shell
 --protocol must be one of: ftp, ssh, http
 
 
-```
+````
 
 ### `$ ./login eu production --user admin --protocol ssh`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -162,7 +162,7 @@ args:
 - ${args[--user]} = admin
 
 
-```
+````
 
 
 

@@ -17,7 +17,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application that can be externally extended
 version: 0.1.0
@@ -44,11 +44,11 @@ commands:
   - name: source
     required: true
     help: File to download
-```
+````
 
 ## `cli-status`
 
-```bash
+````bash
 #!/usr/bin/env bash
 echo "This is an external executable that serves as an extension to"
 echo "the cli app."
@@ -56,14 +56,14 @@ echo "If placed in the path, it will be executed whenever someone runs:"
 echo "$ cli status <any argument>"
 echo ""
 echo "Received args: $@"
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application that can be externally extended
 
 Usage:
@@ -77,11 +77,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli status --some --flags`
 
-```shell
+````shell
 This is an external executable that serves as an extension to
 the cli app.
 If placed in the path, it will be executed whenever someone runs:
@@ -90,7 +90,7 @@ $ cli status <any argument>
 Received args: --some --flags
 
 
-```
+````
 
 
 

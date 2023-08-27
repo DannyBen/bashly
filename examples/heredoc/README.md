@@ -24,15 +24,15 @@ $ BASHLY_TAB_INDENT=1 bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application showing the use of heredoc
 version: 0.1.0
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 cat <<-EOF
 multiline
 heredoc text
@@ -47,14 +47,14 @@ this is
 EOF
 
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 multiline
 heredoc text
 this is
@@ -62,7 +62,7 @@ this is
 　　multiline text
 
 
-```
+````
 
 
 

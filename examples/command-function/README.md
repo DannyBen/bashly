@@ -36,7 +36,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application with custom function names
 version: 0.1.0
@@ -56,15 +56,15 @@ commands:
   commands:
   - name: start
     help: Start a new container
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application with custom function names
 
 Usage:
@@ -78,11 +78,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application with custom function names
 
 Usage:
@@ -103,11 +103,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli container-start --help`
 
-```shell
+````shell
 cli container-start - Start a new container (deprecated)
 
 Usage:
@@ -122,11 +122,11 @@ This command is deprecated, use 'container start' instead
 
 
 
-```
+````
 
 ### `$ ./cli container start --help`
 
-```shell
+````shell
 cli container start - Start a new container
 
 Usage:
@@ -139,7 +139,7 @@ Options:
 
 
 
-```
+````
 
 
 

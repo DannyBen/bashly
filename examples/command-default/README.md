@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: ftp
 help: Sample application that uses the default command option
 version: 0.1.0
@@ -43,15 +43,15 @@ commands:
   - name: source
     required: true
     help: File to download
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./ftp`
 
-```shell
+````shell
 ftp - Sample application that uses the default command option
 
 Usage:
@@ -65,11 +65,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./ftp -h`
 
-```shell
+````shell
 ftp - Sample application that uses the default command option
 
 Usage:
@@ -90,11 +90,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./ftp download something`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'ftp download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -102,11 +102,11 @@ args:
 - ${args[source]} = something
 
 
-```
+````
 
 ### `$ ./ftp upload something`
 
-```shell
+````shell
 # this file is located in 'src/upload_command.sh'
 # code for 'ftp upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -114,11 +114,11 @@ args:
 - ${args[source]} = something
 
 
-```
+````
 
 ### `$ ./ftp something`
 
-```shell
+````shell
 # this file is located in 'src/upload_command.sh'
 # code for 'ftp upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -126,7 +126,7 @@ args:
 - ${args[source]} = something
 
 
-```
+````
 
 
 

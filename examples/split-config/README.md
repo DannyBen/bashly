@@ -19,7 +19,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Configuration splitting example
 version: 0.1.0
@@ -31,11 +31,11 @@ commands:
   # Import a command that is defined in the front matter of its own shell
   # function.
   - import: src/upload_command.sh
-```
+````
 
 ## `src/download_command.yml`
 
-```yaml
+````yaml
 name: download
 alias: d
 help: Download a file
@@ -50,11 +50,11 @@ args:
 flags:
   import: src/common_flags.yml
 
-```
+````
 
 ## `src/upload_command.sh`
 
-```bash
+````bash
 # This is a YAML front matter describing the command
 # It is imported to bashly.yml when running "bashly generate"
 
@@ -73,23 +73,23 @@ flags:
 # Shell script starts here
 inspect_args
 
-```
+````
 
 ## `src/common_flags.yml`
 
-```yaml
+````yaml
 - long: --force
   short: -f
   help: Overwrite existing files
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Configuration splitting example
 
 Usage:
@@ -103,11 +103,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -132,11 +132,11 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./cli upload -h`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Alias: u
@@ -158,7 +158,7 @@ Arguments:
 
 
 
-```
+````
 
 
 

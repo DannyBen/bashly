@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: git
 help: Git example
 version: 0.1.0
@@ -38,15 +38,15 @@ commands:
   - long: --all
     short: -a
     help: Automatically stage files
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./git`
 
-```shell
+````shell
 git - Git example
 
 Usage:
@@ -60,11 +60,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./git -h`
 
-```shell
+````shell
 git - Git example
 
 Usage:
@@ -85,22 +85,22 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./git s`
 
-```shell
+````shell
 # this file is located in 'src/status_command.sh'
 # code for 'git status' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./git status -h`
 
-```shell
+````shell
 git status - Show repository status
 
 Alias: s*
@@ -115,11 +115,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./git commit -h`
 
-```shell
+````shell
 git commit - Commit changes
 
 Alias: c*
@@ -140,11 +140,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./git commit -a -m "initial commit"`
 
-```shell
+````shell
 # this file is located in 'src/commit_command.sh'
 # code for 'git commit' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -153,7 +153,7 @@ args:
 - ${args[--message]} = initial commit
 
 
-```
+````
 
 
 

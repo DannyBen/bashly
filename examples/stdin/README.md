@@ -18,7 +18,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: STDIN Example
 version: 0.1.0
@@ -40,54 +40,54 @@ flags:
   # is no special treatment in bashly, other than allowing '-' as argument.
   default: "-"
   help: Another path to file
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 inspect_args
 
 # Since cat knows how to handle '-' as a value, it will work with both a file
 # path and '-' argument.
 cat "${args[path]}"
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli some-file`
 
-```shell
+````shell
 args:
 - ${args[--file]} = -
 - ${args[path]} = some-file
 some file with some content
 
 
-```
+````
 
 ### `$ cat some-file | ./cli`
 
-```shell
+````shell
 args:
 - ${args[--file]} = -
 - ${args[path]} = -
 some file with some content
 
 
-```
+````
 
 ### `$ cat some-file | ./cli -`
 
-```shell
+````shell
 args:
 - ${args[--file]} = -
 - ${args[path]} = -
 some file with some content
 
 
-```
+````
 
 
 

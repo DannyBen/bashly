@@ -19,7 +19,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: docker
 help: Docker example
 version: 0.1.0
@@ -67,15 +67,15 @@ commands:
   - long: --all
     short: -a
     help: Show all containers
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./docker`
 
-```shell
+````shell
 docker - Docker example
 
 Usage:
@@ -90,11 +90,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./docker -h`
 
-```shell
+````shell
 docker - Docker example
 
 Usage:
@@ -119,11 +119,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./docker container`
 
-```shell
+````shell
 docker container - Container commands
 
 Alias: c*
@@ -138,11 +138,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./docker container run -h`
 
-```shell
+````shell
 docker container run - Run a container
 
 Usage:
@@ -159,20 +159,20 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./docker container run`
 
-```shell
+````shell
 missing required argument: IMAGE
 usage: docker container run IMAGE
 
 
-```
+````
 
 ### `$ ./docker -d container run alpine`
 
-```shell
+````shell
 # this file is located in 'src/container_run_command.sh'
 # code for 'docker container run' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -181,11 +181,11 @@ args:
 - ${args[image]} = alpine
 
 
-```
+````
 
 ### `$ ./docker con`
 
-```shell
+````shell
 docker container - Container commands
 
 Alias: c*
@@ -200,11 +200,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./docker image`
 
-```shell
+````shell
 docker image - Image commands
 
 Alias: i*
@@ -218,33 +218,33 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./docker image ls`
 
-```shell
+````shell
 # this file is located in 'src/image_ls_command.sh'
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./docker i l`
 
-```shell
+````shell
 # this file is located in 'src/image_ls_command.sh'
 # code for 'docker image ls' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./docker --debug ps --all`
 
-```shell
+````shell
 # this file is located in 'src/ps_command.sh'
 # code for 'docker ps' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -253,7 +253,7 @@ args:
 - ${args[--debug]} = 1
 
 
-```
+````
 
 
 

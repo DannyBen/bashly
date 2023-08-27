@@ -23,22 +23,22 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application showing the use of heredoc
 version: 0.1.0
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 text="$(message1)"
 echo "$text"
-```
+````
 
 ## `src/lib/heredocs.sh`
 
-```bash
+````bash
 message1() {
   cat <<EOF
 this is a
@@ -47,20 +47,20 @@ this is a
 EOF
 }
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 this is a
   multiline
     heredoc text
 
 
-```
+````
 
 
 

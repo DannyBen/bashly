@@ -20,7 +20,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Demonstrate custom command filenames
 version: 0.1.0
@@ -55,15 +55,15 @@ commands:
   - name: edit
     help: Edit the file
     filename: file_commands/edit.sh
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Demonstrate custom command filenames
 
 Usage:
@@ -77,11 +77,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Demonstrate custom command filenames
 
 Usage:
@@ -102,18 +102,18 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli dir list`
 
-```shell
+````shell
 # this file is located in 'src/dir_commands/list.sh'
 # code for 'cli dir list' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 
 

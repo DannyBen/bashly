@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application with nested commands
 version: 0.1.0
@@ -62,15 +62,15 @@ commands:
   - name: edit
     help: Edit the file
     args: *file_args   # reuse args from the show command
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application with nested commands
 
 Usage:
@@ -84,11 +84,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application with nested commands
 
 Usage:
@@ -109,11 +109,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli dir`
 
-```shell
+````shell
 cli dir - Directory commands
 
 Alias: d
@@ -128,11 +128,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli file`
 
-```shell
+````shell
 cli file - File commands
 
 Alias: f
@@ -147,19 +147,19 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli dig`
 
-```shell
+````shell
 invalid command: dig
 
 
-```
+````
 
 ### `$ ./cli dir -h`
 
-```shell
+````shell
 cli dir - Directory commands
 
 Alias: d
@@ -178,11 +178,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli file -h`
 
-```shell
+````shell
 cli file - File commands
 
 Alias: f
@@ -201,20 +201,20 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli dir list`
 
-```shell
+````shell
 missing required argument: PATH
 usage: cli dir list PATH
 
 
-```
+````
 
 ### `$ ./cli dir list -h`
 
-```shell
+````shell
 cli dir list - Show files in the directory
 
 Usage:
@@ -231,28 +231,28 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./cli dir lost -h`
 
-```shell
+````shell
 invalid command: lost
 
 
-```
+````
 
 ### `$ ./cli file edit`
 
-```shell
+````shell
 missing required argument: PATH
 usage: cli file edit PATH
 
 
-```
+````
 
 ### `$ ./cli file edit -h`
 
-```shell
+````shell
 cli file edit - Edit the file
 
 Usage:
@@ -269,11 +269,11 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./cli file edit filename`
 
-```shell
+````shell
 # this file is located in 'src/file_edit_command.sh'
 # code for 'cli file edit' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -281,7 +281,7 @@ args:
 - ${args[path]} = filename
 
 
-```
+````
 
 
 

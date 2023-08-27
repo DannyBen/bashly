@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -47,15 +47,15 @@ commands:
     short: -p
     arg: password
     help: Password to use for logging in
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -76,11 +76,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Usage:
@@ -99,11 +99,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli upload -h`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Usage:
@@ -125,11 +125,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli upload --force`
 
-```shell
+````shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -137,11 +137,11 @@ args:
 - ${args[--force]} = 1
 
 
-```
+````
 
 ### `$ ./cli download --debug`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -149,7 +149,7 @@ args:
 - ${args[--debug]} = 1
 
 
-```
+````
 
 
 

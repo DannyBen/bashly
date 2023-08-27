@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Catch All Example
 version: 0.1.0
@@ -31,24 +31,24 @@ args:
 flags:
 - long: --debug
   short: -d
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 missing required argument: MESSAGE
 usage: download MESSAGE [OPTIONS] [...]
 
 
-```
+````
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Catch All Example
 
 Usage:
@@ -72,22 +72,22 @@ Arguments:
 
 
 
-```
+````
 
 ### `$ ./download something`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[message]} = something
 
 
-```
+````
 
 ### `$ ./download something with --additional args`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -100,11 +100,11 @@ other_args:
 - ${other_args[2]} = args
 
 
-```
+````
 
 ### `$ ./download something --debug -- also pass --debug to catch_all`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -120,7 +120,7 @@ other_args:
 - ${other_args[4]} = catch_all
 
 
-```
+````
 
 
 
