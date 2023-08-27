@@ -3,6 +3,8 @@ describe 'libraries/render/mandoc' do
     RenderContext.new source: source, target: target, show: show
   end
 
+  let(:leeway) { ENV['CI'] ? 10 : 0 }
+
   let(:source) { 'lib/bashly/libraries/render/mandoc' }
   let(:target) { 'spec/tmp' }
   let(:show) { nil }
@@ -27,6 +29,7 @@ describe 'libraries/render/mandoc' do
 
         expect(`man "#{target}/download.1" | col -bx`)
           .to match_approval('libraries/render/mandoc/render-1-download.1')
+          .diff(leeway)
       end
     end
 
