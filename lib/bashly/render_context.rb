@@ -6,6 +6,7 @@ module Bashly
     include Colsole
 
     attr_reader :source, :target, :show
+    attr_writer :config
 
     def initialize(source:, target:, show: nil)
       @source = source

@@ -3,6 +3,8 @@
 describe 'rendering mandoc' do
   subject { Commands::Render.new }
 
+  let(:source_dir) { Settings.source_dir }
+
   target = 'spec/tmp'
   examples = %w[
     catch-all-advanced
@@ -10,6 +12,7 @@ describe 'rendering mandoc' do
     docker-like
     extensible-delegate
     minimal
+    render-mandoc
   ]
 
   # Allow up to a certain string distance from the approval text in CI
@@ -18,8 +21,8 @@ describe 'rendering mandoc' do
   examples.each do |example|
     describe example do
       before do
-        Settings.config_path = "examples/#{example}/src/bashly.yml"
-        reset_tmp_dir
+        reset_tmp_dir create_src: true
+        cp "examples/#{example}/src/bashly.yml", "#{source_dir}/bashly.yml"
       end
 
       it 'renders properly' do

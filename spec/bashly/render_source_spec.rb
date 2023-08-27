@@ -8,7 +8,7 @@ describe RenderSource do
     it 'returns a hash of all internal RenderSource objects' do
       expect(described_class.internal).to be_a Hash
       expect(described_class.internal.keys).to match_array(%i[markdown mandoc])
-      expect(described_class.internal.values).to all(be_a RenderSource)
+      expect(described_class.internal.values).to all(be_a described_class)
     end
   end
 
