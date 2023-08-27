@@ -14,6 +14,6 @@ cli COMMAND
 
 ## Commands
 
-- [download](cli download) - Download something
+- [download](cli%20download) - Download something
 
 

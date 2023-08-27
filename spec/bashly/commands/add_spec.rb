@@ -4,26 +4,19 @@ describe Commands::Add do
   let(:source_dir) { Settings.source_dir }
   let(:target_dir) { Settings.target_dir }
 
-  context 'with --help' do
+  describe 'add --help' do
     it 'shows long usage' do
       expect { subject.execute %w[add --help] }.to output_approval('cli/add/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'add' do
     it 'shows short usage' do
       expect { subject.execute %w[add] }.to output_approval('cli/add/usage')
     end
   end
 
-  context 'with an unrecognized library' do
-    it 'raises an error' do
-      expect { subject.execute %w[add no-such-lib] }.to raise_approval('cli/add/no-lib-error')
-        .diff(5)
-    end
-  end
-
-  context 'with --list' do
+  describe 'add --list' do
     it 'shows list of available libraries' do
       expect { subject.execute %w[add --list] }.to output_approval('cli/add/list')
     end
@@ -36,7 +29,14 @@ describe Commands::Add do
     end
   end
 
-  context 'with colors command' do
+  describe 'add unrecognized-library' do
+    it 'raises an error' do
+      expect { subject.execute %w[add no-such-lib] }.to raise_approval('cli/add/no-lib-error')
+        .diff(5)
+    end
+  end
+
+  describe 'add colors' do
     let(:lib_file) { "#{source_dir}/lib/colors.sh" }
 
     before { reset_tmp_dir create_src: true }
@@ -47,7 +47,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with completions command' do
+  describe 'add completions' do
     before { reset_tmp_dir init: true }
 
     it 'creates lib/send_completions.sh' do
@@ -56,21 +56,21 @@ describe Commands::Add do
     end
   end
 
-  context 'with completions_script command' do
+  describe 'add completions_script' do
     it 'creates completions.bash' do
       expect { subject.execute %w[add completions_script] }.to output_approval('cli/add/comp-script')
       expect(File.read("#{target_dir}/completions.bash")).to match_approval('cli/add/comp-script-file')
     end
   end
 
-  context 'with completions_yaml command' do
+  describe 'add completions_yaml' do
     it 'creates completions.yml' do
       expect { subject.execute %w[add completions_yaml] }.to output_approval('cli/add/comp-yaml')
       expect(File.read("#{target_dir}/completions.yml")).to match_approval('cli/add/comp-yaml-file')
     end
   end
 
-  context 'with config command' do
+  describe 'add config' do
     let(:lib_file) { "#{source_dir}/lib/config.sh" }
 
     before { reset_tmp_dir create_src: true }
@@ -81,7 +81,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with help command' do
+  describe 'help' do
     let(:help_command_file) { "#{source_dir}/help_command.sh" }
 
     before { reset_tmp_dir init: true }
@@ -92,7 +92,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with hooks command' do
+  describe 'add hooks' do
     let(:before_hook_file) { "#{source_dir}/before.sh" }
     let(:after_hook_file) { "#{source_dir}/after.sh" }
 
@@ -105,7 +105,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with lib command' do
+  describe 'add lib' do
     let(:lib_file) { "#{source_dir}/lib/sample_function.sh" }
 
     before { reset_tmp_dir create_src: true }
@@ -116,7 +116,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with settings command' do
+  describe 'add settings' do
     let(:settings_file) { "#{target_dir}/settings.yml" }
     let(:template_file) { 'lib/bashly/libraries/settings/settings.yml' }
 
@@ -144,7 +144,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with strings command' do
+  describe 'add strings' do
     let(:strings_file) { "#{source_dir}/bashly-strings.yml" }
 
     before { reset_tmp_dir create_src: true }
@@ -170,7 +170,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with test command' do
+  describe 'add test' do
     let(:lib_file) { "#{target_dir}/test/approvals.bash" }
 
     before { reset_tmp_dir create_src: true }
@@ -181,7 +181,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with validations command' do
+  describe 'add validations' do
     let(:lib_file) { "#{source_dir}/lib/validations/validate_integer.sh" }
 
     before { reset_tmp_dir create_src: true }
@@ -192,7 +192,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with yaml command' do
+  describe 'add yaml' do
     let(:lib_file) { "#{source_dir}/lib/yaml.sh" }
 
     before { reset_tmp_dir create_src: true }
@@ -203,7 +203,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with a library from an external --source path' do
+  describe 'add --source PATH LIBRARY' do
     before { reset_tmp_dir create_src: true }
 
     it 'properly installs the library' do
@@ -212,7 +212,7 @@ describe Commands::Add do
     end
   end
 
-  context 'with a library from github' do
+  describe 'add --source github:URI LIBRARY' do
     before { reset_tmp_dir create_src: true }
 
     it 'properly installs the library' do

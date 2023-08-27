@@ -5,11 +5,13 @@ module Bashly
   class RenderContext
     include Colsole
 
-    attr_reader :source, :target
+    attr_reader :source, :target, :show
+    attr_writer :config
 
-    def initialize(source, target)
+    def initialize(source:, target:, show: nil)
       @source = source
       @target = target
+      @show = show
     end
 
     def config

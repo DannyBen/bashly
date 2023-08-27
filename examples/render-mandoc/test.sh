@@ -2,7 +2,7 @@
 
 rm -f ./src/*.sh
 
-set -x
+# set -x   # can't use this here, since the piped command appears in random order
 
 bashly render :mandoc docs
 

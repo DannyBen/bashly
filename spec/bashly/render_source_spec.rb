@@ -4,6 +4,14 @@ describe RenderSource do
   let(:selector) { :markdown }
   let(:path_to_source) { 'lib/bashly/libraries/render/markdown' }
 
+  describe '::internal' do
+    it 'returns a hash of all internal RenderSource objects' do
+      expect(described_class.internal).to be_a Hash
+      expect(described_class.internal.keys).to match_array(%i[markdown mandoc])
+      expect(described_class.internal.values).to all(be_a described_class)
+    end
+  end
+
   describe '#internal?' do
     context 'with an internal source' do
       it 'returns true' do
@@ -51,6 +59,22 @@ describe RenderSource do
   describe '#readme' do
     it 'returns the content of the readme file' do
       expect(subject.readme).to eq File.read("#{path_to_source}/README.md")
+    end
+  end
+
+  describe '#render' do
+    let(:selector) { 'source' }
+    let(:mock_render_context) { double RenderContext }
+
+    it 'evaluates the render script in a RenderContext' do
+      allow(RenderContext).to receive(:new).with(source: 'source', target: 'target', show: 'show')
+        .and_return(mock_render_context)
+      allow(subject).to receive(:render_script)
+        .and_return(:dummy_render_script)
+
+      expect(mock_render_context).to receive(:instance_eval).with(:dummy_render_script)
+
+      subject.render 'target', show: 'show'
     end
   end
 end
