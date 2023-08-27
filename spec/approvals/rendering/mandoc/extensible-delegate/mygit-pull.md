@@ -19,4 +19,10 @@ Pull from my repository
 
 - Alias: **l**
 
+SEE ALSO
+==================================================
+
+**mygit**(1)
+
+
 

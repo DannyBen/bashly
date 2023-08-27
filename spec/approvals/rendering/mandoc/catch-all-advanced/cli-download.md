@@ -60,4 +60,10 @@ cli download example.com ./output -f
 
 ~~~
 
+SEE ALSO
+==================================================
+
+**cli**(1)
+
+
 

@@ -31,6 +31,7 @@ Show all images
 SEE ALSO
 ==================================================
 
+**docker**(1)
 **docker-image-ls**(1)
 
 

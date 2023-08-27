@@ -37,4 +37,10 @@ curl, wget
 install with $(green sudo apt install curl)
 
 
+SEE ALSO
+==================================================
+
+**cli**(1)
+
+
 
