@@ -14,7 +14,7 @@ docker container COMMAND
 
 ## Commands
 
-- [run](docker container run) - Run a container
-- [stop](docker container stop) - Stop a container
+- [run](docker%20container%20run) - Run a container
+- [stop](docker%20container%20stop) - Stop a container
 
 

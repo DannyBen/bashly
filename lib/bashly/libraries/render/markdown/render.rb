@@ -21,4 +21,3 @@ if show
   file = "#{target}/#{show}"
   puts TTY::Markdown.parse_file(file) if File.exist?(file)
 end
-

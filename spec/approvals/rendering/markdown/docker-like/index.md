@@ -14,9 +14,9 @@ docker [OPTIONS] COMMAND
 
 ## Commands
 
-- [container](docker container) - Container commands
-- [image](docker image) - Image commands
-- [ps](docker ps) - List containers
+- [container](docker%20container) - Container commands
+- [image](docker%20image) - Image commands
+- [ps](docker%20ps) - List containers
 
 ## Options
 

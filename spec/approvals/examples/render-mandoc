@@ -1,8 +1,8 @@
 + bashly render :mandoc docs
 saved docs/download.md
 saved docs/download.1
-+ man docs/download.1
 + col -bx
++ man docs/download.1
 download(1)                   Sample application                   download(1)
 
 NAME

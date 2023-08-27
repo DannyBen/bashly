@@ -25,7 +25,7 @@ module Bashly
 
         The provided PATH is treated as relative TARGET.
 
-        Note that this works only if the template source defines a preview command.
+        Note that this works only if the template source supports it.
       USAGE
 
       option '-l --list', 'Show list of built-in templates'
@@ -69,10 +69,6 @@ module Bashly
 
       def render
         render_source.render target, show: args['--show']
-      end
-
-      def show(path)
-        render_source.show path
       end
 
       def watch

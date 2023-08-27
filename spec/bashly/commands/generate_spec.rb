@@ -5,13 +5,13 @@ describe Commands::Generate do
   let(:target_dir) { Settings.target_dir }
   let(:cli_script_content) { File.read cli_script }
 
-  context 'with --help' do
+  describe 'generate --help' do
     it 'shows long usage' do
       expect { subject.execute %w[generate --help] }.to output_approval('cli/generate/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'generate' do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
@@ -74,7 +74,7 @@ describe Commands::Generate do
     end
   end
 
-  context 'with --quiet' do
+  describe 'generate --quiet' do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
@@ -88,7 +88,7 @@ describe Commands::Generate do
     end
   end
 
-  context 'with --wrap function' do
+  describe 'generate --wrap function' do
     let(:cli_script) { "#{target_dir}/cli" }
 
     before do
@@ -105,7 +105,7 @@ describe Commands::Generate do
     end
   end
 
-  context 'with --env production' do
+  describe 'generate --env production' do
     let(:cli_script) { "#{target_dir}/cli" }
     let(:cli_script_content) { File.read cli_script }
 
@@ -123,7 +123,7 @@ describe Commands::Generate do
     end
   end
 
-  context 'with --upgrade' do
+  describe 'generate --upgrade' do
     let(:lib_files) { Dir['spec/tmp/src/lib/**/*.sh'] }
     let(:outdated_text) { 'OUTDATED TEXT' }
 
@@ -214,7 +214,7 @@ describe Commands::Generate do
     end
   end
 
-  context 'with --watch' do
+  describe 'generate --watch' do
     before do
       reset_tmp_dir create_src: true
       cp 'lib/bashly/templates/bashly.yml', bashly_config_path

@@ -1,13 +1,13 @@
 describe Commands::Shell do
   subject { described_class.new }
 
-  context 'with --help' do
+  describe 'shell --help' do
     it 'shows long usage' do
-      expect { subject.execute %w[terminal --help] }.to output_approval('cli/shell/help')
+      expect { subject.execute %w[shell --help] }.to output_approval('cli/shell/help')
     end
   end
 
-  context 'without parameters' do
+  describe 'shell' do
     let(:terminal_double) { instance_double MisterBin::Terminal, start: nil, on: nil }
 
     it 'runs MisterBin::Terminal' do
@@ -17,7 +17,7 @@ describe Commands::Shell do
     end
   end
 
-  context 'with in-terminal commands' do
+  describe 'in-terminal commands' do
     before do
       ENV['BASHLY_SHELL'] = nil
       allow(Readline).to receive(:readline).and_return(*input)

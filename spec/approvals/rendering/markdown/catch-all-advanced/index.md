@@ -14,7 +14,7 @@ cli COMMAND
 
 ## Commands
 
-- [download](cli download) - Download a file
-- [upload](cli upload) - Upload a file
+- [download](cli%20download) - Download a file
+- [upload](cli%20upload) - Upload a file
 
 

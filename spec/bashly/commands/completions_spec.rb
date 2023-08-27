@@ -22,21 +22,21 @@ describe Commands::Completions do
     end
   end
 
-  context 'with --help' do
+  describe 'completions --help' do
     it 'shows long usage' do
       expect { subject.execute %w[completions --help] }
         .to output_approval('cli/completions/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'completions' do
     it 'shows the completions script' do
       expect { subject.execute %w[completions] }
         .to output(completions_script).to_stdout
     end
   end
 
-  context 'with --install' do
+  describe 'completions --install' do
     it 'installs the completions script to the completions directory' do
       allow(subject).to receive(:installer).and_return mock_installer
 
@@ -56,7 +56,7 @@ describe Commands::Completions do
     end
   end
 
-  context 'with --uninstall' do
+  describe 'completions --uninstall' do
     it 'uninstalls the completions script from all completions directories' do
       allow(subject).to receive(:installer).and_return mock_installer
 
