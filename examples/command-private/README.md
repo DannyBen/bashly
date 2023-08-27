@@ -16,7 +16,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application with private commands
 version: 0.1.0
@@ -41,24 +41,24 @@ commands:
 - name: connect-ssh
   help: Connect via SSH
   private: true
-```
+````
 
 ## `src/connect_command.sh`
 
-```bash
+````bash
 # Execute a subsequent (private) command based on the PROTOCOL argument
 protocol=${args[protocol]}
 cmd="./cli connect-$protocol"
 echo "=== Calling $cmd"
 $cmd
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application with private commands
 
 Usage:
@@ -71,11 +71,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application with private commands
 
 Usage:
@@ -95,11 +95,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./cli connect ftp`
 
-```shell
+````shell
 === Calling ./cli connect-ftp
 # this file is located in 'src/connect_ftp_command.sh'
 # code for 'cli connect-ftp' goes here
@@ -107,22 +107,22 @@ Options:
 args: none
 
 
-```
+````
 
 ### `$ ./cli connect-ssh`
 
-```shell
+````shell
 # this file is located in 'src/connect_ssh_command.sh'
 # code for 'cli connect-ssh' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./cli connect-ftp --help`
 
-```shell
+````shell
 cli connect-ftp - Connect via FTP
 
 Usage:
@@ -135,7 +135,7 @@ Options:
 
 
 
-```
+````
 
 
 

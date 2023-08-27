@@ -22,24 +22,32 @@ Download a file
 ARGUMENTS
 ==================================================
 
-**SOURCE**
-:    URL to download from
+SOURCE
+--------------------------------------------------
 
-     - *Required*
+URL to download from
 
-**TARGET**
-:    Target filename (default: same as source)
+- *Required*
+
+TARGET
+--------------------------------------------------
+
+Target filename (default: same as source)
 
 
-**AWS PARAMS...**
-:    Additional arguments or flags for AWS CLI
+AWS PARAMS...
+--------------------------------------------------
+
+Additional arguments or flags for AWS CLI
 
 
 OPTIONS
 ==================================================
 
-**--force, -f**
-:    Overwrite existing files
+--force, -f
+--------------------------------------------------
+
+Overwrite existing files
 
 
 EXAMPLES
@@ -51,4 +59,11 @@ cli download example.com
 cli download example.com ./output -f
 
 ~~~
+
+SEE ALSO
+==================================================
+
+**cli**(1)
+
+
 

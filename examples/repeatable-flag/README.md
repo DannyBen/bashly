@@ -18,7 +18,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample application to demonstrate the use of repeatable flags
 version: 0.1.0
@@ -47,11 +47,11 @@ flags:
 
 examples:
 - download -d one -d "two three" -vvv
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 # Convert the space delimited string to an array
 eval "data=(${args[--data]})"
 
@@ -68,14 +68,14 @@ echo ""
 
 inspect_args
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Sample application to demonstrate the use of repeatable flags
 
 Usage:
@@ -101,11 +101,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./download -d one -d "two three" -vvv`
 
-```shell
+````shell
 Data elements:
 one
 two three
@@ -117,7 +117,7 @@ args:
 - ${args[--verbose]} = 3
 
 
-```
+````
 
 
 

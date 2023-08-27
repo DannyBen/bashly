@@ -25,7 +25,7 @@ See the [src/root_command.sh](src/root_command.sh) for usage example.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: yaml
 help: Sample application that uses the YAML functions
 version: 0.1.0
@@ -46,11 +46,11 @@ examples:
 - yaml settings.yml
 - yaml settings.yml --prefix config_
 - yaml settings.yml server_port
-```
+````
 
 ## `settings.yml`
 
-```yaml
+````yaml
 ---
 # Sample YAML file
 environment: production
@@ -59,11 +59,11 @@ server:
   port: 3000
   host: 'http://localhost:3000'
 
-```
+````
 
 ## `src/root_command.sh`
 
-```bash
+````bash
 filename=${args[filename]:-}
 variable=${args[variable]:-}
 prefix=${args[--prefix]:-}
@@ -82,14 +82,14 @@ else
   yaml_load "$filename" "$prefix"
 
 fi
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./yaml -h`
 
-```shell
+````shell
 yaml - Sample application that uses the YAML functions
 
 Usage:
@@ -121,35 +121,35 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./yaml settings.yml`
 
-```shell
+````shell
 environment="production"
 server_port="3000"
 server_host="http://localhost:3000"
 
 
-```
+````
 
 ### `$ ./yaml settings.yml --prefix config_`
 
-```shell
+````shell
 config_environment="production"
 config_server_port="3000"
 config_server_host="http://localhost:3000"
 
 
-```
+````
 
 ### `$ ./yaml settings.yml server_port`
 
-```shell
+````shell
 server_port=3000
 
 
-```
+````
 
 
 

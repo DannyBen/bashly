@@ -35,7 +35,8 @@ module Bashly
       end
 
       def respond_to_missing?(method_name, include_private = false)
-        self.class.option_keys.include?(method_name) || super
+        self.class.option_keys.include?(method_name) ||
+          method_name.to_s.start_with?('x_') || super
       end
     end
   end

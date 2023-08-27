@@ -18,6 +18,10 @@ action :readme do
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|
+    if ENV['EXAMPLE']
+      next unless example.dir.include? ENV['EXAMPLE']
+    end
+    
     say example.dir
     example.regenerate_readme
   end

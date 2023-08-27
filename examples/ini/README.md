@@ -28,7 +28,7 @@ See the files in the [src](src) folder for usage examples.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: configly
 help: Sample application that uses the config functions
 version: 0.1.0
@@ -79,11 +79,11 @@ commands:
   examples:
   - configly del hello
   - configly del user.name
-```
+````
 
 ## `config.ini`
 
-```ini
+````ini
 ; comments are allowed, sections are optional
 hello = world
 bashly = works
@@ -96,11 +96,11 @@ path = value for options.path
 name = value for user.name
 email = value for user.email
 
-```
+````
 
 ## `src/get_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/ini.sh) to show a value from the config
 ini_load config.ini
 
@@ -113,11 +113,11 @@ else
   echo "No such key: $key"
 fi
 
-```
+````
 
 ## `src/list_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/ini.sh) to show the entire config file
 ini_load config.ini
 ini_show
@@ -126,11 +126,11 @@ ini_show
 # for key in $(ini_keys); do 
 #   echo "$key = ${ini[$key]}"
 # done
-```
+````
 
 ## `src/set_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/ini.sh) to store a value to the config
 ini_load config.ini
 
@@ -141,11 +141,11 @@ ini["$key"]="$value"
 ini_save saved.ini
 cat saved.ini
 
-```
+````
 
 ## `src/del_command.sh`
 
-```bash
+````bash
 # Using the standard library (lib/ini.sh) to delete a value from the config
 ini_load config.ini
 
@@ -156,14 +156,14 @@ ini_save saved.ini
 cat saved.ini
 
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./configly -h`
 
-```shell
+````shell
 configly - Sample application that uses the config functions
 
 Usage:
@@ -186,11 +186,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./configly set hello WORLD`
 
-```shell
+````shell
 bashly = works
 hello = WORLD
 
@@ -203,11 +203,11 @@ email = value for user.email
 name = value for user.name
 
 
-```
+````
 
 ### `$ ./configly set user.name Megatron`
 
-```shell
+````shell
 bashly = works
 hello = world
 
@@ -220,35 +220,35 @@ email = value for user.email
 name = Megatron
 
 
-```
+````
 
 ### `$ ./configly get hello`
 
-```shell
+````shell
 hello = world
 
 
-```
+````
 
 ### `$ ./configly get user.name`
 
-```shell
+````shell
 user.name = value for user.name
 
 
-```
+````
 
 ### `$ ./configly get invalid_key`
 
-```shell
+````shell
 No such key: invalid_key
 
 
-```
+````
 
 ### `$ ./configly del user.email`
 
-```shell
+````shell
 bashly = works
 hello = world
 
@@ -260,11 +260,11 @@ path = value for options.path
 name = value for user.name
 
 
-```
+````
 
 ### `$ ./configly list`
 
-```shell
+````shell
 bashly = works
 hello = world
 options.name = value for options.name
@@ -273,7 +273,7 @@ user.email = value for user.email
 user.name = value for user.name
 
 
-```
+````
 
 
 

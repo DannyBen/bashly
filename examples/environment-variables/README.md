@@ -20,7 +20,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application that requires environment variables
 version: 0.1.0
@@ -49,11 +49,11 @@ commands:
   - name: environment
     help: One of development, production or test
     default: development
-```
+````
 
 ## `src/verify_command.sh`
 
-```bash
+````bash
 echo "# this file is located in 'src/verify_command.sh'"
 echo "# code for 'cli verify' goes here"
 echo "# you can edit it freely and regenerate (it will not be overwritten)"
@@ -64,14 +64,14 @@ echo "- API_KEY=${API_KEY:-}"
 echo "- ENVIRONMENT=${ENVIRONMENT:-}"
 echo "- MY_SECRET=${MY_SECRET:-}"
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application that requires environment variables
 
 Usage:
@@ -84,11 +84,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application that requires environment variables
 
 Usage:
@@ -112,11 +112,11 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli verify -h`
 
-```shell
+````shell
 cli verify - Verify your user
 
 Alias: v
@@ -139,19 +139,19 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli verify`
 
-```shell
+````shell
 missing required environment variable: MY_SECRET
 
 
-```
+````
 
 ### `$ MY_SECRET="there is no spoon" ./cli verify`
 
-```shell
+````shell
 # this file is located in 'src/verify_command.sh'
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -162,11 +162,11 @@ environment:
 - MY_SECRET=there is no spoon
 
 
-```
+````
 
 ### `$ ENVIRONMENT=production MY_SECRET=safe-with-me ./cli verify`
 
-```shell
+````shell
 # this file is located in 'src/verify_command.sh'
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -177,7 +177,7 @@ environment:
 - MY_SECRET=safe-with-me
 
 
-```
+````
 
 
 

@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: tester
 help: Sample application that uses the forced default command option
 version: 0.1.0
@@ -34,15 +34,15 @@ commands:
   - name: search
     required: true
     help: File pattern of tests to run
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./tester -h`
 
-```shell
+````shell
 tester - Sample application that uses the forced default command option
 
 Usage:
@@ -63,33 +63,33 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./tester`
 
-```shell
+````shell
 # this file is located in 'src/all_command.sh'
 # code for 'tester all' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./tester all`
 
-```shell
+````shell
 # this file is located in 'src/all_command.sh'
 # code for 'tester all' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 ### `$ ./tester all -h`
 
-```shell
+````shell
 tester all - Run all tests
 
 Usage:
@@ -102,11 +102,11 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./tester only one`
 
-```shell
+````shell
 # this file is located in 'src/only_command.sh'
 # code for 'tester only' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -114,7 +114,7 @@ args:
 - ${args[search]} = one
 
 
-```
+````
 
 
 

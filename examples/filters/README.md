@@ -18,7 +18,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -46,11 +46,11 @@ commands:
   filters:
   - docker_running
   - redis_running
-```
+````
 
 ## `src/lib/filters.sh`
 
-```bash
+````bash
 # These filter functions can reside in any path under the `lib` directory.
 # You can use a single file for all filter functions, or a separate file
 # for each function.
@@ -67,14 +67,14 @@ filter_redis_running() {
   echo "Redis must be running (always fails)"
 }
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli container sample-id`
 
-```shell
+````shell
 # this file is located in 'src/container_command.sh'
 # code for 'cli container' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -82,15 +82,15 @@ args:
 - ${args[id]} = sample-id
 
 
-```
+````
 
 ### `$ ./cli redis`
 
-```shell
+````shell
 Redis must be running (always fails)
 
 
-```
+````
 
 
 

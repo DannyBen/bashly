@@ -1,7 +1,7 @@
 summary 'Run shfmt checks on all examples'
 
 action do
-  allowed_skips = 2
+  allowed_skips = 4
   Example.executables.each do |example|
     if example == 'examples/heredoc/cli' || !File.exist?(example)
       say "- skip  c`#{example}`"

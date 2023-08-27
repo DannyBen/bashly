@@ -13,7 +13,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: download
 help: Sample minimal application without commands
 version: 0.1.0
@@ -33,24 +33,24 @@ flags:
 examples:
 - download example.com
 - download example.com ./output -f
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./download`
 
-```shell
+````shell
 missing required argument: SOURCE
 usage: download SOURCE [TARGET] [OPTIONS]
 
 
-```
+````
 
 ### `$ ./download -h`
 
-```shell
+````shell
 download - Sample minimal application without commands
 
 Usage:
@@ -81,19 +81,19 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./download -v`
 
-```shell
+````shell
 0.1.0
 
 
-```
+````
 
 ### `$ ./download somesource -f`
 
-```shell
+````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
@@ -101,7 +101,7 @@ args:
 - ${args[source]} = somesource
 
 
-```
+````
 
 
 

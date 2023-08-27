@@ -14,7 +14,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -55,15 +55,15 @@ commands:
   - cli upload README.md
   - cli push README.md
   - cli u README.md
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -77,11 +77,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -106,11 +106,11 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -136,11 +136,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli d somefile`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -148,11 +148,11 @@ args:
 - ${args[source]} = somefile
 
 
-```
+````
 
 ### `$ ./cli upload --help`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Alias: u, push
@@ -176,11 +176,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli u --help`
 
-```shell
+````shell
 cli upload - Upload a file
 
 Alias: u, push
@@ -204,11 +204,11 @@ Examples:
 
 
 
-```
+````
 
 ### `$ ./cli push somefile`
 
-```shell
+````shell
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -216,7 +216,7 @@ args:
 - ${args[source]} = somefile
 
 
-```
+````
 
 
 

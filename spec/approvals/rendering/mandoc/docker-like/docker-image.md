@@ -22,12 +22,16 @@ Image commands
 COMMANDS
 ==================================================
 
-**docker image ls**(1)
-:    Show all images
+docker image ls
+--------------------------------------------------
+
+Show all images
 
 
 SEE ALSO
 ==================================================
 
+**docker**(1)
 **docker-image-ls**(1)
+
 

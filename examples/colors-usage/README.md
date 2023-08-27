@@ -27,7 +27,7 @@ Note that the output displayed in this README is not colored.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application
 version: 0.1.0
@@ -79,11 +79,11 @@ commands:
     short: -p
     arg: password
     help: Password to use for logging in
-```
+````
 
 ## `settings.yml`
 
-```yaml
+````yaml
 # Display various usage elements in color by providing the name of the color
 # function. The value for each property is a name of a function that is
 # available in your script, for example: `green` or `bold`.
@@ -96,14 +96,14 @@ usage_colors:
   flag: magenta
   environment_variable: cyan
 
-```
+````
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -117,11 +117,11 @@ Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli - Sample application
 
 Usage:
@@ -146,11 +146,11 @@ Environment Variables:
 
 
 
-```
+````
 
 ### `$ ./cli download -h`
 
-```shell
+````shell
 cli download - Download a file
 
 Alias: d
@@ -183,7 +183,7 @@ Examples:
 
 
 
-```
+````
 
 
 

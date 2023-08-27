@@ -87,7 +87,7 @@ module Bashly
       end
 
       def watchables
-        @watchables ||= [Settings.config_path, args['SOURCE']]
+        @watchables ||= [Settings.config_path, render_source.path]
       end
     end
   end

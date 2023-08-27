@@ -21,7 +21,7 @@ failure, or an empty string on success.
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: validate
 help: Sample application demonstrating validations
 version: 0.1.0
@@ -50,15 +50,15 @@ commands:
 
     # Validations also work on flags (when they have arguments)
     validate: file_exists
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./validate calc 1 2 --save README.md`
 
-```shell
+````shell
 # this file is located in 'src/calc_command.sh'
 # code for 'validate calc' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -68,34 +68,34 @@ args:
 - ${args[second]} = 2
 
 
-```
+````
 
 ### `$ ./validate calc A`
 
-```shell
+````shell
 validation error in FIRST:
 must be an integer
 
 
-```
+````
 
 ### `$ ./validate calc 1 B`
 
-```shell
+````shell
 validation error in SECOND:
 must be an integer
 
 
-```
+````
 
 ### `$ ./validate calc 1 2 --save no-such-file.txt`
 
-```shell
+````shell
 validation error in --save PATH:
 must be an existing file
 
 
-```
+````
 
 
 

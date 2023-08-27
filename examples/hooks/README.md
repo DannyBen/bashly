@@ -16,7 +16,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: hooks
 help: Sample application that uses before/after hooks
 version: 0.1.0
@@ -25,15 +25,15 @@ flags:
 - long: --debug
   short: -d
   help: Enable debug mode
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./hooks`
 
-```shell
+````shell
 ==[ Before Hook Called ]==
 args: none
 # this file is located in 'src/root_command.sh'
@@ -42,11 +42,11 @@ args: none
 ==[ After Hook Called ]==
 
 
-```
+````
 
 ### `$ ./hooks --debug`
 
-```shell
+````shell
 ==[ Before Hook Called ]==
 args:
 - ${args[--debug]} = 1
@@ -57,7 +57,7 @@ args:
 ==[ After Hook Called ]==
 
 
-```
+````
 
 
 

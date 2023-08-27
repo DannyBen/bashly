@@ -16,7 +16,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application that requires alternate dependencies
 version: 0.1.0
@@ -43,15 +43,15 @@ commands:
     http_client:
       command: [curl, wget]
       help: install with $(green sudo apt install curl)
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli download`
 
-```shell
+````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
@@ -60,10 +60,10 @@ args: none
 deps:
 - ${deps[git]} = /usr/bin/git
 - ${deps[http_client]} = /usr/bin/curl
-- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.2.2/bin/ruby
+- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.1.4/bin/ruby
 
 
-```
+````
 
 
 

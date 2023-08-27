@@ -15,7 +15,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 
 commands:
@@ -62,15 +62,15 @@ commands:
     help: Run a command in the container
   - name: down
     help: Terminate a container
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli`
 
-```shell
+````shell
 cli
 
 Usage:
@@ -90,11 +90,11 @@ Cluster Commands:
 
 
 
-```
+````
 
 ### `$ ./cli -h`
 
-```shell
+````shell
 cli
 
 Usage:
@@ -125,7 +125,7 @@ Options:
 
 
 
-```
+````
 
 
 

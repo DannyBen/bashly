@@ -16,7 +16,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: cli
 help: Sample application that requires dependencies
 version: 0.1.0
@@ -41,28 +41,28 @@ commands:
   dependencies:
     mini-docker: install with $(green gem install mini-docker)
     docker: visit https://docker.com for more information
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./cli download`
 
-```shell
+````shell
 missing dependency: shmurl
 
 
-```
+````
 
 ### `$ ./cli upload`
 
-```shell
+````shell
 missing dependency: mini-docker
 install with gem install mini-docker
 
 
-```
+````
 
 
 

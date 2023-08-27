@@ -11,12 +11,6 @@ save_manpage = lambda { |command|
   manfile = "#{target}/#{command.full_name.tr(' ', '-')}.1"
   save mdfile, gtx.parse(command)
 
-  # Append the footer file if it exists
-  footer_file = "#{target}/_footer.md"
-  if File.exist? footer_file
-    File.append mdfile, File.read(footer_file)
-  end
-
   # The pandoc command that creates a manpage from markdown
   cmd = %[pandoc -f markdown-smart -s --to man "#{mdfile}" > "#{manfile}"]
   success = system cmd

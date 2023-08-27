@@ -16,7 +16,7 @@ $ bashly generate
 
 ## `bashly.yml`
 
-```yaml
+````yaml
 name: ftp
 help: Sample application with command grouping
 version: 0.1.0
@@ -52,15 +52,15 @@ commands:
 - name: logout
   help: Delete login credentials to the config file
   group: Login
-```
+````
 
 
 
-## Generated script output
+## Output
 
 ### `$ ./ftp`
 
-```shell
+````shell
 ftp - Sample application with command grouping
 
 Usage:
@@ -78,11 +78,11 @@ Login Commands:
 
 
 
-```
+````
 
 ### `$ ./ftp -h`
 
-```shell
+````shell
 ftp - Sample application with command grouping
 
 Usage:
@@ -107,18 +107,18 @@ Options:
 
 
 
-```
+````
 
 ### `$ ./ftp login`
 
-```shell
+````shell
 # this file is located in 'src/login_command.sh'
 # code for 'ftp login' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
 
-```
+````
 
 
 
