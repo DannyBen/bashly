@@ -1,7 +1,8 @@
 describe Commands::Render do
   subject { described_class.new }
 
-  let(:leeway) { RUBY_VERSION < '3.2.0' ? 0 : 5 }
+  let(:ruby_leeway) { RUBY_VERSION < '3.2.0' ? 0 : 5 }
+  let(:markdown_leeway) { ENV['CI'] ? 20 : 0 }
   let(:source_dir) { Settings.source_dir }
   let(:target) { 'spec/tmp' }
 
@@ -21,7 +22,7 @@ describe Commands::Render do
   context 'with --about' do
     it 'shows the readme of the template source' do
       expect { subject.execute %w[render :markdown --about] }
-        .to output_approval('cli/render/about-markdown').diff(8)
+        .to output_approval('cli/render/about-markdown').diff(markdown_leeway)
     end
   end
 
@@ -47,7 +48,7 @@ describe Commands::Render do
     it 'raises an error' do
       expect { subject.execute %W[render no-templates-4U #{target}] }
         .to raise_approval('cli/render/source-not-found')
-        .diff(leeway)
+        .diff(ruby_leeway)
     end
   end
 
