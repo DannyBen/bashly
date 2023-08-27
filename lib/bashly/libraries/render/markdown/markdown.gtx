@@ -94,7 +94,7 @@ if commands.any?
     > ## {{ group.gsub(/:$/, '') }}
     >
     commands.each do |subcommand|
-      > - [{{ subcommand.name }}]({{ subcommand.full_name }}) - {{ subcommand.summary.for_markdown }}
+      > - [{{ subcommand.name }}]({{ subcommand.full_name.gsub(' ', '%20') }}) - {{ subcommand.summary.for_markdown }}
     end
     >
   end

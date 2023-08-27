@@ -3,13 +3,13 @@ describe Commands::Validate do
 
   let(:source_dir) { Settings.source_dir }
 
-  context 'with --help' do
+  describe 'validate --help' do
     it 'shows long usage' do
       expect { subject.execute %w[validate --help] }.to output_approval('cli/validate/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'validate' do
     before do
       reset_tmp_dir create_src: true
       cp 'lib/bashly/templates/bashly.yml', "#{source_dir}/bashly.yml"
@@ -20,7 +20,7 @@ describe Commands::Validate do
     end
   end
 
-  context 'with --verbose' do
+  describe 'validate --verbose' do
     before do
       reset_tmp_dir create_src: true
       cp 'spec/fixtures/workspaces/import/*'

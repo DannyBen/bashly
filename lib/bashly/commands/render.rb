@@ -6,7 +6,7 @@ module Bashly
     class Render < Base
       help 'Render the bashly data structure using cutsom templates'
 
-      usage 'bashly render SOURCE TARGET [options]'
+      usage 'bashly render SOURCE TARGET [--watch --show PATH]'
       usage 'bashly render SOURCE --about'
       usage 'bashly render --list'
       usage 'bashly render (-h|--help)'
@@ -20,12 +20,21 @@ module Bashly
       param 'TARGET', 'Output directory'
 
       option '-w --watch', 'Watch bashly.yml and the templates source for changes and render on change'
+      option '-s --show PATH', <<~USAGE
+        After rendering, show the result generated in PATH.
+
+        The provided PATH is treated as relative TARGET.
+
+        Note that this works only if the template source supports it.
+      USAGE
+
       option '-l --list', 'Show list of built-in templates'
       option '-a --about', 'Show information about a given templates source'
 
       example 'bashly render --list'
       example 'bashly render :markdown --about'
       example 'bashly render :markdown docs --watch'
+      example 'bashly render :markdown docs --show "cli-download.1"'
       example 'bashly render /path/to/templates ./out_path'
 
       attr_reader :watching, :target, :source
@@ -50,6 +59,27 @@ module Bashly
         puts TTY::Markdown.parse(render_source.readme)
       end
 
+      def start_render
+        @target = args['TARGET']
+        @watching = args['--watch']
+
+        render
+        watch if watching
+      end
+
+      def render
+        render_source.render target, show: args['--show']
+      end
+
+      def watch
+        say "g`watching`\n"
+
+        Filewatcher.new(watchables).watch do
+          render
+          say "g`waiting`\n"
+        end
+      end
+
       def render_source
         @render_source ||= begin
           source = RenderSource.new selector
@@ -63,27 +93,6 @@ module Bashly
         return args['SOURCE'] unless args['SOURCE'].start_with? ':'
 
         args['SOURCE'][1..].to_sym
-      end
-
-      def start_render
-        @target = args['TARGET']
-        @watching = args['--watch']
-
-        render
-        watch if watching
-      end
-
-      def render
-        render_source.render target
-      end
-
-      def watch
-        say "g`watching`\n"
-
-        Filewatcher.new(watchables).watch do
-          render
-          say "g`waiting`\n"
-        end
       end
 
       def watchables

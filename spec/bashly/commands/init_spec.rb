@@ -3,13 +3,13 @@ describe Commands::Init do
 
   let(:src_dir) { Settings.source_dir }
 
-  context 'with --help' do
+  describe 'init --help' do
     it 'shows long usage' do
       expect { subject.execute %w[init --help] }.to output_approval('cli/init/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'init' do
     before { reset_tmp_dir }
 
     let(:config_file) { "#{src_dir}/bashly.yml" }
@@ -31,7 +31,7 @@ describe Commands::Init do
     end
   end
 
-  context 'with --minimal' do
+  describe 'init --minimal' do
     before { reset_tmp_dir }
 
     let(:config_file) { "#{src_dir}/bashly.yml" }

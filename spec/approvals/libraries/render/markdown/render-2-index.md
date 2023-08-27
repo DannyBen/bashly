@@ -12,6 +12,12 @@ Sample application
 cli COMMAND
 ```
 
+## Environment Variables
+
+#### *API_KEY*
+
+Set your API key
+
 ## Commands
 
 - [download](cli%20download) - Download a file

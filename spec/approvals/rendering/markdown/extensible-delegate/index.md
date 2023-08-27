@@ -15,7 +15,7 @@ mygit COMMAND
 
 ## Commands
 
-- [push](mygit push) - Push to my repository
-- [pull](mygit pull) - Pull from my repository
+- [push](mygit%20push) - Push to my repository
+- [pull](mygit%20pull) - Pull from my repository
 
 

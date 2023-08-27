@@ -7,16 +7,9 @@ Render markdown documents for your script.
 ```bash
 # Generate all documents to the ./docs directory
 $ bashly render :markdown docs
-```
 
-## Viewing the output
-
-In order to view your markdown files, you can use
-[Madness markdown server](https://madness.dannyb.co/):
-
-```bash
-$ gem install madness
-$ madness server docs
+# Generate on change, and show one of the files
+$ bashly render :markdown docs --watch --show index.md
 ```
 
 ## Supported custom definitions
@@ -36,4 +29,14 @@ x_markdown_footer: |-
   # ISSUE TRACKER
 
   Report issues at <https://github.com/lanalang/smallville>
+```
+
+## Markdown server
+
+In order to view your markdown files in a browser, you can use the
+[Madness markdown server](https://madness.dannyb.co/):
+
+```bash
+$ gem install madness
+$ madness server docs
 ```

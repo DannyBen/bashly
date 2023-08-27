@@ -17,8 +17,6 @@ save_manpage = lambda { |command|
   raise "Failed running pandoc\nMake sure the following command succeeds and try again:\n\n  #{cmd}" unless success
 
   say "g`saved` #{manfile}"
-
-  system %[man "#{manfile}"] if ENV['PREVIEW'] == command.full_name
 }
 
 # Render the main command
@@ -27,4 +25,10 @@ save_manpage.call command
 # Render all subcommands
 command.deep_commands.reject(&:private).each do |subcommand|
   save_manpage.call subcommand
+end
+
+# Show one of the files if requested
+if show
+  file = "#{target}/#{show}"
+  system "man #{file}" if File.exist?(file)
 end

@@ -3,13 +3,13 @@ describe Commands::Preview do
 
   let(:source_dir) { Settings.source_dir }
 
-  context 'with --help' do
+  describe 'preview --help' do
     it 'shows long usage' do
       expect { subject.execute %w[preview --help] }.to output_approval('cli/preview/help')
     end
   end
 
-  context 'without arguments' do
+  describe 'preview' do
     before do
       reset_tmp_dir create_src: true
       cp 'lib/bashly/templates/bashly.yml', "#{source_dir}/bashly.yml"

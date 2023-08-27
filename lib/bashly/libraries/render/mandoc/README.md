@@ -10,30 +10,9 @@ will then use [pandoc](https://command-not-found.com/pandoc) to convert them.
 ```bash
 # Generate all man pages to the ./docs directory
 $ bashly render :mandoc docs
-```
 
-## Viewing the output
-
-Setting the environment variable `PREVIEW` to the full command you wish
-to preview, will prompt the renderer to show the output using the `man`
-command after rendering.
-
-```bash
-# Preview the page for the "cli download" command
-$ PREVIEW="cli download" bashly render :mandoc docs
-
-# .. and also watch for changes (after existing the man preview)
-$ PREVIEW="cli download" bashly render :mandoc docs --watch
-```
-
-In addition, you can use one of the following commands:
-
-```bash
-# View the man page interactively
-$ man docs/cli-download.1
-
-# Print the man page to stdout
-$ man docs/cli-download.1 | col -bx
+# Generate on change, and show one of the files
+$ bashly render :mandoc docs --watch --show cli-download.1
 ```
 
 ## Supported custom definitions
