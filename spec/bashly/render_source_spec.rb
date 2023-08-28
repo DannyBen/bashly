@@ -60,21 +60,24 @@ describe RenderSource do
     it 'returns the content of the readme file' do
       expect(subject.readme).to eq File.read("#{path_to_source}/README.md")
     end
+
+    context 'when the README does not exist' do
+      let(:selector) { 'spec/fixtures/render/source' }
+
+      it 'returns nil' do
+        expect(subject.readme).to be_nil
+      end
+    end
   end
 
   describe '#render' do
-    let(:selector) { 'source' }
+    let(:selector) { 'spec/fixtures/render/source' }
     let(:mock_render_context) { double RenderContext }
 
     it 'evaluates the render script in a RenderContext' do
-      allow(RenderContext).to receive(:new).with(source: 'source', target: 'target', show: 'show')
-        .and_return(mock_render_context)
-      allow(subject).to receive(:render_script)
-        .and_return(:dummy_render_script)
+      allow(RenderContext).to receive(:new).and_return(mock_render_context)
 
-      expect(mock_render_context).to receive(:instance_eval).with(:dummy_render_script)
-
-      subject.render 'target', show: 'show'
+      expect { subject.render 'any target' }.to output("render script executed\n").to_stdout
     end
   end
 end
