@@ -1,6 +1,21 @@
 Change Log
 ========================================
 
+v1.1.0 - 2023-08-28
+----------------------------------------
+
+- Add `bashly render` command
+- Add ability to render markdown documentation
+- Refactor module loading with autoload
+- Add `bashly add render_markdown` library
+- Add ability to render man pages and `bashly add render_mandoc` library
+- Refactor render command with RenderSource model
+- Allow arbitrary (`x-anything`) values in bashly.yml
+- Refactor mandoc template to use x_mandoc_footer and x_mandoc_authors
+- Add render-mandoc man page generation example
+- Add `--show` to `bashly render`
+
+
 v1.0.8 - 2023-08-11
 ----------------------------------------
 
