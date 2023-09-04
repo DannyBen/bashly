@@ -1,6 +1,6 @@
 % docker-container-stop(1) | Stop a container
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

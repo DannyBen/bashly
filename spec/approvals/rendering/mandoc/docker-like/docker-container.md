@@ -1,6 +1,6 @@
 % docker-container(1) | Container commands
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

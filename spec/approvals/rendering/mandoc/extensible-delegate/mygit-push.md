@@ -1,6 +1,6 @@
 % mygit-push(1) | Push to my repository
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

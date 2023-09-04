@@ -1,6 +1,6 @@
 % cli-upload(1) | Upload a file
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

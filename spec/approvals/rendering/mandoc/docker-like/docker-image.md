@@ -1,6 +1,6 @@
 % docker-image(1) | Image commands
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

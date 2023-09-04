@@ -1,6 +1,6 @@
 % docker-image-ls(1) | Show all images
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

@@ -1,6 +1,6 @@
 % cli-download(1) | Download something
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

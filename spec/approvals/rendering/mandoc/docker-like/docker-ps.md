@@ -1,6 +1,6 @@
 % docker-ps(1) | List containers
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================

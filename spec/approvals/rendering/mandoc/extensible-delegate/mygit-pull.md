@@ -1,6 +1,6 @@
 % mygit-pull(1) | Pull from my repository
 % 
-% September 2023
+% MONTH YEAR
 
 NAME
 ==================================================
