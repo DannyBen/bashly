@@ -34,6 +34,7 @@ describe 'rendering mandoc' do
           basename = File.basename file
           expect(File.read file).to match_approval("rendering/mandoc/#{example}/#{basename}")
             .diff(leeway)
+            .except(/\w{3,9} 202\d/, 'MONTH YEAR')
 
           expect(File).to exist("#{target}/#{File.basename(file, '.md')}.1")
         end

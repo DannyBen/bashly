@@ -8,6 +8,9 @@ x_mandoc_authors: Lana Lang
 x_mandoc_footer: |-
   # ISSUE TRACKER
   Report issues at <https://github.com/lanalang/smallville>
+x_mandoc_see_also:
+  - docker
+  - docker-compose.yml(5)
 
 dependencies:
   aws-cli: Download from <https://aws.amazon.com/cli/>

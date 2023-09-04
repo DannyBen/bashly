@@ -1,6 +1,6 @@
 % docker(1) Version 0.1.0 | Docker example
 % 
-% August 2023
+% MONTH YEAR
 
 NAME
 ==================================================

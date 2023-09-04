@@ -1,6 +1,6 @@
 % docker-container(1) | Container commands
 % 
-% August 2023
+% MONTH YEAR
 
 NAME
 ==================================================
@@ -36,7 +36,6 @@ Stop a container
 SEE ALSO
 ==================================================
 
-**docker**(1)
-**docker-container-run**(1), **docker-container-stop**(1)
+**docker**(1), **docker-container-run**(1), **docker-container-stop**(1)
 
 

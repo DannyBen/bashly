@@ -43,3 +43,21 @@ Add an authors string to your man pages.
 ```yaml
 x_mandoc_authors: Lana Lang
 ```
+
+### See Also: `x_mandoc_see_also`
+
+Adds additional pages to the `SEE ALSO` section, in addition to the
+pages that are added automatically (like the parent command, and
+sub commands).
+
+This property should be an array of strings. You can optionally add
+a section number in parentheses. If not provided, `(1)` will be used
+as default.
+
+#### Example
+
+```yaml
+x_mandoc_see_also:
+  - docker
+  - docker-compose.yml(5)
+```

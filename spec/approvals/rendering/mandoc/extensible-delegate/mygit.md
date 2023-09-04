@@ -1,6 +1,6 @@
 % mygit(1) Version 0.1.0 | Sample application that delegates unknown commands to a different executable
 % 
-% August 2023
+% MONTH YEAR
 
 NAME
 ==================================================

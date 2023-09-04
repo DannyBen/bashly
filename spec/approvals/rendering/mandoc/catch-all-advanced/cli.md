@@ -1,6 +1,6 @@
 % cli(1) Version 0.1.0 | Sample application
 % 
-% August 2023
+% MONTH YEAR
 
 NAME
 ==================================================

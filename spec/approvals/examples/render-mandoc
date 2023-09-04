@@ -35,10 +35,13 @@ DEPENDENCIES
    aws-cli
        Download from <https://aws.amazon.com/cli/>
 
+SEE ALSO
+       docker(1), docker-compose.yml(5)
+
 ISSUE TRACKER
        Report issues at <https://github.com/lanalang/smallville>
 
 AUTHORS
        Lana Lang.
 
-Version 0.1.0                     August 2023                      download(1)
+Version 0.1.0                   September 2023                     download(1)

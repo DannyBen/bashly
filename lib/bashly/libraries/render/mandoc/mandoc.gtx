@@ -181,14 +181,19 @@ if examples
   >
 end
 
-if public_commands.any? || parents.any?
+see_also = []
+see_also << parents.first if parents.any?
+see_also += public_commands.map { |x| x.full_name.to_hyphen } if public_commands.any?
+see_also += x_mandoc_see_also if x_mandoc_see_also && x_mandoc_see_also.is_a?(Array)
+see_also.map! do |item|
+  item.match(/(.+)(\(\d\))/) ? "**#{$1}**#{$2}" : "**#{item}**(1)"
+end
+
+if see_also.any?
   > SEE ALSO
   > ==================================================
   >
-  if parents.any?
-    > **{{ parents.first }}**(1)
-  end
-  = public_commands.map { |x| "**#{x.full_name.to_hyphen}**(1)" }.join ', '
+  = see_also.join ', '
   >
 end
 
