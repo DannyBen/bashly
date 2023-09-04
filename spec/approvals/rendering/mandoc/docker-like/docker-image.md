@@ -1,6 +1,6 @@
 % docker-image(1) | Image commands
 % 
-% August 2023
+% September 2023
 
 NAME
 ==================================================
@@ -31,7 +31,6 @@ Show all images
 SEE ALSO
 ==================================================
 
-**docker**(1)
-**docker-image-ls**(1)
+**docker**(1), **docker-image-ls**(1)
 
 

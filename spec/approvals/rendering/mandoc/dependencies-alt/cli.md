@@ -1,6 +1,6 @@
 % cli(1) Version 0.1.0 | Sample application that requires alternate dependencies
 % 
-% August 2023
+% September 2023
 
 NAME
 ==================================================

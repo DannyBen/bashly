@@ -1,6 +1,6 @@
 % download(1) Version 0.1.0 | Sample application
 % Lana Lang
-% August 2023
+% September 2023
 
 NAME
 ==================================================
@@ -59,6 +59,11 @@ aws-cli
 
 Download from \<https://aws.amazon.com/cli/\>
 
+
+SEE ALSO
+==================================================
+
+**docker**(1), **docker-compose.yml**(5)
 
 # ISSUE TRACKER
 Report issues at \<https://github.com/lanalang/smallville\>
