@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
     "title": "strings",
     "description": "Strings of the current application\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
     "type": "object",
