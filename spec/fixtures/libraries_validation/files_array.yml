@@ -1,0 +1,4 @@
+# error: files must be an array
+database:
+  help: Help text
+  files: one_file.txt

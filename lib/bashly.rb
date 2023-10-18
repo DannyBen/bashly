@@ -15,6 +15,7 @@ module Bashly
   autoload :ConfigValidator, 'bashly/config_validator'
   autoload :Library, 'bashly/library'
   autoload :LibrarySource, 'bashly/library_source'
+  autoload :LibrarySourceConfig, 'bashly/library_source_config'
   autoload :MessageStrings, 'bashly/message_strings'
   autoload :RenderContext, 'bashly/render_context'
   autoload :RenderSource, 'bashly/render_source'

@@ -1,0 +1,6 @@
+# error: files must have a source
+database:
+  help: Help text
+  files:
+    - target: some_target
+

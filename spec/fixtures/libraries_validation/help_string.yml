@@ -1,0 +1,6 @@
+# error: help must be a string
+database:
+  help: 1
+  files:
+    - source: "database/database.sh"
+      target: "%{user_lib_dir}/database.%{user_ext}"

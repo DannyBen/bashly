@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/message_string.yml] database.post_install_message must be a string>

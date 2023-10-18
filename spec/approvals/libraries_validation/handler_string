@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/handler_string.yml] database.handler must be a string>
