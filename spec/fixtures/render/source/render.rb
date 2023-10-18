@@ -1,1 +1,1 @@
-puts "render script executed"
+puts 'render script executed'
