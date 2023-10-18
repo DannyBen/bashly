@@ -1,6 +1,16 @@
 Change Log
 ========================================
 
+v1.1.1 - 2023-10-18
+----------------------------------------
+
+- Upgrade `approvals.bash` library to version 0.4.0
+- Update INI library to allow using environment variables in the INI values
+- Add support for custom "See Also" in mandoc renderer (`x_mandoc_see_also`)
+- Fix missing tmpdir library in `bashly add --source`
+- Validate libraries.yml
+
+
 v1.1.0 - 2023-08-28
 ----------------------------------------
 
