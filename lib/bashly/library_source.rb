@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'tmpdir'
 
 module Bashly
   class LibrarySource
