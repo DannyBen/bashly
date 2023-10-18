@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/help_string.yml] database.help must be a string>

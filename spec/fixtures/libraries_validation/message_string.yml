@@ -1,0 +1,7 @@
+# error: post_install_message must be a string (optional)
+database:
+  help: Help text
+  post_install_message: 1
+  files:
+    - source: "database/database.sh"
+      target: "%{user_lib_dir}/database.%{user_ext}"

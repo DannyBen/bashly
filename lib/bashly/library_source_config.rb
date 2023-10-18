@@ -30,7 +30,7 @@ module Bashly
 
     def assert_lib(key, value)
       assert_string "#{key}.help", value['help']
-      
+
       assert_optional_string "#{key}.usage", value['usage']
       assert_optional_string "#{key}.handler", value['handler']
       assert_optional_string "#{key}.post_install_message", value['post_install_message']

@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/files_source.yml] database.files[0].source must be a string>
