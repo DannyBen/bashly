@@ -8,7 +8,6 @@
 ## - Use any of the following functions to access and manipulate the values.
 ## - INI sections are optional (i.e., sectionless key=value pairs are allowed).
 ##
-
 ## Show all the key=value pairs from your config file
 config_show() {
   config_load
