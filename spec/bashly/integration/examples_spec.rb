@@ -7,6 +7,10 @@
 # EXAMPLE=yaml bundle exec run spec examples
 
 describe 'generated bash scripts' do
+  # Make sure all examples are generated with strict mode
+  before { ENV['BASHLY_STRICT'] = 'yes' }
+  after { ENV['BASHLY_STRICT'] = nil }
+
   # Test public examples from the examples folder...
   examples = Dir['examples/*'].select { |f| File.directory? f }
 

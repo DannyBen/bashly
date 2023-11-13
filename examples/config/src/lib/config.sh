@@ -8,7 +8,6 @@
 ## - Use any of the following functions to access and manipulate the values.
 ## - INI sections are optional (i.e., sectionless key=value pairs are allowed).
 ##
-
 ## Show all the key=value pairs from your config file
 config_show() {
   config_load
@@ -28,8 +27,8 @@ config_show() {
 ##   theme="$(config_get interface.theme)"
 ##
 config_get() {
-  local key="$1"
-  local default_value="$2"
+  local key="${1-}"
+  local default_value="${2-}"
 
   config_load
   echo "${ini["$key"]:-$default_value}"
@@ -40,7 +39,7 @@ config_get() {
 ##   config_set cloud.provider aws
 ##
 config_set() {
-  local key="$1"
+  local key="${1-}"
   shift
   local value="$*"
 
@@ -54,7 +53,7 @@ config_set() {
 ##   config_del login.email
 ##
 config_del() {
-  local key="$1"
+  local key="${1-}"
 
   config_load
   unset "ini[$key]"
@@ -93,7 +92,7 @@ config_reload() {
 ## Load an INI file (unless loaded) and populate the associative array
 ## NOTE: Normally there is no need to call this function, it is called as needed
 config_load() {
-  [[ "$config_loaded" == "true" ]] && return
+  [[ "${config_loaded-}" == "true" ]] && return
 
   declare -g CONFIG_FILE=${CONFIG_FILE:=config.ini}
   declare -g config_loaded=true
