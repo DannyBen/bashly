@@ -25,7 +25,6 @@
 ##   unset ini[section1.key1]
 ##   ini_save path/to/config.ini
 ##
-
 ## Load an INI file and populate the associative array `ini`.
 ini_load() {
   declare -gA ini
