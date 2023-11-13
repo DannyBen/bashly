@@ -99,7 +99,7 @@ commands:
 ##       - name: command
 ##         help: Help subject
 ##
-command="${args[command]}"
+command="${args[command]:-}"
 long_usage=yes
 
 if [[ -z "$command" ]]; then

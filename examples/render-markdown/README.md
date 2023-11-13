@@ -103,7 +103,6 @@ Overwrite existing files
 Show debug information
 
 # ISSUE TRACKER
-
 Report issues at \<https://github.com/lanalang/smallville\>
 
 ````
