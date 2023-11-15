@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v1.1.2 - 2023-11-15
+----------------------------------------
+
+- Fix shfmt excess newlines violation when using `--env production`
+- Fix some incompatibilities with strict mode
+
+
 v1.1.1 - 2023-10-18
 ----------------------------------------
 
