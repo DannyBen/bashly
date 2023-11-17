@@ -1,3 +1,5 @@
+require 'completely'
+
 module Bashly
   module Commands
     class Completions < Base
