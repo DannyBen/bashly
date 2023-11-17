@@ -1,5 +1,7 @@
-name: Experiment
-on: [push]
+name: Debug
+on:
+  push:
+    branches: [debug]
 
 jobs:
   test:
