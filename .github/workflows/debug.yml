@@ -1,0 +1,22 @@
+name: Debug
+on:
+  push:
+    branches: [debug]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    name: Run something on mac
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Print uname
+      run: uname -a
+
+    - name: Update bash
+      run: brew install bash
+
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
