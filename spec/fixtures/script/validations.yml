@@ -42,6 +42,14 @@
   - name: target
     help: Target filename
 
+:arg_unique_without_repeatable:
+  name: invalid
+  help: arg must be repeatable when using unique
+  args:
+  - name: target
+    help: Target filename
+    unique: true
+
 :command_catch_all_type:
   name: invalid
   help: catch_all must be boolean, string, or hash

@@ -95,12 +95,17 @@ module Bashly
       assert_optional_string "#{key}.validate", value['validate']
       assert_boolean "#{key}.required", value['required']
       assert_boolean "#{key}.repeatable", value['repeatable']
+      assert_boolean "#{key}.unique", value['unique']
 
       assert_array "#{key}.allowed", value['allowed'], of: :string
 
       refute value['name'].match(/^-/), "#{key}.name must not start with '-'"
 
       refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
+
+      if value['unique']
+        assert value['repeatable'], "#{key}.unique does not make sense without nub`repeatable`"
+      end
     end
 
     def assert_flag(key, value)
@@ -143,8 +148,7 @@ module Bashly
       end
 
       if value['unique']
-        condition = value['arg'] && value['repeatable']
-        assert condition, "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
+        assert value['arg'] && value['repeatable'], "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
       end
     end
 
