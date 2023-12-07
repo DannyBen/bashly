@@ -7,7 +7,7 @@ if repeatable
   >   if [[ -z ${args['{{ name }}']+x} ]]; then
   >     args['{{ name }}']="\"$2\""
   if unique
-    >   elif [[ ! "${args['{{ name }}']}" =~ "\"$2\"" ]]; then
+    >   elif [[ ! "${args['{{ name }}']}" =~ \"$2\" ]]; then
   else
     >   else
   end
