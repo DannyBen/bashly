@@ -19,6 +19,29 @@
       - name: ok
       - help: there is no name
 
+:arg_repeatable_more_than_one:
+  name: invalid
+  help: can only have one repeatable arg
+  args:
+  - name: source
+    required: true
+    repeatable: true
+    help: URL to download from
+  - name: target
+    repeatable: true
+    help: Target filename
+
+:arg_repeatable_not_last:
+  name: invalid
+  help: can the last arg can be repeatable
+  args:
+  - name: source
+    required: true
+    repeatable: true
+    help: URL to download from
+  - name: target
+    help: Target filename
+
 :command_catch_all_type:
   name: invalid
   help: catch_all must be boolean, string, or hash

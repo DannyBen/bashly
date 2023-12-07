@@ -1,0 +1,1 @@
+#<Bashly::ConfigurationError: root.args cannot contain a repeatable arg unless it is the last one>
