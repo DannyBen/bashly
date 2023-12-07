@@ -46,4 +46,5 @@ flag.private
 flag.repeatable
 flag.required
 flag.short
+flag.unique
 flag.validate

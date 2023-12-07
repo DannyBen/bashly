@@ -36,6 +36,15 @@ flags:
   # needs to be converted to an array with `eval "data=(${args[--data]})"`
   repeatable: true
 
+- long: --path
+  short: -p
+  arg: location
+  help: Specify one or more paths
+  repeatable: true
+
+  # Setting this to true will ignore repeating arguments that are not unique
+  unique: true
+
 - long: --verbose
   short: -v
   help: Set verbosity level
@@ -47,6 +56,7 @@ flags:
 
 examples:
 - download -d one -d "two three" -vvv
+- download -d one -p /usr/bin -p /tmp
 ````
 
 ## `src/root_command.sh`
@@ -61,7 +71,7 @@ for i in "${data[@]}"; do
 done
 
 # The --verbose arg will contain the number of times it was used by the user
-verbose=${args[--verbose]}
+verbose=${args[--verbose]:-1}
 echo ""
 echo "Verbosity level: $verbose"
 echo ""
@@ -87,6 +97,9 @@ Options:
   --data, -d DATA (required) (repeatable)
     Provide data values
 
+  --path, -p LOCATION (repeatable)
+    Specify one or more paths
+
   --verbose, -v (repeatable)
     Set verbosity level
 
@@ -98,6 +111,7 @@ Options:
 
 Examples:
   download -d one -d "two three" -vvv
+  download -d one -p /usr/bin -p /tmp
 
 
 
@@ -115,6 +129,21 @@ Verbosity level: 3
 args:
 - ${args[--data]} = "one" "two three"
 - ${args[--verbose]} = 3
+
+
+````
+
+### `$ ./download -d one --path /bin --path /usr/lib --path /bin`
+
+````shell
+Data elements:
+one
+
+Verbosity level: 1
+
+args:
+- ${args[--data]} = "one"
+- ${args[--path]} = "/bin" "/usr/lib"
 
 
 ````

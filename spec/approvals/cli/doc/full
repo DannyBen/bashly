@@ -738,6 +738,20 @@ flag.short
 
   See https://bashly.dannyb.co/configuration/flag/#short
 
+flag.unique
+
+  Specify that the arguments provided by this repeatable flag must be unique.
+  When this is set to true, non-unique values will be ignored.
+
+    flags:
+    - long: --path
+      arg: location
+      help: Set one or more paths
+      repeatable: true
+      unique: true
+
+  See https://bashly.dannyb.co/configuration/flag/#unique
+
 flag.validate
 
   Apply custom validation functions. Must be accompanied by arg.

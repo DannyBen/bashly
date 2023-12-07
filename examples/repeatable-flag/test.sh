@@ -8,3 +8,4 @@ bashly generate
 
 ./download -h
 ./download -d one -d "two three" -vvv
+./download -d one --path /bin --path /usr/lib --path /bin

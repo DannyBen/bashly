@@ -140,6 +140,12 @@ module Bashly
       if value['completions']
         assert value['arg'], "#{key}.completions does not make sense without nub`arg`"
       end
+
+      if value['unique']
+        condition = value['arg'] && value['repeatable']
+        assert condition, "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
+      end
+
     end
 
     def assert_env_var(key, value)

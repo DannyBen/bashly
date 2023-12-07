@@ -248,6 +248,14 @@
     allowed: [one, two]
     completions: [<file>]
 
+:flag_unique_without_repeatable_and_arg:
+  name: invalid
+  help: flag must have an arg and be repeatable when using unique
+  flags:
+  - long: --ssh
+    repeatable: true
+    unique: true
+
 :root_alias:
   name: invalid
   help: root cannot have alias
