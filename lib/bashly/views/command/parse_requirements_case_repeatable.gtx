@@ -7,9 +7,17 @@ args.each do |arg|
   if arg.repeatable
     >   args['{{ arg.name }}']="\"$1\""
     >   shift
-    > else
-    >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
-    >   shift
+    if arg.unique
+      > elif [[ ! "${args['{{ arg.name }}']}" =~ \"$1\" ]]; then
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
+      >   shift
+      > else
+      >   shift
+    else
+      > else
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
+      >   shift
+    end
 
   else
     >   args['{{ arg.name }}']=$1

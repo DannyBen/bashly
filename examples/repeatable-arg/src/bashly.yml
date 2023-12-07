@@ -13,6 +13,9 @@ args:
   # needs to be converted to an array with `eval "data=(${args[file]})"`
   repeatable: true
 
+  # Setting unique to true will ignore non-unique repeating values
+  unique: true
+
 examples:
 - upcase README.md LICENSE
 - upcase *.md

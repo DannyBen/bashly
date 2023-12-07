@@ -34,6 +34,9 @@ args:
   # needs to be converted to an array with `eval "data=(${args[file]})"`
   repeatable: true
 
+  # Setting unique to true will ignore non-unique repeating values
+  unique: true
+
 examples:
 - upcase README.md LICENSE
 - upcase *.md
@@ -108,6 +111,24 @@ args:
 ````
 
 ### `$ ./upcase file*`
+
+````shell
+
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
+  path: file2:
+  content: content of file2
+  upcase: CONTENT OF FILE2
+
+args:
+- ${args[file]} = "file1" "file2"
+
+
+````
+
+### `$ ./upcase file1 file2 file1`
 
 ````shell
 

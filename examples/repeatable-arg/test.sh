@@ -9,3 +9,4 @@ bashly generate
 ./upcase -h
 ./upcase file1
 ./upcase file*
+./upcase file1 file2 file1
