@@ -118,6 +118,7 @@ module Bashly
 
       assert_boolean "#{key}.private", value['private']
       assert_boolean "#{key}.repeatable", value['repeatable']
+      assert_boolean "#{key}.unique", value['unique']
       assert_boolean "#{key}.required", value['required']
       assert_array "#{key}.allowed", value['allowed'], of: :string
       assert_array "#{key}.conflicts", value['conflicts'], of: :string
