@@ -15,6 +15,9 @@ Options:
   --data, -d DATA (required) (repeatable)
     Provide data values
 
+  --path, -p LOCATION (repeatable)
+    Specify one or more paths
+
   --verbose, -v (repeatable)
     Set verbosity level
 
@@ -26,6 +29,7 @@ Options:
 
 Examples:
   download -d one -d "two three" -vvv
+  download -d one -p /usr/bin -p /tmp
 
 + ./download -d one -d 'two three' -vvv
 Data elements:
@@ -37,3 +41,12 @@ Verbosity level: 3
 args:
 - ${args[--data]} = "one" "two three"
 - ${args[--verbose]} = 3
++ ./download -d one --path /bin --path /usr/lib --path /bin
+Data elements:
+one
+
+Verbosity level: 1
+
+args:
+- ${args[--data]} = "one"
+- ${args[--path]} = "/bin" "/usr/lib"

@@ -1,5 +1,5 @@
 describe LibrarySourceConfig do
-  fixtures = Dir['spec/fixtures/libraries_errors/*.yml']
+  fixtures = Dir['spec/fixtures/libraries_validation/*.yml']
   subject { described_class.new path }
 
   let(:path) { 'spec/fixtures/libraries/libraries.yml' }

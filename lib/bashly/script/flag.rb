@@ -7,7 +7,7 @@ module Bashly
         def option_keys
           @option_keys ||= %i[
             allowed arg completions conflicts default help long repeatable
-            required short validate private
+            required short unique validate private
           ]
         end
       end

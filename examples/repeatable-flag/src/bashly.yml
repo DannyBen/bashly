@@ -15,6 +15,15 @@ flags:
   # needs to be converted to an array with `eval "data=(${args[--data]})"`
   repeatable: true
 
+- long: --path
+  short: -p
+  arg: location
+  help: Specify one or more paths
+  repeatable: true
+
+  # Setting this to true will ignore repeating arguments that are not unique
+  unique: true
+
 - long: --verbose
   short: -v
   help: Set verbosity level
@@ -26,4 +35,4 @@ flags:
 
 examples:
 - download -d one -d "two three" -vvv
-
+- download -d one -p /usr/bin -p /tmp

@@ -7,7 +7,7 @@ for i in "${data[@]}"; do
 done
 
 # The --verbose arg will contain the number of times it was used by the user
-verbose=${args[--verbose]}
+verbose=${args[--verbose]:-1}
 echo ""
 echo "Verbosity level: $verbose"
 echo ""

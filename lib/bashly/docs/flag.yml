@@ -162,6 +162,17 @@ flag.short:
       arg: name
       help: Repository user name
 
+flag.unique:
+  help: Specify that the arguments provided by this repeatable flag must be unique. When this is set to `true`, non-unique values will be ignored.
+  url: https://bashly.dannyb.co/configuration/flag/#unique
+  example: |-
+    flags:
+    - long: --path
+      arg: location
+      help: Set one or more paths
+      repeatable: true
+      unique: true
+
 flag.validate:
   help: Apply custom validation functions. Must be accompanied by `arg`.
 
