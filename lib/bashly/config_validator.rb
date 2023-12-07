@@ -207,6 +207,16 @@ module Bashly
         refute repeatable_arg, "#{key}.catch_all makes no sense with repeatable arg (#{repeatable_arg})"
       end
 
+      if value['args']
+        repeatable_args = value['args'].count { |a| a['repeatable'] }
+        assert repeatable_args < 2, "#{key}.args cannot have more than one repeatable args"
+
+        if repeatable_args == 1
+          assert value['args'].last['repeatable'],
+            "#{key}.args cannot contain a repeatable arg unless it is the last one"
+        end
+      end
+
       if value['expose']
         assert value['commands'], "#{key}.expose makes no sense without nub`commands`"
       end
