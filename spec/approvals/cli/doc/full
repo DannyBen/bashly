@@ -593,9 +593,10 @@ flag.arg
   Specify the name of the argument for this flag, in case it requires any.
 
     flags:
-    - long: --ssh
-      short: -s
-      help: Clone using SSH
+    - long: --user
+      short: -u
+      arg: name
+      help: Specify the user name
 
   See https://bashly.dannyb.co/configuration/flag/#arg
 

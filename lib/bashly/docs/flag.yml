@@ -41,9 +41,10 @@ flag.arg:
   url: https://bashly.dannyb.co/configuration/flag/#arg
   example: |-
     flags:
-    - long: --ssh
-      short: -s
-      help: Clone using SSH
+    - long: --user
+      short: -u
+      arg: name
+      help: Specify the user name
 
 flag.completions:
   help: Specify a list of additional completion suggestions when used in conjunction with `bashly add completions`. Must be accompanied by `arg`.
