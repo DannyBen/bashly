@@ -212,7 +212,8 @@ module Bashly
         assert repeatable_args < 2, "#{key}.args cannot have more than one repeatable args"
 
         if repeatable_args == 1
-          assert value['args'].last['repeatable'], "#{key}.args cannot contain a repeatable arg unless it is the last one"
+          assert value['args'].last['repeatable'],
+            "#{key}.args cannot contain a repeatable arg unless it is the last one"
         end
       end
 
