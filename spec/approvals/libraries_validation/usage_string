@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/usage_string.yml] database.usage must be a string>
+#<Bashly::ConfigurationError: [spec/fixtures/libraries_validation/usage_string.yml] database.usage must be a string>

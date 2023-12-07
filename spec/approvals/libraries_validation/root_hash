@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: spec/fixtures/libraries/errors/root_hash.yml must be a hash>
+#<Bashly::ConfigurationError: spec/fixtures/libraries_validation/root_hash.yml must be a hash>

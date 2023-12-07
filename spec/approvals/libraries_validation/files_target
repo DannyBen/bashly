@@ -1,1 +1,1 @@
-#<Bashly::ConfigurationError: [spec/fixtures/libraries/errors/files_target.yml] database.files[0].target must be a string>
+#<Bashly::ConfigurationError: [spec/fixtures/libraries_validation/files_target.yml] database.files[0].target must be a string>
