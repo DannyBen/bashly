@@ -83,6 +83,21 @@
                         "integer",
                         "non_empty"
                     ]
+                },
+                "unique": {
+                    "title": "unique",
+                    "description": "Whether the current positional argument is unique\nhttps://bashly.dannyb.co/configuration/argument/#unique",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "dependencies": {
+                "unique": {
+                    "properties": {
+                        "repeatable": {
+                            "const": true
+                        }
+                    }
                 }
             },
             "$ref": "#/definitions/custom-properties",
@@ -219,6 +234,21 @@
                         "integer",
                         "non_empty"
                     ]
+                },
+                "unique": {
+                    "title": "unique",
+                    "description": "Whether the current flag is unique\nhttps://bashly.dannyb.co/configuration/flag/#unique",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "dependencies": {
+                "unique": {
+                    "properties": {
+                        "repeatable": {
+                            "const": true
+                        }
+                    }
                 }
             },
             "$ref": "#/definitions/custom-properties",
