@@ -1,6 +1,15 @@
 Change Log
 ========================================
 
+v1.1.4 - 2023-12-09
+----------------------------------------
+
+- Fix example in `bashly doc flag.arg`
+- Add support for `unique` in repeatable flag args
+- Disallow multiple repeatable args, and a repeatable arg that is not the last one
+- Add support for `unique` in repeatable args
+
+
 v1.1.3 - 2023-11-25
 ----------------------------------------
 
