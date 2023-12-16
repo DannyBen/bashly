@@ -1,4 +1,4 @@
-Render the bashly data structure using cutsom templates
+Render the bashly data structure using custom templates
 
 Usage:
   bashly render SOURCE TARGET [--watch --show PATH]
