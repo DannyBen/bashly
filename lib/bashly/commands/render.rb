@@ -4,7 +4,7 @@ require 'tty-markdown'
 module Bashly
   module Commands
     class Render < Base
-      help 'Render the bashly data structure using cutsom templates'
+      help 'Render the bashly data structure using custom templates'
 
       usage 'bashly render SOURCE TARGET [--watch --show PATH]'
       usage 'bashly render SOURCE --about'
