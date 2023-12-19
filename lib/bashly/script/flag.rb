@@ -23,7 +23,13 @@ module Bashly
       end
 
       def default_string
-        default.is_a?(Array) ? Shellwords.shelljoin(default) : default
+        if default.is_a?(Array)
+          Shellwords.shelljoin default
+        elsif default.is_a?(String) && repeatable
+          Shellwords.shellescape default
+        else
+          default
+        end
       end
 
       def name

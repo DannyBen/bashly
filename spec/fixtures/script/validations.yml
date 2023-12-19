@@ -13,14 +13,6 @@
     - spaced file
     - other-file
 
-:arg_default_string_with_repeatable:
-  name: invalid
-  help: default cannot be a string with repeatable
-  args:
-  - name: path
-    repeatable: true
-    default: spaced file
-
 :arg_nested_name:
   name: invalid
   help: last nested arg does not have a name
@@ -283,15 +275,6 @@
     default:
     - spaced file
     - other-file
-
-:flag_default_string_with_repeatable:
-  name: invalid
-  help: default cannot be a string with repeatable
-  flags:
-  - long: --path
-    arg: location
-    repeatable: true
-    default: spaced file
 
 :flag_allowed_without_arg:
   name: invalid

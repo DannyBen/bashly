@@ -23,8 +23,8 @@ flags:
   # Setting this to true will ignore repeating arguments that are not unique.
   unique: true
 
-  # Setting default value(s) for a repeatable flag argument should be done in
-  # an array form.
+  # Setting default value(s) for a repeatable flag argument may be done in an
+  # array form (or a string form if it is a single default value only).
   default:
   - file one
   - file-two

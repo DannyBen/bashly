@@ -15,8 +15,8 @@ args:
   # Setting unique to true will ignore non-unique repeating values.
   unique: true
 
-  # Setting default value(s) for a repeatable argument should be done in an
-  # array form.
+  # Setting default value(s) for a repeatable argument may be done in an array
+  # form (or a string form if it is a single default value only).
   default:
   - file1
   - file2

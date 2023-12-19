@@ -110,10 +110,6 @@ module Bashly
       if value['default'].is_a? Array
         assert value['repeatable'], "#{key}.default array does not make sense without nub`repeatable`"
       end
-
-      if value['repeatable'] && value['default']
-        assert value['default'].is_a?(Array), "#{key}.default must be an array when using nub`repeatable`"
-      end
     end
 
     def assert_flag(key, value)
@@ -162,10 +158,6 @@ module Bashly
 
       if value['default'].is_a? Array
         assert value['repeatable'], "#{key}.default array does not make sense without nub`repeatable`"
-      end
-
-      if value['repeatable'] && value['default']
-        assert value['default'].is_a?(Array), "#{key}.default must be an array when using nub`repeatable`"
       end
     end
 
