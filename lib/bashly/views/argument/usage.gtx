@@ -8,7 +8,11 @@ if allowed
 end
 
 if default
-  > printf "    {{ strings[:default] % { value: default } }}\n"
+  if default.is_a? Array
+    > printf "    {{ strings[:default] % { value: default.join(', ') } }}\n"
+  else
+    > printf "    {{ strings[:default] % { value: default } }}\n"
+  end
 end
 
 > echo

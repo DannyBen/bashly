@@ -5,16 +5,21 @@ version: 0.1.0
 args:
 - name: file
   help: One or more files to process
-  required: true
 
   # Setting repeatable to true means that the user can provide multiple arguments
   # for it.
   # The argument will be received as a quoted and space-delimited string which
-  # needs to be converted to an array with `eval "data=(${args[file]})"`
+  # needs to be converted to an array with `eval "data=(${args[file]})"`.
   repeatable: true
 
-  # Setting unique to true will ignore non-unique repeating values
+  # Setting unique to true will ignore non-unique repeating values.
   unique: true
+
+  # Setting default value(s) for a repeatable argument may be done in an array
+  # form (or a string form if it is a single default value only).
+  default:
+  - file1
+  - file2
 
 examples:
 - upcase README.md LICENSE

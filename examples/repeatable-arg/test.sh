@@ -7,6 +7,7 @@ bashly generate
 ### Try Me ###
 
 ./upcase -h
+./upcase
 ./upcase file1
 ./upcase file*
 ./upcase file1 file2 file1

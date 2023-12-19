@@ -28,12 +28,11 @@ flags:
   short: -d
   arg: data
   help: Provide data values
-  required: true
 
   # Setting this to true on a flag with an argument means the user can type it
   # multiple times, like --data a --data b.
   # The argument will be received as a quoted and space-delimited string which
-  # needs to be converted to an array with `eval "data=(${args[--data]})"`
+  # needs to be converted to an array with `eval "data=(${args[--data]})"`.
   repeatable: true
 
 - long: --path
@@ -42,8 +41,14 @@ flags:
   help: Specify one or more paths
   repeatable: true
 
-  # Setting this to true will ignore repeating arguments that are not unique
+  # Setting this to true will ignore repeating arguments that are not unique.
   unique: true
+
+  # Setting default value(s) for a repeatable flag argument may be done in an
+  # array form (or a string form if it is a single default value only).
+  default:
+  - file one
+  - file-two
 
 - long: --verbose
   short: -v
@@ -63,7 +68,7 @@ examples:
 
 ````bash
 # Convert the space delimited string to an array
-eval "data=(${args[--data]})"
+eval "data=(${args[--data]:-})"
 
 echo "Data elements:"
 for i in "${data[@]}"; do
@@ -94,11 +99,12 @@ Usage:
   download --version
 
 Options:
-  --data, -d DATA (required) (repeatable)
+  --data, -d DATA (repeatable)
     Provide data values
 
   --path, -p LOCATION (repeatable)
     Specify one or more paths
+    Default: file one, file-two
 
   --verbose, -v (repeatable)
     Set verbosity level
@@ -117,6 +123,19 @@ Examples:
 
 ````
 
+### `$ ./download`
+
+````shell
+Data elements:
+
+Verbosity level: 1
+
+args:
+- ${args[--path]} = file\ one file-two
+
+
+````
+
 ### `$ ./download -d one -d "two three" -vvv`
 
 ````shell
@@ -128,6 +147,7 @@ Verbosity level: 3
 
 args:
 - ${args[--data]} = "one" "two three"
+- ${args[--path]} = file\ one file-two
 - ${args[--verbose]} = 3
 
 

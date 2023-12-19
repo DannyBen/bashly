@@ -1,4 +1,4 @@
-require 'date'    # for use by template render scripts
+require 'date' # for use by template render scripts
 require 'colsole'
 
 module Bashly

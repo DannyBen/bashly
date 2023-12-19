@@ -26,16 +26,21 @@ version: 0.1.0
 args:
 - name: file
   help: One or more files to process
-  required: true
 
   # Setting repeatable to true means that the user can provide multiple arguments
   # for it.
   # The argument will be received as a quoted and space-delimited string which
-  # needs to be converted to an array with `eval "data=(${args[file]})"`
+  # needs to be converted to an array with `eval "data=(${args[file]})"`.
   repeatable: true
 
-  # Setting unique to true will ignore non-unique repeating values
+  # Setting unique to true will ignore non-unique repeating values.
   unique: true
+
+  # Setting default value(s) for a repeatable argument may be done in an array
+  # form (or a string form if it is a single default value only).
+  default:
+  - file1
+  - file2
 
 examples:
 - upcase README.md LICENSE
@@ -47,7 +52,7 @@ examples:
 ````bash
 # Convert the space delimited string to an array
 files=''
-eval "files=(${args[file]})"
+eval "files=(${args[file]:-})"
 
 echo
 echo "files:"
@@ -72,7 +77,7 @@ inspect_args
 upcase - Sample application to demonstrate the use of repeatable arguments
 
 Usage:
-  upcase FILE...
+  upcase [FILE...]
   upcase --help | -h
   upcase --version | -v
 
@@ -86,11 +91,30 @@ Options:
 Arguments:
   FILE...
     One or more files to process
+    Default: file1, file2
 
 Examples:
   upcase README.md LICENSE
   upcase *.md
 
+
+
+````
+
+### `$ ./upcase`
+
+````shell
+
+files:
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
+  path: file2:
+  content: content of file2
+  upcase: CONTENT OF FILE2
+
+args:
+- ${args[file]} = file1 file2
 
 
 ````

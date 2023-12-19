@@ -31,7 +31,7 @@ module Bashly
       return unless of
 
       value.each_with_index do |val, i|
-        send "assert_#{of}".to_sym, "#{key}[#{i}]", val
+        send :"assert_#{of}", "#{key}[#{i}]", val
       end
     end
 

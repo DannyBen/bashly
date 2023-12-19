@@ -91,7 +91,7 @@ module Bashly
       assert_hash key, value, keys: Script::Argument.option_keys
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
-      assert_optional_string "#{key}.default", value['default']
+      assert_string_or_array "#{key}.default", value['default']
       assert_optional_string "#{key}.validate", value['validate']
       assert_boolean "#{key}.required", value['required']
       assert_boolean "#{key}.repeatable", value['repeatable']
@@ -106,6 +106,10 @@ module Bashly
       if value['unique']
         assert value['repeatable'], "#{key}.unique does not make sense without nub`repeatable`"
       end
+
+      if value['default'].is_a? Array
+        assert value['repeatable'], "#{key}.default array does not make sense without nub`repeatable`"
+      end
     end
 
     def assert_flag(key, value)
@@ -118,7 +122,7 @@ module Bashly
       assert_optional_string "#{key}.short", value['short']
       assert_optional_string "#{key}.help", value['help']
       assert_optional_string "#{key}.arg", value['arg']
-      assert_optional_string "#{key}.default", value['default']
+      assert_string_or_array "#{key}.default", value['default']
       assert_optional_string "#{key}.validate", value['validate']
 
       assert_boolean "#{key}.private", value['private']
@@ -148,7 +152,12 @@ module Bashly
       end
 
       if value['unique']
-        assert value['arg'] && value['repeatable'], "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
+        assert value['arg'] && value['repeatable'],
+          "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
+      end
+
+      if value['default'].is_a? Array
+        assert value['repeatable'], "#{key}.default array does not make sense without nub`repeatable`"
       end
     end
 

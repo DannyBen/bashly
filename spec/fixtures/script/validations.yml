@@ -4,6 +4,15 @@
   args:
   - name: --user
 
+:arg_default_array_without_repeatable:
+  name: invalid
+  help: default cannot be an array without repeatable
+  args:
+  - name: path
+    default:
+    - spaced file
+    - other-file
+
 :arg_nested_name:
   name: invalid
   help: last nested arg does not have a name
@@ -50,22 +59,15 @@
     help: Target filename
     unique: true
 
-:command_catch_all_type:
+:catch_all_and_repeatable_arg:
   name: invalid
-  help: catch_all must be boolean, string, or hash
-  catch_all: [1,2]
-
-:command_catch_all_hash:
-  name: invalid
-  catch_all:
-    help: catch_all hash must have a label
-
-:command_catch_all_valid:
-  name: invalid
-  catch_all:
-    label: acceptable
-    help: catch_all.required should be boolean
-    required: 1
+  help: catch_all and repeatable arg make no sense together
+  catch_all: true
+  args:
+  - name: path
+    help: Path to one or more files
+    repeatable: true
+    required: true
 
 :command_catch_all_commands:
   name: invalid
@@ -74,6 +76,23 @@
     help: catch_all makes no sense with commands
   commands:
   - name: config
+
+:command_catch_all_hash:
+  name: invalid
+  catch_all:
+    help: catch_all hash must have a label
+
+:command_catch_all_type:
+  name: invalid
+  help: catch_all must be boolean, string, or hash
+  catch_all: [1,2]
+
+:command_catch_all_valid:
+  name: invalid
+  catch_all:
+    label: acceptable
+    help: catch_all.required should be boolean
+    required: 1
 
 :command_dependencies_invalid:
   name: invalid
@@ -108,22 +127,22 @@
     docker:
       invalid_key: goes here
 
-:command_expose_invalid_type:
-  name: invalid
-  help: expose should be boolean or 'always'
-  commands:
-  - name: config
-    expose: 1
-    commands:
-    - name: edit
-    - name: show
-
 :command_expose_invalid_string:
   name: invalid
   help: expose should be boolean or 'always'
   commands:
   - name: config
     expose: never
+    commands:
+    - name: edit
+    - name: show
+
+:command_expose_invalid_type:
+  name: invalid
+  help: expose should be boolean or 'always'
+  commands:
+  - name: config
+    expose: 1
     commands:
     - name: edit
     - name: show
@@ -163,13 +182,13 @@
   name: -invalid
   help: command.name must not start with a hyphen
 
+:command_name_missing:
+  help: there is no name
+
 :command_version:
   name: invalid
   help: version should be a string or a number
   version: [1, 0, 0]
-
-:command_name_missing:
-  help: there is no name
 
 :commands_and_args:
   name: invalid
@@ -201,18 +220,6 @@
     default: development
     private: 1
 
-:flag_long:
-  name: invalid
-  help: the long flag is not in the form of --force
-  flags:
-  - long: force
-
-:flag_short:
-  name: invalid
-  help: the short flag is not in the form of -f
-  flags:
-  - short: f
-
 :flag_arg:
   name: invalid
   help: the flag.arg should not start with --
@@ -220,42 +227,13 @@
   - long: --user
     arg: --name
 
-:flag_conflicts_type:
+:flag_allowed_and_completions:
   name: invalid
-  help: flag.conflicts should be an array
+  help: flag with both allowed and completions
   flags:
-  - long: --cache
-    conflicts: --no-cache
-
-:flag_conflicts_array:
-  name: invalid
-  help: flag.conflicts should be an array of strings
-  flags:
-  - long: --cache
-    conflicts: [1, 2]
-
-:flag_required_and_default:
-  name: invalid
-  help: flag cannot have both required and default
-  flags:
-  - long: --role
-    arg: name
-    required: true
-    default: admin
-
-:flag_default_without_arg:
-  name: invalid
-  help: flag must have an arg when using default
-  flags:
-  - long: --role
-    default: admin
-
-:flag_default_without_arg:
-  name: invalid
-  help: flag must have an arg when using default
-  flags:
-  - long: --role
-    default: admin
+  - long: --file
+    allowed: [one, two]
+    completions: [<file>]
 
 :flag_allowed_without_arg:
   name: invalid
@@ -269,15 +247,66 @@
   help: flag must have an arg when using completions
   flags:
   - long: --target
-    completions: [<dir>]
+    completions: [<dir>]    
 
-:flag_allowed_and_completions:
+:flag_conflicts_array:
   name: invalid
-  help: flag with both allowed and completions
+  help: flag.conflicts should be an array of strings
   flags:
-  - long: --file
-    allowed: [one, two]
-    completions: [<file>]
+  - long: --cache
+    conflicts: [1, 2]
+
+:flag_conflicts_type:
+  name: invalid
+  help: flag.conflicts should be an array
+  flags:
+  - long: --cache
+    conflicts: --no-cache
+
+:flag_default_array_without_repeatable:
+  name: invalid
+  help: default cannot be an array without repeatable
+  flags:
+  - long: --path
+    arg: location
+    default:
+    - spaced file
+    - other-file
+
+:flag_default_without_arg:
+  name: invalid
+  help: flag must have an arg when using default
+  flags:
+  - long: --role
+    default: admin
+
+:flag_default_without_arg:
+  name: invalid
+  help: flag must have an arg when using default
+  flags:
+  - long: --role
+    default: admin
+
+:flag_long:
+  name: invalid
+  help: the long flag is not in the form of --force
+  flags:
+  - long: force
+
+:flag_required_and_default:
+  name: invalid
+  help: flag cannot have both required and default
+  flags:
+  - long: --role
+    arg: name
+    required: true
+    default: admin
+
+:flag_short:
+  name: invalid
+  help: the short flag is not in the form of -f
+  flags:
+  - short: f
 
 :flag_unique_without_repeatable_and_arg:
   name: invalid
@@ -286,35 +315,6 @@
   - long: --ssh
     repeatable: true
     unique: true
-
-:root_alias:
-  name: invalid
-  help: root cannot have alias
-  alias: i
-
-:root_group:
-  name: invalid
-  help: root cannot have group
-  group: My Commands
-
-:root_default:
-  name: invalid
-  help: root cannot have default
-  default: true
-  args:
-  - name: ok
-
-:root_expose:
-  name: invalid
-  help: root cannot have expose
-  expose: true
-  commands:
-  - name: config
-
-:root_private:
-  name: invalid
-  help: root cannot have private
-  private: true
 
 :invalid_arg_keys:
   name: invalid
@@ -349,16 +349,6 @@
   flags:
   - long: --user
     disallowed: true
-  
-:catch_all_and_repeatable_arg:
-  name: invalid
-  help: catch_all and repeatable arg make no sense together
-  catch_all: true
-  args:
-  - name: path
-    help: Path to one or more files
-    repeatable: true
-    required: true
 
 :non_uniq_command_names:
   name: invalid
@@ -406,4 +396,32 @@
   args:
   - name: file
   - name: file
-  
+
+:root_alias:
+  name: invalid
+  help: root cannot have alias
+  alias: i
+
+:root_group:
+  name: invalid
+  help: root cannot have group
+  group: My Commands
+
+:root_default:
+  name: invalid
+  help: root cannot have default
+  default: true
+  args:
+  - name: ok
+
+:root_expose:
+  name: invalid
+  help: root cannot have expose
+  expose: true
+  commands:
+  - name: config
+
+:root_private:
+  name: invalid
+  help: root cannot have private
+  private: true
