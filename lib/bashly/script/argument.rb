@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module Bashly
   module Script
     class Argument < Base
@@ -7,6 +9,10 @@ module Bashly
             allowed default help name repeatable required unique validate
           ]
         end
+      end
+
+      def default_string
+        default.is_a?(Array) ? Shellwords.shelljoin(default) : default
       end
 
       def usage_string

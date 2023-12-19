@@ -22,6 +22,10 @@ module Bashly
         end
       end
 
+      def default_string
+        default.is_a?(Array) ? Shellwords.shelljoin(default) : default
+      end
+
       def name
         long || short
       end
