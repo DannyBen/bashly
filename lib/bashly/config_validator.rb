@@ -152,7 +152,8 @@ module Bashly
       end
 
       if value['unique']
-        assert value['arg'] && value['repeatable'], "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
+        assert value['arg'] && value['repeatable'],
+          "#{key}.unique does not make sense without nub`arg` and nub`repeatable`"
       end
 
       if value['default'].is_a? Array
