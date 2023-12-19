@@ -9,6 +9,23 @@ action :all do
   check_invalid
 end
 
+help 'Test any file against any schema'
+usage 'file [--anti] PATH [SCHEMA]'
+option '-a, --anti', 'Run anticheck instead (expect failure)'
+param 'PATH', 'The path to the tested YAML file'
+param 'SCHEMA', 'The name of the schema (bashly, settings of strings) [default: bashly]'
+example 'run schema file -a spec/fixtures/schemas_invalid/bashly/1.yml'
+example 'run schema file -a spec/fixtures/schemas_invalid/settings/2.yml settings'
+action(:file) do |args|
+  schema = args['SCHEMA'] || 'bashly'
+  if args['--anti']
+    schema_anticheck args['PATH'], schema
+  else
+    schema_check args['PATH'], schema
+  end
+  say "\ngub`PASS`"
+end
+
 help 'Test the bashly schema against a single example'
 usage 'example EXAMPLE'
 action(:example) { |args| schema_check "examples/#{args['EXAMPLE']}/src/bashly.yml" }
@@ -35,6 +52,7 @@ helpers do
       file = example.yaml_path
       schema_check file
     end
+    say "\ngub`Examples PASS`"
   end
 
   def check_settings
