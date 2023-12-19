@@ -41,7 +41,18 @@
                 "default": {
                     "title": "default",
                     "description": "A default value of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#default",
-                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
                     "examples": [
                         "*.jpg"
                     ]
@@ -159,7 +170,18 @@
                 "default": {
                     "title": "default",
                     "description": "A default value of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#default",
-                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
                     "examples": [
                         "*.jpg"
                     ]
