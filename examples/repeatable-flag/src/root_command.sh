@@ -1,5 +1,5 @@
 # Convert the space delimited string to an array
-eval "data=(${args[--data]})"
+eval "data=(${args[--data]:-})"
 
 echo "Data elements:"
 for i in "${data[@]}"; do

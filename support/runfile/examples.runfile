@@ -1,9 +1,15 @@
 summary 'Regenerate example scripts'
 
+env_var 'EXAMPLE', 'If set, work only on example that include this string.'
+
 action :regen do
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|
+    if ENV['EXAMPLE']
+      next unless example.dir.include? ENV['EXAMPLE']
+    end
+
     say example.dir
     Dir.chdir example.dir do
       system 'bash test.sh >/dev/null 2>&1'

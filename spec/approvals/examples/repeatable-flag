@@ -12,11 +12,12 @@ Usage:
   download --version
 
 Options:
-  --data, -d DATA (required) (repeatable)
+  --data, -d DATA (repeatable)
     Provide data values
 
   --path, -p LOCATION (repeatable)
     Specify one or more paths
+    Default: file one, file-two
 
   --verbose, -v (repeatable)
     Set verbosity level
@@ -31,6 +32,13 @@ Examples:
   download -d one -d "two three" -vvv
   download -d one -p /usr/bin -p /tmp
 
++ ./download
+Data elements:
+
+Verbosity level: 1
+
+args:
+- ${args[--path]} = file\ one file-two
 + ./download -d one -d 'two three' -vvv
 Data elements:
 one
@@ -40,6 +48,7 @@ Verbosity level: 3
 
 args:
 - ${args[--data]} = "one" "two three"
+- ${args[--path]} = file\ one file-two
 - ${args[--verbose]} = 3
 + ./download -d one --path /bin --path /usr/lib --path /bin
 Data elements:
