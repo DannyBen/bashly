@@ -41,18 +41,7 @@
                 "default": {
                     "title": "default",
                     "description": "A default value of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#default",
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "minItems": 1,
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ],
+                    "type": "string",
                     "examples": [
                         "*.jpg"
                     ]

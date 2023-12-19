@@ -8,7 +8,8 @@ catch_all: true
 args:
 - name: message
   required: true
-  help: Message
+  default: [""]
+  x_a: 
 
 flags:
 - long: --debug
