@@ -61,7 +61,7 @@ module Bashly
       return unless value
 
       assert [Array, String].include?(value.class),
-        "#{key} must be a string or an array of strings"
+        "#{key} must be a string or an array"
 
       assert_array key, value, of: :string if value.is_a? Array
     end
