@@ -8,6 +8,10 @@ action :all do
   check_arbitrary
 end
 
+help 'Test the bashly schema against a single example'
+usage 'example EXAMPLE'
+action(:example) { |args| schema_check "examples/#{args['EXAMPLE']}/src/bashly.yml" }
+
 help 'Test the bashly schema against all examples'
 action(:examples) { check_examples }
 
