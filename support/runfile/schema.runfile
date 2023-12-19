@@ -6,6 +6,7 @@ action :all do
   check_settings
   check_strings
   check_arbitrary
+  check_invalid
 end
 
 help 'Test the bashly schema against a single example'
@@ -24,6 +25,9 @@ action(:strings) { check_strings }
 help 'Test the bashly schema against a bashly configuration that includes arbitrary (x-) keys'
 action(:arbitrary) { check_arbitrary }
 
+help 'Verify that all the invalid schemas in spec/fixtures/schemas_invalid fail as expected'
+action(:invalid) { check_invalid }
+
 helpers do
   def check_examples
     say "\ngub`Examples`"
@@ -34,21 +38,38 @@ helpers do
   end
 
   def check_settings
-    say "\ngub`Settings`"
+    say "\ngub`Settings schema`"
     file = 'lib/bashly/libraries/settings/settings.yml'
     schema_check file, :settings
+    say "\ngub`Settings schema PASS`"
   end
 
   def check_strings
-    say "\ngub`Strings`"
+    say "\ngub`Strings schema`"
     file = 'lib/bashly/libraries/strings/strings.yml'
     schema_check file, :strings
+    say "\ngub`Strings schema PASS`"
   end
 
   def check_arbitrary
-    say "\ngub`Arbitrary`"
+    say "\ngub`Arbitrary arguments`"
     file = 'spec/fixtures/script/x_arbitrary.yml'
     schema_check file
+    say "\ngub`Arbitrary arguments PASS`"
+  end
+
+  def check_invalid
+    say "\ngub`Invalid files`"
+    basedir = 'spec/fixtures/schemas_invalid'
+    files = Dir.chdir(basedir) { Dir['**/*.yml'] }
+
+    files.each do |file|
+      schema = File.dirname file
+      path = "#{basedir}/#{file}"
+      schema_anticheck path, schema
+    end
+
+    say "\ngub`Invalid files PASS`"
   end
 
   def schema_check(file, schema = 'bashly')
@@ -57,5 +78,13 @@ helpers do
     success = system command
     
     abort 'Failed' unless success
+  end
+  
+  def schema_anticheck(file, schema = 'bashly')
+    command = "check-jsonschema --schemafile schemas/#{schema}.json #{file}"
+    say "\nnb`$ check-jsonschema` [m`#{schema}`] bb`#{file}`"
+    success = system "#{command}"
+    
+    abort 'Failed' if success
   end
 end
