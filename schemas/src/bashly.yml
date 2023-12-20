@@ -1,5 +1,12 @@
 $schema: http://json-schema.org/draft-07/schema
 definitions:
+  custom-properties: &custom-properties
+    patternProperties:
+      ^x_.:
+        title: custom property
+        description: A custom property of any type
+        examples:
+          - Anything
   argument:
     title: argument
     description: |-
@@ -91,12 +98,6 @@ definitions:
         properties:
           repeatable:
             const: true
-    patternProperties: &custom-properties
-      ^x_.:
-        title: custom property
-        description: A custom property of any type
-        examples:
-          - Anything
     additionalProperties: false
   flag:
     title: flag
