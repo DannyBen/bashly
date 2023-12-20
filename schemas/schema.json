@@ -1,63 +1,935 @@
-Usage:
-  yq eval [expression] [yaml_file1]... [flags]
-
-Aliases:
-  eval, e
-
-Examples:
-
-# Reads field under the given path for each file
-yq e '.a.b' f1.yml f2.yml 
-
-# Prints out the file
-yq e sample.yaml 
-
-# Pipe from STDIN
-## use '-' as a filename to pipe from STDIN
-cat file2.yml | yq e '.a.b' file1.yml - file3.yml
-
-# Creates a new yaml document
-## Note that editing an empty file does not work.
-yq e -n '.a.b.c = "cat"' 
-
-# Update a file in place
-yq e '.a.b = "cool"' -i file.yaml 
-
-
-Flags:
-  -h, --help   help for eval
-
-Global Flags:
-  -C, --colors                        force print with colors
-  -e, --exit-status                   set exit status if there are no matches or null or false is returned
-      --expression string             forcibly set the expression argument. Useful when yq argument detection thinks your expression is a file.
-      --from-file string              Load expression from specified file.
-  -f, --front-matter string           (extract|process) first input as yaml front-matter. Extract will pull out the yaml content, process will run the expression against the yaml content, leaving the remaining data intact
-      --header-preprocess             Slurp any header comments and separators before processing expression. (default true)
-  -I, --indent int                    sets indent level for output (default 2)
-  -i, --inplace                       update the file in place of first file given.
-  -p, --input-format string           [auto|a|yaml|y|props|p|xml|x|tsv|t|csv|c|toml] parse format for input. Note that json is a subset of yaml. (default "auto")
-      --lua-globals                   output keys as top-level global variables
-      --lua-prefix string             prefix (default "return ")
-      --lua-suffix string             suffix (default ";\n")
-      --lua-unquoted                  output unquoted string keys (e.g. {foo="bar"})
-  -M, --no-colors                     force print with no colors
-  -N, --no-doc                        Don't print document separators (---)
-  -0, --nul-output                    Use NUL char to separate values. If unwrap scalar is also set, fail if unwrapped scalar contains NUL char.
-  -n, --null-input                    Don't read input, simply evaluate the expression given. Useful for creating docs from scratch.
-  -o, --output-format string          [auto|a|yaml|y|json|j|props|p|xml|x|tsv|t|csv|c] output format type. (default "auto")
-  -P, --prettyPrint                   pretty print, shorthand for '... style = ""'
-  -s, --split-exp string              print each result (or doc) into a file named (exp). [exp] argument must return a string. You can use $index in the expression as the result counter.
-      --split-exp-file string         Use a file to specify the split-exp expression.
-  -r, --unwrapScalar                  unwrap scalar, print the value with no quotes, colors or comments. Defaults to true for yaml (default true)
-  -v, --verbose                       verbose mode
-      --xml-attribute-prefix string   prefix for xml attributes (default "+@")
-      --xml-content-name string       name for xml content (if no attribute name is present). (default "+content")
-      --xml-directive-name string     name for xml directives (e.g. <!DOCTYPE thing cat>) (default "+directive")
-      --xml-keep-namespace            enables keeping namespace after parsing attributes (default true)
-      --xml-proc-inst-prefix string   prefix for xml processing instructions (e.g. <?xml version="1"?>) (default "+p_")
-      --xml-raw-token                 enables using RawToken method instead Token. Commonly disables namespace translations. See https://pkg.go.dev/encoding/xml#Decoder.RawToken for details. (default true)
-      --xml-skip-directives           skip over directives (e.g. <!DOCTYPE thing cat>)
-      --xml-skip-proc-inst            skip over process instructions (e.g. <?xml version="1"?>)
-      --xml-strict-mode               enables strict parsing of XML. See https://pkg.go.dev/encoding/xml for more details.
-
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "definitions": {
+    "argument": {
+      "title": "argument",
+      "description": "A positional argument of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/argument/",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "A name of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#name",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "user"
+          ]
+        },
+        "help": {
+          "title": "help",
+          "description": "A description of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#help",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "AWS Username"
+          ]
+        },
+        "default": {
+          "title": "default",
+          "description": "A default value of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#default",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "examples": [
+            "*.jpg"
+          ]
+        },
+        "required": {
+          "title": "required",
+          "description": "Whether the current positional argument is required\nhttps://bashly.dannyb.co/configuration/argument/#required",
+          "type": "boolean",
+          "default": true
+        },
+        "allowed": {
+          "title": "allowed",
+          "description": "Valid values of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#allowed",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A valid value of the current positional argument",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "eu"
+            ]
+          }
+        },
+        "repeatable": {
+          "title": "repeatable",
+          "description": "Whether the current positional argument can be repeated\nhttps://bashly.dannyb.co/configuration/argument/#repeatable",
+          "type": "boolean",
+          "default": false
+        },
+        "validate": {
+          "title": "validate",
+          "description": "A validation function of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#validate",
+          "type": "string",
+          "examples": [
+            "file_exists",
+            "dir_exists",
+            "integer",
+            "non_empty"
+          ]
+        },
+        "unique": {
+          "title": "unique",
+          "description": "Whether the current positional argument is unique\nhttps://bashly.dannyb.co/configuration/argument/#unique",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "unique": {
+          "properties": {
+            "repeatable": {
+              "const": true
+            }
+          }
+        }
+      },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "flag": {
+      "title": "flag",
+      "description": "A flag of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/flag/",
+      "type": "object",
+      "anyOf": [
+        {
+          "required": [
+            "long"
+          ]
+        },
+        {
+          "required": [
+            "short"
+          ]
+        }
+      ],
+      "properties": {
+        "long": {
+          "title": "long",
+          "description": "A long form of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#long",
+          "type": "string",
+          "pattern": "^--",
+          "examples": [
+            "--ssh"
+          ]
+        },
+        "short": {
+          "title": "short",
+          "description": "A short form of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#short",
+          "type": "string",
+          "pattern": "^-[^-]",
+          "examples": [
+            "-s"
+          ]
+        },
+        "help": {
+          "title": "help",
+          "description": "A description of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#help",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Clone using SSH"
+          ]
+        },
+        "arg": {
+          "title": "arg",
+          "description": "An argument name of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#arg",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "user"
+          ]
+        },
+        "default": {
+          "title": "default",
+          "description": "A default value of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#default",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "examples": [
+            "*.jpg"
+          ]
+        },
+        "required": {
+          "title": "required",
+          "description": "Whether the current flag is required\nhttps://bashly.dannyb.co/configuration/flag/#required",
+          "type": "boolean",
+          "default": true
+        },
+        "allowed": {
+          "title": "allowed",
+          "description": "Valid values of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#allowed",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A valid value of the current positional argument",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "user"
+            ]
+          }
+        },
+        "conflicts": {
+          "title": "conflicts",
+          "description": "Mutually exclusive flags of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#conflicts",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A mutually exclusive flag of the current flag",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "--no-cache"
+            ]
+          }
+        },
+        "completions": {
+          "title": "completions",
+          "description": "Completions of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#completions",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A completion of the current flag",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "private": {
+          "title": "private",
+          "description": "Whether the current flag is hidden from help\nhttps://bashly.dannyb.co/configuration/flag/#private",
+          "type": "boolean",
+          "default": false
+        },
+        "repeatable": {
+          "title": "repeatable",
+          "description": "Whether the current flag can be repeated\nhttps://bashly.dannyb.co/configuration/flag/#repeatable",
+          "type": "boolean",
+          "default": false
+        },
+        "validate": {
+          "title": "validate",
+          "description": "A validation function of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#validate",
+          "type": "string",
+          "examples": [
+            "file_exists",
+            "dir_exists",
+            "integer",
+            "non_empty"
+          ]
+        },
+        "unique": {
+          "title": "unique",
+          "description": "Whether the current flag is unique\nhttps://bashly.dannyb.co/configuration/flag/#unique",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "unique": {
+          "properties": {
+            "repeatable": {
+              "const": true
+            }
+          }
+        }
+      },
+      "^x_.": {
+        "title": "custom property",
+        "description": "A custom property of any type",
+        "examples": [
+          "Anything"
+        ]
+      },
+      "additionalProperties": false
+    },
+    "name-property": {
+      "title": "name",
+      "description": "A name of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#name",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "source"
+      ]
+    },
+    "sub-command-alias-property": {
+      "$comment": "'sub-command-' prefix is used as this property is marked with 'Sub-Commands Only' badge",
+      "title": "alias",
+      "oneOf": [
+        {
+          "description": "An alias of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#alias",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "s"
+          ]
+        },
+        {
+          "description": "Aliases of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#alias",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "An alias of the current sub-command",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "s"
+            ]
+          }
+        }
+      ]
+    },
+    "help-property": {
+      "title": "help",
+      "description": "A description of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#help",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "URL to download from"
+      ]
+    },
+    "args-property": {
+      "title": "args",
+      "description": "Arguments of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#args",
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/argument"
+      }
+    },
+    "flags-property": {
+      "title": "flags",
+      "description": "Flags of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#flags",
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/flag"
+      }
+    },
+    "commands-property": {
+      "title": "commands",
+      "description": "Subcommands of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#commands",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/command-property"
+      }
+    },
+    "root-version-property": {
+      "$comment": "'root-' prefix is used as this property is marked with 'Root Command Only' badge",
+      "title": "version",
+      "description": "A version of the current script\nhttps://bashly.dannyb.co/configuration/command/#version",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "0.1.0"
+      ]
+    },
+    "sub-command-default-property": {
+      "title": "default",
+      "description": "Whether to use the current command as a fallback when CLI used incorrectly\nhttps://bashly.dannyb.co/configuration/command/#default",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "string",
+          "enum": [
+            "force"
+          ]
+        }
+      ]
+    },
+    "environment-variables-name-property": {
+      "$comment": "'environment-variables-' prefix is used as this property is related to https://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+      "title": "name",
+      "description": "A name of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#name",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "config_path"
+      ]
+    },
+    "environment-variables-help-property": {
+      "title": "help",
+      "description": "A description of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#help",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "Location of the config file"
+      ]
+    },
+    "environment-variables-default-property": {
+      "title": "default",
+      "description": "A default value of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#default",
+      "type": "string",
+      "examples": [
+        "~/config.ini"
+      ]
+    },
+    "environment-variables-private-property": {
+      "title": "private",
+      "description": "Whether the current environment variable is hidden from help\nhttps://bashly.dannyb.co/configuration/environment-variable/#private",
+      "type": "boolean",
+      "default": false
+    },
+    "environment-variables-required-property": {
+      "title": "required",
+      "description": "Whether the current environment variable is required\nhttps://bashly.dannyb.co/configuration/environment-variable/#required",
+      "type": "boolean",
+      "default": true
+    },
+    "environment-variables-property": {
+      "title": "environment variables",
+      "description": "Environment variables of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "title": "environment variable",
+        "description": "An environment variable of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "$ref": "#/definitions/environment-variables-name-property"
+          },
+          "help": {
+            "$ref": "#/definitions/environment-variables-help-property"
+          },
+          "default": {
+            "$ref": "#/definitions/environment-variables-default-property"
+          },
+          "private": {
+            "$ref": "#/definitions/environment-variables-private-property"
+          },
+          "required": {
+            "$ref": "#/definitions/environment-variables-required-property"
+          }
+        },
+        "if": {
+          "properties": {
+            "required": {
+              "const": false
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/environment-variables-name-property"
+            },
+            "help": {
+              "$ref": "#/definitions/environment-variables-help-property"
+            },
+            "default": {
+              "$ref": "#/definitions/environment-variables-default-property"
+            },
+            "private": {
+              "$ref": "#/definitions/environment-variables-private-property"
+            },
+            "required": {
+              "$ref": "#/definitions/environment-variables-required-property"
+            }
+          },
+          "^x_.": {
+            "title": "custom property",
+            "description": "A custom property of any type",
+            "examples": [
+              "Anything"
+            ]
+          },
+          "additionalProperties": false
+        },
+        "else": {
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/environment-variables-name-property"
+            },
+            "help": {
+              "$ref": "#/definitions/environment-variables-help-property"
+            },
+            "private": {
+              "$ref": "#/definitions/environment-variables-private-property"
+            },
+            "required": {
+              "$ref": "#/definitions/environment-variables-required-property"
+            }
+          },
+          "^x_.": {
+            "title": "custom property",
+            "description": "A custom property of any type",
+            "examples": [
+              "Anything"
+            ]
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "examples-property": {
+      "title": "examples",
+      "oneOf": [
+        {
+          "description": "An example of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "cli upload profile.png -u admin -p s3cr3t"
+          ]
+        },
+        {
+          "description": "Examples of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "An example of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "cli upload profile.png -u admin -p s3cr3t"
+            ]
+          }
+        }
+      ]
+    },
+    "footer-property": {
+      "title": "footer",
+      "description": "A description footer for the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#footer",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "This will appear at the end of the --help message"
+      ]
+    },
+    "sub-command-group-property": {
+      "title": "group",
+      "description": "A group of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#group",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "File"
+      ]
+    },
+    "catch-all-property": {
+      "title": "catch all",
+      "description": "Whether to allow additional arguments or flags for the current command\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Additional arguments or flags for AWS CLI"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "A label for the current argument or flag\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "type": "string",
+              "minLength": 1,
+              "examples": [
+                "AWS Params"
+              ]
+            },
+            "help": {
+              "description": "A description for the current argument or flag\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "type": "string",
+              "minLength": 1,
+              "examples": [
+                "Additional arguments or flags for AWS CLI"
+              ]
+            },
+            "required": {
+              "description": "Whether the current argument or flag is required\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "completions-property": {
+      "title": "completions",
+      "description": "Completions of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#completions",
+      "type": "array",
+      "minLength": 1,
+      "uniqueItems": true,
+      "items": {
+        "description": "A completion of the current script or sub-command",
+        "type": "string",
+        "minLength": 1,
+        "examples": [
+          "<alias>",
+          "<arrayvar>",
+          "<binding>",
+          "<builtin>",
+          "<command>",
+          "<directory>",
+          "<disabled>",
+          "<enabled>",
+          "<export>",
+          "<file>",
+          "<function>",
+          "<group>",
+          "<helptopic>",
+          "<hostname>",
+          "<job>",
+          "<keyword>",
+          "<running>",
+          "<service>",
+          "<setopt>",
+          "<shopt>",
+          "<signal>",
+          "<stopped>",
+          "<user>",
+          "<variable>"
+        ]
+      }
+    },
+    "dependencies-command-property": {
+      "title": "command",
+      "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#command",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#command",
+        "type": "string",
+        "minLength": 1,
+        "examples": [
+          "git"
+        ]
+      }
+    },
+    "dependencies-help-property": {
+      "title": "help",
+      "description": "A help for the current dependency\nhttps://bashly.dannyb.co/configuration/dependency/#help",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "Run 'sudo apt install git'"
+      ]
+    },
+    "dependencies-property": {
+      "title": "dependencies",
+      "oneOf": [
+        {
+          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        {
+          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+          "type": "object",
+          "patternProperties": {
+            ".": {
+              "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "command"
+                  ],
+                  "properties": {
+                    "command": {
+                      "$ref": "#/definitions/dependencies-command-property"
+                    },
+                    "help": {
+                      "$ref": "#/definitions/dependencies-help-property"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "sub-command-expose-property": {
+      "title": "expose",
+      "description": "Whether to expose the current sub-command if it has sub-commands\nhttps://bashly.dannyb.co/configuration/command/#expose",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "string",
+          "enum": [
+            "always"
+          ]
+        }
+      ]
+    },
+    "root-extensible-property": {
+      "title": "extensible",
+      "description": "Whether to delegate the current unknown command to an external executable\nhttps://bashly.dannyb.co/configuration/command/#extensible",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "string",
+          "examples": [
+            "git"
+          ]
+        }
+      ]
+    },
+    "filename-property": {
+      "title": "filename",
+      "description": "A partial file path of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#filename",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "dir_commands/list.sh"
+      ]
+    },
+    "filters-property": {
+      "title": "filters",
+      "description": "Filters of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#filters",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "description": "A filter of the current script or sub-command",
+        "type": "string",
+        "minLength": 1,
+        "examples": [
+          "docker_running"
+        ]
+      }
+    },
+    "function-property": {
+      "title": "function",
+      "description": "An internal function for the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#function",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "deprecated_container_start"
+      ]
+    },
+    "sub-command-private-property": {
+      "title": "private",
+      "description": "Whether hide the current sub-command from help\nhttps://bashly.dannyb.co/configuration/command/#private",
+      "type": "boolean",
+      "default": false
+    },
+    "sub-command-import-property": {
+      "title": "import",
+      "description": "A file import for the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#import",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "src/download_command.sh"
+      ]
+    },
+    "command-property": {
+      "title": "command",
+      "description": "A command of the current application\nhttps://bashly.dannyb.co/configuration/command/#command",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/name-property"
+        },
+        "alias": {
+          "$ref": "#/definitions/sub-command-alias-property"
+        },
+        "help": {
+          "$ref": "#/definitions/help-property"
+        },
+        "args": {
+          "$ref": "#/definitions/args-property"
+        },
+        "flags": {
+          "$ref": "#/definitions/flags-property"
+        },
+        "commands": {
+          "$ref": "#/definitions/commands-property"
+        },
+        "default": {
+          "$ref": "#/definitions/sub-command-default-property"
+        },
+        "environment_variables": {
+          "$ref": "#/definitions/environment-variables-property"
+        },
+        "examples": {
+          "$ref": "#/definitions/examples-property"
+        },
+        "footer": {
+          "$ref": "#/definitions/footer-property"
+        },
+        "group": {
+          "$ref": "#/definitions/sub-command-group-property"
+        },
+        "catch_all": {
+          "$ref": "#/definitions/catch-all-property"
+        },
+        "completions": {
+          "$ref": "#/definitions/completions-property"
+        },
+        "dependencies": {
+          "$ref": "#/definitions/dependencies-property"
+        },
+        "expose": {
+          "$ref": "#/definitions/sub-command-expose-property"
+        },
+        "filename": {
+          "$ref": "#/definitions/filename-property"
+        },
+        "filters": {
+          "$ref": "#/definitions/filters-property"
+        },
+        "function": {
+          "$ref": "#/definitions/function-property"
+        },
+        "private": {
+          "$ref": "#/definitions/sub-command-private-property"
+        },
+        "import": {
+          "$ref": "#/definitions/sub-command-import-property"
+        }
+      },
+      "^x_.": {
+        "title": "custom property",
+        "description": "A custom property of any type",
+        "examples": [
+          "Anything"
+        ]
+      },
+      "additionalProperties": false
+    }
+  },
+  "title": "cli",
+  "description": "A CLI of the current application\nhttps://bashly.dannyb.co/usage/getting-started/",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/name-property"
+    },
+    "help": {
+      "$ref": "#/definitions/help-property"
+    },
+    "args": {
+      "$ref": "#/definitions/args-property"
+    },
+    "flags": {
+      "$ref": "#/definitions/flags-property"
+    },
+    "commands": {
+      "$ref": "#/definitions/commands-property"
+    },
+    "version": {
+      "$ref": "#/definitions/root-version-property"
+    },
+    "environment_variables": {
+      "$ref": "#/definitions/environment-variables-property"
+    },
+    "examples": {
+      "$ref": "#/definitions/examples-property"
+    },
+    "footer": {
+      "$ref": "#/definitions/footer-property"
+    },
+    "catch_all": {
+      "$ref": "#/definitions/catch-all-property"
+    },
+    "completions": {
+      "$ref": "#/definitions/completions-property"
+    },
+    "dependencies": {
+      "$ref": "#/definitions/dependencies-property"
+    },
+    "extensible": {
+      "$ref": "#/definitions/root-extensible-property"
+    },
+    "filename": {
+      "$ref": "#/definitions/filename-property"
+    },
+    "filters": {
+      "$ref": "#/definitions/filters-property"
+    },
+    "function": {
+      "$ref": "#/definitions/function-property"
+    }
+  },
+  "^x_.": {
+    "title": "custom property",
+    "description": "A custom property of any type",
+    "examples": [
+      "Anything"
+    ]
+  },
+  "additionalProperties": false
+}
