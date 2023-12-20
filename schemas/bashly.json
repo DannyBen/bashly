@@ -111,6 +111,15 @@
           }
         }
       },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
       "additionalProperties": false
     },
     "flag": {
