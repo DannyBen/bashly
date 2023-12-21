@@ -1,0 +1,4 @@
+flags:
+- long: --path
+  x_valid: allowed
+  invalid: not allowed
