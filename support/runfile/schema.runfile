@@ -1,6 +1,14 @@
 summary 'Run json-schema checks on all examples'
 
-help 'Run all the actions in this runfile'
+help 'Generate the bashly.json schema from the bashly.yml template'
+action :generate do
+  cmd = 'yq -p yaml -o json support/schema/bashly.yml > schemas/bashly.json'
+  say "gb`$` #{cmd}"
+  success = system cmd
+  abort 'Failed' unless success
+end
+
+help 'Run all the test actions in this runfile'
 action :all do
   check_examples
   check_settings
