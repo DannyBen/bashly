@@ -1,12 +1,5 @@
 $schema: http://json-schema.org/draft-07/schema
 definitions:
-  custom-properties: &custom-properties
-    patternProperties:
-      ^x_.:
-        title: custom property
-        description: A custom property of any type
-        examples:
-          - Anything
   argument:
     title: argument
     description: |-
@@ -98,7 +91,12 @@ definitions:
         properties:
           repeatable:
             const: true
-    <<: *custom-properties
+    patternProperties: &custom-properties
+      ^x_.:
+        title: custom property
+        description: A custom property of any type
+        examples:
+          - Anything
     additionalProperties: false
   flag:
     title: flag
@@ -245,7 +243,7 @@ definitions:
         properties:
           repeatable:
             const: true
-    <<: *custom-properties
+    patternProperties: *custom-properties
     additionalProperties: false
   name-property:
     title: name
@@ -421,7 +419,7 @@ definitions:
             $ref: '#/definitions/environment-variables-private-property'
           required:
             $ref: '#/definitions/environment-variables-required-property'
-        <<: *custom-properties
+        patternProperties: *custom-properties
         additionalProperties: false
       else:
         properties:
@@ -433,7 +431,7 @@ definitions:
             $ref: '#/definitions/environment-variables-private-property'
           required:
             $ref: '#/definitions/environment-variables-required-property'
-        <<: *custom-properties
+        patternProperties: *custom-properties
         additionalProperties: false
   examples-property:
     title: examples
@@ -732,7 +730,7 @@ definitions:
         $ref: '#/definitions/sub-command-private-property'
       import:
         $ref: '#/definitions/sub-command-import-property'
-    <<: *custom-properties
+    patternProperties: *custom-properties
     additionalProperties: false
 title: cli
 description: |-
@@ -772,5 +770,5 @@ properties:
     $ref: '#/definitions/filters-property'
   function:
     $ref: '#/definitions/function-property'
-<<: *custom-properties
+patternProperties: *custom-properties
 additionalProperties: false

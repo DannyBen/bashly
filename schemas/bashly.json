@@ -1,17 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "definitions": {
-    "custom-properties": {
-      "patternProperties": {
-        "^x_.": {
-          "title": "custom property",
-          "description": "A custom property of any type",
-          "examples": [
-            "Anything"
-          ]
-        }
-      }
-    },
     "argument": {
       "title": "argument",
       "description": "A positional argument of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/argument/",
