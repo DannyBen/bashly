@@ -281,6 +281,44 @@
       },
       "additionalProperties": false
     },
+    "environment-variable": {
+      "title": "environment variable",
+      "description": "An environment variable of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/environment-variables-name-property"
+        },
+        "help": {
+          "$ref": "#/definitions/environment-variables-help-property"
+        },
+        "private": {
+          "$ref": "#/definitions/environment-variables-private-property"
+        },
+        "required": {
+          "$ref": "#/definitions/environment-variables-required-property"
+        },
+        "allowed": {
+          "$ref": "#/definitions/environment-variables-allowed-property"
+        },
+        "default": {
+          "$ref": "#/definitions/environment-variables-default-property"
+        }
+      },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
     "name-property": {
       "title": "name",
       "description": "A name of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#name",
@@ -442,97 +480,7 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
-        "title": "environment variable",
-        "description": "An environment variable of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
-        "type": "object",
-        "required": [
-          "name"
-        ],
-        "properties": {
-          "name": {
-            "$ref": "#/definitions/environment-variables-name-property"
-          },
-          "help": {
-            "$ref": "#/definitions/environment-variables-help-property"
-          },
-          "default": {
-            "$ref": "#/definitions/environment-variables-default-property"
-          },
-          "private": {
-            "$ref": "#/definitions/environment-variables-private-property"
-          },
-          "required": {
-            "$ref": "#/definitions/environment-variables-required-property"
-          },
-          "allowed": {
-            "$ref": "#/definitions/environment-variables-allowed-property"
-          }
-        },
-        "if": {
-          "properties": {
-            "required": {
-              "const": false
-            }
-          }
-        },
-        "then": {
-          "properties": {
-            "name": {
-              "$ref": "#/definitions/environment-variables-name-property"
-            },
-            "help": {
-              "$ref": "#/definitions/environment-variables-help-property"
-            },
-            "default": {
-              "$ref": "#/definitions/environment-variables-default-property"
-            },
-            "private": {
-              "$ref": "#/definitions/environment-variables-private-property"
-            },
-            "required": {
-              "$ref": "#/definitions/environment-variables-required-property"
-            },
-            "allowed": {
-              "$ref": "#/definitions/environment-variables-allowed-property"
-            }
-          },
-          "patternProperties": {
-            "^x_.": {
-              "title": "custom property",
-              "description": "A custom property of any type",
-              "examples": [
-                "Anything"
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
-        "else": {
-          "properties": {
-            "name": {
-              "$ref": "#/definitions/environment-variables-name-property"
-            },
-            "help": {
-              "$ref": "#/definitions/environment-variables-help-property"
-            },
-            "private": {
-              "$ref": "#/definitions/environment-variables-private-property"
-            },
-            "required": {
-              "$ref": "#/definitions/environment-variables-required-property"
-            }
-          },
-          "patternProperties": {
-            "^x_.": {
-              "title": "custom property",
-              "description": "A custom property of any type",
-              "examples": [
-                "Anything"
-              ]
-            }
-          },
-          "additionalProperties": false
-        }
+        "$ref": "#/definitions/environment-variable"
       }
     },
     "examples-property": {
