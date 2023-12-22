@@ -212,6 +212,14 @@
   - name: api_key
     required: 1
 
+:env_var_required_and_default:
+  name: invalid
+  help: env_var cannot have both required and default
+  environment_variables:
+  - name: app_env
+    required: true
+    default: dev
+
 :env_var_private:
   name: invalid
   help: env_var.private should be a boolean
