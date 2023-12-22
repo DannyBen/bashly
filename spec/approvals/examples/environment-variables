@@ -65,6 +65,9 @@ missing required environment variable: MY_SECRET
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
+
+environment variables:
+- $API_KEY = unset
 environment:
 - API_KEY=
 - ENVIRONMENT=development
@@ -76,6 +79,9 @@ environment:
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
+
+environment variables:
+- $API_KEY = unset
 environment:
 - API_KEY=
 - ENVIRONMENT=production

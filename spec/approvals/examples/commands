@@ -83,6 +83,9 @@ args:
 - ${args[--force]} = 1
 - ${args[source]} = sourcefile
 - ${args[target]} = targetfile
+
+environment variables:
+- $API_KEY = unset
 + ./cli upload --help
 cli upload - Upload a file
 
@@ -115,3 +118,6 @@ missing required flag: --user, -u USER
 args:
 - ${args[source]} = sourcefile
 - ${args[--user]} = username
+
+environment variables:
+- $API_KEY = unset

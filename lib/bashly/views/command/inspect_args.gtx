@@ -25,5 +25,13 @@
 >     for k in "${sorted_keys[@]}"; do echo "- \${deps[$k]} = ${deps[$k]}"; done
 >   fi
 >
+if environment_variables.any?
+  >   echo
+  >   echo environment variables:
+  environment_variables.each do |env_var|
+    >   echo "- \${{ env_var.name.upcase }} = ${<%= env_var.name.upcase %>:-unset}"
+  end
+  >
+end
 > }
 > 
