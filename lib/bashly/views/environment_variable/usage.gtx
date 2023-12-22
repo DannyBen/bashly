@@ -3,6 +3,10 @@
 > printf "  %s\n" "{{ usage_string(extended: true).color(:environment_variable) }}"
 > printf "{{ help.wrap(76).indent(4).sanitize_for_print }}\n"
 
+if allowed
+  > printf "    {{ strings[:allowed] % { values: allowed.join(', ') } }}\n"
+end
+
 if default
   > printf "    {{ strings[:default] % { value: default } }}\n"
 end
