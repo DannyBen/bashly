@@ -14,8 +14,6 @@ $ bashly generate
 $ bashly generate
 ```
 
-<!-- include: src/verify_command.sh -->
-
 -----
 
 ## `bashly.yml`
@@ -59,15 +57,6 @@ commands:
     default: development
 ````
 
-## `src/verify_command.sh`
-
-````bash
-echo "# this file is located in 'src/verify_command.sh'"
-echo "# code for 'cli verify' goes here"
-echo "# you can edit it freely and regenerate (it will not be overwritten)"
-inspect_args
-
-````
 
 
 ## Output
