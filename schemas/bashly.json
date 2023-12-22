@@ -290,22 +290,57 @@
       ],
       "properties": {
         "name": {
-          "$ref": "#/definitions/environment-variables-name-property"
+          "title": "name",
+          "description": "A name of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#name",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "config_path"
+          ]
         },
         "help": {
-          "$ref": "#/definitions/environment-variables-help-property"
+          "title": "help",
+          "description": "A description of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#help",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Location of the config file"
+          ]
         },
         "private": {
-          "$ref": "#/definitions/environment-variables-private-property"
+          "title": "private",
+          "description": "Whether the current environment variable is hidden from help\nhttps://bashly.dannyb.co/configuration/environment-variable/#private",
+          "type": "boolean",
+          "default": false
         },
         "required": {
-          "$ref": "#/definitions/environment-variables-required-property"
+          "title": "required",
+          "description": "Whether the current environment variable is required\nhttps://bashly.dannyb.co/configuration/environment-variable/#required",
+          "type": "boolean",
+          "default": true
         },
         "allowed": {
-          "$ref": "#/definitions/environment-variables-allowed-property"
+          "title": "allowed",
+          "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",
+          "type": "array",
+          "minLength": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "A valid value of the current environment variable",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "production"
+            ]
+          }
         },
         "default": {
-          "$ref": "#/definitions/environment-variables-default-property"
+          "title": "default",
+          "description": "A default value of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#default",
+          "type": "string",
+          "examples": [
+            "~/config.ini"
+          ]
         }
       },
       "patternProperties": {
@@ -419,60 +454,6 @@
           ]
         }
       ]
-    },
-    "environment-variables-name-property": {
-      "$comment": "'environment-variables-' prefix is used as this property is related to https://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
-      "title": "name",
-      "description": "A name of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#name",
-      "type": "string",
-      "minLength": 1,
-      "examples": [
-        "config_path"
-      ]
-    },
-    "environment-variables-help-property": {
-      "title": "help",
-      "description": "A description of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#help",
-      "type": "string",
-      "minLength": 1,
-      "examples": [
-        "Location of the config file"
-      ]
-    },
-    "environment-variables-default-property": {
-      "title": "default",
-      "description": "A default value of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#default",
-      "type": "string",
-      "examples": [
-        "~/config.ini"
-      ]
-    },
-    "environment-variables-private-property": {
-      "title": "private",
-      "description": "Whether the current environment variable is hidden from help\nhttps://bashly.dannyb.co/configuration/environment-variable/#private",
-      "type": "boolean",
-      "default": false
-    },
-    "environment-variables-required-property": {
-      "title": "required",
-      "description": "Whether the current environment variable is required\nhttps://bashly.dannyb.co/configuration/environment-variable/#required",
-      "type": "boolean",
-      "default": true
-    },
-    "environment-variables-allowed-property": {
-      "title": "allowed",
-      "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",
-      "type": "array",
-      "minLength": 1,
-      "uniqueItems": true,
-      "items": {
-        "description": "A valid value of the current environment variable",
-        "type": "string",
-        "minLength": 1,
-        "examples": [
-          "production"
-        ]
-      }
     },
     "environment-variables-property": {
       "title": "environment variables",
