@@ -168,6 +168,9 @@ module Bashly
       assert_optional_string "#{key}.default", value['default']
       assert_boolean "#{key}.required", value['required']
       assert_boolean "#{key}.private", value['private']
+      assert_array "#{key}.allowed", value['allowed'], of: :string
+
+      refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
     end
 
     def assert_command(key, value)
