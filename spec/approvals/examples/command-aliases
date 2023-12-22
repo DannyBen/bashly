@@ -71,7 +71,7 @@ args:
 - ${args[source]} = somefile
 
 environment variables:
-- $API_KEY = unset
+- $API_KEY = 
 + ./cli upload --help
 cli upload - Upload a file
 
@@ -124,4 +124,4 @@ args:
 - ${args[source]} = somefile
 
 environment variables:
-- $API_KEY = unset
+- $API_KEY = 

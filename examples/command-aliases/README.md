@@ -147,6 +147,9 @@ Examples:
 args:
 - ${args[source]} = somefile
 
+environment variables:
+- $API_KEY = 
+
 
 ````
 
@@ -214,6 +217,9 @@ Examples:
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[source]} = somefile
+
+environment variables:
+- $API_KEY = 
 
 
 ````

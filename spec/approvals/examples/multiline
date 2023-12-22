@@ -59,7 +59,7 @@ Examples:
 args: none
 
 environment variables:
-- $MULTI_VITAMIN = unset
+- $MULTI_VITAMIN = 
 + ./multi multiline -h
 multi multiline
 

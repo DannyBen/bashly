@@ -421,6 +421,21 @@
       "type": "boolean",
       "default": true
     },
+    "environment-variables-allowed-property": {
+      "title": "allowed",
+      "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",
+      "type": "array",
+      "minLength": 1,
+      "uniqueItems": true,
+      "items": {
+        "description": "A valid value of the current environment variable",
+        "type": "string",
+        "minLength": 1,
+        "examples": [
+          "production"
+        ]
+      }
+    },
     "environment-variables-property": {
       "title": "environment variables",
       "description": "Environment variables of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
@@ -448,6 +463,9 @@
           },
           "required": {
             "$ref": "#/definitions/environment-variables-required-property"
+          },
+          "allowed": {
+            "$ref": "#/definitions/environment-variables-allowed-property"
           }
         },
         "if": {
@@ -473,6 +491,9 @@
             },
             "required": {
               "$ref": "#/definitions/environment-variables-required-property"
+            },
+            "allowed": {
+              "$ref": "#/definitions/environment-variables-allowed-property"
             }
           },
           "patternProperties": {

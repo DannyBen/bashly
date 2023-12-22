@@ -85,7 +85,8 @@ args:
 - ${args[target]} = targetfile
 
 environment variables:
-- $API_KEY = unset
+- $API_KEY = 
+- $DEFAULT_TARGET_LOCATION = 
 + ./cli upload --help
 cli upload - Upload a file
 
@@ -120,4 +121,4 @@ args:
 - ${args[--user]} = username
 
 environment variables:
-- $API_KEY = unset
+- $API_KEY = 

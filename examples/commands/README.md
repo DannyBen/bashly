@@ -185,6 +185,10 @@ args:
 - ${args[source]} = sourcefile
 - ${args[target]} = targetfile
 
+environment variables:
+- $API_KEY = 
+- $DEFAULT_TARGET_LOCATION = 
+
 
 ````
 
@@ -234,6 +238,9 @@ missing required flag: --user, -u USER
 args:
 - ${args[source]} = sourcefile
 - ${args[--user]} = username
+
+environment variables:
+- $API_KEY = 
 
 
 ````
