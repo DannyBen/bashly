@@ -186,6 +186,13 @@
             "minLength": 1,
             "default": "%{name} must be one of: %{allowed}"
         },
+        "disallowed_environment_variable": {
+            "title": "disallowed_environment_variable",
+            "description": "A forbidden environment variable error of the current script\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} environment variable must be one of: %{allowed}"
+        },
         "unsupported_bash_version": {
             "title": "unsupported bash version",
             "description": "An unsupported Bash version error of the current script\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
