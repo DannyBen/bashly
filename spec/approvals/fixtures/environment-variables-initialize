@@ -16,6 +16,10 @@ PASS: NESTED_VAR is empty
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[source]} = source
+
+environment variables:
+- $API_KEY = must-be-available-in-initialize
+- $CONFIG_PATH = somepath
 + export API_KEY=override-value
 + API_KEY=override-value
 + ./cli

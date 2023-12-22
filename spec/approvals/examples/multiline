@@ -57,6 +57,9 @@ Examples:
 # code for 'multi multiline' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
+
+environment variables:
+- $MULTI_VITAMIN = unset
 + ./multi multiline -h
 multi multiline
 
