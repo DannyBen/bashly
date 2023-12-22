@@ -8,3 +8,18 @@
 :repeatable:
   name: file
   repeatable: true
+
+:default_string:
+  name: file
+  repeatable: false
+  default: spaced one
+
+:default_array:
+  name: file
+  repeatable: true
+  default: [spaced one, two]
+
+:default_string_with_repeatable:
+  name: file
+  repeatable: true
+  default: spaced one

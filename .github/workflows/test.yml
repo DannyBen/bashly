@@ -47,7 +47,7 @@ jobs:
       run: bundle exec rspec
 
   static_analysis:
-    name: Static analysis of Example files
+    name: Example files static analysis
 
     runs-on: ubuntu-latest
 
@@ -85,7 +85,7 @@ jobs:
       run: bundle exec run shfmt
 
   json_schema:
-    name: Validate JSON schemas
+    name: JSON schemas validation
 
     runs-on: ubuntu-latest
 
