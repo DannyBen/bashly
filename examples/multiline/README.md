@@ -142,6 +142,9 @@ Examples:
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
 
+environment variables:
+- $MULTI_VITAMIN = 
+
 
 ````
 

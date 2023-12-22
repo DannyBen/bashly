@@ -4,7 +4,9 @@
 >   if ((${#args[@]})); then
 >     readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
 >     echo args:
->     for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+>     for k in "${sorted_keys[@]}"; do
+>       echo "- \${args[$k]} = ${args[$k]}"
+>     done
 >   else
 >     echo args: none
 >   fi
@@ -22,16 +24,18 @@
 >     readarray -t sorted_keys < <(printf '%s\n' "${!deps[@]}" | sort)
 >     echo
 >     echo deps:
->     for k in "${sorted_keys[@]}"; do echo "- \${deps[$k]} = ${deps[$k]}"; done
+>     for k in "${sorted_keys[@]}"; do
+>       echo "- \${deps[$k]} = ${deps[$k]}"
+>     done
 >   fi
 >
-if environment_variables.any?
-  >   echo
-  >   echo environment variables:
-  environment_variables.each do |env_var|
-    >   echo "- \${{ env_var.name.upcase }} = ${<%= env_var.name.upcase %>:-unset}"
-  end
-  >
-end
+>   if ((${#env_var_names[@]})); then
+>     readarray -t sorted_names < <(printf '%s\n' "${env_var_names[@]}" | sort)
+>     echo
+>     echo "environment variables:"
+>     for k in "${sorted_names[@]}"; do
+>       echo "- \$$k = ${!k:-}"
+>     done
+>   fi
 > }
 > 

@@ -20,6 +20,7 @@ args:
 environment variables:
 - $API_KEY = must-be-available-in-initialize
 - $CONFIG_PATH = somepath
+- $NESTED_VAR = not-available-in-initialize
 + export API_KEY=override-value
 + API_KEY=override-value
 + ./cli

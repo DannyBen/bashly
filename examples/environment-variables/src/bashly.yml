@@ -23,6 +23,14 @@ commands:
   
   # Using the `default: value` option will cause the value to variable to be 
   # set if it is not provided by the user.
+  - name: region
+    help: Cloud region
+    default: us-east-2
+
+  # Using the `allowed: [value1, value2]` option will halt the script's
+  # execution with a friendly error message, unless the variable matches one
+  # of the defined values.
   - name: environment
     help: One of development, production or test
+    allowed: [development, production, testing]
     default: development

@@ -46,8 +46,16 @@ commands:
   
   # Using the `default: value` option will cause the value to variable to be 
   # set if it is not provided by the user.
+  - name: region
+    help: Cloud region
+    default: us-east-2
+
+  # Using the `allowed: [value1, value2]` option will halt the script's
+  # execution with a friendly error message, unless the variable matches one
+  # of the defined values.
   - name: environment
     help: One of development, production or test
+    allowed: [development, production, testing]
     default: development
 ````
 
@@ -58,11 +66,6 @@ echo "# this file is located in 'src/verify_command.sh'"
 echo "# code for 'cli verify' goes here"
 echo "# you can edit it freely and regenerate (it will not be overwritten)"
 inspect_args
-
-echo "environment:"
-echo "- API_KEY=${API_KEY:-}"
-echo "- ENVIRONMENT=${ENVIRONMENT:-}"
-echo "- MY_SECRET=${MY_SECRET:-}"
 
 ````
 
@@ -133,8 +136,13 @@ Environment Variables:
   MY_SECRET (required)
     Your secret
 
+  REGION
+    Cloud region
+    Default: us-east-2
+
   ENVIRONMENT
     One of development, production or test
+    Allowed: development, production, testing
     Default: development
 
 
@@ -156,10 +164,12 @@ missing required environment variable: MY_SECRET
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
-environment:
-- API_KEY=
-- ENVIRONMENT=development
-- MY_SECRET=there is no spoon
+
+environment variables:
+- $API_KEY = 
+- $ENVIRONMENT = development
+- $MY_SECRET = there is no spoon
+- $REGION = us-east-2
 
 
 ````
@@ -171,10 +181,12 @@ environment:
 # code for 'cli verify' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
-environment:
-- API_KEY=
-- ENVIRONMENT=production
-- MY_SECRET=safe-with-me
+
+environment variables:
+- $API_KEY = 
+- $ENVIRONMENT = production
+- $MY_SECRET = safe-with-me
+- $REGION = us-east-2
 
 
 ````

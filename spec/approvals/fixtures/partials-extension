@@ -104,4 +104,5 @@ args:
 - ${args[source]} = something
 
 environment variables:
-- $API_KEY = unset
+- $API_KEY = 
+- $DEFAULT_TARGET_LOCATION = 
