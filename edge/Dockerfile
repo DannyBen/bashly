@@ -1,7 +1,7 @@
 FROM dannyben/alpine-ruby
 
 ENV PS1 "\n\n>> bashly \W \$ "
-RUN apk add --no-cache git
+RUN apk add --no-cache git pandoc-cli
 
 ARG branch=master
 
