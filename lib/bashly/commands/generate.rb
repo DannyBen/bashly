@@ -16,8 +16,8 @@ module Bashly
       option '-e --env ENV', <<~HELP
         Force the generation environment:
 
-        - production    generate a smaller script, without file markers
-        - development   generate with file markers
+        - development   default script output
+        - production    remove file marker comments and development functions
       HELP
 
       example 'bashly generate --force'

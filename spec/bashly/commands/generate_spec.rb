@@ -28,10 +28,11 @@ describe Commands::Generate do
       before { Settings.env = :production }
       after  { Settings.env = nil }
 
-      it 'generates a script without view markers' do
+      it 'generates a script without view markers or inspect_args function' do
         expect { subject.execute %w[generate] }.to output_approval('cli/generate/production-env-var')
         expect(File).to exist(cli_script)
         expect(cli_script_content).not_to include '# :'
+        expect(cli_script_content).not_to include 'inspect_args()'
       end
     end
 
