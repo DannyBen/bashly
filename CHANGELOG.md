@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v1.1.6 - 2023-12-29
+----------------------------------------
+
+- Docker: Fix missing pandoc
+- Avoid rendering `inspect_args()` when generating for production env
+
+
 v1.1.5 - 2023-12-22
 ----------------------------------------
 
