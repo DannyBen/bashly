@@ -1,4 +1,4 @@
-# approvals.bash v0.4.0
+# approvals.bash v0.4.1
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
@@ -10,7 +10,7 @@ approve() {
   last_exit_code=0
   actual=$(eval "$cmd" 2>&1) || last_exit_code=$?
   if [[ "$allow_diff_regex" ]]; then
-    actual=$(echo "$actual" | sed "s/$allow_diff_regex/*/g")
+    actual=$(echo "$actual" | sed -E "s/$allow_diff_regex/*/g")
     unset allow_diff_regex
   fi
   approval=$(printf "%b" "$cmd" | tr -s -c "[:alnum:]" _)
