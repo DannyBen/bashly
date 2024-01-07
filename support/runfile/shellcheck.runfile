@@ -3,6 +3,10 @@ summary 'Run shellcheck on all examples'
 action do
   allowed_skips = 3
   Example.executables.each do |example|
+    if ENV['EXAMPLE']
+      next unless example.include? ENV['EXAMPLE']
+    end
+
     if File.exist? example
       success = system "shellcheck #{example}"
       color = success ? 'g' : 'r'
