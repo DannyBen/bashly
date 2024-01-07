@@ -1,0 +1,21 @@
+name: cli
+help: Sample application to demonstrate `key=value` arguments and flags
+version: 0.1.0
+
+args:
+- name: param
+  required: true
+  repeatable: true
+  unique: true
+  help: key=value parameters
+
+flags:
+- long: --option
+  short: -o
+  arg: option
+  repeatable: true
+  unique: true
+  help: key=value parameters
+
+examples:
+  - cli user=bob email=bob@spunge.com --option page=2 --option count=20

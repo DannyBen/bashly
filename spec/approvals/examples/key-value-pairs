@@ -1,0 +1,38 @@
++ bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -h
+cli - Sample application to demonstrate `key=value` arguments and flags
+
+Usage:
+  cli PARAM... [OPTIONS]
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --option, -o OPTION (repeatable)
+    key=value parameters
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Arguments:
+  PARAM...
+    key=value parameters
+
+Examples:
+  cli user=bob email=bob@spunge.com --option page=2 --option count=20
+
++ ./cli user=bob email=bob@spunge.com --option page=2 --option count=20
+Positional Arguments:
+email => bob@spunge.com
+user => bob
+
+Options (--option):
+count => 20
+page => 2

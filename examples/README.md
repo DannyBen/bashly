@@ -37,6 +37,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
 - [commands-expose](commands-expose#readme) - showing sub-commands in the parent's help
+- [key-value-pairs](key-value-pairs#readme) - parsing key=value arguments and flags
 
 ## Customization
 
