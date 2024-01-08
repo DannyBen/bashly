@@ -27,15 +27,6 @@ usually handled by a framework in any other programming language.
 It is available both as a [ruby gem](https://rubygems.org/gems/bashly) and as
 a [docker image](https://hub.docker.com/r/dannyben/bashly).
 
-## Bashly is Sponsored By
-
-<table>
-   <tr>
-      <td><a href="https://rhodecode.com/"><img src='support/img/RhodeCode-logo.png' width=240></a></td>
-   </tr>
-</table>
-
-
 ## Documentation
 
 - [Bashly Homepage][docs]
