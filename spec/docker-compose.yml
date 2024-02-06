@@ -7,6 +7,6 @@ services:
     <<: *default
     command: bashly --help
 
-  pandoc-help:
+  pandoc-version:
     <<: *default
-    command: pandoc --help
+    command: pandoc --version

@@ -10,7 +10,7 @@ describe 'docker image', :docker do
 
   describe 'pandoc' do
     it 'is installed' do
-      expect(docker_compose_run 'pandoc-help').to match_approval('docker/pandoc-help')
+      expect(docker_compose_run 'pandoc-version').to match_approval('docker/pandoc-version')
     end
   end
 end

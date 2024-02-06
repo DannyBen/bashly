@@ -118,3 +118,20 @@ jobs:
 
     - name: Run schema tests
       run: bundle exec run schema all
+
+
+
+  docker:
+    name: Docker smoke test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build the image
+      run: docker compose -f spec/docker-compose.yml build bash
+
+    - name: Run tests
+      run: rspec -t docker
