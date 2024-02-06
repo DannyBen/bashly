@@ -131,5 +131,5 @@ jobs:
     - name: Build the image
       run: docker compose build bash
 
-    - name: Test pandoc version
+    - name: Test pandoc presence
       run: docker compose run pandoc-test
