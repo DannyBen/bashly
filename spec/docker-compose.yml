@@ -1,0 +1,12 @@
+services:
+  bash: &default
+    entrypoint: []
+    image: dannyben/bashly
+
+  bashly-help:
+    <<: *default
+    command: bashly --help
+
+  pandoc-help:
+    <<: *default
+    command: pandoc --help

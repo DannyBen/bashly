@@ -15,4 +15,12 @@ module SpecMixin
   def cp(source, target = 'spec/tmp/')
     expect(system("cp -r #{source} #{target}")).to be true
   end
+
+  def docker_compose_run(service)
+    `docker compose -f spec/docker-compose.yml run #{service}`
+  end
+
+  def docker_compose_build
+    system "docker compose -f spec/docker-compose.yml build bash"
+  end
 end
