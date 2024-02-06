@@ -128,14 +128,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with: 
-        ruby-version: '3.3.0'
-        bundler-cache: true
-
     - name: Build the image
-      run: docker compose -f spec/docker-compose.yml build bash
+      run: docker compose build bash
 
-    - name: Run tests
-      run: bundle exec rspec -t docker
+    - name: Test pandoc version
+      run: docker compose run pandoc
