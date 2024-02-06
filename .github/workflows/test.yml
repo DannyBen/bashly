@@ -118,3 +118,18 @@ jobs:
 
     - name: Run schema tests
       run: bundle exec run schema all
+
+  docker:
+    name: Docker smoke test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build the image
+      run: docker compose build bash
+
+    - name: Test pandoc presence
+      run: docker compose run pandoc-test
