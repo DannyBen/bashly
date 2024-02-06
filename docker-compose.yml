@@ -1,6 +1,7 @@
 services:
   bash:
     build: .
+    command: bash
     <<: &default
       entrypoint: []
       image: dannyben/bashly
@@ -9,10 +10,7 @@ services:
     build: .
     image: dannyben/bashly
 
-  bashly-test:
-    <<: *default
-    command: bashly --version
-
   pandoc-test:
     <<: *default
-    command: pandoc --version
+    command: sh -c "pandoc --version | grep 'pandoc 3.1'"
+
