@@ -1,0 +1,18 @@
+services:
+  bash:
+    build: .
+    <<: &default
+      entrypoint: []
+      image: dannyben/bashly
+
+  bashly:
+    build: .
+    image: dannyben/bashly
+
+  bashly-test:
+    <<: *default
+    command: bashly --version
+
+  pandoc-test:
+    <<: *default
+    command: pandoc --version
