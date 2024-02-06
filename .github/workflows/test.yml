@@ -132,4 +132,4 @@ jobs:
       run: docker compose build bash
 
     - name: Test pandoc version
-      run: docker compose run pandoc
+      run: docker compose run pandoc-test
