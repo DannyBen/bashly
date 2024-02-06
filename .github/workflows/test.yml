@@ -119,8 +119,6 @@ jobs:
     - name: Run schema tests
       run: bundle exec run schema all
 
-
-
   docker:
     name: Docker smoke test
 
@@ -130,8 +128,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with: 
+        ruby-version: '3.3.0'
+        bundler-cache: true
+
     - name: Build the image
       run: docker compose -f spec/docker-compose.yml build bash
 
     - name: Run tests
-      run: rspec -t docker
+      run: bundle exec rspec -t docker
