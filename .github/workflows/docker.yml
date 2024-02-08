@@ -1,10 +1,14 @@
-name: Docker build
+name: Docker build (edge)
 on:
-  push: { branches: test }
+  workflow_run:
+    workflows: [Test]
+    branches: [test]
+    types: [completed]
 
 jobs:
   docker:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,4 +27,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: dannyben/bashly:test
+          tags: dannyben/bashly:edge
