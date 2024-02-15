@@ -1,0 +1,9 @@
+name: cli
+help: all arguments must be integers
+
+flags:
+- long: --number
+  short: -n
+  arg: NUMBER
+  repeatable: true
+  validate: integer

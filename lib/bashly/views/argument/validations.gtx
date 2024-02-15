@@ -1,5 +1,4 @@
 if validate
-
   = view_marker
 
   if repeatable
@@ -17,7 +16,7 @@ if validate
     >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "${args['{{ name }}']:-}")" >&2
     >   exit 1
     > fi
-    > 
+    >
   end
 
 end

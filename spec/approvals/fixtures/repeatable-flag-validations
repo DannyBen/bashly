@@ -7,28 +7,28 @@ run ./cli --help to test your bash script
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args: none
-+ ./cli 1
++ ./cli --number 1
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[number]} = "1"
-+ ./cli 1.1
-validation error in NUMBER:
+- ${args[--number]} = "1"
++ ./cli --number 1.1
+validation error in --number, -n NUMBER:
 must be an integer
-+ ./cli a
-validation error in NUMBER:
++ ./cli --number a
+validation error in --number, -n NUMBER:
 must be an integer
-+ ./cli 1 2
++ ./cli --number 1 --number 2
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[number]} = "1" "2"
-+ ./cli 1.1 2
-validation error in NUMBER:
+- ${args[--number]} = "1" "2"
++ ./cli --number 1.1 --number 2
+validation error in --number, -n NUMBER:
 must be an integer
-+ ./cli 1 2.2
-validation error in NUMBER:
++ ./cli --number 1 --number 2.2
+validation error in --number, -n NUMBER:
 must be an integer
-+ ./cli 1 a
-validation error in NUMBER:
++ ./cli --number 1 --number a
+validation error in --number, -n NUMBER:
 must be an integer
