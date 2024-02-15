@@ -322,6 +322,11 @@ module Bashly
         @user_lib ||= Dir["#{Settings.full_lib_dir}/**/*.#{Settings.partials_extension}"]
       end
 
+      # Returns a mixed array of Argument and Flag objects that have validations
+      def validatables
+        @validatables ||= args.select(&:validate) + flags.select(&:validate)
+      end
+
       # Returns an array of all the args with a whitelist
       def whitelisted_args
         args.select(&:allowed)

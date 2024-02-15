@@ -1,0 +1,15 @@
+name: cli
+help: Test default args and flags with validation
+version: 0.1.0
+
+args:
+- name: file
+  default: config.yml
+  validate: file_exists
+
+flags:
+- long: --template
+  short: -t
+  arg: file
+  default: template.yml
+  validate: file_exists

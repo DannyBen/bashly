@@ -10,7 +10,9 @@ bundle exec bashly generate
 
 ./cli
 ./cli 1
-./cli 1 2
 ./cli 1.1
+./cli a
+./cli 1 2
 ./cli 1.1 2
 ./cli 1 2.2
+./cli 1 a

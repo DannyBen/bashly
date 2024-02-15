@@ -1,0 +1,20 @@
++ bundle exec bashly generate
+creating user files in src
+created src/root_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+validation error in FILE:
+must be an existing file
++ ./cli no-such-file
+validation error in FILE:
+must be an existing file
++ ./cli README.md --template no-such-file
+validation error in --template, -t FILE:
+must be an existing file
++ ./cli README.md --template cli
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[file]} = README.md
+- ${args[--template]} = cli

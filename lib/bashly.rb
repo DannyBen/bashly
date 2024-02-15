@@ -1,5 +1,5 @@
-if ENV['BYEBUG']
-  require 'byebug'
+if ENV['DEBUGGER']
+  require 'debug'
   require 'lp'
 end
 

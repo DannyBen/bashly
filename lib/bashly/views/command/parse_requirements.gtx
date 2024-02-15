@@ -15,6 +15,7 @@ end
 = render(:required_flags_filter).indent 2
 = render(:catch_all_filter).indent 2
 = render(:default_assignments).indent 2
+= render(:validations).indent 2
 = render(:whitelist_filter).indent 2
 = render(:user_filter).indent 2
 
