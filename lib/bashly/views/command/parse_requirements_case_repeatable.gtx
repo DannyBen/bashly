@@ -2,7 +2,6 @@
 
 condition = "if"
 args.each do |arg|
-  = arg.render(:validations)
   > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
   if arg.repeatable
     >   args['{{ arg.name }}']="\"$1\""

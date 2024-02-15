@@ -1,11 +1,11 @@
 if validate
 
-= view_marker
+  = view_marker
 
-> if [[ -n $(validate_{{ validate }} "$1") ]]; then
->   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "$1")" >&2
->   exit 1
-> fi
-> 
+  > if [[ -n $(validate_{{ validate }} "${args['{{ name }}']}") ]]; then
+  >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "${args['{{ name }}']}")" >&2
+  >   exit 1
+  > fi
+  > 
 
 end

@@ -1,4 +1,4 @@
-require 'byebug'
+require 'debug'
 require 'bashly/version'
 require_relative 'support/runfile/example'
 

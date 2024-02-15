@@ -1,7 +1,6 @@
 = view_marker
 
 > if [[ -n ${2+x} ]]; then
-= render(:validations).indent 2
 
 if repeatable
   >   if [[ -z ${args['{{ name }}']+x} ]]; then
