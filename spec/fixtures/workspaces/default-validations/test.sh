@@ -5,7 +5,6 @@ rm -f ./cli
 
 set -x
 
-bundle exec bashly add validations --force
 bundle exec bashly generate
 
 ./cli

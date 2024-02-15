@@ -1,8 +1,3 @@
-+ bundle exec bashly add validations --force
-created src/lib/validations/validate_dir_exists.sh
-created src/lib/validations/validate_file_exists.sh
-created src/lib/validations/validate_integer.sh
-created src/lib/validations/validate_not_empty.sh
 + bundle exec bashly generate
 creating user files in src
 created src/root_command.sh
