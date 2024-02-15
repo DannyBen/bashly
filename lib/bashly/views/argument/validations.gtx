@@ -2,10 +2,22 @@ if validate
 
   = view_marker
 
-  > if [[ -n $(validate_{{ validate }} "${args['{{ name }}']}") ]]; then
-  >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "${args['{{ name }}']}")" >&2
-  >   exit 1
-  > fi
-  > 
+  if repeatable
+    > if [[ -v args['{{ name }}'] ]]; then
+    >   eval "values=(${args['{{ name }}']})"
+    >   for value in "${values[@]}"; do
+    >     if [[ -n $(validate_{{ validate }} "$value") ]]; then
+    >       printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "$value")" >&2
+    >       exit 1
+    >     fi
+    >   done
+    > fi
+  else
+    > if [[ -v args['{{ name }}'] && -n $(validate_{{ validate }} "${args['{{ name }}']:-}") ]]; then
+    >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "${args['{{ name }}']:-}")" >&2
+    >   exit 1
+    > fi
+    > 
+  end
 
 end

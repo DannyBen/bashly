@@ -14,4 +14,4 @@ args: none
 deps:
 - ${deps[git]} = /usr/bin/git
 - ${deps[http_client]} = /usr/bin/curl
-- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.1.4/bin/ruby
+- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.3.0/bin/ruby
