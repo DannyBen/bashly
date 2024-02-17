@@ -1,11 +1,21 @@
 Change Log
 ========================================
 
-v1.1.6 - 2023-12-29
+v1.1.7 - 2024-02-17
+----------------------------------------
+
+- Refactor validations to run after assigning default values
+- Upgrade `approvals.bash` to 0.4.2
+
+
+v1.1.6 - 2024-02-08
 ----------------------------------------
 
 - Docker: Fix missing pandoc
 - Avoid rendering `inspect_args()` when generating for production env
+- Update `approvals.bash` library to 0.4.1
+- Update Dockerfile
+- Build multi-arch docker image using GitHub Actions
 
 
 v1.1.5 - 2023-12-22
