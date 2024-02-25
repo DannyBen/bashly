@@ -1,0 +1,3 @@
+[codespell]
+skip = *.js,Gemfile.lock,sublime*,*.html
+ignore-words-list = bu
