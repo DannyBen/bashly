@@ -128,6 +128,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Install OS dependencies
+      run: sudo apt-get -y install codespell
+
     - name: Run codespell
       run: codespell
 
