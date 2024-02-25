@@ -208,7 +208,7 @@ describe Commands::Add do
 
     it 'properly installs the library' do
       expect { subject.execute %w[add --source spec/fixtures/libraries database] }
-        .to output_approval('cli/add/from-extenal-path')
+        .to output_approval('cli/add/from-external-path')
     end
   end
 

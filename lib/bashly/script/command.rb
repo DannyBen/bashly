@@ -332,7 +332,7 @@ module Bashly
         args.select(&:allowed)
       end
 
-      # Returns an array of all the environemnt_variables with a whitelist arg
+      # Returns an array of all the environment_variables with a whitelist arg
       def whitelisted_environment_variables
         environment_variables.select(&:allowed)
       end

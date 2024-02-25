@@ -153,7 +153,7 @@ describe Script::Command do
   end
 
   describe '#environment_cariables' do
-    it 'returns an array of EnvironemntVariable objects' do
+    it 'returns an array of EnvironmentVariable objects' do
       expect(subject.environment_variables).to be_an Array
       expect(subject.environment_variables.first).to be_a Script::EnvironmentVariable
     end

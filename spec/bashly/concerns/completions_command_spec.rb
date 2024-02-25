@@ -40,7 +40,7 @@ describe Script::Command do
     let(:fixture) { :completions_whitelist }
 
     describe '#completion_data' do
-      it 'returns a data structure that includes thw whitelist' do
+      it 'returns a data structure that includes the whitelist' do
         expect(subject.completion_data.to_yaml)
           .to match_approval('completions/whitelist')
       end
