@@ -119,6 +119,18 @@ jobs:
     - name: Run schema tests
       run: bundle exec run schema all
 
+  codespell:
+    name: Spell check
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run codespell
+      run: codespell
+
   docker:
     name: Docker smoke test
 
