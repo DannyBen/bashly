@@ -7,8 +7,9 @@ action do
   system "cat support/.changelog.old.md >> CHANGELOG.md"
 
   # Modify some entries
-  log = File.read "CHANGELOG.md"
-  log.gsub! 'repeatableflags', 'repeatable flags'
+  log = File.read("CHANGELOG.md")
+    .gsub('repeatableflags', 'repeatable flags')
+    .gsub('suport', 'support')
 
   remove = [
     "- Breaking: Rewrite config (INI) library to provide an associative array\n",
