@@ -81,7 +81,7 @@
         },
         "strict": {
             "title": "strict",
-            "description": "Bash initialiation options of the current script\nhttps://bashly.dannyb.co/usage/settings/#strict",
+            "description": "Bash initialization options of the current script\nhttps://bashly.dannyb.co/usage/settings/#strict",
             "oneOf": [
                 {
                     "type": "boolean"

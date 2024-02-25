@@ -1,4 +1,4 @@
-# View Tempaltes
+# View Templates
 
 These are [GTX](https://github.com/dannyben/gtx) templates.
 

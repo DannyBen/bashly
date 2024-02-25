@@ -41,7 +41,7 @@ args:
 ````bash
 message=${args[message]:-hello colors}
 
-underlined "Message Recevied":
+underlined "Message Received":
 echo
 echo "  => $(green_bold "$message")"
 echo "  ==> $(red_bold "$message")"
@@ -56,7 +56,7 @@ echo
 ### `$ ./colorly`
 
 ````shell
-Message Recevied:
+Message Received:
 
   => hello colors
   ==> hello colors
@@ -69,7 +69,7 @@ Message Recevied:
 ### `$ NO_COLOR=1 ./colorly`
 
 ````shell
-Message Recevied:
+Message Received:
 
   => hello colors
   ==> hello colors

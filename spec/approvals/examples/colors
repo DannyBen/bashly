@@ -6,7 +6,7 @@ skipped src/root_command.sh (exists)
 created ./colorly
 run ./colorly --help to test your bash script
 + ./colorly
-Message Recevied:
+Message Received:
 
   => hello colors
   ==> hello colors
@@ -14,7 +14,7 @@ Message Recevied:
 
 + NO_COLOR=1
 + ./colorly
-Message Recevied:
+Message Received:
 
   => hello colors
   ==> hello colors

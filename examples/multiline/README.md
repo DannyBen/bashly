@@ -67,7 +67,7 @@ examples:
 environment_variables:
 - name: multi_vitamin
   help: |-
-    Environment variables can also use multiple lines. This can be useful if we need to explain - in excruciating detail - what the environemnt variable is used for.
+    Environment variables can also use multiple lines. This can be useful if we need to explain - in excruciating detail - what the environment variable is used for.
 ````
 
 
@@ -121,7 +121,7 @@ Options:
 Environment Variables:
   MULTI_VITAMIN
     Environment variables can also use multiple lines. This can be useful if we
-    need to explain - in excruciating detail - what the environemnt variable is
+    need to explain - in excruciating detail - what the environment variable is
     used for.
 
 Examples:

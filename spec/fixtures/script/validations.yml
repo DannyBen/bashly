@@ -156,7 +156,7 @@
 
 :command_extensible:
   name: invalid
-  help: extensible shuold be a boolean or string
+  help: extensible should be a boolean or string
   extensible: 1
 
 :command_filters_type:

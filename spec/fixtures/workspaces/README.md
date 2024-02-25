@@ -4,4 +4,4 @@ a user-facing example.
 
 - Workspaces that contain a `test.sh` will be tested as part of the examples
   test.
-- Other workspaces are used explicitely by other tests.
+- Other workspaces are used explicitly by other tests.

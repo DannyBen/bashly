@@ -25,7 +25,7 @@ commands:
 - name: download
   help: Download a file
 
-  # By specifying a group, the `download` comnmand will be printed under
+  # By specifying a group, the `download` command will be printed under
   # this `File` caption.
   group: File
 

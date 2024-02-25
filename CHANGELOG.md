@@ -88,7 +88,7 @@ v1.0.8 - 2023-08-11
 v1.0.7 - 2023-07-07
 ----------------------------------------
 
-- Add suport for auto-organizing command files in subfolders
+- Add support for auto-organizing command files in subfolders
 - Pre-process config files using ERB
 
 
