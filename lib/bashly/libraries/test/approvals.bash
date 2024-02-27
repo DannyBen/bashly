@@ -1,7 +1,10 @@
-# approvals.bash v0.4.2
+# approvals.bash v0.5.0
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
+#
+# shellcheck disable=SC2059
+# Disabling SC2059 (quoted format string) because we use dynamic format strings
 approve() {
   local expected approval approval_file actual cmd
   approvals_dir=${APPROVALS_DIR:=approvals}
@@ -21,9 +24,9 @@ approve() {
   if [[ -f "$approval_file" ]]; then
     expected=$(cat "$approval_file")
   else
-    echo "--- [$(blue "new: $cmd")] ---"
+    printf -- "$new_diff_string\n" "$cmd"
     printf "%b\n" "$actual"
-    echo "--- [$(blue "new: $cmd")] ---"
+    printf -- "$new_diff_string\n" "$cmd"
     expected="$actual"
     user_approval "$cmd" "$actual" "$approval_file"
     return
@@ -32,9 +35,9 @@ approve() {
   if [[ "$(printf "%b" "$actual")" = "$(printf "%b" "$expected")" ]]; then
     pass "$cmd"
   else
-    echo "--- [$(blue "diff: $cmd")] ---"
+    printf -- "$changed_diff_string\n" "$cmd"
     $diff_cmd <(printf "%b" "$expected\n") <(printf "%b" "$actual\n") | tail -n +4
-    echo "--- [$(blue "diff: $cmd")] ---"
+    printf -- "$changed_diff_string\n" "$cmd"
     user_approval "$cmd" "$actual" "$approval_file"
   fi
 }
@@ -44,22 +47,20 @@ allow_diff() {
 }
 
 describe() {
-  echo
-  blue "= $*"
+  printf "$describe_string\n" "$*"
 }
 
 context() {
-  echo
-  magenta "= $*"
+  printf "$context_string\n" "$*"
 }
 
 fail() {
-  red "  FAILED: $*"
+  printf "$fail_string\n" "$*"
   exit 1
 }
 
 pass() {
-  green "  approved: $*"
+  printf "$pass_string\n" "$*"
   return 0
 }
 
@@ -67,15 +68,17 @@ expect_exit_code() {
   if [[ $last_exit_code == "$1" ]]; then
     pass "exit $last_exit_code"
   else
-    fail "Expected exit code $1, got $last_exit_code"
+    fail "expected exit code $1, got $last_exit_code"
   fi
 }
 
-red() { printf "\e[31m%b\e[0m\n" "$*"; }
-green() { printf "\e[32m%b\e[0m\n" "$*"; }
+bold() { printf "\e[1m%b\e[0m\n" "$*"; }
 blue() { printf "\e[34m%b\e[0m\n" "$*"; }
-magenta() { printf "\e[35m%b\e[0m\n" "$*"; }
 cyan() { printf "\e[36m%b\e[0m\n" "$*"; }
+green() { printf "\e[32m%b\e[0m\n" "$*"; }
+magenta() { printf "\e[35m%b\e[0m\n" "$*"; }
+red() { printf "\e[31m%b\e[0m\n" "$*"; }
+yellow() { printf "\e[33m%b\e[0m\n" "$*"; }
 
 # Private
 
@@ -89,9 +92,9 @@ user_approval() {
   fi
 
   echo
-  printf "[A]pprove? \n"
+  printf "$approval_string"
   response=$(bash -c "read -n 1 key; echo \$key")
-  printf "\r"
+  printf "\b%.s" $(seq 1 $((${#approval_string} + 1)))
   if [[ $response =~ [Aa] ]]; then
     printf "%b\n" "$actual" >"$approval_file"
     pass "$cmd"
@@ -103,20 +106,31 @@ user_approval() {
 onexit() {
   exitcode=$?
   if [[ "$exitcode" == 0 ]]; then
-    green "\nFinished successfully"
+    printf "$exit_success_string\n" "$0"
   else
-    red "\nFinished with failures"
+    printf "$exit_failed_string\n" "$0"
   fi
+  echo
   exit $exitcode
 }
 
 onerror() {
-  fail "Caller: $(caller)"
+  fail "caller: $(caller)"
 }
 
 set -e
 trap 'onexit' EXIT
 trap 'onerror' ERR
+
+describe_string="$(blue ▌ describe)   %s"
+context_string="$(magenta ▌ context)    %s"
+fail_string="  $(red FAILED)     %s"
+pass_string="  $(green approved)   %s"
+exit_success_string="$(green ▌ exit)       $(bold %s finished successfully)"
+exit_failed_string="$(red ▌ exit)       $(bold %s finished with errors)"
+new_diff_string="────┤ $(yellow new): $(bold %s)) ├────"
+changed_diff_string="────┤ $(cyan changed): $(bold %s)) ├────"
+approval_string="[A]pprove? "
 
 if diff --help | grep -- --color >/dev/null 2>&1; then
   diff_cmd="diff --unified --color=always"
