@@ -6,12 +6,14 @@ class Array
     heredoc_marker = nil
 
     map do |line|
-      if heredoc_marker
-        heredoc_marker = nil if /^#{heredoc_marker}\n?/.match?(line)
+      if line =~ /<<-?(\w+)\n?$/
+        heredoc_marker = $1
+        "#{indentation}#{line}"
+      elsif heredoc_marker && /^#{heredoc_marker}\n?$/.match?(line)
+        heredoc_marker = nil
         line
       else
-        heredoc_marker = $1 if line =~ /<<-?(\w+)\n?$/
-        "#{indentation}#{line}"
+        heredoc_marker ? line : "#{indentation}#{line}"
       end
     end
   end
