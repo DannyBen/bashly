@@ -22,7 +22,7 @@ Style/GuardClause:            { Exclude: [lib/bashly/config_validator.rb] }
 # False positive report of invalid use of a method that starts with `set_`
 Naming/AccessorMethodName:
   Exclude:
-    - 'lib/bashly/indenter.rb'
+    - 'lib/bashly/concerns/indentation_helper.rb'
 
 # FIXME: The `Command` class is too long
 Metrics/ClassLength: { Exclude: [lib/bashly/script/command.rb] }

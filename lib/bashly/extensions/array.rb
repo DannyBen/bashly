@@ -1,11 +1,11 @@
-require 'bashly/indenter'
+require 'bashly/concerns/indentation_helper'
 
 class Array
   def indent(offset)
     return self unless offset.positive?
 
     indentation = ' ' * offset
-    indenter = Indenter.new indentation
+    indenter = Bashly::IndentationHelper.new indentation
 
     map { |line| indenter.indent line }
   end
