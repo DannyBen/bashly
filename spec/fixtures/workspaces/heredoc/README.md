@@ -1,0 +1,1 @@
+This fixture tests that heredoc blocks are kept unindented
