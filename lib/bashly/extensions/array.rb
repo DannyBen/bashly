@@ -10,7 +10,7 @@ class Array
         heredoc_marker = nil if /^#{heredoc_marker}\n?$/.match?(line)
         line
       else
-        heredoc_marker = $1 if line =~ /<<-?\s*(\w[\w\d]*)/
+        heredoc_marker = $1 if line =~ /<<-?\s*(\w+)/
         "#{indentation}#{line}"
       end
     end
