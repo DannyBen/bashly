@@ -1,19 +1,13 @@
+require 'bashly/indenter'
+
 class Array
   def indent(offset)
     return self unless offset.positive?
 
     indentation = ' ' * offset
-    heredoc_marker = nil
+    indenter = Indenter.new indentation
 
-    map do |line|
-      if heredoc_marker
-        heredoc_marker = nil if /^#{heredoc_marker}\n?$/.match?(line)
-        line
-      else
-        heredoc_marker = $1 if line =~ /<<-?\s*(\w+)/
-        "#{indentation}#{line}"
-      end
-    end
+    map { |line| indenter.indent line }
   end
 
   def nonuniq
