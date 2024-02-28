@@ -9,10 +9,8 @@ class Array
       if heredoc_marker
         heredoc_marker = nil if /^#{heredoc_marker}\n?/.match?(line)
         line
-      elsif line =~ /<<-?(\w+)\n?$/
-        heredoc_marker = $1
-        "#{indentation}#{line}"
       else
+        heredoc_marker = $1 if line =~ /<<-?(\w+)\n?$/
         "#{indentation}#{line}"
       end
     end
