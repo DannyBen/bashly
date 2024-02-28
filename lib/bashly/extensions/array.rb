@@ -3,7 +3,19 @@ class Array
     return self unless offset.positive?
 
     indentation = ' ' * offset
-    map { |line| "#{indentation}#{line}" }
+    heredoc_marker = nil
+
+    map do |line|
+      if line =~ /<<-?(\w+)\n$/
+        heredoc_marker = $1
+        "#{indentation}#{line}"
+      elsif heredoc_marker && line.include?(heredoc_marker)
+        heredoc_marker = nil
+        line
+      else
+        heredoc_marker ? line : "#{indentation}#{line}"
+      end
+    end
   end
 
   def nonuniq
