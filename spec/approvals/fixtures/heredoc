@@ -1,0 +1,16 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+unindented
+multiline
+heredoc text
+also unindented
+  1 indentation
+    2 indentations
+      3 indentations
+
+      3 indentations with empty line above
+also unindented
