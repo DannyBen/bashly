@@ -16,3 +16,19 @@ args:
 args:
 - ${args[--force]} = 1
 - ${args[--options]} = --verbose --anything
++ BASHLY_COMPACT_SHORT_FLAGS=no
++ bundle exec bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./argflag
+run ./argflag --help to test your bash script
++ ./argflag -o -force
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--options]} = -force
++ ./argflag -o '-f -o'
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--options]} = -f -o
