@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# This fixture tests that alias command codes work properly
-# It is executed as part of the Runfile examples test
-# Reference issue: https://github.com/DannyBen/bashly/issues/16
-
 rm -f ./src/*.sh
 rm -f ./argflag
 
@@ -14,3 +10,10 @@ bundle exec bashly generate
 ./argflag -f -o
 ./argflag -o -f
 ./argflag -o '--verbose --anything' -f
+
+# if flag args are expected to look like a short flag collection, it is
+# necessary to disable `compact_short_flags` either in settings or environment
+# variable.
+BASHLY_COMPACT_SHORT_FLAGS=no bundle exec bashly generate
+./argflag -o -force
+./argflag -o '-f -o'
