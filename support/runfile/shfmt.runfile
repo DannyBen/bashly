@@ -7,7 +7,7 @@ action do
       next unless example.include? ENV['EXAMPLE']
     end
 
-    if example == 'examples/heredoc/cli' || !File.exist?(example)
+    if !File.exist?(example)
       say "- skip  c`#{example}`"
       allowed_skips -= 1
       if allowed_skips < 0
