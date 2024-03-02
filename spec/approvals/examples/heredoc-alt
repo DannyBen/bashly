@@ -1,9 +1,0 @@
-+ bashly generate
-creating user files in src
-skipped src/root_command.sh (exists)
-created ./cli
-run ./cli --help to test your bash script
-+ ./cli
-this is a
-  multiline
-    heredoc text
