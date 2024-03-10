@@ -2,19 +2,20 @@
 
 condition = "if"
 args.each do |arg|
+  > escaped_value="${1//\"/\\\"}"
   > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
   if arg.repeatable
-    >   args['{{ arg.name }}']="\"$1\""
+    >   args['{{ arg.name }}']="\"$escaped_value\""
     >   shift
     if arg.unique
       > elif [[ ! "${args['{{ arg.name }}']}" =~ \"$1\" ]]; then
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$escaped_value\""
       >   shift
       > else
       >   shift
     else
       > else
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$escaped_value\""
       >   shift
     end
 
