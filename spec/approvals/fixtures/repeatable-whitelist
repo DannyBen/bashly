@@ -24,3 +24,5 @@ args:
 --protocol must be one of: ssh, ftp, sftp
 + ./download --protocol telnet
 --protocol must be one of: ssh, ftp, sftp
++ ./download --protocol telnet --protocol 'not"a"protocol'
+--protocol must be one of: ssh, ftp, sftp

@@ -3,14 +3,15 @@
 > if [[ -n ${2+x} ]]; then
 
 if repeatable
+  >   escaped_value="${2//\"/\\\"}"
   >   if [[ -z ${args['{{ name }}']+x} ]]; then
-  >     args['{{ name }}']="\"$2\""
+  >     args['{{ name }}']="\"$escaped_value\""
   if unique
-    >   elif [[ ! "${args['{{ name }}']}" =~ \"$2\" ]]; then
+    >   elif [[ ! "${args['{{ name }}']}" =~ \"$escaped_value\" ]]; then
   else
     >   else
   end
-  >     args['{{ name }}']="${args['{{ name }}']} \"$2\""
+  >     args['{{ name }}']="${args['{{ name }}']} \"$escaped_value\""
   >   fi
 
 else

@@ -32,3 +32,6 @@ must be an integer
 + ./cli 1 a
 validation error in NUMBER:
 must be an integer
++ ./cli 1 'not"a"number'
+validation error in NUMBER:
+must be an integer

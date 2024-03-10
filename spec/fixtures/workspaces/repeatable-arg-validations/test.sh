@@ -16,3 +16,4 @@ bundle exec bashly generate
 ./cli 1.1 2
 ./cli 1 2.2
 ./cli 1 a
+./cli 1 'not"a"number'

@@ -1,0 +1,50 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+args: none
+
++ ./cli one 'two and a half' three
+args:
+- ${args[term]} = "one" "two and a half" "three"
+[TERM] --> one
+[TERM] --> two and a half
+[TERM] --> three
+
++ ./cli one 'the phrase "hello world"' three
+args:
+- ${args[term]} = "one" "the phrase \"hello world\"" "three"
+[TERM] --> one
+[TERM] --> the phrase "hello world"
+[TERM] --> three
+
++ ./cli one 'bad"quote' three
+args:
+- ${args[term]} = "one" "bad\"quote" "three"
+[TERM] --> one
+[TERM] --> bad"quote
+[TERM] --> three
+
++ ./cli -s one -s 'two and a half' -s three
+args:
+- ${args[--search]} = "one" "two and a half" "three"
+[--serach] --> one
+[--serach] --> two and a half
+[--serach] --> three
+
++ ./cli -s one -s 'the phrase "hello world"' -s three
+args:
+- ${args[--search]} = "one" "the phrase \"hello world\"" "three"
+[--serach] --> one
+[--serach] --> the phrase "hello world"
+[--serach] --> three
+
++ ./cli -s one -s 'bad"quote' -s three
+args:
+- ${args[--search]} = "one" "bad\"quote" "three"
+[--serach] --> one
+[--serach] --> bad"quote
+[--serach] --> three
+
