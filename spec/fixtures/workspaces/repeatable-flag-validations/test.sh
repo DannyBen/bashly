@@ -16,4 +16,4 @@ bundle exec bashly generate
 ./cli --number 1.1 --number 2
 ./cli --number 1 --number 2.2
 ./cli --number 1 --number a
-./cli --number 1 --number 'not"a"number'
+./cli --number 1 --number 'bad"quote'

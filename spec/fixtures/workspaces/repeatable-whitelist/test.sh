@@ -14,4 +14,4 @@ bundle exec bashly generate
 ./download -p sftp -p https
 ./download -p http -p ftp
 ./download --protocol telnet
-./download --protocol telnet --protocol 'not"a"protocol'
+./download --protocol telnet --protocol 'bad"quote'
