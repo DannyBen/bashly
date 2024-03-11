@@ -7,7 +7,9 @@ flags:
   short: -s
   arg: query
   repeatable: true
+  unique: true
 
 args:
 - name: term
   repeatable: true
+  unique: true

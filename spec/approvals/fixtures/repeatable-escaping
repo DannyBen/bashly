@@ -27,6 +27,12 @@ args:
 [TERM] --> bad"quote
 [TERM] --> three
 
++ ./cli one 'only once' 'only once'
+args:
+- ${args[term]} = "one" "only once"
+[TERM] --> one
+[TERM] --> only once
+
 + ./cli -s one -s 'two and a half' -s three
 args:
 - ${args[--search]} = "one" "two and a half" "three"
@@ -47,4 +53,10 @@ args:
 [--serach] --> one
 [--serach] --> bad"quote
 [--serach] --> three
+
++ ./cli -s one -s 'only once' -s 'only once'
+args:
+- ${args[--search]} = "one" "only once"
+[--serach] --> one
+[--serach] --> only once
 
