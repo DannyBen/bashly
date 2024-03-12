@@ -48,3 +48,15 @@ args:
 [--serach] --> x"x
 [--serach] --> after
 
++ ./cli once x once
+args:
+- ${args[term]} = once x
+[TERM] --> once
+[TERM] --> x
+
++ ./cli -s once -s x -s once
+args:
+- ${args[--search]} = once x
+[--serach] --> once
+[--serach] --> x
+

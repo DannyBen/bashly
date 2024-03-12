@@ -69,9 +69,6 @@ files:
   path: file2:
   content: content of file2
   upcase: CONTENT OF FILE2
-  path: file1:
-  content: content of file1
-  upcase: CONTENT OF FILE1
 
 args:
-- ${args[file]} = file1 file2 file1
+- ${args[file]} = file1 file2
