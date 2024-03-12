@@ -101,7 +101,7 @@ module Bashly
       end
 
       # Returns a flat array containing all the commands in this tree.
-      # This can children + grandchildres (recursive), and may include self
+      # This includes children + grandchildren (recursive), and may include self
       def deep_commands(include_self: false)
         result = []
         result << self if include_self

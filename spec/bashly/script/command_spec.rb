@@ -114,6 +114,13 @@ describe Script::Command do
       expect(subject.deep_commands.map(&:full_name))
         .to eq ['docker container', 'docker container run', 'docker container stop', 'docker image']
     end
+
+    context 'when include_self is true' do
+      it 'prepends the result with the command itself' do
+        expect(subject.deep_commands(include_self: true).map(&:full_name))
+          .to eq ['docker', 'docker container', 'docker container run', 'docker container stop', 'docker image']
+      end
+    end
   end
 
   describe '#default_arguments' do
@@ -330,6 +337,46 @@ describe Script::Command do
       expect(subject.grouped_commands.keys).to contain_exactly('Cluster Commands:', 'Commands:')
       expect(subject.grouped_commands['Commands:'].count).to eq 4
       expect(subject.grouped_commands['Commands:']).to all(be_a described_class)
+    end
+  end
+
+  describe '#has_unique_args_or_flags?' do
+    context 'when the command has any args that are unique' do
+      let(:fixture) { :unique_args }
+      
+      it 'returns true' do
+        expect(subject.has_unique_args_or_flags?).to be true
+      end
+    end
+
+    context 'when the command has any flags that are unique' do
+      let(:fixture) { :unique_flags }
+
+      it 'returns true' do
+        expect(subject.has_unique_args_or_flags?).to be true
+      end
+    end
+
+    context 'when the command has any subcommands with unique args' do
+      let(:fixture) { :unique_args_deep }
+      
+      it 'returns true' do
+        expect(subject.has_unique_args_or_flags?).to be true
+      end
+    end
+
+    context 'when the command has any subcommands with unique flags' do
+      let(:fixture) { :unique_flags_deep }
+
+      it 'returns true' do
+        expect(subject.has_unique_args_or_flags?).to be true
+      end
+    end
+
+    context 'otherwise' do
+      it 'returns false' do
+        expect(subject.has_unique_args_or_flags?).to be false
+      end
     end
   end
 

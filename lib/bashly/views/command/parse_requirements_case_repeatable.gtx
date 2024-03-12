@@ -6,6 +6,9 @@ args.each do |arg|
   > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
   if arg.repeatable
     >   args['{{ arg.name }}']="$escaped"
+    if arg.unique
+      >   unique_lookup["{{ arg.name }}:$escaped"]=1
+    end
     >   shift
     if arg.unique
       > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
