@@ -10,14 +10,13 @@ args.each do |arg|
     if arg.unique
       > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
       >   args['{{ arg.name }}']="${args[{{ arg.name }}]} $escaped"
-      #   TODO: This line should only be inserted if any uniques are used
       >   unique_lookup["{{ arg.name }}:$escaped"]=1
       >   shift
       > else
       >   shift
     else
       > else
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} $escaped_value"
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} $escaped"
       >   shift
     end
 

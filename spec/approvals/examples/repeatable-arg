@@ -47,7 +47,7 @@ files:
   upcase: CONTENT OF FILE1
 
 args:
-- ${args[file]} = "file1"
+- ${args[file]} = file1
 + ./upcase file1 file2
 
 files:
@@ -59,7 +59,7 @@ files:
   upcase: CONTENT OF FILE2
 
 args:
-- ${args[file]} = "file1" "file2"
+- ${args[file]} = file1 file2
 + ./upcase file1 file2 file1
 
 files:
@@ -69,6 +69,9 @@ files:
   path: file2:
   content: content of file2
   upcase: CONTENT OF FILE2
+  path: file1:
+  content: content of file1
+  upcase: CONTENT OF FILE1
 
 args:
-- ${args[file]} = "file1" "file2"
+- ${args[file]} = file1 file2 file1

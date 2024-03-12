@@ -12,12 +12,12 @@ args:
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--protocol]} = "ssh"
+- ${args[--protocol]} = ssh
 + ./download -p ssh -p ftp
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--protocol]} = "ssh" "ftp"
+- ${args[--protocol]} = ssh ftp
 + ./download -p sftp -p https
 --protocol must be one of: ssh, ftp, sftp
 + ./download -p http -p ftp

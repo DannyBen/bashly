@@ -13,8 +13,9 @@ if repeatable
   end
   >     args['{{ name }}']="${args['{{ name }}']} $escaped"
   >   fi
-  # TODO: This line should only be inserted if any uniques are used
-  >   unique_lookup["{{ name }}:${escaped}"]=1
+  if unique
+    >   unique_lookup["{{ name }}:${escaped}"]=1
+  end
 
 else
   >   args['{{ name }}']="$2"
