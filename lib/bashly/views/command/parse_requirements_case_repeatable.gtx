@@ -2,20 +2,22 @@
 
 condition = "if"
 args.each do |arg|
-  > escaped_value="${1//\"/\\\"}"
+  > escaped="$(printf '%q' "$1")"
   > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
   if arg.repeatable
-    >   args['{{ arg.name }}']="\"$escaped_value\""
+    >   args['{{ arg.name }}']="$escaped"
     >   shift
     if arg.unique
-      > elif [[ ! "${args['{{ arg.name }}']}" =~ \"$1\" ]]; then
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$escaped_value\""
+      > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} $escaped"
+      #   TODO: This line should only be inserted if any uniques are used
+      >   unique_lookup["{{ arg.name }}:$escaped"]=1
       >   shift
       > else
       >   shift
     else
       > else
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$escaped_value\""
+      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} $escaped_value"
       >   shift
     end
 

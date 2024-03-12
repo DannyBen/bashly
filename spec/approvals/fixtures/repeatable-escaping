@@ -6,57 +6,45 @@ run ./cli --help to test your bash script
 + ./cli
 args: none
 
-+ ./cli one 'two and a half' three
++ ./cli before 'x x' 'x x' after
 args:
-- ${args[term]} = "one" "two and a half" "three"
-[TERM] --> one
-[TERM] --> two and a half
-[TERM] --> three
+- ${args[term]} = before x\ x after
+[TERM] --> before
+[TERM] --> x x
+[TERM] --> after
 
-+ ./cli one 'the phrase "hello world"' three
++ ./cli before 'x "x x"' 'x "x x"' after
 args:
-- ${args[term]} = "one" "the phrase \"hello world\"" "three"
-[TERM] --> one
-[TERM] --> the phrase "hello world"
-[TERM] --> three
+- ${args[term]} = before x\ \"x\ x\" after
+[TERM] --> before
+[TERM] --> x "x x"
+[TERM] --> after
 
-+ ./cli one 'bad"quote' three
++ ./cli before 'x"x' 'x"x' after
 args:
-- ${args[term]} = "one" "bad\"quote" "three"
-[TERM] --> one
-[TERM] --> bad"quote
-[TERM] --> three
+- ${args[term]} = before x\"x after
+[TERM] --> before
+[TERM] --> x"x
+[TERM] --> after
 
-+ ./cli one 'only once' 'only once'
++ ./cli -s before -s 'x x' -s 'x x' -s after
 args:
-- ${args[term]} = "one" "only once"
-[TERM] --> one
-[TERM] --> only once
+- ${args[--search]} = before x\ x after
+[--serach] --> before
+[--serach] --> x x
+[--serach] --> after
 
-+ ./cli -s one -s 'two and a half' -s three
++ ./cli -s before -s 'x "x x"' -s 'x "x x"' -s after
 args:
-- ${args[--search]} = "one" "two and a half" "three"
-[--serach] --> one
-[--serach] --> two and a half
-[--serach] --> three
+- ${args[--search]} = before x\ \"x\ x\" after
+[--serach] --> before
+[--serach] --> x "x x"
+[--serach] --> after
 
-+ ./cli -s one -s 'the phrase "hello world"' -s three
++ ./cli -s before -s 'x"x' -s 'x"x' -s after
 args:
-- ${args[--search]} = "one" "the phrase \"hello world\"" "three"
-[--serach] --> one
-[--serach] --> the phrase "hello world"
-[--serach] --> three
-
-+ ./cli -s one -s 'bad"quote' -s three
-args:
-- ${args[--search]} = "one" "bad\"quote" "three"
-[--serach] --> one
-[--serach] --> bad"quote
-[--serach] --> three
-
-+ ./cli -s one -s 'only once' -s 'only once'
-args:
-- ${args[--search]} = "one" "only once"
-[--serach] --> one
-[--serach] --> only once
+- ${args[--search]} = before x\"x after
+[--serach] --> before
+[--serach] --> x"x
+[--serach] --> after
 

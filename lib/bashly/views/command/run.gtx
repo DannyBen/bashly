@@ -6,6 +6,8 @@
 >   declare -a other_args=()
 >   declare -a env_var_names=()
 >   declare -a input=()
+# TODO: This line should only be inserted if any uniques are used
+>   declare -A unique_lookup=()
 >   normalize_input "$@"
 >   parse_requirements "${input[@]}"
 if user_file_exist?('before')
@@ -29,5 +31,3 @@ if user_file_exist?('after')
 end
 
 > }
-
-
