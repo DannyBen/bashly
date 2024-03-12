@@ -343,7 +343,7 @@ describe Script::Command do
   describe '#has_unique_args_or_flags?' do
     context 'when the command has any args that are unique' do
       let(:fixture) { :unique_args }
-      
+
       it 'returns true' do
         expect(subject.has_unique_args_or_flags?).to be true
       end
@@ -359,7 +359,7 @@ describe Script::Command do
 
     context 'when the command has any subcommands with unique args' do
       let(:fixture) { :unique_args_deep }
-      
+
       it 'returns true' do
         expect(subject.has_unique_args_or_flags?).to be true
       end
@@ -373,7 +373,7 @@ describe Script::Command do
       end
     end
 
-    context 'otherwise' do
+    context 'when the command does not have any uniques' do
       it 'returns false' do
         expect(subject.has_unique_args_or_flags?).to be false
       end
