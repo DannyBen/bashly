@@ -11,7 +11,7 @@ args: none
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[number]} = "1"
+- ${args[number]} = 1
 + ./cli 1.1
 validation error in NUMBER:
 must be an integer
@@ -22,7 +22,7 @@ must be an integer
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[number]} = "1" "2"
+- ${args[number]} = 1 2
 + ./cli 1.1 2
 validation error in NUMBER:
 must be an integer
@@ -30,5 +30,8 @@ must be an integer
 validation error in NUMBER:
 must be an integer
 + ./cli 1 a
+validation error in NUMBER:
+must be an integer
++ ./cli 1 'bad"quote'
 validation error in NUMBER:
 must be an integer

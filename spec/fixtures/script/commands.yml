@@ -398,6 +398,40 @@
   - name: target
     repeatable: true
 
+:unique_args:
+  name: get
+  args:
+  - name: file
+    repeatable: true
+    unique: true
+
+:unique_flags:
+  name: get
+  flags:
+  - short: --file
+    arg: path
+    repeatable: true
+    unique: true
+
+:unique_args_deep:
+  name: ftp
+  commands:
+  - name: upload
+    args:
+    - name: file
+      repeatable: true
+      unique: true
+
+:unique_flags_deep:
+  name: ftp
+  commands:
+  - name: upload
+    flags:
+    - long: --file
+      arg: path
+      repeatable: true
+      unique: true
+
 :whitelist:
   name: cli
   args:

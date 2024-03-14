@@ -1,0 +1,62 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+args: none
+
++ ./cli before 'x x' 'x x' after
+args:
+- ${args[term]} = before x\ x after
+[TERM] --> before
+[TERM] --> x x
+[TERM] --> after
+
++ ./cli before 'x "x x"' 'x "x x"' after
+args:
+- ${args[term]} = before x\ \"x\ x\" after
+[TERM] --> before
+[TERM] --> x "x x"
+[TERM] --> after
+
++ ./cli before 'x"x' 'x"x' after
+args:
+- ${args[term]} = before x\"x after
+[TERM] --> before
+[TERM] --> x"x
+[TERM] --> after
+
++ ./cli -s before -s 'x x' -s 'x x' -s after
+args:
+- ${args[--search]} = before x\ x after
+[--serach] --> before
+[--serach] --> x x
+[--serach] --> after
+
++ ./cli -s before -s 'x "x x"' -s 'x "x x"' -s after
+args:
+- ${args[--search]} = before x\ \"x\ x\" after
+[--serach] --> before
+[--serach] --> x "x x"
+[--serach] --> after
+
++ ./cli -s before -s 'x"x' -s 'x"x' -s after
+args:
+- ${args[--search]} = before x\"x after
+[--serach] --> before
+[--serach] --> x"x
+[--serach] --> after
+
++ ./cli once x once
+args:
+- ${args[term]} = once x
+[TERM] --> once
+[TERM] --> x
+
++ ./cli -s once -s x -s once
+args:
+- ${args[--search]} = once x
+[--serach] --> once
+[--serach] --> x
+

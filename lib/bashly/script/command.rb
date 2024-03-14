@@ -101,9 +101,10 @@ module Bashly
       end
 
       # Returns a flat array containing all the commands in this tree.
-      # This includes self + children + grandchildres + ...
-      def deep_commands
+      # This includes children + grandchildren (recursive), and may include self
+      def deep_commands(include_self: false)
         result = []
+        result << self if include_self
         commands.each do |command|
           result << command
           if command.commands.any?
@@ -215,6 +216,16 @@ module Bashly
         end
 
         result
+      end
+
+      # Returns true if this command, or any subcommand (deep) as any arg or
+      # flag with arg that is defined as unique
+      def has_unique_args_or_flags?
+        deep_commands(include_self: true).each do |command|
+          return true if command.args.count(&:unique).positive? ||
+            command.flags.count(&:unique).positive?
+        end
+        false
       end
 
       # Returns a mode identifier

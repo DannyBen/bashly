@@ -1,0 +1,15 @@
+name: cli
+help: Test repeatable args with input that contains quotes
+version: 0.1.0
+
+flags:
+- long: --search
+  short: -s
+  arg: query
+  repeatable: true
+  unique: true
+
+args:
+- name: term
+  repeatable: true
+  unique: true

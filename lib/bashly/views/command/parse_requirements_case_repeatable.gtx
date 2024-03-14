@@ -1,30 +1,32 @@
 = view_marker
 
 condition = "if"
-args.each do |arg|
+args.each_with_index do |arg, index|
+  if index == 0
+    > escaped="$(printf '%q' "$1")"
+  end
   > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
   if arg.repeatable
-    >   args['{{ arg.name }}']="\"$1\""
-    >   shift
+    >   args['{{ arg.name }}']="$escaped"
     if arg.unique
-      > elif [[ ! "${args['{{ arg.name }}']}" =~ \"$1\" ]]; then
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
-      >   shift
-      > else
-      >   shift
+      >   unique_lookup["{{ arg.name }}:$escaped"]=1
+    end
+    if arg.unique
+      > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
+      >   args['{{ arg.name }}']="${args['{{ arg.name }}']} $escaped"
+      >   unique_lookup["{{ arg.name }}:$escaped"]=1
     else
       > else
-      >   args['{{ arg.name }}']="${args[{{ arg.name }}]} \"$1\""
-      >   shift
+      >   args['{{ arg.name }}']="${args['{{ arg.name }}']} $escaped"
     end
 
   else
-    >   args['{{ arg.name }}']=$1
-    >   shift
+    >   args['{{ arg.name }}']="$1"
 
   end
   condition = "elif"
 end
 
 > fi
+> shift
 > 

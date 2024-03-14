@@ -3,15 +3,19 @@
 > if [[ -n ${2+x} ]]; then
 
 if repeatable
+  >   escaped="$(printf '%q' "$2")"
   >   if [[ -z ${args['{{ name }}']+x} ]]; then
-  >     args['{{ name }}']="\"$2\""
+  >     args['{{ name }}']="$escaped"
   if unique
-    >   elif [[ ! "${args['{{ name }}']}" =~ \"$2\" ]]; then
+    >   elif [[ -z "${unique_lookup["{{ name }}:${escaped}"]:-}" ]]; then
   else
     >   else
   end
-  >     args['{{ name }}']="${args['{{ name }}']} \"$2\""
+  >     args['{{ name }}']="${args['{{ name }}']} $escaped"
   >   fi
+  if unique
+    >   unique_lookup["{{ name }}:${escaped}"]=1
+  end
 
 else
   >   args['{{ name }}']="$2"
