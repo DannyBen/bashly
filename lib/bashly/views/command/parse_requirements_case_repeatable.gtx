@@ -10,8 +10,6 @@ args.each_with_index do |arg, index|
     >   args['{{ arg.name }}']="$escaped"
     if arg.unique
       >   unique_lookup["{{ arg.name }}:$escaped"]=1
-    end
-    if arg.unique
       > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
       >   args['{{ arg.name }}']="${args['{{ arg.name }}']} $escaped"
       >   unique_lookup["{{ arg.name }}:$escaped"]=1
