@@ -1,4 +1,4 @@
-# approvals.bash v0.5.0
+# approvals.bash v0.5.1
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
@@ -54,6 +54,10 @@ context() {
   printf "$context_string\n" "$*"
 }
 
+it() {
+  printf "$it_string\n" "$*"
+}
+
 fail() {
   printf "$fail_string\n" "$*"
   exit 1
@@ -72,29 +76,57 @@ expect_exit_code() {
   fi
 }
 
-bold() { printf "\e[1m%b\e[0m\n" "$*"; }
-blue() { printf "\e[34m%b\e[0m\n" "$*"; }
-cyan() { printf "\e[36m%b\e[0m\n" "$*"; }
-green() { printf "\e[32m%b\e[0m\n" "$*"; }
-magenta() { printf "\e[35m%b\e[0m\n" "$*"; }
-red() { printf "\e[31m%b\e[0m\n" "$*"; }
-yellow() { printf "\e[33m%b\e[0m\n" "$*"; }
-
 # Private
+
+print_in_color() {
+  local color="$1"
+  shift
+  if [[ -z ${NO_COLOR+x} ]]; then
+    printf "$color%b\e[0m\n" "$*"
+  else
+    printf "%b\n" "$*"
+  fi
+}
+
+red() { print_in_color "\e[31m" "$*"; }
+green() { print_in_color "\e[32m" "$*"; }
+yellow() { print_in_color "\e[33m" "$*"; }
+blue() { print_in_color "\e[34m" "$*"; }
+magenta() { print_in_color "\e[35m" "$*"; }
+cyan() { print_in_color "\e[36m" "$*"; }
+bold() { print_in_color "\e[1m" "$*"; }
+underlined() { print_in_color "\e[4m" "$*"; }
+red_bold() { print_in_color "\e[1;31m" "$*"; }
+green_bold() { print_in_color "\e[1;32m" "$*"; }
+yellow_bold() { print_in_color "\e[1;33m" "$*"; }
+blue_bold() { print_in_color "\e[1;34m" "$*"; }
+magenta_bold() { print_in_color "\e[1;35m" "$*"; }
+cyan_bold() { print_in_color "\e[1;36m" "$*"; }
+red_underlined() { print_in_color "\e[4;31m" "$*"; }
+green_underlined() { print_in_color "\e[4;32m" "$*"; }
+yellow_underlined() { print_in_color "\e[4;33m" "$*"; }
+blue_underlined() { print_in_color "\e[4;34m" "$*"; }
+magenta_underlined() { print_in_color "\e[4;35m" "$*"; }
+cyan_underlined() { print_in_color "\e[4;36m" "$*"; }
 
 user_approval() {
   local cmd="$1"
   local actual="$2"
   local approval_file="$3"
 
-  if [[ -v CI || -v GITHUB_ACTIONS ]]; then
+  if [[ -v CI || -v GITHUB_ACTIONS ]] && [[ -z "${AUTO_APPROVE+x}" ]]; then
     fail "$cmd"
   fi
 
-  echo
-  printf "$approval_string"
-  response=$(bash -c "read -n 1 key; echo \$key")
-  printf "\b%.s" $(seq 1 $((${#approval_string} + 1)))
+  if [[ -v AUTO_APPROVE ]]; then
+    response=a
+  else
+    echo
+    printf "$approval_string"
+    response=$(bash -c "read -n 1 key; echo \$key")
+    printf "\b%.s" $(seq 1 $((${#approval_string} + 1)))
+  fi
+
   if [[ $response =~ [Aa] ]]; then
     printf "%b\n" "$actual" >"$approval_file"
     pass "$cmd"
@@ -122,14 +154,15 @@ set -e
 trap 'onexit' EXIT
 trap 'onerror' ERR
 
-describe_string="$(blue ▌ describe)   %s"
-context_string="$(magenta ▌ context)    %s"
-fail_string="  $(red FAILED)     %s"
+describe_string="$(bold ▌ describe)   %s"
+context_string="$(bold ▌ context)    %s"
+it_string="$(bold ▌ it)         %s"
+fail_string="  $(red_bold failed)     %s"
 pass_string="  $(green approved)   %s"
 exit_success_string="$(green ▌ exit)       $(bold %s finished successfully)"
-exit_failed_string="$(red ▌ exit)       $(bold %s finished with errors)"
-new_diff_string="────┤ $(yellow new): $(bold %s)) ├────"
-changed_diff_string="────┤ $(cyan changed): $(bold %s)) ├────"
+exit_failed_string="$(red_bold ▌ exit)       $(bold %s finished with errors)"
+new_diff_string="────┤ $(yellow new): $(bold %s) ├────"
+changed_diff_string="────┤ $(blue changed): $(bold %s) ├────"
 approval_string="[A]pprove? "
 
 if diff --help | grep -- --color >/dev/null 2>&1; then
