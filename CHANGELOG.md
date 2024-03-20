@@ -1,14 +1,14 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v1.1.9 - 2024-03-20
 ----------------------------------------
 
 - Fix repeatable args when the input has quotes [`0d35217`](https://github.com/DannyBen/bashly/commit/0d35217)
 - Fix repeatable flag args when the input has quotes [`ab34fc0`](https://github.com/DannyBen/bashly/commit/ab34fc0)
 - Improve handling of unique repeatable args and flag args [`c200223`](https://github.com/DannyBen/bashly/commit/c200223)
 - Update `Approvals.bash` to v0.5.1 [`8e12d55`](https://github.com/DannyBen/bashly/commit/8e12d55)
-- Compare [`v1.1.8..HEAD`](https://github.com/dannyben/bashly/compare/v1.1.8..HEAD)
+- Compare [`v1.1.8..v1.1.9`](https://github.com/dannyben/bashly/compare/v1.1.8..v1.1.9)
 
 
 v1.1.8 - 2024-03-02
