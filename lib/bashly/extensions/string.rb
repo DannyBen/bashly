@@ -1,6 +1,6 @@
 class String
   def sanitize_for_print
-    gsub("\n", '\\n').gsub('"', '\"').gsub('`', '\\\\`')
+    gsub("\n", '\\n').gsub('"', '\"').gsub('`', '\\\\`').gsub('%', '%%')
   end
 
   def for_markdown

@@ -1,9 +1,9 @@
 describe String do
   describe '#sanitize_for_print' do
-    subject { "this is\na \"new line\" with `backticks`" }
+    subject { "this is\na \"new line\" with `backticks` and % symbol" }
 
     it 'escapes newlines and quotes' do
-      expect(subject.sanitize_for_print).to eq 'this is\\na \"new line\" with \`backticks\`'
+      expect(subject.sanitize_for_print).to eq 'this is\\na \"new line\" with \`backticks\` and %% symbol'
     end
   end
 
