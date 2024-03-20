@@ -29,7 +29,7 @@ module Bashly
         options['help'] ||= ''
       end
 
-      def method_missing(method_name, *arguments, &block)
+      def method_missing(method_name, *arguments, &)
         key = method_name.to_s
         respond_to?(method_name) ? options[key] : super
       end
