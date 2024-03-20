@@ -1,28 +1,7 @@
 = view_marker
 
-condition = "if"
 args.each_with_index do |arg, index|
-  if index == 0
-    > escaped="$(printf '%q' "$1")"
-  end
-  > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
-  if arg.repeatable
-    >   args['{{ arg.name }}']="$escaped"
-    if arg.unique
-      >   unique_lookup["{{ arg.name }}:$escaped"]=1
-      > elif [[ -z "${unique_lookup["{{ arg.name }}:$escaped"]:-}" ]]; then
-      >   args['{{ arg.name }}']="${args['{{ arg.name }}']} $escaped"
-      >   unique_lookup["{{ arg.name }}:$escaped"]=1
-    else
-      > else
-      >   args['{{ arg.name }}']="${args['{{ arg.name }}']} $escaped"
-    end
-
-  else
-    >   args['{{ arg.name }}']="$1"
-
-  end
-  condition = "elif"
+  = arg.render :case_repeatable, index: index
 end
 
 > fi

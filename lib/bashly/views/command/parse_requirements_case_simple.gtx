@@ -1,13 +1,8 @@
 = view_marker
 
 if args.any?
-  condition = "if"
-  args.each do |arg|
-    > {{ condition }} [[ -z ${args['{{ arg.name }}']+x} ]]; then
-    >   args['{{ arg.name }}']=$1
-    >   shift
-
-    condition = "elif"
+  args.each_with_index do |arg, index|
+    = arg.render :case, index: index
   end
 
   > else

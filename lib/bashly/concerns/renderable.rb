@@ -2,7 +2,10 @@ require 'gtx'
 
 module Bashly
   module Renderable
-    def render(view)
+    attr_reader :render_options
+
+    def render(view, render_options = {})
+      @render_options = render_options
       GTX.render_file view_path(view), context: binding, filename: "#{views_subfolder}.#{view}"
     end
 

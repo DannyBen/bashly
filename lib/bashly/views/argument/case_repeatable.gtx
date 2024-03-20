@@ -1,0 +1,25 @@
+= view_marker
+
+condition = render_options[:index].zero? ? 'if' : 'elif'
+
+if render_options[:index] == 0
+  > escaped="$(printf '%q' "$1")"
+end
+
+> {{ condition }} [[ -z ${args['{{ name }}']+x} ]]; then
+if repeatable
+  >   args['{{ name }}']="$escaped"
+  if unique
+    >   unique_lookup["{{ name }}:$escaped"]=1
+    > elif [[ -z "${unique_lookup["{{ name }}:$escaped"]:-}" ]]; then
+    >   args['{{ name }}']="${args['{{ name }}']} $escaped"
+    >   unique_lookup["{{ name }}:$escaped"]=1
+  else
+    > else
+    >   args['{{ name }}']="${args['{{ name }}']} $escaped"
+  end
+
+else
+  >   args['{{ name }}']="$1"
+
+end
