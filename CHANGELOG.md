@@ -7,6 +7,7 @@ Untagged - Latest
 - Fix repeatable args when the input has quotes [`0d35217`](https://github.com/DannyBen/bashly/commit/0d35217)
 - Fix repeatable flag args when the input has quotes [`ab34fc0`](https://github.com/DannyBen/bashly/commit/ab34fc0)
 - Improve handling of unique repeatable args and flag args [`c200223`](https://github.com/DannyBen/bashly/commit/c200223)
+- Update `Approvals.bash` to v0.5.1 [`8e12d55`](https://github.com/DannyBen/bashly/commit/8e12d55)
 
 
 v1.1.8 - 2024-03-02
