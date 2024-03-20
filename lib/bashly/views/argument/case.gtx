@@ -1,0 +1,6 @@
+= view_marker
+
+condition = render_options[:index].zero? ? 'if' : 'elif'
+> {{ condition }} [[ -z ${args['{{ name }}']+x} ]]; then
+>   args['{{ name }}']=$1
+>   shift
