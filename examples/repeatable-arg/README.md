@@ -129,7 +129,7 @@ files:
   upcase: CONTENT OF FILE1
 
 args:
-- ${args[file]} = "file1"
+- ${args[file]} = file1
 
 
 ````
@@ -147,7 +147,7 @@ files:
   upcase: CONTENT OF FILE2
 
 args:
-- ${args[file]} = "file1" "file2"
+- ${args[file]} = file1 file2
 
 
 ````
@@ -165,7 +165,7 @@ files:
   upcase: CONTENT OF FILE2
 
 args:
-- ${args[file]} = "file1" "file2"
+- ${args[file]} = file1 file2
 
 
 ````

@@ -146,7 +146,7 @@ two three
 Verbosity level: 3
 
 args:
-- ${args[--data]} = "one" "two three"
+- ${args[--data]} = one two\ three
 - ${args[--path]} = file\ one file-two
 - ${args[--verbose]} = 3
 
@@ -162,8 +162,8 @@ one
 Verbosity level: 1
 
 args:
-- ${args[--data]} = "one"
-- ${args[--path]} = "/bin" "/usr/lib"
+- ${args[--data]} = one
+- ${args[--path]} = /bin /usr/lib
 
 
 ````

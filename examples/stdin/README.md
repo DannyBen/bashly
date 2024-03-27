@@ -51,6 +51,14 @@ inspect_args
 # path and '-' argument.
 cat "${args[path]}"
 
+# To read the file yourself, use something like this
+#
+# if [[ "${args[path]}" == "-" ]]; then
+#   file=$(</dev/stdin)
+# else
+#   file=$(<"${args[path]}")
+# fi
+
 ````
 
 
