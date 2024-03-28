@@ -2,6 +2,7 @@
 
 > normalize_input() {
 >   local arg flags passthru
+>   passthru=false
 > 
 >   while [[ $# -gt 0 ]]; do
 >     arg="$1"
