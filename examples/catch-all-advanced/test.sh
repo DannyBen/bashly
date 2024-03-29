@@ -12,7 +12,13 @@ bashly generate
 ./cli download -h
 ./cli download source
 ./cli download source target
-./cli download source target and --additional stuff
+./cli download source target --force
+
+# when passing arbitrary arguments that start with a hyphen...
+./cli download source target --force -abc --option=value
+
+# ...use the double dash (--) operator to disable input normalization
+./cli download source target --force -- -abc --option=value
 
 ./cli upload -h
 ./cli upload
