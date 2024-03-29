@@ -1,0 +1,39 @@
+= view_marker
+
+> normalize_input() {
+>   local arg flags passthru
+>   passthru=false
+> 
+>   while [[ $# -gt 0 ]]; do
+>     arg="$1"
+>     if [[ $passthru == true ]]; then
+>       input+=("$arg")
+
+if Settings.conjoined_flag_args
+>     elif [[ $arg =~ ^(--[a-zA-Z0-9_\-]+)=(.+)$ ]]; then
+>       input+=("${BASH_REMATCH[1]}")
+>       input+=("${BASH_REMATCH[2]}")
+>     elif [[ $arg =~ ^(-[a-zA-Z0-9])=(.+)$ ]]; then
+>       input+=("${BASH_REMATCH[1]}")
+>       input+=("${BASH_REMATCH[2]}")
+end
+
+if Settings.compact_short_flags
+>     elif [[ $arg =~ ^-([a-zA-Z0-9][a-zA-Z0-9]+)$ ]]; then
+>       flags="${BASH_REMATCH[1]}"
+>       for ((i = 0; i < ${#flags}; i++)); do
+>         input+=("-${flags:i:1}")
+>       done
+end
+
+>     elif [[ "$arg" == "--" ]]; then
+>       passthru=true
+>       input+=("$arg")
+>     else
+>       input+=("$arg")
+>     fi
+> 
+>     shift
+>   done
+> }
+>

@@ -1,0 +1,42 @@
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ echo '=== bad - since conjoined_flag_args is disabled'
+=== bad - since conjoined_flag_args is disabled
++ ./cli --user=admin
+missing required flag: --user, -u NAME
++ echo '=== bad - since compact_short_flags is disabled (-fd will be considered as catch_all)'
+=== bad - since compact_short_flags is disabled (-fd will be considered as catch_all)
++ ./cli --user admin --password secret -fd
+args:
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = -fd
+- ${other_args[0]} = -fd
++ echo '=== good'
+=== good
++ ./cli --user admin -p secret -f -d --region=us-east-1 -static
+args:
+- ${args[--debug]} = 1
+- ${args[--force]} = 1
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = --region=us-east-1 -static
+- ${other_args[0]} = --region=us-east-1
+- ${other_args[1]} = -static
++ echo '=== good'
+=== good
++ ./cli --user admin -p secret -- --region=us-east-1 -static
+args:
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = --region=us-east-1 -static
+- ${other_args[0]} = --region=us-east-1
+- ${other_args[1]} = -static

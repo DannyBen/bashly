@@ -103,7 +103,13 @@
         },
         "compact_short_flags": {
             "title": "compact short flags",
-            "description": "Whether to expand short flags of the current script\nhttps://bashly.dannyb.co/usage/settings/#compact_short_flags",
+            "description": "Whether to expand -abc to -a -b -c in the input line\nhttps://bashly.dannyb.co/usage/settings/#compact_short_flags",
+            "type": "boolean",
+            "default": true
+        },
+        "conjoined_flag_args": {
+            "title": "conjoined flag args",
+            "description": "Whether to expand --flag=value to --flag value in the input line\nhttps://bashly.dannyb.co/usage/settings/#conjoined_flag_args",
             "type": "boolean",
             "default": true
         },

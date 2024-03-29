@@ -6,6 +6,7 @@ module Bashly
       attr_writer(
         :commands_dir,
         :compact_short_flags,
+        :conjoined_flag_args,
         :config_path,
         :lib_dir,
         :partials_extension,
@@ -22,6 +23,10 @@ module Bashly
 
       def compact_short_flags
         @compact_short_flags ||= get :compact_short_flags
+      end
+
+      def conjoined_flag_args
+        @conjoined_flag_args ||= get :conjoined_flag_args
       end
 
       def config_path
