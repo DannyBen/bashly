@@ -1,0 +1,6 @@
+= view_marker
+
+> normalize_input() {
+>   input=("$@")
+> }
+>

@@ -1,0 +1,8 @@
+# When true, the generated script will consider any argument in the form of
+# `-abc` as if it is `-a -b -c`.
+compact_short_flags: false
+
+# When true, the generated script will consider any argument in the form of
+# `--flag=value` and `-f=value` as if it is `--flag value` and `-f value`
+# respectively.
+conjoined_flag_args: false

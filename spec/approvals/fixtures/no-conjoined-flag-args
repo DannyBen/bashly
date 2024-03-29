@@ -1,0 +1,44 @@
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli --user=admin -p=secret -- --region=us-east-1 -static
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = --region=us-east-1 -static
+- ${other_args[0]} = --region=us-east-1
+- ${other_args[1]} = -static
++ BASHLY_CONJOINED_FLAG_ARGS=no
++ bundle exec bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli --user admin -p secret --region=us-east-1
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = --region=us-east-1
+- ${other_args[0]} = --region=us-east-1
++ ./cli --user admin -p secret -- --region=us-east-1 -static
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--password]} = secret
+- ${args[--user]} = admin
+
+other_args:
+- ${other_args[*]} = --region=us-east-1 -static
+- ${other_args[0]} = --region=us-east-1
+- ${other_args[1]} = -static
++ ./cli --user=admin -p=secret -- --region=us-east-1 -static
+missing required flag: --user, -u NAME

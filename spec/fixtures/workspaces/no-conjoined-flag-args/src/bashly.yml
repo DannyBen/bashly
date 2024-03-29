@@ -1,0 +1,17 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+catch_all: Server Params
+
+flags:
+- long: --user
+  short: -u
+  arg: name
+  required: true
+  help: Protocol
+- long: --password
+  short: -p
+  arg: name
+  required: true
+  help: User

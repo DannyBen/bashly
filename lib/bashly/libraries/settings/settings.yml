@@ -42,6 +42,11 @@ tab_indent: false
 # `-abc` as if it is `-a -b -c`.
 compact_short_flags: true
 
+# When true, the generated script will consider any argument in the form of
+# `--flag=value` and `-f=value` as if it is `--flag value` and `-f value`
+# respectively.
+conjoined_flag_args: true
+
 # Set to 'production' or 'development':
 # env: production    Generate a smaller script, without file markers
 # env: development   Generate with file markers
