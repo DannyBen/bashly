@@ -11,7 +11,7 @@ args: none
 download - Download something
 
 Usage:
-  download [URLS...]
+  download [--] [URLS...]
   download --help | -h
   download --version | -v
 

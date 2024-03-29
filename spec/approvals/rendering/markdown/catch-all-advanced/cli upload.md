@@ -9,7 +9,7 @@ Upload a file
 ## Usage
 
 ```bash
-cli upload FILES...
+cli upload [--] FILES...
 ```
 
 

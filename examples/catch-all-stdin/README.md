@@ -74,7 +74,7 @@ echo
 cli - Sample application
 
 Usage:
-  cli [OPTIONS] [FILE...]
+  cli [OPTIONS] [--] [FILE...]
   cli --help | -h
   cli --version | -v
 

@@ -9,7 +9,7 @@ Download a file
 ## Usage
 
 ```bash
-cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
+cli download SOURCE [TARGET] [OPTIONS] [--] [AWS PARAMS...]
 ```
 
 ## Examples
