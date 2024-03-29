@@ -59,19 +59,43 @@ args:
 args:
 - ${args[source]} = source
 - ${args[target]} = target
-+ ./cli download source target and --additional stuff
++ ./cli download source target --force
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
+- ${args[--force]} = 1
+- ${args[source]} = source
+- ${args[target]} = target
++ ./cli download source target --force -abc --option=value
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
 - ${args[source]} = source
 - ${args[target]} = target
 
 other_args:
-- ${other_args[*]} = and --additional stuff
-- ${other_args[0]} = and
-- ${other_args[1]} = --additional
-- ${other_args[2]} = stuff
+- ${other_args[*]} = -a -b -c --option value
+- ${other_args[0]} = -a
+- ${other_args[1]} = -b
+- ${other_args[2]} = -c
+- ${other_args[3]} = --option
+- ${other_args[4]} = value
++ ./cli download source target --force -- -abc --option=value
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
+- ${args[source]} = source
+- ${args[target]} = target
+
+other_args:
+- ${other_args[*]} = -abc --option=value
+- ${other_args[0]} = -abc
+- ${other_args[1]} = --option=value
 + ./cli upload -h
 cli upload - Upload a file
 
