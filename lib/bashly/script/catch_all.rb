@@ -48,7 +48,7 @@ module Bashly
       def usage_string
         return nil unless enabled?
 
-        required? ? label : "[#{label}]"
+        required? ? "[--] #{label}" : "[--] [#{label}]"
       end
     end
   end

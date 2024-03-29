@@ -10,7 +10,7 @@ NAME
 SYNOPSIS
 ==================================================
 
-**cli download** SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
+**cli download** SOURCE [TARGET] [OPTIONS] [--] [AWS PARAMS...]
 
 DESCRIPTION
 ==================================================

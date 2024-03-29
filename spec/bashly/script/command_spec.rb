@@ -617,7 +617,7 @@ describe Script::Command do
       let(:fixture) { :mode_args_and_flags }
 
       it 'returns the correct string' do
-        expect(subject.usage_string).to eq 'get SOURCE [TARGET] [OPTIONS] [PARAMS...]'
+        expect(subject.usage_string).to eq 'get SOURCE [TARGET] [OPTIONS] [--] [PARAMS...]'
       end
     end
 
@@ -625,7 +625,7 @@ describe Script::Command do
       let(:fixture) { :mode_args }
 
       it 'returns the correct string' do
-        expect(subject.usage_string).to eq 'get SOURCE [TARGET] [PARAMS...]'
+        expect(subject.usage_string).to eq 'get SOURCE [TARGET] [--] [PARAMS...]'
       end
     end
 
@@ -633,7 +633,7 @@ describe Script::Command do
       let(:fixture) { :mode_flags }
 
       it 'returns the correct string' do
-        expect(subject.usage_string).to eq 'get [OPTIONS] [PARAMS...]'
+        expect(subject.usage_string).to eq 'get [OPTIONS] [--] [PARAMS...]'
       end
 
       context 'when it has a parent' do
@@ -649,7 +649,7 @@ describe Script::Command do
       let(:fixture) { :mode_empty }
 
       it 'returns the correct string' do
-        expect(subject.usage_string).to eq 'get [PARAMS...]'
+        expect(subject.usage_string).to eq 'get [--] [PARAMS...]'
       end
 
       context 'when it has a parent' do

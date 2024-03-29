@@ -97,7 +97,7 @@ describe Script::CatchAll do
       let(:fixture) { :catch_all_hash }
 
       it 'returns a usage help without []' do
-        expect(subject.usage_string).to eq 'ADDITIONAL_PARAMS...'
+        expect(subject.usage_string).to eq '[--] ADDITIONAL_PARAMS...'
       end
     end
 
@@ -105,7 +105,7 @@ describe Script::CatchAll do
       let(:fixture) { :catch_all_string }
 
       it 'returns a usage help with []' do
-        expect(subject.usage_string).to eq '[EXTRA_PARAMS...]'
+        expect(subject.usage_string).to eq '[--] [EXTRA_PARAMS...]'
       end
     end
 
@@ -113,7 +113,7 @@ describe Script::CatchAll do
       let(:fixture) { :catch_all }
 
       it 'returns [...]' do
-        expect(subject.usage_string).to eq '[...]'
+        expect(subject.usage_string).to eq '[--] [...]'
       end
     end
   end

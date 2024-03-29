@@ -22,7 +22,7 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
+  cli download SOURCE [TARGET] [OPTIONS] [--] [AWS PARAMS...]
   cli download --help | -h
 
 Options:
@@ -102,7 +102,7 @@ cli upload - Upload a file
 Alias: u
 
 Usage:
-  cli upload FILES...
+  cli upload [--] FILES...
   cli upload --help | -h
 
 Options:
@@ -115,7 +115,7 @@ Arguments:
 
 + ./cli upload
 missing required argument: FILES...
-usage: cli upload FILES...
+usage: cli upload [--] FILES...
 + ./cli upload file1 'file 2' file3
 # this file is located in 'src/upload_command.sh'
 # code for 'cli upload' goes here

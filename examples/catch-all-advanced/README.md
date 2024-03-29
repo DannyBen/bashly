@@ -90,7 +90,7 @@ cli download - Download a file
 Alias: d
 
 Usage:
-  cli download SOURCE [TARGET] [OPTIONS] [AWS PARAMS...]
+  cli download SOURCE [TARGET] [OPTIONS] [--] [AWS PARAMS...]
   cli download --help | -h
 
 Options:
@@ -143,21 +143,57 @@ args:
 
 ````
 
-### `$ ./cli download source target and --additional stuff`
+### `$ ./cli download source target --force`
 
 ````shell
 # this file is located in 'src/download_command.sh'
 # code for 'cli download' goes here
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
+- ${args[--force]} = 1
+- ${args[source]} = source
+- ${args[target]} = target
+
+
+````
+
+### `$ ./cli download source target --force -abc --option=value`
+
+````shell
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
 - ${args[source]} = source
 - ${args[target]} = target
 
 other_args:
-- ${other_args[*]} = and --additional stuff
-- ${other_args[0]} = and
-- ${other_args[1]} = --additional
-- ${other_args[2]} = stuff
+- ${other_args[*]} = -a -b -c --option value
+- ${other_args[0]} = -a
+- ${other_args[1]} = -b
+- ${other_args[2]} = -c
+- ${other_args[3]} = --option
+- ${other_args[4]} = value
+
+
+````
+
+### `$ ./cli download source target --force -- -abc --option=value`
+
+````shell
+# this file is located in 'src/download_command.sh'
+# code for 'cli download' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--force]} = 1
+- ${args[source]} = source
+- ${args[target]} = target
+
+other_args:
+- ${other_args[*]} = -abc --option=value
+- ${other_args[0]} = -abc
+- ${other_args[1]} = --option=value
 
 
 ````
@@ -170,7 +206,7 @@ cli upload - Upload a file
 Alias: u
 
 Usage:
-  cli upload FILES...
+  cli upload [--] FILES...
   cli upload --help | -h
 
 Options:
@@ -189,7 +225,7 @@ Arguments:
 
 ````shell
 missing required argument: FILES...
-usage: cli upload FILES...
+usage: cli upload [--] FILES...
 
 
 ````

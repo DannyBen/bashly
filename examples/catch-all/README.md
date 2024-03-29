@@ -41,7 +41,7 @@ flags:
 
 ````shell
 missing required argument: MESSAGE
-usage: download MESSAGE [OPTIONS] [...]
+usage: download MESSAGE [OPTIONS] [--] [...]
 
 
 ````
@@ -52,7 +52,7 @@ usage: download MESSAGE [OPTIONS] [...]
 download - Catch All Example
 
 Usage:
-  download MESSAGE [OPTIONS] [...]
+  download MESSAGE [OPTIONS] [--] [...]
   download --help | -h
   download --version | -v
 
