@@ -1,5 +1,16 @@
-Change Log
+Changelog
 ========================================
+
+v1.1.10 - 2024-04-01
+----------------------------------------
+
+- Sanitize percent signs in help messages [`1f7e27c`](https://github.com/DannyBen/bashly/commit/1f7e27c)
+- Drop support for Ruby 3.0 [`865d6ac`](https://github.com/DannyBen/bashly/commit/865d6ac)
+- Fix input normalization to ignore anything after the double dash (--) operator [`621a151`](https://github.com/DannyBen/bashly/commit/621a151)
+- Add `[--]` to usage text when `catch_all` is used [`1422bcf`](https://github.com/DannyBen/bashly/commit/1422bcf)
+- Add `conjoined_flag_args` to allow disabling the `--flag=arg` normalization [`d17756d`](https://github.com/DannyBen/bashly/commit/d17756d)
+- Compare [`v1.1.9..v1.1.10`](https://github.com/dannyben/bashly/compare/v1.1.9..v1.1.10)
+
 
 v1.1.9 - 2024-03-20
 ----------------------------------------
