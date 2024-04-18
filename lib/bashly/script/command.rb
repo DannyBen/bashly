@@ -308,10 +308,11 @@ module Bashly
       # Returns a constructed string suitable for Usage pattern
       def usage_string
         result = [full_name]
+        command_string = default_command&.default == 'force' ? '[COMMAND]' : 'COMMAND'
 
         result.push case mode
-        when :global_flags    then ['[OPTIONS]', 'COMMAND']
-        when :commands        then ['COMMAND']
+        when :global_flags    then ['[OPTIONS]', command_string]
+        when :commands        then [command_string]
         when :args_and_flags  then usage_string_args + ['[OPTIONS]']
         when :args            then usage_string_args
         when :flags           then ['[OPTIONS]']
