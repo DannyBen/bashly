@@ -46,7 +46,7 @@ commands:
 tester - Sample application that uses the forced default command option
 
 Usage:
-  tester COMMAND
+  tester [COMMAND]
   tester [COMMAND] --help | -h
   tester --version | -v
 

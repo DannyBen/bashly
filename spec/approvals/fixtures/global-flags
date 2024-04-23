@@ -14,7 +14,7 @@ Usage:
 Commands:
   show   
 
-Options:
+Global Options:
   --alpha, -a
     Alpha
 

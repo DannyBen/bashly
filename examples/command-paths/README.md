@@ -123,7 +123,7 @@ Commands:
   image       Image commands
   ps          List containers
 
-Options:
+Global Options:
   --debug, -d
     Enable debug mode
 
