@@ -4,6 +4,7 @@
 # Usage captions
 usage: "Usage:"
 options: "Options:"
+global_options: "Global Options:"
 arguments: "Arguments:"
 commands: "Commands:"
 examples: "Examples:"
