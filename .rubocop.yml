@@ -9,6 +9,7 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 3.1
+  SuggestExtensions: false
   Exclude:
     - dev/**/*
 
@@ -28,10 +29,6 @@ Naming/AccessorMethodName:
 Metrics/ClassLength: { Exclude: [lib/bashly/script/command.rb] }
 
 # Allow irregular filenames in some cases
-RSpec/FilePath:
-  Exclude:
-    - 'spec/bashly/concerns/completions_command_spec.rb'
-    - 'spec/bashly/concerns/completions_flag_spec.rb'
 RSpec/SpecFilePathFormat:
   Exclude:
     - 'spec/bashly/concerns/completions_command_spec.rb'
