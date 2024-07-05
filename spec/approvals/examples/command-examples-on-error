@@ -1,0 +1,21 @@
++ bashly generate
+creating user files in src
+created src/download_command.sh
+created src/upload_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli download
+missing required argument: SOURCE
+usage: cli download SOURCE [TARGET] [OPTIONS]
+examples:
+  cli download example.com
+  cli download example.com ./output -f
++ ./cli upload
+missing required argument: SOURCE
+usage: cli upload SOURCE [OPTIONS]
+examples:
+  Upload a file
+  $ cli upload profile.png -u admin -p s3cr3t
+  
+  Upload a file (you will be prompted to provide a password)
+  $ cli upload profile.png --user admin
