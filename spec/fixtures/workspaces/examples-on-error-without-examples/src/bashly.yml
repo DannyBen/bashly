@@ -1,0 +1,27 @@
+name: cli
+version: 0.1.0
+
+commands:
+- name: download
+  help: Download a file
+
+  args:
+  - name: source
+    required: true
+    help: URL to download from
+
+- name: upload
+  help: Upload a file
+  args:
+  - name: source
+    required: true
+    help: File to upload
+
+  examples: |-
+    Upload a file
+    $ cli upload profile.png -u admin -p s3cr3t
+
+    Upload a file (you will be prompted to provide a password)
+    $ cli upload profile.png --user admin
+
+    

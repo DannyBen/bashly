@@ -1,0 +1,17 @@
+creating user files in src
+created src/download_command.sh
+created src/upload_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli download
+missing required argument: SOURCE
+usage: cli download SOURCE
++ ./cli upload
+missing required argument: SOURCE
+usage: cli upload SOURCE
+examples:
+  Upload a file
+  $ cli upload profile.png -u admin -p s3cr3t
+  
+  Upload a file (you will be prompted to provide a password)
+  $ cli upload profile.png --user admin
