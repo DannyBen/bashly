@@ -97,7 +97,7 @@
         },
         "tab_indent": {
             "title": "tab indent",
-            "description": "Whether to use tabs or spaces in the the generated script\nhttps://bashly.dannyb.co/usage/settings/#tab_indent",
+            "description": "Whether to use tabs or spaces in the generated script\nhttps://bashly.dannyb.co/usage/settings/#tab_indent",
             "type": "boolean",
             "default": false
         },
@@ -110,6 +110,12 @@
         "conjoined_flag_args": {
             "title": "conjoined flag args",
             "description": "Whether to expand --flag=value to --flag value in the input line\nhttps://bashly.dannyb.co/usage/settings/#conjoined_flag_args",
+            "type": "boolean",
+            "default": true
+        },
+        "show_examples_on_error": {
+            "title": "show examples on error",
+            "description": "Whether to show command examples when the input line is missing required arguments\nhttps://bashly.dannyb.co/usage/settings/#show_examples_on_error",
             "type": "boolean",
             "default": true
         },

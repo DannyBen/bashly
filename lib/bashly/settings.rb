@@ -10,6 +10,7 @@ module Bashly
         :config_path,
         :lib_dir,
         :partials_extension,
+        :show_examples_on_error,
         :source_dir,
         :strict,
         :tab_indent,
@@ -55,6 +56,10 @@ module Bashly
 
       def production?
         env == :production
+      end
+
+      def show_examples_on_error
+        @show_examples_on_error ||= get :show_examples_on_error
       end
 
       def source_dir
