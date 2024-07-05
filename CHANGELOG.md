@@ -1,6 +1,19 @@
 Changelog
 ========================================
 
+v1.2.0 - 2024-07-05
+----------------------------------------
+
+- Fix usage string when there is a forced default command [`d50607b`](https://github.com/DannyBen/bashly/commit/d50607b)
+- Add 'Global options' caption when appropriate [`105a0f8`](https://github.com/DannyBen/bashly/commit/105a0f8)
+- Update descriptions in schemas/strings.json [`6592666`](https://github.com/DannyBen/bashly/commit/6592666)
+- Remove redundant code in usage function [`f87986a`](https://github.com/DannyBen/bashly/commit/f87986a)
+- Update default command usage to show optional brackets [`854036d`](https://github.com/DannyBen/bashly/commit/854036d)
+- Add `show_examples_on_error` setting [`5e58388`](https://github.com/DannyBen/bashly/commit/5e58388)
+- Add examples/command-examples-on-error [`b30d2aa`](https://github.com/DannyBen/bashly/commit/b30d2aa)
+- Compare [`v1.1.10..v1.2.0`](https://github.com/dannyben/bashly/compare/v1.1.10..v1.2.0)
+
+
 v1.1.10 - 2024-04-01
 ----------------------------------------
 
