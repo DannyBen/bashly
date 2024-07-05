@@ -38,6 +38,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
 - [commands-expose](commands-expose#readme) - showing sub-commands in the parent's help
 - [key-value-pairs](key-value-pairs#readme) - parsing key=value arguments and flags
+- [command-examples-on-error](command-examples-on-error#readme) - showing examples on error
 
 ## Customization
 

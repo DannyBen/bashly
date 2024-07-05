@@ -33,6 +33,7 @@ missing_required_argument: "missing required argument: %{arg}\\nusage: %{usage}"
 missing_required_flag: "missing required flag: %{usage}"
 missing_required_environment_variable: "missing required environment variable: %{var}"
 missing_dependency: "missing dependency: %{dependency}"
+examples_caption_on_error: 'examples:'
 disallowed_flag: "%{name} must be one of: %{allowed}"
 disallowed_argument: "%{name} must be one of: %{allowed}"
 disallowed_environment_variable: "%{name} environment variable must be one of: %{allowed}"
