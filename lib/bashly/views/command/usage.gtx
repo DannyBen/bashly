@@ -1,23 +1,16 @@
 = view_marker
 
 > {{ function_name }}_usage() {
->   if [[ -n $long_usage ]]; then
-
 if summary == help
-  >     printf "{{ caption_string.sanitize_for_print }}\n"
-  >     echo 
+  >   printf "{{ caption_string.sanitize_for_print }}\n\n"
 else
-  >     printf "{{ full_name }}\n"
-  >     echo 
-  >     printf "{{ help.wrap(78).indent(2).sanitize_for_print }}\n"
-  >     echo 
+  >   if [[ -n $long_usage ]]; then
+  >     printf "{{ full_name }}\n\n"
+  >     printf "{{ help.wrap(78).indent(2).sanitize_for_print }}\n\n"
+  >   else
+  >     printf "{{ caption_string.sanitize_for_print }}\n\n"
+  >   fi
 end
-
->   else
->     printf "{{ caption_string.sanitize_for_print }}\n"
->     echo 
->   fi
-> 
 
 if alt&.any?
   >   printf "{{ strings[:command_alias] % { alias: alt.join(', ') } }}\n"
@@ -48,3 +41,5 @@ end
 commands.each do |command|
   = command.render 'usage'
 end
+
+

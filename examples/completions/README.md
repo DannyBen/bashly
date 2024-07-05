@@ -208,7 +208,7 @@ _cli_completions_filter() {
 
   if [[ "${cur:0:1}" == "-" ]]; then
     echo "$words"
-  
+
   else
     for word in $words; do
       [[ "${word:0:1}" != "-" ]] && result+=("$word")
@@ -226,56 +226,56 @@ _cli_completions() {
 
   case "$compline" in
     'download'*'--handler')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_cli_completions_filter "curl wget")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -W "$(_cli_completions_filter "curl wget")" -- "$cur")
       ;;
 
     'upload'*'--user')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A user -- "$cur")
       ;;
 
     'completions'*)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_cli_completions_filter "--help -h")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -W "$(_cli_completions_filter "--help -h")" -- "$cur")
       ;;
 
     'd'*'--handler')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_cli_completions_filter "curl wget")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -W "$(_cli_completions_filter "curl wget")" -- "$cur")
       ;;
 
     'upload'*'-u')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A user -- "$cur")
       ;;
 
     'download'*)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -W "$(_cli_completions_filter "--force --handler --help -f -h")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A file -W "$(_cli_completions_filter "--force --handler --help -f -h")" -- "$cur")
       ;;
 
     'u'*'--user')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A user -- "$cur")
       ;;
 
     'upload'*)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "$(_cli_completions_filter "--help --password --user -h -p -u CHANGELOG.md README.md")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A directory -A user -W "$(_cli_completions_filter "--help --password --user -h -p -u CHANGELOG.md README.md")" -- "$cur")
       ;;
 
     'u'*'-u')
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A user -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A user -- "$cur")
       ;;
 
     'd'*)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A file -W "$(_cli_completions_filter "--force --handler --help -f -h")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A file -W "$(_cli_completions_filter "--force --handler --help -f -h")" -- "$cur")
       ;;
 
     'u'*)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -A directory -A user -W "$(_cli_completions_filter "--help --password --user -h -p -u CHANGELOG.md README.md")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -A directory -A user -W "$(_cli_completions_filter "--help --password --user -h -p -u CHANGELOG.md README.md")" -- "$cur")
       ;;
 
     *)
-      while read -r; do COMPREPLY+=( "$REPLY" ); done < <( compgen -W "$(_cli_completions_filter "--help --version -h -v completions d download u upload")" -- "$cur" )
+      while read -r; do COMPREPLY+=("$REPLY"); done < <(compgen -W "$(_cli_completions_filter "--help --version -h -v completions d download u upload")" -- "$cur")
       ;;
 
   esac
 } &&
-complete -F _cli_completions cli
+  complete -F _cli_completions cli
 
 # ex: filetype=sh
 
