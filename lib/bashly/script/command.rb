@@ -307,7 +307,7 @@ module Bashly
 
       # Returns a constructed string suitable for Usage pattern
       def usage_string
-        result = [full_name]
+        result = [base_usage_pattern]
         command_string = default_command&.default == 'force' ? '[COMMAND]' : 'COMMAND'
 
         result.push case mode
@@ -325,6 +325,11 @@ module Bashly
       # Returns an array of args usage_string for the command's usage_string
       def usage_string_args
         args.map(&:usage_string)
+      end
+
+      def base_usage_pattern
+        usage_pattern = default ? "[#{name}]" : name
+        parents.any? ? (parents + [usage_pattern]).join(' ') : usage_pattern
       end
 
       # Returns an array of files to include as is inside the script

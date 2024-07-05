@@ -405,6 +405,56 @@ describe Script::Command do
     end
   end
 
+  describe '#mode' do
+    context 'when flags and commands are defined' do
+      let(:fixture) { :mode_global_flags }
+
+      it 'returns :global_flags' do
+        expect(subject.mode).to eq :global_flags
+      end
+    end
+
+    context 'when only commands are defined' do
+      let(:fixture) { :mode_commands }
+
+      it 'returns :commands' do
+        expect(subject.mode).to eq :commands
+      end
+    end
+
+    context 'when args and flags are defined' do
+      let(:fixture) { :mode_args_and_flags }
+
+      it 'returns :args_and_flags' do
+        expect(subject.mode).to eq :args_and_flags
+      end
+    end
+
+    context 'when only args are defined' do
+      let(:fixture) { :mode_args }
+
+      it 'returns :args' do
+        expect(subject.mode).to eq :args
+      end
+    end
+
+    context 'when only flags are defined' do
+      let(:fixture) { :mode_flags }
+
+      it 'returns :flags' do
+        expect(subject.mode).to eq :flags
+      end
+    end
+
+    context 'when nothing is defined' do
+      let(:fixture) { :mode_empty }
+
+      it 'returns :empty' do
+        expect(subject.mode).to eq :empty
+      end
+    end
+  end
+
   describe '#public_commands' do
     let(:fixture) { :private_commands }
 
@@ -419,47 +469,6 @@ describe Script::Command do
 
     it 'returns an array of command aliases of public subcommands' do
       expect(subject.public_command_aliases).to eq %w[connect c]
-    end
-  end
-
-  describe '#user_file_path' do
-    it 'returns the path to the user file' do
-      expect(subject.user_file_path 'test.sh').to eq 'spec/tmp/src/test.sh'
-    end
-
-    context 'when the file argument does not end with .sh extension' do
-      it 'returns the path with .sh appended' do
-        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.sh'
-      end
-    end
-
-    context 'when partials_extension is set and the argument does not end with the selected extension' do
-      before { Settings.partials_extension = 'bash' }
-      after  { Settings.partials_extension = 'sh' }
-
-      it 'returns the path with the selected extension appended' do
-        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.bash'
-      end
-    end
-  end
-
-  describe '#user_file_exist?' do
-    before { FileUtils.mkdir_p 'spec/tmp/src' }
-
-    context 'when the file exists in the user source path' do
-      before { FileUtils.touch 'spec/tmp/src/test.sh' }
-
-      it 'returns true' do
-        expect(subject.user_file_exist?('test')).to be true
-      end
-    end
-
-    context 'when the file does not in the user source path' do
-      before { FileUtils.rm_f 'spec/tmp/src/test.sh' }
-
-      it 'returns false' do
-        expect(subject.user_file_exist?('test')).to be false
-      end
     end
   end
 
@@ -546,56 +555,6 @@ describe Script::Command do
     end
   end
 
-  describe '#mode' do
-    context 'when flags and commands are defined' do
-      let(:fixture) { :mode_global_flags }
-
-      it 'returns :global_flags' do
-        expect(subject.mode).to eq :global_flags
-      end
-    end
-
-    context 'when only commands are defined' do
-      let(:fixture) { :mode_commands }
-
-      it 'returns :commands' do
-        expect(subject.mode).to eq :commands
-      end
-    end
-
-    context 'when args and flags are defined' do
-      let(:fixture) { :mode_args_and_flags }
-
-      it 'returns :args_and_flags' do
-        expect(subject.mode).to eq :args_and_flags
-      end
-    end
-
-    context 'when only args are defined' do
-      let(:fixture) { :mode_args }
-
-      it 'returns :args' do
-        expect(subject.mode).to eq :args
-      end
-    end
-
-    context 'when only flags are defined' do
-      let(:fixture) { :mode_flags }
-
-      it 'returns :flags' do
-        expect(subject.mode).to eq :flags
-      end
-    end
-
-    context 'when nothing is defined' do
-      let(:fixture) { :mode_empty }
-
-      it 'returns :empty' do
-        expect(subject.mode).to eq :empty
-      end
-    end
-  end
-
   describe '#usage_string' do
     context 'when flags and commands are defined' do
       let(:fixture) { :mode_global_flags }
@@ -658,6 +617,56 @@ describe Script::Command do
         it 'returns the correct string' do
           expect(subject.usage_string).to eq 'git status'
         end
+      end
+    end
+
+    context 'when the command is set as default' do
+      let(:fixture) { :default_command }
+
+      it 'returns the correct string' do
+        expect(subject.default_command.usage_string).to eq 'cli [get]'
+      end
+    end
+
+  end
+
+  describe '#user_file_path' do
+    it 'returns the path to the user file' do
+      expect(subject.user_file_path 'test.sh').to eq 'spec/tmp/src/test.sh'
+    end
+
+    context 'when the file argument does not end with .sh extension' do
+      it 'returns the path with .sh appended' do
+        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.sh'
+      end
+    end
+
+    context 'when partials_extension is set and the argument does not end with the selected extension' do
+      before { Settings.partials_extension = 'bash' }
+      after  { Settings.partials_extension = 'sh' }
+
+      it 'returns the path with the selected extension appended' do
+        expect(subject.user_file_path 'test').to eq 'spec/tmp/src/test.bash'
+      end
+    end
+  end
+
+  describe '#user_file_exist?' do
+    before { FileUtils.mkdir_p 'spec/tmp/src' }
+
+    context 'when the file exists in the user source path' do
+      before { FileUtils.touch 'spec/tmp/src/test.sh' }
+
+      it 'returns true' do
+        expect(subject.user_file_exist?('test')).to be true
+      end
+    end
+
+    context 'when the file does not in the user source path' do
+      before { FileUtils.rm_f 'spec/tmp/src/test.sh' }
+
+      it 'returns false' do
+        expect(subject.user_file_exist?('test')).to be false
       end
     end
   end

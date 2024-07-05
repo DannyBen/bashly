@@ -41,6 +41,26 @@ Options:
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
 - ${args[source]} = something
++ ./ftp upload
+missing required argument: SOURCE
+usage: ftp [upload] SOURCE
++ ./ftp upload -h
+ftp upload - Upload a file
+
+Alias: u
+
+Usage:
+  ftp [upload] SOURCE
+  ftp upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    File to upload
+
 + ./ftp upload something
 # this file is located in 'src/upload_command.sh'
 # code for 'ftp upload' goes here
