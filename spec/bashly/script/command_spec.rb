@@ -627,7 +627,6 @@ describe Script::Command do
         expect(subject.default_command.usage_string).to eq 'cli [get]'
       end
     end
-
   end
 
   describe '#user_file_path' do
