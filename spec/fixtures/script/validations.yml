@@ -69,6 +69,13 @@
     repeatable: true
     required: true
 
+:command_args_required_after_optional:
+  name: invalid
+  args:
+  - name: user
+  - name: password
+    required: true
+
 :command_catch_all_commands:
   name: invalid
   catch_all:

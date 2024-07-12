@@ -54,4 +54,14 @@ describe Array do
       expect(subject.nonuniq).to eq %w[it works]
     end
   end
+
+  describe '#include_sequence?' do
+    it 'returns true when the array includes the sequence' do
+      expect([1, 2, 3, 4].include_sequence?(2, 3)).to be true
+    end
+
+    it 'returns true when the array does not include the sequence' do
+      expect([1, 2, 3, 4].include_sequence?(3, 2)).to be false
+    end
+  end
 end
