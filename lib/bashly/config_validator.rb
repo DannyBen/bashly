@@ -232,7 +232,7 @@ module Bashly
             "#{key}.args cannot contain a repeatable arg unless it is the last one"
         end
 
-        required_order = value['args'].map { |x| !!x['required'] }
+        required_order = value['args'].map { |x| x['required'] ? true : false }
         refute required_order.include_sequence?(false, true),
           "#{key}.args cannot contain required arg after optional arg"
       end

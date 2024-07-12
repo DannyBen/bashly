@@ -16,6 +16,7 @@ class Array
 
   def include_sequence?(*elements)
     return false if elements.empty?
-    each_cons(elements.size).any? { |subarray| subarray == elements }
+
+    each_cons(elements.size).any?(elements)
   end
 end
