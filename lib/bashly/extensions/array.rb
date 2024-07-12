@@ -13,4 +13,9 @@ class Array
   def nonuniq
     tally.select { |_key, count| count > 1 }.keys
   end
+
+  def include_sequence?(*elements)
+    return false if elements.empty?
+    each_cons(elements.size).any? { |subarray| subarray == elements }
+  end
 end
