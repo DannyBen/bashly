@@ -30,7 +30,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with: 
-        ruby-version: '3.1'
+        ruby-version: '3.2'
         bundler-cache: true
 
     - name: Generate all examples
@@ -39,17 +39,8 @@ jobs:
     - name: Generate all fixtures
       run: bundle exec run fixtures regen
 
-    - name: Run shellcheck tests (examples)
-      run: bundle exec run shellcheck examples
-
-    - name: Run shellcheck tests (fixtures)
-      run: bundle exec run shellcheck fixtures
-
-    - name: Run shfmt tests (examples)
-      run: bundle exec run shfmt examples
-
-    - name: Run shfmt tests (fixtures)
-      run: bundle exec run shfmt fixtures
+    - name: Run shellcheck and shfmt tests
+      run: bundle exec run static
 
   json_schema:
     name: Validate JSON schemas

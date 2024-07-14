@@ -5,7 +5,7 @@ usage "regen [FILTER]"
 action :regen do |args|
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
-  Example.all.each do |example|
+  Example.examples.each do |example|
     if args['FILTER']
       next unless example.dir.include? ENV['FILTER']
     end
@@ -24,7 +24,7 @@ action :readme do |args|
   
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
-  Example.all.each do |example|
+  Example.examples.each do |example|
     if args['FILTER']
       next unless example.dir.include? args['FILTER']
     end
