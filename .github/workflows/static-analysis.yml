@@ -33,11 +33,8 @@ jobs:
         ruby-version: '3.2'
         bundler-cache: true
 
-    - name: Generate all examples
+    - name: Generate all examples and fixtures
       run: bundle exec run examples regen
-
-    - name: Generate all fixtures
-      run: bundle exec run fixtures regen
 
     - name: Run shellcheck and shfmt tests
       run: bundle exec run static
@@ -68,7 +65,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with: 
-        ruby-version: '3.1'
+        ruby-version: '3.2'
         bundler-cache: true
 
     - name: Generate all subjects

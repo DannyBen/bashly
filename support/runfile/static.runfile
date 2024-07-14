@@ -10,6 +10,7 @@ action do |args|
     spec/fixtures/workspaces/completions-private
     spec/fixtures/workspaces/custom-paths
     spec/fixtures/workspaces/import
+    spec/fixtures/workspaces/lib-custom-source
     spec/fixtures/workspaces/lib-upgrade
   ]
 

@@ -5,14 +5,28 @@ usage "regen [FILTER]"
 action :regen do |args|
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
-  Example.examples.each do |example|
+
+  blacklist = %w[
+    spec/fixtures/workspaces/completions-private
+    spec/fixtures/workspaces/custom-paths
+    spec/fixtures/workspaces/import
+    spec/fixtures/workspaces/lib-custom-source
+  ]
+
+  Example.all.each do |example|
     if args['FILTER']
-      next unless example.dir.include? ENV['FILTER']
+      next unless example.dir.include? args['FILTER']
     end
+
+    next if example.config.empty? or blacklist.include?(example.dir)
 
     say example.dir
     Dir.chdir example.dir do
-      system 'bash test.sh >/dev/null 2>&1'
+      success = system 'bundle exec bashly generate --upgrade >/dev/null 2>&1'
+      if !success
+        say "rb`bashly generate failed`"
+        exit 1
+      end
     end
   end
 end
