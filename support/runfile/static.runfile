@@ -1,0 +1,47 @@
+summary 'Run shellcheck and shfmt checks on all examples'
+
+help "Run shellcheck and shfmt on all examples or a given example"
+usage "[FILTER]"
+action do |args|
+  blacklist = %w[
+    examples/render-mandoc
+    examples/render-markdown
+    examples/settings
+    spec/fixtures/workspaces/completions-private
+    spec/fixtures/workspaces/custom-paths
+    spec/fixtures/workspaces/import
+    spec/fixtures/workspaces/lib-custom-source
+    spec/fixtures/workspaces/lib-upgrade
+  ]
+
+  errors = 0
+
+  Example.all.each do |example|
+    if args['FILTER']
+      next unless example.dir.include? args['FILTER']
+    end
+
+    next if blacklist.include? example.dir
+
+    if !example.executable
+      say "nb`WARNING: Skipping #{example.dir}`"
+      next
+    end
+
+    say "\n#{example.executable}"
+    success = system "shellcheck #{example.executable}"
+    say success ? 'g`  ✓ shellcheck`' : '  r`✗ shellcheck`'
+    errors += 1 unless success
+
+    success = system "shfmt -d -i 2 -ci #{example.executable}"
+    say success ? '  g`✓ shfmt`' : '  r`✗ shfmt`'
+    errors += 1 unless success
+  end
+
+  if errors > 0
+    say "\nrb`#{errors} errors found`"
+    exit 1
+  end
+
+  say "\nno errors found"
+end

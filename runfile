@@ -1,7 +1,6 @@
 require 'debug'
 require 'bashly/version'
 require_relative 'support/runfile/example'
-require_relative 'support/runfile/workspace_fixture'
 
 title   'Bashly Developer Toolbelt'
 summary 'Runfile tasks for building the Bashly gem'

@@ -3,27 +3,43 @@ require 'yaml'
 # A helper class used in Runfile to generate example README files
 class Example
   class << self
-    def dirs
-      @dirs ||= Dir['examples/*'].select { |f| File.directory? f }
+    def examples
+      filter_dirs('examples').map { |dir| new dir }
+    end
+
+    def fixtures      
+      filter_dirs('spec/fixtures/workspaces').map { |dir| new dir, type: :fixture }
     end
 
     def all
-      dirs.map { |dir| Example.new dir }
+      examples + fixtures
     end
 
-    def executables
-      all.map(&:executable)
+  private
+
+    def filter_dirs(base_dir)
+      Dir["#{base_dir}/*"].select { |f| File.directory? f }
     end
+
   end
 
-  attr_reader :dir
+  attr_reader :dir, :type
 
-  def initialize(dir)
+  def initialize(dir, type: :example)
     @dir = dir
+    @type = type
+  end
+
+  def inspect
+    %Q[#<Example type=:#{type}, dir="#{dir}">]
   end
 
   def config
-    @config ||= YAML.unsafe_load_file yaml_path
+    @config ||= if File.exist? yaml_path
+      YAML.unsafe_load_file yaml_path
+    else
+      {}
+    end
   end
 
   def yaml
@@ -34,12 +50,27 @@ class Example
     "#{dir}/src/bashly.yml"
   end
 
+  def readme
+    @readme ||= File.exist?(readme_path) ? File.read(readme_path) : ''
+  end
+
   def readme_path
     "#{dir}/README.md"
   end
 
-  def readme
-    File.read readme_path
+  def regenerate_readme
+    raise "#regenerate_readme called on a fixture" if type == :fixture
+    File.write readme_path, generated_readme
+  end
+
+  def executable
+    @executable ||= File.file?(executable_path) ? executable_path : nil
+  end
+
+private
+
+  def executable_path
+    "#{dir}/#{config['name']}"
   end
 
   def test_commands
@@ -70,10 +101,6 @@ class Example
       result += "````\n\n"
     end
     result
-  end
-
-  def regenerate_readme
-    File.write readme_path, generated_readme
   end
 
   def generated_readme
@@ -134,9 +161,5 @@ class Example
       '.yml'  => 'yaml',
       '.yaml' => 'yaml',
     }
-  end
-
-  def executable
-    "#{dir}/#{config['name']}"
   end
 end

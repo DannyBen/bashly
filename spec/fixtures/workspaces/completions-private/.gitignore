@@ -1,1 +1,3 @@
 completions.yml
+private
+src/*.sh

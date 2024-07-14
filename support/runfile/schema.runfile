@@ -56,7 +56,7 @@ action(:invalid) { check_invalid }
 helpers do
   def check_examples
     say "\ngub`Examples`"
-    Example.all.each do |example|
+    Example.examples.each do |example|
       file = example.yaml_path
       schema_check file
     end
