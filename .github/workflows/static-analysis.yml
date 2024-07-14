@@ -1,0 +1,102 @@
+name: Static Analysis
+on:
+  pull_request:
+  push: { branches: master }
+
+jobs:
+  static_analysis:
+    name: Run shellcheck and shfmt
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Rush needed for easy installation of latest shfmt
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Connect rush repo
+      run: rush clone dannyben --shallow --default
+
+    - name: Install shfmt
+      run: rush get shfmt
+
+    # libyaml needed for Ruby's YAML library
+    - name: Install OS dependencies
+      run: sudo apt-get -y install libyaml-dev
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with: 
+        ruby-version: '3.1'
+        bundler-cache: true
+
+    - name: Generate all examples
+      run: bundle exec run examples regen
+
+    - name: Generate all fixtures
+      run: bundle exec run fixtures regen
+
+    - name: Run shellcheck tests (examples)
+      run: bundle exec run shellcheck examples
+
+    - name: Run shellcheck tests (fixtures)
+      run: bundle exec run shellcheck fixtures
+
+    - name: Run shfmt tests (examples)
+      run: bundle exec run shfmt examples
+
+    - name: Run shfmt tests (fixtures)
+      run: bundle exec run shfmt fixtures
+
+  json_schema:
+    name: Validate JSON schemas
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Rush needed for easy installation of check-jsonschema
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Connect rush repo
+      run: rush clone dannyben --shallow --default
+
+    - name: Install check-jsonschema
+      run: rush get check-jsonschema
+
+    # libyaml needed for Ruby's YAML library
+    - name: Install OS dependencies
+      run: sudo apt-get -y install libyaml-dev
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with: 
+        ruby-version: '3.1'
+        bundler-cache: true
+
+    - name: Generate all subjects
+      run: bundle exec run examples regen
+
+    - name: Run schema tests
+      run: bundle exec run schema all
+
+  codespell:
+    name: Spell check
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install OS dependencies
+      run: sudo apt-get -y install codespell
+
+    - name: Run codespell
+      run: codespell

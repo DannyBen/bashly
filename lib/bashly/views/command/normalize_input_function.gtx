@@ -1,7 +1,11 @@
 = view_marker
 
 > normalize_input() {
->   local arg flags passthru
+if Settings.compact_short_flags
+>   local arg passthru flags
+else
+>   local arg passthru
+end
 >   passthru=false
 > 
 >   while [[ $# -gt 0 ]]; do

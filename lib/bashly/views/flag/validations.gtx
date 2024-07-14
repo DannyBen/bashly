@@ -3,6 +3,7 @@ if validate
 
   if repeatable
     > if [[ -v args['{{ long }}'] ]]; then
+    >   values=''
     >   eval "values=(${args['{{ long }}']})"
     >   for value in "${values[@]}"; do
     >     if [[ -n $(validate_{{ validate }} "$value") ]]; then

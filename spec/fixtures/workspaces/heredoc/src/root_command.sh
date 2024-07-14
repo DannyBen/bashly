@@ -18,7 +18,7 @@ SECOND_BLOCK
 echo also unindented
 
 echo "writing to file:"
-cat << EOF > output.txt
+cat <<EOF >output.txt
 0 indentation
   1 indentation
   1 indentation
