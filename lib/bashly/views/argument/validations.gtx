@@ -3,7 +3,8 @@ if validate
 
   if repeatable
     > if [[ -v args['{{ name }}'] ]]; then
-    >   read -r -a values <<<"${args['{{ name }}']}"
+    >   values=''
+    >   eval "values=(${args['{{ name }}']})"
     >   for value in "${values[@]}"; do
     >     if [[ -n $(validate_{{ validate }} "$value") ]]; then
     >       printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "$value")" >&2

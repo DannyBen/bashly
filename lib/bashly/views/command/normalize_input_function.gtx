@@ -1,9 +1,10 @@
 = view_marker
 
 > normalize_input() {
->   local arg passthru
 if Settings.compact_short_flags
->   local flags
+>   local arg passthru flags
+else
+>   local arg passthru
 end
 >   passthru=false
 > 
