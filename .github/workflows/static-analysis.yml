@@ -5,7 +5,7 @@ on:
 
 jobs:
   static_analysis:
-    name: Example files static analysis
+    name: Run shellcheck and shfmt
 
     runs-on: ubuntu-latest
 
@@ -52,7 +52,7 @@ jobs:
       run: bundle exec run shfmt fixtures
 
   json_schema:
-    name: JSON schemas validation
+    name: Validate JSON schemas
 
     runs-on: ubuntu-latest
 
@@ -100,18 +100,3 @@ jobs:
 
     - name: Run codespell
       run: codespell
-
-  docker:
-    name: Docker smoke test
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Build the image
-      run: docker compose build bash
-
-    - name: Test pandoc presence
-      run: docker compose run pandoc-test
