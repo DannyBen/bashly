@@ -1,10 +1,12 @@
 summary 'Run shfmt checks on all examples'
 
-action do
+help "Run shfmt on all examples or a given example"
+usage "examples [FILTER]"
+action :examples do |args|
   allowed_skips = 4
   Example.executables.each do |example|
-    if ENV['EXAMPLE']
-      next unless example.include? ENV['EXAMPLE']
+    if args['FILTER']
+      next unless example.include? args['FILTER']
     end
 
     if !File.exist?(example)
@@ -21,5 +23,31 @@ action do
     color = success ? 'g' : 'r'
     say "- shfmt #{color}`#{example}`"
     exit 1 unless success
+  end
+end
+
+
+help "Run shfmt on all fixtures or a given example"
+usage "fixtures [FILTER]"
+action :fixtures do |args|
+  allowed_skips = 4
+  WorkspaceFixture.all.each do |fixture|
+    if args['FILTER']
+      next unless fixture.include? args['FILTER']
+    end
+
+    if fixture.executable
+      success = system "shfmt -d -i 2 -ci #{fixture.executable}"
+      color = success ? 'g' : 'r'
+      say "- shfmt #{color}`#{fixture.executable}`"
+      exit 1 unless success
+    else
+      say "- skip  c`#{fixture.dir}`"
+      allowed_skips -= 1
+      if allowed_skips < 0
+        say "- aborted: too many skips"
+        exit 1
+      end
+    end
   end
 end

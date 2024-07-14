@@ -1,13 +1,13 @@
-summary 'Regenerate example scripts'
+summary 'Regenerate example scripts and documentation'
 
-env_var 'EXAMPLE', 'If set, work only on example that include this string.'
-
-action :regen do
+help "Regenerate all examples or a given example"
+usage "regen [FILTER]"
+action :regen do |args|
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|
-    if ENV['EXAMPLE']
-      next unless example.dir.include? ENV['EXAMPLE']
+    if args['FILTER']
+      next unless example.dir.include? ENV['FILTER']
     end
 
     say example.dir
@@ -18,14 +18,15 @@ action :regen do
 end
 
 help   "Append the content of bashly.yml to all example READMEs"
-action :readme do
+usage "readme [FILTER]"
+action :readme do |args|
   ENV['NO_COLOR']='1'
   
   # Patch the PATH to allow the extensible example to run properly
   ENV['PATH']="#{Dir.pwd}/examples/extensible:#{ENV['PATH']}"
   Example.all.each do |example|
-    if ENV['EXAMPLE']
-      next unless example.dir.include? ENV['EXAMPLE']
+    if args['FILTER']
+      next unless example.dir.include? args['FILTER']
     end
     
     say example.dir

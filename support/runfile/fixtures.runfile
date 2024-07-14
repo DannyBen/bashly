@@ -1,0 +1,16 @@
+summary 'Regenerate fixture scripts'
+
+env_var 'EXAMPLE', 'If set, work only on example that include this string.'
+
+action :regen do
+  WorkspaceFixture.all.each do |fixture|
+    if ENV['EXAMPLE']
+      next unless fixture.dir.include? ENV['EXAMPLE']
+    end
+
+    say fixture.dir
+    Dir.chdir fixture.dir do
+      system 'bash test.sh >/dev/null 2>&1'
+    end
+  end
+end
