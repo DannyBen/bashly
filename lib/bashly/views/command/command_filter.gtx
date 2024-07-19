@@ -4,7 +4,9 @@ if commands.any?
   > action=${1:-}
   > 
   > case $action in
-  >   -*) ;;
+  unless default_command
+    >   -*) ;;
+  end
   > 
 
   commands.each do |command|
