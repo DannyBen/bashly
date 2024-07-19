@@ -1,0 +1,22 @@
+name: cli
+help: Test that default command is called when only flags are provided
+version: 0.1.0
+
+commands:
+- name: get
+  alias: g
+  help: Get something
+  default: force
+
+  args:
+  - name: source
+    help: Source
+
+  flags:
+  - long: --debug
+    short: -d
+    help: Debug
+
+  - long: --force
+    short: -f
+    help: Force

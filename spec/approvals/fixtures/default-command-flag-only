@@ -1,0 +1,25 @@
++ bundle exec bashly generate
+creating user files in src
+created src/get_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+# this file is located in 'src/get_command.sh'
+# code for 'cli get' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
++ ./cli -fd
+# this file is located in 'src/get_command.sh'
+# code for 'cli get' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--debug]} = 1
+- ${args[--force]} = 1
++ ./cli source -fd
+# this file is located in 'src/get_command.sh'
+# code for 'cli get' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--debug]} = 1
+- ${args[--force]} = 1
+- ${args[source]} = source
