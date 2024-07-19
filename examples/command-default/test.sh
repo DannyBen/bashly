@@ -15,4 +15,3 @@ bashly generate
 ./ftp upload -h
 ./ftp upload something
 ./ftp something
-./ftp 
