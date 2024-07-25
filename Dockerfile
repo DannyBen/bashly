@@ -1,7 +1,7 @@
 FROM dannyben/alpine-ruby
 
-ENV BASHLY_VERSION=1.2.0
-ENV PS1 "\n\n>> bashly \W \$ "
+ENV BASHLY_VERSION=1.2.1
+ENV PS1="\n\n>> bashly \W \$ "
 WORKDIR /app
 
 # Install pandoc to support manpage generation (`bashly render :mandoc docs`)
