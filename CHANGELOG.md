@@ -1,6 +1,16 @@
 Changelog
 ========================================
 
+v1.2.1 - 2024-07-25
+----------------------------------------
+
+- Add validation to disallow required args before optional [`f2d6276`](https://github.com/DannyBen/bashly/commit/f2d6276)
+- Fix shellcheck violations and reduce use of `eval` [`41da133`](https://github.com/DannyBen/bashly/commit/41da133)
+- Fix default command not being triggered when only flags are provided [`c659830`](https://github.com/DannyBen/bashly/commit/c659830)
+- Fix prompt in bashly shell [`de231e8`](https://github.com/DannyBen/bashly/commit/de231e8)
+- Compare [`v1.2.0..v1.2.1`](https://github.com/dannyben/bashly/compare/v1.2.0..v1.2.1)
+
+
 v1.2.0 - 2024-07-05
 ----------------------------------------
 
