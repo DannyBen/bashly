@@ -3,53 +3,33 @@ if ENV['DEBUGGER']
   require 'lp'
 end
 
-require 'bashly/extensions/array'
-require 'bashly/extensions/file'
-require 'bashly/extensions/string'
-require 'bashly/extensions/yaml'
-require 'bashly/exceptions'
+require 'requires'
+requires 'bashly/extensions'
+requires 'bashly/exceptions'
 
 module Bashly
-  autoload :CLI, 'bashly/cli'
-  autoload :Config, 'bashly/config'
-  autoload :ConfigValidator, 'bashly/config_validator'
-  autoload :Library, 'bashly/library'
-  autoload :LibrarySource, 'bashly/library_source'
-  autoload :LibrarySourceConfig, 'bashly/library_source_config'
-  autoload :MessageStrings, 'bashly/message_strings'
-  autoload :RenderContext, 'bashly/render_context'
-  autoload :RenderSource, 'bashly/render_source'
-  autoload :VERSION, 'bashly/version'
+  autoloads 'bashly/refinements', %i[ComposeRefinements]
 
-  autoload :AssetHelper, 'bashly/concerns/asset_helper'
-  autoload :Completions, 'bashly/concerns/completions'
-  autoload :ComposeRefinements, 'bashly/refinements/compose_refinements'
-  autoload :Renderable, 'bashly/concerns/renderable'
-  autoload :Settings, 'bashly/settings'
-  autoload :ValidationHelpers, 'bashly/concerns/validation_helpers'
+  autoloads 'bashly', %i[
+    CLI Config ConfigValidator Library LibrarySource LibrarySourceConfig
+    MessageStrings RenderContext RenderSource Settings VERSION
+  ]
+
+  autoloads 'bashly/concerns', %i[
+    AssetHelper Completions Renderable ValidationHelpers
+  ]
 
   module Script
-    autoload :Argument, 'bashly/script/argument'
-    autoload :Base, 'bashly/script/base'
-    autoload :CatchAll, 'bashly/script/catch_all'
-    autoload :Command, 'bashly/script/command'
-    autoload :Dependency, 'bashly/script/dependency'
-    autoload :EnvironmentVariable, 'bashly/script/environment_variable'
-    autoload :Flag, 'bashly/script/flag'
-    autoload :Wrapper, 'bashly/script/wrapper'
+    autoloads 'bashly/script', %i[
+      Argument Base CatchAll Command Dependency EnvironmentVariable Flag
+      Wrapper
+    ]
   end
 
   module Commands
-    autoload :Add, 'bashly/commands/add'
-    autoload :Base, 'bashly/commands/base'
-    autoload :Completions, 'bashly/commands/completions'
-    autoload :Doc, 'bashly/commands/doc'
-    autoload :Generate, 'bashly/commands/generate'
-    autoload :Init, 'bashly/commands/init'
-    autoload :Preview, 'bashly/commands/preview'
-    autoload :Render, 'bashly/commands/render'
-    autoload :Shell, 'bashly/commands/shell'
-    autoload :Validate, 'bashly/commands/validate'
+    autoloads 'bashly/commands', %i[
+      Add Base Completions Doc Generate Init Preview Render Shell Validate
+    ]
   end
 
   module Libraries

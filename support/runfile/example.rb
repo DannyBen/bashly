@@ -7,7 +7,7 @@ class Example
       filter_dirs('examples').map { |dir| new dir }
     end
 
-    def fixtures      
+    def fixtures
       filter_dirs('spec/fixtures/workspaces').map { |dir| new dir, type: :fixture }
     end
 
@@ -20,7 +20,6 @@ class Example
     def filter_dirs(base_dir)
       Dir["#{base_dir}/*"].select { |f| File.directory? f }
     end
-
   end
 
   attr_reader :dir, :type
@@ -31,7 +30,7 @@ class Example
   end
 
   def inspect
-    %Q[#<Example type=:#{type}, dir="#{dir}">]
+    %[#<Example type=:#{type}, dir="#{dir}">]
   end
 
   def config
@@ -59,7 +58,8 @@ class Example
   end
 
   def regenerate_readme
-    raise "#regenerate_readme called on a fixture" if type == :fixture
+    raise '#regenerate_readme called on a fixture' if type == :fixture
+
     File.write readme_path, generated_readme
   end
 
