@@ -286,6 +286,10 @@ module Bashly
         flags.select(&:required)
       end
 
+      def needy_flags
+        flags.select(&:needs)
+      end
+
       # Returns true if this is the root command (no parents)
       def root_command?
         parents.empty?

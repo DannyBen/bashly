@@ -1,0 +1,11 @@
+= view_marker
+
+> if [[ -n ${args['{{ name }}']+x} ]]; then
+>   for need in {{ needs.join ' ' }}; do
+>     if [[ -z "${args[$need]:-}" ]]; then
+>       printf "{{ strings[:invalid_flag_combination] % { name: name, need: "$need" } }}\n" >&2
+>       exit 1
+>     fi
+>   done
+> fi
+>

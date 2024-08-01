@@ -6,8 +6,8 @@ module Bashly
       class << self
         def option_keys
           @option_keys ||= %i[
-            allowed arg completions conflicts default help long repeatable
-            required short unique validate private
+            allowed arg completions conflicts default help long needs
+            repeatable required short unique validate private
           ]
         end
       end
