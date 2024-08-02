@@ -14,13 +14,16 @@ Usage:
 Options:
   --add, -a ALIAS
     Alias to add
+    Needs: --command, --target
 
   --command, -c COMMAND
     Command for the alias
+    Needs: --add
 
   --target, -t TARGET
     Where to add the alias
     Allowed: global, local
+    Needs: --add
 
   --help, -h
     Show this help

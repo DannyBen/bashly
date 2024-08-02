@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module Bashly
   module Script
     class Flag < Base
