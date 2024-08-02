@@ -15,48 +15,60 @@ $ bashly generate
 ## `bashly.yml`
 
 ````yaml
-name: download
-help: Sample application to demonstrate the use of conflicting flags
+name: cli
+help: Sample application to demonstrate the use of needy flags
 version: 0.1.0
 
 flags:
-- long: --cache
-  help: Enable cache
-  # Running --cache with --no-cache is not permitted
-  conflicts: [--no-cache]
-- long: --no-cache
-  help: Disable cache
-  # Running --no-cache with --cache or with --fast is not permitted
-  conflicts: [--cache, --fast]
-- long: --fast
-  help: Run faster
-  # Make sure to add the conflicting flags in both flags
-  conflicts: [--no-cache]
+- long: --add
+  short: -a
+  arg: alias
+  help: Alias to add
+  # When using --add, --command and --target must also be provided
+  needs: [--command, --target]
+
+- long: --command
+  short: -c
+  arg: command
+  help: Command for the alias
+  # Note that this relationship is marked on both sides
+  needs: [--add]
+
+- long: --target
+  short: -t
+  arg: target
+  help: Where to add the alias
+  needs: [--add]
+  allowed: [global, local]
 ````
 
 
 
 ## Output
 
-### `$ ./download -h`
+### `$ ./cli -h`
 
 ````shell
-download - Sample application to demonstrate the use of conflicting flags
+cli - Sample application to demonstrate the use of needy flags
 
 Usage:
-  download [OPTIONS]
-  download --help | -h
-  download --version | -v
+  cli [OPTIONS]
+  cli --help | -h
+  cli --version | -v
 
 Options:
-  --cache
-    Enable cache
+  --add, -a ALIAS
+    Alias to add
+    Needs: --command, --target
 
-  --no-cache
-    Disable cache
+  --command, -c COMMAND
+    Command for the alias
+    Needs: --add
 
-  --fast
-    Run faster
+  --target, -t TARGET
+    Where to add the alias
+    Allowed: global, local
+    Needs: --add
 
   --help, -h
     Show this help
@@ -68,21 +80,31 @@ Options:
 
 ````
 
-### `$ ./download --cache`
+### `$ ./cli --add deploy`
+
+````shell
+--add requires --command
+
+
+````
+
+### `$ ./cli --add deploy --command 'git push'`
+
+````shell
+--add requires --target
+
+
+````
+
+### `$ ./cli --add deploy --command 'git push' --target local`
 
 ````shell
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)
 args:
-- ${args[--cache]} = 1
-
-
-````
-
-### `$ ./download --no-cache --fast`
-
-````shell
-conflicting options: --fast cannot be used with --no-cache
+- ${args[--add]} = deploy
+- ${args[--command]} = git push
+- ${args[--target]} = local
 
 
 ````

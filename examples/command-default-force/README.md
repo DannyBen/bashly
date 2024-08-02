@@ -93,7 +93,7 @@ args: none
 tester all - Run all tests
 
 Usage:
-  tester all
+  tester [all]
   tester all --help | -h
 
 Options:

@@ -102,7 +102,7 @@ ISSUE TRACKER
 AUTHORS
        Lana Lang.
 
-Version 0.1.0                      July 2024                       download(1)
+Version 0.1.0                     August 2024                      download(1)
 
 
 ````

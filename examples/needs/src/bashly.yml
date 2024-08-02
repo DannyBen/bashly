@@ -1,5 +1,5 @@
 name: cli
-help: Sample application to demonstrate the use of conflicting flags
+help: Sample application to demonstrate the use of needy flags
 version: 0.1.0
 
 flags:
