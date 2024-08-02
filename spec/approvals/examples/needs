@@ -1,0 +1,41 @@
++ bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -h
+cli - Sample application to demonstrate the use of conflicting flags
+
+Usage:
+  cli [OPTIONS]
+  cli --help | -h
+  cli --version | -v
+
+Options:
+  --add, -a ALIAS
+    Alias to add
+
+  --command, -c COMMAND
+    Command for the alias
+
+  --target, -t TARGET
+    Where to add the alias
+    Allowed: global, local
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli --add deploy
+invalid flag combination: --add needs --command
++ ./cli --add deploy --command 'git push'
+invalid flag combination: --add needs --target
++ ./cli --add deploy --command 'git push' --target local
+# this file is located in 'src/root_command.sh'
+# you can edit it freely and regenerate (it will not be overwritten)
+args:
+- ${args[--add]} = deploy
+- ${args[--command]} = git push
+- ${args[--target]} = local

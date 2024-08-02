@@ -1,0 +1,26 @@
+name: cli
+help: Sample application to demonstrate the use of conflicting flags
+version: 0.1.0
+
+flags:
+- long: --add
+  short: -a
+  arg: alias
+  help: Alias to add
+  # When using --add, --command and --target must also be provided
+  needs: [--command, --target]
+
+- long: --command
+  short: -c
+  arg: command
+  help: Command for the alias
+  # Note that this relationship is marked on both sides
+  needs: [--add]
+
+- long: --target
+  short: -t
+  arg: target
+  help: Where to add the alias
+  needs: [--add]
+  allowed: [global, local]
+
