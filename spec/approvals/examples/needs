@@ -4,7 +4,7 @@ skipped src/root_command.sh (exists)
 created ./cli
 run ./cli --help to test your bash script
 + ./cli -h
-cli - Sample application to demonstrate the use of conflicting flags
+cli - Sample application to demonstrate the use of needy flags
 
 Usage:
   cli [OPTIONS]

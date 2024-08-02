@@ -152,7 +152,8 @@ if flags.any?
   > ## Options
   >
   flags.each do |flag|
-    attributes = flag.required || flag.repeatable || flag.default || flag.allowed || flag.conflicts
+    attributes = flag.required || flag.repeatable || flag.default ||
+      flag.allowed || flag.conflicts || flag.needs
 
     > #### *{{ flag.usage_string }}*
     >
@@ -176,6 +177,9 @@ if flags.any?
       end
       if flag.conflicts
         > | Conflicts With: | *{{ flag.conflicts.join(', ') }}*
+      end
+      if flag.needs
+        > | Needs: | *{{ flag.needs.join(', ') }}*
       end
       >
     end
