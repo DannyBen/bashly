@@ -42,6 +42,7 @@ flag.conflicts
 flag.default
 flag.help
 flag.long
+flag.needs
 flag.private
 flag.repeatable
 flag.required

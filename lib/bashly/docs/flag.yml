@@ -113,6 +113,29 @@ flag.long:
       short: -s
       help: Clone using SSH
 
+flag.needs:
+  help: Specify that this flag needs one or more additional flags. Use the long name of these needed flags.
+  url: https://bashly.dannyb.co/configuration/flag/#needs
+  example: |-
+    flags:
+    - long: --add
+      arg: alias
+
+      # When using --add, --command and --target must also be provided
+      needs: [--command, --target]
+
+    - long: --command
+      arg: command
+      help: Command for the alias
+      
+      # Note that this relationship is marked on both sides
+      needs: [--add]
+
+    - long: --target
+      arg: target
+      help: Where to add the alias
+      needs: [--add]
+
 flag.private:
   help: Specify that this flag should not be displayed in the help text.
   url: https://bashly.dannyb.co/configuration/flag/#private

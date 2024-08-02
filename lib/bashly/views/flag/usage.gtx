@@ -15,5 +15,13 @@ if default
   end
 end
 
+if needs
+  > printf "    {{ strings[:needs] % { values: needs.join(', ') } }}\n"
+end
+
+if conflicts
+  > printf "    {{ strings[:conflicts] % { values: conflicts.join(', ') } }}\n"
+end
+
 > echo
 > 

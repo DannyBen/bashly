@@ -359,6 +359,19 @@
   help: get something from somewhere
   catch_all: params
 
+:needy_flags:
+  name: add
+  help: add a command alias
+
+  flags:
+  - long: --add
+    arg: alias
+    needs: [--command]
+  - long: --command
+    arg: command
+    needs: [--add]
+
+
 :nested_aliases:
   name: cli
   commands:

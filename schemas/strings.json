@@ -102,12 +102,19 @@
             "minLength": 1,
             "default": "Allowed: %{values}"
         },
-        "examples_caption_on_error": {
-            "title": "examples caption on error",
-            "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+        "needs": {
+            "title": "needs",
+            "description": "The string template for the list of needed flags\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
             "type": "string",
             "minLength": 1,
-            "default": "examples:"
+            "default": "Needs: %{values}"
+        },
+        "conflicts": {
+            "title": "conflicts",
+            "description": "The string template for the list of conflicting flags\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "Conflicts: %{values}"
         },
         "help_flag_text": {
             "title": "help flag text",
@@ -129,6 +136,13 @@
             "type": "string",
             "minLength": 1,
             "default": "%{name} requires an argument: %{usage}"
+        },
+        "flag_needs_another": {
+            "title": "flag needs another flag",
+            "description": "The error message template for missing flag needs\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} needs %{need}"
         },
         "invalid_argument": {
             "title": "invalid argument",
@@ -185,6 +199,13 @@
             "type": "string",
             "minLength": 1,
             "default": "missing dependency: %{dependency}"
+        },
+        "examples_caption_on_error": {
+            "title": "examples caption on error",
+            "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "examples:"
         },
         "disallowed_flag": {
             "title": "disallowed flag",

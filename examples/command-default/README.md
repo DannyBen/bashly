@@ -104,6 +104,38 @@ args:
 
 ````
 
+### `$ ./ftp upload`
+
+````shell
+missing required argument: SOURCE
+usage: ftp [upload] SOURCE
+
+
+````
+
+### `$ ./ftp upload -h`
+
+````shell
+ftp upload - Upload a file
+
+Alias: u
+
+Usage:
+  ftp [upload] SOURCE
+  ftp upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    File to upload
+
+
+
+````
+
 ### `$ ./ftp upload something`
 
 ````shell

@@ -455,6 +455,15 @@ describe Script::Command do
     end
   end
 
+  describe '#needy_flags' do
+    let(:fixture) { :needy_flags }
+
+    it 'returns an array of only the needy Flag objects' do
+      expect(subject.needy_flags.size).to eq 2
+      expect(subject.needy_flags.first.long).to eq '--add'
+    end
+  end
+
   describe '#public_commands' do
     let(:fixture) { :private_commands }
 

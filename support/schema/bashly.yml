@@ -189,11 +189,25 @@ definitions:
         minLength: 1
         uniqueItems: true
         items:
-          description: A mutually exclusive flag of the current flag
+          description: The long form of the required flag
           type: string
           minLength: 1
           examples:
             - --no-cache
+      needs:
+        title: needs
+        description: |-
+          Additional flags required by the current flag
+          https://bashly.dannyb.co/configuration/flag/#needs
+        type: array
+        minLength: 1
+        uniqueItems: true
+        items:
+          description: The long form of the required flag
+          type: string
+          minLength: 1
+          examples:
+            - --command
       completions:
         title: completions
         description: |-

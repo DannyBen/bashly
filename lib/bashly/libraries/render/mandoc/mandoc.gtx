@@ -127,6 +127,9 @@ if flags.any?
     if flag.conflicts
       > - Conflicts With: **{{ flag.conflicts.join(', ') }}**
     end
+    if flag.needs
+      > - Needs: **{{ flag.needs.join(', ') }}**
+    end
     >
   end
 end

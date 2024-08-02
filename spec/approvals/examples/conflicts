@@ -14,12 +14,15 @@ Usage:
 Options:
   --cache
     Enable cache
+    Conflicts: --no-cache
 
   --no-cache
     Disable cache
+    Conflicts: --cache, --fast
 
   --fast
     Run faster
+    Conflicts: --no-cache
 
   --help, -h
     Show this help
