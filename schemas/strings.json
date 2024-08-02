@@ -102,6 +102,20 @@
             "minLength": 1,
             "default": "Allowed: %{values}"
         },
+        "needs": {
+            "title": "needs",
+            "description": "The string template for the list of needed flags\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "Needs: %{values}"
+        },
+        "conflicts": {
+            "title": "conflicts",
+            "description": "The string template for the list of conflicting flags\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "Conflicts: %{values}"
+        },
         "help_flag_text": {
             "title": "help flag text",
             "description": "The help message for --help\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",

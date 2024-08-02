@@ -18,6 +18,8 @@ required: "(required)"
 repeatable: "(repeatable)"
 default: "Default: %{value}"
 allowed: "Allowed: %{values}"
+needs: "Needs: %{values}"
+conflicts: "Conflicts: %{values}"
 
 # Fixed flags help text
 help_flag_text: Show this help
