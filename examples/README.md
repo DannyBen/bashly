@@ -33,6 +33,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [repeatable-flag](repeatable-flag#readme) - allowing flags to be provided multiple times
 - [reusable-flags](reusable-flags#readme) - reuse flag definition for multiple commands
 - [conflicts](conflicts#readme) - defining mutually exclusive flags
+- [needs](needs#readme) - defining flags that need other flags
 - [command-private](command-private#readme) - hiding commands from the command list
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
