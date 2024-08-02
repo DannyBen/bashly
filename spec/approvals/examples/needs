@@ -29,9 +29,9 @@ Options:
     Show version number
 
 + ./cli --add deploy
-invalid flag combination: --add needs --command
+--add requires --command
 + ./cli --add deploy --command 'git push'
-invalid flag combination: --add needs --target
+--add requires --target
 + ./cli --add deploy --command 'git push' --target local
 # this file is located in 'src/root_command.sh'
 # you can edit it freely and regenerate (it will not be overwritten)

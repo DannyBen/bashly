@@ -102,13 +102,6 @@
             "minLength": 1,
             "default": "Allowed: %{values}"
         },
-        "examples_caption_on_error": {
-            "title": "examples caption on error",
-            "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "examples:"
-        },
         "help_flag_text": {
             "title": "help flag text",
             "description": "The help message for --help\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
@@ -129,6 +122,13 @@
             "type": "string",
             "minLength": 1,
             "default": "%{name} requires an argument: %{usage}"
+        },
+        "flag_requires_another": {
+            "title": "flag requires another flag",
+            "description": "The error message template for missing flag needs\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "%{name} requires %{need}"
         },
         "invalid_argument": {
             "title": "invalid argument",
@@ -185,6 +185,13 @@
             "type": "string",
             "minLength": 1,
             "default": "missing dependency: %{dependency}"
+        },
+        "examples_caption_on_error": {
+            "title": "examples caption on error",
+            "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
+            "type": "string",
+            "minLength": 1,
+            "default": "examples:"
         },
         "disallowed_flag": {
             "title": "disallowed flag",
