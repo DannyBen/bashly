@@ -4,7 +4,7 @@ if needs
 
   if needs.count == 1
     > if [[ -n ${args['{{ name }}']+x} ]] && [[ -z "${args[{{ needs.first }}]:-}" ]]; then
-    >   printf "%s\n" "{{ strings[:flag_requires_another] % { name: name, need: needs.first } }}" >&2
+    >   printf "%s\n" "{{ strings[:flag_needs_another] % { name: name, need: needs.first } }}" >&2
     >   exit 1
     > fi
     >
@@ -12,7 +12,7 @@ if needs
     > if [[ -n ${args['{{ name }}']+x} ]]; then
     >   for need in {{ needs.join ' ' }}; do
     >     if [[ -z "${args[$need]:-}" ]]; then
-    >       printf "%s\n" "{{ strings[:flag_requires_another] % { name: name, need: "$need" } }}" >&2
+    >       printf "%s\n" "{{ strings[:flag_needs_another] % { name: name, need: "$need" } }}" >&2
     >       exit 1
     >     fi
     >   done
