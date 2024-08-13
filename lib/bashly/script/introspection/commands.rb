@@ -90,8 +90,6 @@ module Bashly
         def public_command_aliases
           public_commands.map(&:aliases).flatten
         end
-
-
       end
     end
   end
