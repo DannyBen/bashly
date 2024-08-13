@@ -6,7 +6,7 @@
 # To only test examples containing a certain string in their path, run:
 # EXAMPLE=yaml bundle exec run spec examples
 
-describe 'generated bash scripts' do
+describe 'generated bash scripts', :slow do
   # Make sure all examples are generated with strict mode
   before { ENV['BASHLY_STRICT'] = 'yes' }
   after { ENV['BASHLY_STRICT'] = nil }
