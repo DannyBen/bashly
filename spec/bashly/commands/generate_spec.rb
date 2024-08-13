@@ -1,4 +1,4 @@
-describe Commands::Generate do
+describe Commands::Generate, :slow do
   subject { described_class.new }
 
   let(:source_dir) { Settings.source_dir }
