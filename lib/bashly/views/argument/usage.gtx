@@ -9,9 +9,9 @@ end
 
 if default
   if default.is_a? Array
-    > printf "    {{ strings[:default] % { value: default.join(', ') } }}\n"
+    > printf "    %s\n" "{{ strings[:default] % { value: default.join(', ') } }}"
   else
-    > printf "    {{ strings[:default] % { value: default } }}\n"
+    > printf "    %s\n" "{{ strings[:default] % { value: default } }}"
   end
 end
 
