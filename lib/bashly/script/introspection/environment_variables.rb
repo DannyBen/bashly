@@ -30,6 +30,11 @@ module Bashly
         def whitelisted_environment_variables
           environment_variables.select(&:allowed)
         end
+
+        # Returns an array of all the environment_variables with a validation
+        def validated_environment_variables
+          environment_variables.select(&:validate)
+        end
       end
     end
   end

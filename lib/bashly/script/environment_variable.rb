@@ -3,7 +3,9 @@ module Bashly
     class EnvironmentVariable < Base
       class << self
         def option_keys
-          @option_keys ||= %i[allowed default help name required private]
+          @option_keys ||= %i[
+            allowed default help name required private validate
+          ]
         end
       end
 

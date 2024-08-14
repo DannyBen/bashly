@@ -24,3 +24,9 @@ if whitelisted_environment_variables.any?
     > fi
   end
 end
+
+if validated_environment_variables.any?
+  validated_environment_variables.each do |env_var|
+    = env_var.render(:validations)
+  end
+end
