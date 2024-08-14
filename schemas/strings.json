@@ -243,7 +243,7 @@
             "default": "validation error in %s:\\n%s"
         },
         "environment_variable_validation_error": {
-            "title": "validation error",
+            "title": "environment variable validation error",
             "description": "The error message template for failed custom validation for environment variables\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
             "type": "string",
             "minLength": 1,
