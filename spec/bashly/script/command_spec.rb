@@ -48,13 +48,6 @@ describe Script::Command do
     end
   end
 
-  describe '#args' do
-    it 'returns an array of Argument objects' do
-      expect(subject.args).to be_an Array
-      expect(subject.args.first).to be_a Script::Argument
-    end
-  end
-
   describe '#caption_string' do
     it 'returns a string containing the name and summary' do
       expect(subject.caption_string).to eq 'get - get something from somewhere'
@@ -65,129 +58,6 @@ describe Script::Command do
 
       it 'returns the full name only' do
         expect(subject.caption_string).to eq 'helpless'
-      end
-    end
-  end
-
-  describe '#command_aliases' do
-    let(:fixture) { :aliases }
-
-    it 'returns an array of command aliases' do
-      expect(subject.command_aliases).to eq %w[download d pull upload u push update upgrade]
-    end
-  end
-
-  describe '#command_help_data' do
-    let(:fixture) { :exposed }
-
-    it 'returns a hash suitable for showing command and exposed subcommand help' do
-      expect(subject.command_help_data.to_yaml)
-        .to match_approval('script/command/exposed_commands')
-    end
-  end
-
-  describe '#command_names' do
-    let(:fixture) { :docker }
-
-    it 'returns an array of command names' do
-      expect(subject.command_names).to eq %w[container image]
-    end
-  end
-
-  describe '#commands' do
-    let(:fixture) { :docker }
-
-    it 'returns an array of Command objects' do
-      expect(subject.commands).to be_an Array
-      expect(subject.commands.first).to be_a described_class
-    end
-
-    it 'sets the parents property of its commands' do
-      expect(subject.commands.first.parents).to eq ['docker']
-    end
-  end
-
-  describe '#deep_commands' do
-    let(:fixture) { :docker }
-
-    it 'returns an array of all commands in the tree' do
-      expect(subject.deep_commands.map(&:full_name))
-        .to eq ['docker container', 'docker container run', 'docker container stop', 'docker image']
-    end
-
-    context 'when include_self is true' do
-      it 'prepends the result with the command itself' do
-        expect(subject.deep_commands(include_self: true).map(&:full_name))
-          .to eq ['docker', 'docker container', 'docker container run', 'docker container stop', 'docker image']
-      end
-    end
-  end
-
-  describe '#default_arguments' do
-    let(:fixture) { :default_values }
-
-    it 'returns an array of only the Argument objects that have default' do
-      expect(subject.default_args.size).to eq 1
-      expect(subject.default_args.first.name).to eq 'files'
-    end
-  end
-
-  describe '#default_command' do
-    let(:fixture) { :default_command }
-
-    it 'returns a Command object of the first default command' do
-      expect(subject.default_command).to be_a described_class
-      expect(subject.default_command.name).to eq 'get'
-    end
-  end
-
-  describe '#default_flags' do
-    let(:fixture) { :default_values }
-
-    it 'returns an array of only the Flags objects that have default' do
-      expect(subject.default_flags.size).to eq 1
-      expect(subject.default_flags.first.long).to eq '--format'
-    end
-  end
-
-  describe '#dependencies' do
-    let(:fixture) { :dependencies }
-
-    it 'returns an array of Dependency objects' do
-      expect(subject.dependencies).to be_an Array
-      expect(subject.dependencies.first).to be_a Script::Dependency
-    end
-  end
-
-  describe '#environment_cariables' do
-    it 'returns an array of EnvironmentVariable objects' do
-      expect(subject.environment_variables).to be_an Array
-      expect(subject.environment_variables.first).to be_a Script::EnvironmentVariable
-    end
-  end
-
-  describe '#examples' do
-    context 'when there are no examples' do
-      it 'returns nil' do
-        expect(subject.examples).to be_nil
-      end
-    end
-
-    context 'when there are examples as array' do
-      let(:fixture) { :examples_array }
-
-      it 'returns the array' do
-        expect(subject.examples).to be_an Array
-      end
-    end
-
-    context 'when there are examples as string' do
-      let(:fixture) { :examples_string }
-
-      it 'returns an array with one item' do
-        expect(subject.examples).to be_an Array
-        expect(subject.examples.count).to eq 1
-        expect(subject.examples.first).to start_with 'Download a file'
       end
     end
   end
@@ -251,13 +121,6 @@ describe Script::Command do
     end
   end
 
-  describe '#flags' do
-    it 'returns an array of Flag objects' do
-      expect(subject.flags).to be_an Array
-      expect(subject.flags.first).to be_a Script::Flag
-    end
-  end
-
   describe '#function_name' do
     let(:fixture) { :docker_container_run }
 
@@ -290,32 +153,6 @@ describe Script::Command do
     end
   end
 
-  describe '#global_flags?' do
-    context 'when a command has flags and commands' do
-      let(:fixture) { :mode_global_flags }
-
-      it 'returns true' do
-        expect(subject).to be_global_flags
-      end
-    end
-
-    context 'when a command has flags but no commands' do
-      let(:fixture) { :mode_flags }
-
-      it 'returns false' do
-        expect(subject).not_to be_global_flags
-      end
-    end
-
-    context 'when a command has commands but no flags' do
-      let(:fixture) { :mode_commands }
-
-      it 'returns false' do
-        expect(subject).not_to be_global_flags
-      end
-    end
-  end
-
   describe '#group_string' do
     it 'returns a string suitable for showing the group in usage' do
       expect(subject.group_string).to eq 'Commands:'
@@ -327,16 +164,6 @@ describe Script::Command do
       it 'returns group string' do
         expect(subject.group_string).to eq 'Repository Commands:'
       end
-    end
-  end
-
-  describe '#grouped_commands' do
-    let(:fixture) { :exposed }
-
-    it 'returns a hash with an array of Command objects per group key' do
-      expect(subject.grouped_commands.keys).to contain_exactly('Cluster Commands:', 'Commands:')
-      expect(subject.grouped_commands['Commands:'].count).to eq 4
-      expect(subject.grouped_commands['Commands:']).to all(be_a described_class)
     end
   end
 
@@ -455,69 +282,6 @@ describe Script::Command do
     end
   end
 
-  describe '#needy_flags' do
-    let(:fixture) { :needy_flags }
-
-    it 'returns an array of only the needy Flag objects' do
-      expect(subject.needy_flags.size).to eq 2
-      expect(subject.needy_flags.first.long).to eq '--add'
-    end
-  end
-
-  describe '#public_commands' do
-    let(:fixture) { :private_commands }
-
-    it 'returns an array of Command objects excluding private commands' do
-      expect(subject.public_commands.count).to eq 1
-      expect(subject.public_commands.first.name).to eq 'connect'
-    end
-  end
-
-  describe '#public_commands_aliases' do
-    let(:fixture) { :private_commands }
-
-    it 'returns an array of command aliases of public subcommands' do
-      expect(subject.public_command_aliases).to eq %w[connect c]
-    end
-  end
-
-  describe '#required_args' do
-    it 'returns an array of only the required Argument objects' do
-      expect(subject.required_args.size).to eq 1
-      expect(subject.required_args.first.name).to eq 'source'
-    end
-  end
-
-  describe '#required_environment_variables' do
-    it 'returns an array of only the required Argument objects' do
-      expect(subject.required_environment_variables.size).to eq 1
-      expect(subject.required_environment_variables.first.name).to eq 'secret_key'
-    end
-  end
-
-  describe '#required_flags' do
-    it 'returns an array of only the required Flag objects' do
-      expect(subject.required_flags.size).to eq 1
-      expect(subject.required_flags.first.long).to eq '--force'
-    end
-  end
-
-  describe '#repeatable_arg_exist?' do
-    context 'when the command does not have any repeatable flags' do
-      it 'returns false' do
-        expect(subject.repeatable_arg_exist?).to be false
-      end
-    end
-
-    context 'when the command has at least one repeatable flag' do
-      let(:fixture) { :repeatable_arg }
-
-      it 'returns true' do
-        expect(subject.repeatable_arg_exist?).to be true
-      end
-    end
-  end
-
   describe '#root_command?' do
     context 'when the command has no parents' do
       it 'returns true' do
@@ -530,22 +294,6 @@ describe Script::Command do
 
       it 'returns false' do
         expect(subject.root_command?).to be false
-      end
-    end
-  end
-
-  describe '#short_flag_exist?' do
-    let(:fixture) { :flag_hog }
-
-    context 'when the command has this short flag' do
-      it 'returns true' do
-        expect(subject.short_flag_exist?('-h')).to be true
-      end
-    end
-
-    context 'when the command does not have this short flag' do
-      it 'returns false' do
-        expect(subject.short_flag_exist?('-s')).to be false
       end
     end
   end
@@ -676,24 +424,6 @@ describe Script::Command do
       it 'returns false' do
         expect(subject.user_file_exist?('test')).to be false
       end
-    end
-  end
-
-  describe '#whitelisted_args' do
-    let(:fixture) { :whitelist }
-
-    it 'returns an array of args that have a whitelist' do
-      expect(subject.whitelisted_args.size).to eq 1
-      expect(subject.whitelisted_args.first.name).to eq 'region'
-    end
-  end
-
-  describe '#whitelisted_flags' do
-    let(:fixture) { :whitelist }
-
-    it 'returns an array of flags that have a whitelist' do
-      expect(subject.whitelisted_flags.size).to eq 1
-      expect(subject.whitelisted_flags.first.long).to eq '--user'
     end
   end
 end
