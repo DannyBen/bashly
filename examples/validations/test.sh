@@ -14,3 +14,6 @@ bashly generate
 ./validate calc A
 ./validate calc 1 B
 ./validate calc 1 2 --save no-such-file.txt
+
+./validate build
+BUILD_DIR=src ./validate build

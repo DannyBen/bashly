@@ -539,11 +539,22 @@ environment_variable.required
 
   Specify that this variable is required.
 
+    environment_variables:
     - name: api_key
       help: Your API key
       required: true
 
   See https://bashly.dannyb.co/configuration/environment-variable/#required
+
+environment_variable.validate
+
+  Apply custom validation functions.
+
+    environment_variables:
+    - name: build_dir
+      validate: dir_exists
+
+  See https://bashly.dannyb.co/configuration/environment-variable/#validate
 
 flag
 

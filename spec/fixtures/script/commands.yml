@@ -199,6 +199,20 @@
   help: perform docker container run
   parents: [docker, container]
 
+:environment_variable_enthusiast:
+  name: get
+  environment_variables:
+  - name: username
+    required: true
+  - name: file
+    default: README.md
+  - name: config_dir
+    validate: dir_exists
+  - name: protocol
+    allowed: [ssh, https]
+  - name: secret
+    private: true
+
 :examples_array:
   name: get
   help: get something from somewhere
@@ -403,6 +417,14 @@
   - name: connect-ssh
     alias: cf
     private: true
+
+:private_flags:
+  name: status
+  help: perform git status
+  flags:
+  - long: --legacy
+    private: true
+  - long: --new
 
 :repeatable_arg:
   name: get

@@ -334,6 +334,17 @@
           "type": "boolean",
           "default": true
         },
+        "validate": {
+          "title": "validate",
+          "description": "A validation function for the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#validate",
+          "type": "string",
+          "examples": [
+            "file_exists",
+            "dir_exists",
+            "integer",
+            "non_empty"
+          ]
+        },
         "allowed": {
           "title": "allowed",
           "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",

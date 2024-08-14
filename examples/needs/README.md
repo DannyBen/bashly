@@ -83,7 +83,7 @@ Options:
 ### `$ ./cli --add deploy`
 
 ````shell
---add requires --command
+--add needs --command
 
 
 ````
@@ -91,7 +91,7 @@ Options:
 ### `$ ./cli --add deploy --command 'git push'`
 
 ````shell
---add requires --target
+--add needs --target
 
 
 ````

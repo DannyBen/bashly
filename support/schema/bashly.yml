@@ -300,6 +300,17 @@ definitions:
           https://bashly.dannyb.co/configuration/environment-variable/#required
         type: boolean
         default: true
+      validate:
+        title: validate
+        description: |-
+          A validation function for the current environment variable
+          https://bashly.dannyb.co/configuration/environment-variable/#validate
+        type: string
+        examples:
+          - file_exists
+          - dir_exists
+          - integer
+          - non_empty
       allowed:
         title: allowed
         description: |-

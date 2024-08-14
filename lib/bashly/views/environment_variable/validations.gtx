@@ -1,0 +1,9 @@
+if validate
+  = view_marker
+
+  > if [[ -v {{ name.upcase }} && -n $(validate_{{ validate }} "${{ name.upcase }}") ]]; then
+  >   printf "{{ strings[:environment_variable_validation_error] }}\n" "{{ usage_string }}" "$(validate_{{ validate }} "${{ name.upcase }}")" >&2
+  >   exit 1
+  > fi
+  >
+end

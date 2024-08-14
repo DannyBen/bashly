@@ -22,6 +22,11 @@ module Bashly
           flags.any? and commands.any?
         end
 
+        # Returns an array of all fpags that need other flags
+        def needy_flags
+          flags.select(&:needs)
+        end
+
         # Returns only flags that are not private
         def public_flags
           flags.reject(&:private)
@@ -30,11 +35,6 @@ module Bashly
         # Returns an array of all the required Flags
         def required_flags
           flags.select(&:required)
-        end
-
-        # Returns an array of all fpags that need other flags
-        def needy_flags
-          flags.select(&:needs)
         end
 
         # Returns true if one of the flags matches the provided short code

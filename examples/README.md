@@ -61,7 +61,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [yaml](yaml#readme) - using the YAML reading functions
 - [colors](colors#readme) - using the color print feature
 - [completions](completions#readme) - adding bash completion functionality
-- [validations](validations#readme) - adding argument validation functions
+- [validations](validations#readme) - adding validation functions for arguments, flags or environment variables
 - [hooks](hooks#readme) - adding before/after hooks
 
 ## Real-world-like examples

@@ -6,6 +6,7 @@ created src/lib/validations/validate_not_empty.sh
 + bashly generate
 creating user files in src
 created src/calc_command.sh
+created src/build_command.sh
 created ./validate
 run ./validate --help to test your bash script
 + ./validate calc 1 2 --save README.md
@@ -25,3 +26,15 @@ must be an integer
 + ./validate calc 1 2 --save no-such-file.txt
 validation error in --save PATH:
 must be an existing file
++ ./validate build
+validation error in environment variable BUILD_DIR:
+must be an existing directory
++ BUILD_DIR=src
++ ./validate build
+# this file is located in 'src/build_command.sh'
+# code for 'validate build' goes here
+# you can edit it freely and regenerate (it will not be overwritten)
+args: none
+
+environment variables:
+- $BUILD_DIR = src
