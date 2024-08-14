@@ -50,12 +50,28 @@ describe Script::Introspection::Flags do
     end
   end
 
-  describe '#whitelisted_flags' do
-    let(:fixture) { :whitelist }
+  describe '#needy_flags' do
+    let(:fixture) { :needy_flags }
 
-    it 'returns an array of flags that have a whitelist' do
-      expect(subject.whitelisted_flags.size).to eq 1
-      expect(subject.whitelisted_flags.first.long).to eq '--user'
+    it 'returns an array of only the needy Flag objects' do
+      expect(subject.needy_flags.size).to eq 2
+      expect(subject.needy_flags.first.long).to eq '--add'
+    end
+  end
+
+  describe '#public_flags' do
+    let(:fixture) { :private_flags }
+
+    it 'returns an array of only the non private Flag objects' do
+      expect(subject.public_flags.size).to eq 1
+      expect(subject.public_flags.first.long).to eq '--new'
+    end
+  end
+
+  describe '#required_flags' do
+    it 'returns an array of only the required Flag objects' do
+      expect(subject.required_flags.size).to eq 1
+      expect(subject.required_flags.first.long).to eq '--force'
     end
   end
 
@@ -75,19 +91,12 @@ describe Script::Introspection::Flags do
     end
   end
 
-  describe '#needy_flags' do
-    let(:fixture) { :needy_flags }
+  describe '#whitelisted_flags' do
+    let(:fixture) { :whitelist }
 
-    it 'returns an array of only the needy Flag objects' do
-      expect(subject.needy_flags.size).to eq 2
-      expect(subject.needy_flags.first.long).to eq '--add'
-    end
-  end
-
-  describe '#required_flags' do
-    it 'returns an array of only the required Flag objects' do
-      expect(subject.required_flags.size).to eq 1
-      expect(subject.required_flags.first.long).to eq '--force'
+    it 'returns an array of flags that have a whitelist' do
+      expect(subject.whitelisted_flags.size).to eq 1
+      expect(subject.whitelisted_flags.first.long).to eq '--user'
     end
   end
 end

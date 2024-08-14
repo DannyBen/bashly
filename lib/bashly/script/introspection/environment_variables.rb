@@ -2,7 +2,7 @@ module Bashly
   module Script
     module Introspection
       module EnvironmentVariables
-        # Returns an array of all the default Environment Variables
+        # Returns an array of all the Environment Variables with default values
         def default_environment_variables
           environment_variables.select(&:default)
         end

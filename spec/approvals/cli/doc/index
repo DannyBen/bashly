@@ -34,6 +34,7 @@ environment_variable.help
 environment_variable.name
 environment_variable.private
 environment_variable.required
+environment_variable.validate
 flag
 flag.allowed
 flag.arg
