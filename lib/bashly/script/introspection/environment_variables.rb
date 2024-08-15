@@ -31,6 +31,12 @@ module Bashly
           environment_variables.select(&:validate)
         end
 
+        # Returns only public environment variables, or both public and private
+        # environment variables if Settings.private_reveal_key is set
+        def visible_environment_variables
+          Settings.private_reveal_key ? environment_variables : public_environment_variables
+        end
+
         # Returns an array of all the environment_variables with a whitelist arg
         def whitelisted_environment_variables
           environment_variables.select(&:allowed)

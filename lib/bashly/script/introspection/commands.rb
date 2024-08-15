@@ -72,12 +72,12 @@ module Bashly
         def grouped_commands
           result = {}
 
-          public_commands.each do |command|
+          visible_commands.each do |command|
             result[command.group_string] ||= []
             result[command.group_string] << command
             next unless command.expose
 
-            command.public_commands.each do |subcommand|
+            command.visible_commands.each do |subcommand|
               result[command.group_string] << subcommand
             end
           end
