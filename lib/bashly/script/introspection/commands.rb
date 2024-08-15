@@ -11,15 +11,19 @@ module Bashly
         def command_help_data
           result = {}
 
-          public_commands.each do |command|
+          commands.each do |command|
             result[command.group_string] ||= {}
-            result[command.group_string][command.name] = { summary: command.summary_string }
+            result[command.group_string][command.name] = {
+              summary:    command.summary_string,
+              visibility: command.visibility,
+            }
             next unless command.expose
 
-            command.public_commands.each do |subcommand|
+            command.commands.each do |subcommand|
               result[command.group_string]["#{command.name} #{subcommand.name}"] = {
-                summary:   subcommand.summary_string,
-                help_only: command.expose != 'always',
+                summary:    subcommand.summary_string,
+                visibility: subcommand.visibility,
+                help_only:  command.expose != 'always',
               }
             end
           end

@@ -1,6 +1,6 @@
 # This spec tests that the rendering using the libraries/render templates
 # is generating the expected output.
-describe 'rendering markdown' do
+describe 'rendering markdown', :stable do
   subject { Commands::Render.new }
 
   let(:source_dir) { Settings.source_dir }

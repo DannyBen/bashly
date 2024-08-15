@@ -1,6 +1,8 @@
 module Bashly
   module Script
     class EnvironmentVariable < Base
+      include Introspection::Visibility
+
       class << self
         def option_keys
           @option_keys ||= %i[

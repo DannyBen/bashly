@@ -2,28 +2,38 @@
 'Commands:':
   init:
     :summary: Start a new project
+    :visibility: :public
   config:
     :summary: Config management commands
+    :visibility: :public
   config edit:
     :summary: Edit config file
+    :visibility: :public
     :help_only: false
   config show:
     :summary: Show config file
+    :visibility: :public
     :help_only: false
 'Cluster Commands:':
   server:
     :summary: Server management commands
+    :visibility: :public
   server start:
     :summary: Start the server
+    :visibility: :public
     :help_only: true
   server stop:
     :summary: Stop the server
+    :visibility: :public
     :help_only: true
   container:
     :summary: Container management commands
+    :visibility: :public
   container exec:
     :summary: Run a command in the container
+    :visibility: :public
     :help_only: true
   container down:
     :summary: Terminate a container
+    :visibility: :public
     :help_only: true

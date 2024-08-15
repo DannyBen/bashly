@@ -8,6 +8,7 @@ module Bashly
       include Introspection::EnvironmentVariables
       include Introspection::Examples
       include Introspection::Flags
+      include Introspection::Visibility
 
       class << self
         def option_keys

@@ -1,7 +1,15 @@
 = view_marker
 
-public_flags.each do |flag|
-  = flag.render :usage
+flags.each do |flag|
+  next if flag.visibility == :private
+
+  if flag.visibility == :semi_private
+    > if [[ -n "${{{ Settings.private_reveal_key }}:-}" ]]; then
+      = flag.render(:usage).indent(2)
+    > fi
+  else
+    = flag.render :usage
+  end
 end
 
 >

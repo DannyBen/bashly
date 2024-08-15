@@ -1,0 +1,4 @@
+# When using private commands, flags, or environment variables, you may set 
+# this option to a name of an environment variable that, if set, will reveal
+# all the private elements in the usage texts, as if they were public.
+private_reveal_key: SHOW_PLEASE

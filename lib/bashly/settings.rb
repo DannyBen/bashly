@@ -10,6 +10,7 @@ module Bashly
         :config_path,
         :lib_dir,
         :partials_extension,
+        :private_reveal_key,
         :show_examples_on_error,
         :source_dir,
         :strict,
@@ -52,6 +53,10 @@ module Bashly
 
       def partials_extension
         @partials_extension ||= get :partials_extension
+      end
+
+      def private_reveal_key
+        @private_reveal_key ||= get :private_reveal_key
       end
 
       def production?

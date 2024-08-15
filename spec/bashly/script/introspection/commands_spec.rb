@@ -23,6 +23,25 @@ describe Script::Introspection::Commands do
       expect(subject.command_help_data.to_yaml)
         .to match_approval('script/command/exposed_commands')
     end
+
+    context 'with private subcommands' do
+      let(:fixture) { :exposed_private }
+
+      it 'sets the visibility to :private' do
+        expect(subject.command_help_data.to_yaml)
+          .to match_approval('script/command/private_exposed_commands')
+      end
+
+      context 'when Settings.private_reveal_key is set' do
+        before { Settings.private_reveal_key = 'PRIVATE' }
+        after { Settings.private_reveal_key = nil }
+
+        it 'sets the visibility to :semi_private' do
+          expect(subject.command_help_data.to_yaml)
+            .to match_approval('script/command/semi_private_exposed_commands')
+        end
+      end
+    end
   end
 
   describe '#command_names' do

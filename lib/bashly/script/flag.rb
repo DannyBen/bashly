@@ -4,6 +4,7 @@ module Bashly
   module Script
     class Flag < Base
       include Completions::Flag
+      include Introspection::Visibility
 
       class << self
         def option_keys
