@@ -109,11 +109,49 @@ describe Script::Introspection::Commands do
     end
   end
 
-  describe '#public_commands_aliases' do
+  describe '#public_command_aliases' do
     let(:fixture) { :private_commands }
 
     it 'returns an array of command aliases of public subcommands' do
       expect(subject.public_command_aliases).to eq %w[connect c]
+    end
+  end
+
+  describe '#visible_commands' do
+    let(:fixture) { :private_commands }
+
+    it 'returns public commands only (same as #public_commands)' do
+      expect(subject.visible_commands.size).to eq 1
+      expect(subject.visible_commands.first.name).to eq 'connect'
+    end
+
+    context 'when Settings.private_reveal_key is set' do
+      before { Settings.private_reveal_key = 'SHOW' }
+      after { Settings.private_reveal_key = nil }
+
+      it 'returns all commands (same as #commands)' do
+        expect(subject.visible_commands.size).to eq 3
+        expect(subject.visible_commands[1].name).to eq 'connect-ftp'
+      end
+    end
+  end
+
+  describe '#visible_command_aliases' do
+    let(:fixture) { :private_commands }
+
+    it 'returns an array of command aliases of public subcommands' do
+      expect(subject.visible_command_aliases).to eq %w[connect c]
+    end
+
+    context 'when Settings.private_reveal_key is set' do
+      before { Settings.private_reveal_key = 'SHOW' }
+      after { Settings.private_reveal_key = nil }
+
+      it 'returns an array of command aliases of all subcommands' do
+        expect(subject.visible_command_aliases).to eq %w[
+          connect c connect-ftp cf connect-ssh cs
+        ]
+      end
     end
   end
 end

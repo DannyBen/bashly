@@ -42,6 +42,12 @@ module Bashly
           flags.any? { |f| f.short == flag }
         end
 
+        # Returns only public flags, or both public and private flags if
+        # Settings.private_reveal_key is set
+        def visible_flags
+          Settings.private_reveal_key ? flags : public_flags
+        end
+
         # Returns an array of all the flags with a whitelist arg
         def whitelisted_flags
           flags.select(&:allowed)

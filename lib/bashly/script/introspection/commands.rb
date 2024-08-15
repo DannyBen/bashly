@@ -94,6 +94,17 @@ module Bashly
         def public_command_aliases
           public_commands.map(&:aliases).flatten
         end
+
+        # Returns only public commands, or both public and private commands
+        # if Settings.private_reveal_key is set
+        def visible_commands
+          Settings.private_reveal_key ? commands : public_commands
+        end
+
+        # Returns a full list of the visible Command names and aliases combined
+        def visible_command_aliases
+          visible_commands.map(&:aliases).flatten
+        end
       end
     end
   end

@@ -437,7 +437,7 @@
     alias: cf
     private: true
   - name: connect-ssh
-    alias: cf
+    alias: cs
     private: true
 
 :private_flags:
