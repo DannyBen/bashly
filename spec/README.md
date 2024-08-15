@@ -1,14 +1,28 @@
 # Tests
 
-Testing is done with `rspec`.
+- Testing is done with `rspec`.
+- It is recommended to use the [`respec`][2] convenience wrapper for additional
+  productivity features.
+- The test suite contains interactive approval testing provided by
+  [RSpec Approvals][1].
 
-The test suite contains interactive approval testing provided by
-[RSpec Approvals][1].
+```bash
+$ respec
+```
 
-Run tests with either of these commands:
+## Tagged Specs
 
-    $ [bundle exec] run spec
-    $ [bundle exec] rspec
+Some specs have tags for convenience:
+
+- `:slow` - slow specs that may be skipped when running a smoke test
+- `:stable` - specs of features that rarely change
+- `:noci` - specs that are disabled in CI
+
+For example, to run only specs that are not :slow and not :stable, run:
+
+```bash
+$ respec tagged ~stable ~slow
+```
 
 ## Notes about Example Tests
 
@@ -21,3 +35,4 @@ Run tests with either of these commands:
 
 
 [1]: https://github.com/DannyBen/rspec_approvals
+[2]: https://github.com/DannyBen/respec
