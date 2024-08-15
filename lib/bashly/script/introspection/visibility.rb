@@ -2,8 +2,8 @@ module Bashly
   module Script
     module Introspection
       module Visibility
-        # Returns the true if the command is private and can be revealed using
-        # an environment variable name
+        # Returns :public, :private, or :semi_private based on the `private`
+        # option of the host, in confunction with `Settings.private_reveal_key`.
         def visibility
           if !options['private']
             :public

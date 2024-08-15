@@ -14,7 +14,7 @@ command_help_data.each do |group, commands|
     end
 
     if info[:visibility] == :semi_private
-      line = %Q[[[ -n "$#{Settings.private_reveal_key}" ]] && #{line}]
+      line = %Q[[[ -n "${#{Settings.private_reveal_key}:-}" ]] && #{line}]
     end
 
     = line

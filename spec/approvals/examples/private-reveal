@@ -1,3 +1,9 @@
++ bashly generate
+creating user files in src
+created src/admin_list_command.sh
+created src/admin_reboot_command.sh
+created ./cli
+run ./cli --help to test your bash script
 + ./cli
 cli - Sample application
 

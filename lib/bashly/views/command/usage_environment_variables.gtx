@@ -5,7 +5,7 @@ if public_environment_variables.any?
   = caption
   > 
 elsif environment_variables.any? && Settings.private_reveal_key
-  > if [[ -n "${{ Settings.private_reveal_key }}" ]]; then
+  > if [[ -n "${{{ Settings.private_reveal_key }}:-}" ]]; then
     = caption.indent(2)
   > fi
   > 
@@ -15,7 +15,7 @@ environment_variables.each do |env_var|
   next if env_var.visibility == :private
 
   if env_var.visibility == :semi_private
-    > if [[ -n "${{ Settings.private_reveal_key }}" ]]; then
+    > if [[ -n "${{{ Settings.private_reveal_key }}:-}" ]]; then
       = env_var.render(:usage).indent(2)
     > fi
   else
