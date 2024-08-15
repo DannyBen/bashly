@@ -91,6 +91,25 @@ describe Script::Introspection::Flags do
     end
   end
 
+  describe '#visible_flags' do
+    let(:fixture) { :private_flags }
+
+    it 'returns public flags only (same as #public_flags)' do
+      expect(subject.visible_flags.size).to eq 1
+      expect(subject.visible_flags.first.long).to eq '--new'
+    end
+
+    context 'when Settings.private_reveal_key is set' do
+      before { Settings.private_reveal_key = 'SHOW' }
+      after { Settings.private_reveal_key = nil }
+
+      it 'returns all flags (same as #flags)' do
+        expect(subject.visible_flags.size).to eq 2
+        expect(subject.visible_flags.first.long).to eq '--legacy'
+      end
+    end
+  end
+
   describe '#whitelisted_flags' do
     let(:fixture) { :whitelist }
 
