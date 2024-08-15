@@ -1,5 +1,5 @@
 describe 'bash' do
-  context 'when bash version is < 4', :slow do
+  context 'when bash version is < 4', :slow, :noci do
     before { system 'docker pull bash:3 >/dev/null' }
 
     it 'errors gracefully' do
