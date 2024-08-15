@@ -43,7 +43,7 @@ if extensible
 end
 >
 
-if public_commands.any?
+if visible_commands.any?
   grouped_commands.each do |group, commands|
     > {{ group.gsub(/:$/, '').upcase }}
     > ==================================================
@@ -150,11 +150,11 @@ if dependencies.any?
   end
 end
 
-if public_environment_variables.any?
+if visible_environment_variables.any?
   > ENVIRONMENT VARIABLES
   > ==================================================
   >
-  public_environment_variables.each do |environment_variable|
+  visible_environment_variables.each do |environment_variable|
     > {{ environment_variable.name.upcase }}
     > --------------------------------------------------
     >
@@ -186,7 +186,7 @@ end
 
 see_also = []
 see_also << parents.first if parents.any?
-see_also += public_commands.map { |x| x.full_name.to_hyphen } if public_commands.any?
+see_also += visible_commands.map { |x| x.full_name.to_hyphen } if visible_commands.any?
 see_also += x_mandoc_see_also if x_mandoc_see_also && x_mandoc_see_also.is_a?(Array)
 see_also.map! do |item|
   item.match(/(.+)(\(\d\))/) ? "**#{$1}**#{$2}" : "**#{item}**(1)"

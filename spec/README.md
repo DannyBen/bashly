@@ -18,10 +18,21 @@ Some specs have tags for convenience:
 - `:stable` - specs of features that rarely change
 - `:noci` - specs that are disabled in CI
 
-For example, to run only specs that are not :slow and not :stable, run:
+## Useful respec commands
+
 
 ```bash
+# smoke test; run only specs that are not :slow and not :stable
 $ respec tagged ~stable ~slow
+
+# test examples only
+$ respec only examples
+
+# test a specific example only
+$ EXAMPLE=whitelist respec only examples
+
+# test only specs that changed recently, and repeat on change
+$ respec refactor  # or respec r
 ```
 
 ## Notes about Example Tests

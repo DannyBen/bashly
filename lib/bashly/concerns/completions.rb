@@ -62,7 +62,7 @@ module Bashly
       end
 
       def completion_flag_names
-        visible_flags.map(&:name) + public_flags.map(&:short)
+        visible_flags.map(&:name) + visible_flags.map(&:short)
       end
 
       def completion_allowed_args
