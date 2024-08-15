@@ -28,6 +28,7 @@ module Bashly
     module Introspection
       autoloads 'bashly/script/introspection', %i[
         Arguments Commands Dependencies EnvironmentVariables Examples Flags
+        Visibility
       ]
     end
   end
