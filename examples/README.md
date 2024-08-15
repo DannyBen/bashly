@@ -35,6 +35,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [conflicts](conflicts#readme) - defining mutually exclusive flags
 - [needs](needs#readme) - defining flags that need other flags
 - [command-private](command-private#readme) - hiding commands from the command list
+- [private-reveal](private-reveal#readme) - allowing users to reveal private commands, flags or environment variables
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
 - [commands-expose](commands-expose#readme) - showing sub-commands in the parent's help

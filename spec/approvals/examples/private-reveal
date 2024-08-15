@@ -1,0 +1,88 @@
++ ./cli
+cli - Sample application
+
+Usage:
+  cli [OPTIONS] COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  admin          Admin operations
+
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli [OPTIONS] COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  admin          Admin operations
+  admin list     List connected devices
+
+Global Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli admin -h
+cli admin - Admin operations
+
+Usage:
+  cli admin COMMAND
+  cli admin [COMMAND] --help | -h
+
+Commands:
+  list     List connected devices
+
+Options:
+  --help, -h
+    Show this help
+
++ export SHOW_PLEASE=1
++ SHOW_PLEASE=1
++ ./cli -h
+cli - Sample application
+
+Usage:
+  cli [OPTIONS] COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  admin          Admin operations
+  admin list     List connected devices
+  admin reboot   Reboot
+
+Global Options:
+  --debug
+    Enable debug mode
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Environment Variables:
+  SECRET
+    Set secret key
+
++ ./cli admin -h
+cli admin - Admin operations
+
+Usage:
+  cli admin COMMAND
+  cli admin [COMMAND] --help | -h
+
+Commands:
+  list     List connected devices
+  reboot   Reboot
+
+Options:
+  --help, -h
+    Show this help
+

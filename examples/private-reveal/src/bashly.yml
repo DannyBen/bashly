@@ -1,0 +1,29 @@
+name: cli
+help: Sample application
+version: 0.1.0
+
+# All elements with `private: true` in this configuration will be hidden
+# unless the environment variable SHOW_PELASE is set (as defined
+# in ../settings.yml)
+
+environment_variables:
+- name: secret
+  help: Set secret key
+  private: true
+
+flags:
+- long: --debug
+  help: Enable debug mode
+  private: true
+
+commands:
+- name: admin
+  help: Admin operations
+  expose: true
+
+  commands:
+  - name: list
+    help: List connected devices    
+  - name: reboot
+    help: Reboot
+    private: true

@@ -136,6 +136,19 @@
             "minLength": 1,
             "default": "sh"
         },
+        "private_reveal_key": {
+            "title": "private reveal key",
+            "description": "The name of the environment variable (case sensitive) that, if set, will reveal private commands, flags and environment variables\nhttps://bashly.dannyb.co/usage/settings/#private_reveal_key",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "minLength": 1
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
         "usage_colors": {
             "title": "usage colors",
             "description": "Enable and configure colorful output for --help\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
