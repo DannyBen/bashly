@@ -3,7 +3,7 @@ module Bashly
     module Introspection
       module Visibility
         # Returns the true if the command is private and can be revealed using
-        # an environemnt variable name
+        # an environment variable name
         def visibility
           if !options['private']
             :public

@@ -4,7 +4,7 @@ rm -f ./src/*.sh
 
 set -x
 
-# bashly generate
+bashly generate
 
 ### Try Me ###
 
