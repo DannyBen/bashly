@@ -1,6 +1,24 @@
 Changelog
 ========================================
 
+v1.2.2 - 2024-08-17
+----------------------------------------
+
+- Add support for needy flags: `flag.needs` [`fadda94`](https://github.com/DannyBen/bashly/commit/fadda94)
+- Add needy flag example [`43e3b38`](https://github.com/DannyBen/bashly/commit/43e3b38)
+- Update JSON schemas [`868650c`](https://github.com/DannyBen/bashly/commit/868650c)
+- Update flag usage to show its conflicts and needs [`db23575`](https://github.com/DannyBen/bashly/commit/db23575)
+- Refactor Command#introspection [`a66db36`](https://github.com/DannyBen/bashly/commit/a66db36)
+- Add support for environment variable validations [`bccd3b0`](https://github.com/DannyBen/bashly/commit/bccd3b0)
+- Update validations example to show environment variable validation [`ee6a4c9`](https://github.com/DannyBen/bashly/commit/ee6a4c9)
+- Update script generation to allow bash variables in some YAML strings [`6660d16`](https://github.com/DannyBen/bashly/commit/6660d16)
+- Allow ad-hoc revealing of private commands, flags, and environment variables [`d2876d7`](https://github.com/DannyBen/bashly/commit/d2876d7)
+- Add private-reveal example [`8c94042`](https://github.com/DannyBen/bashly/commit/8c94042)
+- Update completions library to consider private visibility setting [`e16dde1`](https://github.com/DannyBen/bashly/commit/e16dde1)
+- Update mandoc/markdown library to consider private visibility setting [`c49d94d`](https://github.com/DannyBen/bashly/commit/c49d94d)
+- Compare [`v1.2.1..v1.2.2`](https://github.com/dannyben/bashly/compare/v1.2.1..v1.2.2)
+
+
 v1.2.1 - 2024-07-25
 ----------------------------------------
 
