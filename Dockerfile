@@ -1,6 +1,6 @@
 FROM dannyben/alpine-ruby
 
-ENV BASHLY_VERSION=1.2.1
+ENV BASHLY_VERSION=1.2.2
 ENV PS1="\n\n>> bashly \W \$ "
 WORKDIR /app
 
