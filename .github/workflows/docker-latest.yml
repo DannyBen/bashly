@@ -1,5 +1,13 @@
 name: Docker build (version + latest)
+
 on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to build
+        required: true
+        default: '1.2.2'
+
   push: { tags: 'v[0-9]+.[0-9]+.[0-9]+' }
 
 jobs:
