@@ -1,4 +1,4 @@
-FROM dannyben/alpine-ruby
+FROM dannyben/alpine-ruby:3.3.3
 
 ENV BASHLY_VERSION=1.2.2
 ENV PS1="\n\n>> bashly \W \$ "
