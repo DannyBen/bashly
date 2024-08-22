@@ -14,4 +14,5 @@ WORKDIR /app
 RUN rm -rf /bashly
 
 VOLUME /app
+
 ENTRYPOINT ["bashly"]
