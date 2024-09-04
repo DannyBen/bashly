@@ -24,6 +24,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'requires', '~> 1.1.0'
   s.add_dependency 'tty-markdown', '~> 0.7'
 
+  # Sub-dependenceis (Ruby 3.3.5 warnings)
+  s.add_dependency 'logger'   # required by filewatcher
+  s.add_dependency 'ostruct'  # required by json
+
   # Ruby 3.0 comes with Psych 3.3.0, which does not have the `unsafe_load`
   # ref: https://github.com/ruby/psych/commit/cb50aa8d3fb8be01897becff77b4922b12a0ab4c
   s.add_dependency 'psych', '>= 3.3.2', '< 7'

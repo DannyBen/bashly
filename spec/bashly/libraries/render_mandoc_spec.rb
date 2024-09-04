@@ -28,10 +28,9 @@ describe 'libraries/render/mandoc' do
           .to match_approval('libraries/render/mandoc/render-1-download.md')
           .except(/\w{3,9} 202\d/, 'MONTH YEAR')
 
-        expect(`man "#{target}/download.1" | col -bx`)
+        expect(`man "#{target}/download.1" | col -bx | sed '$d'`)
           .to match_approval('libraries/render/mandoc/render-1-download.1')
           .diff(leeway)
-          .except(/\w{3,9} 202\d.*/, 'MONTH YEAR ... APPNAME')
       end
     end
 
@@ -41,7 +40,6 @@ describe 'libraries/render/mandoc' do
       it 'saves a markdown and man files for each command' do
         expect { subject.instance_eval render_script }
           .to output_approval('libraries/render/mandoc/render-2')
-          .except(/\w{3,9} 202\d.*/, 'MONTH YEAR ... APPNAME')
 
         expect(File.read "#{target}/cli-download.md")
           .to match_approval('libraries/render/mandoc/render-2-download.md')
