@@ -1,6 +1,16 @@
 Changelog
 ========================================
 
+v1.2.3 - 2024-10-16
+----------------------------------------
+
+- Fix docker image for multi-arch [`5660a3e`](https://github.com/DannyBen/bashly/commit/5660a3e)
+- Fix INI library when loading multiple files [`6bfb1bc`](https://github.com/DannyBen/bashly/commit/6bfb1bc)
+- Add sub dependencies to avoid Ruby 3.3.5 warnings [`30b7318`](https://github.com/DannyBen/bashly/commit/30b7318)
+- Fix `conflicts` in fixed flags [`152069a`](https://github.com/DannyBen/bashly/commit/152069a)
+- Compare [`v1.2.2..v1.2.3`](https://github.com/dannyben/bashly/compare/v1.2.2..v1.2.3)
+
+
 v1.2.2 - 2024-08-17
 ----------------------------------------
 
