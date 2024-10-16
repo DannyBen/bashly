@@ -1,7 +1,8 @@
 = view_marker
 
 > while [[ $# -gt 0 ]]; do
->   case "${1:-}" in
+>   key="$1"
+>   case "$key" in
 
 if root_command?
   = (short_flag_exist?("-v") ? "--version)" : "--version | -v)").indent(4)
