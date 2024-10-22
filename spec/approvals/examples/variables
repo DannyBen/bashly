@@ -1,0 +1,17 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/download_command.sh (exists)
+skipped src/compress_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli download something
+build_number: 1337
+output_folder: output
+download_sources:
+- youtube
+- instagram
++ ./cli compress
+build_number: 1337
+zip_options:
+  compression_level: fast
+  pattern: *.json

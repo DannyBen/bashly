@@ -1,0 +1,30 @@
+= view_marker
+
+variables.each do |var|
+  case var['value']
+  when Array
+    if var['value'].empty?
+    > declare -a {{ var['name'] }}=()
+    else
+    > declare -a {{ var['name'] }}=(
+      var['value'].each do |v|
+    >   "{{ v }}"
+      end
+    > )
+    end
+  when Hash
+    if var['value'].empty?
+    > declare -A {{ var['name'] }}=()
+    else
+    > declare -A {{ var['name'] }}=(
+      var['value'].each do |k, v|
+    >   ["{{ k }}"]="{{ v }}"
+      end
+    > )
+    end
+  when String, NilClass
+    > {{ var['name'] }}="{{ var['value'] }}"
+  else
+    > {{ var['name'] }}={{ var['value'] }}
+  end
+end

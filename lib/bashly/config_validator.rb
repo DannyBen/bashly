@@ -24,7 +24,7 @@ module Bashly
     def assert_catch_all(key, value)
       return unless value
 
-      assert [TrueClass, String, Hash].include?(value.class),
+      assert [TrueClass, FalseClass, String, Hash].include?(value.class),
         "#{key} must be a boolean, a string or a hash"
 
       assert_catch_all_hash key, value if value.is_a? Hash
@@ -77,7 +77,7 @@ module Bashly
     def assert_extensible(key, value)
       return unless value
 
-      assert [TrueClass, String].include?(value.class),
+      assert [TrueClass, FalseClass, String].include?(value.class),
         "#{key} must be a boolean or a string"
     end
 
@@ -173,6 +173,11 @@ module Bashly
       refute value['required'] && value['default'], "#{key} cannot have both nub`required` and nub`default`"
     end
 
+    def assert_var(key, value)
+      assert_hash key, value, keys: %i[name value]
+      assert_string "#{key}.name", value['name']
+    end
+
     def assert_command(key, value)
       assert_hash key, value, keys: Script::Command.option_keys
 
@@ -207,6 +212,7 @@ module Bashly
       assert_array "#{key}.completions", value['completions'], of: :string
       assert_array "#{key}.filters", value['filters'], of: :string
       assert_array "#{key}.environment_variables", value['environment_variables'], of: :env_var
+      assert_array "#{key}.variables", value['variables'], of: :var
 
       assert_uniq "#{key}.commands", value['commands'], %w[name alias]
       assert_uniq "#{key}.flags", value['flags'], 'long'

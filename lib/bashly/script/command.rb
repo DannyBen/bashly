@@ -17,7 +17,7 @@ module Bashly
             default dependencies environment_variables examples
             extensible expose filename filters flags
             footer function group help name
-            private version
+            private variables version
           ]
         end
       end
