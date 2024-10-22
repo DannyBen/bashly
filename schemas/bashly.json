@@ -56,7 +56,7 @@
           "title": "allowed",
           "description": "Valid values of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current positional argument",
@@ -193,7 +193,7 @@
           "title": "allowed",
           "description": "Valid values of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current positional argument",
@@ -208,7 +208,7 @@
           "title": "conflicts",
           "description": "Mutually exclusive flags of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#conflicts",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "The long form of the required flag",
@@ -223,7 +223,7 @@
           "title": "needs",
           "description": "Additional flags required by the current flag\nhttps://bashly.dannyb.co/configuration/flag/#needs",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "The long form of the required flag",
@@ -238,7 +238,7 @@
           "title": "completions",
           "description": "Completions of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#completions",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A completion of the current flag",
@@ -349,7 +349,7 @@
           "title": "allowed",
           "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current environment variable",
@@ -366,6 +366,50 @@
           "type": "string",
           "examples": [
             "~/config.ini"
+          ]
+        }
+      },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "variable": {
+      "title": "variable",
+      "description": "A global bash variable\nhttps://bashly.dannyb.co/configuration/command/#variables",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "A name for the current variable",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "output_dir"
+          ]
+        },
+        "value": {
+          "title": "value",
+          "description": "A value for the current variable",
+          "examples": [
+            "output_dir",
+            [
+              "development",
+              "production"
+            ],
+            {
+              "verbosity": 3,
+              "debug": true
+            }
           ]
         }
       },
@@ -430,8 +474,8 @@
       "title": "args",
       "description": "Arguments of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#args",
       "type": "array",
-      "uniqueItems": true,
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/argument"
       }
@@ -440,8 +484,8 @@
       "title": "flags",
       "description": "Flags of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#flags",
       "type": "array",
-      "uniqueItems": true,
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/flag"
       }
@@ -450,6 +494,7 @@
       "title": "commands",
       "description": "Subcommands of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#commands",
       "type": "array",
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/command-property"
@@ -485,9 +530,20 @@
       "title": "environment variables",
       "description": "Environment variables of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
       "type": "array",
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/environment-variable"
+      }
+    },
+    "variables-property": {
+      "title": "variables",
+      "description": "Bash variables for the current application\nhttps://bashly.dannyb.co/configuration/command/#variables",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/variable"
       }
     },
     "examples-property": {
@@ -583,7 +639,7 @@
       "title": "completions",
       "description": "Completions of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#completions",
       "type": "array",
-      "minLength": 1,
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "description": "A completion of the current script or sub-command",
@@ -647,7 +703,7 @@
         {
           "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
@@ -806,6 +862,9 @@
         "environment_variables": {
           "$ref": "#/definitions/environment-variables-property"
         },
+        "variables": {
+          "$ref": "#/definitions/variables-property"
+        },
         "examples": {
           "$ref": "#/definitions/examples-property"
         },
@@ -879,6 +938,9 @@
     },
     "environment_variables": {
       "$ref": "#/definitions/environment-variables-property"
+    },
+    "variables": {
+      "$ref": "#/definitions/variables-property"
     },
     "examples": {
       "$ref": "#/definitions/examples-property"

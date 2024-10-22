@@ -53,7 +53,7 @@ definitions:
           Valid values of the current positional argument
           https://bashly.dannyb.co/configuration/argument/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current positional argument
@@ -172,7 +172,7 @@ definitions:
           Valid values of the current flag
           https://bashly.dannyb.co/configuration/flag/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current positional argument
@@ -186,7 +186,7 @@ definitions:
           Mutually exclusive flags of the current flag
           https://bashly.dannyb.co/configuration/flag/#conflicts
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: The long form of the required flag
@@ -200,7 +200,7 @@ definitions:
           Additional flags required by the current flag
           https://bashly.dannyb.co/configuration/flag/#needs
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: The long form of the required flag
@@ -214,7 +214,7 @@ definitions:
           Completions of the current flag
           https://bashly.dannyb.co/configuration/flag/#completions
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A completion of the current flag
@@ -317,7 +317,7 @@ definitions:
           Valid values of the current environment variable
           https://bashly.dannyb.co/configuration/environment-variable/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current environment variable
@@ -335,6 +335,31 @@ definitions:
           - ~/config.ini
     patternProperties: *custom-properties
     additionalProperties: false
+  variable:
+    title: variable
+    description: |-
+      A global bash variable
+      https://bashly.dannyb.co/configuration/command/#variables
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        title: name
+        description: A name for the current variable
+        type: string
+        minLength: 1
+        examples:
+          - output_dir
+      value:
+        title: value
+        description: A value for the current variable
+        examples:
+          - output_dir
+          - [development, production]
+          - { verbosity: 3, debug: true }
+    patternProperties: *custom-properties
+    additionalProperties: false    
   name-property:
     title: name
     description: |-
@@ -382,8 +407,8 @@ definitions:
       Arguments of the current script or sub-command
       https://bashly.dannyb.co/configuration/command/#args
     type: array
-    uniqueItems: true
     minItems: 1
+    uniqueItems: true
     items:
       $ref: '#/definitions/argument'
   flags-property:
@@ -392,8 +417,8 @@ definitions:
       Flags of the current script or sub-command
       https://bashly.dannyb.co/configuration/command/#flags
     type: array
-    uniqueItems: true
     minItems: 1
+    uniqueItems: true
     items:
       $ref: '#/definitions/flag'
   commands-property:
@@ -402,6 +427,7 @@ definitions:
       Subcommands of the current script or sub-command
       https://bashly.dannyb.co/configuration/command/#commands
     type: array
+    minItems: 1
     uniqueItems: true
     items:
       $ref: '#/definitions/command-property'
@@ -432,9 +458,20 @@ definitions:
       Environment variables of the current application
       https://bashly.dannyb.co/configuration/environment-variable/#environment-variable
     type: array
+    minItems: 1
     uniqueItems: true
     items:
       $ref: '#/definitions/environment-variable'
+  variables-property:
+    title: variables
+    description: |-
+      Bash variables for the current application
+      https://bashly.dannyb.co/configuration/command/#variables
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: '#/definitions/variable'
   examples-property:
     title: examples
     oneOf:
@@ -520,7 +557,7 @@ definitions:
       Completions of the current script or sub-command
       https://bashly.dannyb.co/configuration/command/#completions
     type: array
-    minLength: 1
+    minItems: 1
     uniqueItems: true
     items:
       description: A completion of the current script or sub-command
@@ -583,7 +620,7 @@ definitions:
           Dependencies of the current script or sub-command
           https://bashly.dannyb.co/configuration/dependency/#dependency
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: |-
@@ -708,6 +745,8 @@ definitions:
         $ref: '#/definitions/sub-command-default-property'
       environment_variables:
         $ref: '#/definitions/environment-variables-property'
+      variables:
+        $ref: '#/definitions/variables-property'
       examples:
         $ref: '#/definitions/examples-property'
       footer:
@@ -754,6 +793,8 @@ properties:
     $ref: '#/definitions/root-version-property'
   environment_variables:
     $ref: '#/definitions/environment-variables-property'
+  variables:
+    $ref: '#/definitions/variables-property'
   examples:
     $ref: '#/definitions/examples-property'
   footer:
