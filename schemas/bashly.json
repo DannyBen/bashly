@@ -859,6 +859,9 @@
         "environment_variables": {
           "$ref": "#/definitions/environment-variables-property"
         },
+        "variables": {
+          "$ref": "#/definitions/variables-property"
+        },
         "examples": {
           "$ref": "#/definitions/examples-property"
         },
@@ -932,6 +935,9 @@
     },
     "environment_variables": {
       "$ref": "#/definitions/environment-variables-property"
+    },
+    "variables": {
+      "$ref": "#/definitions/variables-property"
     },
     "examples": {
       "$ref": "#/definitions/examples-property"

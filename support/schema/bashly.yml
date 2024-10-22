@@ -742,6 +742,8 @@ definitions:
         $ref: '#/definitions/sub-command-default-property'
       environment_variables:
         $ref: '#/definitions/environment-variables-property'
+      variables:
+        $ref: '#/definitions/variables-property'
       examples:
         $ref: '#/definitions/examples-property'
       footer:
@@ -788,6 +790,8 @@ properties:
     $ref: '#/definitions/root-version-property'
   environment_variables:
     $ref: '#/definitions/environment-variables-property'
+  variables:
+    $ref: '#/definitions/variables-property'
   examples:
     $ref: '#/definitions/examples-property'
   footer:
