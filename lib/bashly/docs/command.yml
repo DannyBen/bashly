@@ -309,6 +309,28 @@ command.private:
       help: Send bash completions
       private: true
 
+command.variables:
+  help: Define a list of global bash variables.
+  url: https://bashly.dannyb.co/configuration/command/#variables
+  example: |-
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast
+
+
 command.version:
   help: Specify the version to show when running with `--version`.
   url: https://bashly.dannyb.co/configuration/command/#version

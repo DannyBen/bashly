@@ -1,6 +1,6 @@
 # Variables Example
 
-Demonstrates how to define varaibles from the bashly.yml configuration.
+Demonstrates how to define variables from the bashly.yml configuration.
 
 This example was generated with:
 
