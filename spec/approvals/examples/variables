@@ -1,4 +1,4 @@
-+ bundle exec bashly generate
++ bashly generate
 creating user files in src
 skipped src/download_command.sh (exists)
 skipped src/compress_command.sh (exists)

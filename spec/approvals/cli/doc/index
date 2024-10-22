@@ -27,6 +27,7 @@ command.group
 command.help
 command.name
 command.private
+command.variables
 command.version
 environment_variable
 environment_variable.default
