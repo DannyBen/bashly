@@ -380,6 +380,50 @@
       },
       "additionalProperties": false
     },
+    "variable": {
+      "title": "variable",
+      "description": "A global bash variable\nhttps://bashly.dannyb.co/configuration/command/#variables",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "A name for the current variable",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "output_dir"
+          ]
+        },
+        "value": {
+          "title": "value",
+          "description": "A value for the current variable",
+          "examples": [
+            "output_dir",
+            [
+              "development",
+              "production"
+            ],
+            {
+              "verbosity": 3,
+              "debug": true
+            }
+          ]
+        }
+      },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
     "name-property": {
       "title": "name",
       "description": "A name of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#name",
@@ -488,6 +532,15 @@
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/environment-variable"
+      }
+    },
+    "variables-property": {
+      "title": "variables",
+      "description": "Bash variables for the current application\nhttps://bashly.dannyb.co/configuration/command/#variables",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/variable"
       }
     },
     "examples-property": {
