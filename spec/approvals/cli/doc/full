@@ -467,6 +467,29 @@ command.private
 
   See https://bashly.dannyb.co/configuration/command/#private
 
+command.variables
+
+  Define a list of global bash variables.
+
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+    
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+    
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast
+
+  See https://bashly.dannyb.co/configuration/command/#variables
+
 command.version
 
   Specify the version to show when running with --version.
