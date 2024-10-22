@@ -9,6 +9,7 @@
 if has_unique_args_or_flags?
   >   declare -A unique_lookup=()
 end
+= render(:variables).indent(2) if variables&.any?
 >   normalize_input "$@"
 >   parse_requirements "${input[@]}"
 if user_file_exist?('before')

@@ -1,6 +1,7 @@
 = view_marker
 
 > {{ function_name }}_command() {
+= render(:variables).indent(2) if variables&.any?
 = load_user_file(filename).indent 2
 > }
 >
