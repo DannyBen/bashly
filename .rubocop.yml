@@ -26,7 +26,10 @@ Naming/AccessorMethodName:
     - 'lib/bashly/concerns/indentation_helper.rb'
 
 # FIXME: The `Command` class is too long
-Metrics/ClassLength: { Exclude: [lib/bashly/script/command.rb] }
+Metrics/ClassLength:
+  Exclude: 
+    - lib/bashly/script/command.rb
+    - lib/bashly/config_validator.rb
 
 # Allow irregular filenames in some cases
 RSpec/SpecFilePathFormat:

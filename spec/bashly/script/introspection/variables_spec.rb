@@ -1,4 +1,4 @@
-describe Script::Introspection::Variables, :focus do
+describe Script::Introspection::Variables do
   subject do
     result = Script::Command.new fixtures[fixture]
     result.parents = result.options['parents']
