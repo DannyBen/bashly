@@ -51,3 +51,6 @@ flag.required
 flag.short
 flag.unique
 flag.validate
+variable
+variable.name
+variable.value

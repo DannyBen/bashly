@@ -382,7 +382,7 @@
     },
     "variable": {
       "title": "variable",
-      "description": "A global bash variable\nhttps://bashly.dannyb.co/configuration/command/#variables",
+      "description": "A global bash variable\nhttps://bashly.dannyb.co/configuration/variable/#variable",
       "type": "object",
       "required": [
         "name"
@@ -390,7 +390,7 @@
       "properties": {
         "name": {
           "title": "name",
-          "description": "A name for the current variable",
+          "description": "A name for the current variable\nhttps://bashly.dannyb.co/configuration/variable/#name",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -399,9 +399,9 @@
         },
         "value": {
           "title": "value",
-          "description": "A value for the current variable",
+          "description": "A value for the current variable\nhttps://bashly.dannyb.co/configuration/variable/#value",
           "examples": [
-            "output_dir",
+            "./output",
             [
               "development",
               "production"

@@ -310,7 +310,7 @@ command.private:
       private: true
 
 command.variables:
-  help: Define a list of global bash variables.
+  help: Define a list of global bash variables. See `variable` for reference.
   url: https://bashly.dannyb.co/configuration/command/#variables
   example: |-
     variables:
@@ -329,7 +329,6 @@ command.variables:
       value:
         pattern: "*.json"
         compression_level: fast
-
 
 command.version:
   help: Specify the version to show when running with `--version`.

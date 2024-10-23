@@ -469,7 +469,7 @@ command.private
 
 command.variables
 
-  Define a list of global bash variables.
+  Define a list of global bash variables. See variable for reference.
 
     variables:
     # Simple value
@@ -823,4 +823,61 @@ flag.validate
       validate: file_exists
 
   See https://bashly.dannyb.co/configuration/flag/#validate
+
+variable
+
+  Define variables that will be available to your script.
+
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+    
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+    
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast
+
+  See https://bashly.dannyb.co/configuration/variable/
+
+variable.name
+
+  Specify the name of the variable.
+
+    variables:
+    - name: output_folder
+      value: output
+
+  See https://bashly.dannyb.co/configuration/variable/#name
+
+variable.value
+
+  Specify the value for this variable.
+  This can be any value type, including array and hash (associative array).
+
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+    
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+    
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast
+
+  See https://bashly.dannyb.co/configuration/variable/#value
 
