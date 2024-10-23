@@ -174,7 +174,7 @@ module Bashly
     end
 
     def assert_var(key, value)
-      assert_hash key, value, keys: %i[name value]
+      assert_hash key, value, keys: Script::Variable.option_keys
       assert_string "#{key}.name", value['name']
     end
 

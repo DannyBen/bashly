@@ -440,3 +440,10 @@
   name: invalid
   help: root cannot have private
   private: true
+
+:var:
+  name: invalid
+  help: var.name should be a string
+  variables:
+  - name: 1
+    value: 2
