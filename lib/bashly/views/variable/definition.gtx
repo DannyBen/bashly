@@ -1,0 +1,28 @@
+= view_marker
+
+case value
+when Array
+  if value.empty?
+  > declare -a {{ name }}=()
+  else
+  > declare -a {{ name }}=(
+    value.each do |v|
+  >   "{{ v }}"
+    end
+  > )
+  end
+when Hash
+  if value.empty?
+  > declare -A {{ name }}=()
+  else
+  > declare -A {{ name }}=(
+    value.each do |k, v|
+  >   ["{{ k }}"]="{{ v }}"
+    end
+  > )
+  end
+when String, NilClass
+  > {{ name }}="{{ value }}"
+else
+  > {{ name }}={{ value }}
+end

@@ -8,6 +8,7 @@ module Bashly
       include Introspection::EnvironmentVariables
       include Introspection::Examples
       include Introspection::Flags
+      include Introspection::Variables
       include Introspection::Visibility
 
       class << self
