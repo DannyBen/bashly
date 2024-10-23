@@ -5,8 +5,8 @@ Each of these examples demonstrates one aspect or feature of bashly.
 ## Basic use
 
 - [minimal](minimal#readme) - the most basic "hello world" example
-- [commands](commands#readme) - a script with sub-commands
-- [commands-nested](commands-nested#readme) - a script with nested sub-commands
+- [commands](commands#readme) - a script with subcommands
+- [commands-nested](commands-nested#readme) - a script with nested subcommands
 
 ## Basic features
 
@@ -17,6 +17,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [dependencies](dependencies#readme) - halting script execution unless certain dependencies are installed
 - [dependencies-alt](dependencies-alt#readme) - halting script execution unless one of the required dependencies is installed
 - [environment-variables](environment-variables#readme) - halting script execution unless certain environment variables are set
+- [variables](variables#readme) - defining bash variables
 - [default-values](default-values#readme) - arguments and flags with default values
 - [minus-v](minus-v#readme) - using `-v` and `-h` in your script
 - [multiline](multiline#readme) - help messages with multiple lines
@@ -38,14 +39,14 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [private-reveal](private-reveal#readme) - allowing users to reveal private commands, flags or environment variables
 - [stdin](stdin#readme) - reading input from stdin
 - [filters](filters#readme) - preventing commands from running unless custom conditions are met
-- [commands-expose](commands-expose#readme) - showing sub-commands in the parent's help
+- [commands-expose](commands-expose#readme) - showing subcommands in the parent's help
 - [key-value-pairs](key-value-pairs#readme) - parsing key=value arguments and flags
 - [command-examples-on-error](command-examples-on-error#readme) - showing examples on error
 
 ## Customization
 
 - [colors-usage](colors-usage#readme) - adding colors to the usage text
-- [command-groups](command-groups#readme) - grouping sub-commands in logical sections
+- [command-groups](command-groups#readme) - grouping subcommands in logical sections
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
 - [custom-includes](custom-includes#readme) - adding and organizing your custom functions
 - [custom-script-header](custom-script-header#readme) - configuring a different script header
@@ -68,7 +69,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 ## Real-world-like examples
 
 - [docker-like](docker-like#readme) - a sample script with deep commands (like `docker container run`)
-- [git-like](git-like#readme) - a sample script with sub-commands similar to git
+- [git-like](git-like#readme) - a sample script with subcommands similar to git
 
 ## Documentation generation
 
