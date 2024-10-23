@@ -489,6 +489,21 @@
       repeatable: true
       unique: true
 
+:variables:
+  name: get
+  variables:
+  - name: debug
+    value: true
+  - name: url
+    value: http://hello.com
+  - name: number
+    value: 123
+  - name: array
+    value: [one, two]
+  - name: hash
+    value: { one: 1, two: 2 }
+  - name: empty
+
 :whitelist:
   name: cli
   args:
