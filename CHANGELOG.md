@@ -1,6 +1,16 @@
 Changelog
 ========================================
 
+v1.2.4 - 2024-10-31
+----------------------------------------
+
+- Add `command.variables` as a convenience utility for defining global command variables [`6538886`](https://github.com/DannyBen/bashly/commit/6538886)
+- Update JSON schema to include `command.variables` [`28953fb`](https://github.com/DannyBen/bashly/commit/28953fb)
+- Refactor `command.variables` to a new `Variable` object [`3e5a060`](https://github.com/DannyBen/bashly/commit/3e5a060)
+- Add black and white to color library [`0573e0f`](https://github.com/DannyBen/bashly/commit/0573e0f)
+- Compare [`v1.2.3..v1.2.4`](https://github.com/dannyben/bashly/compare/v1.2.3..v1.2.4)
+
+
 v1.2.3 - 2024-10-16
 ----------------------------------------
 
