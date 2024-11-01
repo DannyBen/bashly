@@ -7,6 +7,7 @@
 
 if root_command?
   > 
+  = render(:variables).indent(2)
   = render(:environment_variables_default).indent 2
 end
 
