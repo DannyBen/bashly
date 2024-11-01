@@ -1,4 +1,4 @@
-if variables&.any?
+if variables.any?
   = view_marker
 
   variables.each do |var|
