@@ -1,5 +1,7 @@
-= view_marker
+if variables&.any?
+  = view_marker
 
-variables.each do |var|
-  = var.render(:definition)
+  variables.each do |var|
+    = var.render(:definition)
+  end
 end
