@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v1.2.5 - 2024-11-01
+----------------------------------------
+
+- Move root variables from `run()` to `initialize()` [`f76c53b`](https://github.com/DannyBen/bashly/commit/f76c53b)
+- Compare [`v1.2.4..v1.2.5`](https://github.com/dannyben/bashly/compare/v1.2.4..v1.2.5)
+
+
 v1.2.4 - 2024-10-31
 ----------------------------------------
 
