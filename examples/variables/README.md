@@ -23,10 +23,12 @@ name: cli
 help: Sample application demonstrating the use of variables
 version: 0.1.0
 
-# The `build_number` variable will be available globally
+# The `build_number` and `environments` variables will be available globally
 variables:
 - name: build_number
   value: 1337
+- name: environments
+  value: [dev, stage, production]
 
 commands:
 - name: download
@@ -70,6 +72,10 @@ echo "download_sources:"
 for value in "${download_sources[@]}"; do
   echo "- $value"
 done
+echo "environments:"
+for value in "${environments[@]}"; do
+  echo "- $value"
+done
 ````
 
 ## `src/compress_command.sh`
@@ -80,7 +86,10 @@ echo "zip_options:"
 for key in "${!zip_options[@]}"; do
   echo "  $key: ${zip_options[$key]}"
 done
-
+echo "environments:"
+for value in "${environments[@]}"; do
+  echo "- $value"
+done
 ````
 
 
@@ -94,6 +103,10 @@ output_folder: output
 download_sources:
 - youtube
 - instagram
+environments:
+- dev
+- stage
+- production
 
 
 ````
@@ -105,6 +118,10 @@ build_number: 1337
 zip_options:
   compression_level: fast
   pattern: *.json
+environments:
+- dev
+- stage
+- production
 
 
 ````
