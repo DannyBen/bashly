@@ -2,10 +2,12 @@ name: cli
 help: Sample application demonstrating the use of variables
 version: 0.1.0
 
-# The `build_number` variable will be available globally
+# The `build_number` and `environments` variables will be available globally
 variables:
 - name: build_number
   value: 1337
+- name: environments
+  value: [dev, stage, production]
 
 commands:
 - name: download

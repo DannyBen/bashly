@@ -10,8 +10,16 @@ output_folder: output
 download_sources:
 - youtube
 - instagram
+environments:
+- dev
+- stage
+- production
 + ./cli compress
 build_number: 1337
 zip_options:
   compression_level: fast
   pattern: *.json
+environments:
+- dev
+- stage
+- production

@@ -3,9 +3,9 @@
 case value
 when Array
   if value.empty?
-  > declare -a {{ name }}=()
+  > declare -g -a {{ name }}=()
   else
-  > declare -a {{ name }}=(
+  > declare -g -a {{ name }}=(
     value.each do |v|
   >   "{{ v }}"
     end
@@ -13,16 +13,16 @@ when Array
   end
 when Hash
   if value.empty?
-  > declare -A {{ name }}=()
+  > declare -g -A {{ name }}=()
   else
-  > declare -A {{ name }}=(
+  > declare -g -A {{ name }}=(
     value.each do |k, v|
   >   ["{{ k }}"]="{{ v }}"
     end
   > )
   end
 when String, NilClass
-  > {{ name }}="{{ value }}"
+  > declare -g {{ name }}="{{ value }}"
 else
-  > {{ name }}={{ value }}
+  > declare -g {{ name }}={{ value }}
 end

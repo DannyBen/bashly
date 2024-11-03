@@ -4,3 +4,7 @@ echo "download_sources:"
 for value in "${download_sources[@]}"; do
   echo "- $value"
 done
+echo "environments:"
+for value in "${environments[@]}"; do
+  echo "- $value"
+done
