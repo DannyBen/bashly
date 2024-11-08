@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v1.2.6 - 2024-11-08
+----------------------------------------
+
+- Fix array variables scope [`ed7f240`](https://github.com/DannyBen/bashly/commit/ed7f240)
+- Compare [`v1.2.5..v1.2.6`](https://github.com/dannyben/bashly/compare/v1.2.5..v1.2.6)
+
+
 v1.2.5 - 2024-11-01
 ----------------------------------------
 
