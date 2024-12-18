@@ -9,6 +9,11 @@
 # If you wish to change the path to this file, set the environment variable
 # BASHLY_SETTINGS_PATH.
 
+
+#-------------------------------------------------------------------------------
+# PATH OPTIONS
+#-------------------------------------------------------------------------------
+
 # The path containing the bashly source files
 source_dir: src
 
@@ -27,6 +32,14 @@ lib_dir: lib
 # directory, and each command will get its own subdirectory
 commands_dir: ~
 
+# The extension to use when reading/writing partial script snippets
+partials_extension: sh
+
+
+#-------------------------------------------------------------------------------
+# FORMAT OPTIONS
+#-------------------------------------------------------------------------------
+
 # Configure the bash options that will be added to the initialize function:
 # strict: true       Bash strict mode (set -euo pipefail)
 # strict: false      Only exit on errors (set -e)
@@ -38,6 +51,11 @@ strict: false
 # (every 2 leading spaces will be converted to a tab character)
 tab_indent: false
 
+
+#-------------------------------------------------------------------------------
+# INTERFACE OPTIONS
+#-------------------------------------------------------------------------------
+
 # When true, the generated script will consider any argument in the form of
 # `-abc` as if it is `-a -b -c`.
 compact_short_flags: true
@@ -47,9 +65,6 @@ compact_short_flags: true
 # respectively.
 conjoined_flag_args: true
 
-# The extension to use when reading/writing partial script snippets
-partials_extension: sh
-
 # Show command examples (if any) whenever the user does not provide the
 # required arguments
 show_examples_on_error: false
@@ -58,6 +73,23 @@ show_examples_on_error: false
 # this option to a name of an environment variable that, if set, will reveal
 # all the private elements in the usage texts, as if they were public.
 private_reveal_key: ~
+
+# Display various usage elements in color by providing the name of the color
+# function. The value for each property is a name of a function that is
+# available in your script, for example: `green` or `bold`.
+# You can run `bashly add colors` to add a standard colors library.
+# This option cannot be set via environment variables.
+usage_colors:
+  caption: ~
+  command: ~
+  arg: ~
+  flag: ~
+  environment_variable: ~
+
+
+#-------------------------------------------------------------------------------
+# FEATURE TOGGLES
+#-------------------------------------------------------------------------------
 
 # Set to 'production' or 'development'.
 # Determines which features are enabled in the rendered script.
@@ -78,16 +110,3 @@ enable_view_markers: development
 enable_inspect_args: development
 enable_deps_array: always
 enable_env_var_names_array: always
-
-# Display various usage elements in color by providing the name of the color
-# function. The value for each property is a name of a function that is
-# available in your script, for example: `green` or `bold`.
-# You can run `bashly add colors` to add a standard colors library.
-# This option cannot be set via environment variables.
-usage_colors:
-  caption: ~
-  command: ~
-  arg: ~
-  flag: ~
-  environment_variable: ~
-
