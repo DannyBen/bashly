@@ -1,7 +1,7 @@
 This is the source file for `schemas/bashly.json` and `schemas/settings.json`
 schemas.
 
-To regenerate the bashly.json schema, simply run:
+To regenerate the, simply run:
 
 ```
 $ run scheme generate
