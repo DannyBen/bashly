@@ -10,6 +10,7 @@ module Bashly
         :config_path,
         :enable_bash3_bouncer,
         :enable_deps_array,
+        :enable_env_var_names_array,
         :enable_header_comment,
         :enable_inspect_args,
         :enable_view_markers,
@@ -64,6 +65,10 @@ module Bashly
 
       def enable_deps_array
         @enable_deps_array ||= get :enable_deps_array
+      end
+
+      def enable_env_var_names_array
+        @enable_env_var_names_array ||= get :enable_env_var_names_array
       end
 
       def env
