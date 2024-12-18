@@ -31,13 +31,15 @@ if Settings.enabled? :deps_array
   >   fi
   >
 end
->   if ((${#env_var_names[@]})); then
->     readarray -t sorted_names < <(printf '%s\n' "${env_var_names[@]}" | sort)
->     echo
->     echo "environment variables:"
->     for k in "${sorted_names[@]}"; do
->       echo "- \$$k = ${!k:-}"
->     done
->   fi
+if Settings.enabled? :env_var_names_array
+  >   if ((${#env_var_names[@]})); then
+  >     readarray -t sorted_names < <(printf '%s\n' "${env_var_names[@]}" | sort)
+  >     echo
+  >     echo "environment variables:"
+  >     for k in "${sorted_names[@]}"; do
+  >       echo "- \$$k = ${!k:-}"
+  >     done
+  >   fi
+end
 > }
 > 

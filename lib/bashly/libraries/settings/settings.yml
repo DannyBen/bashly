@@ -77,6 +77,7 @@ enable_bash3_bouncer: always
 enable_view_markers: development
 enable_inspect_args: development
 enable_deps_array: always
+enable_env_var_names_array: always
 
 # Display various usage elements in color by providing the name of the color
 # function. The value for each property is a name of a function that is

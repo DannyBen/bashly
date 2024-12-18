@@ -189,6 +189,18 @@
             ],
             "default": "always"
         },
+        "enable_env_var_names_array": {
+            "title": "enable_env_var_names_array",
+            "description": "Whether to include the code for the env_var_names array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_env_var_names_array",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "always"
+        },
         "partials_extension": {
             "title": "partials extension",
             "description": "The extension to use when reading/writing partial script snippets\nhttps://bashly.dannyb.co/usage/settings/#partials_extension",

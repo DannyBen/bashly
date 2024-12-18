@@ -2,8 +2,10 @@ if environment_variables.any?
   = view_marker
   = render(:environment_variables_default)
 
-  environment_variables.each do |env_var|
-    > env_var_names+=("{{ env_var.name.upcase }}")
+  if Settings.enabled? :env_var_names_array
+    environment_variables.each do |env_var|
+      > env_var_names+=("{{ env_var.name.upcase }}")
+    end
   end
 end
 
