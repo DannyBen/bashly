@@ -120,6 +120,8 @@ describe Settings do
         subject.env = :production
       end
 
+      after { subject.env = nil }
+
       it 'returns true' do
         expect(subject.enabled? :header_comment).to be true
       end
@@ -143,6 +145,8 @@ describe Settings do
         subject.enable_header_comment = 'development'
         subject.env = :production
       end
+
+      after { subject.env = nil }
 
       it 'returns false' do
         expect(subject.enabled? :header_comment).to be false
