@@ -8,6 +8,11 @@ module Bashly
         :compact_short_flags,
         :conjoined_flag_args,
         :config_path,
+        :enable_header_comment,
+        :enable_bash3_bouncer,
+        :enable_view_markers,
+        :enable_inspect_args,
+        :enable_deps_array,
         :lib_dir,
         :partials_extension,
         :private_reveal_key,
@@ -33,6 +38,32 @@ module Bashly
 
       def config_path
         @config_path ||= get(:config_path) % { source_dir: source_dir }
+      end
+
+      def enabled?(feature)
+        send(:"enable_#{feature}") == 'always' ||
+          (send(:"enable_#{feature}") == 'production' && production?) ||
+          (send(:"enable_#{feature}") == 'development' && !production?)
+      end
+
+      def enable_header_comment
+        @enable_header_comment ||= get :enable_header_comment
+      end
+
+      def enable_bash3_bouncer
+        @enable_bash3_bouncer ||= get :enable_bash3_bouncer
+      end
+
+      def enable_view_markers
+        @enable_view_markers ||= get :enable_view_markers
+      end
+
+      def enable_inspect_args
+        @enable_inspect_args ||= get :enable_inspect_args
+      end
+
+      def enable_deps_array
+        @enable_deps_array ||= get :enable_deps_array
       end
 
       def env

@@ -20,15 +20,17 @@
 >     done
 >   fi
 >
->   if ((${#deps[@]})); then
->     readarray -t sorted_keys < <(printf '%s\n' "${!deps[@]}" | sort)
->     echo
->     echo deps:
->     for k in "${sorted_keys[@]}"; do
->       echo "- \${deps[$k]} = ${deps[$k]}"
->     done
->   fi
->
+if Settings.enabled? :deps_array
+  >   if ((${#deps[@]})); then
+  >     readarray -t sorted_keys < <(printf '%s\n' "${!deps[@]}" | sort)
+  >     echo
+  >     echo deps:
+  >     for k in "${sorted_keys[@]}"; do
+  >       echo "- \${deps[$k]} = ${deps[$k]}"
+  >     done
+  >   fi
+  >
+end
 >   if ((${#env_var_names[@]})); then
 >     readarray -t sorted_names < <(printf '%s\n' "${env_var_names[@]}" | sort)
 >     echo

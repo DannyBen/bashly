@@ -1,6 +1,6 @@
 module Bashly
   module Script
-    class Dependency
+    class Dependency < Base
       attr_reader :label, :commands, :help
 
       class << self

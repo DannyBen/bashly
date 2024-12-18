@@ -2,7 +2,9 @@
 
 > run() {
 >   declare -g -A args=()
->   declare -g -A deps=()
+if Settings.enabled? :deps_array
+  >   declare -g -A deps=()
+end
 >   declare -g -a other_args=()
 >   declare -g -a env_var_names=()
 >   declare -g -a input=()
