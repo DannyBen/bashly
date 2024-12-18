@@ -97,7 +97,73 @@ describe Settings do
     end
   end
 
-  describe 'strict_string' do
+  describe '::enabled?' do
+    context 'when the value is always' do
+      before { subject.enable_header_comment = 'always' }
+
+      it 'returns true' do
+        expect(subject.enabled? :header_comment).to be true
+      end
+    end
+
+    context 'when the value is never' do
+      before { subject.enable_header_comment = 'never' }
+
+      it 'returns false' do
+        expect(subject.enabled? :header_comment).to be false
+      end
+    end
+
+    context 'when the value is production in a production env' do
+      before do
+        subject.enable_header_comment = 'production'
+        subject.env = :production
+      end
+
+      it 'returns true' do
+        expect(subject.enabled? :header_comment).to be true
+      end
+    end
+
+    context 'when the value is production in a development env' do
+      before do
+        subject.enable_header_comment = 'production'
+        subject.env = :development
+      end
+
+      after { subject.env = nil }
+
+      it 'returns false' do
+        expect(subject.enabled? :header_comment).to be false
+      end
+    end
+
+    context 'when the value is development in a production env' do
+      before do
+        subject.enable_header_comment = 'development'
+        subject.env = :production
+      end
+
+      it 'returns false' do
+        expect(subject.enabled? :header_comment).to be false
+      end
+    end
+
+    context 'when the value is development in a development env' do
+      before do
+        subject.enable_header_comment = 'development'
+        subject.env = :development
+      end
+
+      after { subject.env = nil }
+
+      it 'returns true' do
+        expect(subject.enabled? :header_comment).to be true
+      end
+    end
+  end
+
+  describe '::strict_string' do
     context 'when strict is true' do
       before { subject.strict = true }
 
