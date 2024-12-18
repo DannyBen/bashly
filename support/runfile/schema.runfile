@@ -6,6 +6,11 @@ action :generate do
   say "gb`$` #{cmd}"
   success = system cmd
   abort 'Failed' unless success
+
+  cmd = 'yq -p yaml -o json support/schema/settings.yml > schemas/settings.json'
+  say "gb`$` #{cmd}"
+  success = system cmd
+  abort 'Failed' unless success
 end
 
 help 'Run all the test actions in this runfile'

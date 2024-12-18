@@ -1,259 +1,259 @@
 {
-    "$schema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
-    "definitions": {
-        "color": {
-            "oneOf": [
-                {
-                    "type": "string",
-                    "examples": [
-                        "red",
-                        "green",
-                        "yellow",
-                        "blue",
-                        "magenta",
-                        "cyan",
-                        "bold",
-                        "underlined",
-                        "red_bold",
-                        "green_bold",
-                        "yellow_bold",
-                        "blue_bold",
-                        "magenta_bold",
-                        "cyan_bold",
-                        "red_underlined",
-                        "green_underlined",
-                        "yellow_underlined",
-                        "blue_underlined",
-                        "magenta_underlined",
-                        "cyan_underlined"
-                    ]
-                },
-                {
-                    "type": "null"
-                }
-            ]
+  "$schema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
+  "definitions": {
+    "color": {
+      "oneOf": [
+        {
+          "type": "string",
+          "examples": [
+            "red",
+            "green",
+            "yellow",
+            "blue",
+            "magenta",
+            "cyan",
+            "bold",
+            "underlined",
+            "red_bold",
+            "green_bold",
+            "yellow_bold",
+            "blue_bold",
+            "magenta_bold",
+            "cyan_bold",
+            "red_underlined",
+            "green_underlined",
+            "yellow_underlined",
+            "blue_underlined",
+            "magenta_underlined",
+            "cyan_underlined"
+          ]
+        },
+        {
+          "type": "null"
         }
+      ]
+    }
+  },
+  "title": "settings",
+  "description": "Settings of the current application\nhttps://bashly.dannyb.co/usage/settings/#settings",
+  "type": "object",
+  "properties": {
+    "source_dir": {
+      "title": "source dir",
+      "description": "The path containing the bashly source files\nhttps://bashly.dannyb.co/usage/settings/#source_dir",
+      "type": "string",
+      "minLength": 1,
+      "default": "src"
     },
-    "title": "settings",
-    "description": "Settings of the current application\nhttps://bashly.dannyb.co/usage/settings/#settings",
-    "type": "object",
-    "properties": {
-        "source_dir": {
-            "title": "source dir",
-            "description": "The path containing the bashly source files\nhttps://bashly.dannyb.co/usage/settings/#source_dir",
-            "type": "string",
-            "minLength": 1,
-            "default": "src"
+    "config_path": {
+      "title": "config path",
+      "description": "The path to bashly.yml\nhttps://bashly.dannyb.co/usage/settings/#config_path",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{source_dir}/bashly.yml"
+    },
+    "target_dir": {
+      "title": "target dir",
+      "description": "The path to use for creating the bash script\nhttps://bashly.dannyb.co/usage/settings/#target_dir",
+      "type": "string",
+      "minLength": 1,
+      "default": "."
+    },
+    "lib_dir": {
+      "title": "lib dir",
+      "description": "The path to use for common library files, relative to source_dir\nhttps://bashly.dannyb.co/usage/settings/#lib_dir",
+      "type": "string",
+      "minLength": 1,
+      "default": "lib"
+    },
+    "commands_dir": {
+      "title": "commands dir",
+      "description": "The path to use for command files, relative to source_dir\nhttps://bashly.dannyb.co/usage/settings/#commands_dir",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
         },
-        "config_path": {
-            "title": "config path",
-            "description": "The path to bashly.yml\nhttps://bashly.dannyb.co/usage/settings/#config_path",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{source_dir}/bashly.yml"
-        },
-        "target_dir": {
-            "title": "target dir",
-            "description": "The path to use for creating the bash script\nhttps://bashly.dannyb.co/usage/settings/#target_dir",
-            "type": "string",
-            "minLength": 1,
-            "default": "."
-        },
-        "lib_dir": {
-            "title": "lib dir",
-            "description": "The path to use for common library files, relative to source_dir\nhttps://bashly.dannyb.co/usage/settings/#lib_dir",
-            "type": "string",
-            "minLength": 1,
-            "default": "lib"
-        },
-        "commands_dir": {
-            "title": "commands dir",
-            "description": "The path to use for command files, relative to source_dir\nhttps://bashly.dannyb.co/usage/settings/#commands_dir",
-            "oneOf": [
-                {
-                    "type": "string",
-                    "minLength": 1
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "strict": {
-            "title": "strict",
-            "description": "Configure the bash options that will be added to the initialize function\nhttps://bashly.dannyb.co/usage/settings/#strict",
-            "oneOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "string",
-                    "examples": [
-                        "set -o pipefail"
-                    ]
-                }
-            ],
-            "default": false
-        },
-        "tab_indent": {
-            "title": "tab indent",
-            "description": "Whether to use tabs or spaces in the generated script\nhttps://bashly.dannyb.co/usage/settings/#tab_indent",
-            "type": "boolean",
-            "default": false
-        },
-        "compact_short_flags": {
-            "title": "compact short flags",
-            "description": "Whether to expand -abc to -a -b -c in the input line\nhttps://bashly.dannyb.co/usage/settings/#compact_short_flags",
-            "type": "boolean",
-            "default": true
-        },
-        "conjoined_flag_args": {
-            "title": "conjoined flag args",
-            "description": "Whether to expand --flag=value to --flag value in the input line\nhttps://bashly.dannyb.co/usage/settings/#conjoined_flag_args",
-            "type": "boolean",
-            "default": true
-        },
-        "show_examples_on_error": {
-            "title": "show examples on error",
-            "description": "Whether to show command examples when the input line is missing required arguments\nhttps://bashly.dannyb.co/usage/settings/#show_examples_on_error",
-            "type": "boolean",
-            "default": true
-        },
-        "env": {
-            "title": "env",
-            "description": "Whether to include development related comments in the generated script\nhttps://bashly.dannyb.co/usage/settings/#env",
-            "type": "string",
-            "enum": [
-                "development",
-                "production"
-            ],
-            "default": "development"
-        },
-        "enable_header_comment": {
-            "title": "enable_header_comment",
-            "description": "Whether to include the header comment in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_header_comment",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "always"
-        },
-        "enable_bash3_bouncer": {
-            "title": "enable_bash3_bouncer",
-            "description": "Whether to include the code snippet that aborts when an old version of bash is detected in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_bash3_bouncer",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "always"
-        },
-        "enable_view_markers": {
-            "title": "enable_view_markers",
-            "description": "Whether to include view marker comments in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_view_markers",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "development"
-        },
-        "enable_inspect_args": {
-            "title": "enable_inspect_args",
-            "description": "Whether to include the inspect_args function in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_inspect_args",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "development"
-        },
-        "enable_deps_array": {
-            "title": "enable_deps_array",
-            "description": "Whether to include the code for the dependencies array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_deps_array",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "always"
-        },
-        "enable_env_var_names_array": {
-            "title": "enable_env_var_names_array",
-            "description": "Whether to include the code for the env_var_names array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_env_var_names_array",
-            "type": "string",
-            "enum": [
-                "development",
-                "production",
-                "always",
-                "never"
-            ],
-            "default": "always"
-        },
-        "partials_extension": {
-            "title": "partials extension",
-            "description": "The extension to use when reading/writing partial script snippets\nhttps://bashly.dannyb.co/usage/settings/#partials_extension",
-            "type": "string",
-            "minLength": 1,
-            "default": "sh"
-        },
-        "private_reveal_key": {
-            "title": "private reveal key",
-            "description": "The name of the environment variable (case sensitive) that, if set, will reveal private commands, flags and environment variables\nhttps://bashly.dannyb.co/usage/settings/#private_reveal_key",
-            "oneOf": [
-                {
-                    "type": "string",
-                    "minLength": 1
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "usage_colors": {
-            "title": "usage colors",
-            "description": "Enable and configure colorful output for --help\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-            "type": "object",
-            "properties": {
-                "caption": {
-                    "title": "caption",
-                    "description": "Color for captions\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-                    "$ref": "#/definitions/color"
-                },
-                "command": {
-                    "title": "command",
-                    "description": "Color for commands\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-                    "$ref": "#/definitions/color"
-                },
-                "arg": {
-                    "title": "arg",
-                    "description": "Color for positional arguments\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-                    "$ref": "#/definitions/color"
-                },
-                "flag": {
-                    "title": "flag",
-                    "description": "Color for flags\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-                    "$ref": "#/definitions/color"
-                },
-                "environment_variable": {
-                    "title": "environment variable",
-                    "description": "Color for env environment variables\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
-                    "$ref": "#/definitions/color"
-                }
-            },
-            "additionalProperties": false
+        {
+          "type": "null"
         }
+      ]
     },
-    "additionalProperties": false
+    "strict": {
+      "title": "strict",
+      "description": "Configure the bash options that will be added to the initialize function\nhttps://bashly.dannyb.co/usage/settings/#strict",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string",
+          "examples": [
+            "set -o pipefail"
+          ]
+        }
+      ],
+      "default": false
+    },
+    "tab_indent": {
+      "title": "tab indent",
+      "description": "Whether to use tabs or spaces in the generated script\nhttps://bashly.dannyb.co/usage/settings/#tab_indent",
+      "type": "boolean",
+      "default": false
+    },
+    "compact_short_flags": {
+      "title": "compact short flags",
+      "description": "Whether to expand -abc to -a -b -c in the input line\nhttps://bashly.dannyb.co/usage/settings/#compact_short_flags",
+      "type": "boolean",
+      "default": true
+    },
+    "conjoined_flag_args": {
+      "title": "conjoined flag args",
+      "description": "Whether to expand --flag=value to --flag value in the input line\nhttps://bashly.dannyb.co/usage/settings/#conjoined_flag_args",
+      "type": "boolean",
+      "default": true
+    },
+    "show_examples_on_error": {
+      "title": "show examples on error",
+      "description": "Whether to show command examples when the input line is missing required arguments\nhttps://bashly.dannyb.co/usage/settings/#show_examples_on_error",
+      "type": "boolean",
+      "default": true
+    },
+    "env": {
+      "title": "env",
+      "description": "Whether to include development related comments in the generated script\nhttps://bashly.dannyb.co/usage/settings/#env",
+      "type": "string",
+      "enum": [
+        "development",
+        "production"
+      ],
+      "default": "development"
+    },
+    "enable_header_comment": {
+      "title": "enable_header_comment",
+      "description": "Whether to include the header comment in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_header_comment",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "always"
+    },
+    "enable_bash3_bouncer": {
+      "title": "enable_bash3_bouncer",
+      "description": "Whether to include the code snippet that aborts when an old version of bash is detected in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_bash3_bouncer",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "always"
+    },
+    "enable_view_markers": {
+      "title": "enable_view_markers",
+      "description": "Whether to include view marker comments in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_view_markers",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "development"
+    },
+    "enable_inspect_args": {
+      "title": "enable_inspect_args",
+      "description": "Whether to include the inspect_args function in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_inspect_args",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "development"
+    },
+    "enable_deps_array": {
+      "title": "enable_deps_array",
+      "description": "Whether to include the code for the dependencies array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_deps_array",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "always"
+    },
+    "enable_env_var_names_array": {
+      "title": "enable_env_var_names_array",
+      "description": "Whether to include the code for the env_var_names array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_env_var_names_array",
+      "type": "string",
+      "enum": [
+        "development",
+        "production",
+        "always",
+        "never"
+      ],
+      "default": "always"
+    },
+    "partials_extension": {
+      "title": "partials extension",
+      "description": "The extension to use when reading/writing partial script snippets\nhttps://bashly.dannyb.co/usage/settings/#partials_extension",
+      "type": "string",
+      "minLength": 1,
+      "default": "sh"
+    },
+    "private_reveal_key": {
+      "title": "private reveal key",
+      "description": "The name of the environment variable (case sensitive) that, if set, will reveal private commands, flags and environment variables\nhttps://bashly.dannyb.co/usage/settings/#private_reveal_key",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usage_colors": {
+      "title": "usage colors",
+      "description": "Enable and configure colorful output for --help\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "title": "caption",
+          "description": "Color for captions\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+          "$ref": "#/definitions/color"
+        },
+        "command": {
+          "title": "command",
+          "description": "Color for commands\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+          "$ref": "#/definitions/color"
+        },
+        "arg": {
+          "title": "arg",
+          "description": "Color for positional arguments\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+          "$ref": "#/definitions/color"
+        },
+        "flag": {
+          "title": "flag",
+          "description": "Color for flags\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+          "$ref": "#/definitions/color"
+        },
+        "environment_variable": {
+          "title": "environment variable",
+          "description": "Color for env environment variables\nhttps://bashly.dannyb.co/usage/settings/#usage_colors",
+          "$ref": "#/definitions/color"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
 }
