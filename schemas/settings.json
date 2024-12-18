@@ -129,6 +129,66 @@
             ],
             "default": "development"
         },
+        "enable_header_comment": {
+            "title": "enable_header_comment",
+            "description": "Whether to include the header comment in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_header_comment",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "always"
+        },
+        "enable_bash3_bouncer": {
+            "title": "enable_bash3_bouncer",
+            "description": "Whether to include the code snippet that aborts when an old version of bash is detected in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_bash3_bouncer",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "always"
+        },
+        "enable_view_markers": {
+            "title": "enable_view_markers",
+            "description": "Whether to include view marker comments in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_view_markers",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "development"
+        },
+        "enable_inspect_args": {
+            "title": "enable_inspect_args",
+            "description": "Whether to include the inspect_args function in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_inspect_args",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "development"
+        },
+        "enable_deps_array": {
+            "title": "enable_deps_array",
+            "description": "Whether to include the code for the dependencies array in the generated script\nhttps://bashly.dannyb.co/usage/settings/#enable_deps_array",
+            "type": "string",
+            "enum": [
+                "development",
+                "production",
+                "always",
+                "never"
+            ],
+            "default": "always"
+        },
         "partials_extension": {
             "title": "partials extension",
             "description": "The extension to use when reading/writing partial script snippets\nhttps://bashly.dannyb.co/usage/settings/#partials_extension",
