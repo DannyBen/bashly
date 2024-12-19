@@ -9,6 +9,11 @@
 # If you wish to change the path to this file, set the environment variable
 # BASHLY_SETTINGS_PATH.
 
+
+#-------------------------------------------------------------------------------
+# PATH OPTIONS
+#-------------------------------------------------------------------------------
+
 # The path containing the bashly source files
 source_dir: src
 
@@ -27,6 +32,14 @@ lib_dir: lib
 # directory, and each command will get its own subdirectory
 commands_dir: ~
 
+# The extension to use when reading/writing partial script snippets
+partials_extension: sh
+
+
+#-------------------------------------------------------------------------------
+# FORMAT OPTIONS
+#-------------------------------------------------------------------------------
+
 # Configure the bash options that will be added to the initialize function:
 # strict: true       Bash strict mode (set -euo pipefail)
 # strict: false      Only exit on errors (set -e)
@@ -38,6 +51,11 @@ strict: false
 # (every 2 leading spaces will be converted to a tab character)
 tab_indent: false
 
+
+#-------------------------------------------------------------------------------
+# INTERFACE OPTIONS
+#-------------------------------------------------------------------------------
+
 # When true, the generated script will consider any argument in the form of
 # `-abc` as if it is `-a -b -c`.
 compact_short_flags: true
@@ -46,14 +64,6 @@ compact_short_flags: true
 # `--flag=value` and `-f=value` as if it is `--flag value` and `-f value`
 # respectively.
 conjoined_flag_args: true
-
-# Set to 'production' or 'development':
-# env: production    Generate a smaller script, without file markers
-# env: development   Generate with file markers
-env: development
-
-# The extension to use when reading/writing partial script snippets
-partials_extension: sh
 
 # Show command examples (if any) whenever the user does not provide the
 # required arguments
@@ -75,3 +85,28 @@ usage_colors:
   arg: ~
   flag: ~
   environment_variable: ~
+
+
+#-------------------------------------------------------------------------------
+# FEATURE TOGGLES
+#-------------------------------------------------------------------------------
+
+# Set to 'production' or 'development'.
+# Determines which features are enabled in the rendered script.
+# Use the `enable_*` options below to adjust settings for each environment.
+# It is recommended to leave this set to 'development' and run
+# `bashly generate --production` when the slimmer production script is needed.
+env: development
+
+# Tweak the script output by enabling or disabling some script output.
+# These options accept one of the following strings:
+# - production      render this feature only when env == production
+# - development     render this feature only when env == development
+# - always          render this feature in any environment
+# - never           do not render this feature
+enable_header_comment: always
+enable_bash3_bouncer: always
+enable_view_markers: development
+enable_inspect_args: development
+enable_deps_array: always
+enable_env_var_names_array: always

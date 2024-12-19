@@ -2,15 +2,6 @@ if dependencies.any?
   = view_marker
 
   dependencies.each do |dependency|
-    > if command -v {{ dependency.commands.join(' ') }} >/dev/null 2>&1; then
-    >   deps['{{ dependency.label }}']="$(command -v {{ dependency.commands.join(' ') }} | head -n1)"
-    > else
-    >   printf "{{ strings[:missing_dependency] % { dependency: dependency.name } }}\n" >&2
-    if dependency.help
-      >   printf "%s\n" "{{ dependency.help.sanitize_for_print }}" >&2
-    end
-    >   exit 1
-    > fi
-    >
+    = dependency.render :filter
   end
 end

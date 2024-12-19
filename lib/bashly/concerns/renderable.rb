@@ -16,7 +16,7 @@ module Bashly
     # Outputs a comment that describes the view unless in production mode
     def view_marker(id = nil)
       id ||= ":#{caller_locations(1..1).first.path}"
-      "# #{id}" unless Settings.production?
+      "# #{id}" if Settings.enabled? :view_markers
     end
 
     # Reads a file from the userspace (Settings.source_dir) and returns

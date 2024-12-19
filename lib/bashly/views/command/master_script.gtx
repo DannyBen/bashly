@@ -4,7 +4,7 @@
 = render :version_command
 = render :usage
 = render :normalize_input
-= render :inspect_args unless Settings.production?
+= render :inspect_args if Settings.enabled? :inspect_args
 = render :user_lib if user_lib.any?
 = render :command_functions
 = render :parse_requirements
