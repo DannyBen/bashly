@@ -2,6 +2,7 @@ module Bashly
   module Script
     module Introspection
       module Commands
+        # Returns true if the command or any of its descendants has `catch_all`
         def catch_all_used_anywhere?
           deep_commands(include_self: true).any? { |x| x.catch_all.enabled? }
         end
