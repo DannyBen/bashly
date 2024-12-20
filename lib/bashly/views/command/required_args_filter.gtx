@@ -7,6 +7,7 @@ if required_args.any?
     = render(:examples_on_error).indent 2
     >   exit 1
     > fi
+    >
   end
 
   >
