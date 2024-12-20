@@ -2,25 +2,34 @@
 
 > run() {
 >   declare -g -A args=()
+unless Settings.enabled? :inspect_args
+  >   # shellcheck disable=SC2034
+end
+>   declare -g -a other_args=()
+
 if Settings.enabled? :deps_array
   >   declare -g -A deps=()
 end
->   declare -g -a other_args=()
+
 if Settings.enabled? :env_var_names_array
   >   declare -g -a env_var_names=()
 end
+
 >   declare -g -a input=()
+
 if has_unique_args_or_flags?
   >   declare -g -A unique_lookup=()
 end
+
 >   normalize_input "$@"
 >   parse_requirements "${input[@]}"
+
 if user_file_exist?('before')
   >   before_hook
 end
+
 > 
 >   case "$action" in
-
 deep_commands.each do |command|
   >     "{{ command.action_name }}") {{ command.function_name }}_command ;;
 end
