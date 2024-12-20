@@ -32,7 +32,7 @@ module Bashly
         ''
       end
 
-      Settings.production? ? content : "#{view_marker path}\n#{content}"
+      Settings.enabled?(:view_markers) ? "#{view_marker path}\n#{content}" : content
     end
 
     # Returns a path to a file in the user's source_dir. The file argument
