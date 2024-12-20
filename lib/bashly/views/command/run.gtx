@@ -2,10 +2,10 @@
 
 > run() {
 >   declare -g -A args=()
-unless Settings.enabled? :inspect_args
-  >   # shellcheck disable=SC2034
+
+if catch_all_used_anywhere?
+  >   declare -g -a other_args=()
 end
->   declare -g -a other_args=()
 
 if Settings.enabled? :deps_array
   >   declare -g -A deps=()

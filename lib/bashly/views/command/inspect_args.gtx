@@ -11,6 +11,8 @@
 >     echo args: none
 >   fi
 > 
+
+if catch_all_used_anywhere?
 >   if ((${#other_args[@]})); then
 >     echo
 >     echo other_args:
@@ -20,6 +22,8 @@
 >     done
 >   fi
 >
+end
+
 if Settings.enabled? :deps_array
   >   if ((${#deps[@]})); then
   >     readarray -t sorted_keys < <(printf '%s\n' "${!deps[@]}" | sort)
@@ -31,6 +35,7 @@ if Settings.enabled? :deps_array
   >   fi
   >
 end
+
 if Settings.enabled? :env_var_names_array
   >   if ((${#env_var_names[@]})); then
   >     readarray -t sorted_names < <(printf '%s\n' "${env_var_names[@]}" | sort)

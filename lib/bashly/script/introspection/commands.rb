@@ -2,6 +2,10 @@ module Bashly
   module Script
     module Introspection
       module Commands
+        def catch_all_used_anywhere?
+          deep_commands(include_self: true).any? { |x| x.catch_all.enabled? }
+        end
+
         # Returns a full list of the Command names and aliases combined
         def command_aliases
           commands.map(&:aliases).flatten
