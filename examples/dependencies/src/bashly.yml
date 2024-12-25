@@ -12,7 +12,8 @@ commands:
   dependencies:
   - git
   - curl
-  - shmurl
+  - dos
+  - netscape
 
 - name: upload
   help: Upload something
@@ -21,4 +22,5 @@ commands:
   # The message can use colors from the colors library (bashly add colors).
   dependencies:
     mini-docker: install with $(green gem install mini-docker)
+    multi-docker: install with $(blue gem install multi-docker)
     docker: visit https://docker.com for more information

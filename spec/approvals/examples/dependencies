@@ -7,7 +7,12 @@ created src/upload_command.sh
 created ./cli
 run ./cli --help to test your bash script
 + ./cli download
-missing dependency: shmurl
+missing dependency: dos
+missing dependency: netscape
 + ./cli upload
 missing dependency: mini-docker
 install with gem install mini-docker
+
+missing dependency: multi-docker
+install with gem install multi-docker
+

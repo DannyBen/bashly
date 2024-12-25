@@ -67,7 +67,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect   Connect to the metaverse
+  connect       Connect to the metaverse
 
 
 
@@ -84,7 +84,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect   Connect to the metaverse
+  connect       Connect to the metaverse
 
 Options:
   --help, -h

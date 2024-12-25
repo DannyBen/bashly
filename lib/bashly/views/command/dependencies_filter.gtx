@@ -1,7 +1,12 @@
 if dependencies.any?
   = view_marker
 
+  > missing_deps=
   dependencies.each do |dependency|
     = dependency.render :filter
   end
+
+  > if [[ -n $missing_deps ]]; then
+  >   exit 1
+  > fi
 end
