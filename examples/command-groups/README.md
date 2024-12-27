@@ -112,9 +112,10 @@ Options:
 ### `$ ./ftp login`
 
 ````shell
-# this file is located in 'src/login_command.sh'
-# code for 'ftp login' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/login_command.sh'.
+# It contains the implementation for the 'ftp login' command.
+# The code you write here will be wrapped by a function named 'ftp_login_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 

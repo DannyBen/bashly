@@ -4,8 +4,10 @@ created src/root_command.sh
 created ./cli
 run ./cli --help to test your bash script
 + ./cli
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 + ./cli --help
 cli - Example that replaces the default behavior of -v and -h
@@ -33,13 +35,17 @@ Options:
 + ./cli -h
 --host requires an argument: --host, -h HOST
 + ./cli -v
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--verbose]} = 1
 + ./cli -h localhost -v
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--host]} = localhost
 - ${args[--verbose]} = 1

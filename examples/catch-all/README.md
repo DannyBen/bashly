@@ -77,8 +77,10 @@ Arguments:
 ### `$ ./download something`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'download' command.
+# The code you write here will be wrapped by a function named 'download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[message]} = something
 
@@ -88,8 +90,10 @@ args:
 ### `$ ./download something with --additional args`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'download' command.
+# The code you write here will be wrapped by a function named 'download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[message]} = something
 
@@ -105,8 +109,10 @@ other_args:
 ### `$ ./download something --debug -- also pass --debug to catch_all`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'download' command.
+# The code you write here will be wrapped by a function named 'download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--debug]} = 1
 - ${args[message]} = something

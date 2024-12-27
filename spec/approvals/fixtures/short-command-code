@@ -5,9 +5,10 @@ created src/get_command.sh
 created ./rush
 run ./rush --help to test your bash script
 + ./rush c
-# this file is located in 'src/config_command.sh'
-# code for 'rush config' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/config_command.sh'.
+# It contains the implementation for the 'rush config' command.
+# The code you write here will be wrapped by a function named 'rush_config_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 + ./rush g
 missing required argument: REPO

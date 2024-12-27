@@ -68,9 +68,10 @@ Options:
 ### `$ ./tester`
 
 ````shell
-# this file is located in 'src/all_command.sh'
-# code for 'tester all' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/all_command.sh'.
+# It contains the implementation for the 'tester all' command.
+# The code you write here will be wrapped by a function named 'tester_all_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -79,9 +80,10 @@ args: none
 ### `$ ./tester all`
 
 ````shell
-# this file is located in 'src/all_command.sh'
-# code for 'tester all' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/all_command.sh'.
+# It contains the implementation for the 'tester all' command.
+# The code you write here will be wrapped by a function named 'tester_all_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -107,9 +109,10 @@ Options:
 ### `$ ./tester only one`
 
 ````shell
-# this file is located in 'src/only_command.sh'
-# code for 'tester only' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/only_command.sh'.
+# It contains the implementation for the 'tester only' command.
+# The code you write here will be wrapped by a function named 'tester_only_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[search]} = one
 

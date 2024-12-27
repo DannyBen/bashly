@@ -107,9 +107,10 @@ Options:
 ### `$ ./cli dir list`
 
 ````shell
-# this file is located in 'src/dir_commands/list.sh'
-# code for 'cli dir list' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/dir_commands/list.sh'.
+# It contains the implementation for the 'cli dir list' command.
+# The code you write here will be wrapped by a function named 'cli_dir_list_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 

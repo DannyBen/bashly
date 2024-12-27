@@ -133,7 +133,7 @@ module Bashly
       end
 
       def create_root_command_file
-        create_file "#{Settings.source_dir}/#{command.filename}", command.render(:default_root_script)
+        create_file "#{Settings.source_dir}/#{command.filename}", command.render(:default_script)
       end
 
       def create_all_command_files

@@ -4,25 +4,33 @@ created src/root_command.sh
 created ./flags
 run ./flags --help to test your bash script
 + ./flags -abC
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'flags' command.
+# The code you write here will be wrapped by a function named 'flags_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--alfa]} = 1
 - ${args[--bravo]} = 1
 - ${args[--charlie]} = 1
 + ./flags -d=2
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'flags' command.
+# The code you write here will be wrapped by a function named 'flags_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--delta]} = 2
 + ./flags --echo=2
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'flags' command.
+# The code you write here will be wrapped by a function named 'flags_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--echo]} = 2
 + ./flags '-E=- hello world'
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'flags' command.
+# The code you write here will be wrapped by a function named 'flags_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--echo]} = - hello world
 + ./flags -abCd

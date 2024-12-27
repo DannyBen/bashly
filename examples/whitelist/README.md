@@ -131,8 +131,10 @@ region must be one of: eu, us
 ### `$ ./login eu --user admin`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'login' command.
+# The code you write here will be wrapped by a function named 'login_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[environment]} = development
 - ${args[--protocol]} = ssh
@@ -153,8 +155,10 @@ args:
 ### `$ ./login eu production --user admin --protocol ssh`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'login' command.
+# The code you write here will be wrapped by a function named 'login_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[environment]} = production
 - ${args[--protocol]} = ssh

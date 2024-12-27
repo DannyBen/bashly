@@ -42,8 +42,10 @@ flags:
 ### `$ ./cli`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -95,8 +97,10 @@ Options:
 ### `$ ./cli -v`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--verbose]} = 1
 
@@ -106,8 +110,10 @@ args:
 ### `$ ./cli -h localhost -v`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--host]} = localhost
 - ${args[--verbose]} = 1

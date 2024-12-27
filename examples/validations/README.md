@@ -68,9 +68,10 @@ commands:
 ### `$ ./validate calc 1 2 --save README.md`
 
 ````shell
-# this file is located in 'src/calc_command.sh'
-# code for 'validate calc' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/calc_command.sh'.
+# It contains the implementation for the 'validate calc' command.
+# The code you write here will be wrapped by a function named 'validate_calc_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[first]} = 1
 - ${args[--save]} = README.md
@@ -118,9 +119,10 @@ must be an existing directory
 ### `$ BUILD_DIR=src ./validate build`
 
 ````shell
-# this file is located in 'src/build_command.sh'
-# code for 'validate build' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/build_command.sh'.
+# It contains the implementation for the 'validate build' command.
+# The code you write here will be wrapped by a function named 'validate_build_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 environment variables:
