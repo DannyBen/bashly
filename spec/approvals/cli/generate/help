@@ -1,5 +1,7 @@
 Generate the bash script and required files
 
+This command is also aliased as 'build'
+
 Usage:
   bashly generate [options]
   bashly generate (-h|--help)
@@ -32,4 +34,5 @@ Options:
 Examples:
   bashly generate --force
   bashly generate --wrap my_function
+  bashly build --watch --env production
   bashly g -uw
