@@ -68,7 +68,7 @@ properties:
     description: |-
       The path to use for command files, relative to source_dir
       https://bashly.dannyb.co/usage/settings/#commands_dir
-    oneOf:
+    oneOf: &optional_string
       - type: string
         minLength: 1
       - type: "null"
@@ -186,10 +186,7 @@ properties:
     description: |-
       The name of the environment variable (case sensitive) that, if set, will reveal private commands, flags and environment variables
       https://bashly.dannyb.co/usage/settings/#private_reveal_key
-    oneOf:
-      - type: string
-        minLength: 1
-      - type: "null"
+    oneOf: *optional_string
   usage_colors:
     title: usage colors
     description: |-
@@ -227,5 +224,37 @@ properties:
           Color for env environment variables
           https://bashly.dannyb.co/usage/settings/#usage_colors
         $ref: '#/definitions/color'
+    additionalProperties: false
+  var_aliases:
+    title: var_aliases
+    description: |-
+      Declare alias names for bashly's public global arrays
+      https://bashly.dannyb.co/usage/settings/#var_aliases
+    type: object
+    properties:
+      args:
+        title: args
+        description: |-
+          Alias name for the args array
+          https://bashly.dannyb.co/usage/settings/#var_aliases
+        oneOf: *optional_string
+      other_args:
+        title: other_args
+        description: |-
+          Alias name for the other_args array (used when catch_all is enabled)
+          https://bashly.dannyb.co/usage/settings/#var_aliases
+        oneOf: *optional_string
+      deps:
+        title: deps
+        description: |-
+          Alias name for the deps array
+          https://bashly.dannyb.co/usage/settings/#var_aliases
+        oneOf: *optional_string
+      env_var_names:
+        title: env_var_names
+        description: |-
+          Alias name for the env_var_names array
+          https://bashly.dannyb.co/usage/settings/#var_aliases
+        oneOf: *optional_string
     additionalProperties: false
 additionalProperties: false

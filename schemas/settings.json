@@ -253,6 +253,66 @@
         }
       },
       "additionalProperties": false
+    },
+    "var_aliases": {
+      "title": "var_aliases",
+      "description": "Declare alias names for bashly's public global arrays\nhttps://bashly.dannyb.co/usage/settings/#var_aliases",
+      "type": "object",
+      "properties": {
+        "args": {
+          "title": "args",
+          "description": "Alias name for the args array\nhttps://bashly.dannyb.co/usage/settings/#var_aliases",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "other_args": {
+          "title": "other_args",
+          "description": "Alias name for the other_args array (used when catch_all is enabled)\nhttps://bashly.dannyb.co/usage/settings/#var_aliases",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deps": {
+          "title": "deps",
+          "description": "Alias name for the deps array\nhttps://bashly.dannyb.co/usage/settings/#var_aliases",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "env_var_names": {
+          "title": "env_var_names",
+          "description": "Alias name for the env_var_names array\nhttps://bashly.dannyb.co/usage/settings/#var_aliases",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
