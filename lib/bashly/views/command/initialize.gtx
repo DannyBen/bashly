@@ -11,6 +11,8 @@ if root_command?
   = render(:environment_variables_default).indent 2
 end
 
+= render(:globals).indent(2)
+
 if user_file_exist?('initialize')
   > 
   = load_user_file('initialize').indent 2
