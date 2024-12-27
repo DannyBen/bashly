@@ -22,7 +22,8 @@ module Bashly
         :strict,
         :tab_indent,
         :target_dir,
-        :usage_colors
+        :usage_colors,
+        :var_aliases
       )
 
       def commands_dir
@@ -131,6 +132,10 @@ module Bashly
 
       def usage_colors
         @usage_colors ||= get :usage_colors
+      end
+
+      def var_aliases
+        @var_aliases ||= get :var_aliases
       end
 
     private

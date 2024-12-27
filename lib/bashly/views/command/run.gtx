@@ -21,6 +21,13 @@ if has_unique_args_or_flags?
   >   declare -g -A unique_lookup=()
 end
 
+>
+Settings.var_aliases.each do |original, refname|
+  if refname
+    >   declare -gn {{ refname }}={{ original }}
+  end
+end
+>
 >   normalize_input "$@"
 >   parse_requirements "${input[@]}"
 
