@@ -110,3 +110,18 @@ enable_view_markers: development
 enable_inspect_args: development
 enable_deps_array: always
 enable_env_var_names_array: always
+
+
+#-------------------------------------------------------------------------------
+# SCRIPTING OPTIONS
+#-------------------------------------------------------------------------------
+
+# These are the public global variables available for use in your partial
+# scripts. Adding a new name here will create a reference variable using
+# `declare -gn`, allowing you to access the original variable under the new
+# name in addition to its original name.
+var_aliases:
+  args: ~
+  other_args: ~
+  deps: ~
+  env_var_names: ~
