@@ -1,6 +1,0 @@
-> echo "# this file is located in '{{ "#{Settings.source_dir}/#{filename}" }}'"
-> echo "# you can edit it freely and regenerate (it will not be overwritten)"
-if Settings.enabled? :inspect_args
-  > inspect_args
-end
->

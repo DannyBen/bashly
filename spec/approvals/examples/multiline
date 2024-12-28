@@ -53,9 +53,10 @@ Examples:
     multi multiline --flag
 
 + ./multi multiline
-# this file is located in 'src/multiline_command.sh'
-# code for 'multi multiline' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/multiline_command.sh'.
+# It contains the implementation for the 'multi multiline' command.
+# The code you write here will be wrapped by a function named 'multi_multiline_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 environment variables:

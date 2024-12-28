@@ -36,15 +36,17 @@ missing required flag: --charlie, -c NAME
 + ./flags -c clark show
 --charlie must be one of: chaplin
 + ./flags -c chaplin show
-# this file is located in 'src/show_command.sh'
-# code for 'flags show' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/show_command.sh'.
+# It contains the implementation for the 'flags show' command.
+# The code you write here will be wrapped by a function named 'flags_show_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--charlie]} = chaplin
 + ./flags -c chaplin -ab show
-# this file is located in 'src/show_command.sh'
-# code for 'flags show' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/show_command.sh'.
+# It contains the implementation for the 'flags show' command.
+# The code you write here will be wrapped by a function named 'flags_show_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--alpha]} = 1
 - ${args[--bravo]} = 1

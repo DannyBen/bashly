@@ -52,9 +52,10 @@ commands:
 ### `$ ./cli download`
 
 ````shell
-# this file is located in 'src/download_command.sh'
-# code for 'cli download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/download_command.sh'.
+# It contains the implementation for the 'cli download' command.
+# The code you write here will be wrapped by a function named 'cli_download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 deps:
