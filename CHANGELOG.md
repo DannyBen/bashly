@@ -1,6 +1,22 @@
 Changelog
 ========================================
 
+v1.2.7 - 2024-12-28
+----------------------------------------
+
+- Update version specifications for all dependencies [`6bf0c4a`](https://github.com/DannyBen/bashly/commit/6bf0c4a)
+- Add support for tweaking production/development output [`c23d705`](https://github.com/DannyBen/bashly/commit/c23d705)
+- Fix shellcheck unused variable on `other_args` in production [`f78c6e9`](https://github.com/DannyBen/bashly/commit/f78c6e9)
+- Fix view markers for user files [`cc3896e`](https://github.com/DannyBen/bashly/commit/cc3896e)
+- Update dependency check to show all missing dependencies at once [`4925106`](https://github.com/DannyBen/bashly/commit/4925106)
+- Add support for declaring aliases for internal global variables [`5264d51`](https://github.com/DannyBen/bashly/commit/5264d51)
+- Move global var declarations from `run()` to `initialize()` [`9167c49`](https://github.com/DannyBen/bashly/commit/9167c49)
+- Update settings JSON schema [`b4e7e4d`](https://github.com/DannyBen/bashly/commit/b4e7e4d)
+- Add `build` as an alias to `bashly generate` [`d64bc36`](https://github.com/DannyBen/bashly/commit/d64bc36)
+- Update default script header [`c85276c`](https://github.com/DannyBen/bashly/commit/c85276c)
+- Compare [`v1.2.6..v1.2.7`](https://github.com/dannyben/bashly/compare/v1.2.6..v1.2.7)
+
+
 v1.2.6 - 2024-11-08
 ----------------------------------------
 
