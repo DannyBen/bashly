@@ -17,7 +17,7 @@ describe Commands::Preview do
 
     it 'prints the generated cli script' do
       expect { subject.execute %w[preview] }.to output_approval('cli/preview/no-args')
-        .except(/env bash\n.*\nrun "\$@"/m, "env bash\n...\nrun \"$@\"")
+        .except(/env bash\n.*\n\s*run "\$@"\n.*/m, "env bash\n...\nrun \"$@\"")
     end
   end
 end

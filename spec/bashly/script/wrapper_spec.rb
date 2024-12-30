@@ -11,7 +11,7 @@ describe Script::Wrapper do
         lines = subject.code.split "\n"
         expect(lines[0..13].join("\n")).to match_approval('script/wrapper/code')
           .except(/\d+\.\d+\.\d+(\.rc\d)?/)
-        expect(lines[-1]).to eq 'run "$@"'
+        expect(lines[-2]).to eq '  run "$@"'
       end
     end
 

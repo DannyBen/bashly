@@ -173,6 +173,14 @@ properties:
     type: string
     enum: *feature_toggles
     default: always
+  enable_sourcing:
+    title: enable_sourcing
+    description: |-
+      Whether to wrap the script execution in a condition that checks if the script is sourced
+      https://bashly.dannyb.co/usage/settings/#enable_sourcing
+    type: string
+    enum: *feature_toggles
+    default: development
   partials_extension:
     title: partials extension
     description: |-
