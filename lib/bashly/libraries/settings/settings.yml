@@ -110,6 +110,7 @@ enable_view_markers: development
 enable_inspect_args: development
 enable_deps_array: always
 enable_env_var_names_array: always
+enable_sourcing: development
 
 
 #-------------------------------------------------------------------------------

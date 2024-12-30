@@ -13,6 +13,13 @@
 = render :run
 
 > 
-> initialize
-> run "$@"
+if Settings.enabled? :sourcing
+  > if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  >   initialize
+  >   run "$@"
+  > fi
+else
+  > initialize
+  > run "$@"
+end
 > 

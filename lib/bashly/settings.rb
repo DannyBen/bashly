@@ -13,6 +13,7 @@ module Bashly
         :enable_env_var_names_array,
         :enable_header_comment,
         :enable_inspect_args,
+        :enable_sourcing,
         :enable_view_markers,
         :lib_dir,
         :partials_extension,
@@ -48,20 +49,8 @@ module Bashly
           (send(:"enable_#{feature}") == 'development' && !production?)
       end
 
-      def enable_header_comment
-        @enable_header_comment ||= get :enable_header_comment
-      end
-
       def enable_bash3_bouncer
         @enable_bash3_bouncer ||= get :enable_bash3_bouncer
-      end
-
-      def enable_view_markers
-        @enable_view_markers ||= get :enable_view_markers
-      end
-
-      def enable_inspect_args
-        @enable_inspect_args ||= get :enable_inspect_args
       end
 
       def enable_deps_array
@@ -70,6 +59,22 @@ module Bashly
 
       def enable_env_var_names_array
         @enable_env_var_names_array ||= get :enable_env_var_names_array
+      end
+
+      def enable_header_comment
+        @enable_header_comment ||= get :enable_header_comment
+      end
+
+      def enable_inspect_args
+        @enable_inspect_args ||= get :enable_inspect_args
+      end
+
+      def enable_sourcing
+        @enable_sourcing ||= get :enable_sourcing
+      end
+
+      def enable_view_markers
+        @enable_view_markers ||= get :enable_view_markers
       end
 
       def env
