@@ -2,7 +2,6 @@
 
 > initialize() {
 >   declare -g version="<%= version %>"
->   declare -g long_usage=''
 >   {{ Settings.strict_string }}
 
 if root_command?
