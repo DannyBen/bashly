@@ -1,8 +1,8 @@
 = view_marker
 
 > initialize() {
->   version="<%= version %>"
->   long_usage=''
+>   declare -g version="<%= version %>"
+>   declare -g long_usage=''
 >   {{ Settings.strict_string }}
 
 if root_command?
