@@ -1,8 +1,9 @@
 # Internal Run Example
 
-This example demonstrates how to utilize the internal `run` function in order
-to call other commands internally, using the same syntax as would be used by
-a user in the CLI.
+This example demonstrates how to use the `run` function to call commands
+internally, using the exact same syntax as a user would in the CLI. This
+approach can be useful for chaining commands or reusing logic without
+duplicating code.
 
 This example was generated with:
 
@@ -13,6 +14,15 @@ $ bashly generate
 # ... now edit the generated command files to match the example ...
 $ bashly generate
 ```
+
+Note that while this pattern of calling `run` internally is supported, you may
+want to consider using [lib functions]
+instead, for a more robust codebase.
+
+While this pattern of calling run internally is supported, you may want to
+consider using [lib functions](https://bashly.dannyb.co/usage/writing-your-scripts/#adding-common-functions)
+instead. lib functions can help create a more robust and maintainable codebase
+by centralizing reusable logic.
 
 <!-- include: src/build_command.sh -->
 <!-- include: src/test_command.sh -->
