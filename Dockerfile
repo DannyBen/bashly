@@ -1,5 +1,7 @@
 FROM dannyben/alpine-ruby:3.3.3
 
+LABEL io.whalebrew.name=bashly
+
 ENV PS1="\n\n>> bashly \W \$ "
 ENV BASHLY_VERSION=1.2.7
 
