@@ -1,5 +1,5 @@
 = view_marker
-
+> declare -g long_usage=''
 > declare -g -A args=()
 
 if catch_all_used_anywhere?

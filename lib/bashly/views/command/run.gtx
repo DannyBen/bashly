@@ -1,6 +1,8 @@
 = view_marker
 
 > run() {
+= render(:globals).indent(2)
+>
 >   normalize_input "$@"
 >   parse_requirements "${input[@]}"
 

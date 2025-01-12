@@ -1,0 +1,56 @@
++ bundle exec bashly generate
+creating user files in src
+skipped src/build_command.sh (exists)
+skipped src/test_command.sh (exists)
+skipped src/deploy_command.sh (exists)
+created ./cli
+run ./cli --help to test your bash script
++ ./cli -h
+cli - Internal run test
+
+Usage:
+  cli COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  build    Build code
+  test     Test code
+  deploy   Deploy code
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
++ ./cli deploy -h
+cli deploy - Deploy code
+
+Usage:
+  cli deploy [OPTIONS]
+  cli deploy --help | -h
+
+Options:
+  --build
+    Build before deploying
+
+  --test
+    Test before deploying
+
+  --help, -h
+    Show this help
+
++ ./cli deploy --build --test
+BUILD complete
+args:
+- ${args[env]} = production
+
+TEST complete
+args:
+- ${args[--full]} = 1
+
+DEPLOY complete
+args:
+- ${args[--full]} = 1

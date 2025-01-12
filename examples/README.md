@@ -42,6 +42,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [commands-expose](commands-expose#readme) - showing subcommands in the parent's help
 - [key-value-pairs](key-value-pairs#readme) - parsing key=value arguments and flags
 - [command-examples-on-error](command-examples-on-error#readme) - showing examples on error
+- [internal-run](internal-run#readme) - calling other commands internally
 
 ## Customization
 

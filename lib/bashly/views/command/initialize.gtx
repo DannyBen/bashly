@@ -1,8 +1,7 @@
 = view_marker
 
 > initialize() {
->   version="<%= version %>"
->   long_usage=''
+>   declare -g version="<%= version %>"
 >   {{ Settings.strict_string }}
 
 if root_command?
@@ -10,8 +9,6 @@ if root_command?
   = render(:variables).indent(2)
   = render(:environment_variables_default).indent 2
 end
-
-= render(:globals).indent(2)
 
 if user_file_exist?('initialize')
   > 
