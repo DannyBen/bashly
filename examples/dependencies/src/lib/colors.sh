@@ -10,10 +10,18 @@
 ## Color output will be disabled if `NO_COLOR` environment variable is set
 ## in compliance with https://no-color.org/
 ##
+## In case you wish to enable auto detection for color output based on the
+## terminal being interactive (TTY), call `enable_auto_colors` in your 
+## `src/initialize.sh` (Run `bashly add hooks` to add this file).
+##
+enable_auto_colors() {
+  [[ -z ${NO_COLOR+x} && ! -t 1 ]] && NO_COLOR=1 || true
+}
+
 print_in_color() {
   local color="$1"
   shift
-  if [[ -z ${NO_COLOR+x} ]]; then
+  if [[ "${NO_COLOR:-}" == "" ]]; then
     printf "$color%b\e[0m\n" "$*"
   else
     printf "%b\n" "$*"
