@@ -15,7 +15,10 @@
 ## `src/initialize.sh` (Run `bashly add hooks` to add this file).
 ##
 enable_auto_colors() {
-  [[ -z ${NO_COLOR+x} && ! -t 1 ]] && NO_COLOR=1 || true
+  ## If NO_COLOR has not been set and stdout is not a TTY, disable colors
+  if [[ -z ${NO_COLOR+x} && ! -t 1 ]]; then
+    NO_COLOR=1
+  fi
 }
 
 print_in_color() {
