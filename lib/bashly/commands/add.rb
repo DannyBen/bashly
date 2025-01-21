@@ -3,7 +3,7 @@ module Bashly
     class Add < Base
       help 'Add extra features and customization to your script'
 
-      usage 'bashly add [--source NAME] LIBRARY [ARGS...] [--force]'
+      usage 'bashly add [--source NAME] LIBRARY [ARGS...] [--force --quiet]'
       usage 'bashly add [--source NAME] --list'
       usage 'bashly add (-h|--help)'
 
@@ -17,6 +17,7 @@ module Bashly
       USAGE
       option '-f --force', 'Overwrite existing files'
       option '-l --list', 'Show available libraries'
+      option '-q --quiet', 'Do not show post-install messages'
 
       attr_reader :skip_src_check
 
@@ -70,7 +71,9 @@ module Bashly
         end
 
         message = library.post_install_message
-        say "\n#{message}" if message && files_created.positive?
+        return if !message || files_created.zero? || args['--quiet']
+
+        say "\n#{message}"
       end
 
       def safe_write(path, content)
