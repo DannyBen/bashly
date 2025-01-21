@@ -47,6 +47,17 @@ describe Commands::Add do
     end
   end
 
+  describe 'add colors --quiet' do
+    let(:lib_file) { "#{source_dir}/lib/colors.sh" }
+
+    before { reset_tmp_dir create_src: true }
+
+    it 'does not show the post-install message' do
+      expect { subject.execute %w[add colors --quiet] }.to output_approval('cli/add/colors-quiet')
+      expect(File).to exist(lib_file)
+    end
+  end
+
   describe 'add completions' do
     before { reset_tmp_dir init: true }
 
