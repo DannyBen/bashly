@@ -32,6 +32,8 @@ describe Library do
 
   describe '#post_install_message' do
     context 'when the library has no configured message' do
+      let(:name) { :config }
+
       it 'returns nil' do
         expect(subject.post_install_message).to be_nil
       end

@@ -7,6 +7,15 @@ run ./cli --help to test your bash script
 created src/my-libz/sample_function.sh
 + bundle exec bashly add colors
 created src/my-libz/colors.sh
+
+The colors library supports the NO_COLOR standard out of the box.
+
+In case you wish to also enable automatic output of colors based on the
+terminal being interactive (TTY), call enable_auto_colors in your 
+src/initialize.sh. You may run the following command to add this file:
+
+  $ bashly add hooks
+
 + bundle exec bashly generate
 creating user files in src
 skipped src/root_command.sh (exists)
