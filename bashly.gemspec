@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/bashly/issues',
     'changelog_uri'         => 'https://github.com/DannyBen/bashly/blob/master/CHANGELOG.md',
-    'homepage_uri'          => 'https://bashly.dannyb.co/',
+    'homepage_uri'          => 'https://bashly.dev/',
     'source_code_uri'       => 'https://github.com/DannyBen/bashly',
     'rubygems_mfa_required' => 'true',
   }

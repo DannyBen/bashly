@@ -1,6 +1,6 @@
 command:
   help: Define the root command, or any sub-command.
-  url: https://bashly.dannyb.co/configuration/command/
+  url: https://bashly.dev/configuration/command/
   example: |-
     name: rush
     help: Personal package manager
@@ -17,7 +17,7 @@ command:
 
 command.alias:
   help: Specify one or more aliases for this sub-command.
-  url: https://bashly.dannyb.co/configuration/command/#alias
+  url: https://bashly.dev/configuration/command/#alias
   example: |-
     # Define a single alias
     command:
@@ -36,7 +36,7 @@ command.alias:
 
 command.args:
   help: Define a list of positional arguments. See `arg` for reference.
-  url: https://bashly.dannyb.co/configuration/command/#args
+  url: https://bashly.dev/configuration/command/#args
   example: |-
     args:
     - name: repo
@@ -45,7 +45,7 @@ command.args:
 
 command.catch_all:
   help: Specify that this command should allow for additional arbitrary arguments or flags.
-  url: https://bashly.dannyb.co/configuration/command/#catch_all
+  url: https://bashly.dev/configuration/command/#catch_all
   example: |-
     commands:
     - name: download
@@ -67,7 +67,7 @@ command.catch_all:
 
 command.commands:
   help: Define a list of sub-commands. See `command` for reference.
-  url: https://bashly.dannyb.co/configuration/command/#commands
+  url: https://bashly.dev/configuration/command/#commands
   example: |-
     commands:
     - name: add
@@ -76,7 +76,7 @@ command.commands:
 
 command.completions:
   help: Specify a list of additional completion suggestions when used in conjunction with `bashly add completions`.
-  url: https://bashly.dannyb.co/configuration/command/#completions
+  url: https://bashly.dev/configuration/command/#completions
   example: |-
     commands:
     - name: view
@@ -88,7 +88,7 @@ command.completions:
 
 command.default:
   help: Specify that this sub-command will be executed implicitly.
-  url: https://bashly.dannyb.co/configuration/command/#default
+  url: https://bashly.dev/configuration/command/#default
   example: |-
     # This command will execute when the command line is not
     # recognized.
@@ -106,7 +106,7 @@ command.default:
 
 command.dependencies:
   help: Specify a list of required external commands that are needed to run this command.
-  url: https://bashly.dannyb.co/configuration/command/#dependencies
+  url: https://bashly.dev/configuration/command/#dependencies
   example: |-
     # Array syntax
     dependencies:
@@ -128,7 +128,7 @@ command.dependencies:
   
 command.environment_variables:
   help: Define a list of environment variables. See `environment_variable` for reference.
-  url: https://bashly.dannyb.co/configuration/command/#environment_variables
+  url: https://bashly.dev/configuration/command/#environment_variables
   example: |-
     environment_variables:
     - name: config_path
@@ -140,7 +140,7 @@ command.environment_variables:
 
 command.examples:
   help: Define one or more example messages. 
-  url: https://bashly.dannyb.co/configuration/command/#examples
+  url: https://bashly.dev/configuration/command/#examples
   example: |-
     # Use an array of examples for simple one-liners.
     examples:
@@ -159,7 +159,7 @@ command.examples:
 
 command.expose:
   help: Specify that the sub-commands of this command should be visible when showing the usage of its parent.
-  url: https://bashly.dannyb.co/configuration/command/#expose
+  url: https://bashly.dev/configuration/command/#expose
   example: |-
     name: cli
     commands:
@@ -190,7 +190,7 @@ command.expose:
 
 command.extensible:
   help: Specify that this command can be extended by external means.
-  url: https://bashly.dannyb.co/configuration/command/#extensible
+  url: https://bashly.dev/configuration/command/#extensible
   example: |-
     name: mygit
     help: Wrapper for git
@@ -206,7 +206,7 @@ command.extensible:
 
 command.filename:
   help: Specify the path (relative to src) to the partial source code file.
-  url: https://bashly.dannyb.co/configuration/command/#filename
+  url: https://bashly.dev/configuration/command/#filename
   example: |-
     commands:
     - name: connect
@@ -215,7 +215,7 @@ command.filename:
 
 command.filters:
   help: Specify a list of custom filter functions that will prevent the command from running unless certain conditions are met.
-  url: https://bashly.dannyb.co/configuration/command/#filters
+  url: https://bashly.dev/configuration/command/#filters
   example: |-
     commands:
     - name: container
@@ -235,7 +235,7 @@ command.filters:
 
 command.flags:
   help: Define a list of option flags. See `flag` for reference.
-  url: https://bashly.dannyb.co/configuration/command/#flags
+  url: https://bashly.dev/configuration/command/#flags
   example: |-
     flags:
     - long: --purge
@@ -244,13 +244,13 @@ command.flags:
 
 command.footer:
   help: Specify a message to show at the bottom of the help text.
-  url: https://bashly.dannyb.co/configuration/command/#footer
+  url: https://bashly.dev/configuration/command/#footer
   example: |-
     footer: For further help visit https://my.docs-site.com
 
 command.function:
   help: Specify a different base function name for this command.
-  url: https://bashly.dannyb.co/configuration/command/#function
+  url: https://bashly.dev/configuration/command/#function
   example: |-
     commands:
     - name: container-start
@@ -271,7 +271,7 @@ command.function:
 
 command.group:
   help: Specify the group that this command belongs to.
-  url: https://bashly.dannyb.co/configuration/command/#group
+  url: https://bashly.dev/configuration/command/#group
   example: |-
     command:
       name: start
@@ -280,7 +280,7 @@ command.group:
 
 command.help:
   help: Specify the help text to show when displaying usage.
-  url: https://bashly.dannyb.co/configuration/command/#help
+  url: https://bashly.dev/configuration/command/#help
   example: |-
     name: docker
     help: Runtime for containers
@@ -291,7 +291,7 @@ command.help:
 
 command.name:
   help: Specify the name of the command. This option is required.
-  url: https://bashly.dannyb.co/configuration/command/#name
+  url: https://bashly.dev/configuration/command/#name
   example: |-
     name: docker
     help: Runtime for containers
@@ -302,7 +302,7 @@ command.name:
 
 command.private:
   help: Specify that this command should not be displayed in the help text.
-  url: https://bashly.dannyb.co/configuration/command/#private
+  url: https://bashly.dev/configuration/command/#private
   example: |-
     commands:
     - name: completions
@@ -311,7 +311,7 @@ command.private:
 
 command.variables:
   help: Define a list of global bash variables. See `variable` for reference.
-  url: https://bashly.dannyb.co/configuration/command/#variables
+  url: https://bashly.dev/configuration/command/#variables
   example: |-
     variables:
     # Simple value
@@ -332,7 +332,7 @@ command.variables:
 
 command.version:
   help: Specify the version to show when running with `--version`.
-  url: https://bashly.dannyb.co/configuration/command/#version
+  url: https://bashly.dev/configuration/command/#version
   example: |-
     name: rush
     help: Personal package manager
