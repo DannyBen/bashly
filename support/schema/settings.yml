@@ -28,14 +28,14 @@ definitions:
 title: settings
 description: |-
   Settings of the current application
-  https://bashly.dannyb.co/usage/settings/#settings
+  https://bashly.dev/usage/settings/#settings
 type: object
 properties:
   source_dir:
     title: source dir
     description: |-
       The path containing the bashly source files
-      https://bashly.dannyb.co/usage/settings/#source_dir
+      https://bashly.dev/usage/settings/#source_dir
     type: string
     minLength: 1
     default: src
@@ -43,7 +43,7 @@ properties:
     title: config path
     description: |-
       The path to bashly.yml
-      https://bashly.dannyb.co/usage/settings/#config_path
+      https://bashly.dev/usage/settings/#config_path
     type: string
     minLength: 1
     default: '%{source_dir}/bashly.yml'
@@ -51,7 +51,7 @@ properties:
     title: target dir
     description: |-
       The path to use for creating the bash script
-      https://bashly.dannyb.co/usage/settings/#target_dir
+      https://bashly.dev/usage/settings/#target_dir
     type: string
     minLength: 1
     default: .
@@ -59,7 +59,7 @@ properties:
     title: lib dir
     description: |-
       The path to use for common library files, relative to source_dir
-      https://bashly.dannyb.co/usage/settings/#lib_dir
+      https://bashly.dev/usage/settings/#lib_dir
     type: string
     minLength: 1
     default: lib
@@ -67,7 +67,7 @@ properties:
     title: commands dir
     description: |-
       The path to use for command files, relative to source_dir
-      https://bashly.dannyb.co/usage/settings/#commands_dir
+      https://bashly.dev/usage/settings/#commands_dir
     oneOf: &optional_string
       - type: string
         minLength: 1
@@ -76,7 +76,7 @@ properties:
     title: strict
     description: |-
       Configure the bash options that will be added to the initialize function
-      https://bashly.dannyb.co/usage/settings/#strict
+      https://bashly.dev/usage/settings/#strict
     oneOf:
       - type: boolean
       - type: string
@@ -87,35 +87,35 @@ properties:
     title: tab indent
     description: |-
       Whether to use tabs or spaces in the generated script
-      https://bashly.dannyb.co/usage/settings/#tab_indent
+      https://bashly.dev/usage/settings/#tab_indent
     type: boolean
     default: false
   compact_short_flags:
     title: compact short flags
     description: |-
       Whether to expand -abc to -a -b -c in the input line
-      https://bashly.dannyb.co/usage/settings/#compact_short_flags
+      https://bashly.dev/usage/settings/#compact_short_flags
     type: boolean
     default: true
   conjoined_flag_args:
     title: conjoined flag args
     description: |-
       Whether to expand --flag=value to --flag value in the input line
-      https://bashly.dannyb.co/usage/settings/#conjoined_flag_args
+      https://bashly.dev/usage/settings/#conjoined_flag_args
     type: boolean
     default: true
   show_examples_on_error:
     title: show examples on error
     description: |-
       Whether to show command examples when the input line is missing required arguments
-      https://bashly.dannyb.co/usage/settings/#show_examples_on_error
+      https://bashly.dev/usage/settings/#show_examples_on_error
     type: boolean
     default: true
   env:
     title: env
     description: |-
       Whether to include development related comments in the generated script
-      https://bashly.dannyb.co/usage/settings/#env
+      https://bashly.dev/usage/settings/#env
     type: string
     enum:
       - development
@@ -125,7 +125,7 @@ properties:
     title: enable_header_comment
     description: |-
       Whether to include the header comment in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_header_comment
+      https://bashly.dev/usage/settings/#enable_header_comment
     type: string
     enum: &feature_toggles
       - development
@@ -137,7 +137,7 @@ properties:
     title: enable_bash3_bouncer
     description: |-
       Whether to include the code snippet that aborts when an old version of bash is detected in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_bash3_bouncer
+      https://bashly.dev/usage/settings/#enable_bash3_bouncer
     type: string
     enum: *feature_toggles
     default: always
@@ -145,7 +145,7 @@ properties:
     title: enable_view_markers
     description: |-
       Whether to include view marker comments in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_view_markers
+      https://bashly.dev/usage/settings/#enable_view_markers
     type: string
     enum: *feature_toggles
     default: development
@@ -153,7 +153,7 @@ properties:
     title: enable_inspect_args
     description: |-
       Whether to include the inspect_args function in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_inspect_args
+      https://bashly.dev/usage/settings/#enable_inspect_args
     type: string
     enum: *feature_toggles
     default: development
@@ -161,7 +161,7 @@ properties:
     title: enable_deps_array
     description: |-
       Whether to include the code for the dependencies array in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_deps_array
+      https://bashly.dev/usage/settings/#enable_deps_array
     type: string
     enum: *feature_toggles
     default: always
@@ -169,7 +169,7 @@ properties:
     title: enable_env_var_names_array
     description: |-
       Whether to include the code for the env_var_names array in the generated script
-      https://bashly.dannyb.co/usage/settings/#enable_env_var_names_array
+      https://bashly.dev/usage/settings/#enable_env_var_names_array
     type: string
     enum: *feature_toggles
     default: always
@@ -177,7 +177,7 @@ properties:
     title: enable_sourcing
     description: |-
       Whether to wrap the script execution in a condition that checks if the script is sourced
-      https://bashly.dannyb.co/usage/settings/#enable_sourcing
+      https://bashly.dev/usage/settings/#enable_sourcing
     type: string
     enum: *feature_toggles
     default: development
@@ -185,7 +185,7 @@ properties:
     title: partials extension
     description: |-
       The extension to use when reading/writing partial script snippets
-      https://bashly.dannyb.co/usage/settings/#partials_extension
+      https://bashly.dev/usage/settings/#partials_extension
     type: string
     minLength: 1
     default: sh
@@ -193,76 +193,76 @@ properties:
     title: private reveal key
     description: |-
       The name of the environment variable (case sensitive) that, if set, will reveal private commands, flags and environment variables
-      https://bashly.dannyb.co/usage/settings/#private_reveal_key
+      https://bashly.dev/usage/settings/#private_reveal_key
     oneOf: *optional_string
   usage_colors:
     title: usage colors
     description: |-
       Enable and configure colorful output for --help
-      https://bashly.dannyb.co/usage/settings/#usage_colors
+      https://bashly.dev/usage/settings/#usage_colors
     type: object
     properties:
       caption:
         title: caption
         description: |-
           Color for captions
-          https://bashly.dannyb.co/usage/settings/#usage_colors
+          https://bashly.dev/usage/settings/#usage_colors
         $ref: '#/definitions/color'
       command:
         title: command
         description: |-
           Color for commands
-          https://bashly.dannyb.co/usage/settings/#usage_colors
+          https://bashly.dev/usage/settings/#usage_colors
         $ref: '#/definitions/color'
       arg:
         title: arg
         description: |-
           Color for positional arguments
-          https://bashly.dannyb.co/usage/settings/#usage_colors
+          https://bashly.dev/usage/settings/#usage_colors
         $ref: '#/definitions/color'
       flag:
         title: flag
         description: |-
           Color for flags
-          https://bashly.dannyb.co/usage/settings/#usage_colors
+          https://bashly.dev/usage/settings/#usage_colors
         $ref: '#/definitions/color'
       environment_variable:
         title: environment variable
         description: |-
           Color for env environment variables
-          https://bashly.dannyb.co/usage/settings/#usage_colors
+          https://bashly.dev/usage/settings/#usage_colors
         $ref: '#/definitions/color'
     additionalProperties: false
   var_aliases:
     title: var_aliases
     description: |-
       Declare alias names for bashly's public global arrays
-      https://bashly.dannyb.co/usage/settings/#var_aliases
+      https://bashly.dev/usage/settings/#var_aliases
     type: object
     properties:
       args:
         title: args
         description: |-
           Alias name for the args array
-          https://bashly.dannyb.co/usage/settings/#var_aliases
+          https://bashly.dev/usage/settings/#var_aliases
         oneOf: *optional_string
       other_args:
         title: other_args
         description: |-
           Alias name for the other_args array (used when catch_all is enabled)
-          https://bashly.dannyb.co/usage/settings/#var_aliases
+          https://bashly.dev/usage/settings/#var_aliases
         oneOf: *optional_string
       deps:
         title: deps
         description: |-
           Alias name for the deps array
-          https://bashly.dannyb.co/usage/settings/#var_aliases
+          https://bashly.dev/usage/settings/#var_aliases
         oneOf: *optional_string
       env_var_names:
         title: env_var_names
         description: |-
           Alias name for the env_var_names array
-          https://bashly.dannyb.co/usage/settings/#var_aliases
+          https://bashly.dev/usage/settings/#var_aliases
         oneOf: *optional_string
     additionalProperties: false
 additionalProperties: false

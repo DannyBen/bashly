@@ -1,6 +1,6 @@
 flag:
   help: Define option flags.
-  url: https://bashly.dannyb.co/configuration/flag/
+  url: https://bashly.dev/configuration/flag/
   example: |-
     flags:
     - long: --ssh
@@ -15,7 +15,7 @@ flag:
 
 flag.allowed:
   help: Specify a list of allowed values. Can be used in conjunction with `default` and `required`, and must be accompanied by `arg`.
-  url: https://bashly.dannyb.co/configuration/flag/#allowed
+  url: https://bashly.dev/configuration/flag/#allowed
   example: |-
     flags:
     - long: --user
@@ -38,7 +38,7 @@ flag.allowed:
 
 flag.arg:
   help: Specify the name of the argument for this flag, in case it requires any.
-  url: https://bashly.dannyb.co/configuration/flag/#arg
+  url: https://bashly.dev/configuration/flag/#arg
   example: |-
     flags:
     - long: --user
@@ -48,7 +48,7 @@ flag.arg:
 
 flag.completions:
   help: Specify a list of additional completion suggestions when used in conjunction with `bashly add completions`. Must be accompanied by `arg`.
-  url: https://bashly.dannyb.co/configuration/flag/#completions
+  url: https://bashly.dev/configuration/flag/#completions
   example: |-
     flags:
     - long: --user
@@ -65,7 +65,7 @@ flag.completions:
 
 flag.conflicts:
   help: Specify that this flag is mutually exclusive with one or more other flags. Use the long name of these conflicting flags.
-  url: https://bashly.dannyb.co/configuration/flag/#conflicts
+  url: https://bashly.dev/configuration/flag/#conflicts
   example: |-
     flags:
     - long: --cache
@@ -88,7 +88,7 @@ flag.conflicts:
 
 flag.default:
   help: Specify the value to apply when not provided by the user.
-  url: https://bashly.dannyb.co/configuration/flag/#default
+  url: https://bashly.dev/configuration/flag/#default
   example: |-
     flags:
     - long: --environment
@@ -98,7 +98,7 @@ flag.default:
 
 flag.help:
   help: Specify the help message for this flag.
-  url: https://bashly.dannyb.co/configuration/flag/#help
+  url: https://bashly.dev/configuration/flag/#help
   example: |-
     flags:
     - long: --cache
@@ -106,7 +106,7 @@ flag.help:
 
 flag.long:
   help: Specify the long form of the flag, including the -- prefix. Either `long` or `short` is required.
-  url: https://bashly.dannyb.co/configuration/flag/#long
+  url: https://bashly.dev/configuration/flag/#long
   example: |-
     flags:
     - long: --ssh
@@ -115,7 +115,7 @@ flag.long:
 
 flag.needs:
   help: Specify that this flag needs one or more additional flags. Use the long name of these needed flags.
-  url: https://bashly.dannyb.co/configuration/flag/#needs
+  url: https://bashly.dev/configuration/flag/#needs
   example: |-
     flags:
     - long: --add
@@ -138,7 +138,7 @@ flag.needs:
 
 flag.private:
   help: Specify that this flag should not be displayed in the help text.
-  url: https://bashly.dannyb.co/configuration/flag/#private
+  url: https://bashly.dev/configuration/flag/#private
   example: |-
     flags:
     - long: --legacy
@@ -151,7 +151,7 @@ flag.repeatable:
     Specify that this flag can be provided multiple times. When used on a flag with an argument, it will be received as a space-delimited string, which needs to be converted to an array with:
     `eval "data=(${args[--data]})"`
 
-  url: https://bashly.dannyb.co/configuration/flag/#repeatable
+  url: https://bashly.dev/configuration/flag/#repeatable
   example: |-
     flags:
     - long: --data
@@ -168,7 +168,7 @@ flag.repeatable:
 
 flag.required:
   help: Specify that this flag is required.
-  url: https://bashly.dannyb.co/configuration/flag/#required
+  url: https://bashly.dev/configuration/flag/#required
   example: |-
     args:
     - long: --user
@@ -178,7 +178,7 @@ flag.required:
 
 flag.short:
   help: Specify the short form of the flag, including the - prefix. Either `long` or `short` is required.
-  url: https://bashly.dannyb.co/configuration/flag/#short
+  url: https://bashly.dev/configuration/flag/#short
   example: |-
     - long: --user
       short: -u
@@ -187,7 +187,7 @@ flag.short:
 
 flag.unique:
   help: Specify that the arguments provided by this repeatable flag must be unique. When this is set to `true`, non-unique values will be ignored.
-  url: https://bashly.dannyb.co/configuration/flag/#unique
+  url: https://bashly.dev/configuration/flag/#unique
   example: |-
     flags:
     - long: --path
@@ -199,7 +199,7 @@ flag.unique:
 flag.validate:
   help: Apply custom validation functions. Must be accompanied by `arg`.
 
-  url: https://bashly.dannyb.co/configuration/flag/#validate
+  url: https://bashly.dev/configuration/flag/#validate
   example: |-
    flags:
    - long: --config

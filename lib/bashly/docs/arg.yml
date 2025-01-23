@@ -1,6 +1,6 @@
 arg:
   help: Define positional arguments.
-  url: https://bashly.dannyb.co/configuration/argument/
+  url: https://bashly.dev/configuration/argument/
   example: |-
     args:
     - name: user
@@ -16,7 +16,7 @@ arg:
 
 arg.allowed:
   help: Specify a list of allowed values. Can be used in conjunction with `default` and `required`.
-  url: https://bashly.dannyb.co/configuration/argument/#allowed
+  url: https://bashly.dev/configuration/argument/#allowed
   example: |-
     args:
     - name: region
@@ -35,7 +35,7 @@ arg.allowed:
 
 arg.default:
   help: Specify the value to apply when not provided by the user.
-  url: https://bashly.dannyb.co/configuration/argument/#default
+  url: https://bashly.dev/configuration/argument/#default
   example: |-
     args:
     - name: images
@@ -44,7 +44,7 @@ arg.default:
 
 arg.help:
   help: Specify the help message for this argument.
-  url: https://bashly.dannyb.co/configuration/argument/#help
+  url: https://bashly.dev/configuration/argument/#help
   example: |-
     args:
     - name: user
@@ -53,7 +53,7 @@ arg.help:
 
 arg.name:
   help: Specify the lowercase name of the argument.
-  url: https://bashly.dannyb.co/configuration/argument/#name
+  url: https://bashly.dev/configuration/argument/#name
   example: |-
     args:
     - name: user
@@ -67,7 +67,7 @@ arg.repeatable:
     The argument below will be received as a space-delimited string which needs to be converted to an array with:
     `eval "data=(${args[file]})"`
 
-  url: https://bashly.dannyb.co/configuration/argument/#repeatable
+  url: https://bashly.dev/configuration/argument/#repeatable
   example: |-
     args:
     - name: file
@@ -77,7 +77,7 @@ arg.repeatable:
 
 arg.required:
   help: Specify that this argument is required.
-  url: https://bashly.dannyb.co/configuration/argument/#required
+  url: https://bashly.dev/configuration/argument/#required
   example: |-
     args:
     - name: region
@@ -87,7 +87,7 @@ arg.required:
 arg.validate:
   help: Apply custom validation functions.
 
-  url: https://bashly.dannyb.co/configuration/argument/#validate
+  url: https://bashly.dev/configuration/argument/#validate
   example: |-
     args:
     - name: path

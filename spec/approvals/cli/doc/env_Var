@@ -10,5 +10,5 @@ environment_variable
       help: Your API key
       required: true
 
-  See https://bashly.dannyb.co/configuration/environment-variable/
+  See https://bashly.dev/configuration/environment-variable/
 

@@ -14,7 +14,7 @@ arg
       - admin
       - guest
 
-  See https://bashly.dannyb.co/configuration/argument/
+  See https://bashly.dev/configuration/argument/
 
 arg.allowed
 
@@ -36,7 +36,7 @@ arg.allowed
       allowed: [stage, production, development]
       default: development
 
-  See https://bashly.dannyb.co/configuration/argument/#allowed
+  See https://bashly.dev/configuration/argument/#allowed
 
 arg.default
 
@@ -47,7 +47,7 @@ arg.default
       help: Image files to convert.
       default: "*.jpg"
 
-  See https://bashly.dannyb.co/configuration/argument/#default
+  See https://bashly.dev/configuration/argument/#default
 
 arg.help
 
@@ -58,7 +58,7 @@ arg.help
       help: AWS Username.
       required: true
 
-  See https://bashly.dannyb.co/configuration/argument/#help
+  See https://bashly.dev/configuration/argument/#help
 
 arg.name
 
@@ -69,7 +69,7 @@ arg.name
       help: AWS Username.
       required: true
 
-  See https://bashly.dannyb.co/configuration/argument/#name
+  See https://bashly.dev/configuration/argument/#name
 
 arg.repeatable
 
@@ -85,7 +85,7 @@ arg.repeatable
       required: true
       repeatable: true
 
-  See https://bashly.dannyb.co/configuration/argument/#repeatable
+  See https://bashly.dev/configuration/argument/#repeatable
 
 arg.required
 
@@ -96,7 +96,7 @@ arg.required
       help: Region to connect to
       required: true
 
-  See https://bashly.dannyb.co/configuration/argument/#required
+  See https://bashly.dev/configuration/argument/#required
 
 arg.validate
 
@@ -106,7 +106,7 @@ arg.validate
     - name: path
       validate: file_exists
 
-  See https://bashly.dannyb.co/configuration/argument/#validate
+  See https://bashly.dev/configuration/argument/#validate
 
 command
 
@@ -125,7 +125,7 @@ command
         required: true
         help: Repository name.
 
-  See https://bashly.dannyb.co/configuration/command/
+  See https://bashly.dev/configuration/command/
 
 command.alias
 
@@ -146,7 +146,7 @@ command.alias
       name: server
       alias: s*
 
-  See https://bashly.dannyb.co/configuration/command/#alias
+  See https://bashly.dev/configuration/command/#alias
 
 command.args
 
@@ -157,7 +157,7 @@ command.args
       required: true
       help: Repository name.
 
-  See https://bashly.dannyb.co/configuration/command/#args
+  See https://bashly.dev/configuration/command/#args
 
 command.catch_all
 
@@ -182,7 +182,7 @@ command.catch_all
         help: Files to upload
         required: true
 
-  See https://bashly.dannyb.co/configuration/command/#catch_all
+  See https://bashly.dev/configuration/command/#catch_all
 
 command.commands
 
@@ -193,7 +193,7 @@ command.commands
       alias: a
       help: Register a local repository
 
-  See https://bashly.dannyb.co/configuration/command/#commands
+  See https://bashly.dev/configuration/command/#commands
 
 command.completions
 
@@ -208,7 +208,7 @@ command.completions
       - <user>
       - $(git branch 2> /dev/null)
 
-  See https://bashly.dannyb.co/configuration/command/#completions
+  See https://bashly.dev/configuration/command/#completions
 
 command.default
 
@@ -228,7 +228,7 @@ command.default
       help: Run all tests
       default: force
 
-  See https://bashly.dannyb.co/configuration/command/#default
+  See https://bashly.dev/configuration/command/#default
 
 command.dependencies
 
@@ -253,7 +253,7 @@ command.dependencies
         command: [curl, wget]
         help: Run 'sudo apt install curl' or 'sudo apt install wget'
 
-  See https://bashly.dannyb.co/configuration/command/#dependencies
+  See https://bashly.dev/configuration/command/#dependencies
 
 command.environment_variables
 
@@ -268,7 +268,7 @@ command.environment_variables
       help: Your API key
       required: true
 
-  See https://bashly.dannyb.co/configuration/command/#environment_variables
+  See https://bashly.dev/configuration/command/#environment_variables
 
 command.examples
 
@@ -289,7 +289,7 @@ command.examples
       Upload a file (you will be prompted to provide a password)
       $ cli upload profile.png --user admin
 
-  See https://bashly.dannyb.co/configuration/command/#examples
+  See https://bashly.dev/configuration/command/#examples
 
 command.expose
 
@@ -323,7 +323,7 @@ command.expose
       - name: stop
         help: Stop the server
 
-  See https://bashly.dannyb.co/configuration/command/#expose
+  See https://bashly.dev/configuration/command/#expose
 
 command.extensible
 
@@ -341,7 +341,7 @@ command.extensible
     # to it.
     extensible: git
 
-  See https://bashly.dannyb.co/configuration/command/#extensible
+  See https://bashly.dev/configuration/command/#extensible
 
 command.filename
 
@@ -352,7 +352,7 @@ command.filename
       help: Connect to server
       filename: admin_commands/list.sh
 
-  See https://bashly.dannyb.co/configuration/command/#filename
+  See https://bashly.dev/configuration/command/#filename
 
 command.filters
 
@@ -375,7 +375,7 @@ command.filters
       docker info >/dev/null 2>&1 || echo "Docker must be running"
     }
 
-  See https://bashly.dannyb.co/configuration/command/#filters
+  See https://bashly.dev/configuration/command/#filters
 
 command.flags
 
@@ -386,7 +386,7 @@ command.flags
       short: -p
       help: Also remove the local directory.
 
-  See https://bashly.dannyb.co/configuration/command/#flags
+  See https://bashly.dev/configuration/command/#flags
 
 command.footer
 
@@ -394,7 +394,7 @@ command.footer
 
     footer: For further help visit https://my.docs-site.com
 
-  See https://bashly.dannyb.co/configuration/command/#footer
+  See https://bashly.dev/configuration/command/#footer
 
 command.function
 
@@ -417,7 +417,7 @@ command.function
       - name: start
         help: Start a new container
 
-  See https://bashly.dannyb.co/configuration/command/#function
+  See https://bashly.dev/configuration/command/#function
 
 command.group
 
@@ -428,7 +428,7 @@ command.group
       help: Start the server
       group: Server
 
-  See https://bashly.dannyb.co/configuration/command/#group
+  See https://bashly.dev/configuration/command/#group
 
 command.help
 
@@ -441,7 +441,7 @@ command.help
     - name: images
       help: Manage images
 
-  See https://bashly.dannyb.co/configuration/command/#help
+  See https://bashly.dev/configuration/command/#help
 
 command.name
 
@@ -454,7 +454,7 @@ command.name
     - name: images
       help: Manage images
 
-  See https://bashly.dannyb.co/configuration/command/#name
+  See https://bashly.dev/configuration/command/#name
 
 command.private
 
@@ -465,7 +465,7 @@ command.private
       help: Send bash completions
       private: true
 
-  See https://bashly.dannyb.co/configuration/command/#private
+  See https://bashly.dev/configuration/command/#private
 
 command.variables
 
@@ -488,7 +488,7 @@ command.variables
         pattern: "*.json"
         compression_level: fast
 
-  See https://bashly.dannyb.co/configuration/command/#variables
+  See https://bashly.dev/configuration/command/#variables
 
 command.version
 
@@ -498,7 +498,7 @@ command.version
     help: Personal package manager
     version: 0.6.5
 
-  See https://bashly.dannyb.co/configuration/command/#version
+  See https://bashly.dev/configuration/command/#version
 
 environment_variable
 
@@ -512,7 +512,7 @@ environment_variable
       help: Your API key
       required: true
 
-  See https://bashly.dannyb.co/configuration/environment-variable/
+  See https://bashly.dev/configuration/environment-variable/
 
 environment_variable.default
 
@@ -523,7 +523,7 @@ environment_variable.default
       help: Location of the config file
       default: ~/config.ini
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#default
+  See https://bashly.dev/configuration/environment-variable/#default
 
 environment_variable.help
 
@@ -533,7 +533,7 @@ environment_variable.help
     - name: api_key
       help: Your API key
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#help
+  See https://bashly.dev/configuration/environment-variable/#help
 
 environment_variable.name
 
@@ -543,7 +543,7 @@ environment_variable.name
     - name: api_key
       help: Your API key
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#name
+  See https://bashly.dev/configuration/environment-variable/#name
 
 environment_variable.private
 
@@ -556,7 +556,7 @@ environment_variable.private
       default: vim
       private: true
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#private
+  See https://bashly.dev/configuration/environment-variable/#private
 
 environment_variable.required
 
@@ -567,7 +567,7 @@ environment_variable.required
       help: Your API key
       required: true
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#required
+  See https://bashly.dev/configuration/environment-variable/#required
 
 environment_variable.validate
 
@@ -577,7 +577,7 @@ environment_variable.validate
     - name: build_dir
       validate: dir_exists
 
-  See https://bashly.dannyb.co/configuration/environment-variable/#validate
+  See https://bashly.dev/configuration/environment-variable/#validate
 
 flag
 
@@ -594,7 +594,7 @@ flag
       help: Repository user name
       required: true
 
-  See https://bashly.dannyb.co/configuration/flag/
+  See https://bashly.dev/configuration/flag/
 
 flag.allowed
 
@@ -620,7 +620,7 @@ flag.allowed
       allowed: [ftp, ssh, http]
       default: ssh
 
-  See https://bashly.dannyb.co/configuration/flag/#allowed
+  See https://bashly.dev/configuration/flag/#allowed
 
 flag.arg
 
@@ -632,7 +632,7 @@ flag.arg
       arg: name
       help: Specify the user name
 
-  See https://bashly.dannyb.co/configuration/flag/#arg
+  See https://bashly.dev/configuration/flag/#arg
 
 flag.completions
 
@@ -652,7 +652,7 @@ flag.completions
       - ssh
       - telnet
 
-  See https://bashly.dannyb.co/configuration/flag/#completions
+  See https://bashly.dev/configuration/flag/#completions
 
 flag.conflicts
 
@@ -678,7 +678,7 @@ flag.conflicts
       # Make sure to add the conflicting flags on both sides of the conflict
       conflicts: [--no-cache]
 
-  See https://bashly.dannyb.co/configuration/flag/#conflicts
+  See https://bashly.dev/configuration/flag/#conflicts
 
 flag.default
 
@@ -690,7 +690,7 @@ flag.default
       help: Set environment name
       default: production
 
-  See https://bashly.dannyb.co/configuration/flag/#default
+  See https://bashly.dev/configuration/flag/#default
 
 flag.help
 
@@ -700,7 +700,7 @@ flag.help
     - long: --cache
       help: Enable cache
 
-  See https://bashly.dannyb.co/configuration/flag/#help
+  See https://bashly.dev/configuration/flag/#help
 
 flag.long
 
@@ -712,7 +712,7 @@ flag.long
       short: -s
       help: Clone using SSH
 
-  See https://bashly.dannyb.co/configuration/flag/#long
+  See https://bashly.dev/configuration/flag/#long
 
 flag.needs
 
@@ -738,7 +738,7 @@ flag.needs
       help: Where to add the alias
       needs: [--add]
 
-  See https://bashly.dannyb.co/configuration/flag/#needs
+  See https://bashly.dev/configuration/flag/#needs
 
 flag.private
 
@@ -750,7 +750,7 @@ flag.private
       help: Run using the legacy mode
       private: true
 
-  See https://bashly.dannyb.co/configuration/flag/#private
+  See https://bashly.dev/configuration/flag/#private
 
 flag.repeatable
 
@@ -772,7 +772,7 @@ flag.repeatable
       help: Set verbosity level
       repeatable: true
 
-  See https://bashly.dannyb.co/configuration/flag/#repeatable
+  See https://bashly.dev/configuration/flag/#repeatable
 
 flag.required
 
@@ -784,7 +784,7 @@ flag.required
       help: Repository user name
       required: true
 
-  See https://bashly.dannyb.co/configuration/flag/#required
+  See https://bashly.dev/configuration/flag/#required
 
 flag.short
 
@@ -796,7 +796,7 @@ flag.short
       arg: name
       help: Repository user name
 
-  See https://bashly.dannyb.co/configuration/flag/#short
+  See https://bashly.dev/configuration/flag/#short
 
 flag.unique
 
@@ -810,7 +810,7 @@ flag.unique
       repeatable: true
       unique: true
 
-  See https://bashly.dannyb.co/configuration/flag/#unique
+  See https://bashly.dev/configuration/flag/#unique
 
 flag.validate
 
@@ -822,7 +822,7 @@ flag.validate
       help: Load configuration from a file
       validate: file_exists
 
-  See https://bashly.dannyb.co/configuration/flag/#validate
+  See https://bashly.dev/configuration/flag/#validate
 
 variable
 
@@ -845,7 +845,7 @@ variable
         pattern: "*.json"
         compression_level: fast
 
-  See https://bashly.dannyb.co/configuration/variable/
+  See https://bashly.dev/configuration/variable/
 
 variable.name
 
@@ -855,7 +855,7 @@ variable.name
     - name: output_folder
       value: output
 
-  See https://bashly.dannyb.co/configuration/variable/#name
+  See https://bashly.dev/configuration/variable/#name
 
 variable.value
 
@@ -879,5 +879,5 @@ variable.value
         pattern: "*.json"
         compression_level: fast
 
-  See https://bashly.dannyb.co/configuration/variable/#value
+  See https://bashly.dev/configuration/variable/#value
 
