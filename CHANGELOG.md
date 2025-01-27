@@ -1,6 +1,15 @@
 Changelog
 ========================================
 
+v1.2.9 - 2025-01-27
+----------------------------------------
+
+- Update colors library to support auto-colors based on TTY [`a4bbae9a`](https://github.com/DannyBen/bashly/commit/a4bbae9a)
+- Add `--quiet` to `bashly add` command [`ca0a5468`](https://github.com/DannyBen/bashly/commit/ca0a5468)
+- Update documentation domain to bashly.dev [`d05605cb`](https://github.com/DannyBen/bashly/commit/d05605cb)
+- Compare [`v1.2.8..v1.2.9`](https://github.com/dannyben/bashly/compare/v1.2.8..v1.2.9)
+
+
 v1.2.8 - 2025-01-16
 ----------------------------------------
 
