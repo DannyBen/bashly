@@ -3,7 +3,7 @@ require 'filewatcher'
 module Bashly
   module Commands
     class Generate < Base
-      summary "Generate the bash script and required files"
+      summary 'Generate the bash script and required files'
       help "This command is also aliased as 'build'"
 
       usage 'bashly generate [options]'
