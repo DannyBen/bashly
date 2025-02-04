@@ -47,7 +47,14 @@ ini_load() {
     elif [[ $line =~ $key_regex ]]; then
       key="${BASH_REMATCH[1]}"
       value="${BASH_REMATCH[2]}"
-      [[ $value == *\$* ]] && eval "value=\"$value\""
+      # if value is the same name of a variable that exists, 
+      #   then replace value with that variable's value
+      if [[ "${value:0:1}" = '$' ]]; then
+          var_name=${value:1}
+          if [[ -v "${var_name}" ]]; then
+              value="${!var_name}"
+          fi 
+      fi
       ini["${section}${key}"]="$value"
     fi
   done <"$ini_file"
