@@ -47,7 +47,31 @@ ini_load() {
     elif [[ $line =~ $key_regex ]]; then
       key="${BASH_REMATCH[1]}"
       value="${BASH_REMATCH[2]}"
-      [[ $value == *\$* ]] && eval "value=\"$value\""
+      # split out any substring of 'value' that could possibly be a variable and check to see if it is
+      # - if it is a variable, substitue the value of that variable, otherwise, use the "variable" name as is 
+      templated_value=''
+      [[ "${value:0:1}" = '$' ]] && starts_with_var=true || starts_with_var=false
+      split_vals=(${value//\$/ })
+      for val in "${split_vals[@]}"; do
+        [[ -v "${val}" ]] && is_var=true || is_var=false
+        if [[ -z "${templated_value}" ]]; then
+          if [[ "${starts_with_var}" = 'true' ]]; then
+            if [[ "${is_var}" = 'true' ]]; then
+              templated_value="${!val}"
+            else
+              templated_value="\$${val}"
+            fi
+          else
+            templated_value="${val}"
+          fi
+        else
+          if [[ "${is_var}" = 'true' ]]; then
+            templated_value="${templated_value}${!val}"
+          else
+            templated_value="${templated_value}\$${val}"
+          fi
+        fi
+      done
       ini["${section}${key}"]="$value"
     fi
   done <"$ini_file"
