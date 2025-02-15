@@ -17,7 +17,7 @@ module Bashly
             alias args catch_all commands completions
             default dependencies environment_variables examples
             extensible expose filename filters flags
-            footer function group help header_override name
+            footer function group help help_header_override name
             private variables version
           ]
         end

@@ -1,12 +1,12 @@
 = view_marker
 
 > {{ function_name }}_usage() {
-if summary == help && !header_override
+if summary == help && !help_header_override
   >   printf "{{ caption_string.sanitize_for_print }}\n\n"
 else
   >   if [[ -n $long_usage ]]; then
-  if header_override
-    = header_override.indent 4
+  if help_header_override
+    = help_header_override.indent 4
   else
     >     printf "{{ full_name }}\n\n"
     >     printf "{{ help.wrap(78).indent(2).sanitize_for_print }}\n\n"

@@ -186,7 +186,7 @@ module Bashly
 
       assert_string "#{key}.name", value['name']
       assert_optional_string "#{key}.help", value['help']
-      assert_optional_string "#{key}.header_override", value['header_override']
+      assert_optional_string "#{key}.help_header_override", value['help_header_override']
       assert_optional_string "#{key}.footer", value['footer']
       assert_optional_string "#{key}.group", value['group']
       assert_optional_string "#{key}.filename", value['filename']
