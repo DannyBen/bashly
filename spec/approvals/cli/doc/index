@@ -25,6 +25,7 @@ command.footer
 command.function
 command.group
 command.help
+command.help_header_override
 command.name
 command.private
 command.variables
