@@ -51,6 +51,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [custom-strings](custom-strings#readme) - configuring the script's error and usage texts
 - [custom-includes](custom-includes#readme) - adding and organizing your custom functions
 - [custom-script-header](custom-script-header#readme) - configuring a different script header
+- [help-header-override](help-header-override#readme) - replacing the header of the help message
 - [footer](footer#readme) - adding a footer to the help message
 - [command-filenames](command-filenames#readme) - overriding filenames for your source scripts
 - [command-paths](command-paths#readme) - configuring nested paths for your source scripts
