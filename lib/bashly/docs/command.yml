@@ -289,6 +289,20 @@ command.help:
     - name: images
       help: Manage images
 
+command.help_header_override:
+  help: Provide an alternative bash code (or function call) that will be executed at the beginning of the help message.
+
+  url: https://bashly.dev/configuration/command/#help_header_override
+  example: |-
+    name: font-explorer
+    help: Font manager utility
+
+    help_header_override: |
+      echo '┏┓       ┏┓    ┓        '
+      echo '┣ ┏┓┏┓╋  ┣ ┓┏┏┓┃┏┓┏┓┏┓┏┓'
+      echo '┻ ┗┛┛┗┗  ┗┛┛┗┣┛┗┗┛┛ ┗ ┛ '
+      echo '             ┛      v1.0'
+
 command.name:
   help: Specify the name of the command. This option is required.
   url: https://bashly.dev/configuration/command/#name
