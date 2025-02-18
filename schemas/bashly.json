@@ -470,6 +470,15 @@
         "URL to download from"
       ]
     },
+    "help-header-override-property": {
+      "title": "help_header_override",
+      "description": "Bash code (or function call) that will be executed at the beginning of the help message\nhttps://bashly.dev/configuration/command/#help-header-override",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "generate_ascii_art_logo"
+      ]
+    },
     "args-property": {
       "title": "args",
       "description": "Arguments of the current script or sub-command\nhttps://bashly.dev/configuration/command/#args",
@@ -847,6 +856,9 @@
         "help": {
           "$ref": "#/definitions/help-property"
         },
+        "help_header_override": {
+          "$ref": "#/definitions/help-header-override-property"
+        },
         "args": {
           "$ref": "#/definitions/args-property"
         },
@@ -923,6 +935,9 @@
     },
     "help": {
       "$ref": "#/definitions/help-property"
+    },
+    "help_header_override": {
+      "$ref": "#/definitions/help-header-override-property"
     },
     "args": {
       "$ref": "#/definitions/args-property"
