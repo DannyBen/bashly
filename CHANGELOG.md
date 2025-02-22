@@ -1,6 +1,17 @@
 Changelog
 ========================================
 
+v1.2.10 - 2025-02-22
+----------------------------------------
+
+- Add `header_override` command option [`d7a57e47`](https://github.com/DannyBen/bashly/commit/d7a57e47)
+- Rename `header_override` to `help_header_override` [`2a8b5ded`](https://github.com/DannyBen/bashly/commit/2a8b5ded)
+- Add example for `help_header_override` [`aa00c751`](https://github.com/DannyBen/bashly/commit/aa00c751)
+- Update JSON schema with `help_header_override` [`6677f4da`](https://github.com/DannyBen/bashly/commit/6677f4da)
+- Update `bashly doc` with `command.help_header_override` [`4e50fe17`](https://github.com/DannyBen/bashly/commit/4e50fe17)
+- Compare [`v1.2.9..v1.2.10`](https://github.com/dannyben/bashly/compare/v1.2.9..v1.2.10)
+
+
 v1.2.9 - 2025-01-27
 ----------------------------------------
 
