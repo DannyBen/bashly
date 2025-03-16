@@ -35,7 +35,7 @@ module Bashly
     end
 
     def extract_heredoc_marker(line)
-      line =~ /<<-?\s*(\w+)/ ? $1 : nil
+      line =~ /<<-?\s*['"]?(\w+)['"]?/ ? $1 : nil
     end
 
     def heredoc_closed?(line)
