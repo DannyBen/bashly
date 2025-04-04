@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v1.2.11 - 2025-04-04
+----------------------------------------
+
+- Fix quoted heredocs [`4b264646`](https://github.com/DannyBen/bashly/commit/4b264646)
+- Compare [`v1.2.10..v1.2.11`](https://github.com/dannyben/bashly/compare/v1.2.10..v1.2.11)
+
+
 v1.2.10 - 2025-02-22
 ----------------------------------------
 
