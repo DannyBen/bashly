@@ -6,16 +6,20 @@ if validate
     >   values=''
     >   eval "values=(${args['{{ long }}']})"
     >   for value in "${values[@]}"; do
-    >     if [[ -n $(validate_{{ validate }} "$value") ]]; then
-    >       printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$(validate_{{ validate }} "$value")" >&2
+    >     validation_output="$(validate_{{ validate }} "$value")"
+    >     if [[ -n "$validation_output" ]]; then
+    >       printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$validation_output" >&2
     >       exit 1
     >     fi
     >   done
     > fi
   else
-    > if [[ -v args['{{ long }}'] && -n $(validate_{{ validate }} "${args['{{ long }}']:-}") ]]; then
-    >   printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$(validate_{{ validate }} "${args['{{ long }}']:-}")" >&2
-    >   exit 1
+    > if [[ -v args['{{ long }}'] ]]; then
+    >   validation_output="$(validate_{{ validate }} "${args['{{ long }}']:-}")"
+    >   if [[ -n "${validation_output}" ]]; then
+    >     printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$validation_output" >&2
+    >     exit 1
+    >   fi
     > fi
     >
   end
