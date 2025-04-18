@@ -16,10 +16,10 @@
 if Settings.enabled? :sourcing
   > if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   >   initialize
-  >   run "$@"
+  >   {{ function_name }}_run "$@"
   > fi
 else
   > initialize
-  > run "$@"
+  > {{ function_name }}_run "$@"
 end
 > 
