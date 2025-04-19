@@ -126,3 +126,8 @@ var_aliases:
   other_args: ~
   deps: ~
   env_var_names: ~
+
+# Choose different names for some of the internal functions.
+function_names:
+  run: ~
+  initialize: ~
