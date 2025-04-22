@@ -265,4 +265,25 @@ properties:
           https://bashly.dev/usage/settings/#var_aliases
         oneOf: *optional_string
     additionalProperties: false
+  function_names:
+    title: function_names
+    description: |-
+      Choose different names for some of the internal functions.
+      https://bashly.dev/usage/settings/#function_names
+    type: object
+    properties:
+      run:
+        title: run
+        description: |-
+          Name for the run() function
+          https://bashly.dev/usage/settings/#function_names
+        oneOf: *optional_string
+      initialize:
+        title: initialize
+        description: |-
+          Name for the initialize() function
+          https://bashly.dev/usage/settings/#function_names
+        oneOf: *optional_string
+    additionalProperties: false
+
 additionalProperties: false
