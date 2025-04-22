@@ -15,6 +15,7 @@ module Bashly
         :enable_inspect_args,
         :enable_sourcing,
         :enable_view_markers,
+        :function_names,
         :lib_dir,
         :partials_extension,
         :private_reveal_key,
@@ -87,6 +88,14 @@ module Bashly
 
       def full_lib_dir
         "#{source_dir}/#{lib_dir}"
+      end
+
+      def function_name(key)
+        function_names[key.to_s] || key.to_s
+      end
+
+      def function_names
+        @function_names ||= get :function_names
       end
 
       def lib_dir

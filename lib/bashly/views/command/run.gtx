@@ -1,6 +1,6 @@
 = view_marker
 
-> run() {
+> {{ Settings.function_name :run }}() {
 = render(:globals).indent(2)
 >
 >   normalize_input "$@"

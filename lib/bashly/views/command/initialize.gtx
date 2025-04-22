@@ -1,6 +1,6 @@
 = view_marker
 
-> initialize() {
+> {{ Settings.function_name :initialize }}() {
 >   declare -g version="<%= version %>"
 >   {{ Settings.strict_string }}
 
