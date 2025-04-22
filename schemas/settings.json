@@ -325,6 +325,40 @@
         }
       },
       "additionalProperties": false
+    },
+    "function_names": {
+      "title": "function_names",
+      "description": "Choose different names for some of the internal functions.\nhttps://bashly.dev/usage/settings/#function_names",
+      "type": "object",
+      "properties": {
+        "run": {
+          "title": "run",
+          "description": "Name for the run() function\nhttps://bashly.dev/usage/settings/#function_names",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "initialize": {
+          "title": "initialize",
+          "description": "Name for the initialize() function\nhttps://bashly.dev/usage/settings/#function_names",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
