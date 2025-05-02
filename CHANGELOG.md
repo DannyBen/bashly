@@ -1,6 +1,15 @@
 Changelog
 ========================================
 
+v1.2.12 - 2025-05-02
+----------------------------------------
+
+- Drop support for Ruby 3.1 [`a735ee00`](https://github.com/DannyBen/bashly/commit/a735ee00)
+- Fix validations to only run once [`a3075a02`](https://github.com/DannyBen/bashly/commit/a3075a02)
+- Add settings for internal function names [`8fa881e2`](https://github.com/DannyBen/bashly/commit/8fa881e2)
+- Compare [`v1.2.11..v1.2.12`](https://github.com/dannyben/bashly/compare/v1.2.11..v1.2.12)
+
+
 v1.2.11 - 2025-04-04
 ----------------------------------------
 
