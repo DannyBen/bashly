@@ -1,0 +1,143 @@
+Tebako executable packager version 0.8.0
+No prefix specified, using ~/.tebako
+Running tebako press at /home/a/.tebako
+   Ruby version:            '3.2.4'
+   Project root:            '/home/a/repo/github.com/DannyBen/bashly/.'
+   Application entry point: './bin/bashly'
+   Package file name:       '/home/a/repo/github.com/DannyBen/bashly/bashly'
+   Loging level:            'error'
+-- Found version.txt with 0.8.0
+-- Found no annotated tags.
+-- TEBAKO_VERSION: 0.8.0
+-- TEBAKO_VERSION_NCOMMITS: 0
+-- TEBAKO_VERSION_GIT_REV: 0
+-- TEBAKO_VERSION_IS_DIRTY: FALSE
+-- TEBAKO_VERSION_COMMIT_TIMESTAMP: 0
+-- TEBAKO_VERSION_SUFFIX: 
+-- TEBAKO_VERSION_FULL: 0.8.0
+-- OSTYPE: 'linux-gnu'
+-- NCORES: 32
+-- ruby: v3.2.4 at /home/a/.tebako/deps/src/_ruby_3.2.4
+-- dwarfs with tebako wrapper: @v0.5.5 at /home/a/.tebako/deps/src/_dwarfs_wr
+-- DATA_SRC_DIR: /home/a/.tebako/o/s
+-- DATA_PRE_DIR: /home/a/.tebako/o/r
+-- DATA_BIN_DIR: /home/a/.tebako/o/p
+-- DATA_BIN_FILE: /home/a/.tebako/o/p/fs.bin
+-- Target binary directory: /home/a/.tebako/o/s/bin
+-- Target library directory: /home/a/.tebako/o/s/lib
+-- Target local directory: /home/a/.tebako/o/s/local
+-- Target Gem directory:: /home/a/.tebako/o/s/lib/ruby/gems/3.2.0
+-- FS_MOUNT_POINT: /__tebako_memfs__
+-- Building for Win32 Ruby (RB_W32): OFF
+-- Not building Ruby extensions: dbm,win32,win32ole,-test-/*
+-- Ruby build cppflags='-pthread -I/home/a/.tebako/deps/include -I/home/a/.local/share/mise/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/tebako-0.8.0/include -fdeclspec'
+-- Ruby build LDFLAGS='-L/home/a/.tebako/deps/lib -L/home/a/.tebako/o -static-libgcc'
+-- openssl Ruby option=''
+-- libyaml Ruby option=''
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/a/.tebako/o
+[ 42%] Built target _dwarfs_wr
+[ 84%] Built target _ruby_3.2.4
+Tebako setup has been verified
+[ 84%] Built target setup
+-- Running init script
+   ... creating packaging environment at /home/a/.tebako/o/s
+-- Running deploy script
+RubyGems Environment:
+  - RUBYGEMS VERSION: 3.4.19
+  - RUBY VERSION: 3.2.4 (2024-04-23 patchlevel 170) [x86_64-linux]
+  - INSTALLATION DIRECTORY: /home/a/.tebako/o/s/lib/ruby/gems/3.2.0
+  - USER INSTALLATION DIRECTORY: /home/a/.local/share/gem/ruby/3.2.0
+  - RUBY EXECUTABLE: /home/a/.tebako/o/s/bin/ruby
+  - GIT EXECUTABLE: /usr/bin/git
+  - EXECUTABLE DIRECTORY: /home/a/.tebako/o/s/bin
+  - SPEC CACHE DIRECTORY: /home/a/.tebako/o/s/spec_cache
+  - SYSTEM CONFIGURATION DIRECTORY: /home/a/.tebako/o/s/etc
+  - RUBYGEMS PLATFORMS:
+     - ruby
+     - x86_64-linux
+  - GEM PATHS:
+     - /home/a/.tebako/o/s/lib/ruby/gems/3.2.0
+  - GEM CONFIGURATION:
+     - :update_sources => true
+     - :verbose => true
+     - :backtrace => true
+     - :bulk_threshold => 1000
+  - REMOTE SOURCES:
+     - https://rubygems.org/
+  - SHELL PATH:
+     - /home/a/.fly/bin
+     - /home/a/.local/share/mise/installs/go/1.22.5/bin
+     - /home/a/.local/share/mise/installs/go/1.22.5/go/bin
+     - /home/a/.local/share/mise/installs/ruby/latest/bin
+     - /home/a/.local/share/mise/installs/protonge/GE-Proton9-10/bin
+     - /home/a/.local/share/mise/installs/kubectl/latest/bin
+     - /home/a/.local/share/mise/installs/flux2/latest/bin
+     - /home/a/.local/share/mise/installs/kubectx/latest/bin
+     - /home/a/.local/share/mise/installs/node/latest/bin
+     - /home/a/.local/share/mise/installs/nim/latest/bin
+     - /home/a/.local/share/mise/installs/nim/latest/nimble/bin
+     - /home/a/.local/share/mise/installs/hyperfine/latest/bin
+     - /home/a/.local/share/mise/installs/dotnet/latest/
+     - /home/a/.local/share/mise/installs/dotnet/latest/shared
+     - /home/a/.local/share/mise/shims
+     - /home/a/.local/script
+     - /home/a/.local/bin/stewbin
+     - /home/a/.local/userscript
+     - /home/a/.local/bin
+     - /home/a/.fly/bin
+     - /home/a/.local/share/mise/shims
+     - /home/a/.local/script
+     - /home/a/.local/bin/stewbin
+     - /home/a/.local/userscript
+     - /home/a/.local/bin
+     - /home/a/.fly/bin
+     - /home/a/.local/share/mise/shims
+     - /home/a/.local/script
+     - /home/a/.local/bin/stewbin
+     - /home/a/.local/userscript
+     - /home/a/.local/share/zinit/polaris/bin
+     - /home/a/.local/bin
+     - /home/a/.cargo/bin
+     - /usr/local/bin
+     - /usr/bin
+     - /bin
+     - /usr/local/games
+     - /usr/games
+     - /home/a/.local/share/zinit/plugins/unixorn---fzf-zsh-plugin/bin
+     - /home/a/.fzf/bin
+   ... installing tebako-runtime gem
+   ... @ /home/a/.tebako/o/s/bin/gem install tebako-runtime --no-document --install-dir /home/a/.tebako/o/s/lib/ruby/gems/3.2.0
+   ... installing bundler gem version 2.4.22
+   ... @ /home/a/.tebako/o/s/bin/gem install bundler -v 2.4.22 --no-document --install-dir /home/a/.tebako/o/s/lib/ruby/gems/3.2.0
+   ... collecting gem from gemspec /home/a/repo/github.com/DannyBen/bashly/bashly.gemspec and Gemfile
+   ... @ /home/a/.tebako/o/s/bin/bundle config set --local build.ffi --disable-system-libffi
+   ... @ /home/a/.tebako/o/s/bin/bundle config set --local build.nokogiri --no-use-system-libraries
+   ... @ /home/a/.tebako/o/s/bin/bundle config set --local force_ruby_platform false
+   *** It may take a long time for a big project. It takes REALLY long time on Windows ***
+   ... @ /home/a/.tebako/o/s/bin/bundle install --jobs=32
+   ... @ /home/a/.tebako/o/s/bin/bundle exec /home/a/.tebako/o/s/bin/gem build /home/a/repo/github.com/DannyBen/bashly/bashly.gemspec
+tebako-packager failed: Failed to run /home/a/.tebako/o/s/bin/bundle exec /home/a/.tebako/o/s/bin/gem build /home/a/repo/github.com/DannyBen/bashly/bashly.gemspec (pid 675890 exit 1):
+ Ignoring debug-1.9.2 because its extensions are not built. Try: gem pristine debug --version 1.9.2
+Ignoring io-console-0.7.2 because its extensions are not built. Try: gem pristine io-console --version 0.7.2
+Ignoring strscan-3.1.0 because its extensions are not built. Try: gem pristine strscan --version 3.1.0
+Ignoring debug-1.9.2 because its extensions are not built. Try: gem pristine debug --version 1.9.2
+Ignoring io-console-0.7.2 because its extensions are not built. Try: gem pristine io-console --version 0.7.2
+Ignoring strscan-3.1.0 because its extensions are not built. Try: gem pristine strscan --version 3.1.0
+/home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/definition.rb:594:in `materialize': Could not find debug-1.9.2, psych-5.1.2, io-console-0.7.2, stringio-3.1.1, strscan-3.1.0 in locally installed gems (Bundler::GemNotFound)
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/definition.rb:193:in `specs'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/definition.rb:259:in `specs_for'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/runtime.rb:18:in `setup'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler.rb:163:in `setup'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/setup.rb:29:in `block in <top (required)>'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/ui/shell.rb:159:in `with_level'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/ui/shell.rb:111:in `silence'
+	from /home/a/.tebako/o/s/lib/ruby/gems/3.2.0/gems/bundler-2.5.11/lib/bundler/setup.rb:29:in `<top (required)>'
+	from <internal:/home/a/.tebako/o/s/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:86:in `require'
+	from <internal:/home/a/.tebako/o/s/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:86:in `require'
+	from /home/a/.tebako/o/s/lib/ruby/3.2.0/rubygems.rb:1370:in `<top (required)>'
+	from <internal:gem_prelude>:2:in `require'
+	from <internal:gem_prelude>:2:in `<internal:gem_prelude>'
+ [255]
+Tebako script failed: 'tebako press' build step failed [104]

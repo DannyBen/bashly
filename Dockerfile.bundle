@@ -1,0 +1,14 @@
+FROM ghcr.io/tamatebako/tebako-alpine-3.17:latest
+
+RUN apk add bash curl curl-dev ruby-dev build-base
+
+RUN apk add  ruby ruby-io-console ruby-irb \
+  ruby-json ruby-etc ruby-bigdecimal ruby-rdoc \
+  libffi-dev zlib-dev yaml-dev
+
+WORKDIR /wd
+RUN rm -rf /root/.tebako
+RUN tebako setup --Ruby=3.2.4
+
+COPY . /wd
+RUN tebako press -D --entry-point /wd/bin/bashly --root /wd -R 3.2.4
