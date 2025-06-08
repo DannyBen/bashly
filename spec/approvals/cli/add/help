@@ -1,7 +1,7 @@
 Add extra features and customization to your script
 
 Usage:
-  bashly add [--source NAME] LIBRARY [ARGS...] [--force]
+  bashly add [--source NAME] LIBRARY [ARGS...] [--force --quiet]
   bashly add [--source NAME] --list
   bashly add (-h|--help)
 
@@ -19,6 +19,9 @@ Options:
 
   -l --list
     Show available libraries
+
+  -q --quiet
+    Do not show post-install messages
 
   -h --help
     Show this help

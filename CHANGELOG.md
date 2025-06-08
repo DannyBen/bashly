@@ -1,138 +1,254 @@
 Changelog
 ========================================
 
+v1.2.12 - 2025-05-02
+----------------------------------------
+
+- Drop support for Ruby 3.1 [`a735ee00`](https://github.com/DannyBen/bashly/commit/a735ee00)
+- Fix validations to only run once [`a3075a02`](https://github.com/DannyBen/bashly/commit/a3075a02)
+- Add settings for internal function names [`8fa881e2`](https://github.com/DannyBen/bashly/commit/8fa881e2)
+- Compare [`v1.2.11..v1.2.12`](https://github.com/dannyben/bashly/compare/v1.2.11..v1.2.12)
+
+
+v1.2.11 - 2025-04-04
+----------------------------------------
+
+- Fix quoted heredocs [`4b264646`](https://github.com/DannyBen/bashly/commit/4b264646)
+- Compare [`v1.2.10..v1.2.11`](https://github.com/dannyben/bashly/compare/v1.2.10..v1.2.11)
+
+
+v1.2.10 - 2025-02-22
+----------------------------------------
+
+- Add `header_override` command option [`d7a57e47`](https://github.com/DannyBen/bashly/commit/d7a57e47)
+- Rename `header_override` to `help_header_override` [`2a8b5ded`](https://github.com/DannyBen/bashly/commit/2a8b5ded)
+- Add example for `help_header_override` [`aa00c751`](https://github.com/DannyBen/bashly/commit/aa00c751)
+- Update JSON schema with `help_header_override` [`6677f4da`](https://github.com/DannyBen/bashly/commit/6677f4da)
+- Update `bashly doc` with `command.help_header_override` [`4e50fe17`](https://github.com/DannyBen/bashly/commit/4e50fe17)
+- Compare [`v1.2.9..v1.2.10`](https://github.com/dannyben/bashly/compare/v1.2.9..v1.2.10)
+
+
+v1.2.9 - 2025-01-27
+----------------------------------------
+
+- Update colors library to support auto-colors based on TTY [`a4bbae9a`](https://github.com/DannyBen/bashly/commit/a4bbae9a)
+- Add `--quiet` to `bashly add` command [`ca0a5468`](https://github.com/DannyBen/bashly/commit/ca0a5468)
+- Update documentation domain to bashly.dev [`d05605cb`](https://github.com/DannyBen/bashly/commit/d05605cb)
+- Compare [`v1.2.8..v1.2.9`](https://github.com/dannyben/bashly/compare/v1.2.8..v1.2.9)
+
+
+v1.2.8 - 2025-01-16
+----------------------------------------
+
+- Add support for avoiding execution if the script is sourced [`4d83222b`](https://github.com/DannyBen/bashly/commit/4d83222b)
+- Revert 9167c49 to allow calling `run ...` internally [`d25c718f`](https://github.com/DannyBen/bashly/commit/d25c718f)
+- Declare `version` and `long_usage` as globals for consistency and clarity of intent [`e9a9a76f`](https://github.com/DannyBen/bashly/commit/e9a9a76f)
+- Move `long_usage` definition from `initialize` to `run` [`54beb86e`](https://github.com/DannyBen/bashly/commit/54beb86e)
+- Add Internal Run example [`4a1b2b9b`](https://github.com/DannyBen/bashly/commit/4a1b2b9b)
+- Add support for whalebrew [`f33c663b`](https://github.com/DannyBen/bashly/commit/f33c663b)
+- Compare [`v1.2.7..v1.2.8`](https://github.com/dannyben/bashly/compare/v1.2.7..v1.2.8)
+
+
+v1.2.7 - 2024-12-28
+----------------------------------------
+
+- Update version specifications for all dependencies [`6bf0c4a0`](https://github.com/DannyBen/bashly/commit/6bf0c4a0)
+- Add support for tweaking production/development output [`c23d7053`](https://github.com/DannyBen/bashly/commit/c23d7053)
+- Fix shellcheck unused variable on `other_args` in production [`f78c6e9a`](https://github.com/DannyBen/bashly/commit/f78c6e9a)
+- Fix view markers for user files [`cc3896ed`](https://github.com/DannyBen/bashly/commit/cc3896ed)
+- Update dependency check to show all missing dependencies at once [`49251064`](https://github.com/DannyBen/bashly/commit/49251064)
+- Add support for declaring aliases for internal global variables [`5264d511`](https://github.com/DannyBen/bashly/commit/5264d511)
+- Move global var declarations from `run()` to `initialize()` [`9167c498`](https://github.com/DannyBen/bashly/commit/9167c498)
+- Update settings JSON schema [`b4e7e4dd`](https://github.com/DannyBen/bashly/commit/b4e7e4dd)
+- Add `build` as an alias to `bashly generate` [`d64bc367`](https://github.com/DannyBen/bashly/commit/d64bc367)
+- Update default script header [`c85276cd`](https://github.com/DannyBen/bashly/commit/c85276cd)
+- Compare [`v1.2.6..v1.2.7`](https://github.com/dannyben/bashly/compare/v1.2.6..v1.2.7)
+
+
+v1.2.6 - 2024-11-08
+----------------------------------------
+
+- Fix array variables scope [`ed7f2404`](https://github.com/DannyBen/bashly/commit/ed7f2404)
+- Compare [`v1.2.5..v1.2.6`](https://github.com/dannyben/bashly/compare/v1.2.5..v1.2.6)
+
+
+v1.2.5 - 2024-11-01
+----------------------------------------
+
+- Move root variables from `run()` to `initialize()` [`f76c53b6`](https://github.com/DannyBen/bashly/commit/f76c53b6)
+- Compare [`v1.2.4..v1.2.5`](https://github.com/dannyben/bashly/compare/v1.2.4..v1.2.5)
+
+
+v1.2.4 - 2024-10-31
+----------------------------------------
+
+- Add `command.variables` as a convenience utility for defining global command variables [`65388868`](https://github.com/DannyBen/bashly/commit/65388868)
+- Update JSON schema to include `command.variables` [`28953fb5`](https://github.com/DannyBen/bashly/commit/28953fb5)
+- Refactor `command.variables` to a new `Variable` object [`3e5a0606`](https://github.com/DannyBen/bashly/commit/3e5a0606)
+- Add black and white to color library [`0573e0f5`](https://github.com/DannyBen/bashly/commit/0573e0f5)
+- Compare [`v1.2.3..v1.2.4`](https://github.com/dannyben/bashly/compare/v1.2.3..v1.2.4)
+
+
+v1.2.3 - 2024-10-16
+----------------------------------------
+
+- Fix docker image for multi-arch [`5660a3e3`](https://github.com/DannyBen/bashly/commit/5660a3e3)
+- Fix INI library when loading multiple files [`6bfb1bc0`](https://github.com/DannyBen/bashly/commit/6bfb1bc0)
+- Add sub dependencies to avoid Ruby 3.3.5 warnings [`30b7318a`](https://github.com/DannyBen/bashly/commit/30b7318a)
+- Fix `conflicts` in fixed flags [`152069af`](https://github.com/DannyBen/bashly/commit/152069af)
+- Compare [`v1.2.2..v1.2.3`](https://github.com/dannyben/bashly/compare/v1.2.2..v1.2.3)
+
+
+v1.2.2 - 2024-08-17
+----------------------------------------
+
+- Add support for needy flags: `flag.needs` [`fadda94d`](https://github.com/DannyBen/bashly/commit/fadda94d)
+- Add needy flag example [`43e3b386`](https://github.com/DannyBen/bashly/commit/43e3b386)
+- Update JSON schemas [`868650c6`](https://github.com/DannyBen/bashly/commit/868650c6)
+- Update flag usage to show its conflicts and needs [`db23575c`](https://github.com/DannyBen/bashly/commit/db23575c)
+- Refactor Command#introspection [`a66db36f`](https://github.com/DannyBen/bashly/commit/a66db36f)
+- Add support for environment variable validations [`bccd3b02`](https://github.com/DannyBen/bashly/commit/bccd3b02)
+- Update validations example to show environment variable validation [`ee6a4c99`](https://github.com/DannyBen/bashly/commit/ee6a4c99)
+- Update script generation to allow bash variables in some YAML strings [`6660d168`](https://github.com/DannyBen/bashly/commit/6660d168)
+- Allow ad-hoc revealing of private commands, flags, and environment variables [`d2876d72`](https://github.com/DannyBen/bashly/commit/d2876d72)
+- Add private-reveal example [`8c940429`](https://github.com/DannyBen/bashly/commit/8c940429)
+- Update completions library to consider private visibility setting [`e16dde10`](https://github.com/DannyBen/bashly/commit/e16dde10)
+- Update mandoc/markdown library to consider private visibility setting [`c49d94df`](https://github.com/DannyBen/bashly/commit/c49d94df)
+- Compare [`v1.2.1..v1.2.2`](https://github.com/dannyben/bashly/compare/v1.2.1..v1.2.2)
+
+
 v1.2.1 - 2024-07-25
 ----------------------------------------
 
-- Add validation to disallow required args before optional [`f2d6276`](https://github.com/DannyBen/bashly/commit/f2d6276)
-- Fix shellcheck violations and reduce use of `eval` [`41da133`](https://github.com/DannyBen/bashly/commit/41da133)
-- Fix default command not being triggered when only flags are provided [`c659830`](https://github.com/DannyBen/bashly/commit/c659830)
-- Fix prompt in bashly shell [`de231e8`](https://github.com/DannyBen/bashly/commit/de231e8)
+- Add validation to disallow required args before optional [`f2d62764`](https://github.com/DannyBen/bashly/commit/f2d62764)
+- Fix shellcheck violations and reduce use of `eval` [`41da133a`](https://github.com/DannyBen/bashly/commit/41da133a)
+- Fix default command not being triggered when only flags are provided [`c6598300`](https://github.com/DannyBen/bashly/commit/c6598300)
+- Fix prompt in bashly shell [`de231e89`](https://github.com/DannyBen/bashly/commit/de231e89)
 - Compare [`v1.2.0..v1.2.1`](https://github.com/dannyben/bashly/compare/v1.2.0..v1.2.1)
 
 
 v1.2.0 - 2024-07-05
 ----------------------------------------
 
-- Fix usage string when there is a forced default command [`d50607b`](https://github.com/DannyBen/bashly/commit/d50607b)
-- Add 'Global options' caption when appropriate [`105a0f8`](https://github.com/DannyBen/bashly/commit/105a0f8)
-- Update descriptions in schemas/strings.json [`6592666`](https://github.com/DannyBen/bashly/commit/6592666)
-- Remove redundant code in usage function [`f87986a`](https://github.com/DannyBen/bashly/commit/f87986a)
-- Update default command usage to show optional brackets [`854036d`](https://github.com/DannyBen/bashly/commit/854036d)
-- Add `show_examples_on_error` setting [`5e58388`](https://github.com/DannyBen/bashly/commit/5e58388)
-- Add examples/command-examples-on-error [`b30d2aa`](https://github.com/DannyBen/bashly/commit/b30d2aa)
+- Fix usage string when there is a forced default command [`d50607be`](https://github.com/DannyBen/bashly/commit/d50607be)
+- Add 'Global options' caption when appropriate [`105a0f89`](https://github.com/DannyBen/bashly/commit/105a0f89)
+- Update descriptions in schemas/strings.json [`6592666f`](https://github.com/DannyBen/bashly/commit/6592666f)
+- Remove redundant code in usage function [`f87986a7`](https://github.com/DannyBen/bashly/commit/f87986a7)
+- Update default command usage to show optional brackets [`854036d5`](https://github.com/DannyBen/bashly/commit/854036d5)
+- Add `show_examples_on_error` setting [`5e58388d`](https://github.com/DannyBen/bashly/commit/5e58388d)
+- Add examples/command-examples-on-error [`b30d2aa1`](https://github.com/DannyBen/bashly/commit/b30d2aa1)
 - Compare [`v1.1.10..v1.2.0`](https://github.com/dannyben/bashly/compare/v1.1.10..v1.2.0)
 
 
 v1.1.10 - 2024-04-01
 ----------------------------------------
 
-- Sanitize percent signs in help messages [`1f7e27c`](https://github.com/DannyBen/bashly/commit/1f7e27c)
-- Drop support for Ruby 3.0 [`865d6ac`](https://github.com/DannyBen/bashly/commit/865d6ac)
-- Fix input normalization to ignore anything after the double dash (--) operator [`621a151`](https://github.com/DannyBen/bashly/commit/621a151)
-- Add `[--]` to usage text when `catch_all` is used [`1422bcf`](https://github.com/DannyBen/bashly/commit/1422bcf)
-- Add `conjoined_flag_args` to allow disabling the `--flag=arg` normalization [`d17756d`](https://github.com/DannyBen/bashly/commit/d17756d)
+- Sanitize percent signs in help messages [`1f7e27c5`](https://github.com/DannyBen/bashly/commit/1f7e27c5)
+- Drop support for Ruby 3.0 [`865d6ac7`](https://github.com/DannyBen/bashly/commit/865d6ac7)
+- Fix input normalization to ignore anything after the double dash (--) operator [`621a1513`](https://github.com/DannyBen/bashly/commit/621a1513)
+- Add `[--]` to usage text when `catch_all` is used [`1422bcf3`](https://github.com/DannyBen/bashly/commit/1422bcf3)
+- Add `conjoined_flag_args` to allow disabling the `--flag=arg` normalization [`d17756d2`](https://github.com/DannyBen/bashly/commit/d17756d2)
 - Compare [`v1.1.9..v1.1.10`](https://github.com/dannyben/bashly/compare/v1.1.9..v1.1.10)
 
 
 v1.1.9 - 2024-03-20
 ----------------------------------------
 
-- Fix repeatable args when the input has quotes [`0d35217`](https://github.com/DannyBen/bashly/commit/0d35217)
-- Fix repeatable flag args when the input has quotes [`ab34fc0`](https://github.com/DannyBen/bashly/commit/ab34fc0)
-- Improve handling of unique repeatable args and flag args [`c200223`](https://github.com/DannyBen/bashly/commit/c200223)
-- Update `Approvals.bash` to v0.5.1 [`8e12d55`](https://github.com/DannyBen/bashly/commit/8e12d55)
+- Fix repeatable args when the input has quotes [`0d35217b`](https://github.com/DannyBen/bashly/commit/0d35217b)
+- Fix repeatable flag args when the input has quotes [`ab34fc05`](https://github.com/DannyBen/bashly/commit/ab34fc05)
+- Improve handling of unique repeatable args and flag args [`c200223a`](https://github.com/DannyBen/bashly/commit/c200223a)
+- Update `Approvals.bash` to v0.5.1 [`8e12d559`](https://github.com/DannyBen/bashly/commit/8e12d559)
 - Compare [`v1.1.8..v1.1.9`](https://github.com/dannyben/bashly/compare/v1.1.8..v1.1.9)
 
 
 v1.1.8 - 2024-03-02
 ----------------------------------------
 
-- Update `approvals.bash` to v0.5.0 [`530cb05`](https://github.com/DannyBen/bashly/commit/530cb05)
-- Add support for using heredoc [`adf4837`](https://github.com/DannyBen/bashly/commit/adf4837)
+- Update `approvals.bash` to v0.5.0 [`530cb05d`](https://github.com/DannyBen/bashly/commit/530cb05d)
+- Add support for using heredoc [`adf4837f`](https://github.com/DannyBen/bashly/commit/adf4837f)
 - Compare [`v1.1.7..v1.1.8`](https://github.com/dannyben/bashly/compare/v1.1.7..v1.1.8)
 
 
 v1.1.7 - 2024-02-17
 ----------------------------------------
 
-- Refactor validations to run after assigning default values [`e45580c`](https://github.com/DannyBen/bashly/commit/e45580c)
-- Upgrade `approvals.bash` to 0.4.2 [`863bf9a`](https://github.com/DannyBen/bashly/commit/863bf9a)
+- Refactor validations to run after assigning default values [`e45580cd`](https://github.com/DannyBen/bashly/commit/e45580cd)
+- Upgrade `approvals.bash` to 0.4.2 [`863bf9a5`](https://github.com/DannyBen/bashly/commit/863bf9a5)
 - Compare [`v1.1.6..v1.1.7`](https://github.com/dannyben/bashly/compare/v1.1.6..v1.1.7)
 
 
 v1.1.6 - 2024-02-08
 ----------------------------------------
 
-- Docker: Fix missing pandoc [`b8f6d2c`](https://github.com/DannyBen/bashly/commit/b8f6d2c)
-- Avoid rendering `inspect_args()` when generating for production env [`dbb8816`](https://github.com/DannyBen/bashly/commit/dbb8816)
-- Update `approvals.bash` library to 0.4.1 [`9eee25c`](https://github.com/DannyBen/bashly/commit/9eee25c)
-- Update Dockerfile [`4534497`](https://github.com/DannyBen/bashly/commit/4534497)
-- Build multi-arch docker image using GitHub Actions [`5d16926`](https://github.com/DannyBen/bashly/commit/5d16926)
+- Docker: Fix missing pandoc [`b8f6d2cf`](https://github.com/DannyBen/bashly/commit/b8f6d2cf)
+- Avoid rendering `inspect_args()` when generating for production env [`dbb8816b`](https://github.com/DannyBen/bashly/commit/dbb8816b)
+- Update `approvals.bash` library to 0.4.1 [`9eee25ca`](https://github.com/DannyBen/bashly/commit/9eee25ca)
+- Update Dockerfile [`45344972`](https://github.com/DannyBen/bashly/commit/45344972)
+- Build multi-arch docker image using GitHub Actions [`5d169261`](https://github.com/DannyBen/bashly/commit/5d169261)
 - Compare [`v1.1.5..v1.1.6`](https://github.com/dannyben/bashly/compare/v1.1.5..v1.1.6)
 
 
 v1.1.5 - 2023-12-22
 ----------------------------------------
 
-- Allow `flag.default` and `arg.default` to be an array if `repeatable` is true [`00c81ec`](https://github.com/DannyBen/bashly/commit/00c81ec)
-- Improve JSON schema tests [`6bd7a1b`](https://github.com/DannyBen/bashly/commit/6bd7a1b)
-- Add YAML schema as a source to the bashly JSON schema [`261d104`](https://github.com/DannyBen/bashly/commit/261d104)
-- Add `allowed` option to `environment_variable` [`4d313a8`](https://github.com/DannyBen/bashly/commit/4d313a8)
-- Update `inspect_args` to also print managed `environment_variables` [`4fe17b7`](https://github.com/DannyBen/bashly/commit/4fe17b7)
-- Refactor `inspect_args` handling of environment variables [`7c6e712`](https://github.com/DannyBen/bashly/commit/7c6e712)
+- Allow `flag.default` and `arg.default` to be an array if `repeatable` is true [`00c81ec1`](https://github.com/DannyBen/bashly/commit/00c81ec1)
+- Improve JSON schema tests [`6bd7a1b6`](https://github.com/DannyBen/bashly/commit/6bd7a1b6)
+- Add YAML schema as a source to the bashly JSON schema [`261d1040`](https://github.com/DannyBen/bashly/commit/261d1040)
+- Add `allowed` option to `environment_variable` [`4d313a86`](https://github.com/DannyBen/bashly/commit/4d313a86)
+- Update `inspect_args` to also print managed `environment_variables` [`4fe17b71`](https://github.com/DannyBen/bashly/commit/4fe17b71)
+- Refactor `inspect_args` handling of environment variables [`7c6e7124`](https://github.com/DannyBen/bashly/commit/7c6e7124)
 - Compare [`v1.1.4..v1.1.5`](https://github.com/dannyben/bashly/compare/v1.1.4..v1.1.5)
 
 
 v1.1.4 - 2023-12-09
 ----------------------------------------
 
-- Fix example in `bashly doc flag.arg` [`039ab1c`](https://github.com/DannyBen/bashly/commit/039ab1c)
-- Add support for `unique` in repeatable flag args [`b062c93`](https://github.com/DannyBen/bashly/commit/b062c93)
-- Disallow multiple repeatable args, and a repeatable arg that is not the last one [`25431c9`](https://github.com/DannyBen/bashly/commit/25431c9)
-- Add support for `unique` in repeatable args [`4486788`](https://github.com/DannyBen/bashly/commit/4486788)
+- Fix example in `bashly doc flag.arg` [`039ab1cb`](https://github.com/DannyBen/bashly/commit/039ab1cb)
+- Add support for `unique` in repeatable flag args [`b062c934`](https://github.com/DannyBen/bashly/commit/b062c934)
+- Disallow multiple repeatable args, and a repeatable arg that is not the last one [`25431c9e`](https://github.com/DannyBen/bashly/commit/25431c9e)
+- Add support for `unique` in repeatable args [`4486788f`](https://github.com/DannyBen/bashly/commit/4486788f)
 - Compare [`v1.1.3..v1.1.4`](https://github.com/dannyben/bashly/compare/v1.1.3..v1.1.4)
 
 
 v1.1.3 - 2023-11-25
 ----------------------------------------
 
-- Fix `bashly completeions --install` [`9e5d45a`](https://github.com/DannyBen/bashly/commit/9e5d45a)
+- Fix `bashly completeions --install` [`9e5d45a0`](https://github.com/DannyBen/bashly/commit/9e5d45a0)
 - Compare [`v1.1.2..v1.1.3`](https://github.com/dannyben/bashly/compare/v1.1.2..v1.1.3)
 
 
 v1.1.2 - 2023-11-15
 ----------------------------------------
 
-- Fix shfmt excess newlines violation when using `--env production` [`0938fca`](https://github.com/DannyBen/bashly/commit/0938fca)
-- Fix some incompatibilities with strict mode [`b24cddf`](https://github.com/DannyBen/bashly/commit/b24cddf)
+- Fix shfmt excess newlines violation when using `--env production` [`0938fca1`](https://github.com/DannyBen/bashly/commit/0938fca1)
+- Fix some incompatibilities with strict mode [`b24cddff`](https://github.com/DannyBen/bashly/commit/b24cddff)
 - Compare [`v1.1.1..v1.1.2`](https://github.com/dannyben/bashly/compare/v1.1.1..v1.1.2)
 
 
 v1.1.1 - 2023-10-18
 ----------------------------------------
 
-- Upgrade `approvals.bash` library to version 0.4.0 [`a68ad34`](https://github.com/DannyBen/bashly/commit/a68ad34)
-- Update INI library to allow using environment variables in the INI values [`2e3aec7`](https://github.com/DannyBen/bashly/commit/2e3aec7)
-- Add support for custom "See Also" in mandoc renderer (`x_mandoc_see_also`) [`4fddc7b`](https://github.com/DannyBen/bashly/commit/4fddc7b)
-- Fix missing tmpdir library in `bashly add --source` [`3f7b4c3`](https://github.com/DannyBen/bashly/commit/3f7b4c3)
-- Validate libraries.yml [`a44cbde`](https://github.com/DannyBen/bashly/commit/a44cbde)
+- Upgrade `approvals.bash` library to version 0.4.0 [`a68ad34f`](https://github.com/DannyBen/bashly/commit/a68ad34f)
+- Update INI library to allow using environment variables in the INI values [`2e3aec7f`](https://github.com/DannyBen/bashly/commit/2e3aec7f)
+- Add support for custom "See Also" in mandoc renderer (`x_mandoc_see_also`) [`4fddc7bf`](https://github.com/DannyBen/bashly/commit/4fddc7bf)
+- Fix missing tmpdir library in `bashly add --source` [`3f7b4c3a`](https://github.com/DannyBen/bashly/commit/3f7b4c3a)
+- Validate libraries.yml [`a44cbde9`](https://github.com/DannyBen/bashly/commit/a44cbde9)
 - Compare [`v1.1.0..v1.1.1`](https://github.com/dannyben/bashly/compare/v1.1.0..v1.1.1)
 
 
 v1.1.0 - 2023-08-28
 ----------------------------------------
 
-- Add `bashly render` command [`4acc67b`](https://github.com/DannyBen/bashly/commit/4acc67b)
-- Add ability to render markdown documentation [`7db6129`](https://github.com/DannyBen/bashly/commit/7db6129)
-- Refactor module loading with autoload [`62184f0`](https://github.com/DannyBen/bashly/commit/62184f0)
-- Add `bashly add render_markdown` library [`d0fada7`](https://github.com/DannyBen/bashly/commit/d0fada7)
-- Add ability to render man pages and `bashly add render_mandoc` library [`fe9607b`](https://github.com/DannyBen/bashly/commit/fe9607b)
-- Refactor render command with RenderSource model [`8629d26`](https://github.com/DannyBen/bashly/commit/8629d26)
-- Allow arbitrary (`x-anything`) values in bashly.yml [`9062783`](https://github.com/DannyBen/bashly/commit/9062783)
-- Refactor mandoc template to use x_mandoc_footer and x_mandoc_authors [`b44b91f`](https://github.com/DannyBen/bashly/commit/b44b91f)
-- Add render-mandoc man page generation example [`98420de`](https://github.com/DannyBen/bashly/commit/98420de)
-- Add `--show` to `bashly render` [`2fcd790`](https://github.com/DannyBen/bashly/commit/2fcd790)
+- Add `bashly render` command [`4acc67bd`](https://github.com/DannyBen/bashly/commit/4acc67bd)
+- Add ability to render markdown documentation [`7db61291`](https://github.com/DannyBen/bashly/commit/7db61291)
+- Refactor module loading with autoload [`62184f0f`](https://github.com/DannyBen/bashly/commit/62184f0f)
+- Add `bashly add render_markdown` library [`d0fada7d`](https://github.com/DannyBen/bashly/commit/d0fada7d)
+- Add ability to render man pages and `bashly add render_mandoc` library [`fe9607b4`](https://github.com/DannyBen/bashly/commit/fe9607b4)
+- Refactor render command with RenderSource model [`8629d266`](https://github.com/DannyBen/bashly/commit/8629d266)
+- Allow arbitrary (`x-anything`) values in bashly.yml [`90627833`](https://github.com/DannyBen/bashly/commit/90627833)
+- Refactor mandoc template to use x_mandoc_footer and x_mandoc_authors [`b44b91f9`](https://github.com/DannyBen/bashly/commit/b44b91f9)
+- Add render-mandoc man page generation example [`98420de1`](https://github.com/DannyBen/bashly/commit/98420de1)
+- Add `--show` to `bashly render` [`2fcd790b`](https://github.com/DannyBen/bashly/commit/2fcd790b)
 - Compare [`v1.0.8..v1.1.0`](https://github.com/dannyben/bashly/compare/v1.0.8..v1.1.0)
 
 

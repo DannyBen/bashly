@@ -50,6 +50,15 @@ commands:
 
     # Validations also work on flags (when they have arguments)
     validate: file_exists
+
+- name: build
+  environment_variables:
+  - name: build_dir
+    help: Path to the build directory
+    default: release
+
+    # Validations also work on environment variables
+    validate: dir_exists
 ````
 
 
@@ -59,9 +68,10 @@ commands:
 ### `$ ./validate calc 1 2 --save README.md`
 
 ````shell
-# this file is located in 'src/calc_command.sh'
-# code for 'validate calc' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/calc_command.sh'.
+# It contains the implementation for the 'validate calc' command.
+# The code you write here will be wrapped by a function named 'validate_calc_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[first]} = 1
 - ${args[--save]} = README.md
@@ -93,6 +103,30 @@ must be an integer
 ````shell
 validation error in --save PATH:
 must be an existing file
+
+
+````
+
+### `$ ./validate build`
+
+````shell
+validation error in environment variable BUILD_DIR:
+must be an existing directory
+
+
+````
+
+### `$ BUILD_DIR=src ./validate build`
+
+````shell
+# This file is located at 'src/build_command.sh'.
+# It contains the implementation for the 'validate build' command.
+# The code you write here will be wrapped by a function named 'validate_build_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
+args: none
+
+environment variables:
+- $BUILD_DIR = src
 
 
 ````

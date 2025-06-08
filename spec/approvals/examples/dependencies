@@ -1,5 +1,14 @@
 + bashly add colors
 created src/lib/colors.sh
+
+The colors library supports the NO_COLOR standard out of the box.
+
+In case you wish to also enable automatic output of colors based on the
+terminal being interactive (TTY), call enable_auto_colors in your 
+src/initialize.sh. You may run the following command to add this file:
+
+  $ bashly add hooks
+
 + bashly generate
 creating user files in src
 created src/download_command.sh
@@ -7,7 +16,12 @@ created src/upload_command.sh
 created ./cli
 run ./cli --help to test your bash script
 + ./cli download
-missing dependency: shmurl
+missing dependency: dos
+missing dependency: netscape
 + ./cli upload
 missing dependency: mini-docker
 install with gem install mini-docker
+
+missing dependency: multi-docker
+install with gem install multi-docker
+

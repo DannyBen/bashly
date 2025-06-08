@@ -1,0 +1,18 @@
++ bundle exec bashly generate
+creating user files in src
+created src/test_command.sh
+created ./cli
+run ./cli --help to test your bash script
++ ./cli
+cli
+
+Usage:
+  cli [OPTIONS] COMMAND
+  cli [COMMAND] --help | -h
+  cli --version | -v
+
+Commands:
+  test   
+
++ ./cli --fast --slow
+conflicting options: --slow cannot be used with --fast

@@ -1,226 +1,254 @@
 {
-    "$schema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
-    "title": "strings",
-    "description": "Strings of the generated script\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-    "type": "object",
-    "properties": {
-        "usage": {
-            "title": "usage",
-            "description": "The caption for the usage patterns\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Usage:"
-        },
-        "options": {
-            "title": "options",
-            "description": "The caption for the options section\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Options:"
-        },
-        "global_options": {
-            "title": "global_options",
-            "description": "The caption for the options section, when a command has flags and sub-commands\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Options:"
-        },
-        "arguments": {
-            "title": "arguments",
-            "description": "The caption for the argument section\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Arguments:"
-        },
-        "commands": {
-            "title": "commands",
-            "description": "The caption for the command section\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Commands:"
-        },
-        "examples": {
-            "title": "examples",
-            "description": "The caption for the examples section\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Examples:"
-        },
-        "environment_variables": {
-            "title": "environment variables",
-            "description": "The caption for the environment variables section\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Environment Variables:"
-        },
-        "group": {
-            "title": "group",
-            "description": "The caption template for custom command groups\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{group} Commands:"
-        },
-        "command_alias": {
-            "title": "command alias",
-            "description": "The string template for a command alias\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Alias: %{alias}"
-        },
-        "default_command_summary": {
-            "title": "default command summary",
-            "description": "The string template for the summary of a default command\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{summary} (default)"
-        },
-        "required": {
-            "title": "required",
-            "description": "The string suffix for required arguments, flags, or commands\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "(required)"
-        },
-        "repeatable": {
-            "title": "repeatable",
-            "description": "The string suffix for repeatable arguments, flags, or commands\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "(repeatable)"
-        },
-        "default": {
-            "title": "default",
-            "description": "The string template for a default argument or flag\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Default: %{value}"
-        },
-        "allowed": {
-            "title": "allowed",
-            "description": "The string template for the list of allowed values\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Allowed: %{values}"
-        },
-        "examples_caption_on_error": {
-            "title": "examples caption on error",
-            "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "examples:"
-        },
-        "help_flag_text": {
-            "title": "help flag text",
-            "description": "The help message for --help\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Show this help"
-        },
-        "version_flag_text": {
-            "title": "version flag text",
-            "description": "The help message for --version\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "Show version number"
-        },
-        "flag_requires_an_argument": {
-            "title": "flag requires an argument",
-            "description": "The error message template for missing flag argument\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{name} requires an argument: %{usage}"
-        },
-        "invalid_argument": {
-            "title": "invalid argument",
-            "description": "The error message template for invalid argument\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "invalid argument: %s"
-        },
-        "invalid_flag": {
-            "title": "invalid flag",
-            "description": "The error message template for invalid flag\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "invalid option: %s"
-        },
-        "invalid_command": {
-            "title": "invalid command",
-            "description": "The error message template for invalid command\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "invalid command: %s"
-        },
-        "conflicting_flags": {
-            "title": "conflicting flags",
-            "description": "The error message template for conflicting flags\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "conflicting options: %s cannot be used with %s"
-        },
-        "missing_required_argument": {
-            "title": "missing required argument",
-            "description": "The error message template for missing required argument\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "missing required argument: %{arg}\\nusage: %{usage}"
-        },
-        "missing_required_flag": {
-            "title": "missing required flag",
-            "description": "The error message template for missing required flag\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "missing required flag: %{usage}"
-        },
-        "missing_required_environment_variable": {
-            "title": "missing required environment variable",
-            "description": "The error message template for missing required environment variable\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "missing required environment variable: %{var}"
-        },
-        "missing_dependency": {
-            "title": "missing dependency",
-            "description": "The error message template for missing dependency\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "missing dependency: %{dependency}"
-        },
-        "disallowed_flag": {
-            "title": "disallowed flag",
-            "description": "The error message template for forbidden flag\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{name} must be one of: %{allowed}"
-        },
-        "disallowed_argument": {
-            "title": "disallowed argument",
-            "description": "The error message template for forbidden argument\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{name} must be one of: %{allowed}"
-        },
-        "disallowed_environment_variable": {
-            "title": "disallowed_environment_variable",
-            "description": "The error message template for forbidden environment variable\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "%{name} environment variable must be one of: %{allowed}"
-        },
-        "unsupported_bash_version": {
-            "title": "unsupported bash version",
-            "description": "The error message for unsupported Bash version\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "bash version 4 or higher is required"
-        },
-        "validation_error": {
-            "title": "validation error",
-            "description": "The error message template for failed custom validation\nhttps://bashly.dannyb.co/advanced/strings/#custom-strings",
-            "type": "string",
-            "minLength": 1,
-            "default": "validation error in %s:\\n%s"
-        }
+  "$schema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
+  "title": "strings",
+  "description": "Strings of the generated script\nhttps://bashly.dev/advanced/strings/#custom-strings",
+  "type": "object",
+  "properties": {
+    "usage": {
+      "title": "usage",
+      "description": "The caption for the usage patterns\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Usage:"
     },
-    "additionalProperties": false
+    "options": {
+      "title": "options",
+      "description": "The caption for the options section\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Options:"
+    },
+    "global_options": {
+      "title": "global_options",
+      "description": "The caption for the options section, when a command has flags and sub-commands\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Options:"
+    },
+    "arguments": {
+      "title": "arguments",
+      "description": "The caption for the argument section\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Arguments:"
+    },
+    "commands": {
+      "title": "commands",
+      "description": "The caption for the command section\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Commands:"
+    },
+    "examples": {
+      "title": "examples",
+      "description": "The caption for the examples section\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Examples:"
+    },
+    "environment_variables": {
+      "title": "environment variables",
+      "description": "The caption for the environment variables section\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Environment Variables:"
+    },
+    "group": {
+      "title": "group",
+      "description": "The caption template for custom command groups\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{group} Commands:"
+    },
+    "command_alias": {
+      "title": "command alias",
+      "description": "The string template for a command alias\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Alias: %{alias}"
+    },
+    "default_command_summary": {
+      "title": "default command summary",
+      "description": "The string template for the summary of a default command\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{summary} (default)"
+    },
+    "required": {
+      "title": "required",
+      "description": "The string suffix for required arguments, flags, or commands\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "(required)"
+    },
+    "repeatable": {
+      "title": "repeatable",
+      "description": "The string suffix for repeatable arguments, flags, or commands\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "(repeatable)"
+    },
+    "default": {
+      "title": "default",
+      "description": "The string template for a default argument or flag\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Default: %{value}"
+    },
+    "allowed": {
+      "title": "allowed",
+      "description": "The string template for the list of allowed values\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Allowed: %{values}"
+    },
+    "needs": {
+      "title": "needs",
+      "description": "The string template for the list of needed flags\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Needs: %{values}"
+    },
+    "conflicts": {
+      "title": "conflicts",
+      "description": "The string template for the list of conflicting flags\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Conflicts: %{values}"
+    },
+    "help_flag_text": {
+      "title": "help flag text",
+      "description": "The help message for --help\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Show this help"
+    },
+    "version_flag_text": {
+      "title": "version flag text",
+      "description": "The help message for --version\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "Show version number"
+    },
+    "flag_requires_an_argument": {
+      "title": "flag requires an argument",
+      "description": "The error message template for missing flag argument\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{name} requires an argument: %{usage}"
+    },
+    "flag_needs_another": {
+      "title": "flag needs another flag",
+      "description": "The error message template for missing flag needs\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{name} needs %{need}"
+    },
+    "invalid_argument": {
+      "title": "invalid argument",
+      "description": "The error message template for invalid argument\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "invalid argument: %s"
+    },
+    "invalid_flag": {
+      "title": "invalid flag",
+      "description": "The error message template for invalid flag\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "invalid option: %s"
+    },
+    "invalid_command": {
+      "title": "invalid command",
+      "description": "The error message template for invalid command\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "invalid command: %s"
+    },
+    "conflicting_flags": {
+      "title": "conflicting flags",
+      "description": "The error message template for conflicting flags\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "conflicting options: %s cannot be used with %s"
+    },
+    "missing_required_argument": {
+      "title": "missing required argument",
+      "description": "The error message template for missing required argument\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "missing required argument: %{arg}\\nusage: %{usage}"
+    },
+    "missing_required_flag": {
+      "title": "missing required flag",
+      "description": "The error message template for missing required flag\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "missing required flag: %{usage}"
+    },
+    "missing_required_environment_variable": {
+      "title": "missing required environment variable",
+      "description": "The error message template for missing required environment variable\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "missing required environment variable: %{var}"
+    },
+    "missing_dependency": {
+      "title": "missing dependency",
+      "description": "The error message template for missing dependency\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "missing dependency: %{dependency}"
+    },
+    "examples_caption_on_error": {
+      "title": "examples caption on error",
+      "description": "The string to show before the examples when show_examples_on_error is enabled\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "examples:"
+    },
+    "disallowed_flag": {
+      "title": "disallowed flag",
+      "description": "The error message template for forbidden flag\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{name} must be one of: %{allowed}"
+    },
+    "disallowed_argument": {
+      "title": "disallowed argument",
+      "description": "The error message template for forbidden argument\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{name} must be one of: %{allowed}"
+    },
+    "disallowed_environment_variable": {
+      "title": "disallowed_environment_variable",
+      "description": "The error message template for forbidden environment variable\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "%{name} environment variable must be one of: %{allowed}"
+    },
+    "unsupported_bash_version": {
+      "title": "unsupported bash version",
+      "description": "The error message for unsupported Bash version\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "bash version 4 or higher is required"
+    },
+    "validation_error": {
+      "title": "validation error",
+      "description": "The error message template for failed custom validation\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "validation error in %s:\\n%s"
+    },
+    "environment_variable_validation_error": {
+      "title": "environment variable validation error",
+      "description": "The error message template for failed custom validation for environment variables\nhttps://bashly.dev/advanced/strings/#custom-strings",
+      "type": "string",
+      "minLength": 1,
+      "default": "validation error in environment variable %s:\\n%s"
+    }
+  },
+  "additionalProperties": false
 }

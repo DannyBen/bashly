@@ -1,4 +1,4 @@
-describe Commands::Generate do
+describe Commands::Generate, :slow do
   subject { described_class.new }
 
   let(:source_dir) { Settings.source_dir }
@@ -8,6 +8,12 @@ describe Commands::Generate do
   describe 'generate --help' do
     it 'shows long usage' do
       expect { subject.execute %w[generate --help] }.to output_approval('cli/generate/help')
+    end
+  end
+
+  describe 'build --help' do
+    it 'is an alias to generate' do
+      expect { subject.execute %w[build --help] }.to output_approval('cli/generate/help')
     end
   end
 

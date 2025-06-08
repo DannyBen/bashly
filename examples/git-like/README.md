@@ -90,9 +90,10 @@ Options:
 ### `$ ./git s`
 
 ````shell
-# this file is located in 'src/status_command.sh'
-# code for 'git status' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/status_command.sh'.
+# It contains the implementation for the 'git status' command.
+# The code you write here will be wrapped by a function named 'git_status_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -145,9 +146,10 @@ Options:
 ### `$ ./git commit -a -m "initial commit"`
 
 ````shell
-# this file is located in 'src/commit_command.sh'
-# code for 'git commit' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/commit_command.sh'.
+# It contains the implementation for the 'git commit' command.
+# The code you write here will be wrapped by a function named 'git_commit_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--all]} = 1
 - ${args[--message]} = initial commit

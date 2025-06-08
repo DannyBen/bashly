@@ -11,6 +11,15 @@ created ./cli
 run ./cli --help to test your bash script
 + bundle exec bashly add colors
 created src/lib/colors.bash
+
+The colors library supports the NO_COLOR standard out of the box.
+
+In case you wish to also enable automatic output of colors based on the
+terminal being interactive (TTY), call enable_auto_colors in your 
+src/initialize.sh. You may run the following command to add this file:
+
+  $ bashly add hooks
+
 + bundle exec bashly add completions
 created src/lib/send_completions.bash
 
@@ -97,9 +106,10 @@ Environment Variables:
     Set your API key
 
 + ./cli download something
-# this file is located in 'src/download_command.bash'
-# code for 'cli download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/download_command.bash'.
+# It contains the implementation for the 'cli download' command.
+# The code you write here will be wrapped by a function named 'cli_download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[source]} = something
 

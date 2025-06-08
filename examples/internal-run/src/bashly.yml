@@ -1,0 +1,26 @@
+name: cli
+help: Internal run test
+version: 0.1.0
+
+commands:
+- name: build
+  help: Build code
+  args:
+  - name: env
+    help: Build environment
+    default: development
+    allowed: [development, production]
+
+- name: test
+  help: Test code
+  flags:
+  - long: --full
+    help: Run all tests
+
+- name: deploy
+  help: Deploy code
+  flags:
+  - long: --build
+    help: Build before deploying
+  - long: --test
+    help: Test before deploying

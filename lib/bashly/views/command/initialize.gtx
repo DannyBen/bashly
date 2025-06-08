@@ -1,12 +1,12 @@
 = view_marker
 
-> initialize() {
->   version="<%= version %>"
->   long_usage=''
+> {{ Settings.function_name :initialize }}() {
+>   declare -g version="<%= version %>"
 >   {{ Settings.strict_string }}
 
 if root_command?
   > 
+  = render(:variables).indent(2)
   = render(:environment_variables_default).indent 2
 end
 

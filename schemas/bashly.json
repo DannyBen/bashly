@@ -3,7 +3,7 @@
   "definitions": {
     "argument": {
       "title": "argument",
-      "description": "A positional argument of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/argument/",
+      "description": "A positional argument of the current script or sub-command\nhttps://bashly.dev/configuration/argument/",
       "type": "object",
       "required": [
         "name"
@@ -11,7 +11,7 @@
       "properties": {
         "name": {
           "title": "name",
-          "description": "A name of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#name",
+          "description": "A name of the current positional argument\nhttps://bashly.dev/configuration/argument/#name",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -20,7 +20,7 @@
         },
         "help": {
           "title": "help",
-          "description": "A description of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#help",
+          "description": "A description of the current positional argument\nhttps://bashly.dev/configuration/argument/#help",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -29,7 +29,7 @@
         },
         "default": {
           "title": "default",
-          "description": "A default value of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#default",
+          "description": "A default value of the current positional argument\nhttps://bashly.dev/configuration/argument/#default",
           "oneOf": [
             {
               "type": "string"
@@ -48,15 +48,15 @@
         },
         "required": {
           "title": "required",
-          "description": "Whether the current positional argument is required\nhttps://bashly.dannyb.co/configuration/argument/#required",
+          "description": "Whether the current positional argument is required\nhttps://bashly.dev/configuration/argument/#required",
           "type": "boolean",
           "default": true
         },
         "allowed": {
           "title": "allowed",
-          "description": "Valid values of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#allowed",
+          "description": "Valid values of the current positional argument\nhttps://bashly.dev/configuration/argument/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current positional argument",
@@ -69,13 +69,13 @@
         },
         "repeatable": {
           "title": "repeatable",
-          "description": "Whether the current positional argument can be repeated\nhttps://bashly.dannyb.co/configuration/argument/#repeatable",
+          "description": "Whether the current positional argument can be repeated\nhttps://bashly.dev/configuration/argument/#repeatable",
           "type": "boolean",
           "default": false
         },
         "validate": {
           "title": "validate",
-          "description": "A validation function of the current positional argument\nhttps://bashly.dannyb.co/configuration/argument/#validate",
+          "description": "A validation function of the current positional argument\nhttps://bashly.dev/configuration/argument/#validate",
           "type": "string",
           "examples": [
             "file_exists",
@@ -86,7 +86,7 @@
         },
         "unique": {
           "title": "unique",
-          "description": "Whether the current positional argument is unique\nhttps://bashly.dannyb.co/configuration/argument/#unique",
+          "description": "Whether the current positional argument is unique\nhttps://bashly.dev/configuration/argument/#unique",
           "type": "boolean",
           "default": false
         }
@@ -113,7 +113,7 @@
     },
     "flag": {
       "title": "flag",
-      "description": "A flag of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/flag/",
+      "description": "A flag of the current script or sub-command\nhttps://bashly.dev/configuration/flag/",
       "type": "object",
       "anyOf": [
         {
@@ -130,7 +130,7 @@
       "properties": {
         "long": {
           "title": "long",
-          "description": "A long form of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#long",
+          "description": "A long form of the current flag\nhttps://bashly.dev/configuration/flag/#long",
           "type": "string",
           "pattern": "^--",
           "examples": [
@@ -139,7 +139,7 @@
         },
         "short": {
           "title": "short",
-          "description": "A short form of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#short",
+          "description": "A short form of the current flag\nhttps://bashly.dev/configuration/flag/#short",
           "type": "string",
           "pattern": "^-[^-]",
           "examples": [
@@ -148,7 +148,7 @@
         },
         "help": {
           "title": "help",
-          "description": "A description of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#help",
+          "description": "A description of the current flag\nhttps://bashly.dev/configuration/flag/#help",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -157,7 +157,7 @@
         },
         "arg": {
           "title": "arg",
-          "description": "An argument name of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#arg",
+          "description": "An argument name of the current flag\nhttps://bashly.dev/configuration/flag/#arg",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -166,7 +166,7 @@
         },
         "default": {
           "title": "default",
-          "description": "A default value of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#default",
+          "description": "A default value of the current flag\nhttps://bashly.dev/configuration/flag/#default",
           "oneOf": [
             {
               "type": "string"
@@ -185,15 +185,15 @@
         },
         "required": {
           "title": "required",
-          "description": "Whether the current flag is required\nhttps://bashly.dannyb.co/configuration/flag/#required",
+          "description": "Whether the current flag is required\nhttps://bashly.dev/configuration/flag/#required",
           "type": "boolean",
           "default": true
         },
         "allowed": {
           "title": "allowed",
-          "description": "Valid values of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#allowed",
+          "description": "Valid values of the current flag\nhttps://bashly.dev/configuration/flag/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current positional argument",
@@ -206,12 +206,12 @@
         },
         "conflicts": {
           "title": "conflicts",
-          "description": "Mutually exclusive flags of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#conflicts",
+          "description": "Mutually exclusive flags of the current flag\nhttps://bashly.dev/configuration/flag/#conflicts",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "description": "A mutually exclusive flag of the current flag",
+            "description": "The long form of the required flag",
             "type": "string",
             "minLength": 1,
             "examples": [
@@ -219,11 +219,26 @@
             ]
           }
         },
+        "needs": {
+          "title": "needs",
+          "description": "Additional flags required by the current flag\nhttps://bashly.dev/configuration/flag/#needs",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "description": "The long form of the required flag",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "--command"
+            ]
+          }
+        },
         "completions": {
           "title": "completions",
-          "description": "Completions of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#completions",
+          "description": "Completions of the current flag\nhttps://bashly.dev/configuration/flag/#completions",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A completion of the current flag",
@@ -233,19 +248,19 @@
         },
         "private": {
           "title": "private",
-          "description": "Whether the current flag is hidden from help\nhttps://bashly.dannyb.co/configuration/flag/#private",
+          "description": "Whether the current flag is hidden from help\nhttps://bashly.dev/configuration/flag/#private",
           "type": "boolean",
           "default": false
         },
         "repeatable": {
           "title": "repeatable",
-          "description": "Whether the current flag can be repeated\nhttps://bashly.dannyb.co/configuration/flag/#repeatable",
+          "description": "Whether the current flag can be repeated\nhttps://bashly.dev/configuration/flag/#repeatable",
           "type": "boolean",
           "default": false
         },
         "validate": {
           "title": "validate",
-          "description": "A validation function of the current flag\nhttps://bashly.dannyb.co/configuration/flag/#validate",
+          "description": "A validation function of the current flag\nhttps://bashly.dev/configuration/flag/#validate",
           "type": "string",
           "examples": [
             "file_exists",
@@ -256,7 +271,7 @@
         },
         "unique": {
           "title": "unique",
-          "description": "Whether the current flag is unique\nhttps://bashly.dannyb.co/configuration/flag/#unique",
+          "description": "Whether the current flag is unique\nhttps://bashly.dev/configuration/flag/#unique",
           "type": "boolean",
           "default": false
         }
@@ -283,7 +298,7 @@
     },
     "environment-variable": {
       "title": "environment variable",
-      "description": "An environment variable of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+      "description": "An environment variable of the current application\nhttps://bashly.dev/configuration/environment-variable/#environment-variable",
       "type": "object",
       "required": [
         "name"
@@ -291,7 +306,7 @@
       "properties": {
         "name": {
           "title": "name",
-          "description": "A name of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#name",
+          "description": "A name of the current environment variable\nhttps://bashly.dev/configuration/environment-variable/#name",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -300,7 +315,7 @@
         },
         "help": {
           "title": "help",
-          "description": "A description of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#help",
+          "description": "A description of the current environment variable\nhttps://bashly.dev/configuration/environment-variable/#help",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -309,21 +324,32 @@
         },
         "private": {
           "title": "private",
-          "description": "Whether the current environment variable is hidden from help\nhttps://bashly.dannyb.co/configuration/environment-variable/#private",
+          "description": "Whether the current environment variable is hidden from help\nhttps://bashly.dev/configuration/environment-variable/#private",
           "type": "boolean",
           "default": false
         },
         "required": {
           "title": "required",
-          "description": "Whether the current environment variable is required\nhttps://bashly.dannyb.co/configuration/environment-variable/#required",
+          "description": "Whether the current environment variable is required\nhttps://bashly.dev/configuration/environment-variable/#required",
           "type": "boolean",
           "default": true
         },
+        "validate": {
+          "title": "validate",
+          "description": "A validation function for the current environment variable\nhttps://bashly.dev/configuration/environment-variable/#validate",
+          "type": "string",
+          "examples": [
+            "file_exists",
+            "dir_exists",
+            "integer",
+            "non_empty"
+          ]
+        },
         "allowed": {
           "title": "allowed",
-          "description": "Valid values of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#allowed",
+          "description": "Valid values of the current environment variable\nhttps://bashly.dev/configuration/environment-variable/#allowed",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "description": "A valid value of the current environment variable",
@@ -336,7 +362,7 @@
         },
         "default": {
           "title": "default",
-          "description": "A default value of the current environment variable\nhttps://bashly.dannyb.co/configuration/environment-variable/#default",
+          "description": "A default value of the current environment variable\nhttps://bashly.dev/configuration/environment-variable/#default",
           "type": "string",
           "examples": [
             "~/config.ini"
@@ -354,9 +380,53 @@
       },
       "additionalProperties": false
     },
+    "variable": {
+      "title": "variable",
+      "description": "A global bash variable\nhttps://bashly.dev/configuration/variable/#variable",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "A name for the current variable\nhttps://bashly.dev/configuration/variable/#name",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "output_dir"
+          ]
+        },
+        "value": {
+          "title": "value",
+          "description": "A value for the current variable\nhttps://bashly.dev/configuration/variable/#value",
+          "examples": [
+            "./output",
+            [
+              "development",
+              "production"
+            ],
+            {
+              "verbosity": 3,
+              "debug": true
+            }
+          ]
+        }
+      },
+      "patternProperties": {
+        "^x_.": {
+          "title": "custom property",
+          "description": "A custom property of any type",
+          "examples": [
+            "Anything"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
     "name-property": {
       "title": "name",
-      "description": "A name of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#name",
+      "description": "A name of the current script or sub-command\nhttps://bashly.dev/configuration/command/#name",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -368,7 +438,7 @@
       "title": "alias",
       "oneOf": [
         {
-          "description": "An alias of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#alias",
+          "description": "An alias of the current sub-command\nhttps://bashly.dev/configuration/command/#alias",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -376,7 +446,7 @@
           ]
         },
         {
-          "description": "Aliases of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#alias",
+          "description": "Aliases of the current sub-command\nhttps://bashly.dev/configuration/command/#alias",
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
@@ -393,37 +463,47 @@
     },
     "help-property": {
       "title": "help",
-      "description": "A description of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#help",
+      "description": "A description of the current script or sub-command\nhttps://bashly.dev/configuration/command/#help",
       "type": "string",
       "minLength": 1,
       "examples": [
         "URL to download from"
       ]
     },
+    "help-header-override-property": {
+      "title": "help_header_override",
+      "description": "Bash code (or function call) that will be executed at the beginning of the help message\nhttps://bashly.dev/configuration/command/#help-header-override",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "generate_ascii_art_logo"
+      ]
+    },
     "args-property": {
       "title": "args",
-      "description": "Arguments of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#args",
+      "description": "Arguments of the current script or sub-command\nhttps://bashly.dev/configuration/command/#args",
       "type": "array",
-      "uniqueItems": true,
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/argument"
       }
     },
     "flags-property": {
       "title": "flags",
-      "description": "Flags of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#flags",
+      "description": "Flags of the current script or sub-command\nhttps://bashly.dev/configuration/command/#flags",
       "type": "array",
-      "uniqueItems": true,
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/flag"
       }
     },
     "commands-property": {
       "title": "commands",
-      "description": "Subcommands of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#commands",
+      "description": "Subcommands of the current script or sub-command\nhttps://bashly.dev/configuration/command/#commands",
       "type": "array",
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/command-property"
@@ -432,7 +512,7 @@
     "root-version-property": {
       "$comment": "'root-' prefix is used as this property is marked with 'Root Command Only' badge",
       "title": "version",
-      "description": "A version of the current script\nhttps://bashly.dannyb.co/configuration/command/#version",
+      "description": "A version of the current script\nhttps://bashly.dev/configuration/command/#version",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -441,7 +521,7 @@
     },
     "sub-command-default-property": {
       "title": "default",
-      "description": "Whether to use the current command as a fallback when CLI used incorrectly\nhttps://bashly.dannyb.co/configuration/command/#default",
+      "description": "Whether to use the current command as a fallback when CLI used incorrectly\nhttps://bashly.dev/configuration/command/#default",
       "oneOf": [
         {
           "type": "boolean",
@@ -457,18 +537,29 @@
     },
     "environment-variables-property": {
       "title": "environment variables",
-      "description": "Environment variables of the current application\nhttps://bashly.dannyb.co/configuration/environment-variable/#environment-variable",
+      "description": "Environment variables of the current application\nhttps://bashly.dev/configuration/environment-variable/#environment-variable",
       "type": "array",
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/environment-variable"
+      }
+    },
+    "variables-property": {
+      "title": "variables",
+      "description": "Bash variables for the current application\nhttps://bashly.dev/configuration/command/#variables",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/variable"
       }
     },
     "examples-property": {
       "title": "examples",
       "oneOf": [
         {
-          "description": "An example of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+          "description": "An example of the current script or sub-command\nhttps://bashly.dev/configuration/command/#examples",
           "type": "string",
           "minLength": 1,
           "examples": [
@@ -476,12 +567,12 @@
           ]
         },
         {
-          "description": "Examples of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+          "description": "Examples of the current script or sub-command\nhttps://bashly.dev/configuration/command/#examples",
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "description": "An example of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#examples",
+            "description": "An example of the current script or sub-command\nhttps://bashly.dev/configuration/command/#examples",
             "type": "string",
             "minLength": 1,
             "examples": [
@@ -493,7 +584,7 @@
     },
     "footer-property": {
       "title": "footer",
-      "description": "A description footer for the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#footer",
+      "description": "A description footer for the current script or sub-command\nhttps://bashly.dev/configuration/command/#footer",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -502,7 +593,7 @@
     },
     "sub-command-group-property": {
       "title": "group",
-      "description": "A group of the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#group",
+      "description": "A group of the current sub-command\nhttps://bashly.dev/configuration/command/#group",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -511,7 +602,7 @@
     },
     "catch-all-property": {
       "title": "catch all",
-      "description": "Whether to allow additional arguments or flags for the current command\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+      "description": "Whether to allow additional arguments or flags for the current command\nhttps://bashly.dev/configuration/command/#catch_all",
       "oneOf": [
         {
           "type": "boolean",
@@ -528,7 +619,7 @@
           "type": "object",
           "properties": {
             "label": {
-              "description": "A label for the current argument or flag\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "description": "A label for the current argument or flag\nhttps://bashly.dev/configuration/command/#catch_all",
               "type": "string",
               "minLength": 1,
               "examples": [
@@ -536,7 +627,7 @@
               ]
             },
             "help": {
-              "description": "A description for the current argument or flag\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "description": "A description for the current argument or flag\nhttps://bashly.dev/configuration/command/#catch_all",
               "type": "string",
               "minLength": 1,
               "examples": [
@@ -544,7 +635,7 @@
               ]
             },
             "required": {
-              "description": "Whether the current argument or flag is required\nhttps://bashly.dannyb.co/configuration/command/#catch_all",
+              "description": "Whether the current argument or flag is required\nhttps://bashly.dev/configuration/command/#catch_all",
               "type": "boolean",
               "default": false
             }
@@ -555,9 +646,9 @@
     },
     "completions-property": {
       "title": "completions",
-      "description": "Completions of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#completions",
+      "description": "Completions of the current script or sub-command\nhttps://bashly.dev/configuration/command/#completions",
       "type": "array",
-      "minLength": 1,
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "description": "A completion of the current script or sub-command",
@@ -593,12 +684,12 @@
     },
     "dependencies-command-property": {
       "title": "command",
-      "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#command",
+      "description": "Dependencies of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#command",
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
       "items": {
-        "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#command",
+        "description": "A dependency of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#command",
         "type": "string",
         "minLength": 1,
         "examples": [
@@ -608,7 +699,7 @@
     },
     "dependencies-help-property": {
       "title": "help",
-      "description": "A help for the current dependency\nhttps://bashly.dannyb.co/configuration/dependency/#help",
+      "description": "A help for the current dependency\nhttps://bashly.dev/configuration/dependency/#help",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -619,12 +710,12 @@
       "title": "dependencies",
       "oneOf": [
         {
-          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#dependency",
           "type": "array",
-          "minLength": 1,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+            "description": "A dependency of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#dependency",
             "oneOf": [
               {
                 "type": "string",
@@ -637,11 +728,11 @@
           }
         },
         {
-          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+          "description": "Dependencies of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#dependency",
           "type": "object",
           "patternProperties": {
             ".": {
-              "description": "A dependency of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/dependency/#dependency",
+              "description": "A dependency of the current script or sub-command\nhttps://bashly.dev/configuration/dependency/#dependency",
               "oneOf": [
                 {
                   "type": "string",
@@ -674,7 +765,7 @@
     },
     "sub-command-expose-property": {
       "title": "expose",
-      "description": "Whether to expose the current sub-command if it has sub-commands\nhttps://bashly.dannyb.co/configuration/command/#expose",
+      "description": "Whether to expose the current sub-command if it has sub-commands\nhttps://bashly.dev/configuration/command/#expose",
       "oneOf": [
         {
           "type": "boolean",
@@ -690,7 +781,7 @@
     },
     "root-extensible-property": {
       "title": "extensible",
-      "description": "Whether to delegate the current unknown command to an external executable\nhttps://bashly.dannyb.co/configuration/command/#extensible",
+      "description": "Whether to delegate the current unknown command to an external executable\nhttps://bashly.dev/configuration/command/#extensible",
       "oneOf": [
         {
           "type": "boolean",
@@ -706,7 +797,7 @@
     },
     "filename-property": {
       "title": "filename",
-      "description": "A partial file path of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#filename",
+      "description": "A partial file path of the current script or sub-command\nhttps://bashly.dev/configuration/command/#filename",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -715,7 +806,7 @@
     },
     "filters-property": {
       "title": "filters",
-      "description": "Filters of the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#filters",
+      "description": "Filters of the current script or sub-command\nhttps://bashly.dev/configuration/command/#filters",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -729,7 +820,7 @@
     },
     "function-property": {
       "title": "function",
-      "description": "An internal function for the current script or sub-command\nhttps://bashly.dannyb.co/configuration/command/#function",
+      "description": "An internal function for the current script or sub-command\nhttps://bashly.dev/configuration/command/#function",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -738,13 +829,13 @@
     },
     "sub-command-private-property": {
       "title": "private",
-      "description": "Whether hide the current sub-command from help\nhttps://bashly.dannyb.co/configuration/command/#private",
+      "description": "Whether hide the current sub-command from help\nhttps://bashly.dev/configuration/command/#private",
       "type": "boolean",
       "default": false
     },
     "sub-command-import-property": {
       "title": "import",
-      "description": "A file import for the current sub-command\nhttps://bashly.dannyb.co/configuration/command/#import",
+      "description": "A file import for the current sub-command\nhttps://bashly.dev/configuration/command/#import",
       "type": "string",
       "minLength": 1,
       "examples": [
@@ -753,7 +844,7 @@
     },
     "command-property": {
       "title": "command",
-      "description": "A command of the current application\nhttps://bashly.dannyb.co/configuration/command/#command",
+      "description": "A command of the current application\nhttps://bashly.dev/configuration/command/#command",
       "type": "object",
       "properties": {
         "name": {
@@ -764,6 +855,9 @@
         },
         "help": {
           "$ref": "#/definitions/help-property"
+        },
+        "help_header_override": {
+          "$ref": "#/definitions/help-header-override-property"
         },
         "args": {
           "$ref": "#/definitions/args-property"
@@ -779,6 +873,9 @@
         },
         "environment_variables": {
           "$ref": "#/definitions/environment-variables-property"
+        },
+        "variables": {
+          "$ref": "#/definitions/variables-property"
         },
         "examples": {
           "$ref": "#/definitions/examples-property"
@@ -830,7 +927,7 @@
     }
   },
   "title": "cli",
-  "description": "A CLI of the current application\nhttps://bashly.dannyb.co/usage/getting-started/",
+  "description": "A CLI of the current application\nhttps://bashly.dev/usage/getting-started/",
   "type": "object",
   "properties": {
     "name": {
@@ -838,6 +935,9 @@
     },
     "help": {
       "$ref": "#/definitions/help-property"
+    },
+    "help_header_override": {
+      "$ref": "#/definitions/help-header-override-property"
     },
     "args": {
       "$ref": "#/definitions/args-property"
@@ -853,6 +953,9 @@
     },
     "environment_variables": {
       "$ref": "#/definitions/environment-variables-property"
+    },
+    "variables": {
+      "$ref": "#/definitions/variables-property"
     },
     "examples": {
       "$ref": "#/definitions/examples-property"

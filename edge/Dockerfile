@@ -1,4 +1,4 @@
-FROM dannyben/alpine-ruby
+FROM dannyben/alpine-ruby:3.3.3
 
 ENV PS1 "\n\n>> bashly \W \$ "
 RUN apk add --no-cache git pandoc-cli
@@ -14,4 +14,5 @@ WORKDIR /app
 RUN rm -rf /bashly
 
 VOLUME /app
+
 ENTRYPOINT ["bashly"]

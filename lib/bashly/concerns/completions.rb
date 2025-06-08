@@ -29,7 +29,7 @@ module Bashly
           end
         end
 
-        public_commands.each do |command|
+        visible_commands.each do |command|
           result.merge! command.completion_data(with_version: false)
         end
 
@@ -62,7 +62,7 @@ module Bashly
       end
 
       def completion_flag_names
-        public_flags.map(&:name) + public_flags.map(&:short)
+        visible_flags.map(&:name) + visible_flags.map(&:short)
       end
 
       def completion_allowed_args
@@ -73,7 +73,7 @@ module Bashly
         trivial_flags = %w[--help -h]
         trivial_flags += %w[--version -v] if with_version
         all = (
-          public_command_aliases + trivial_flags +
+          visible_command_aliases + trivial_flags +
           completion_flag_names + completion_allowed_args
         )
 

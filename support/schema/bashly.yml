@@ -4,7 +4,7 @@ definitions:
     title: argument
     description: |-
       A positional argument of the current script or sub-command
-      https://bashly.dannyb.co/configuration/argument/
+      https://bashly.dev/configuration/argument/
     type: object
     required:
       - name
@@ -13,7 +13,7 @@ definitions:
         title: name
         description: |-
           A name of the current positional argument
-          https://bashly.dannyb.co/configuration/argument/#name
+          https://bashly.dev/configuration/argument/#name
         type: string
         minLength: 1
         examples:
@@ -22,7 +22,7 @@ definitions:
         title: help
         description: |-
           A description of the current positional argument
-          https://bashly.dannyb.co/configuration/argument/#help
+          https://bashly.dev/configuration/argument/#help
         type: string
         minLength: 1
         examples:
@@ -31,7 +31,7 @@ definitions:
         title: default
         description: |-
           A default value of the current positional argument
-          https://bashly.dannyb.co/configuration/argument/#default
+          https://bashly.dev/configuration/argument/#default
         oneOf:
           - type: string
           - type: array
@@ -44,16 +44,16 @@ definitions:
         title: required
         description: |-
           Whether the current positional argument is required
-          https://bashly.dannyb.co/configuration/argument/#required
+          https://bashly.dev/configuration/argument/#required
         type: boolean
         default: true
       allowed:
         title: allowed
         description: |-
           Valid values of the current positional argument
-          https://bashly.dannyb.co/configuration/argument/#allowed
+          https://bashly.dev/configuration/argument/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current positional argument
@@ -65,14 +65,14 @@ definitions:
         title: repeatable
         description: |-
           Whether the current positional argument can be repeated
-          https://bashly.dannyb.co/configuration/argument/#repeatable
+          https://bashly.dev/configuration/argument/#repeatable
         type: boolean
         default: false
       validate:
         title: validate
         description: |-
           A validation function of the current positional argument
-          https://bashly.dannyb.co/configuration/argument/#validate
+          https://bashly.dev/configuration/argument/#validate
         type: string
         examples:
           - file_exists
@@ -83,7 +83,7 @@ definitions:
         title: unique
         description: |-
           Whether the current positional argument is unique
-          https://bashly.dannyb.co/configuration/argument/#unique
+          https://bashly.dev/configuration/argument/#unique
         type: boolean
         default: false
     dependencies:
@@ -102,7 +102,7 @@ definitions:
     title: flag
     description: |-
       A flag of the current script or sub-command
-      https://bashly.dannyb.co/configuration/flag/
+      https://bashly.dev/configuration/flag/
     type: object
     anyOf:
       - required:
@@ -114,7 +114,7 @@ definitions:
         title: long
         description: |-
           A long form of the current flag
-          https://bashly.dannyb.co/configuration/flag/#long
+          https://bashly.dev/configuration/flag/#long
         type: string
         pattern: ^--
         examples:
@@ -123,7 +123,7 @@ definitions:
         title: short
         description: |-
           A short form of the current flag
-          https://bashly.dannyb.co/configuration/flag/#short
+          https://bashly.dev/configuration/flag/#short
         type: string
         pattern: ^-[^-]
         examples:
@@ -132,7 +132,7 @@ definitions:
         title: help
         description: |-
           A description of the current flag
-          https://bashly.dannyb.co/configuration/flag/#help
+          https://bashly.dev/configuration/flag/#help
         type: string
         minLength: 1
         examples:
@@ -141,7 +141,7 @@ definitions:
         title: arg
         description: |-
           An argument name of the current flag
-          https://bashly.dannyb.co/configuration/flag/#arg
+          https://bashly.dev/configuration/flag/#arg
         type: string
         minLength: 1
         examples:
@@ -150,7 +150,7 @@ definitions:
         title: default
         description: |-
           A default value of the current flag
-          https://bashly.dannyb.co/configuration/flag/#default
+          https://bashly.dev/configuration/flag/#default
         oneOf:
           - type: string
           - type: array
@@ -163,16 +163,16 @@ definitions:
         title: required
         description: |-
           Whether the current flag is required
-          https://bashly.dannyb.co/configuration/flag/#required
+          https://bashly.dev/configuration/flag/#required
         type: boolean
         default: true
       allowed:
         title: allowed
         description: |-
           Valid values of the current flag
-          https://bashly.dannyb.co/configuration/flag/#allowed
+          https://bashly.dev/configuration/flag/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current positional argument
@@ -184,23 +184,37 @@ definitions:
         title: conflicts
         description: |-
           Mutually exclusive flags of the current flag
-          https://bashly.dannyb.co/configuration/flag/#conflicts
+          https://bashly.dev/configuration/flag/#conflicts
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
-          description: A mutually exclusive flag of the current flag
+          description: The long form of the required flag
           type: string
           minLength: 1
           examples:
             - --no-cache
+      needs:
+        title: needs
+        description: |-
+          Additional flags required by the current flag
+          https://bashly.dev/configuration/flag/#needs
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          description: The long form of the required flag
+          type: string
+          minLength: 1
+          examples:
+            - --command
       completions:
         title: completions
         description: |-
           Completions of the current flag
-          https://bashly.dannyb.co/configuration/flag/#completions
+          https://bashly.dev/configuration/flag/#completions
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A completion of the current flag
@@ -210,21 +224,21 @@ definitions:
         title: private
         description: |-
           Whether the current flag is hidden from help
-          https://bashly.dannyb.co/configuration/flag/#private
+          https://bashly.dev/configuration/flag/#private
         type: boolean
         default: false
       repeatable:
         title: repeatable
         description: |-
           Whether the current flag can be repeated
-          https://bashly.dannyb.co/configuration/flag/#repeatable
+          https://bashly.dev/configuration/flag/#repeatable
         type: boolean
         default: false
       validate:
         title: validate
         description: |-
           A validation function of the current flag
-          https://bashly.dannyb.co/configuration/flag/#validate
+          https://bashly.dev/configuration/flag/#validate
         type: string
         examples:
           - file_exists
@@ -235,7 +249,7 @@ definitions:
         title: unique
         description: |-
           Whether the current flag is unique
-          https://bashly.dannyb.co/configuration/flag/#unique
+          https://bashly.dev/configuration/flag/#unique
         type: boolean
         default: false
     dependencies:
@@ -249,7 +263,7 @@ definitions:
     title: environment variable
     description: |-
       An environment variable of the current application
-      https://bashly.dannyb.co/configuration/environment-variable/#environment-variable
+      https://bashly.dev/configuration/environment-variable/#environment-variable
     type: object
     required:
       - name
@@ -258,7 +272,7 @@ definitions:
         title: name
         description: |-
           A name of the current environment variable
-          https://bashly.dannyb.co/configuration/environment-variable/#name
+          https://bashly.dev/configuration/environment-variable/#name
         type: string
         minLength: 1
         examples:
@@ -267,7 +281,7 @@ definitions:
         title: help
         description: |-
           A description of the current environment variable
-          https://bashly.dannyb.co/configuration/environment-variable/#help
+          https://bashly.dev/configuration/environment-variable/#help
         type: string
         minLength: 1
         examples:
@@ -276,23 +290,34 @@ definitions:
         title: private
         description: |-
           Whether the current environment variable is hidden from help
-          https://bashly.dannyb.co/configuration/environment-variable/#private
+          https://bashly.dev/configuration/environment-variable/#private
         type: boolean
         default: false
       required:
         title: required
         description: |-
           Whether the current environment variable is required
-          https://bashly.dannyb.co/configuration/environment-variable/#required
+          https://bashly.dev/configuration/environment-variable/#required
         type: boolean
         default: true
+      validate:
+        title: validate
+        description: |-
+          A validation function for the current environment variable
+          https://bashly.dev/configuration/environment-variable/#validate
+        type: string
+        examples:
+          - file_exists
+          - dir_exists
+          - integer
+          - non_empty
       allowed:
         title: allowed
         description: |-
           Valid values of the current environment variable
-          https://bashly.dannyb.co/configuration/environment-variable/#allowed
+          https://bashly.dev/configuration/environment-variable/#allowed
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: A valid value of the current environment variable
@@ -304,17 +329,46 @@ definitions:
         title: default
         description: |-
           A default value of the current environment variable
-          https://bashly.dannyb.co/configuration/environment-variable/#default
+          https://bashly.dev/configuration/environment-variable/#default
         type: string
         examples:
           - ~/config.ini
     patternProperties: *custom-properties
     additionalProperties: false
+  variable:
+    title: variable
+    description: |-
+      A global bash variable
+      https://bashly.dev/configuration/variable/#variable
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        title: name
+        description: |-
+          A name for the current variable
+          https://bashly.dev/configuration/variable/#name
+        type: string
+        minLength: 1
+        examples:
+          - output_dir
+      value:
+        title: value
+        description: |-
+          A value for the current variable
+          https://bashly.dev/configuration/variable/#value
+        examples:
+          - ./output
+          - [development, production]
+          - { verbosity: 3, debug: true }
+    patternProperties: *custom-properties
+    additionalProperties: false    
   name-property:
     title: name
     description: |-
       A name of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#name
+      https://bashly.dev/configuration/command/#name
     type: string
     minLength: 1
     examples:
@@ -325,14 +379,14 @@ definitions:
     oneOf:
       - description: |-
           An alias of the current sub-command
-          https://bashly.dannyb.co/configuration/command/#alias
+          https://bashly.dev/configuration/command/#alias
         type: string
         minLength: 1
         examples:
           - s
       - description: |-
           Aliases of the current sub-command
-          https://bashly.dannyb.co/configuration/command/#alias
+          https://bashly.dev/configuration/command/#alias
         type: array
         minItems: 1
         uniqueItems: true
@@ -346,37 +400,47 @@ definitions:
     title: help
     description: |-
       A description of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#help
+      https://bashly.dev/configuration/command/#help
     type: string
     minLength: 1
     examples:
       - URL to download from
+  help-header-override-property:
+    title: help_header_override
+    description: |-
+      Bash code (or function call) that will be executed at the beginning of the help message
+      https://bashly.dev/configuration/command/#help-header-override
+    type: string
+    minLength: 1
+    examples:
+      - generate_ascii_art_logo
   args-property:
     title: args
     description: |-
       Arguments of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#args
+      https://bashly.dev/configuration/command/#args
     type: array
-    uniqueItems: true
     minItems: 1
+    uniqueItems: true
     items:
       $ref: '#/definitions/argument'
   flags-property:
     title: flags
     description: |-
       Flags of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#flags
+      https://bashly.dev/configuration/command/#flags
     type: array
-    uniqueItems: true
     minItems: 1
+    uniqueItems: true
     items:
       $ref: '#/definitions/flag'
   commands-property:
     title: commands
     description: |-
       Subcommands of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#commands
+      https://bashly.dev/configuration/command/#commands
     type: array
+    minItems: 1
     uniqueItems: true
     items:
       $ref: '#/definitions/command-property'
@@ -385,7 +449,7 @@ definitions:
     title: version
     description: |-
       A version of the current script
-      https://bashly.dannyb.co/configuration/command/#version
+      https://bashly.dev/configuration/command/#version
     type: string
     minLength: 1
     examples:
@@ -394,7 +458,7 @@ definitions:
     title: default
     description: |-
       Whether to use the current command as a fallback when CLI used incorrectly
-      https://bashly.dannyb.co/configuration/command/#default
+      https://bashly.dev/configuration/command/#default
     oneOf:
       - type: boolean
         default: false
@@ -405,31 +469,42 @@ definitions:
     title: environment variables
     description: |-
       Environment variables of the current application
-      https://bashly.dannyb.co/configuration/environment-variable/#environment-variable
+      https://bashly.dev/configuration/environment-variable/#environment-variable
     type: array
+    minItems: 1
     uniqueItems: true
     items:
       $ref: '#/definitions/environment-variable'
+  variables-property:
+    title: variables
+    description: |-
+      Bash variables for the current application
+      https://bashly.dev/configuration/command/#variables
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: '#/definitions/variable'
   examples-property:
     title: examples
     oneOf:
       - description: |-
           An example of the current script or sub-command
-          https://bashly.dannyb.co/configuration/command/#examples
+          https://bashly.dev/configuration/command/#examples
         type: string
         minLength: 1
         examples:
           - cli upload profile.png -u admin -p s3cr3t
       - description: |-
           Examples of the current script or sub-command
-          https://bashly.dannyb.co/configuration/command/#examples
+          https://bashly.dev/configuration/command/#examples
         type: array
         minItems: 1
         uniqueItems: true
         items:
           description: |-
             An example of the current script or sub-command
-            https://bashly.dannyb.co/configuration/command/#examples
+            https://bashly.dev/configuration/command/#examples
           type: string
           minLength: 1
           examples:
@@ -438,7 +513,7 @@ definitions:
     title: footer
     description: |-
       A description footer for the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#footer
+      https://bashly.dev/configuration/command/#footer
     type: string
     minLength: 1
     examples:
@@ -447,7 +522,7 @@ definitions:
     title: group
     description: |-
       A group of the current sub-command
-      https://bashly.dannyb.co/configuration/command/#group
+      https://bashly.dev/configuration/command/#group
     type: string
     minLength: 1
     examples:
@@ -456,7 +531,7 @@ definitions:
     title: catch all
     description: |-
       Whether to allow additional arguments or flags for the current command
-      https://bashly.dannyb.co/configuration/command/#catch_all
+      https://bashly.dev/configuration/command/#catch_all
     oneOf:
       - type: boolean
         default: false
@@ -469,7 +544,7 @@ definitions:
           label:
             description: |-
               A label for the current argument or flag
-              https://bashly.dannyb.co/configuration/command/#catch_all
+              https://bashly.dev/configuration/command/#catch_all
             type: string
             minLength: 1
             examples:
@@ -477,7 +552,7 @@ definitions:
           help:
             description: |-
               A description for the current argument or flag
-              https://bashly.dannyb.co/configuration/command/#catch_all
+              https://bashly.dev/configuration/command/#catch_all
             type: string
             minLength: 1
             examples:
@@ -485,7 +560,7 @@ definitions:
           required:
             description: |-
               Whether the current argument or flag is required
-              https://bashly.dannyb.co/configuration/command/#catch_all
+              https://bashly.dev/configuration/command/#catch_all
             type: boolean
             default: false
         additionalProperties: false
@@ -493,9 +568,9 @@ definitions:
     title: completions
     description: |-
       Completions of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#completions
+      https://bashly.dev/configuration/command/#completions
     type: array
-    minLength: 1
+    minItems: 1
     uniqueItems: true
     items:
       description: A completion of the current script or sub-command
@@ -530,14 +605,14 @@ definitions:
     title: command
     description: |-
       Dependencies of the current script or sub-command
-      https://bashly.dannyb.co/configuration/dependency/#command
+      https://bashly.dev/configuration/dependency/#command
     type: array
     minItems: 1
     uniqueItems: true
     items:
       description: |-
         A dependency of the current script or sub-command
-        https://bashly.dannyb.co/configuration/dependency/#command
+        https://bashly.dev/configuration/dependency/#command
       type: string
       minLength: 1
       examples:
@@ -546,7 +621,7 @@ definitions:
     title: help
     description: |-
       A help for the current dependency
-      https://bashly.dannyb.co/configuration/dependency/#help
+      https://bashly.dev/configuration/dependency/#help
     type: string
     minLength: 1
     examples:
@@ -556,27 +631,27 @@ definitions:
     oneOf:
       - description: |-
           Dependencies of the current script or sub-command
-          https://bashly.dannyb.co/configuration/dependency/#dependency
+          https://bashly.dev/configuration/dependency/#dependency
         type: array
-        minLength: 1
+        minItems: 1
         uniqueItems: true
         items:
           description: |-
             A dependency of the current script or sub-command
-            https://bashly.dannyb.co/configuration/dependency/#dependency
+            https://bashly.dev/configuration/dependency/#dependency
           oneOf:
             - type: string
               minLength: 1
             - type: "null"
       - description: |-
           Dependencies of the current script or sub-command
-          https://bashly.dannyb.co/configuration/dependency/#dependency
+          https://bashly.dev/configuration/dependency/#dependency
         type: object
         patternProperties:
           .:
             description: |-
               A dependency of the current script or sub-command
-              https://bashly.dannyb.co/configuration/dependency/#dependency
+              https://bashly.dev/configuration/dependency/#dependency
             oneOf:
               - type: string
                 minLength: 1
@@ -595,7 +670,7 @@ definitions:
     title: expose
     description: |-
       Whether to expose the current sub-command if it has sub-commands
-      https://bashly.dannyb.co/configuration/command/#expose
+      https://bashly.dev/configuration/command/#expose
     oneOf:
       - type: boolean
         default: false
@@ -606,7 +681,7 @@ definitions:
     title: extensible
     description: |-
       Whether to delegate the current unknown command to an external executable
-      https://bashly.dannyb.co/configuration/command/#extensible
+      https://bashly.dev/configuration/command/#extensible
     oneOf:
       - type: boolean
         default: false
@@ -617,7 +692,7 @@ definitions:
     title: filename
     description: |-
       A partial file path of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#filename
+      https://bashly.dev/configuration/command/#filename
     type: string
     minLength: 1
     examples:
@@ -626,7 +701,7 @@ definitions:
     title: filters
     description: |-
       Filters of the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#filters
+      https://bashly.dev/configuration/command/#filters
     type: array
     minItems: 1
     items:
@@ -639,7 +714,7 @@ definitions:
     title: function
     description: |-
       An internal function for the current script or sub-command
-      https://bashly.dannyb.co/configuration/command/#function
+      https://bashly.dev/configuration/command/#function
     type: string
     minLength: 1
     examples:
@@ -648,14 +723,14 @@ definitions:
     title: private
     description: |-
       Whether hide the current sub-command from help
-      https://bashly.dannyb.co/configuration/command/#private
+      https://bashly.dev/configuration/command/#private
     type: boolean
     default: false
   sub-command-import-property:
     title: import
     description: |-
       A file import for the current sub-command
-      https://bashly.dannyb.co/configuration/command/#import
+      https://bashly.dev/configuration/command/#import
     type: string
     minLength: 1
     examples:
@@ -664,7 +739,7 @@ definitions:
     title: command
     description: |-
       A command of the current application
-      https://bashly.dannyb.co/configuration/command/#command
+      https://bashly.dev/configuration/command/#command
     type: object
     properties:
       name:
@@ -673,6 +748,8 @@ definitions:
         $ref: '#/definitions/sub-command-alias-property'
       help:
         $ref: '#/definitions/help-property'
+      help_header_override:
+        $ref: '#/definitions/help-header-override-property'
       args:
         $ref: '#/definitions/args-property'
       flags:
@@ -683,6 +760,8 @@ definitions:
         $ref: '#/definitions/sub-command-default-property'
       environment_variables:
         $ref: '#/definitions/environment-variables-property'
+      variables:
+        $ref: '#/definitions/variables-property'
       examples:
         $ref: '#/definitions/examples-property'
       footer:
@@ -712,13 +791,15 @@ definitions:
 title: cli
 description: |-
   A CLI of the current application
-  https://bashly.dannyb.co/usage/getting-started/
+  https://bashly.dev/usage/getting-started/
 type: object
 properties:
   name:
     $ref: '#/definitions/name-property'
   help:
     $ref: '#/definitions/help-property'
+  help_header_override:
+    $ref: '#/definitions/help-header-override-property'
   args:
     $ref: '#/definitions/args-property'
   flags:
@@ -729,6 +810,8 @@ properties:
     $ref: '#/definitions/root-version-property'
   environment_variables:
     $ref: '#/definitions/environment-variables-property'
+  variables:
+    $ref: '#/definitions/variables-property'
   examples:
     $ref: '#/definitions/examples-property'
   footer:

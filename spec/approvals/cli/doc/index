@@ -25,8 +25,10 @@ command.footer
 command.function
 command.group
 command.help
+command.help_header_override
 command.name
 command.private
+command.variables
 command.version
 environment_variable
 environment_variable.default
@@ -34,6 +36,7 @@ environment_variable.help
 environment_variable.name
 environment_variable.private
 environment_variable.required
+environment_variable.validate
 flag
 flag.allowed
 flag.arg
@@ -42,9 +45,13 @@ flag.conflicts
 flag.default
 flag.help
 flag.long
+flag.needs
 flag.private
 flag.repeatable
 flag.required
 flag.short
 flag.unique
 flag.validate
+variable
+variable.name
+variable.value

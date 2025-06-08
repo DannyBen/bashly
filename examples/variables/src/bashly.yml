@@ -1,0 +1,42 @@
+name: cli
+help: Sample application demonstrating the use of variables
+version: 0.1.0
+
+# The `build_number` and `environments` variables will be available globally
+variables:
+- name: build_number
+  value: 1337
+- name: environments
+  value: [dev, stage, production]
+
+commands:
+- name: download
+  alias: d
+  help: Download a profile
+
+  args:
+  - name: profile
+    required: true
+    help: Profile to download information from
+
+  # These variables will be declared when the `download` command is executed.
+  # Note the use of an array value.
+  variables:
+  - name: output_folder
+    value: output
+  - name: download_sources
+    value:
+    - youtube
+    - instagram
+
+- name: compress
+  alias: c
+  help: Compress data
+
+  # These variables will be declared when the `compress` command is executed.
+  # Note the use of an associative array value.
+  variables:
+  - name: zip_options
+    value:
+      pattern: "*.json"
+      compression_level: fast

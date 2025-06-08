@@ -9,7 +9,7 @@ Create feature-rich bash scripts using simple YAML configuration
 [![Build Status](https://github.com/DannyBen/bashly/workflows/Test/badge.svg)](https://github.com/DannyBen/bashly/actions?query=workflow%3ATest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8cf89047e50ca601e431/maintainability)](https://codeclimate.com/github/DannyBen/bashly/maintainability)
 
-## [bashly.dannyb.co](https://bashly.dannyb.co)
+## [bashly.dev](https://bashly.dev)
 
 ---
 
@@ -76,6 +76,6 @@ Visit the *[How to contribute][contributing]* page for more information.
 
 [issues]: https://github.com/DannyBen/bashly/issues
 [discussions]: https://github.com/DannyBen/bashly/discussions
-[docs]: https://bashly.dannyb.co/
+[docs]: https://bashly.dev/
 [examples]: https://github.com/DannyBen/bashly/tree/master/examples#bashly-examples
 [contributing]: https://github.com/DannyBen/bashly/blob/master/CONTRIBUTING.md#how-to-contribute

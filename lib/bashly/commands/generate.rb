@@ -3,7 +3,8 @@ require 'filewatcher'
 module Bashly
   module Commands
     class Generate < Base
-      help 'Generate the bash script and required files'
+      summary 'Generate the bash script and required files'
+      help "This command is also aliased as 'build'"
 
       usage 'bashly generate [options]'
       usage 'bashly generate (-h|--help)'
@@ -22,6 +23,7 @@ module Bashly
 
       example 'bashly generate --force'
       example 'bashly generate --wrap my_function'
+      example 'bashly build --watch --env production'
       example 'bashly g -uw'
 
       attr_reader :watching
@@ -131,7 +133,7 @@ module Bashly
       end
 
       def create_root_command_file
-        create_file "#{Settings.source_dir}/#{command.filename}", command.render(:default_root_script)
+        create_file "#{Settings.source_dir}/#{command.filename}", command.render(:default_script)
       end
 
       def create_all_command_files

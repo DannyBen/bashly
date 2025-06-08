@@ -10,7 +10,7 @@ resembles a collection of short flags (i.e. single hyphen followed by
 alphanumeric characters), for example `--options -abc`, then the compact flags
 feature should be disabled with `compact_short_flags: false` in the settings.
 
-See https://bashly.dannyb.co/usage/settings/#compact_short_flags
+See https://bashly.dev/usage/settings/#compact_short_flags
 
 Reference issues:
 

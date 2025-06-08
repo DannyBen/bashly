@@ -22,8 +22,15 @@ module Bashly
   module Script
     autoloads 'bashly/script', %i[
       Argument Base CatchAll Command Dependency EnvironmentVariable Flag
-      Wrapper
+      Variable Wrapper
     ]
+
+    module Introspection
+      autoloads 'bashly/script/introspection', %i[
+        Arguments Commands Dependencies EnvironmentVariables Examples Flags
+        Variables Visibility
+      ]
+    end
   end
 
   module Commands

@@ -4,14 +4,14 @@
 > printf "{{ help.wrap(76).indent(4).sanitize_for_print }}\n"
 
 if allowed
-  > printf "    {{ strings[:allowed] % { values: allowed.join(', ') } }}\n"
+  > printf "    %s\n" "{{ strings[:allowed] % { values: allowed.join(', ') } }}"
 end
 
 if default
   if default.is_a? Array
-    > printf "    {{ strings[:default] % { value: default.join(', ') } }}\n"
+    > printf "    %s\n" "{{ strings[:default] % { value: default.join(', ') } }}"
   else
-    > printf "    {{ strings[:default] % { value: default } }}\n"
+    > printf "    %s\n" "{{ strings[:default] % { value: default } }}"
   end
 end
 

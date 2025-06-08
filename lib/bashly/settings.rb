@@ -8,14 +8,24 @@ module Bashly
         :compact_short_flags,
         :conjoined_flag_args,
         :config_path,
+        :enable_bash3_bouncer,
+        :enable_deps_array,
+        :enable_env_var_names_array,
+        :enable_header_comment,
+        :enable_inspect_args,
+        :enable_sourcing,
+        :enable_view_markers,
+        :function_names,
         :lib_dir,
         :partials_extension,
+        :private_reveal_key,
         :show_examples_on_error,
         :source_dir,
         :strict,
         :tab_indent,
         :target_dir,
-        :usage_colors
+        :usage_colors,
+        :var_aliases
       )
 
       def commands_dir
@@ -34,6 +44,40 @@ module Bashly
         @config_path ||= get(:config_path) % { source_dir: source_dir }
       end
 
+      def enabled?(feature)
+        send(:"enable_#{feature}") == 'always' ||
+          (send(:"enable_#{feature}") == 'production' && production?) ||
+          (send(:"enable_#{feature}") == 'development' && !production?)
+      end
+
+      def enable_bash3_bouncer
+        @enable_bash3_bouncer ||= get :enable_bash3_bouncer
+      end
+
+      def enable_deps_array
+        @enable_deps_array ||= get :enable_deps_array
+      end
+
+      def enable_env_var_names_array
+        @enable_env_var_names_array ||= get :enable_env_var_names_array
+      end
+
+      def enable_header_comment
+        @enable_header_comment ||= get :enable_header_comment
+      end
+
+      def enable_inspect_args
+        @enable_inspect_args ||= get :enable_inspect_args
+      end
+
+      def enable_sourcing
+        @enable_sourcing ||= get :enable_sourcing
+      end
+
+      def enable_view_markers
+        @enable_view_markers ||= get :enable_view_markers
+      end
+
       def env
         @env ||= get(:env)&.to_sym
       end
@@ -46,12 +90,24 @@ module Bashly
         "#{source_dir}/#{lib_dir}"
       end
 
+      def function_name(key)
+        function_names[key.to_s] || key.to_s
+      end
+
+      def function_names
+        @function_names ||= get :function_names
+      end
+
       def lib_dir
         @lib_dir ||= get :lib_dir
       end
 
       def partials_extension
         @partials_extension ||= get :partials_extension
+      end
+
+      def private_reveal_key
+        @private_reveal_key ||= get :private_reveal_key
       end
 
       def production?
@@ -90,6 +146,10 @@ module Bashly
 
       def usage_colors
         @usage_colors ||= get :usage_colors
+      end
+
+      def var_aliases
+        @var_aliases ||= get :var_aliases
       end
 
     private

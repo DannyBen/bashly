@@ -1,0 +1,13 @@
+---
+'Commands:':
+  admin:
+    :summary: Admin operations
+    :visibility: :public
+  admin list:
+    :summary: List connected devices
+    :visibility: :public
+    :help_only: true
+  admin reboot:
+    :summary: Reboot
+    :visibility: :semi_private
+    :help_only: true

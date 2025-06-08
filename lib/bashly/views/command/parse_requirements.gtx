@@ -13,6 +13,7 @@ end
 = render(:parse_requirements_while).indent 2
 = render(:required_args_filter).indent 2
 = render(:required_flags_filter).indent 2
+= render(:needy_flags_filter).indent 2
 = render(:catch_all_filter).indent 2
 = render(:default_assignments).indent 2
 = render(:validations).indent 2

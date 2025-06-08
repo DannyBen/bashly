@@ -140,9 +140,10 @@ Global Options:
 ### `$ ./docker container run alpine`
 
 ````shell
-# this file is located in 'src/commands/container/run.sh'
-# code for 'docker container run' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/commands/container/run.sh'.
+# It contains the implementation for the 'docker container run' command.
+# The code you write here will be wrapped by a function named 'docker_container_run_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[image]} = alpine
 

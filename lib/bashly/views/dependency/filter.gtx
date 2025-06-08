@@ -1,0 +1,14 @@
+= view_marker
+
+> if ! command -v {{ commands.join(' ') }} >/dev/null 2>&1; then
+>   printf "{{ strings[:missing_dependency] % { dependency: name } }}\n" >&2
+if help
+  >   printf "%s\n\n" "{{ help.sanitize_for_print }}" >&2
+end
+>   missing_deps=1
+if Settings.enabled? :deps_array
+  > else
+  >   deps['{{ label }}']="$(command -v {{ commands.join(' ') }} | head -n1)"
+end
+> fi
+>

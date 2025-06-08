@@ -1,0 +1,51 @@
+variable:
+  help: Define variables that will be available to your script.
+  url: https://bashly.dev/configuration/variable/
+  example: |-
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast
+
+variable.name:
+  help: Specify the name of the variable.
+  url: https://bashly.dev/configuration/variable/#name
+  example: |-
+    variables:
+    - name: output_folder
+      value: output
+
+variable.value:
+  help: |-
+    Specify the value for this variable.
+    This can be any value type, including array and hash (associative array).
+  url: https://bashly.dev/configuration/variable/#value
+  example: |-
+    variables:
+    # Simple value
+    - name: output_folder
+      value: output
+
+    # Array
+    - name: download_sources
+      value:
+      - youtube
+      - instagram
+
+    # Associative array
+    - name: zip_options
+      value:
+        pattern: "*.json"
+        compression_level: fast

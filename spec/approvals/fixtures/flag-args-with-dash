@@ -6,13 +6,17 @@ run ./argflag --help to test your bash script
 + ./argflag -f -o
 --options requires an argument: --options, -o LIST
 + ./argflag -o -f
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'argflag' command.
+# The code you write here will be wrapped by a function named 'argflag_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--options]} = -f
 + ./argflag -o '--verbose --anything' -f
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'argflag' command.
+# The code you write here will be wrapped by a function named 'argflag_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--force]} = 1
 - ${args[--options]} = --verbose --anything
@@ -23,12 +27,16 @@ skipped src/root_command.sh (exists)
 created ./argflag
 run ./argflag --help to test your bash script
 + ./argflag -o -force
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'argflag' command.
+# The code you write here will be wrapped by a function named 'argflag_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--options]} = -force
 + ./argflag -o '-f -o'
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'argflag' command.
+# The code you write here will be wrapped by a function named 'argflag_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--options]} = -f -o

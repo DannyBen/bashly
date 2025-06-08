@@ -49,8 +49,10 @@ examples:
 ### `$ ./convert`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'convert' command.
+# The code you write here will be wrapped by a function named 'convert_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--format]} = png
 - ${args[source]} = *.jpg
@@ -96,8 +98,10 @@ Examples:
 ### `$ ./convert *.bmp`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'convert' command.
+# The code you write here will be wrapped by a function named 'convert_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--format]} = png
 - ${args[source]} = *.bmp
@@ -108,8 +112,10 @@ args:
 ### `$ ./convert -f pdf`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'convert' command.
+# The code you write here will be wrapped by a function named 'convert_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--format]} = pdf
 - ${args[source]} = *.jpg
@@ -120,8 +126,10 @@ args:
 ### `$ ./convert *.pdf --format gif`
 
 ````shell
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'convert' command.
+# The code you write here will be wrapped by a function named 'convert_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--format]} = gif
 - ${args[source]} = *.pdf

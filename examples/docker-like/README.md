@@ -173,9 +173,10 @@ usage: docker container run IMAGE
 ### `$ ./docker -d container run alpine`
 
 ````shell
-# this file is located in 'src/container_run_command.sh'
-# code for 'docker container run' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/container_run_command.sh'.
+# It contains the implementation for the 'docker container run' command.
+# The code you write here will be wrapped by a function named 'docker_container_run_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--debug]} = 1
 - ${args[image]} = alpine
@@ -223,9 +224,10 @@ Commands:
 ### `$ ./docker image ls`
 
 ````shell
-# this file is located in 'src/image_ls_command.sh'
-# code for 'docker image ls' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/image_ls_command.sh'.
+# It contains the implementation for the 'docker image ls' command.
+# The code you write here will be wrapped by a function named 'docker_image_ls_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -234,9 +236,10 @@ args: none
 ### `$ ./docker i l`
 
 ````shell
-# this file is located in 'src/image_ls_command.sh'
-# code for 'docker image ls' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/image_ls_command.sh'.
+# It contains the implementation for the 'docker image ls' command.
+# The code you write here will be wrapped by a function named 'docker_image_ls_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -245,9 +248,10 @@ args: none
 ### `$ ./docker --debug ps --all`
 
 ````shell
-# this file is located in 'src/ps_command.sh'
-# code for 'docker ps' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/ps_command.sh'.
+# It contains the implementation for the 'docker ps' command.
+# The code you write here will be wrapped by a function named 'docker_ps_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[--all]} = 1
 - ${args[--debug]} = 1

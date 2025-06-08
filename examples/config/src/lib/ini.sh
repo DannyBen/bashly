@@ -27,6 +27,7 @@
 ##
 ## Load an INI file and populate the associative array `ini`.
 ini_load() {
+  unset ini
   declare -gA ini
 
   local ini_file="$1"

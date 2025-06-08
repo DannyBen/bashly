@@ -1,4 +1,4 @@
-describe 'bin/bashly' do
+describe 'bin/bashly', :slow do
   subject { CLI.runner }
 
   it 'shows list of commands' do

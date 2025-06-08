@@ -199,6 +199,20 @@
   help: perform docker container run
   parents: [docker, container]
 
+:environment_variable_enthusiast:
+  name: get
+  environment_variables:
+  - name: username
+    required: true
+  - name: file
+    default: README.md
+  - name: config_dir
+    validate: dir_exists
+  - name: protocol
+    allowed: [ssh, https]
+  - name: secret
+    private: true
+
 :examples_array:
   name: get
   help: get something from somewhere
@@ -251,6 +265,28 @@
       help: Run a command in the container
     - name: down
       help: Terminate a container
+
+:exposed_private:
+  name: cli
+  help: sample application
+  environment_variables:
+  - name: secret
+    help: Set secret key
+    private: true
+  flags:
+  - long: --debug
+    help: Enable debug mode
+    private: true
+  commands:
+  - name: admin
+    help: Admin operations
+    expose: true
+    commands:
+    - name: list
+      help: List connected devices    
+    - name: reboot
+      help: Reboot
+      private: true
 
 :filters_array:
   name: run
@@ -359,6 +395,19 @@
   help: get something from somewhere
   catch_all: params
 
+:needy_flags:
+  name: add
+  help: add a command alias
+
+  flags:
+  - long: --add
+    arg: alias
+    needs: [--command]
+  - long: --command
+    arg: command
+    needs: [--add]
+
+
 :nested_aliases:
   name: cli
   commands:
@@ -388,8 +437,16 @@
     alias: cf
     private: true
   - name: connect-ssh
-    alias: cf
+    alias: cs
     private: true
+
+:private_flags:
+  name: status
+  help: perform git status
+  flags:
+  - long: --legacy
+    private: true
+  - long: --new
 
 :repeatable_arg:
   name: get
@@ -431,6 +488,21 @@
       arg: path
       repeatable: true
       unique: true
+
+:variables:
+  name: get
+  variables:
+  - name: debug
+    value: true
+  - name: url
+    value: http://hello.com
+  - name: number
+    value: 123
+  - name: array
+    value: [one, two]
+  - name: hash
+    value: { one: 1, two: 2 }
+  - name: empty
 
 :whitelist:
   name: cli

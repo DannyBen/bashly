@@ -31,7 +31,8 @@ commands:
   dependencies:
   - git
   - curl
-  - shmurl
+  - dos
+  - netscape
 
 - name: upload
   help: Upload something
@@ -40,6 +41,7 @@ commands:
   # The message can use colors from the colors library (bashly add colors).
   dependencies:
     mini-docker: install with $(green gem install mini-docker)
+    multi-docker: install with $(blue gem install multi-docker)
     docker: visit https://docker.com for more information
 ````
 
@@ -50,7 +52,8 @@ commands:
 ### `$ ./cli download`
 
 ````shell
-missing dependency: shmurl
+missing dependency: dos
+missing dependency: netscape
 
 
 ````
@@ -60,6 +63,10 @@ missing dependency: shmurl
 ````shell
 missing dependency: mini-docker
 install with gem install mini-docker
+
+missing dependency: multi-docker
+install with gem install multi-docker
+
 
 
 ````

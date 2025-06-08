@@ -40,7 +40,7 @@ module Bashly
 
       def default_header
         result = render 'header'
-        result += render('bash3_bouncer') unless function_name
+        result += render('bash3_bouncer') unless function_name || !Settings.enabled?(:bash3_bouncer)
         result
       end
 

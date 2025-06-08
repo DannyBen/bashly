@@ -6,11 +6,18 @@ command_help_data.each do |group, commands|
   > printf "%s\n" "{{ group.color(:caption) }}"
 
   commands.each do |command, info|
+    next if info[:visibility] == :private
+
+    line = %Q[printf "  %s   #{info[:summary].sanitize_for_print}\\n" "#{command.ljust(maxlen).color(:command)}"]
     if info[:help_only]
-      > [[ -n $long_usage ]] && printf "  %s   {{ info[:summary].sanitize_for_print }}\n" "{{ command.ljust(maxlen).color(:command) }}"
-    else
-      > printf "  %s   {{ info[:summary].sanitize_for_print }}\n" "{{ command.ljust(maxlen).color(:command) }}"
+      line = %Q[[[ -n "$long_usage" ]] && #{line}]
     end
+
+    if info[:visibility] == :semi_private
+      line = %Q[[[ -n "${#{Settings.private_reveal_key}:-}" ]] && #{line}]
+    end
+
+    = line
   end
 
   > echo

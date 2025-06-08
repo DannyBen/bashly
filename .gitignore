@@ -1,6 +1,7 @@
 *.gem
 /.yardoc
 /coverage
+/spec/coverage
 /dev
 /doc
 /Gemfile.lock

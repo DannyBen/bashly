@@ -52,15 +52,6 @@ commands:
 ### `$ ./cli download`
 
 ````shell
-# this file is located in 'src/download_command.sh'
-# code for 'cli download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
-args: none
-
-deps:
-- ${deps[git]} = /usr/bin/git
-- ${deps[http_client]} = /usr/bin/curl
-- ${deps[ruby]} = /home/vagrant/.rbenv/versions/3.3.0/bin/ruby
 
 
 ````

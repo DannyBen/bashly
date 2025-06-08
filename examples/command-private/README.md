@@ -67,7 +67,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect   Connect to the metaverse
+  connect       Connect to the metaverse
 
 
 
@@ -84,7 +84,7 @@ Usage:
   cli --version | -v
 
 Commands:
-  connect   Connect to the metaverse
+  connect       Connect to the metaverse
 
 Options:
   --help, -h
@@ -101,9 +101,10 @@ Options:
 
 ````shell
 === Calling ./cli connect-ftp
-# this file is located in 'src/connect_ftp_command.sh'
-# code for 'cli connect-ftp' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/connect_ftp_command.sh'.
+# It contains the implementation for the 'cli connect-ftp' command.
+# The code you write here will be wrapped by a function named 'cli_connect_ftp_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 
@@ -112,9 +113,10 @@ args: none
 ### `$ ./cli connect-ssh`
 
 ````shell
-# this file is located in 'src/connect_ssh_command.sh'
-# code for 'cli connect-ssh' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/connect_ssh_command.sh'.
+# It contains the implementation for the 'cli connect-ssh' command.
+# The code you write here will be wrapped by a function named 'cli_connect_ssh_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args: none
 
 

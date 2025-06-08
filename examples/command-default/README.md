@@ -95,11 +95,44 @@ Options:
 ### `$ ./ftp download something`
 
 ````shell
-# this file is located in 'src/download_command.sh'
-# code for 'ftp download' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/download_command.sh'.
+# It contains the implementation for the 'ftp download' command.
+# The code you write here will be wrapped by a function named 'ftp_download_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[source]} = something
+
+
+````
+
+### `$ ./ftp upload`
+
+````shell
+missing required argument: SOURCE
+usage: ftp [upload] SOURCE
+
+
+````
+
+### `$ ./ftp upload -h`
+
+````shell
+ftp upload - Upload a file
+
+Alias: u
+
+Usage:
+  ftp [upload] SOURCE
+  ftp upload --help | -h
+
+Options:
+  --help, -h
+    Show this help
+
+Arguments:
+  SOURCE
+    File to upload
+
 
 
 ````
@@ -107,9 +140,10 @@ args:
 ### `$ ./ftp upload something`
 
 ````shell
-# this file is located in 'src/upload_command.sh'
-# code for 'ftp upload' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/upload_command.sh'.
+# It contains the implementation for the 'ftp upload' command.
+# The code you write here will be wrapped by a function named 'ftp_upload_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[source]} = something
 
@@ -119,9 +153,10 @@ args:
 ### `$ ./ftp something`
 
 ````shell
-# this file is located in 'src/upload_command.sh'
-# code for 'ftp upload' goes here
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/upload_command.sh'.
+# It contains the implementation for the 'ftp upload' command.
+# The code you write here will be wrapped by a function named 'ftp_upload_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[source]} = something
 

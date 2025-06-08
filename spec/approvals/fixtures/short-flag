@@ -6,14 +6,18 @@ run ./cli --help to test your bash script
 + ./cli
 missing required flag: -o PATH
 + ./cli -o /tmp
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[-f]} = html
 - ${args[-o]} = /tmp
 + ./cli -o /tmp -f json
-# this file is located in 'src/root_command.sh'
-# you can edit it freely and regenerate (it will not be overwritten)
+# This file is located at 'src/root_command.sh'.
+# It contains the implementation for the 'cli' command.
+# The code you write here will be wrapped by a function named 'cli_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
 args:
 - ${args[-f]} = json
 - ${args[-o]} = /tmp

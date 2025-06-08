@@ -1,5 +1,8 @@
-> echo "# this file is located in '{{ "#{Settings.source_dir}/#{filename}" }}'"
-> echo "# code for '{{ full_name }}' goes here"
-> echo "# you can edit it freely and regenerate (it will not be overwritten)"
-> inspect_args
+> echo "# This file is located at '{{ "#{Settings.source_dir}/#{filename}" }}'."
+> echo "# It contains the implementation for the '{{ full_name }}' command."
+> echo "# The code you write here will be wrapped by a function named '{{ function_name }}_command()'."
+> echo "# Feel free to edit this file; your changes will persist when regenerating."
+if Settings.enabled? :inspect_args
+  > inspect_args
+end
 >
