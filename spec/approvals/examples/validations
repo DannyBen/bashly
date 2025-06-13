@@ -7,6 +7,7 @@ created src/lib/validations/validate_not_empty.sh
 creating user files in src
 created src/calc_command.sh
 created src/build_command.sh
+created src/deploy_command.sh
 created ./validate
 run ./validate --help to test your bash script
 + ./validate calc 1 2 --save README.md
@@ -40,3 +41,13 @@ args: none
 
 environment variables:
 - $BUILD_DIR = src
++ ./validate deploy --user ''
+validation error in --user USERNAME:
+must not be empty
++ ./validate deploy --user admin
+# This file is located at 'src/deploy_command.sh'.
+# It contains the implementation for the 'validate deploy' command.
+# The code you write here will be wrapped by a function named 'validate_deploy_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
+args:
+- ${args[--user]} = admin

@@ -1,4 +1,6 @@
 ## [@bashly-upgrade validations]
 validate_integer() {
-  [[ "$1" =~ ^[0-9]+$ ]] || echo "must be an integer"
+  if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+    echo "must be an integer"
+  fi
 }

@@ -16,4 +16,7 @@ bashly generate
 ./validate calc 1 2 --save no-such-file.txt
 
 ./validate build
-BUILD_DIR=src ./validate build
+BUILD_DIR=src ./validate build\
+
+./validate deploy --user ''
+./validate deploy --user admin
