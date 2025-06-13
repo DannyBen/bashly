@@ -28,6 +28,7 @@ commands:
     validate: file_exists
 
 - name: build
+  help: Build the project
   environment_variables:
   - name: build_dir
     help: Path to the build directory
@@ -35,3 +36,12 @@ commands:
 
     # Validations also work on environment variables
     validate: dir_exists
+
+- name: deploy
+  help: Deploy to production
+  flags:
+  - long: --user
+    help: Username
+    arg: username
+    required: true
+    validate: not_empty

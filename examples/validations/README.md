@@ -52,6 +52,7 @@ commands:
     validate: file_exists
 
 - name: build
+  help: Build the project
   environment_variables:
   - name: build_dir
     help: Path to the build directory
@@ -59,6 +60,15 @@ commands:
 
     # Validations also work on environment variables
     validate: dir_exists
+
+- name: deploy
+  help: Deploy to production
+  flags:
+  - long: --user
+    help: Username
+    arg: username
+    required: true
+    validate: not_empty
 ````
 
 
@@ -116,17 +126,31 @@ must be an existing directory
 
 ````
 
-### `$ BUILD_DIR=src ./validate build`
+### `$ BUILD_DIR=src ./validate build\`
 
 ````shell
-# This file is located at 'src/build_command.sh'.
-# It contains the implementation for the 'validate build' command.
-# The code you write here will be wrapped by a function named 'validate_build_command()'.
-# Feel free to edit this file; your changes will persist when regenerating.
-args: none
 
-environment variables:
-- $BUILD_DIR = src
+
+````
+
+### `$ ./validate deploy --user ''`
+
+````shell
+validation error in --user USERNAME:
+must not be empty
+
+
+````
+
+### `$ ./validate deploy --user admin`
+
+````shell
+# This file is located at 'src/deploy_command.sh'.
+# It contains the implementation for the 'validate deploy' command.
+# The code you write here will be wrapped by a function named 'validate_deploy_command()'.
+# Feel free to edit this file; your changes will persist when regenerating.
+args:
+- ${args[--user]} = admin
 
 
 ````
