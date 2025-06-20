@@ -87,8 +87,8 @@ module Bashly
       # flag with arg that is defined as unique
       def has_unique_args_or_flags?
         deep_commands(include_self: true).each do |command|
-          return true if command.args.count(&:unique).positive? ||
-            command.flags.count(&:unique).positive?
+          return true if command.args.any?(&:unique) ||
+            command.flags.any?(&:unique)
         end
         false
       end
