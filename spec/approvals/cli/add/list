@@ -42,6 +42,9 @@ settings
   Copy a sample settings.yml file to your project, allowing you to customize
   some bashly options.
 
+stacktrace
+  Add a function that shows stacktrace on error.
+
 strings
   Copy an additional configuration file to your project, allowing you to
   customize all the tips and error strings.
