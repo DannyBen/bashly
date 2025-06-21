@@ -102,6 +102,19 @@ settings:
     - source: "settings/settings.yml"
       target: "settings.yml"
 
+stacktrace:
+  help: Add a function that shows stacktrace on error.
+  files:
+    - source: "stacktrace/stacktrace.sh"
+      target: "%{user_lib_dir}/stacktrace.%{user_ext}"
+  post_install_message: |
+    The stacktrace function is designed to be called automatically on error.
+
+    To enable this functionality, add these lines to your `initialize.sh`:
+    
+      g`trap 'stacktrace' ERR`
+      g`set -o errtrace`
+
 strings:
   help: Copy an additional configuration file to your project, allowing you to customize all the tips and error strings.
   files:
