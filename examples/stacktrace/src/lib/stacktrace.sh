@@ -14,6 +14,7 @@
 ## default in bashly generated scripts.
 ##
 stacktrace() {
+  local exit_status="$?"
   local i=0
   local caller_output line func file
 
@@ -24,5 +25,5 @@ stacktrace() {
     printf "\tfrom %s:%s in \`%s\`\n" "$file" "$line" "$func"
     i=$((i + 1))
   done
-  exit 1
+  exit "$exit_status"
 } >&2

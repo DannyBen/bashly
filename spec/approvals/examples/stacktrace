@@ -51,5 +51,5 @@ Examples:
 
 Stack trace:
 	from ./download:15 in `root_command`
-	from ./download:254 in `run`
-	from ./download:260 in `main`
+	from ./download:255 in `run`
+	from ./download:261 in `main`
