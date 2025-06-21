@@ -13,8 +13,7 @@ $ bashly generate
 $ bashly generate
 ```
 
-<!-- include: src/initialize.sh -->
-<!-- include: src/root_command.sh -->
+<!-- include: src/initialize.sh src/root_command.sh -->
 
 -----
 
@@ -53,6 +52,14 @@ examples:
 ## You can safely delete this file if you do not need it.
 trap 'stacktrace' ERR
 set -o errtrace
+
+````
+
+## `src/root_command.sh`
+
+````bash
+## trigger an error by calling a function that does not exist
+no_such_command
 
 ````
 
