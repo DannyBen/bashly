@@ -17,11 +17,11 @@ stacktrace() {
   local i=0
   local caller_output line func file
 
-  echo "${BASH_SOURCE[0]}:${BASH_LINENO[0]} in \`${FUNCNAME[1]}\`: $BASH_COMMAND"
-  echo "Stack trace:"
+  printf "%s:%s in \`%s\`: %s\n" "${BASH_SOURCE[0]}" "${BASH_LINENO[0]}" "${FUNCNAME[1]}" "$BASH_COMMAND"
+  printf "\nStack trace:\n"
   while caller_output="$(caller $i)"; do
     read -r line func file <<< "$caller_output"
-    echo -e "\tfrom ${file}:${line} in \`$func\`"
+    printf "\tfrom %s:%s in \`%s\`\n" "$file" "$line" "$func"
     i=$((i + 1))
   done
   exit 1
