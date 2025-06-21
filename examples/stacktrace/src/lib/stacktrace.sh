@@ -20,7 +20,7 @@ stacktrace() {
   printf "%s:%s in \`%s\`: %s\n" "${BASH_SOURCE[0]}" "${BASH_LINENO[0]}" "${FUNCNAME[1]}" "$BASH_COMMAND"
   printf "\nStack trace:\n"
   while caller_output="$(caller $i)"; do
-    read -r line func file <<< "$caller_output"
+    read -r line func file <<<"$caller_output"
     printf "\tfrom %s:%s in \`%s\`\n" "$file" "$line" "$func"
     i=$((i + 1))
   done
