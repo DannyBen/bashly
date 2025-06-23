@@ -67,6 +67,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [completions](completions#readme) - adding bash completion functionality
 - [validations](validations#readme) - adding validation functions for arguments, flags or environment variables
 - [hooks](hooks#readme) - adding before/after hooks
+- [stacktrace](stacktrace#readme) - adding stacktrace on error
 
 ## Real-world-like examples
 

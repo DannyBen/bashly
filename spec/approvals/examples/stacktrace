@@ -1,0 +1,55 @@
++ bashly add stacktrace --force
+created src/lib/stacktrace.sh
+
+The stacktrace function is designed to be called automatically on error.
+
+To enable this functionality, add these lines to your `initialize.sh`:
+
+  trap 'stacktrace' ERR
+  set -o errtrace
+
++ bashly generate
+creating user files in src
+skipped src/root_command.sh (exists)
+created ./download
+run ./download --help to test your bash script
++ ./download
+missing required argument: SOURCE
+usage: download SOURCE [TARGET] [OPTIONS]
++ ./download --help
+download - Sample minimal application without commands
+
+Usage:
+  download SOURCE [TARGET] [OPTIONS]
+  download --help | -h
+  download --version | -v
+
+Options:
+  --force, -f
+    Overwrite existing files
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+Arguments:
+  SOURCE
+    URL to download from
+
+  TARGET
+    Target filename (default: same as source)
+
+Examples:
+  download example.com
+  download example.com ./output -f
+
++ ./download something
+./download: line 15: no_such_command: command not found
+./download:15 in `root_command`: no_such_command
+
+Stack trace:
+	from ./download:15 in `root_command`
+	from ./download:255 in `run`
+	from ./download:261 in `main`
