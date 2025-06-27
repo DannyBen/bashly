@@ -3,10 +3,10 @@ created src/lib/stacktrace.sh
 
 The stacktrace function is designed to be called automatically on error.
 
-To enable this functionality, add these lines to your `initialize.sh`:
+To enable this functionality, call enable_stacktrace in your
+src/initialize.sh. You may run the following command to add this file:
 
-  trap 'stacktrace' ERR
-  set -o errtrace
+  $ bashly add hooks
 
 + bashly generate
 creating user files in src
@@ -51,5 +51,5 @@ Examples:
 
 Stack trace:
 	from ./download:15 in `root_command`
-	from ./download:255 in `run`
-	from ./download:261 in `main`
+	from ./download:260 in `run`
+	from ./download:266 in `main`

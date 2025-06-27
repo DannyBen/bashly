@@ -110,10 +110,10 @@ stacktrace:
   post_install_message: |
     The stacktrace function is designed to be called automatically on error.
 
-    To enable this functionality, add these lines to your `initialize.sh`:
-    
-      g`trap 'stacktrace' ERR`
-      g`set -o errtrace`
+    To enable this functionality, call g`enable_stacktrace` in your
+    g`src/initialize.sh`. You may run the following command to add this file:
+
+      m`$ bashly add hooks`
 
 strings:
   help: Copy an additional configuration file to your project, allowing you to customize all the tips and error strings.

@@ -4,15 +4,15 @@
 ## Usage:
 ## This function is designed to be called on error.
 ## 
-## To enable this functionality, add these lines to your `src/initialize.sh`
-## file (Run `bashly add hooks` to add this file):
+## To enable this functionality, call `enable_stacktrace` in your
+## `src/initialize.sh` (Run `bashly add hooks` to add this file).
 ##
-##   trap 'stacktrace' ERR
-##   set -o errtrace
-##
-## Note that this functionality also requires `set -e`, which is enabled by
-## default in bashly generated scripts.
-##
+enable_stacktrace() {
+  trap 'stacktrace' ERR
+  set -o errtrace
+  set -o errexit
+}
+
 stacktrace() {
   local exit_status="$?"
   local i=0
