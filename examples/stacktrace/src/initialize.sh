@@ -4,5 +4,4 @@
 ## before running anything else.
 ##
 ## You can safely delete this file if you do not need it.
-trap 'stacktrace' ERR
-set -o errtrace
+enable_stacktrace

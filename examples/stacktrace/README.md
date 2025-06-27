@@ -50,8 +50,7 @@ examples:
 ## before running anything else.
 ##
 ## You can safely delete this file if you do not need it.
-trap 'stacktrace' ERR
-set -o errtrace
+enable_stacktrace
 
 ````
 
@@ -118,8 +117,8 @@ Examples:
 
 Stack trace:
 	from ./download:15 in `root_command`
-	from ./download:254 in `run`
-	from ./download:260 in `main`
+	from ./download:260 in `run`
+	from ./download:266 in `main`
 
 
 ````
