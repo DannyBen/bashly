@@ -34,7 +34,8 @@ module Bashly
       example 'bashly render --list'
       example 'bashly render :markdown --about'
       example 'bashly render :markdown docs --watch'
-      example 'bashly render :markdown docs --show "cli-download.1"'
+      example 'bashly render :markdown docs --show "cli download.md'
+      example 'bashly render :mandoc docs --show cli-download.1'
       example 'bashly render /path/to/templates ./out_path'
 
       attr_reader :watching, :target, :source
