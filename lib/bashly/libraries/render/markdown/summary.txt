@@ -1,1 +1,1 @@
-Render markdown documents for your script
+Render markdown documents
