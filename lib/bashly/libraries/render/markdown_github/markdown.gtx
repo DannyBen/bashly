@@ -1,0 +1,190 @@
+# === Header
+
+> # {{ full_name }}
+>
+> {{ help.for_markdown }}
+>
+
+attributes = version || alt.any? || default || extensible
+
+if attributes
+  > | Attributes       | &nbsp;
+  > |------------------|-------------
+  if version
+    > | Version:         | {{ version }}
+  end
+  if alt.any?
+    > | Alias:           | {{ alt.join ', ' }}
+  end
+  if default
+    > | Default Command: | ✓ Yes
+  end
+  if extensible
+    > | Extensible:      | {{ extensible.is_a?(String) ? extensible : "✓ Yes" }}
+  end
+  >
+end
+
+# === Usage
+
+> ## Usage
+>
+> ```bash
+> {{ usage_string.for_markdown }}
+> ```
+>
+
+# === Examples
+
+if examples
+  > ## Examples
+  >
+  examples.each do |example|
+    > ```bash
+    > {{ example }}
+    > ```
+    >
+  end
+end
+
+# === Dependencies
+
+if dependencies.any?
+  > ## Dependencies
+  >
+  dependencies.each do |dependency|
+    > #### *{{ dependency.commands.join ', ' }}*
+    >
+    > {{ dependency.help&.for_markdown }}
+    >
+  end
+end
+
+# === Environment Variables
+
+if visible_environment_variables.any?
+  > ## Environment Variables
+  >
+  visible_environment_variables.each do |environment_variable|
+    attributes = environment_variable.required || environment_variable.default
+
+    > #### *{{ environment_variable.name.upcase }}*
+    >
+    > {{ environment_variable.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if environment_variable.required
+        > | Required:       | ✓ Yes
+      end
+      if environment_variable.default
+        > | Default Value:  | {{ environment_variable.default }}
+      end
+      >
+    end
+  end
+end
+
+# === Commands
+
+if commands.any?
+  grouped_commands.each do |group, commands|
+    > ## {{ group.gsub(/:$/, '') }}
+    >
+    commands.each do |subcommand|
+      > - [{{ subcommand.name }}]({{ subcommand.full_name.gsub(' ', '%20') }}.md) - {{ subcommand.summary.for_markdown }}
+    end
+    >
+  end
+end
+
+# === Arguments
+
+if args.any?
+  > ## Arguments
+  >
+  args.each do |arg|
+    attributes = arg.required || arg.repeatable || arg.default || arg.allowed
+
+    > #### *{{ arg.name.upcase }}*
+    >
+    > {{ arg.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if arg.required
+        > | Required:       | ✓ Yes
+      end
+      if arg.repeatable
+        > | Repeatable:     |  ✓ Yes
+      end
+      if arg.default
+        > | Default Value:  | {{ arg.default }}
+      end
+      if arg.allowed
+        > | Allowed Values: | {{ arg.allowed.join(', ') }}
+      end
+      >
+    end
+  end
+
+  if catch_all.label && catch_all.help
+    > #### *{{ catch_all.label }}*
+    >
+    > {{ catch_all.help&.for_markdown }}
+    >
+    if catch_all.required?
+      > | Attributes | &nbsp;
+      > |------------|-------------
+      > | Required:  | ✓ Yes
+      >
+    end
+  end
+end
+
+# === Flags
+
+if flags.any?
+  > ## Options
+  >
+  flags.each do |flag|
+    attributes = flag.required || flag.repeatable || flag.default ||
+      flag.allowed || flag.conflicts || flag.needs
+
+    > #### *{{ flag.usage_string }}*
+    >
+    > {{ flag.help.for_markdown }}
+    >
+
+    if attributes
+      > | Attributes      | &nbsp;
+      > |-----------------|-------------
+      if flag.required
+        > | Required:       | ✓ Yes
+      end
+      if flag.repeatable
+        > | Repeatable:     |  ✓ Yes
+      end
+      if flag.default
+        > | Default Value:  | {{ flag.default }}
+      end
+      if flag.allowed
+        > | Allowed Values: | {{ flag.allowed.join(', ') }}
+      end
+      if flag.conflicts
+        > | Conflicts With: | *{{ flag.conflicts.join(', ') }}*
+      end
+      if flag.needs
+        > | Needs: | *{{ flag.needs.join(', ') }}*
+      end
+      >
+    end
+  end
+end
+
+= x_markdown_footer&.for_manpage
+>

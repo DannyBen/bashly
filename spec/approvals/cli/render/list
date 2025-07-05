@@ -1,2 +1,3 @@
-:mandoc      Render man pages for your script
-:markdown    Render markdown documents for your script
+:mandoc            Render man pages
+:markdown          Render markdown documents
+:markdown_github   Render GitHub-compatible markdown documents

@@ -1,1 +1,1 @@
-Render man pages for your script
+Render man pages

@@ -52,7 +52,7 @@ module Bashly
 
       def show_list
         RenderSource.internal.each_value do |source|
-          say "g`:#{source.selector.to_s.ljust 10}`  #{source.summary}"
+          say "g`:#{source.selector.to_s.ljust 16}`  #{source.summary}"
         end
       end
 
