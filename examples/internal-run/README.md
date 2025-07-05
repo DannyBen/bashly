@@ -24,9 +24,7 @@ consider using [lib functions](https://bashly.dev/usage/writing-your-scripts/#ad
 instead. lib functions can help create a more robust and maintainable codebase
 by centralizing reusable logic.
 
-<!-- include: src/build_command.sh -->
-<!-- include: src/test_command.sh -->
-<!-- include: src/deploy_command.sh -->
+<!-- include: src/build_command.sh src/test_command.sh src/deploy_command.sh -->
 
 -----
 
@@ -67,6 +65,33 @@ commands:
 echo "BUILD complete"
 inspect_args
 echo
+````
+
+## `src/test_command.sh`
+
+````bash
+echo "TEST complete"
+inspect_args
+echo
+````
+
+## `src/deploy_command.sh`
+
+````bash
+# We must record the `args` array to our local variables, due to the fact
+# that calling `run` will reset it.
+build=${args['--build']}
+test=${args['--test']}
+
+# Call other commands in the same way they would be called in the CLI.
+[[ $build ]] && run build production
+[[ $test ]] && run test --full
+
+# Perform the purpose of this command.
+echo "DEPLOY complete"
+inspect_args
+
+
 ````
 
 
