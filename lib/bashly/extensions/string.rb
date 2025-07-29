@@ -45,7 +45,7 @@ class String
   end
 
   def lint
-    gsub(/\s+\n/m, "\n\n").lines.grep_v(/^\s*##/).join
+    Bashly::LintHelper.new(self).lint
   end
 
   def remove_front_matter
