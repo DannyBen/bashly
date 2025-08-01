@@ -189,9 +189,9 @@ properties:
     anyOf:
       - type: string
         enum:
-          - :internal
-          - :none
-          - :shfmt
+          - internal
+          - none
+          - external
       - type: string
         minLength: 1
     default: :internal

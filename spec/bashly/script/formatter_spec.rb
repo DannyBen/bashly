@@ -10,16 +10,16 @@ describe Script::Formatter do
       expect(subject.formatted_script).to match_approval 'formatter/internal'
     end
 
-    context 'with mode: :none' do
-      let(:mode) { :none }
+    context 'with mode: none' do
+      let(:mode) { 'none' }
 
       it 'returns the original script' do
         expect(subject.formatted_script).to eq script
       end
     end
 
-    context 'with mode: :shfmt' do
-      let(:mode) { :shfmt }
+    context 'with mode: external' do
+      let(:mode) { 'external' }
 
       it 'uses shfmt to format the script' do
         expect(subject.formatted_script).to match_approval 'formatter/shfmt'
@@ -35,7 +35,7 @@ describe Script::Formatter do
     end
 
     context 'when the external command does not exist' do
-      let(:mode) { 'my_glorious_formatter' }
+      let(:mode) { 'my_formatter' }
 
       it 'raises a Bashly::Error' do
         expect { subject.formatted_script }.to raise_approval 'formatter/error-not-found'

@@ -52,12 +52,15 @@ strict: false
 tab_indent: false
 
 # Choose a post-processor for the generated script:
-# formatter: :internal   # Use Bashly's internal formatter (compacts newlines)
-# formatter: :none       # Disable all post-processing
-# formatter: :shfmt      # Use shfmt if installed
-# formatter: shfmt -mn   # Use any other string, assuming the command accepts
-#                        # the script as stdin and outputs it to stdout
-formatter: :internal
+# formatter: internal     # Use Bashly's internal formatter (compacts newlines)
+# formatter: external     # Run the external command `shfmt --case-indent --indent 2`
+# formatter: none         # Disable formatting entirely
+# formatter: <string>     # Use a custom shell command to format the script.
+#                         # The command will receive the script via stdin and
+#                         # must output the result to stdout.
+#                         # Example: shfmt --minify
+formatter: internal
+
 
 #-------------------------------------------------------------------------------
 # INTERFACE OPTIONS

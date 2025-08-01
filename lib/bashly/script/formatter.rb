@@ -4,20 +4,18 @@ require 'shellwords'
 module Bashly
   module Script
     class Formatter
-      MODES = %i[internal none shfmt]
-
       attr_reader :script, :mode
 
       def initialize(script, mode: nil)
         @script = script
-        @mode = mode || :internal
+        @mode = mode&.to_s || 'internal'
       end
 
       def formatted_script
         case mode
-        when :internal then script.gsub(/\s+\n/m, "\n\n")
-        when :shfmt then shfmt_result
-        when :none then script
+        when 'internal' then script.gsub(/\s+\n/m, "\n\n")
+        when 'external' then shfmt_result
+        when 'none' then script
         else custom_formatter_result mode
         end
       end
@@ -34,10 +32,10 @@ module Bashly
         begin
           output, error, status = Open3.capture3(*command, stdin_data: script)
         rescue Errno::ENOENT
-          raise Error, "Command not found: `#{command.join(' ')}`"
+          raise Error, "Command not found: g`#{command.first}`"
         end
 
-        raise Error, "Failed running `#{command.join(' ')}`:\n\n#{error}" unless status.success?
+        raise Error, "Failed running g`#{Shellwords.join command}`:\n\n#{error}" unless status.success?
 
         output
       end

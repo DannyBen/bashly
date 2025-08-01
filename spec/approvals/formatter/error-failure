@@ -1,1 +1,1 @@
-#<Bashly::Error:"Failed running `shfmt --diff`:\n\n">
+#<Bashly::Error:"Failed running g`shfmt --diff`:\n\n">
