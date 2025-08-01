@@ -10,7 +10,7 @@ module Bashly
 
       def initialize(script, mode: nil)
         @script = script
-        @mode = mode
+        @mode = mode || :internal
       end
 
       def formatted_script
@@ -30,8 +30,15 @@ module Bashly
 
       def custom_formatter_result(command)
         command = Shellwords.split command if command.is_a? String
-        output, error, status = Open3.capture3 *command, stdin_data: script
-        raise DependencyError, "Failed running g`#{command}`:\n\n#{error}" unless status.success?
+        
+        begin
+          output, error, status = Open3.capture3(*command, stdin_data: script)
+        rescue Errno::ENOENT => e
+          raise Error, "Command not found: `#{command.join(' ')}`"
+        end
+
+        raise Error, "Failed running `#{command.join(' ')}`:\n\n#{error}" unless status.success?
+
 
         output
       end
