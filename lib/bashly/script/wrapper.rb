@@ -27,8 +27,8 @@ module Bashly
       end
 
       def clean_code(script)
-        script.remove_private_comments
-        formatter = Formatter.new script, mode: Settings.formatter
+        result = script.remove_private_comments
+        formatter = Formatter.new result, mode: Settings.formatter
         formatter.formatted_script
       end
 
