@@ -15,6 +15,7 @@ module Bashly
         :enable_inspect_args,
         :enable_sourcing,
         :enable_view_markers,
+        :formatter,
         :function_names,
         :lib_dir,
         :partials_extension,
@@ -84,6 +85,10 @@ module Bashly
 
       def env=(value)
         @env = value&.to_sym
+      end
+
+      def formatter
+        @formatter ||= get :formatter
       end
 
       def full_lib_dir

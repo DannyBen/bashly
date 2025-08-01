@@ -213,6 +213,17 @@
       ],
       "default": "development"
     },
+    "formatter": {
+      "title": "formatter",
+      "description": "Choose how to post-process the generated script\nhttps://bashly.dev/usage/settings/#formatter",
+      "type": "string",
+      "enum": [
+        "internal",
+        "none",
+        "shfmt"
+      ],
+      "default": "internal"
+    },
     "partials_extension": {
       "title": "partials extension",
       "description": "The extension to use when reading/writing partial script snippets\nhttps://bashly.dev/usage/settings/#partials_extension",

@@ -44,8 +44,8 @@ class String
     end * "\n"
   end
 
-  def lint
-    gsub(/\s+\n/m, "\n\n").lines.grep_v(/^\s*##/).join
+  def remove_private_comments
+    lines.grep_v(/^\s*##/).join
   end
 
   def remove_front_matter

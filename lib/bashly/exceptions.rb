@@ -3,4 +3,5 @@ module Bashly
   class Error < StandardError; end
   class InitError < Error; end
   class ConfigurationError < Error; end
+  class DependencyError < Error; end
 end

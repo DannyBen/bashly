@@ -181,6 +181,17 @@ properties:
     type: string
     enum: *feature_toggles
     default: development
+  formatter:
+    title: formatter
+    description: |-
+      Choose how to post-process the generated script
+      https://bashly.dev/usage/settings/#formatter
+    type: string
+    enum:
+      - internal
+      - none
+      - shfmt
+    default: internal
   partials_extension:
     title: partials extension
     description: |-

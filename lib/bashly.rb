@@ -22,7 +22,7 @@ module Bashly
   module Script
     autoloads 'bashly/script', %i[
       Argument Base CatchAll Command Dependency EnvironmentVariable Flag
-      Variable Wrapper
+      Formatter Variable Wrapper
     ]
 
     module Introspection
