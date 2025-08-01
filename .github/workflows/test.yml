@@ -33,6 +33,9 @@ jobs:
     - name: Install pandoc
       run: rush get pandoc
 
+    - name: Install shfmt
+      run: rush get shfmt
+
     # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
       run: sudo apt-get -y install libyaml-dev
