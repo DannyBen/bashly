@@ -30,15 +30,14 @@ module Bashly
 
       def custom_formatter_result(command)
         command = Shellwords.split command if command.is_a? String
-        
+
         begin
           output, error, status = Open3.capture3(*command, stdin_data: script)
-        rescue Errno::ENOENT => e
+        rescue Errno::ENOENT
           raise Error, "Command not found: `#{command.join(' ')}`"
         end
 
         raise Error, "Failed running `#{command.join(' ')}`:\n\n#{error}" unless status.success?
-
 
         output
       end
