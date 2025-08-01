@@ -52,11 +52,12 @@ strict: false
 tab_indent: false
 
 # Choose a post-processor for the generated script:
-# formatter: internal   # Use Bashly's internal formatter (compacts newlines)
-# formatter: none       # Disable all post-processing
-# formatter: shfmt      # Use shfmt if installed
-formatter: internal
-
+# formatter: :internal   # Use Bashly's internal formatter (compacts newlines)
+# formatter: :none       # Disable all post-processing
+# formatter: :shfmt      # Use shfmt if installed
+# formatter: shfmt -mn   # Use any other string, assuming the command accepts
+#                        # the script as stdin and outputs it to stdout
+formatter: :internal
 
 #-------------------------------------------------------------------------------
 # INTERFACE OPTIONS
