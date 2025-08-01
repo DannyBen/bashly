@@ -216,13 +216,21 @@
     "formatter": {
       "title": "formatter",
       "description": "Choose how to post-process the generated script\nhttps://bashly.dev/usage/settings/#formatter",
-      "type": "string",
-      "enum": [
-        "internal",
-        "none",
-        "shfmt"
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            ":internal",
+            ":none",
+            ":shfmt"
+          ]
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
       ],
-      "default": "internal"
+      "default": ":internal"
     },
     "partials_extension": {
       "title": "partials extension",

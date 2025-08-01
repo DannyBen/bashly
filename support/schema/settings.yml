@@ -186,12 +186,15 @@ properties:
     description: |-
       Choose how to post-process the generated script
       https://bashly.dev/usage/settings/#formatter
-    type: string
-    enum:
-      - internal
-      - none
-      - shfmt
-    default: internal
+    anyOf:
+      - type: string
+        enum:
+          - :internal
+          - :none
+          - :shfmt
+      - type: string
+        minLength: 1
+    default: :internal
   partials_extension:
     title: partials extension
     description: |-
