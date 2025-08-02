@@ -1,0 +1,10 @@
+paths:
+- lib/
+
+exclude:
+- spec/
+
+use_coverage: true
+coverage_path: spec/coverage
+no_browser: true
+
