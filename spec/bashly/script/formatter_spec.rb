@@ -45,7 +45,7 @@ describe Script::Formatter do
     context 'when the external command fails' do
       let(:mode) { 'shfmt --diff' }
 
-      it 'raises a a Bashly::Error' do
+      it 'raises a Bashly::Error' do
         expect { subject.formatted_script }.to raise_approval 'formatter/error-failure'
       end
     end
