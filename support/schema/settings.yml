@@ -190,11 +190,11 @@ properties:
       - type: string
         enum:
           - internal
-          - none
           - external
+          - none
       - type: string
         minLength: 1
-    default: :internal
+    default: internal
   partials_extension:
     title: partials extension
     description: |-

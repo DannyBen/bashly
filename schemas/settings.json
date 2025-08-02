@@ -221,8 +221,8 @@
           "type": "string",
           "enum": [
             "internal",
-            "none",
-            "external"
+            "external",
+            "none"
           ]
         },
         {
@@ -230,7 +230,7 @@
           "minLength": 1
         }
       ],
-      "default": ":internal"
+      "default": "internal"
     },
     "partials_extension": {
       "title": "partials extension",
