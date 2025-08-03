@@ -6,7 +6,7 @@ if validate
     >   values=''
     >   eval "values=(${args['{{ long }}']})"
     >   for value in "${values[@]}"; do
-    >     validation_output="$(validate_{{ validate }} "$value")"
+    >     validation_output="$(validate_{{ validate }} "$value" 2>&1)"
     >     if [[ -n "$validation_output" ]]; then
     >       printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$validation_output" >&2
     >       exit 1
@@ -15,7 +15,7 @@ if validate
     > fi
   else
     > if [[ -v args['{{ long }}'] ]]; then
-    >   validation_output="$(validate_{{ validate }} "${args['{{ long }}']:-}")"
+    >   validation_output="$(validate_{{ validate }} "${args['{{ long }}']:-}" 2>&1)"
     >   if [[ -n "${validation_output}" ]]; then
     >     printf "{{ strings[:validation_error] }}\n" "{{ usage_string }}" "$validation_output" >&2
     >     exit 1

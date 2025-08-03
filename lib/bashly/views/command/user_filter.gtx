@@ -3,7 +3,7 @@ if filters
   = view_marker
 
   filters.each do |filter|
-    > filter_error=$(filter_{{ filter }})
+    > filter_error=$(filter_{{ filter }} 2>&1)
     > if [[ -n $filter_error ]]; then
     >   echo "$filter_error" >&2
     >   exit 1
