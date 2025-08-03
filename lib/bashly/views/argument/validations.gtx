@@ -6,15 +6,17 @@ if validate
     >   values=''
     >   eval "values=(${args['{{ name }}']})"
     >   for value in "${values[@]}"; do
-    >     if [[ -n $(validate_{{ validate }} "$value") ]]; then
-    >       printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "$value")" >&2
+    >     validation_output="$(validate_{{ validate }} "$value" 2>&1)"
+    >     if [[ -n "$validation_output" ]]; then
+    >       printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$validation_output" >&2
     >       exit 1
     >     fi
     >   done
     > fi
   else
-    > if [[ -v args['{{ name }}'] && -n $(validate_{{ validate }} "${args['{{ name }}']:-}") ]]; then
-    >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$(validate_{{ validate }} "${args['{{ name }}']:-}")" >&2
+    > validation_output="$(validate_{{ validate }} "${args['{{ name }}']:-}" 2>&1)"
+    > if [[ -v args['{{ name }}'] && -n "$validation_output" ]]; then
+    >   printf "{{ strings[:validation_error] }}\n" "{{ name.upcase }}" "$validation_output" >&2
     >   exit 1
     > fi
     >
