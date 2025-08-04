@@ -1,3 +1,3 @@
 This fixture tests that there is no group caption if all env vars are private
 
-Reference issue: https://github.com/DannyBen/bashly/issues/331
+Reference issue: https://github.com/bashly-framework/bashly/issues/331
