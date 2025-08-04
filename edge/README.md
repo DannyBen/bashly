@@ -14,7 +14,7 @@ or build your own image with [this Dockerfile](Dockerfile).
 ## Using Ruby
 
 ```bash
-git clone --depth 1 https://github.com/DannyBen/bashly.git
+git clone --depth 1 https://github.com/bashly-framework/bashly.git
 cd bashly
 gem build bashly.gemspec --output bashly.gem
 gem install bashly.gem

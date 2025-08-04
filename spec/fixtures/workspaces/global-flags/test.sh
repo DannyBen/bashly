@@ -2,7 +2,7 @@
 
 # This fixture tests the global flags feature, and specifically, that it works
 # with multiple flags.
-# Reference issue: https://github.com/DannyBen/bashly/issues/293
+# Reference issue: https://github.com/bashly-framework/bashly/issues/293
 
 rm -f ./src/*.sh
 rm -f ./flags

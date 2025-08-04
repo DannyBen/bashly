@@ -17,14 +17,14 @@ be improved. Out of respect for your time, this guide will be succinct.
 
 
 
-[issues]: https://github.com/DannyBen/bashly/issues/new/choose
-[bug-report]: https://github.com/DannyBen/bashly/issues/new?labels=bug&template=bug_report.md
-[feature-request]: https://github.com/DannyBen/bashly/issues/new?&labels=enhancement&template=feature_request.md
-[documentation-issue]: https://github.com/DannyBen/bashly/issues/new?&labels=documentation&template=documentation_issue.md
+[issues]: https://github.com/bashly-framework/bashly/issues/new/choose
+[bug-report]: https://github.com/bashly-framework/bashly/issues/new?labels=bug&template=bug_report.md
+[feature-request]: https://github.com/bashly-framework/bashly/issues/new?&labels=enhancement&template=feature_request.md
+[documentation-issue]: https://github.com/bashly-framework/bashly/issues/new?&labels=documentation&template=documentation_issue.md
 
-[discussions]: https://github.com/DannyBen/bashly/discussions
-[discussions-qna]: https://github.com/DannyBen/bashly/discussions/categories/q-a
-[discussions-ideas]: https://github.com/DannyBen/bashly/discussions/categories/ideas
-[discussions-show]: https://github.com/DannyBen/bashly/discussions/categories/show-and-tell
+[discussions]: https://github.com/bashly-framework/bashly/discussions
+[discussions-qna]: https://github.com/bashly-framework/bashly/discussions/categories/q-a
+[discussions-ideas]: https://github.com/bashly-framework/bashly/discussions/categories/ideas
+[discussions-show]: https://github.com/bashly-framework/bashly/discussions/categories/show-and-tell
 
-[bashly-book-repo]: https://github.com/DannyBen/bashly-book
+[bashly-book-repo]: https://github.com/bashly-framework/bashly-book

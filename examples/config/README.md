@@ -3,7 +3,7 @@
 Demonstrates how to add functions for reading and writing INI configuration
 files. 
 
-Note that this library uses the [ini library](https://github.com/DannyBen/bashly/tree/master/examples/ini#readme)
+Note that this library uses the [ini library](https://github.com/bashly-framework/bashly/tree/master/examples/ini#readme)
 for its low-level INI read/write functions.
 
 This example was generated with:

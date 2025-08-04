@@ -6,7 +6,7 @@ RUN apk add --no-cache git pandoc-cli
 ARG branch=master
 
 WORKDIR /bashly
-RUN git clone --branch $branch --depth 1 https://github.com/DannyBen/bashly.git .
+RUN git clone --branch $branch --depth 1 https://github.com/bashly-framework/bashly.git .
 RUN gem build bashly.gemspec --output bashly.gem
 RUN gem install bashly.gem
 
