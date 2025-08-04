@@ -1,2 +1,2 @@
 This fixture tests that short flags work properly
-Reference issue: https://github.com/DannyBen/bashly/issues/16
+Reference issue: https://github.com/bashly-framework/bashly/issues/16

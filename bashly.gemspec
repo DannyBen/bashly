@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*']
   s.executables = ['bashly']
-  s.homepage    = 'https://github.com/dannyben/bashly'
+  s.homepage    = 'https://github.com/bashly-framework/bashly'
   s.license     = 'MIT'
   s.required_ruby_version = '>= 3.2'
 
@@ -29,10 +29,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'ostruct', '>= 0', '< 2'   # required by json
 
   s.metadata = {
-    'bug_tracker_uri'       => 'https://github.com/DannyBen/bashly/issues',
-    'changelog_uri'         => 'https://github.com/DannyBen/bashly/blob/master/CHANGELOG.md',
+    'bug_tracker_uri'       => 'https://github.com/bashly-framework/bashly/issues',
+    'changelog_uri'         => 'https://github.com/bashly-framework/bashly/blob/master/CHANGELOG.md',
     'homepage_uri'          => 'https://bashly.dev/',
-    'source_code_uri'       => 'https://github.com/DannyBen/bashly',
+    'source_code_uri'       => 'https://github.com/bashly-framework/bashly',
     'rubygems_mfa_required' => 'true',
   }
 end

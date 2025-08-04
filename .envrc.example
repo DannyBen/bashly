@@ -1,6 +1,6 @@
 # for git-changelog (https://github.com/dannyben/git-changelog)
-export CHANGELOG_COMMIT_URL=https://github.com/DannyBen/bashly/commit/%h
-export CHANGELOG_COMPARE_URL=https://github.com/dannyben/bashly/compare/%s
+export CHANGELOG_COMMIT_URL=https://github.com/bashly-framework/bashly/commit/%h
+export CHANGELOG_COMPARE_URL=https://github.com/bashly-framework/bashly/compare/%s
 
 # include the debug gem
 export DEBUGGER=1

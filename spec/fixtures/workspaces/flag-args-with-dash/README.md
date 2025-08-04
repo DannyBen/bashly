@@ -14,5 +14,5 @@ See https://bashly.dev/usage/settings/#compact_short_flags
 
 Reference issues:
 
-- https://github.com/DannyBen/bashly/issues/58
-- https://github.com/DannyBen/bashly/issues/499
+- https://github.com/bashly-framework/bashly/issues/58
+- https://github.com/bashly-framework/bashly/issues/499
