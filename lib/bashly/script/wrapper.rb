@@ -23,7 +23,13 @@ module Bashly
           [header, body]
         end
 
-        result.join("\n").lint
+        clean_code result.join("\n")
+      end
+
+      def clean_code(script)
+        result = script.remove_private_comments
+        formatter = Formatter.new result, mode: Settings.formatter
+        formatter.formatted_script
       end
 
       def header

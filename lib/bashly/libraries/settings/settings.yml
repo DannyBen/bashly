@@ -41,15 +41,25 @@ partials_extension: sh
 #-------------------------------------------------------------------------------
 
 # Configure the bash options that will be added to the initialize function:
-# strict: true       Bash strict mode (set -euo pipefail)
-# strict: false      Only exit on errors (set -e)
-# strict: ''         Do not add any 'set' directive
-# strict: <string>   Add any other custom 'set' directive
+# strict: true       # Bash strict mode (set -euo pipefail)
+# strict: false      # Only exit on errors (set -e)
+# strict: ''         # Do not add any 'set' directive
+# strict: <string>   # Add any other custom 'set' directive
 strict: false
 
 # When true, the generated script will use tab indentation instead of spaces
 # (every 2 leading spaces will be converted to a tab character)
 tab_indent: false
+
+# Choose a post-processor for the generated script:
+# formatter: internal     # Use Bashly's internal formatter (compacts newlines)
+# formatter: external     # Run the external command `shfmt --case-indent --indent 2`
+# formatter: none         # Disable formatting entirely
+# formatter: <string>     # Use a custom shell command to format the script.
+#                         # The command will receive the script via stdin and
+#                         # must output the result to stdout.
+#                         # Example: shfmt --minify
+formatter: internal
 
 
 #-------------------------------------------------------------------------------
@@ -100,10 +110,10 @@ env: development
 
 # Tweak the script output by enabling or disabling some script output.
 # These options accept one of the following strings:
-# - production      render this feature only when env == production
-# - development     render this feature only when env == development
-# - always          render this feature in any environment
-# - never           do not render this feature
+# - production      # render this feature only when env == production
+# - development     # render this feature only when env == development
+# - always          # render this feature in any environment
+# - never           # do not render this feature
 enable_header_comment: always
 enable_bash3_bouncer: always
 enable_view_markers: development
