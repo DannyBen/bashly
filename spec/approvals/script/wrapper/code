@@ -3,7 +3,7 @@
 # Modifying it manually is not recommended
 
 # :wrapper.bash3_bouncer
-if (( BASH_VERSINFO[0] < 4 || (BASH_VERSINFO[0] == 4 && BASH_VERSINFO[1] < 2) )); then
+if ((BASH_VERSINFO[0] < 4 || (BASH_VERSINFO[0] == 4 && BASH_VERSINFO[1] < 2))); then
   printf "bash version 4.2 or higher is required\n" >&2
   exit 1
 fi
