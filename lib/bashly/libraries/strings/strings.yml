@@ -40,6 +40,6 @@ examples_caption_on_error: 'examples:'
 disallowed_flag: "%{name} must be one of: %{allowed}"
 disallowed_argument: "%{name} must be one of: %{allowed}"
 disallowed_environment_variable: "%{name} environment variable must be one of: %{allowed}"
-unsupported_bash_version: "bash version 4 or higher is required"
+unsupported_bash_version: "bash version 4.2 or higher is required"
 validation_error: "validation error in %s:\\n%s"
 environment_variable_validation_error: "validation error in environment variable %s:\\n%s"
