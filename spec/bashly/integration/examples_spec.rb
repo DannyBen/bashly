@@ -27,7 +27,8 @@ describe 'generated bash scripts', :slow do
   # For certain examples, allow some exceptions (replacements) since they 
   # are too volatile (e.g. line number changes)
   exceptions = {
-    'examples/stacktrace' => [/download:\d+/, 'download:<line>']
+    'examples/stacktrace' => [/download:\d+/, 'download:<line>'],
+    'examples/render-mandoc' => [/Version 0.1.0.*download\(1\)/, '<footer>'],
   }
 
   test_cases.each do |example|
