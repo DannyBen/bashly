@@ -1,0 +1,8 @@
+= view_marker
+
+> {{ Settings.function_name :initialize }} "$@"
+> if declare -p input_override &>/dev/null; then
+>   {{ Settings.function_name :run }} "${input_override[@]}"
+> else
+>   {{ Settings.function_name :run }} "$@"
+> fi

@@ -24,6 +24,12 @@ describe 'generated bash scripts', :slow do
   # Allow up to a certain string distance from the approval text in CI
   leeway = ENV['CI'] ? 40 : 0
 
+  # For certain examples, allow some exceptions (replacements) since they 
+  # are too volatile (e.g. line number changes)
+  exceptions = {
+    'examples/stacktrace' => [/download:\d+/, 'download:<line>']
+  }
+
   test_cases.each do |example|
     approval_name = example.gsub 'spec/fixtures/workspaces', 'fixtures'
 
@@ -41,7 +47,13 @@ describe 'generated bash scripts', :slow do
         # - The "+ ..." shell messages driven by `set -x` have no space
         # - The order of our `inspect_args` sometimes differs
         # - The result of the `deps` array sometimes differs
-        expect(output).to match_approval(approval_name).diff(leeway)
+        # In addition, for some examples we allow exceptions, so the below is
+        # just a more granular version of:
+        # expect(output).to match_approval(approval_name).diff(leeway).except(*except)
+        match_output = match_approval(approval_name).diff(leeway)
+        except = exceptions[example]
+        match_output = match_output.except(*except) if except
+        expect(output).to match_output
       end
     end
   end
