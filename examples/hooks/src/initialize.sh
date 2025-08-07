@@ -3,10 +3,8 @@
 ## Any code here will be placed inside the `initialize()` function and called
 ## before running anything else.
 ##
-## - The raw command line arguments are available to you here as "$@"
-## - If you wish to override the raw arguments before they are processed,
-##   simply define an array named `input_override`:
-##
-##     declare -g -a input_override=("modified" "args")
+## The original command line arguments are available in the `command_line` array.
+## You can modify this array to adjust or override the input before the app runs,
+## though this is usually only needed for advanced use cases.
 ##
 ## You can safely delete this file if you do not need it.

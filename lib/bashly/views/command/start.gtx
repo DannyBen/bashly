@@ -1,8 +1,5 @@
 = view_marker
 
-> {{ Settings.function_name :initialize }} "$@"
-> if [[ -v input_override ]]; then
->   {{ Settings.function_name :run }} "${input_override[@]}"
-> else
->   {{ Settings.function_name :run }} "$@"
-> fi
+> command_line=("$@")
+> {{ Settings.function_name :initialize }}
+> {{ Settings.function_name :run }} "${command_line[@]}"
