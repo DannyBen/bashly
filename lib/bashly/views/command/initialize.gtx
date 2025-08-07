@@ -2,7 +2,6 @@
 
 > {{ Settings.function_name :initialize }}() {
 >   declare -g version="<%= version %>"
->   declare -g command_line
 >   {{ Settings.strict_string }}
 
 if root_command?
