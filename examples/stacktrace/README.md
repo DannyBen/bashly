@@ -117,8 +117,8 @@ Examples:
 
 Stack trace:
 	from ./download:15 in `root_command`
-	from ./download:260 in `run`
-	from ./download:266 in `main`
+	from ./download:259 in `run`
+	from ./download:267 in `main`
 
 
 ````

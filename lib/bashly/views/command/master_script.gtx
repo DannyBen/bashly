@@ -15,11 +15,9 @@
 > 
 if Settings.enabled? :sourcing
   > if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  >   {{ Settings.function_name :initialize }}
-  >   {{ Settings.function_name :run }} "$@"
+  = render(:start).indent 2
   > fi
 else
-  > {{ Settings.function_name :initialize }}
-  > {{ Settings.function_name :run }} "$@"
+  = render :start
 end
 > 

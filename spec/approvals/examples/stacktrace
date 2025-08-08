@@ -47,9 +47,9 @@ Examples:
 
 + ./download something
 ./download: line 15: no_such_command: command not found
-./download:15 in `root_command`: no_such_command
+./download:<line> in `root_command`: no_such_command
 
 Stack trace:
-	from ./download:15 in `root_command`
-	from ./download:259 in `run`
-	from ./download:265 in `main`
+	from ./download:<line> in `root_command`
+	from ./download:<line> in `run`
+	from ./download:<line> in `main`
