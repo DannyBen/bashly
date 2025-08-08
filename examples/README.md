@@ -43,6 +43,7 @@ Each of these examples demonstrates one aspect or feature of bashly.
 - [key-value-pairs](key-value-pairs#readme) - parsing key=value arguments and flags
 - [command-examples-on-error](command-examples-on-error#readme) - showing examples on error
 - [internal-run](internal-run#readme) - calling other commands internally
+- [command-line-manipulation](command-line-manipulation#readme) - read or modify the raw command line
 
 ## Customization
 
