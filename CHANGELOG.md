@@ -1,7 +1,7 @@
 Changelog
 ========================================
 
-v1.3 - 2025-08-08
+v1.3.1 - 2025-08-08
 ----------------------------------------
 
 - Fix render markdown command examples [`21b786d30`](https://github.com/bashly-framework/bashly/commit/21b786d30)
@@ -10,7 +10,7 @@ v1.3 - 2025-08-08
 - Add ability to override raw input [`8048e6445`](https://github.com/bashly-framework/bashly/commit/8048e6445)
 - Update bash version bouncer to require bash 4.2 [`3a3952aca`](https://github.com/bashly-framework/bashly/commit/3a3952aca)
 - Add Command Line Manipulation example [`388ab1926`](https://github.com/bashly-framework/bashly/commit/388ab1926)
-- Compare [`v1.2.13..v1.3`](https://github.com/bashly-framework/bashly/compare/v1.2.13..v1.3)
+- Compare [`v1.2.13..v1.3.1`](https://github.com/bashly-framework/bashly/compare/v1.2.13..v1.3.1)
 
 
 v1.2.13 - 2025-06-28
